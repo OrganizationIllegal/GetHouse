@@ -17,15 +17,16 @@ import com.kate.app.model.MyInfo;
 	public class testD extends BaseDao{
 		public String test(){
 			//Statement stmt = con.createStatement() ;
+			System.out.println("qqqqqqqqqq");
 			MyInfo myInfo = new MyInfo();
 			try{
 				Connection con = DriverManager.getConnection(url, username, password);
 				String sql = " select * from MyInfo";
+				System.out.println(sql+"qqqqqqqqqq");
 		        Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
-				System.out.println(rs.next());
+				
 				while(rs.next()){
-					
 					myInfo.setName(rs.getString("name"));
 					myInfo.setAge(rs.getInt("age"));
 					System.out.println(myInfo.getAge());
