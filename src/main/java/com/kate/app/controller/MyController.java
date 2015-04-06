@@ -36,13 +36,13 @@ public class MyController {
 	public String test_controller(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		String name = myService.test();
-		json.put("result", name);
-		//req.setAttribute("result", name);
-		try{
-		writeJson(json.toJSONString(),resp);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		//json.put("result", name);
+		req.setAttribute("result", "123");
+//		try{
+//		writeJson(json.toJSONString(),resp);
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
 		return "/My.jsp";
 	}
 	

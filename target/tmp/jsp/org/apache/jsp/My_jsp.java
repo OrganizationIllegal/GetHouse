@@ -49,19 +49,22 @@ public final class My_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\">\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<title>Insert title here</title>\r\n");
-      out.write("</head>\r\n");
-      out.write("<body>qqqq\r\n");
+      out.write("<title></title>\r\n");
       out.write("\r\n");
+      out.write("</head>\r\n");
+      out.write("<body>\r\n");
+      out.write("    <h1>hello,world!</h1>\r\n");
       out.write("\t<div class=\"details_cot\">\r\n");
       out.write("\r\n");
       out.write("\tname:");
-      out.write("${result}");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${result}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\r\n");
       out.write("       \r\n");
       out.write("\r\n");
       out.write("    </div>\r\n");
-      out.write("\t\r\n");
+      out.write("\t<div>\r\n");
+      out.write("\thadkhakdhks\r\n");
+      out.write("\t</div>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
