@@ -8,14 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.stereotype.Repository;
 
+import org.springframework.stereotype.Repository;
 
 
 import com.kate.app.model.MyInfo;
@@ -31,11 +29,6 @@ public class MyDb{
 	
 	@Autowired  
     private static HibernateTemplate hibernateTemplate;
-	
-	
-	public void setHibernateTemplate(HibernateTemplate hibernateTemplate){ 
-	    this.hibernateTemplate = hibernateTemplate; 
-	} 
 	
 	public List<MyInfo> findInfo(){
 		List <MyInfo> list = hibernateTemplate.find("from MyInfo");

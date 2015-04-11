@@ -23,7 +23,7 @@ public class BaseDao {
 		    e.printStackTrace() ;   
 		}   
 		try {
-            url = "jdbc:mysql://localhost:3306/test";
+            url = "jdbc:mysql://54.187.200.118:3306/house";
             username = "root";
             password = "admin"; 
         } catch (Exception e) {

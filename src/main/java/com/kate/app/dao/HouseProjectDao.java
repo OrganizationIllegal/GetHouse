@@ -7,13 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.kate.app.model.HouseProject;
 import com.kate.app.model.MyInfo;
-
+@Repository 
 public class HouseProjectDao extends BaseDao{
 	public List<HouseProject> HouseProjectDao(){
 		List<HouseProject> list = new ArrayList<HouseProject>();
-		MyInfo myInfo = new MyInfo();
 		try{
 			Connection con = DriverManager.getConnection(url, username, password);
 			String sql = " select * from House_Project";

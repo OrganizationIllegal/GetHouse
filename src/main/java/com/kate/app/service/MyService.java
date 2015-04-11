@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.kate.app.dao.HouseProjectDao;
 import com.kate.app.dao.MyDb;
 import com.kate.app.dao.testD;
-import com.kate.app.model.HouseProject;
 
 @Service
 public class MyService {
@@ -20,18 +19,10 @@ public class MyService {
     private MyDb myDb;
 	@Autowired
 	private testD t;
-	@Autowired
-    private HouseProjectDao houseProjectDao;
-	
-	public List<HouseProject> getHouseProjectList(){
-		List<HouseProject> list = new ArrayList<HouseProject>();
-		list = houseProjectDao.HouseProjectDao();
-		return list;
-				
-	}
+	/*@Autowired
+    private HouseProjectDao houseProjectDao;*/
 	
 	public String test(){
-		System.out.println("ffffffqqqqqqqqq");
 		String name = t.test();
 		return name;
 	}

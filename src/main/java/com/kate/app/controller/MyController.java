@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.kate.app.model.BrokerInfo;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseProject;
+import com.kate.app.service.HouseProjectService;
 import com.kate.app.service.MyService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 public class MyController {
 	@Autowired
 	private MyService myService;
+	
+	@Autowired
+	private HouseProjectService houseProjectService;
 	
 	
 	@RequestMapping({ "/", "/My" })
@@ -47,7 +51,8 @@ public class MyController {
 	@RequestMapping({ "/HouseProject" })
 	public String getProjectInfo(HttpServletRequest req, HttpServletResponse resp){
 		List<HouseProject> list = new ArrayList<HouseProject>();
-		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");  
+		list = houseProjectService.getHouseProjectList();
+		/*DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");  
 		Timestamp time = new Timestamp(System.currentTimeMillis());
 		for(int i=0; i<5; i++){
 			HouseProject projectInfo = new HouseProject();
@@ -61,7 +66,7 @@ public class MyController {
 			projectInfo.setProject_finish_time(time);
 			projectInfo.setProject_desc("Good House"+i);
 			list.add(projectInfo);
-		}
+		}*/
 		req.setAttribute("HouseProjectList", list);
 		return "/My1.jsp";
 	}
