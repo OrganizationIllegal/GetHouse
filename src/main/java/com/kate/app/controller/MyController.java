@@ -45,7 +45,8 @@ public class MyController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}*/
-		return "/My1.jsp";
+		//return "/My1.jsp";
+		return "/bingMap.jsp";
 	}
 	
 	@RequestMapping({ "/HouseProject" })
@@ -68,7 +69,7 @@ public class MyController {
 			list.add(projectInfo);
 		}*/
 		req.setAttribute("HouseProjectList", list);
-		return "/My1.jsp";
+		return "/index.jsp";
 	}
 	
 	@RequestMapping({ "/HouseInfo" })

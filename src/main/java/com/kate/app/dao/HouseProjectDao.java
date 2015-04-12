@@ -16,7 +16,7 @@ public class HouseProjectDao extends BaseDao{
 	public List<HouseProject> HouseProjectDao(){
 		List<HouseProject> list = new ArrayList<HouseProject>();
 		try{
-			Connection con = DriverManager.getConnection(url, username, password);
+			//Connection con = DriverManager.getConnection(url, username, password);
 			String sql = " select * from House_Project";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);

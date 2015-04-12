@@ -1,0 +1,16 @@
+/*Ò³Ã¼Ò³½Å*/
+.navbar-header a{color:LightSlateGray;}
+.navbar-header a:visited{color:blue;text-decoration:none;}
+.fooder{
+background: -ms-linear-gradient(top,rgba(19, 51, 89, 1),rgba(51, 51, 51, 51));        /* IE 10 */
+background:-moz-linear-gradient(top,rgba(19, 51, 89, 1),rgba(51, 51, 51, 51));/*»ðºü*/ 
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(19, 51, 89, 1)), to(rgba(51, 51, 51, 51)));/*¹È¸è*/ 
+}
+/*index nav-tab ±³¾°ÑÕÉ«*/  
+	.nav-tabs > li > a {
+      color: #555555;
+      cursor: default;
+      background-color: #9FB6CD;
+      border: 1px solid #dddddd;
+      border-bottom-color: transparent;
+      } 

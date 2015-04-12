@@ -12,6 +12,7 @@ public class BaseDao {
 	protected static String url = null;
 	protected static String username = null;
 	protected static String password = null;
+	protected static Connection con = null;
 	static {
 		System.out.println("fffffffff");
 		try{   
@@ -25,7 +26,8 @@ public class BaseDao {
 		try {
             url = "jdbc:mysql://54.187.200.118:3306/house";
             username = "root";
-            password = "admin"; 
+            password = "admin";
+            con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
            
         }

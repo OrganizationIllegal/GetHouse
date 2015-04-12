@@ -1,7 +1,7 @@
 <%@ page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:forEach var="obj" items="${HouseProjectList}"> 
-  <c:out value="${obj.project_name}"/><br> 
+<c:out value="${obj.project_name}"/><br> 
 <c:out value="${obj.project_name}"/><br> 
 <c:out value="${obj.project_area}"/><br> 
 <c:out value="${obj.project_desc}"/><br> 
