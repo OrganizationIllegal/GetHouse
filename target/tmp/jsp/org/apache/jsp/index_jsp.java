@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("   <script src=\"/js/jquery.min.js\"></script>\r\n");
       out.write("   <script src=\"/bootstrap/js/bootstrap.min.js\"></script>\r\n");
       out.write("   <link href=\"/css/index.css\" rel=\"stylesheet\">  \r\n");
-      out.write("   <script src=\"http://echarts.baidu.com/build/dist/echarts-all.js\"></script>\r\n");
+      out.write("   <script src=\"/echarts/echarts-all.js\"></script>\r\n");
       out.write("   \r\n");
       out.write("</head>\r\n");
       out.write("<body style=\"padding-top: 105px;background-color:rgba(233, 243, 248, 1);\">\r\n");

@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
-   <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+   <script src="/echarts/echarts-all.js"></script>
    
 </head>
 <body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);">
