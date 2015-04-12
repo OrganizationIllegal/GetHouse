@@ -65,8 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write("<div class=\"container\" style=\"\">\r\n");
       out.write("<div style=\"margin-top:20px;background-color:white;\">\r\n");
-      out.write("<ul class=\"nav nav-tabs\" id=\"MyTabs\">\r\n");
-      out.write("      <li><a href=\"#home\" data-toggle=\"tab\">Home</a></li>\r\n");
+      out.write("<ul class=\"nav nav-tabs\" id=\"costTabs\">\r\n");
+      out.write("      <li class=\"active\"><a href=\"#home\" data-toggle=\"tab\">Home</a></li>\r\n");
       out.write("      <li><a href=\"#profile\" data-toggle=\"tab\">Profile</a></li>\r\n");
       out.write("      <li class=\"navbar-text navbar-right\">&nbsp;&nbsp;&nbsp;&nbsp;</li>\r\n");
       out.write("      <p class=\"navbar-text navbar-right\"><b>以总价50万澳币计算</b></p>\r\n");
@@ -127,8 +127,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("  \t</div>\r\n");
       out.write("</div>\r\n");
       out.write("<div  style=\"margin-top:20px;background-color:white;\">\r\n");
-      out.write(" <ul class=\"nav nav-tabs nav-justified\" id=\"MyTabs\">\r\n");
-      out.write("      <li><a href=\"#price\" data-toggle=\"tab\">South MelBourne区域中位数房价走势</a></li>\r\n");
+      out.write(" <ul class=\"nav nav-tabs nav-justified\" id=\"trendTabs\">\r\n");
+      out.write("      <li class=\"active\"><a href=\"#price\" data-toggle=\"tab\">South MelBourne区域中位数房价走势</a></li>\r\n");
       out.write("      <li><a href=\"#rent\" data-toggle=\"tab\">South MelBourne区域租金走势</a></li>\r\n");
       out.write("      <li><a href=\"#emptypercent\" data-toggle=\"tab\">South MelBourne区域空置率走势</a></li>\r\n");
       out.write("     <!-- <p class=\"navbar-text navbar-right\">Signed in as Mark Otto</p>-->\r\n");

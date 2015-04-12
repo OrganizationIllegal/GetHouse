@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=GBK"
+    pageEncoding="GBK"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,7 +13,7 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>hello,world!</h1>
+    <h1>ÄãºÃ</h1>
 	<div class="details_cot">
 
 	name:${result}

@@ -30,7 +30,7 @@ public final class My_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html; charset=utf-8");
+      response.setContentType("text/html; charset=GBK");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -50,10 +50,12 @@ public final class My_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("<title></title>\r\n");
-      out.write("\r\n");
+      out.write("<script src=\"js/jquery-1.6.js\"></script>\r\n");
+      out.write("<script src=\"bootstrap/js/bootstrap.min.js\"></script>\r\n");
+      out.write("<link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("    <h1>hello,world!</h1>\r\n");
+      out.write("    <h1>你好</h1>\r\n");
       out.write("\t<div class=\"details_cot\">\r\n");
       out.write("\r\n");
       out.write("\tname:");

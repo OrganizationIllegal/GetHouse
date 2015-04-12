@@ -19,8 +19,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <jsp:include page="head.jsp" />
 <div class="container" style="">
 <div style="margin-top:20px;background-color:white;">
-<ul class="nav nav-tabs" id="MyTabs">
-      <li><a href="#home" data-toggle="tab">Home</a></li>
+<ul class="nav nav-tabs" id="costTabs">
+      <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
       <li><a href="#profile" data-toggle="tab">Profile</a></li>
       <li class="navbar-text navbar-right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
       <p class="navbar-text navbar-right"><b>以总价50万澳币计算</b></p>
@@ -81,8 +81,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
 </div>
 <div  style="margin-top:20px;background-color:white;">
- <ul class="nav nav-tabs nav-justified" id="MyTabs">
-      <li><a href="#price" data-toggle="tab">South MelBourne区域中位数房价走势</a></li>
+ <ul class="nav nav-tabs nav-justified" id="trendTabs">
+      <li class="active"><a href="#price" data-toggle="tab">South MelBourne区域中位数房价走势</a></li>
       <li><a href="#rent" data-toggle="tab">South MelBourne区域租金走势</a></li>
       <li><a href="#emptypercent" data-toggle="tab">South MelBourne区域空置率走势</a></li>
      <!-- <p class="navbar-text navbar-right">Signed in as Mark Otto</p>-->
