@@ -14,82 +14,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/index.css" rel="stylesheet">
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
    <script src="/js/bingMap.js"></script>
-   <style type="text/css">
-.xian{ border-bottom-width: 1px;
-       border-bottom-style: solid;
-       border-bottom-color: rgb(204, 204, 204);
-       height:1px;}
- .right{
-      float:right;
- }
- .left{
- float:left;
- }
-
- .title{
- width:23%;
- height:auto;
- background:rgb(204,204,204);
- padding:5px 10px 5px 10px ;
- }
- #title{
- border-radius:4px;
- border-top-right-radius:4px;
- border-top-left-radius:4px;
- }
- .navbar-header a{color:LightSlateGray;}
-	   .navbar-header a:visited{color:blue;text-decoration:none;}
-</style>
 </head>
-<body style="padding-top: 120px;" onload="getMap();">
+<body style="padding-top: 105px;" onload="getMap();">
  <jsp:include page="head.jsp" />
  <div class="container">
   <div class="row">
- <div class="col-md-4">
-  <div id="houselist" >
-       <div id="title" style="background:rgb(204,204,204);height:30px;">
-          <!--<ul class="nav navbar-nav">
-             <li style="padding:5 10 ;">房屋列表</li>
-             <li>价格从低到高</li>
-             <li>价格从高到低</li>
-          </ul>-->
-         <!-- <p>
-          <span class="left">房屋类型</span>
-          <span>价格从低到高</span>
-          <span class="right">价格从高到低</span>
-          <p/>-->
-          <table>
-          <tr>
-          <td  width="33%">房屋类型</td>
-          <td  width="33%">价格从低到高</td>
-          <td  width="33%">价格从高到低</td>
-          </tr>
-          </table>
-          <!-- <div class="col-md-3" >
-      	<ul class="navbar-header">
-       			<a href="#">首页</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">海外购房</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">购房返现</a>
-       			<a>&nbsp|&nbsp</a>
-       		</ul>
+ <div class="col-md-4" style="padding-right:0px;">
+  <div id="houselist" style="overflow-y:scroll;">
+       <div id="title"  >
+        <!-- <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+           <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
+           </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">一居室</a></li>
+                <li><a href="#">两居室</a></li>
+                <li><a href="#">海景房</a></li>
+             </ul>
+         </div>
+          <button type="button" class="btn btn-inverse">价格从低到高</button>
+          <button type="button" class="btn btn-inverse ">价格从高到低</button>
        </div>-->
-       </div>
+       <div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
+           </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">一居室</a></li>
+                <li><a href="#">两居室</a></li>
+                <li><a href="#">海景房</a></li>
+             </ul>
+  </div>
+  <div class="btn-group" role="group">
+     <button type="button" class="btn btn-inverse">价格从低到高</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-inverse ">价格从高到低</button>
+  </div>
+</div>
+</div>
        <div id="list">
            <table>
             <tbody>
               <!--the first item sstart-->
-               <tr><td>项目地址：澳洲产阳泉开来</td></tr>
+               <tr style="colspan:2"><td>项目地址：澳洲产阳泉开来</td></tr>
                <tr>
                 <td><img src="images/house1.jpg"></td>
-                <td width="25px"></td>
+                <td width="10px"></td>
                 <td>
                     <p><span>澳大利亚房产</span></p>
-                    <p><span>项目价格</span><span>&nbsp&nbsp</span><span class="right">$550,000</span> </p>
-                    <p><span>项目面积</span><span>&nbsp&nbsp</span><span class="right">58-119</span></p>
-                    <p><span>可售套数</span><span>&nbsp&nbsp</span><span class="right">47</span></p>
-                    <p><span>平均单价</span><span>&nbsp&nbsp</span><span class="right">$550,000</span></p>
+                    <p><span><h6>项目价格</h6></span><span class="right"><h6>$550,000</h6></span> </p>
+                    <p><span>项目面积</span><span class="right">58-119</span></p>
+                    <p><span>可售套数</span><span class="right">47</span></p>
+                    <p><span>平均单价</span><span class="right">$550,000</span></p>
                 </td>
                </tr>
                <tr>
@@ -116,20 +93,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
    </div>
  </div>
-<div class="col-md-8">
- <nav class="navbar navbar-default" role="navigation">
-      <div>
-      <form class="navbar-form navbar-left" role="search">
-         <div class="form-group">
-            <input id="txtQuery" type="text" class="form-control" placeholder="coffee in Seattle">
+<div class="col-md-8" style="padding-left:0px;">
+ <nav class="navbar navbar-default" role="navigation" style="background-color: #9FB6CD;margin-bottom: 0px;min-height:30px;height:38px;">
+      <div class="row" style="height:34px;">
+      <div class="col-md-5">
+      <form class="navbar-form navbar-left" role="search" id="form">
+         <div class="form-group has-feedback">
+            <!--<i class="glyphicon glyphicon-search form-control-feedback"></i>-->
+            <input id="txtQuery" type="text" placeholder="Melbourne墨尔本" class="form-control" style="width:235px;height:20px;">
          </div>
-         <button type="button" class="btn btn-default" onclick="LoadSearchModule()">Search</button>
+         <!--<button type="button" onclick="LoadSearchModule()">搜索</button>-->
+         <a href="#" onclick="LoadSearchModule()">搜索</a>
       </form>    
       </div>
-	<div class="collapse navbar-collapse" id="myCollapse">
+	<div class="col-md-6 col-md-offset-1" id="dropdown">
       <ul class="nav navbar-nav">
+      	 <li class="divider-vertical"></li>
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                房屋类型 
                <b class="caret"></b>
             </a>
@@ -141,8 +122,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </li>
       </ul>
 	   <ul class="nav navbar-nav">
+	   <li class="divider-vertical"></li>
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                价格范围 
                <b class="caret"></b>
             </a>
@@ -154,8 +136,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </li>
       </ul>
 	   <ul class="nav navbar-nav">
+	   <li class="divider-vertical"></li>
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                交房时间 
                <b class="caret"></b>
             </a>
@@ -167,11 +150,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </li>
       </ul>
    </div>
+   </div>
    </nav>
-   <div id='myMap' style="position:relative; width:700px; height:600px;"></div>
-  </div>
-     
-   
+   <div id='myMap' style="position:relative; width:765px; height:600px;"></div>
+  </div>    
    </div>
    </div>
    <jsp:include page="foot.jsp" />

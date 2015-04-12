@@ -13,9 +13,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
-   
+   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+   <script src="/js/bingMap.js"></script>
 </head>
-<body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);">
+<body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getMap();">
 <jsp:include page="head.jsp" />
 <div class="container" style="">
 <div style="margin-top:20px;background-color:white;">
@@ -116,6 +117,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	</div>
 	  </div>
 	</div>
+</div>
+<div style="margin-top:20px;background-color:white;">
+<div class="panel panel-default">
+	  <div class="panel-heading">项目位置</div>
+	  <div class="panel-body">
+	  	<div id="zonefamily_pie" style="height:370px">
+	  	<div class="row">
+	  	<div class="col-md-6">
+	  	<div id='myMap' style="position:relative; width:550px; height:370px;"></div>
+	  	</div>
+	  	<div class="col-md-6"></div>
+	  	 <div><img src="images/streetside.png"></div>
+	  	</div>
+      	</div>
+	  </div>
+	</div>
+</div>
+<div style="margin-top:20px;background-color:white;padding:40px 0px;">
+<div class="row" style="height:200px;">
+<div class="col-md-2"></div>
+ <div class="col-md-2" style="padding-left:70px;padding-right:0px;">
+ <div><img src="images/buy.png"></div>
+ <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$561,000</div>
+ </div>
+ <div class="col-md-3" style="padding-left:50px;width:340px;">
+ <div style="color:#000000;font-weight:900;font-size:16px;">South Melbourne中位数公寓房价</div>
+ <div style="color:#333;font-size:8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价格最后更新日期为2015.02.02</div>
+ </div>
+ <div class="col-md-4">
+ <div><img src="images/rent.png"></div>
+ <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;560/周</div>
+ </div>
+</div>
+<div class="row">
+<div class="col-md-5 col-md-offset-1">
+ <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
+     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;">
+     <div style="color:#FF7F00;font-weight:900;">1居</div>
+     <div style="color:#000000;font-weight:900;">$409,000</div>
+     </button>
+      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;">
+     <div style="color:#FF7F00;font-weight:900;">2居</div>
+     <div style="color:#000000;font-weight:900;">$409,000</div>
+     </button>
+     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;">
+     <div style="color:#FF7F00;font-weight:900;">3居</div>
+     <div style="color:#000000;font-weight:900;">$409,000</div>
+     </button>
+ </div></div>
+ <div class="col-md-6">
+ <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
+     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;">
+     <div style="color:#27408B;font-weight:900;">1居</div>
+     <div style="color:#000000;font-weight:900;">$409</div>
+     </button>
+     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;">
+     <div style="color:#27408B;font-weight:900;">2居</div>
+     <div style="color:#000000;font-weight:900;">$409</div>
+     </button>
+     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;">
+     <div style="color:#27408B;font-weight:900;">3居</div>
+     <div style="color:#000000;font-weight:900;">$409</div>
+     </button>
+ </div></div>
+</div>
+</div>
 </div>
 </div>
  <jsp:include page="foot.jsp" /> 
