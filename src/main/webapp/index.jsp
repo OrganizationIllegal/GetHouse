@@ -12,12 +12,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
+   <link href="/css/List-Grid-View.css" rel="stylesheet">
    <script src="/echarts/echarts-all.js"></script>
    
 </head>
 <body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);">
 <jsp:include page="head.jsp" />
 <div class="container" style="">
+<div style="margin-top:20px;background-color:white;">
+	<div class="panel panel-default">
+  		<div class="panel-heading">学校及周边</div>
+  		<div class="panel-body">
+  			<div class="item  col-xs-6 col-lg-6">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" />
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        附近学校</h4>
+                    
+                    <ul class="list-group">
+					  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
+					  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
+					  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
+					  <li class="list-group-item"><span class="badge">4.1km</span>Porta ac consectetur ac</li>
+					</ul>
+                </div>
+            </div>
+	     </div>
+	     <div class="item  col-xs-6 col-lg-6">
+	            <div class="thumbnail">
+	                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" />
+	                <div class="caption">
+	                    <h4 class="group inner list-group-item-heading">
+	                        附近配套</h4>
+	                    
+	                    <ul class="list-group">
+						  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
+						  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
+						  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
+						  <li class="list-group-item"><span class="badge">2.1km</span>Vestibulum at eros</li>
+						</ul>
+	                </div>
+	            </div>
+	     </div>
+		</div>
+  		 
+  	</div>
+</div>
 <div style="margin-top:20px;background-color:white;">
 <ul class="nav nav-tabs" id="costTabs">
       <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
@@ -107,6 +148,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	</div>
       </div> 
   	</div>
+</div>
+<div style="margin-top:20px;background-color:white;">
+	<div class="panel panel-default">
+	  <div class="panel-heading">South Melbourne区域家庭情况构成<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
+	  <table class="table table-striped">
+    	<thead>
+    		<tr class="row">
+    		<th>地址</th>
+    		<th>价格</th>
+    		<th>床位</th>
+    		<th>销售类型</th>
+    		<th>销售时间</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>	
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    	</tbody>
+  	  </table>
+	</div>
 </div>
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
