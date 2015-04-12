@@ -14,107 +14,127 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/index.css" rel="stylesheet">
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
    <script src="/js/bingMap.js"></script>
-   <style type="text/css">
-.xian{ border-bottom-width: 1px;
-       border-bottom-style: solid;
-       border-bottom-color: rgb(204, 204, 204);
-       height:1px;}
- .right{
-      float:right;
- }
- .left{
- float:left;
- }
-
- .title{
- width:23%;
- height:auto;
- background:rgb(204,204,204);
- padding:5px 10px 5px 10px ;
- }
- #title{
- border-radius:4px;
- border-top-right-radius:4px;
- border-top-left-radius:4px;
- }
- .navbar-header a{color:LightSlateGray;}
-	   .navbar-header a:visited{color:blue;text-decoration:none;}
-</style>
+   <link href="/css/mapleft.css" rel="stylesheet">
 </head>
 <body style="padding-top: 120px;" onload="getMap();">
  <jsp:include page="head.jsp" />
  <div class="container">
   <div class="row">
  <div class="col-md-4">
-  <div id="houselist" >
-       <div id="title" style="background:rgb(204,204,204);height:30px;">
-          <!--<ul class="nav navbar-nav">
-             <li style="padding:5 10 ;">房屋列表</li>
-             <li>价格从低到高</li>
-             <li>价格从高到低</li>
-          </ul>-->
-         <!-- <p>
-          <span class="left">房屋类型</span>
-          <span>价格从低到高</span>
-          <span class="right">价格从高到低</span>
-          <p/>-->
-          <table>
-          <tr>
-          <td  width="33%">房屋类型</td>
-          <td  width="33%">价格从低到高</td>
-          <td  width="33%">价格从高到低</td>
-          </tr>
-          </table>
-          <!-- <div class="col-md-3" >
-      	<ul class="navbar-header">
-       			<a href="#">首页</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">海外购房</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">购房返现</a>
-       			<a>&nbsp|&nbsp</a>
-       		</ul>
-       </div>-->
+ <!--beginning houselist-->
+<div id="houselist"  style="overflow-y:scroll;" >
+       <div id="title"  >
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
+           </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">一居室</a></li>
+                <li><a href="#">两居室</a></li>
+                <li><a href="#">海景房</a></li>
+             </ul>
+  </div>
+  <div class="btn-group" role="group">
+     <button type="button" class="btn btn-inverse">价格从低到高</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-inverse ">价格从高到低</button>
+  </div>
+</div>
+</div>
+<!--endding title-->
+<!--begin-->
+   <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+   <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
        </div>
-       <div id="list">
-           <table>
-            <tbody>
-              <!--the first item sstart-->
-               <tr><td>项目地址：澳洲产阳泉开来</td></tr>
-               <tr>
-                <td><img src="images/house1.jpg"></td>
-                <td width="25px"></td>
-                <td>
-                    <p><span>澳大利亚房产</span></p>
-                    <p><span>项目价格</span><span>&nbsp&nbsp</span><span class="right">$550,000</span> </p>
-                    <p><span>项目面积</span><span>&nbsp&nbsp</span><span class="right">58-119</span></p>
-                    <p><span>可售套数</span><span>&nbsp&nbsp</span><span class="right">47</span></p>
-                    <p><span>平均单价</span><span>&nbsp&nbsp</span><span class="right">$550,000</span></p>
-                </td>
-               </tr>
-               <tr>
-               <td class="xian" colspan="3"></td>
-               </tr>
-               <!--the first item end-->
-               <!--the second item start-->
-                <tr><td>项目地址：澳洲产阳泉开来</td></tr>
-               <tr>
-                <td><img src="images/house1.jpg"></td>
-                <td width="25px"></td>
-                <td>
-                    <p><span>澳大利亚房产</span></p>
-                    <p><span>项目价格</span><span class="right">$550,000</span> </p>
-                    <p><span>项目面积</span><span class="right">58-119</span></p>
-                    <p><span>可售套数</span><span class="right">47</span></p>
-                    <p><span>平均单价</span><span class="right">$550,000</span></p>
-                </td>
-               </tr>
-               <tr><td class="xian" colspan="3"></td></tr>
-               <!--the second item end-->
-           </tbody>
-          </table>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
        </div>
+      </div>
+      <!--end item-->
+       <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
+       </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+       </div>
+      </div>
+      <!--end item-->
+       <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
+       </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                 <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+       </div>
+      </div>
+      <!--end item-->
+           <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
+       </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                 <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+       </div>
+      </div>
+      <!--end item-->
    </div>
+<!--end-->
+</div>
+
+              
+     
  </div>
 <div class="col-md-8">
  <nav class="navbar navbar-default" role="navigation">
