@@ -136,20 +136,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               
      
  </div>
-<div class="col-md-8">
- <nav class="navbar navbar-default" role="navigation">
-      <div>
-      <form class="navbar-form navbar-left" role="search">
-         <div class="form-group">
-            <input id="txtQuery" type="text" class="form-control" placeholder="coffee in Seattle">
+<div class="col-md-8" style="padding-left:0px;">
+ <nav class="navbar navbar-default" role="navigation" style="background-color: #9FB6CD;margin-bottom: 0px;min-height:30px;height:38px;">
+      <div class="row" style="height:34px;">
+      <div class="col-md-5">
+      <form class="navbar-form navbar-left" role="search" id="form">
+         <div class="form-group has-feedback">
+            <!--<i class="glyphicon glyphicon-search form-control-feedback"></i>-->
+            <input id="txtQuery" type="text" placeholder="Melbourne墨尔本" class="form-control" style="width:235px;height:20px;">
          </div>
-         <button type="button" class="btn btn-default" onclick="LoadSearchModule()">Search</button>
+         <!--<button type="button" onclick="LoadSearchModule()">搜索</button>-->
+         <a href="#" onclick="LoadSearchModule()">搜索</a>
       </form>    
       </div>
-	<div class="collapse navbar-collapse" id="myCollapse">
+	<div class="col-md-6 col-md-offset-1" id="dropdown">
       <ul class="nav navbar-nav">
+      	 <li class="divider-vertical"></li>
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                房屋类型 
                <b class="caret"></b>
             </a>
@@ -161,8 +165,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </li>
       </ul>
 	   <ul class="nav navbar-nav">
+	   <li class="divider-vertical"></li>
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                价格范围 
                <b class="caret"></b>
             </a>
@@ -174,8 +179,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </li>
       </ul>
 	   <ul class="nav navbar-nav">
+	   <li class="divider-vertical"></li>
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                交房时间 
                <b class="caret"></b>
             </a>
@@ -187,11 +193,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </li>
       </ul>
    </div>
+   </div>
    </nav>
-   <div id='myMap' style="position:relative; width:700px; height:600px;"></div>
-  </div>
-     
-   
+   <div id='myMap' style="position:relative; width:765px; height:750px;"></div>
+  </div>    
    </div>
    </div>
    <jsp:include page="foot.jsp" />
