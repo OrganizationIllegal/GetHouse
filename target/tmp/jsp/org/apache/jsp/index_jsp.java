@@ -57,15 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("   <script src=\"/js/jquery.min.js\"></script>\r\n");
       out.write("   <script src=\"/bootstrap/js/bootstrap.min.js\"></script>\r\n");
       out.write("   <link href=\"/css/index.css\" rel=\"stylesheet\">  \r\n");
-<<<<<<< HEAD
       out.write("   <script src=\"http://echarts.baidu.com/build/dist/echarts-all.js\"></script>\r\n");
       out.write("   <script type=\"text/javascript\" src=\"http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0\"></script>\r\n");
       out.write("   <script src=\"/js/bingMap.js\"></script>\r\n");
-=======
       out.write("   <link href=\"/css/List-Grid-View.css\" rel=\"stylesheet\">\r\n");
       out.write("   <script src=\"/echarts/echarts-all.js\"></script>\r\n");
-      out.write("   \r\n");
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
       out.write("</head>\r\n");
       out.write("<body style=\"padding-top: 105px;background-color:rgba(233, 243, 248, 1);\" onload=\"getMap();\">\r\n");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "head.jsp", out, false);

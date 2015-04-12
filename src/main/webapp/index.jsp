@@ -12,15 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
-<<<<<<< HEAD
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
    <script src="/js/bingMap.js"></script>
-=======
    <link href="/css/List-Grid-View.css" rel="stylesheet">
    <script src="/echarts/echarts-all.js"></script>
-   
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
 </head>
 <body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getMap();">
 <jsp:include page="head.jsp" />

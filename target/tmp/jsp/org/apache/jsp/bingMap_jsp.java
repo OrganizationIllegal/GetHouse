@@ -59,10 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("   <link href=\"/css/index.css\" rel=\"stylesheet\">\r\n");
       out.write("   <script type=\"text/javascript\" src=\"http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0\"></script> \r\n");
       out.write("   <script src=\"/js/bingMap.js\"></script>\r\n");
-<<<<<<< HEAD
-=======
+      out.write("\r\n");
       out.write("   <link href=\"/css/mapleft.css\" rel=\"stylesheet\">\r\n");
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
       out.write("</head>\r\n");
       out.write("<body style=\"padding-top: 105px;\" onload=\"getMap();\">\r\n");
       out.write(" ");
@@ -70,31 +68,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write(" <div class=\"container\">\r\n");
       out.write("  <div class=\"row\">\r\n");
-<<<<<<< HEAD
-      out.write(" <div class=\"col-md-4\" style=\"padding-right:0px;\">\r\n");
-      out.write("  <div id=\"houselist\" style=\"overflow-y:scroll;\">\r\n");
-      out.write("       <div id=\"title\"  >\r\n");
-      out.write("        <!-- <div class=\"btn-group btn-group-justified\" role=\"group\">\r\n");
-      out.write("        <div class=\"btn-group\" role=\"group\">\r\n");
-      out.write("           <button type=\"button\" class=\"btn btn-inverse dropdown-toggle\" data-toggle=\"dropdown\">房屋类型 <span class=\"caret\"></span>\r\n");
-      out.write("           </button>\r\n");
-      out.write("            <ul class=\"dropdown-menu\">\r\n");
-      out.write("                <li><a href=\"#\">一居室</a></li>\r\n");
-      out.write("                <li><a href=\"#\">两居室</a></li>\r\n");
-      out.write("                <li><a href=\"#\">海景房</a></li>\r\n");
-      out.write("             </ul>\r\n");
-      out.write("         </div>\r\n");
-      out.write("          <button type=\"button\" class=\"btn btn-inverse\">价格从低到高</button>\r\n");
-      out.write("          <button type=\"button\" class=\"btn btn-inverse \">价格从高到低</button>\r\n");
-      out.write("       </div>-->\r\n");
-      out.write("       <div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">\r\n");
-=======
       out.write(" <div class=\"col-md-4\">\r\n");
       out.write(" <!--beginning houselist-->\r\n");
       out.write("<div id=\"houselist\"  style=\"overflow-y:scroll;\" >\r\n");
       out.write("       <div id=\"title\"  >\r\n");
       out.write("          <div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">\r\n");
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
       out.write("  <div class=\"btn-group\" role=\"group\">\r\n");
       out.write("      <button type=\"button\" class=\"btn btn-inverse dropdown-toggle\" data-toggle=\"dropdown\">房屋类型 <span class=\"caret\"></span>\r\n");
       out.write("           </button>\r\n");
@@ -112,46 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("  </div>\r\n");
       out.write("</div>\r\n");
       out.write("</div>\r\n");
-<<<<<<< HEAD
-      out.write("       <div id=\"list\">\r\n");
-      out.write("           <table>\r\n");
-      out.write("            <tbody>\r\n");
-      out.write("              <!--the first item sstart-->\r\n");
-      out.write("               <tr style=\"colspan:2\"><td>项目地址：澳洲产阳泉开来</td></tr>\r\n");
-      out.write("               <tr>\r\n");
-      out.write("                <td><img src=\"images/house1.jpg\"></td>\r\n");
-      out.write("                <td width=\"10px\"></td>\r\n");
-      out.write("                <td>\r\n");
-      out.write("                    <p><span>澳大利亚房产</span></p>\r\n");
-      out.write("                    <p><span><h6>项目价格</h6></span><span class=\"right\"><h6>$550,000</h6></span> </p>\r\n");
-      out.write("                    <p><span>项目面积</span><span class=\"right\">58-119</span></p>\r\n");
-      out.write("                    <p><span>可售套数</span><span class=\"right\">47</span></p>\r\n");
-      out.write("                    <p><span>平均单价</span><span class=\"right\">$550,000</span></p>\r\n");
-      out.write("                </td>\r\n");
-      out.write("               </tr>\r\n");
-      out.write("               <tr>\r\n");
-      out.write("               <td class=\"xian\" colspan=\"3\"></td>\r\n");
-      out.write("               </tr>\r\n");
-      out.write("               <!--the first item end-->\r\n");
-      out.write("               <!--the second item start-->\r\n");
-      out.write("                <tr><td>项目地址：澳洲产阳泉开来</td></tr>\r\n");
-      out.write("               <tr>\r\n");
-      out.write("                <td><img src=\"images/house1.jpg\"></td>\r\n");
-      out.write("                <td width=\"25px\"></td>\r\n");
-      out.write("                <td>\r\n");
-      out.write("                    <p><span>澳大利亚房产</span></p>\r\n");
-      out.write("                    <p><span>项目价格</span><span class=\"right\">$550,000</span> </p>\r\n");
-      out.write("                    <p><span>项目面积</span><span class=\"right\">58-119</span></p>\r\n");
-      out.write("                    <p><span>可售套数</span><span class=\"right\">47</span></p>\r\n");
-      out.write("                    <p><span>平均单价</span><span class=\"right\">$550,000</span></p>\r\n");
-      out.write("                </td>\r\n");
-      out.write("               </tr>\r\n");
-      out.write("               <tr><td class=\"xian\" colspan=\"3\"></td></tr>\r\n");
-      out.write("               <!--the second item end-->\r\n");
-      out.write("           </tbody>\r\n");
-      out.write("          </table>\r\n");
-=======
-      out.write("<!--endding title-->\r\n");
+      out.write("    \r\n");
       out.write("<!--begin-->\r\n");
       out.write("   <div id=\"list\"  class=\"brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing\">\r\n");
       out.write("   <!--one item-->\r\n");
@@ -172,7 +111,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("                <h6>可售套数<span class=\"right\">47</span></h6>\r\n");
       out.write("                <h6>平均单价<span class=\"right\">$550,000</span></h6>\r\n");
       out.write("            </div>\r\n");
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
       out.write("       </div>\r\n");
       out.write("      </div>\r\n");
       out.write("      <!--end item-->\r\n");
@@ -305,7 +243,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("   </div>\r\n");
       out.write("   </div>\r\n");
       out.write("   </nav>\r\n");
-      out.write("   <div id='myMap' style=\"position:relative; width:765px; height:600px;\"></div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("   <div id='myMap' style=\"position:relative; width:765px; height:750px;\"></div>\r\n");
       out.write("  </div>    \r\n");
       out.write("   </div>\r\n");
       out.write("   </div>\r\n");

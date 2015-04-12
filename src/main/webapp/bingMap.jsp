@@ -14,40 +14,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/index.css" rel="stylesheet">
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
    <script src="/js/bingMap.js"></script>
-<<<<<<< HEAD
-=======
+
    <link href="/css/mapleft.css" rel="stylesheet">
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
 </head>
 <body style="padding-top: 105px;" onload="getMap();">
  <jsp:include page="head.jsp" />
  <div class="container">
   <div class="row">
-<<<<<<< HEAD
- <div class="col-md-4" style="padding-right:0px;">
-  <div id="houselist" style="overflow-y:scroll;">
-       <div id="title"  >
-        <!-- <div class="btn-group btn-group-justified" role="group">
-        <div class="btn-group" role="group">
-           <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
-           </button>
-            <ul class="dropdown-menu">
-                <li><a href="#">一居室</a></li>
-                <li><a href="#">两居室</a></li>
-                <li><a href="#">海景房</a></li>
-             </ul>
-         </div>
-          <button type="button" class="btn btn-inverse">价格从低到高</button>
-          <button type="button" class="btn btn-inverse ">价格从高到低</button>
-       </div>-->
-       <div class="btn-group btn-group-justified" role="group" aria-label="...">
-=======
  <div class="col-md-4">
  <!--beginning houselist-->
 <div id="houselist"  style="overflow-y:scroll;" >
        <div id="title"  >
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
   <div class="btn-group" role="group">
       <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
            </button>
@@ -65,46 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 </div>
 </div>
-<<<<<<< HEAD
-       <div id="list">
-           <table>
-            <tbody>
-              <!--the first item sstart-->
-               <tr style="colspan:2"><td>项目地址：澳洲产阳泉开来</td></tr>
-               <tr>
-                <td><img src="images/house1.jpg"></td>
-                <td width="10px"></td>
-                <td>
-                    <p><span>澳大利亚房产</span></p>
-                    <p><span><h6>项目价格</h6></span><span class="right"><h6>$550,000</h6></span> </p>
-                    <p><span>项目面积</span><span class="right">58-119</span></p>
-                    <p><span>可售套数</span><span class="right">47</span></p>
-                    <p><span>平均单价</span><span class="right">$550,000</span></p>
-                </td>
-               </tr>
-               <tr>
-               <td class="xian" colspan="3"></td>
-               </tr>
-               <!--the first item end-->
-               <!--the second item start-->
-                <tr><td>项目地址：澳洲产阳泉开来</td></tr>
-               <tr>
-                <td><img src="images/house1.jpg"></td>
-                <td width="25px"></td>
-                <td>
-                    <p><span>澳大利亚房产</span></p>
-                    <p><span>项目价格</span><span class="right">$550,000</span> </p>
-                    <p><span>项目面积</span><span class="right">58-119</span></p>
-                    <p><span>可售套数</span><span class="right">47</span></p>
-                    <p><span>平均单价</span><span class="right">$550,000</span></p>
-                </td>
-               </tr>
-               <tr><td class="xian" colspan="3"></td></tr>
-               <!--the second item end-->
-           </tbody>
-          </table>
-=======
-<!--endding title-->
+    
 <!--begin-->
    <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
    <!--one item-->
@@ -125,7 +64,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <h6>可售套数<span class="right">47</span></h6>
                 <h6>平均单价<span class="right">$550,000</span></h6>
             </div>
->>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
        </div>
       </div>
       <!--end item-->
@@ -258,7 +196,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    </div>
    </nav>
-   <div id='myMap' style="position:relative; width:765px; height:600px;"></div>
+
+
+   <div id='myMap' style="position:relative; width:765px; height:750px;"></div>
   </div>    
    </div>
    </div>
