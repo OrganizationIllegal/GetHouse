@@ -2,6 +2,7 @@ $(function(){
     		var myChart = echarts.init(document.getElementById('GouFang_pie')); 
 	        
 	        var option = {
+	        	animation:false,
 	        	tooltip: {
 				        trigger: 'item',
 				        formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -23,7 +24,27 @@ $(function(){
 			            name:'访问来源',
 			            type:'pie',
 			            radius : '55%',
-			            center: ['50%', '60%'],
+			            itemStyle : {
+			                normal : {
+			                    label : {
+			                        show : false
+			                    },
+			                    labelLine : {
+			                        show : false
+			                    }
+			                },
+			                emphasis : {
+			                    label : {
+			                        show : true,
+			                        position : 'center',
+			                        textStyle : {
+			                            fontSize : '30',
+			                            fontWeight : 'bold'
+			                        }
+			                    }
+			                }
+			            },
+			            center: ['50%', '50%'],
 			            data:[
 			                {value:335, name:'印花税'},
 			                // {value:310, name:'律师费'},
@@ -102,7 +123,7 @@ $(function(){
     	});
 
 
-$('#MyTabs a').click(function (e) {
+$('#costTabs a').click(function (e) {
       e.preventDefault()
 
       $(this).tab('show');
@@ -110,6 +131,7 @@ $('#MyTabs a').click(function (e) {
       var myChart1 = echarts.init(document.getElementById('ChengBen_pie')); 
 	        
 	        var option1={
+	        		animation:false,
 				    tooltip: {
 				        trigger: 'item',
 				        formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -117,6 +139,8 @@ $('#MyTabs a').click(function (e) {
 				    legend: {
 				        orient : 'vertical',
 				        x : 'left',
+				        padding: 10,
+			        	itemGap: 20,
 				        data:['物业费','市政费','水务费','保险费','搜索引擎']
 				    },
 				    calculable : true,
@@ -125,7 +149,27 @@ $('#MyTabs a').click(function (e) {
 			            name:'访问来源',
 			            type:'pie',
 			            radius : '55%',
-			            center: ['50%', '60%'],
+			            center: ['50%', '50%'],
+			            itemStyle : {
+			                normal : {
+			                    label : {
+			                        show : false
+			                    },
+			                    labelLine : {
+			                        show : false
+			                    }
+			                },
+			                emphasis : {
+			                    label : {
+			                        show : true,
+			                        position : 'center',
+			                        textStyle : {
+			                            fontSize : '30',
+			                            fontWeight : 'bold'
+			                        }
+			                    }
+			                }
+			            },
 			            data:[
 			                {value:335, name:'物业费'},
 				            {value:310, name:'市政费'},

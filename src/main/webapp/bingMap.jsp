@@ -14,11 +14,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/index.css" rel="stylesheet">
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
    <script src="/js/bingMap.js"></script>
+<<<<<<< HEAD
+=======
+   <link href="/css/mapleft.css" rel="stylesheet">
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
 </head>
 <body style="padding-top: 105px;" onload="getMap();">
  <jsp:include page="head.jsp" />
  <div class="container">
   <div class="row">
+<<<<<<< HEAD
  <div class="col-md-4" style="padding-right:0px;">
   <div id="houselist" style="overflow-y:scroll;">
        <div id="title"  >
@@ -36,6 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <button type="button" class="btn btn-inverse ">价格从高到低</button>
        </div>-->
        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+=======
+ <div class="col-md-4">
+ <!--beginning houselist-->
+<div id="houselist"  style="overflow-y:scroll;" >
+       <div id="title"  >
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
   <div class="btn-group" role="group">
       <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
            </button>
@@ -53,6 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 </div>
 </div>
+<<<<<<< HEAD
        <div id="list">
            <table>
             <tbody>
@@ -90,8 +103,101 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <!--the second item end-->
            </tbody>
           </table>
+=======
+<!--endding title-->
+<!--begin-->
+   <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+   <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
        </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
+       </div>
+      </div>
+      <!--end item-->
+       <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
+       </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+       </div>
+      </div>
+      <!--end item-->
+       <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
+       </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                 <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+       </div>
+      </div>
+      <!--end item-->
+           <!--one item-->
+   <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
+       <div>
+          <h6>项目地址：澳洲产阳泉开来</h6>
+       </div>
+      
+       <div class="media">
+            <a class="pull-left" href="#" target="_parent">
+              <img alt="image" class="img-responsive" src="pic/house1.jpg">
+            </a>
+            <div class="clearfix visible-sm"></div>
+            <div class="media-body fnt-smaller">
+                 <h6 class="media-heading">澳大利亚房产</h6>
+                <h6>项目价格<span class="right">$550,000</span></h6>
+                <h6>项目面积<span class="right">58-119</span></h6>
+                <h6>可售套数<span class="right">47</span></h6>
+                <h6>平均单价<span class="right">$550,000</span></h6>
+            </div>
+       </div>
+      </div>
+      <!--end item-->
    </div>
+<!--end-->
+</div>
+
+              
+     
  </div>
 <div class="col-md-8" style="padding-left:0px;">
  <nav class="navbar navbar-default" role="navigation" style="background-color: #9FB6CD;margin-bottom: 0px;min-height:30px;height:38px;">

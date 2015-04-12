@@ -43,7 +43,7 @@
 
     	});
 
-$('#MyTabs a').click(function (e) {
+$('#trendTabs a').click(function (e) {
       e.preventDefault()
 
       $(this).tab('show');

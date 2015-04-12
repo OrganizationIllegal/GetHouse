@@ -59,6 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("   <link href=\"/css/index.css\" rel=\"stylesheet\">\r\n");
       out.write("   <script type=\"text/javascript\" src=\"http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0\"></script> \r\n");
       out.write("   <script src=\"/js/bingMap.js\"></script>\r\n");
+<<<<<<< HEAD
+=======
+      out.write("   <link href=\"/css/mapleft.css\" rel=\"stylesheet\">\r\n");
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
       out.write("</head>\r\n");
       out.write("<body style=\"padding-top: 105px;\" onload=\"getMap();\">\r\n");
       out.write(" ");
@@ -66,6 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("\r\n");
       out.write(" <div class=\"container\">\r\n");
       out.write("  <div class=\"row\">\r\n");
+<<<<<<< HEAD
       out.write(" <div class=\"col-md-4\" style=\"padding-right:0px;\">\r\n");
       out.write("  <div id=\"houselist\" style=\"overflow-y:scroll;\">\r\n");
       out.write("       <div id=\"title\"  >\r\n");
@@ -83,6 +88,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("          <button type=\"button\" class=\"btn btn-inverse \">价格从高到低</button>\r\n");
       out.write("       </div>-->\r\n");
       out.write("       <div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">\r\n");
+=======
+      out.write(" <div class=\"col-md-4\">\r\n");
+      out.write(" <!--beginning houselist-->\r\n");
+      out.write("<div id=\"houselist\"  style=\"overflow-y:scroll;\" >\r\n");
+      out.write("       <div id=\"title\"  >\r\n");
+      out.write("          <div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">\r\n");
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
       out.write("  <div class=\"btn-group\" role=\"group\">\r\n");
       out.write("      <button type=\"button\" class=\"btn btn-inverse dropdown-toggle\" data-toggle=\"dropdown\">房屋类型 <span class=\"caret\"></span>\r\n");
       out.write("           </button>\r\n");
@@ -100,6 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("  </div>\r\n");
       out.write("</div>\r\n");
       out.write("</div>\r\n");
+<<<<<<< HEAD
       out.write("       <div id=\"list\">\r\n");
       out.write("           <table>\r\n");
       out.write("            <tbody>\r\n");
@@ -137,8 +150,101 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("               <!--the second item end-->\r\n");
       out.write("           </tbody>\r\n");
       out.write("          </table>\r\n");
+=======
+      out.write("<!--endding title-->\r\n");
+      out.write("<!--begin-->\r\n");
+      out.write("   <div id=\"list\"  class=\"brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing\">\r\n");
+      out.write("   <!--one item-->\r\n");
+      out.write("   <div id=\"firsthouse\" style=\"border:1px solid #E6E6FA;padding:0 5 10 5\">\r\n");
+      out.write("       <div>\r\n");
+      out.write("          <h6>项目地址：澳洲产阳泉开来</h6>\r\n");
       out.write("       </div>\r\n");
+      out.write("      \r\n");
+      out.write("       <div class=\"media\">\r\n");
+      out.write("            <a class=\"pull-left\" href=\"#\" target=\"_parent\">\r\n");
+      out.write("              <img alt=\"image\" class=\"img-responsive\" src=\"pic/house1.jpg\">\r\n");
+      out.write("            </a>\r\n");
+      out.write("            <div class=\"clearfix visible-sm\"></div>\r\n");
+      out.write("            <div class=\"media-body fnt-smaller\">\r\n");
+      out.write("                <h6 class=\"media-heading\">澳大利亚房产</h6>\r\n");
+      out.write("                <h6>项目价格<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("                <h6>项目面积<span class=\"right\">58-119</span></h6>\r\n");
+      out.write("                <h6>可售套数<span class=\"right\">47</span></h6>\r\n");
+      out.write("                <h6>平均单价<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("            </div>\r\n");
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
+      out.write("       </div>\r\n");
+      out.write("      </div>\r\n");
+      out.write("      <!--end item-->\r\n");
+      out.write("       <!--one item-->\r\n");
+      out.write("   <div id=\"firsthouse\" style=\"border:1px solid #E6E6FA;padding:0 5 10 5\">\r\n");
+      out.write("       <div>\r\n");
+      out.write("          <h6>项目地址：澳洲产阳泉开来</h6>\r\n");
+      out.write("       </div>\r\n");
+      out.write("      \r\n");
+      out.write("       <div class=\"media\">\r\n");
+      out.write("            <a class=\"pull-left\" href=\"#\" target=\"_parent\">\r\n");
+      out.write("              <img alt=\"image\" class=\"img-responsive\" src=\"pic/house1.jpg\">\r\n");
+      out.write("            </a>\r\n");
+      out.write("            <div class=\"clearfix visible-sm\"></div>\r\n");
+      out.write("            <div class=\"media-body fnt-smaller\">\r\n");
+      out.write("                <h6 class=\"media-heading\">澳大利亚房产</h6>\r\n");
+      out.write("                <h6>项目价格<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("                <h6>项目面积<span class=\"right\">58-119</span></h6>\r\n");
+      out.write("                <h6>可售套数<span class=\"right\">47</span></h6>\r\n");
+      out.write("                <h6>平均单价<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("            </div>\r\n");
+      out.write("       </div>\r\n");
+      out.write("      </div>\r\n");
+      out.write("      <!--end item-->\r\n");
+      out.write("       <!--one item-->\r\n");
+      out.write("   <div id=\"firsthouse\" style=\"border:1px solid #E6E6FA;padding:0 5 10 5\">\r\n");
+      out.write("       <div>\r\n");
+      out.write("          <h6>项目地址：澳洲产阳泉开来</h6>\r\n");
+      out.write("       </div>\r\n");
+      out.write("      \r\n");
+      out.write("       <div class=\"media\">\r\n");
+      out.write("            <a class=\"pull-left\" href=\"#\" target=\"_parent\">\r\n");
+      out.write("              <img alt=\"image\" class=\"img-responsive\" src=\"pic/house1.jpg\">\r\n");
+      out.write("            </a>\r\n");
+      out.write("            <div class=\"clearfix visible-sm\"></div>\r\n");
+      out.write("            <div class=\"media-body fnt-smaller\">\r\n");
+      out.write("                 <h6 class=\"media-heading\">澳大利亚房产</h6>\r\n");
+      out.write("                <h6>项目价格<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("                <h6>项目面积<span class=\"right\">58-119</span></h6>\r\n");
+      out.write("                <h6>可售套数<span class=\"right\">47</span></h6>\r\n");
+      out.write("                <h6>平均单价<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("            </div>\r\n");
+      out.write("       </div>\r\n");
+      out.write("      </div>\r\n");
+      out.write("      <!--end item-->\r\n");
+      out.write("           <!--one item-->\r\n");
+      out.write("   <div id=\"firsthouse\" style=\"border:1px solid #E6E6FA;padding:0 5 10 5\">\r\n");
+      out.write("       <div>\r\n");
+      out.write("          <h6>项目地址：澳洲产阳泉开来</h6>\r\n");
+      out.write("       </div>\r\n");
+      out.write("      \r\n");
+      out.write("       <div class=\"media\">\r\n");
+      out.write("            <a class=\"pull-left\" href=\"#\" target=\"_parent\">\r\n");
+      out.write("              <img alt=\"image\" class=\"img-responsive\" src=\"pic/house1.jpg\">\r\n");
+      out.write("            </a>\r\n");
+      out.write("            <div class=\"clearfix visible-sm\"></div>\r\n");
+      out.write("            <div class=\"media-body fnt-smaller\">\r\n");
+      out.write("                 <h6 class=\"media-heading\">澳大利亚房产</h6>\r\n");
+      out.write("                <h6>项目价格<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("                <h6>项目面积<span class=\"right\">58-119</span></h6>\r\n");
+      out.write("                <h6>可售套数<span class=\"right\">47</span></h6>\r\n");
+      out.write("                <h6>平均单价<span class=\"right\">$550,000</span></h6>\r\n");
+      out.write("            </div>\r\n");
+      out.write("       </div>\r\n");
+      out.write("      </div>\r\n");
+      out.write("      <!--end item-->\r\n");
       out.write("   </div>\r\n");
+      out.write("<!--end-->\r\n");
+      out.write("</div>\r\n");
+      out.write("\r\n");
+      out.write("              \r\n");
+      out.write("     \r\n");
       out.write(" </div>\r\n");
       out.write("<div class=\"col-md-8\" style=\"padding-left:0px;\">\r\n");
       out.write(" <nav class=\"navbar navbar-default\" role=\"navigation\" style=\"background-color: #9FB6CD;margin-bottom: 0px;min-height:30px;height:38px;\">\r\n");

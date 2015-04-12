@@ -12,16 +12,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
+<<<<<<< HEAD
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
    <script src="/js/bingMap.js"></script>
+=======
+   <link href="/css/List-Grid-View.css" rel="stylesheet">
+   <script src="/echarts/echarts-all.js"></script>
+   
+>>>>>>> 84d435f3066823e44279738d120e9bd4b7e7da6a
 </head>
 <body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getMap();">
 <jsp:include page="head.jsp" />
 <div class="container" style="">
 <div style="margin-top:20px;background-color:white;">
-<ul class="nav nav-tabs" id="MyTabs">
-      <li><a href="#home" data-toggle="tab">Home</a></li>
+	<div class="panel panel-default">
+  		<div class="panel-heading">学校及周边</div>
+  		<div class="panel-body">
+  			<div class="item  col-xs-6 col-lg-6">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" />
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        附近学校</h4>
+                    
+                    <ul class="list-group">
+					  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
+					  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
+					  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
+					  <li class="list-group-item"><span class="badge">4.1km</span>Porta ac consectetur ac</li>
+					</ul>
+                </div>
+            </div>
+	     </div>
+	     <div class="item  col-xs-6 col-lg-6">
+	            <div class="thumbnail">
+	                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" />
+	                <div class="caption">
+	                    <h4 class="group inner list-group-item-heading">
+	                        附近配套</h4>
+	                    
+	                    <ul class="list-group">
+						  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
+						  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
+						  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
+						  <li class="list-group-item"><span class="badge">2.1km</span>Vestibulum at eros</li>
+						</ul>
+	                </div>
+	            </div>
+	     </div>
+		</div>
+  		 
+  	</div>
+</div>
+<div style="margin-top:20px;background-color:white;">
+<ul class="nav nav-tabs" id="costTabs">
+      <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
       <li><a href="#profile" data-toggle="tab">Profile</a></li>
       <li class="navbar-text navbar-right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
       <p class="navbar-text navbar-right"><b>以总价50万澳币计算</b></p>
@@ -82,8 +128,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
 </div>
 <div  style="margin-top:20px;background-color:white;">
- <ul class="nav nav-tabs nav-justified" id="MyTabs">
-      <li><a href="#price" data-toggle="tab">South MelBourne区域中位数房价走势</a></li>
+ <ul class="nav nav-tabs nav-justified" id="trendTabs">
+      <li class="active"><a href="#price" data-toggle="tab">South MelBourne区域中位数房价走势</a></li>
       <li><a href="#rent" data-toggle="tab">South MelBourne区域租金走势</a></li>
       <li><a href="#emptypercent" data-toggle="tab">South MelBourne区域空置率走势</a></li>
      <!-- <p class="navbar-text navbar-right">Signed in as Mark Otto</p>-->
@@ -108,6 +154,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	</div>
       </div> 
   	</div>
+</div>
+<div style="margin-top:20px;background-color:white;">
+	<div class="panel panel-default">
+	  <div class="panel-heading">South Melbourne区域家庭情况构成<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
+	  <table class="table table-striped">
+    	<thead>
+    		<tr class="row">
+    		<th>地址</th>
+    		<th>价格</th>
+    		<th>床位</th>
+    		<th>销售类型</th>
+    		<th>销售时间</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>	
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    	</tbody>
+  	  </table>
+	</div>
 </div>
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
