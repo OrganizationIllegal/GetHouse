@@ -285,6 +285,118 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </div></div>
 </div>
 </div>
+<!--地区特点start-->
+<div style="margin-top:20px;">
+  <div class="panel panel-default">
+  	<div class="panel-heading" style="background-color:white;">Sourth Melbourne 地区特点</div>
+  	 <div class="panel-body">
+  	     	<div class="col-xs-6">
+  	     		<ol>
+  	     			<li>平均房价在VIC排名 NO.25</li>
+  	     			<li>平均租金在VIC排名 NO.25</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
+  	     		</ol>
+  	     	</div>
+  	     	<div class="col-xs-6">
+  	     		<ol start="6">
+  	     			<li>平均房价在VIC排名 NO.25</li>
+  	     			<li>平均租金在VIC排名 NO.25</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
+  	     		</ol>
+  	     	</div>
+     </div>
+  </div>
+<div>
+<!--地区特点end-->
+<!--你是否需要房产经纪人start-->
+<div style="margin-top:20px;background-color:rgba(177, 220, 245, 1);" >
+<div class="row">
+    <!--左边 start-->
+	<div class="col-xs-3" >
+	  <div  class="col-xs-9">
+	   <div id="wenzi" style="margin:20 0 20 20">
+	     <span style="color:white;"><h3><strong>你是否需要</strong></h3></span>
+	     <span style="color:white"><h3><strong>房产经纪人</strong></h3></span>
+	  	 <!--<img alt="image" class="img-responsive" src="pic/as.png">-->
+	   </div>
+	   </div>
+	   <div class="col-xs-3" style="margin:20 0">
+	       <img alt="image"  src="pic/wenhao.png">
+	   </div>
+ 	</div>
+ 	 <!--左边 end-->
+ 	 <!--中间start线-->
+ 	<div class="col-xs-1" >
+ 		<div style="float:right;width: 1px;height: 563px; background: white;margin:20 0"></div>
+ 	</div>
+ 	 <!--中间end线-->
+ 	
+ 	 <!--右边 start-->
+ 	<div class="col-xs-8">
+ 	      <!--列表 start-->
+ 		 <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="margin:20 20 20 5">
+ 		    <!--第一个元素start-->
+ 		 	 <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;">
+           		  <div class="media">
+          			  <a class="pull-left" href="#" target="_parent">
+              				<img alt="image" class="img-responsive" src="pic/yangkun2.jpg">
+           			  </a>
+           		 	  <div class="clearfix visible-sm"></div>
+           		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
+                		  <h4 class="media-heading"><b>李先生</b></h4>
+                		  <h6>从业经验：8年</h6>
+                		  <h6>语言：普通话、粤语、英文</h6>
+                		  <h6>区域：Sourth Melbourne</h6>
+                		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
+            		 </div>
+      			 </div>
+     		 </div>
+     		 <!--第一个元素end-->
+     		 <!--第二个元素start-->
+     		  <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;">
+           		  <div class="media">
+          			  <a class="pull-left" href="#" target="_parent">
+              				<img alt="image" class="img-responsive" src="pic/yangkun2.jpg">
+           			  </a>
+           		 	  <div class="clearfix visible-sm"></div>
+           		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
+                		  <h4 class="media-heading"><b>李先生</b></h4>
+                		  <h6>从业经验：8年</h6>
+                		  <h6>语言：普通话、粤语、英文</h6>
+                		  <h6>区域：Sourth Melbourne</h6>
+                		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
+            		 </div>
+      			 </div>
+     		 </div>
+     		 <!--第二个元素end-->
+     		 <!--第三个元素start-->
+     		  <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;">
+           		  <div class="media">
+          			  <a class="pull-left" href="#" target="_parent">
+              				<img alt="image" class="img-responsive" src="pic/yangkun2.jpg">
+           			  </a>
+           		 	  <div class="clearfix visible-sm"></div>
+           		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
+                		  <h4 class="media-heading"><b>李先生</b></h4>
+                		  <h6>从业经验：8年</h6>
+                		  <h6>语言：普通话、粤语、英文</h6>
+                		  <h6>区域：Sourth Melbourne</h6>
+                		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
+            		 </div>
+      			 </div>
+     		 </div>
+     		 <!--第三个元素end-->
+ 		 </div>
+ 		  <!--列表 end-->
+ 	</div>
+ 	 <!--右边end-->
+ </div>	
+</div>
+<!--你是否需要房产经纪人end-->
 </div>
 </div>
  <jsp:include page="foot.jsp" /> 
