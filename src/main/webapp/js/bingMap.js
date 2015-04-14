@@ -1,22 +1,24 @@
  var map = null;
 	  var searchManager = null;
-      var LA=new Microsoft.Maps.Location(39.877491,116.486297);      
+      var LA=new Microsoft.Maps.Location(39.877491,116.486297);//北工大
+      var LA2=new Microsoft.Maps.Location(47.6215, -122.349329);//西雅图
       function getMap()
       {
          map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false});
-		 map.setView({ zoom: 12, center: LA });
+		 map.setView({ zoom: 12, center: LA2 });
 		 addDefaultPushpin();
+		 map2 = new Microsoft.Maps.Map(document.getElementById('eyeMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn', center: LA2, mapTypeId: Microsoft.Maps.MapTypeId.birdseye, zoom:18,showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false});
       }
       function addDefaultPushpin()
       {
-        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
+        var pushpin= new Microsoft.Maps.Pushpin(LA2, null); 
 		pushpinOver= Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', addDefaultInfobox);  
         map.entities.push(pushpin);
       }
 	  function addDefaultInfobox()
       {       
         var infoboxOptions = {width :200, height :100,title:'Infobox Title', description:'Infobox description',offset:new Microsoft.Maps.Point(0,20)}; 
-        var defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions );    
+        var defaultInfobox = new Microsoft.Maps.Infobox(LA2, infoboxOptions );    
         map.entities.push(defaultInfobox);
       }
 	    function createSearchManager() 

@@ -296,6 +296,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>	  
 </div></div></div>
+
+<!--项目位置-->
+<div style="margin-top:20px;background-color:white;">
+<div class="panel panel-default">
+	  <div class="panel-heading">项目位置</div>
+	  <div class="panel-body">
+	  	<div class="row">
+	  	<div class="col-md-6">
+	  	<div id='myMap' style="position:relative; width:540px; height:370px;"></div>
+	  	</div>
+	  	<div class="col-md-6">
+	  	 <!-- <div><img src="images/streetside.png"></div> -->
+	  	 <div id="eyeMap" style="position:relative; width:540px; height:370px;"></div>
+	  	 </div>
+	  	</div>
+      	</div>
+	  </div>
+	</div>
+
 <!--学校及周边-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
@@ -804,24 +823,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 
-<!--项目位置-->
-<div style="margin-top:20px;background-color:white;">
-<div class="panel panel-default">
-	  <div class="panel-heading">项目位置</div>
-	  <div class="panel-body">
-	  	<div id="zonefamily_pie" style="height:370px">
-	  	<div class="row">
-	  	<div class="col-md-6">
-	  	<div id='myMap' style="position:relative; width:550px; height:370px;"></div>
-	  	</div>
-	  	<div class="col-md-6"></div>
-	  	 <div><img src="images/streetside.png"></div>
-	  	</div>
-      	</div>
-	  </div>
-	</div>
-</div>
-
 
 
 
@@ -960,7 +961,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </div>
-</div>
+
  <jsp:include page="foot.jsp" /> 
  <script src="/js/familyStatus.js"></script>
  <script src="/js/trend.js"></script>
