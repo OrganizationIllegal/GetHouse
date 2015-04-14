@@ -160,6 +160,236 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					</div>
 </div>
+
+<!--价格区间-->
+<div style="margin-top:20px;background-color:white;">
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+		<span style="font-size:20px;color:black;">
+					&nbsp;价格区间
+		</span>
+		<hr style="width:200;height:3;">
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-2 col-md-offset-1">
+				<div>
+
+				<div>
+					<span style="font-size:30px;color:black;font-family:"黑体";">$950K-$2.2M</span>
+					</div>
+					
+						<div style="padding-left:35px">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>索取完整价格单</button>
+						</div>
+			</div>
+			</div>
+			
+			<div class="col-md-5 col-md-offset-3">
+						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"华文彩云";margin-top:30px;position:absolute;bottom:0;">返现金额:$10,000</span></button>
+				</div>
+	
+	</div>
+	</div>
+
+<!--价格区间-->
+
+<!--基本信息-->
+<div style="margin-top:20px;background-color:white;">
+	<div class="row">
+		<div class="col-md-8">
+				<div class="row">
+					
+					<div class="col-md-3 col-md-offset-1" style="height:45px;">
+						<span style="font-size:20px;font-family:"宋体";">
+								基本信息
+							<hr style="width:800px;margin-top:0px;"></hr>
+							
+					</div>
+				</div>
+					
+					
+				<div class="row">
+					
+					<div class="col-md-3 col-md-offset-1">
+							<dl class="fore1">
+							<dd>
+								<div>
+							<span style="font-size:16px;">
+								开发商:XXX
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								类型：公寓别墅
+							</span>
+						</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								国家：澳大利亚
+							</span>
+						</div>
+								
+							<div>
+							<span style="font-size:16px;">
+								城市：墨尔本
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								位置：XXX&nbsp;182XXXXX
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								面积：52-170M
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								户型：1局
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								城市：墨尔本
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								价格：$145M
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								预交房日期：2016年第3季度
+							</span>
+							</div>
+							
+							<div>
+							<span style="font-size:16px;">
+								可售房数：6
+							</span>
+							</div>
+							
+						</dd>
+					</dl>
+						</div>
+						
+					
+					
+					<div class="col-md-4 col-md-offset-3">
+							
+							<div class="row">		
+								
+								<div class="col-md-8">
+								<div class="row">
+								<span style="font-size:25px;">The Elements</span>
+								</div>
+								
+								<div class="row">
+								<button type="button" class="btn btn-info btn-lg" style="background-color:blue;width:180px;height:30px;padding-top:1px;"><span style="font-size:10px;color:white;font-family:"宋体";">AMITY</span></button>
+								</div>
+				  		
+				  		</div>
+				  		
+				  		<div class="col-md-6"></div>
+				  			
+				  		</div>	
+				  		
+				  		<div class="row">
+				  			
+				  			<p style="font-size:10px;">
+				  				现在一次付款买房的还是少数，大家都在贷款买房，实际资金从银行直接到开发商的，银行是不会简单的把钱转给开发商，要严格的审查，如果开发商的实力不好，银行是不会让其有房贷的资格的。照你说的情况，开发商如真的跑了，因为其只拥有土地的使用权，土地出让的主管部门只会收回土地的使用权另行出让，或者由另外的开发商接受继续开发。
+				  				</p>
+				  			
+				  			</div>		
+				  
+				  
+				  
+				  
+				  
+				  <div class="col-md-1"></div>
+				  
+					
+				</div>
+			</div>
+	</div>
+
+					
+	<div class="col-md-4" style="background-color:rgba(237, 237, 237, 1);">
+		
+		<div class="row" style="margin-top:45px;width:80%; margin-left:10%;margin-right:10%;" >
+			
+			<div>
+			<span style="font-size:22px;">想要了解更多吗？</span>
+			</div>
+			
+			<div>
+			<span style="font-size:15px;">填写信息我们会有专业人士一对一服务</span>
+			</div>
+			
+			
+			</div>
+		
+		
+		<div class="row"	style="width:80%; margin-left:10%;margin-right:10%;margin-top:20px;"> 
+		<div style="padding-left:5px;padding-right:5px;">
+		<ul class="list-group" >
+   <li class="list-group-item">姓名</li>
+   <li class="list-group-item">邮件</li>
+   <li class="list-group-item">电话</li>
+		</ul>
+		</div>
+		</div>
+		
+		<div class="row" style="width:80%; margin-left:10%;margin-right:10%;width:285px;background:white;">
+			<ul class="nav nav-tabs">
+   <li class="active">
+   <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:285px;background:white;">
+       <span>需求;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  <span class="caret" ></span>
+
+      </a>
+      <ul class="dropdown-menu">
+         <li><a href="#">Swing</a></li>
+         <li><a href="#">jMeter</a></li>
+         <li><a href="#">EJB</a></li>
+         <li class="divider"></li>
+         <li><a href="#">分离的链接</a></li>
+      </ul>
+   </li>
+ </li>
+</ul>
+</div>
+
+		<div class="row" style="width:80%; margin-left:10%;margin-right:10%;margin-bottom:45px;background:white;margin-top:20px;">
+			 <input type="text" class="form-control" id="name" placeholder="留言:" style="height:80px;">
+
+			
+			
+			</div>
+			
+			</div>
+		
+		
+	</div>
+
+
+</div>
+<!--基本信息-->
+
+
+
 <!--项目详情-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">

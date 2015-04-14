@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row" style="background-color:rgba(19, 51, 89, 1);">
 	  <div class="col-md-1"></div>
       <div class="col-md-6" >
-      <span style="font-size:20px;color:yellow;style="text-align:bottom;">海豚会(haitunhui,cn)</span>
+      <span style="font-size:20px;color:yellow;style="text-align:bottom;">海豚会(haitunhui.cn)</span>
       <span style="font-size:15px;color:white;">由经理人联合中国商业领袖共同发起</span>
       </div>
       <div class="col-md-2" >
@@ -35,11 +35,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
        <div class="col-md-1"></div>
        </div>
-   <div class="row"style="background-color:white;padding-top:30px;">
+   <div class="row"style="background-color:white;padding-top:20px;">
 		<div class="col-md-1"></div>
 		<div class="col-md-2">
-		  <span style="font-size:20px;color:black;style="text-align:bottom;">胜意行</span>
-		</div>
+		  <img src="pic/ShengYiHang.jpg"style="margin-top:0px;margin-bottom:5px;"></img>
+		  </div>
        <div class="col-md-6" >
       	<ul class="navbar-header">
        			<a href="#">首页</a>
