@@ -92,9 +92,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <div style="margin-top:20px;background-color:white;">
-
-<div class="row">
-<div class="col-md-2 col-md-offset-1" >
+<div class="container"  >
+<div class="col-md-2" >
 				<dl class="fore1">
 				<dd>
 					<div>
@@ -106,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</dd>
 				</dl>
 					</div>
-				<div class="col-md-1"></div>
+				<div class="col-md-2"></div>
 				
 			<div class="col-md-2" >
 				<dl class="fore1">
@@ -159,42 +158,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</dd>
 				</dl>
 					</div>
-		</div>
-</div>
-<div style="margin-top:20px;background-color:white;">
-	<div class="row">
-		<div class="col-md-2 col-md-offset-1">
-		<span style="font-size:20px;color:black;">
-					&nbsp;价格区间
-		</span>
-		<hr style="width:200;height:3;">
-			</div>
-		</div>
-	
-		<div class="row">
-			<div class="col-md-2 col-md-offset-1">
-				<div>
-
-				<div>
-					<span style="font-size:30px;color:black;font-family:"黑体";">$950K-$2.2M</span>
 					</div>
-					
-						<div style="padding-left:35px">
-						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>索取完整价格单</button>
-						</div>
-			</div>
-			</div>
-			
-			<div class="col-md-5 col-md-offset-3">
-						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"华文彩云";margin-top:30px;position:absolute;bottom:0;">返现金额:$10,000</span></button>
-				</div>
-	
-	</div>
-	</div>
-	</div>
-	</div>
-	
-	
+</div>
 <!--项目详情-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
