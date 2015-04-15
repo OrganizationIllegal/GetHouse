@@ -34,6 +34,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getMap();">
 <jsp:include page="head.jsp" />
 <div class="container" style="">
+<!-- 导航标签 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:30px;margin-bottom: 0px;">
+<ul class="nav nav-tabs nav-justified" id="tab">
+   <li class="active"><a href="#info">项目介绍</a></li>
+   <li><a href="#price">户型和价格</a></li>
+   <li><a href="#position">项目位置</a></li>
+   <li><a href="#round">配套及周边</a></li>
+   <li><a href="#purchase">购房费用</a></li>
+   <li><a href="#invest">投资分析</a></li>
+</ul>
+</nav>
 
 <div style="margin-top:20px;/* background-color:white; */">
     <div class="ad_position" style="height:600px;/* background-color:white; */">
@@ -193,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--价格区间-->
 
 <!--基本信息-->
-<div style="margin-top:20px;background-color:white;">
+<div style="margin-top:20px;background-color:white;" id="info">
 	<div class="row">
 		<div class="col-md-8">
 				<div class="row">
@@ -410,8 +421,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   	</div>
 </div>
-<!--户型及户型-->
-<div style="margin-top:20px;background-color:white;">
+<!--户型及价格-->
+<div style="margin-top:20px;background-color:white;" id="price">
 <div class="panel panel-default">
 <div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">户型及价格</div>
 <div class="panel-body">
@@ -566,7 +577,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div> 
 <!--项目位置-->
-<div style="margin-top:20px;background-color:white;">
+<div style="margin-top:20px;background-color:white;" id="position">
 <div class="panel panel-default">
 	  <div class="panel-heading">项目位置</div>
 	  <div class="panel-body">
@@ -584,7 +595,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 
 <!--学校及周边-->
-<div style="margin-top:20px;background-color:white;">
+<div style="margin-top:20px;background-color:white;" id="round">
 	<div class="panel panel-default">
   		<div class="panel-heading">学校及周边</div>
   		<div class="panel-body">
@@ -625,7 +636,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
 </div>
 <!--估计总购房税费-->
-<div style="margin-top:20px;background-color:white;">
+<div style="margin-top:20px;background-color:white;" id="purchase">
 <ul class="nav nav-tabs" id="costTabs">
       <li class="active"><a href="#home" data-toggle="tab">购房税费</a></li>
       <li><a href="#profile" data-toggle="tab">持有成本</a></li>
@@ -774,7 +785,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 <!--投资数据-->
-<div style="margin-top:20px;background-color:white;">
+<div style="margin-top:20px;background-color:white;" id="invest">
 <div class="panel panel-default">
 	  <div class="heading">South Melbourne投资数据<br>
 	 <span id="detail"> 投资数据参考2卧室房产</span>
@@ -1092,8 +1103,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   	</div>
 </div>
-
-
 
 
 
