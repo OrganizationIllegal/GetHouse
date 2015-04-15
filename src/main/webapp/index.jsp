@@ -9,6 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
    <title>HouseSale</title>
    <link href="css/style.css" rel="stylesheet" type="text/css" />
+   <link href="css/style_project.css" rel="stylesheet" type="text/css" />
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -26,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/script_p.js"></script>
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "/js/video-js.swf";</script>
 </head>
@@ -57,9 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
 
             <div class="ad_small_box" style="width:250px;height:600px;">
-                <div class="top_button off">
-
-                </div>
+                <div class="top_button off"></div>
                 <div class="small_right_limit">
                     <ul style="margin-top: 0px;">
 
@@ -524,6 +524,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>	  
 </div></div></div>
 
+
+
+
+
+<div style="margin-top:20px;background-color:white;">
+<div class="panel panel-default">
+<div class="panel-heading">项目配套</div>
+    <div class="ad_position_p" style="height:645px;/* background-color:white; */">
+        <div class="limit_p" style="height:600px;width:1100px;">
+            <div style="float:left;width:850px;display:inline;">
+                <table class="ad_left_big_p" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
+                    <tr><td><img src="images/a.jpg" width="850" height="600" /></a></td></tr>
+                    <tr><td><img src="images/c.jpg" width="850" height="600" /></a></td></tr>
+                    <tr><td><img src="images/d.jpg" width="850" height="600" /></a></td></tr>
+                    <tr><td><img src="images/e.jpg" width="850" height="600" /></a></td></tr>
+                    <tr><td><img src="images/f.jpg" width="850" height="600" /></a></td></tr>
+                    <tr><td><img src="images/g.jpg" width="850" height="600" /></a></td></tr>
+                </table>
+            </div>
+
+            <div class="ad_small_box_p" style="width:250px;height:600px;">
+                <div class="top_button off"></div>
+                <div class="small_right_limit_p">
+                    <ul style="margin-top: 0px;">
+						<li><img src="images/a.jpg" width="250" height="140"/></li>
+                        <li><img src="images/c.jpg" width="250" height="140"/></li>
+                        <li><img src="images/d.jpg" width="250" height="140"/></li>
+                        <li><img src="images/e.jpg" width="250" height="140"/></li>
+                        <li><img src="images/f.jpg" width="250" height="140"/></li>
+                        <li><img src="images/g.jpg" width="250" height="140"/></li>
+                    </ul>
+                    <div class="this_ad_p" style="top:0px;"><img src="images/this_ad.gif" width="250" height="159" /></div>
+                </div>
+                <div class="bottom_button"></div>
+            </div>
+        </div>
+
+</div>
+
+    </div>
+</div> 
 <!--项目位置-->
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
