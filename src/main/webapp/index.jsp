@@ -627,8 +627,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--估计总购房税费-->
 <div style="margin-top:20px;background-color:white;">
 <ul class="nav nav-tabs" id="costTabs">
-      <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-      <li><a href="#profile" data-toggle="tab">Profile</a></li>
+      <li class="active"><a href="#home" data-toggle="tab">购房税费</a></li>
+      <li><a href="#profile" data-toggle="tab">持有成本</a></li>
       <li class="navbar-text navbar-right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
       <p class="navbar-text navbar-right"><b>以总价50万澳币计算</b></p>
       <!-- <div class="col-md-2 col-md-pull-5"><p><b>以总价50万澳币计算</b></p></div> -->
@@ -895,10 +895,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 
-<!--区域家庭情况构成list-->
+<!--近期区域成交情况list-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
-	  <div class="panel-heading">South Melbourne区域家庭情况构成<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
+	  <div class="panel-heading">South Melbourne近期区域成交情况<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
 	  <table class="table table-striped">
     	<thead>
     		<tr class="row">
@@ -1032,6 +1032,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <!--人口分布end>
+
+<!--区域家庭情况构成pie-->
+<div style="margin-top:20px;background-color:white;">
+<div class="panel panel-default">
+	  <div class="panel-heading">South Melbourne区域家庭情况构成</div>
+	  <div class="panel-body">
+	  	<div id="zonefamily_pie" style="height:200px">
+      	</div>
+	  </div>
+	</div>
+</div>
+
 <!--新闻报道-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default" id="MyPanel">
@@ -1080,16 +1092,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   	</div>
 </div>
-<!--区域家庭情况构成pie-->
-<div style="margin-top:20px;background-color:white;">
-<div class="panel panel-default">
-	  <div class="panel-heading">South Melbourne区域家庭情况构成</div>
-	  <div class="panel-body">
-	  	<div id="zonefamily_pie" style="height:200px">
-      	</div>
-	  </div>
-	</div>
-</div>
+
 
 
 
