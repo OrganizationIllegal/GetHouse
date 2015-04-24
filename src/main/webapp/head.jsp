@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312" isELIgnored="false"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -18,8 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="row" style="background-color:rgba(19, 51, 89, 1);padding-top:10px;padding-bottom: 5px;">
 	  <div class="col-md-1"></div>
       <div class="col-md-6" >
-      <span style="font-size:18px;color:yellow;style="text-align:bottom;font-family:SimHei;">º£ëà»á(haitunhui.cn)</span>
-      <span style="font-size:8px;color:white;font-family:SimHei;">ÓÉ¡¶¾­ÀíÈË¡·ÁªºÏÖĞ¹úÉÌÒµÁìĞä¹²Í¬·¢ÆğµÄ¡¢»ùÓÚÒÆ¶¯»¥ÁªÍø¼¼ÊõµÄÖÇ»ÛĞÍ¹«Òæ×éÖ¯¡£</span>
+      <span style="font-size:18px;color:yellow;style="text-align:bottom;font-family:SimHei;">æµ·è±šä¼š(haitunhui.cn)</span>
+      <span style="font-size:8px;color:white;font-family:SimHei;">ç”±ã€Šç»ç†äººã€‹è”åˆä¸­å›½å•†ä¸šé¢†è¢–å…±åŒå‘èµ·çš„ã€åŸºäºç§»åŠ¨äº’è”ç½‘æŠ€æœ¯çš„æ™ºæ…§å‹å…¬ç›Šç»„ç»‡ã€‚</span>
       </div>
       <div class="col-md-2 col-md-offset-1" >
        <span class="glyphicon glyphicon-phone-alt" style="font-size:18px;color:yellow;"></span>
@@ -28,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="col-md-2" style="margin-left:-50px;">      
        		<div>
        			<span class="glyphicon glyphicon-user" style="color:white;"></span>
-       			<a href="#" style="color:white;font-size:12px;font-family:SimHei;">»áÔ±µÇÂ¼</a>
+       			<a href="#" style="color:white;font-size:12px;font-family:SimHei;">ä¼šå‘˜ç™»å½•</a>
        			<span class="divider-vertical"></span>
-       			<a href="#" style="color:yellow;font-size:12px;font-family:SimHei;">×¢²á</a>
+       			<a href="#" style="color:yellow;font-size:12px;font-family:SimHei;">æ³¨å†Œ</a>
        		</div>
        </div>
        </div>
@@ -41,21 +41,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
        <div class="col-md-7" >
       	<div class="navbar-header" id="headbar">
-       			<a href="#">Ê×Ò³</a>
+       			<a href="#">é¦–é¡µ</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">º£Íâ¹º·¿</a>
+       			<a href="#">æµ·å¤–è´­æˆ¿</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">¹º·¿·µÏÖ</a>
+       			<a href="#">è´­æˆ¿è¿”ç°</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">º£Íâ´û¿î</a>
+       			<a href="#">æµ·å¤–è´·æ¬¾</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">·şÎñÍÅ¶Ó</a>
+       			<a href="#">æœåŠ¡å›¢é˜Ÿ</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">ÖÃÒµÖ¸µ¼</a>
+       			<a href="#">ç½®ä¸šæŒ‡å¯¼</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">º£ÍâĞÂÎÅ</a>
+       			<a href="#">æµ·å¤–æ–°é—»</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">¹ØÓÚÎÒÃÇ</a>
+       			<a href="#">å…³äºæˆ‘ä»¬</a>
        		</div>
        </div>  
        <div class="col-md-1" >	

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312" isELIgnored="false"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
-   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script>
    <script src="/js/bingMap.js"></script>
    <link href="/css/List-Grid-View.css" rel="stylesheet">
    <script src="/echarts/echarts-all.js"></script>
@@ -30,19 +30,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/script_p.js"></script>
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "/js/video-js.swf";</script>
+<!-- é”šå®šä½ -->
+<script type="text/javascript">
+function offSet(){
+	  if(location.hash){
+	     var target = $(location.hash);
+	     if(target.length==1){
+	         var top = target.offset().top-150;
+	         if(top > 0){
+	             $('html,body').animate({scrollTop:top});
+	         }
+	     }
+	  }
+	}
+function tab1(){ 
+	 location.hash="#info";
+	 offSet();
+} 
+function tab2(){ 
+	 location.hash="#price";
+	 offSet();
+} 
+function tab3(){ 
+	 location.hash="#position";
+	 offSet();
+} 
+function tab4(){ 
+	 location.hash="#round";
+	 offSet();
+} 
+function tab5(){ 
+	 location.hash="#purchase";
+	 offSet();
+} 
+function tab6(){ 
+	 location.hash="#invest";
+	 offSet();
+} 
+</script>
 </head>
-<body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getMap();">
+<body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getIndexMap();">
 <jsp:include page="head.jsp" />
 <div class="container" style="">
-<!-- µ¼º½±êÇ© -->
+<!-- å¯¼èˆªæ ‡ç­¾ -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:30px;margin-bottom: 0px;">
 <ul class="nav nav-tabs nav-justified" id="tab">
-   <li class="active"><a href="#info">ÏîÄ¿½éÉÜ</a></li>
-   <li><a href="#price">»§ĞÍºÍ¼Û¸ñ</a></li>
-   <li><a href="#position">ÏîÄ¿Î»ÖÃ</a></li>
-   <li><a href="#round">ÅäÌ×¼°ÖÜ±ß</a></li>
-   <li><a href="#purchase">¹º·¿·ÑÓÃ</a></li>
-   <li><a href="#invest">Í¶×Ê·ÖÎö</a></li>
+   <li><a href="#info"  onclick="tab1()">é¡¹ç›®ä»‹ç»</a></li>
+   <li><a href="#price"  onclick="tab2()">æˆ·å‹å’Œä»·æ ¼</a></li>
+   <li><a href="#position"  onclick="tab3()">é¡¹ç›®ä½ç½®</a></li>
+   <li><a href="#round"  onclick="tab4()">é…å¥—åŠå‘¨è¾¹</a></li>
+   <li><a href="#purchase"  onclick="tab5()">è´­æˆ¿è´¹ç”¨</a></li>
+   <li><a href="#invest"  onclick="tab6()">æŠ•èµ„åˆ†æ</a></li>
 </ul>
 </nav>
 
@@ -108,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span style="font-size:20px;color:black;target="_blank" href="#"">The Elements</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:ËÎÌå;color:black;target="_blank" href="#"">IDLand</span>
+							<span style="font-size:16px;font-family:å®‹ä½“;color:black;target="_blank" href="#"">IDLand</span>
 							</div>
 					</dd>
 				</dl>
@@ -122,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span style="font-size:20px;color:black;target="_blank" href="#"">2011.03</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:ËÎÌå;color:black;target="_blank" href="#"">Ê×¸¶½ğ¶î£¨Æğ¼Û£© </span>
+							<span style="font-size:16px;font-family:å®‹ä½“;color:black;target="_blank" href="#"">é¦–ä»˜é‡‘é¢ï¼ˆèµ·ä»·ï¼‰ </span>
 							</div>
 					</dd>
 				</dl>
@@ -135,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span style="font-size:20px;color:black;target="_blank" href="#"">$5.000</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:ËÎÌå;color:black;target="_blank" href="#"">½»·¿ÈÕÆÚ </span>
+							<span style="font-size:16px;font-family:å®‹ä½“;color:black;target="_blank" href="#"">äº¤æˆ¿æ—¥æœŸ </span>
 							</div>
 					</dd>
 				</dl>
@@ -148,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span style="font-size:20px;color:black;target="_blank" href="#"">$5.000</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:ËÎÌå;color:black;target="_blank" href="#"">ÎïÒµ·Ñ/Ã¿ÔÂ </span>
+							<span style="font-size:16px;font-family:å®‹ä½“;color:black;target="_blank" href="#"">ç‰©ä¸šè´¹/æ¯æœˆ </span>
 							</div>
 					</dd>
 				</dl>
@@ -161,7 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span style="font-size:20px;color:black;target="_blank" href="#"">$0.37</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:ËÎÌå;color:black;target="_blank" href="#"">Ó¡»¨Ë°</span>
+							<span style="font-size:16px;font-family:å®‹ä½“;color:black;target="_blank" href="#"">å°èŠ±ç¨</span>
 							</div>
 					</dd>
 				</dl>
@@ -169,12 +207,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 </div>
 
-<!--¼Û¸ñÇø¼ä-->
+<!--ä»·æ ¼åŒºé—´-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="row">
 		<div class="col-md-2 col-md-offset-1">
 		<span style="font-size:20px;color:black;">
-					&nbsp;¼Û¸ñÇø¼ä
+					&nbsp;ä»·æ ¼åŒºé—´
 		</span>
 		<hr style="width:200;height:3;">
 			</div>
@@ -185,33 +223,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 
 				<div>
-					<span style="font-size:30px;color:black;font-family:"ºÚÌå";">$950K-$2.2M</span>
+					<span style="font-size:30px;color:black;font-family:"é»‘ä½“";">$950K-$2.2M</span>
 					</div>
 					
 						<div style="padding-left:35px">
-						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>Ë÷È¡ÍêÕû¼Û¸ñµ¥</button>
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>ç´¢å–å®Œæ•´ä»·æ ¼å•</button>
 						</div>
 			</div>
 			</div>
 			
 			<div class="col-md-5 col-md-offset-3">
-						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"»ªÎÄ²ÊÔÆ";margin-top:30px;position:absolute;bottom:0;">·µÏÖ½ğ¶î:$10,000</span></button>
+						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"åæ–‡å½©äº‘";margin-top:30px;position:absolute;bottom:0;">è¿”ç°é‡‘é¢:$10,000</span></button>
 				</div>
 	
 	</div>
 	</div>
 
-<!--¼Û¸ñÇø¼ä-->
+<!--ä»·æ ¼åŒºé—´-->
 
-<!--»ù±¾ĞÅÏ¢-->
+<!--åŸºæœ¬ä¿¡æ¯-->
 <div style="margin-top:20px;background-color:white;" id="info">
 	<div class="row">
 		<div class="col-md-8">
 				<div class="row">
 					
 					<div class="col-md-3 col-md-offset-1" style="height:45px;">
-						<span style="font-size:20px;font-family:"ËÎÌå";">
-								»ù±¾ĞÅÏ¢
+						<span style="font-size:20px;font-family:"å®‹ä½“";">
+								åŸºæœ¬ä¿¡æ¯
 							<hr style="width:800px;margin-top:0px;"></hr>
 							
 					</div>
@@ -225,67 +263,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<dd>
 								<div>
 							<span style="font-size:16px;">
-								¿ª·¢ÉÌ:XXX
+								å¼€å‘å•†:XXX
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								ÀàĞÍ£º¹«Ô¢±ğÊû
+								ç±»å‹ï¼šå…¬å¯“åˆ«å¢…
 							</span>
 						</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								¹ú¼Ò£º°Ä´óÀûÑÇ
+								å›½å®¶ï¼šæ¾³å¤§åˆ©äºš
 							</span>
 						</div>
 								
 							<div>
 							<span style="font-size:16px;">
-								³ÇÊĞ£ºÄ«¶û±¾
+								åŸå¸‚ï¼šå¢¨å°”æœ¬
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								Î»ÖÃ£ºXXX&nbsp;182XXXXX
+								ä½ç½®ï¼šXXX&nbsp;182XXXXX
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								Ãæ»ı£º52-170M
+								é¢ç§¯ï¼š52-170M
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								»§ĞÍ£º1¾Ö
+								æˆ·å‹ï¼š1å±€
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								³ÇÊĞ£ºÄ«¶û±¾
+								åŸå¸‚ï¼šå¢¨å°”æœ¬
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								¼Û¸ñ£º$145M
+								ä»·æ ¼ï¼š$145M
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								Ô¤½»·¿ÈÕÆÚ£º2016ÄêµÚ3¼¾¶È
+								é¢„äº¤æˆ¿æ—¥æœŸï¼š2016å¹´ç¬¬3å­£åº¦
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								¿ÉÊÛ·¿Êı£º6
+								å¯å”®æˆ¿æ•°ï¼š6
 							</span>
 							</div>
 							
@@ -305,7 +343,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								
 								<div class="row">
-								<button type="button" class="btn btn-info btn-lg" style="background-color:blue;width:180px;height:30px;padding-top:1px;"><span style="font-size:10px;color:white;font-family:"ËÎÌå";">AMITY</span></button>
+								<button type="button" class="btn btn-info btn-lg" style="background-color:blue;width:180px;height:30px;padding-top:1px;"><span style="font-size:10px;color:white;font-family:"å®‹ä½“";">AMITY</span></button>
 								</div>
 				  		
 				  		</div>
@@ -317,7 +355,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  		<div class="row">
 				  			
 				  			<p style="font-size:10px;">
-				  				ÏÖÔÚÒ»´Î¸¶¿îÂò·¿µÄ»¹ÊÇÉÙÊı£¬´ó¼Ò¶¼ÔÚ´û¿îÂò·¿£¬Êµ¼Ê×Ê½ğ´ÓÒøĞĞÖ±½Óµ½¿ª·¢ÉÌµÄ£¬ÒøĞĞÊÇ²»»á¼òµ¥µÄ°ÑÇ®×ª¸ø¿ª·¢ÉÌ£¬ÒªÑÏ¸ñµÄÉó²é£¬Èç¹û¿ª·¢ÉÌµÄÊµÁ¦²»ºÃ£¬ÒøĞĞÊÇ²»»áÈÃÆäÓĞ·¿´ûµÄ×Ê¸ñµÄ¡£ÕÕÄãËµµÄÇé¿ö£¬¿ª·¢ÉÌÈçÕæµÄÅÜÁË£¬ÒòÎªÆäÖ»ÓµÓĞÍÁµØµÄÊ¹ÓÃÈ¨£¬ÍÁµØ³öÈÃµÄÖ÷¹Ü²¿ÃÅÖ»»áÊÕ»ØÍÁµØµÄÊ¹ÓÃÈ¨ÁíĞĞ³öÈÃ£¬»òÕßÓÉÁíÍâµÄ¿ª·¢ÉÌ½ÓÊÜ¼ÌĞø¿ª·¢¡£
+				  				ç°åœ¨ä¸€æ¬¡ä»˜æ¬¾ä¹°æˆ¿çš„è¿˜æ˜¯å°‘æ•°ï¼Œå¤§å®¶éƒ½åœ¨è´·æ¬¾ä¹°æˆ¿ï¼Œå®é™…èµ„é‡‘ä»é“¶è¡Œç›´æ¥åˆ°å¼€å‘å•†çš„ï¼Œé“¶è¡Œæ˜¯ä¸ä¼šç®€å•çš„æŠŠé’±è½¬ç»™å¼€å‘å•†ï¼Œè¦ä¸¥æ ¼çš„å®¡æŸ¥ï¼Œå¦‚æœå¼€å‘å•†çš„å®åŠ›ä¸å¥½ï¼Œé“¶è¡Œæ˜¯ä¸ä¼šè®©å…¶æœ‰æˆ¿è´·çš„èµ„æ ¼çš„ã€‚ç…§ä½ è¯´çš„æƒ…å†µï¼Œå¼€å‘å•†å¦‚çœŸçš„è·‘äº†ï¼Œå› ä¸ºå…¶åªæ‹¥æœ‰åœŸåœ°çš„ä½¿ç”¨æƒï¼ŒåœŸåœ°å‡ºè®©çš„ä¸»ç®¡éƒ¨é—¨åªä¼šæ”¶å›åœŸåœ°çš„ä½¿ç”¨æƒå¦è¡Œå‡ºè®©ï¼Œæˆ–è€…ç”±å¦å¤–çš„å¼€å‘å•†æ¥å—ç»§ç»­å¼€å‘ã€‚
 				  				</p>
 				  			
 				  			</div>		
@@ -339,11 +377,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row" style="margin-top:45px;width:80%; margin-left:10%;margin-right:10%;" >
 			
 			<div>
-			<span style="font-size:22px;">ÏëÒªÁË½â¸ü¶àÂğ£¿</span>
+			<span style="font-size:22px;">æƒ³è¦äº†è§£æ›´å¤šå—ï¼Ÿ</span>
 			</div>
 			
 			<div>
-			<span style="font-size:15px;">ÌîĞ´ĞÅÏ¢ÎÒÃÇ»áÓĞ×¨ÒµÈËÊ¿Ò»¶ÔÒ»·şÎñ</span>
+			<span style="font-size:15px;">å¡«å†™ä¿¡æ¯æˆ‘ä»¬ä¼šæœ‰ä¸“ä¸šäººå£«ä¸€å¯¹ä¸€æœåŠ¡</span>
 			</div>
 			
 			
@@ -353,9 +391,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row"	style="width:80%; margin-left:10%;margin-right:10%;margin-top:20px;"> 
 		<div style="padding-left:5px;padding-right:5px;">
 		<ul class="list-group" >
-   <li class="list-group-item">ĞÕÃû</li>
-   <li class="list-group-item">ÓÊ¼ş</li>
-   <li class="list-group-item">µç»°</li>
+   <li class="list-group-item">å§“å</li>
+   <li class="list-group-item">é‚®ä»¶</li>
+   <li class="list-group-item">ç”µè¯</li>
 		</ul>
 		</div>
 		</div>
@@ -365,7 +403,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <li class="active">
    <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:285px;background:white;">
-       <span>ĞèÇó;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  <span class="caret" ></span>
+       <span>éœ€æ±‚;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  <span class="caret" ></span>
 
       </a>
       <ul class="dropdown-menu">
@@ -373,7 +411,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <li><a href="#">jMeter</a></li>
          <li><a href="#">EJB</a></li>
          <li class="divider"></li>
-         <li><a href="#">·ÖÀëµÄÁ´½Ó</a></li>
+         <li><a href="#">åˆ†ç¦»çš„é“¾æ¥</a></li>
       </ul>
    </li>
  </li>
@@ -381,7 +419,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 		<div class="row" style="width:80%; margin-left:10%;margin-right:10%;margin-bottom:45px;background:white;margin-top:20px;">
-			 <input type="text" class="form-control" id="name" placeholder="ÁôÑÔ:" style="height:80px;">
+			 <input type="text" class="form-control" id="name" placeholder="ç•™è¨€:" style="height:80px;">
 
 			
 			
@@ -394,59 +432,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </div>
-<!--»ù±¾ĞÅÏ¢-->
+<!--åŸºæœ¬ä¿¡æ¯-->
 
 
 
-<!--ÏîÄ¿ÏêÇé-->
+<!--é¡¹ç›®è¯¦æƒ…-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
-  		<div class="panel-heading">ÏîÄ¿ÏêÇé</div>
+  		<div class="panel-heading">é¡¹ç›®è¯¦æƒ…</div>
   		<div class="panel-body">
   			<div>
   			 <!--  <hr> -->
 				<h2>The Elements</h2>
-				<p class="lead">ÊÀ½ç¼¶µÄ½¨Öş</p>
+				<p class="lead">ä¸–ç•Œçº§çš„å»ºç­‘</p>
   			</div>
   			<div id="detail">
-  			           ÕıÔÚÑ°ÕÒ°¢ÀïÍúÍú¹Ù·½ÏÂÔØ£¿°¢ÀïÍúÍúÂò¼Ò°æ2013ÊÇ°¢Àï°Í°ÍÎªÌÔ±¦Âò¼Ò¶ÈÉí¶¨×öµÄÃâ·ÑÍøÉÏ¹µÍ¨Èí¼ş£¬°¢ÀïÍúÍú»¹¿ÉÒÔÈÃÄúÔÚ¹ºÎïºóËæÊ±ÁË½â½»Ò××´Ì¬¡£Ö±½ÓËÑË÷ÉÌÆ·¡£¿ìËÙ½øÈëÌÔ±¦Íø¡£°¢ÀïÍúÍú¹Ù·½ÏÂÔØ2013Âò¼Ò°æÄÜ°ïÄúÇáËÉÕÒ¿Í»§£¬·¢²¼¡¢¹ÜÀíÉÌÒµĞÅÏ¢£»¼°Ê±°ÑÎÕÉÌ»ú£¬ËæÊ±Ç¢Ì¸×öÉúÒâ£¡
+  			           æ­£åœ¨å¯»æ‰¾é˜¿é‡Œæ—ºæ—ºå®˜æ–¹ä¸‹è½½ï¼Ÿé˜¿é‡Œæ—ºæ—ºä¹°å®¶ç‰ˆ2013æ˜¯é˜¿é‡Œå·´å·´ä¸ºæ·˜å®ä¹°å®¶åº¦èº«å®šåšçš„å…è´¹ç½‘ä¸Šæ²Ÿé€šè½¯ä»¶ï¼Œé˜¿é‡Œæ—ºæ—ºè¿˜å¯ä»¥è®©æ‚¨åœ¨è´­ç‰©åéšæ—¶äº†è§£äº¤æ˜“çŠ¶æ€ã€‚ç›´æ¥æœç´¢å•†å“ã€‚å¿«é€Ÿè¿›å…¥æ·˜å®ç½‘ã€‚é˜¿é‡Œæ—ºæ—ºå®˜æ–¹ä¸‹è½½2013ä¹°å®¶ç‰ˆèƒ½å¸®æ‚¨è½»æ¾æ‰¾å®¢æˆ·ï¼Œå‘å¸ƒã€ç®¡ç†å•†ä¸šä¿¡æ¯ï¼›åŠæ—¶æŠŠæ¡å•†æœºï¼Œéšæ—¶æ´½è°ˆåšç”Ÿæ„ï¼
   			<p>
-  			ÕıÔÚÑ°ÕÒ°¢ÀïÍúÍú¹Ù·½ÏÂÔØ£¿°¢ÀïÍúÍúÂò
+  			æ­£åœ¨å¯»æ‰¾é˜¿é‡Œæ—ºæ—ºå®˜æ–¹ä¸‹è½½ï¼Ÿé˜¿é‡Œæ—ºæ—ºä¹°
   			</div>
   			<div class="container">
- 				<button type="button" class="btn">ÏêÇé×ÉÑ¯</button>
+ 				<button type="button" class="btn">è¯¦æƒ…å’¨è¯¢</button>
   			
 			</div>
   		</div>
   		 
   	</div>
 </div>
-<!--»§ĞÍ¼°¼Û¸ñ-->
-<div style="margin-top:20px;background-color:white;" id="price">
+<!--æˆ·å‹åŠä»·æ ¼-->
+
+<div style="margin-top:20px;background-color:white;" id="price" >
 <div class="panel panel-default">
-<div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">»§ĞÍ¼°¼Û¸ñ</div>
+<div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">æˆ·å‹åŠä»·æ ¼</div>
 <div class="panel-body">
 <div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
 <div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
 <div class="col-md-1">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÔÊÒ</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å§å®¤</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÀÉú¼ä</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å«ç”Ÿé—´</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">Ãæ»ı</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">é¢ç§¯</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">·¿¼Û</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">æˆ¿ä»·</div>
 </div>
 <div class="col-md-4" style="width:200px;margin-top:12px;">
 <div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;µã»÷²é¿´»§ĞÍÍ¼</button>
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;ç‚¹å‡»æŸ¥çœ‹æˆ·å‹å›¾</button>
 </div>
 </div>
 </div>
@@ -455,23 +494,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
 <div class="col-md-1">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÔÊÒ</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å§å®¤</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÀÉú¼ä</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å«ç”Ÿé—´</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">Ãæ»ı</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">é¢ç§¯</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">·¿¼Û</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">æˆ¿ä»·</div>
 </div>
 <div class="col-md-4" style="width:200px;margin-top:12px;">
 <div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;µã»÷²é¿´»§ĞÍÍ¼</button>
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;ç‚¹å‡»æŸ¥çœ‹æˆ·å‹å›¾</button>
 </div>
 </div>
 </div>	
@@ -480,23 +519,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
 <div class="col-md-1">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÔÊÒ</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å§å®¤</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÀÉú¼ä</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å«ç”Ÿé—´</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">Ãæ»ı</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">é¢ç§¯</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">·¿¼Û</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">æˆ¿ä»·</div>
 </div>
 <div class="col-md-4" style="width:200px;margin-top:12px;">
 <div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;µã»÷²é¿´»§ĞÍÍ¼</button>
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;ç‚¹å‡»æŸ¥çœ‹æˆ·å‹å›¾</button>
 </div>
 </div>
 </div>	
@@ -505,32 +544,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
 <div class="col-md-1">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÔÊÒ</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å§å®¤</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">ÎÀÉú¼ä</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">å«ç”Ÿé—´</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">Ãæ»ı</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">é¢ç§¯</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">·¿¼Û</div>
+<div style="text-align:center;font-weight:bold;font-family:SimHei;">æˆ¿ä»·</div>
 </div>
 <div class="col-md-4" style="width:200px;margin-top:12px;">
 <div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;µã»÷²é¿´»§ĞÍÍ¼</button>
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;ç‚¹å‡»æŸ¥çœ‹æˆ·å‹å›¾</button>
 </div>
 </div>
 </div>
 <div class="row">
 <div class="col-md-2 col-md-offset-8" style="margin-top:10px;">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;×îĞÂ¼Û¸ñ</button>
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;æœ€æ–°ä»·æ ¼</button>
 </div>
 <div class="col-md-2" style="margin-top:10px;">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;ÍêÕû»§ĞÍ</button>
+<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;å®Œæ•´æˆ·å‹</button>
 </div>
 </div>	  
 </div></div></div>
@@ -541,7 +580,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
-<div class="panel-heading">ÏîÄ¿ÅäÌ×</div>
+<div class="panel-heading">é¡¹ç›®é…å¥—</div>
     <div class="ad_position_p" style="height:645px;/* background-color:white; */">
         <div class="limit_p" style="height:600px;width:1100px;">
             <div style="float:left;width:850px;display:inline;">
@@ -576,14 +615,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     </div>
 </div> 
-<!--ÏîÄ¿Î»ÖÃ-->
+<!--é¡¹ç›®ä½ç½®-->
 <div style="margin-top:20px;background-color:white;" id="position">
 <div class="panel panel-default">
-	  <div class="panel-heading">ÏîÄ¿Î»ÖÃ</div>
+	  <div class="panel-heading">é¡¹ç›®ä½ç½®</div>
 	  <div class="panel-body">
 	  	<div class="row">
 	  	<div class="col-md-6">
-	  	<div id='myMap' style="position:relative; width:540px; height:370px;"></div>
+	  	<div id="indexMap" style="position:relative; width:540px; height:370px;"></div>
 	  	</div>
 	  	<div class="col-md-6">
 	  	 <!-- <div><img src="images/streetside.png"></div> -->
@@ -594,17 +633,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  </div>
 	</div>
 
-<!--Ñ§Ğ£¼°ÖÜ±ß-->
+<!--å­¦æ ¡åŠå‘¨è¾¹-->
 <div style="margin-top:20px;background-color:white;" id="round">
 	<div class="panel panel-default">
-  		<div class="panel-heading">Ñ§Ğ£¼°ÖÜ±ß</div>
+  		<div class="panel-heading">å­¦æ ¡åŠå‘¨è¾¹</div>
   		<div class="panel-body">
   			<div class="item  col-xs-6 col-lg-6">
             <div class="thumbnail">
                 <img class="group list-group-image" src="/pic/traffic.jpg" alt="" />
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
-                        ¸½½üÑ§Ğ£</h4>
+                        é™„è¿‘å­¦æ ¡</h4>
                     
                     <ul class="list-group">
 					  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
@@ -620,7 +659,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" />
 	                <div class="caption">
 	                    <h4 class="group inner list-group-item-heading">
-	                        ¸½½üÅäÌ×</h4>
+	                        é™„è¿‘é…å¥—</h4>
 	                    
 	                    <ul class="list-group">
 						  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
@@ -635,18 +674,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 
   	</div>
 </div>
-<!--¹À¼Æ×Ü¹º·¿Ë°·Ñ-->
+<!--ä¼°è®¡æ€»è´­æˆ¿ç¨è´¹-->
 <div style="margin-top:20px;background-color:white;" id="purchase">
 <ul class="nav nav-tabs" id="costTabs">
-      <li class="active"><a href="#home" data-toggle="tab">¹º·¿Ë°·Ñ</a></li>
-      <li><a href="#profile" data-toggle="tab">³ÖÓĞ³É±¾</a></li>
+      <li class="active"><a href="#home" data-toggle="tab">è´­æˆ¿ç¨è´¹</a></li>
+      <li><a href="#profile" data-toggle="tab">æŒæœ‰æˆæœ¬</a></li>
       <li class="navbar-text navbar-right">&nbsp;&nbsp;&nbsp;&nbsp;</li>
-      <p class="navbar-text navbar-right"><b>ÒÔ×Ü¼Û50Íò°Ä±Ò¼ÆËã</b></p>
-      <!-- <div class="col-md-2 col-md-pull-5"><p><b>ÒÔ×Ü¼Û50Íò°Ä±Ò¼ÆËã</b></p></div> -->
-      <!-- <li class="pull-right"><p><b>ÒÔ×Ü¼Û50Íò°Ä±Ò¼ÆËã</b></p></li> -->
+      <p class="navbar-text navbar-right"><b>ä»¥æ€»ä»·50ä¸‡æ¾³å¸è®¡ç®—</b></p>
+      <!-- <div class="col-md-2 col-md-pull-5"><p><b>ä»¥æ€»ä»·50ä¸‡æ¾³å¸è®¡ç®—</b></p></div> -->
+      <!-- <li class="pull-right"><p><b>ä»¥æ€»ä»·50ä¸‡æ¾³å¸è®¡ç®—</b></p></li> -->
       <!-- <li class="disabled"><a href="#profile" data-toggle="tab">Web Service</a></li> -->
       <!--<li class="navbar-right">&nbsp;&nbsp;&nbsp;&nbsp;</li> 
-      <li class=""><p><b>ÒÔ×Ü¼Û50Íò°Ä±Ò¼ÆËã</b></p></li>
+      <li class=""><p><b>ä»¥æ€»ä»·50ä¸‡æ¾³å¸è®¡ç®—</b></p></li>
       <li class="navbar-right">&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
     </ul>
     
@@ -654,13 +693,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="tab-pane active" id="home">
       	<div style="padding-top:10px;padding-bottom:10px;">
       		<div style="float:left;margin-right:20px;margin-left:20px;">
-      			<p>¹À¼Æ×Ü¹º·¿Ë°·Ñ</p>
+      			<p>ä¼°è®¡æ€»è´­æˆ¿ç¨è´¹</p>
       		</div>
       		<div>
       			<select id="MySelect">
-				<option>Ô¼5Íò°ÄÔª</option>
-				<option>Ô¼15Íò°ÄÔª</option>
-				<option>Ô¼115Íò°ÄÔª</option>
+				<option>çº¦5ä¸‡æ¾³å…ƒ</option>
+				<option>çº¦15ä¸‡æ¾³å…ƒ</option>
+				<option>çº¦115ä¸‡æ¾³å…ƒ</option>
 				</select>
       		</div>
       	</div>
@@ -671,23 +710,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="tab-pane" id="profile">
       	<div style="padding-top:10px;padding-bottom:10px;">
       		<div style="float:left;margin-right:20px;margin-left:20px;">
-      			<p>Ô¤¹ÀÃ¿Äê³ÖÓĞ³É±¾</p>
+      			<p>é¢„ä¼°æ¯å¹´æŒæœ‰æˆæœ¬</p>
       		</div>
       		<div style="float:left;">
       			<select id="MySelect1">
-				<option value='5'>Ô¼5Íò°ÄÔª</option>
-				<option value='15'>Ô¼15Íò°ÄÔª</option>
-				<option value='115'>Ô¼115Íò°ÄÔª</option>
+				<option value='5'>çº¦5ä¸‡æ¾³å…ƒ</option>
+				<option value='15'>çº¦15ä¸‡æ¾³å…ƒ</option>
+				<option value='115'>çº¦115ä¸‡æ¾³å…ƒ</option>
 				</select>
       		</div>
       		<div style="margin-left:20px;float:left;">
-      			<p>Ë°·Ñ·¶Î§</p>
+      			<p>ç¨è´¹èŒƒå›´</p>
       		</div>
       		<div style="margin-left:20px;float:left;">
-      			<p>Ô¼1Íò°ÄÔª</p>
+      			<p>çº¦1ä¸‡æ¾³å…ƒ</p>
       		</div>
       		<div style="margin-left:20px;float:left;">
-      			<p>Ô¼7Íò°ÄÔª</p>
+      			<p>çº¦7ä¸‡æ¾³å…ƒ</p>
       		</div>
       	</div>
       	<div>
@@ -699,12 +738,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</div>
 </div>
 
-<!--´û¿îÃ¿ÔÂ»¹¿î¶àÉÙ-->
+<!--è´·æ¬¾æ¯æœˆè¿˜æ¬¾å¤šå°‘-->
 <div style="margin-top:20px;background-color:#9FB6CD;height:400px;padding:30px 40px;">
 <div class="row">
 <div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:25px;font-family:SimHei;">´û¿îÃ¿ÔÂ</div>
-<div style="color:white;font-weight:900;font-size:25px;font-family:SimHei;">»¹¿îÊÇ¶àÉÙ</div>
+<div style="color:white;font-weight:900;font-size:25px;font-family:SimHei;">è´·æ¬¾æ¯æœˆ</div>
+<div style="color:white;font-weight:900;font-size:25px;font-family:SimHei;">è¿˜æ¬¾æ˜¯å¤šå°‘</div>
 </div>
 <div class="col-md-9"></div>
 </div>
@@ -714,15 +753,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div style="color:white;font-weight:900;font-size:100px;font-family:SimHei;">?</div>
 </div>
 <div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">·¿¿î×Ü¶î</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">æˆ¿æ¬¾æ€»é¢</div>
 <div class="input-group"> <input type="text" class="form-control" placeholder="$400,000" style="margin-top:8px;width:220px;"></div>
 </div>
 <div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">Ë°ÂÊ</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">ç¨ç‡</div>
 <div class="input-group"> <input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;width:220px;"></div>
 </div>
 <div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">´û¿î·½Ê½</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">è´·æ¬¾æ–¹å¼</div>
 <div class="input-group" style="width:220px;">
 <input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;width:190px;">
 <div class="input-group-btn">
@@ -738,7 +777,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="row"  >
 <div class="col-md-3 col-md-offset-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">Ê×¸¶±ÈÀı</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">é¦–ä»˜æ¯”ä¾‹</div>
 <div class="input-group" style="width:220px;">
 <input type="text" class="form-control" placeholder="20%" style="margin-top:8px;width:190px;">
 <div class="input-group-btn">
@@ -752,15 +791,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>
 <div class="col-md-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">´û¿îÄêÏŞ</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">è´·æ¬¾å¹´é™</div>
 <div class="input-group" style="width:220px;">
-<input type="text" class="form-control" placeholder="25Äê" style="margin-top:8px;width:190px;">
+<input type="text" class="form-control" placeholder="25å¹´" style="margin-top:8px;width:190px;">
 <div class="input-group-btn">
      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="height:34px;margin-top:8px;background-color:#CDC5BF;width:30px;"><span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu" style="margin-left:-191;width:220px;opacity:0.7;margin-top:-22px">
-      <li><a href="#">20Äê</a></li>
-      <li><a href="#">25Äê</a></li>
-      <li><a href="#">30Äê</a></li>
+      <li><a href="#">20å¹´</a></li>
+      <li><a href="#">25å¹´</a></li>
+      <li><a href="#">30å¹´</a></li>
    </ul>
 </div>
 </div>
@@ -771,24 +810,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="col-md-9 col-md-offset-3" style="margin-top:-20px;background-color:#4682B4;height:60px;margin-left:288px;width:755px;">
 <div class="row">
 <div class="col-md-2 col-md-offset-2" style="margin-top: 18px;padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:18px;font-family:SimHei;">»¹¿î½ğ¶î</div>
+<div style="color:white;font-weight:900;font-size:18px;font-family:SimHei;">è¿˜æ¬¾é‡‘é¢</div>
 </div>
 <div class="col-md-7" style="padding-right:0px;width: 425px;">
 <input type="text" class="form-control" style="margin-top:13px;width:400px;">
 </div>
 <div class="col-md-1" style="margin-top: 18px;padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:18px;font-family:SimHei;">/ÔÂ</div>
+<div style="color:white;font-weight:900;font-size:18px;font-family:SimHei;">/æœˆ</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-<!--Í¶×ÊÊı¾İ-->
+<!--æŠ•èµ„æ•°æ®-->
 <div style="margin-top:20px;background-color:white;" id="invest">
 <div class="panel panel-default">
-	  <div class="heading">South MelbourneÍ¶×ÊÊı¾İ<br>
-	 <span id="detail"> Í¶×ÊÊı¾İ²Î¿¼2ÎÔÊÒ·¿²ú</span>
+	  <div class="heading">South MelbourneæŠ•èµ„æ•°æ®<br>
+	 <span id="detail"> æŠ•èµ„æ•°æ®å‚è€ƒ2å§å®¤æˆ¿äº§</span>
 	  
 	  </div>
 	  <hr>
@@ -796,28 +835,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	<table id="MyTable" align="center">
 	  	
     <tr> 
-        <th>ÄêÔö³¤ÂÊ</td> 
-        <th>ÖĞÎ»Êı¼Û¸ñ</td> 
-        <th>ÖĞÎ»Êı×â½ğ</td>
-        <th>×â·¿¿ÕÖÃÂÊ</td>
-        <th>×âÁŞĞèÇó</td>
-        <th>ÏÖ½ğ»Ø±¨</td>
+        <th>å¹´å¢é•¿ç‡</td> 
+        <th>ä¸­ä½æ•°ä»·æ ¼</td> 
+        <th>ä¸­ä½æ•°ç§Ÿé‡‘</td>
+        <th>ç§Ÿæˆ¿ç©ºç½®ç‡</td>
+        <th>ç§Ÿèµéœ€æ±‚</td>
+        <th>ç°é‡‘å›æŠ¥</td>
     </tr> 
     <tr class="table_tab1"> 
         <td>1.1%</td> 
         <td>$561K</td> 
-        <td>S560ÖÜ</td> 
+        <td>S560å‘¨</td> 
         <td>5.0%</td> 
-        <td>µÍ
+        <td>ä½
         </td> 
-        <td>£¤129/ÔÂ</td> 
+        <td>ï¿¥129/æœˆ</td> 
     </tr> 
     <tr class="table_tab2"> 
         <td></td> 
         <td></td> 
         <td></td> 
         <td></td> 
-        <td>Ã¿µ¥Î»102Ì½·Ã</td> 
+        <td>æ¯å•ä½102æ¢è®¿</td> 
         <td></td> 
     </tr> 
 	  	</table>
@@ -825,7 +864,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  </div>
 	</div>
 
-<!--ÖĞÎ»Êı¹«Ô¢·¿¼Û-->
+<!--ä¸­ä½æ•°å…¬å¯“æˆ¿ä»·-->
 <div style="margin-top:20px;background-color:white;padding:40px 0px;">
 <div class="row" style="height:200px;">
 <div class="col-md-2"></div>
@@ -834,42 +873,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$561,000</div>
  </div>
  <div class="col-md-3" style="padding-left:50px;width:340px;">
- <div style="color:#000000;font-weight:900;font-size:16px;">South MelbourneÖĞÎ»Êı¹«Ô¢·¿¼Û</div>
- <div style="color:#333;font-size:8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¼Û¸ñ×îºó¸üĞÂÈÕÆÚÎª2015.02.02</div>
+ <div style="color:#000000;font-weight:900;font-size:16px;">South Melbourneä¸­ä½æ•°å…¬å¯“æˆ¿ä»·</div>
+ <div style="color:#333;font-size:8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ä»·æ ¼æœ€åæ›´æ–°æ—¥æœŸä¸º2015.02.02</div>
  </div>
  <div class="col-md-4">
  <div><img src="images/rent.png"></div>
- <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;560/ÖÜ</div>
+ <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;560/å‘¨</div>
  </div>
 </div>
 <div class="row">
 <div class="col-md-5 col-md-offset-1">
  <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">1¾Ó</div>
+     <div style="color:#FF7F00;font-weight:900;">1å±…</div>
      <div style="color:#000000;font-weight:900;">$409,000</div>
      </button>
       <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">2¾Ó</div>
+     <div style="color:#FF7F00;font-weight:900;">2å±…</div>
      <div style="color:#000000;font-weight:900;">$409,000</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">3¾Ó</div>
+     <div style="color:#FF7F00;font-weight:900;">3å±…</div>
      <div style="color:#000000;font-weight:900;">$409,000</div>
      </button>
  </div></div>
  <div class="col-md-6">
  <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">1¾Ó</div>
+     <div style="color:#27408B;font-weight:900;">1å±…</div>
      <div style="color:#000000;font-weight:900;">$409</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">2¾Ó</div>
+     <div style="color:#27408B;font-weight:900;">2å±…</div>
      <div style="color:#000000;font-weight:900;">$409</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">3¾Ó</div>
+     <div style="color:#27408B;font-weight:900;">3å±…</div>
      <div style="color:#000000;font-weight:900;">$409</div>
      </button>
  </div></div>
@@ -878,9 +917,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--trend-->
 <div  style="margin-top:20px;background-color:white;">
  <ul class="nav nav-tabs nav-justified" id="trendTabs">
-      <li class="active"><a href="#price" data-toggle="tab">South MelBourneÇøÓòÖĞÎ»Êı·¿¼Û×ßÊÆ</a></li>
-      <li><a href="#rent" data-toggle="tab">South MelBourneÇøÓò×â½ğ×ßÊÆ</a></li>
-      <li><a href="#emptypercent" data-toggle="tab">South MelBourneÇøÓò¿ÕÖÃÂÊ×ßÊÆ</a></li>
+      <li class="active"><a href="#price" data-toggle="tab">South MelBourneåŒºåŸŸä¸­ä½æ•°æˆ¿ä»·èµ°åŠ¿</a></li>
+      <li><a href="#rent" data-toggle="tab">South MelBourneåŒºåŸŸç§Ÿé‡‘èµ°åŠ¿</a></li>
+      <li><a href="#emptypercent" data-toggle="tab">South MelBourneåŒºåŸŸç©ºç½®ç‡èµ°åŠ¿</a></li>
      <!-- <p class="navbar-text navbar-right">Signed in as Mark Otto</p>-->
     </ul>
     
@@ -906,18 +945,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 
-<!--½üÆÚÇøÓò³É½»Çé¿ölist-->
+<!--è¿‘æœŸåŒºåŸŸæˆäº¤æƒ…å†µlist-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
-	  <div class="panel-heading">South Melbourne½üÆÚÇøÓò³É½»Çé¿ö<div class="pull-right"><font size="1">Êı¾İÀ´Ô´£ºPGData ×î½ü¸üĞÂÊ±¼ä£º11/02/15</font></div></div>
+	  <div class="panel-heading">South Melbourneè¿‘æœŸåŒºåŸŸæˆäº¤æƒ…å†µ<div class="pull-right"><font size="1">æ•°æ®æ¥æºï¼šPGData æœ€è¿‘æ›´æ–°æ—¶é—´ï¼š11/02/15</font></div></div>
 	  <table class="table table-striped">
     	<thead>
     		<tr class="row">
-    		<th>µØÖ·</th>
-    		<th>¼Û¸ñ</th>
-    		<th>´²Î»</th>
-    		<th>ÏúÊÛÀàĞÍ</th>
-    		<th>ÏúÊÛÊ±¼ä</th>
+    		<th>åœ°å€</th>
+    		<th>ä»·æ ¼</th>
+    		<th>åºŠä½</th>
+    		<th>é”€å”®ç±»å‹</th>
+    		<th>é”€å”®æ—¶é—´</th>
     		</tr>
     	</thead>
     	<tbody>
@@ -925,42 +964,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>1712/83 Whiteman St</td>
     			<td>$407,000</td>
     			<td>2</td>
-    			<td>ÆÕÍ¨ÏúÊÛ</td>
+    			<td>æ™®é€šé”€å”®</td>
     			<td>11/04/15</td>
     		</tr>
     		<tr class="row">
     			<td>1712/83 Whiteman St</td>
     			<td>$407,000</td>
     			<td>2</td>
-    			<td>ÆÕÍ¨ÏúÊÛ</td>
+    			<td>æ™®é€šé”€å”®</td>
     			<td>11/04/15</td>
     		</tr>
     		<tr class="row">
     			<td>1712/83 Whiteman St</td>
     			<td>$407,000</td>
     			<td>2</td>
-    			<td>ÆÕÍ¨ÏúÊÛ</td>
+    			<td>æ™®é€šé”€å”®</td>
     			<td>11/04/15</td>
     		</tr>	
     		<tr class="row">
     			<td>1712/83 Whiteman St</td>
     			<td>$407,000</td>
     			<td>2</td>
-    			<td>ÆÕÍ¨ÏúÊÛ</td>
+    			<td>æ™®é€šé”€å”®</td>
     			<td>11/04/15</td>
     		</tr>
     		<tr class="row">
     			<td>1712/83 Whiteman St</td>
     			<td>$407,000</td>
     			<td>2</td>
-    			<td>ÆÕÍ¨ÏúÊÛ</td>
+    			<td>æ™®é€šé”€å”®</td>
     			<td>11/04/15</td>
     		</tr>
     		<tr class="row">
     			<td>1712/83 Whiteman St</td>
     			<td>$407,000</td>
     			<td>2</td>
-    			<td>ÆÕÍ¨ÏúÊÛ</td>
+    			<td>æ™®é€šé”€å”®</td>
     			<td>11/04/15</td>
     		</tr>
     	</tbody>
@@ -968,86 +1007,86 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 
-<!--µØÇøÌØµãstart-->
+<!--åœ°åŒºç‰¹ç‚¹start-->
 <div style="margin-top:20px;">
   <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:white;">Sourth Melbourne µØÇøÌØµã</div>
+  	<div class="panel-heading" style="background-color:white;">Sourth Melbourne åœ°åŒºç‰¹ç‚¹</div>
   	 <div class="panel-body">
   	     	<div class="col-xs-6">
   	     		<ol>
-  	     			<li>Æ½¾ù·¿¼ÛÔÚVICÅÅÃû NO.25</li>
-  	     			<li>Æ½¾ù×â½ğÔÚVICÅÅÃû NO.25</li>
-  	     			<li>±¾ÇøÓĞÓÅĞãĞ¡Ñ§</li>
-  	     			<li>±¾ÇøÓĞÓÅĞãĞ¡Ñ§</li>
-  	     			<li>±¾ÇøÓĞÓÅĞãĞ¡Ñ§</li>
+  	     			<li>å¹³å‡æˆ¿ä»·åœ¨VICæ’å NO.25</li>
+  	     			<li>å¹³å‡ç§Ÿé‡‘åœ¨VICæ’å NO.25</li>
+  	     			<li>æœ¬åŒºæœ‰ä¼˜ç§€å°å­¦</li>
+  	     			<li>æœ¬åŒºæœ‰ä¼˜ç§€å°å­¦</li>
+  	     			<li>æœ¬åŒºæœ‰ä¼˜ç§€å°å­¦</li>
   	     		</ol>
   	     	</div>
   	     	<div class="col-xs-6">
   	     		<ol start="6">
-  	     			<li>Æ½¾ù·¿¼ÛÔÚVICÅÅÃû NO.25</li>
-  	     			<li>Æ½¾ù×â½ğÔÚVICÅÅÃû NO.25</li>
-  	     			<li>±¾ÇøÓĞÓÅĞãĞ¡Ñ§</li>
-  	     			<li>±¾ÇøÓĞÓÅĞãĞ¡Ñ§</li>
-  	     			<li>±¾ÇøÓĞÓÅĞãĞ¡Ñ§</li>
+  	     			<li>å¹³å‡æˆ¿ä»·åœ¨VICæ’å NO.25</li>
+  	     			<li>å¹³å‡ç§Ÿé‡‘åœ¨VICæ’å NO.25</li>
+  	     			<li>æœ¬åŒºæœ‰ä¼˜ç§€å°å­¦</li>
+  	     			<li>æœ¬åŒºæœ‰ä¼˜ç§€å°å­¦</li>
+  	     			<li>æœ¬åŒºæœ‰ä¼˜ç§€å°å­¦</li>
   	     		</ol>
   	     	</div>
      </div>
   </div>
 <div>
-<!--µØÇøÌØµãend-->
-<!--ÈË¿Ú·Ö²¼-->
+<!--åœ°åŒºç‰¹ç‚¹end-->
+<!--äººå£åˆ†å¸ƒ-->
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
-	  <div class="panel-heading">South MelbourneÇøÓòÈË¿Ú·Ö²¼<div class="pull-right"><font size="1">Êı¾İÀ´Ô´£ºPGData ×î½ü¸üĞÂÊ±¼ä£º11/02/15</font></div></div>
+	  <div class="panel-heading">South MelbourneåŒºåŸŸäººå£åˆ†å¸ƒ<div class="pull-right"><font size="1">æ•°æ®æ¥æºï¼šPGData æœ€è¿‘æ›´æ–°æ—¶é—´ï¼š11/02/15</font></div></div>
 	  <table class="table table-striped">
     	<thead>
     		<tr class="row">
-    		<th>ÈË¿Ú×ÜÊı</th>
-    		<th>ÇøÓò</th>
-    		<th>³ÇÊĞ</th>
+    		<th>äººå£æ€»æ•°</th>
+    		<th>åŒºåŸŸ</th>
+    		<th>åŸå¸‚</th>
     		</tr>
     	</thead>
     	<tbody>
     		<tr class="row">
     			<td>407,000</td>
-    			<td>ÖĞ¹ú</td>
-    			<td>±±¾©</td>
+    			<td>ä¸­å›½</td>
+    			<td>åŒ—äº¬</td>
     		</tr>
     		<tr class="row">
     			<td>407,000</td>
-                <td>ÖĞ¹ú</td>
-                <td>±±¾©</td>
+                <td>ä¸­å›½</td>
+                <td>åŒ—äº¬</td>
     		</tr>
     		<tr class="row">
     			<td>407,000</td>
-                <td>ÖĞ¹ú</td>
-                <td>±±¾©</td>
+                <td>ä¸­å›½</td>
+                <td>åŒ—äº¬</td>
     		</tr>	
     		<tr class="row">
     			<td>407,000</td>
-                <td>ÖĞ¹ú</td>
-                <td>±±¾©</td>
+                <td>ä¸­å›½</td>
+                <td>åŒ—äº¬</td>
     		</tr>
     		<tr class="row">
     			<td>407,000</td>
-                <td>ÖĞ¹ú</td>
-                <td>±±¾©</td>
+                <td>ä¸­å›½</td>
+                <td>åŒ—äº¬</td>
     		</tr>
     		<tr class="row">
     			<td>407,000</td>
-                <td>ÖĞ¹ú</td>
-                <td>±±¾©</td>
+                <td>ä¸­å›½</td>
+                <td>åŒ—äº¬</td>
     		</tr>
     	</tbody>
   	  </table>
 	</div>
 </div>
-<!--ÈË¿Ú·Ö²¼end>
+<!--äººå£åˆ†å¸ƒend>
 
-<!--ÇøÓò¼ÒÍ¥Çé¿ö¹¹³Épie-->
+<!--åŒºåŸŸå®¶åº­æƒ…å†µæ„æˆpie-->
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
-	  <div class="panel-heading">South MelbourneÇøÓò¼ÒÍ¥Çé¿ö¹¹³É</div>
+	  <div class="panel-heading">South MelbourneåŒºåŸŸå®¶åº­æƒ…å†µæ„æˆ</div>
 	  <div class="panel-body">
 	  	<div id="zonefamily_pie" style="height:200px">
       	</div>
@@ -1055,10 +1094,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 
-<!--ĞÂÎÅ±¨µÀ-->
+<!--æ–°é—»æŠ¥é“-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default" id="MyPanel">
-	<div class="heading1"><strong>ĞÂÎÅ±¨µÀ</strong><br></div>
+	<div class="heading1"><strong>æ–°é—»æŠ¥é“</strong><br></div>
 	<div class="panel-body">
   		<div class="row">
           <div class="news_position">
@@ -1066,8 +1105,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">ĞÂÎÅ±êÌâ£º±±¾©ĞÅÏ¢</h3>
-		         <p>ĞÂÎÅÀ´Ô´£º±±¾©   &nbsp;&nbsp;&nbsp;&nbsp;Ê±¼ä£º2015</p>
+		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">æ–°é—»æ ‡é¢˜ï¼šåŒ—äº¬ä¿¡æ¯</h3>
+		         <p>æ–°é—»æ¥æºï¼šåŒ—äº¬   &nbsp;&nbsp;&nbsp;&nbsp;æ—¶é—´ï¼š2015</p>
 		        </div>
            </div>
 		   <div class="news_position" id="MyNews">
@@ -1083,8 +1122,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      </div>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <h3 style="font-weight: bold; font-size:20px;">ĞÂÎÅ±êÌâĞÂÎÅ±êÌâ</h3>
-		         <p style="font-weight: bold; font-size:20px;">ĞÂÎÅ±êÌâĞÂÎÅ±êÌâ</p>
+		         <h3 style="font-weight: bold; font-size:20px;">æ–°é—»æ ‡é¢˜æ–°é—»æ ‡é¢˜</h3>
+		         <p style="font-weight: bold; font-size:20px;">æ–°é—»æ ‡é¢˜æ–°é—»æ ‡é¢˜</p>
 		        </div>
 		   </div>
 		   <div class="news_position">
@@ -1092,8 +1131,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <h3 class="title_news" style="font-weight: bold; font-size:20px;">ĞÂÎÅ±êÌâ£º±±¾©ĞÅÏ¢</h3>
-		         <p>ĞÂÎÅÀ´Ô´£º±±¾©   &nbsp;&nbsp;&nbsp;&nbsp;Ê±¼ä£º2015</p>
+		         <h3 class="title_news" style="font-weight: bold; font-size:20px;">æ–°é—»æ ‡é¢˜ï¼šåŒ—äº¬ä¿¡æ¯</h3>
+		         <p>æ–°é—»æ¥æºï¼šåŒ—äº¬   &nbsp;&nbsp;&nbsp;&nbsp;æ—¶é—´ï¼š2015</p>
 		        </div>
 		   </div>
 		   
@@ -1106,15 +1145,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<!--ÄãÊÇ·ñĞèÒª·¿²ú¾­¼ÍÈËstart-->
+<!--ä½ æ˜¯å¦éœ€è¦æˆ¿äº§ç»çºªäººstart-->
 <div style="margin-top:20px;background-color:rgba(177, 220, 245, 1);" >
 <div class="row">
-    <!--×ó±ß start-->
+    <!--å·¦è¾¹ start-->
 	<div class="col-xs-3" >
 	  <div  class="col-xs-9">
 	   <div id="wenzi" style="margin:20 0 20 20">
-	     <span style="color:white;"><h3><strong>ÄãÊÇ·ñĞèÒª</strong></h3></span>
-	     <span style="color:white"><h3><strong>·¿²ú¾­¼ÍÈË</strong></h3></span>
+	     <span style="color:white;"><h3><strong>ä½ æ˜¯å¦éœ€è¦</strong></h3></span>
+	     <span style="color:white"><h3><strong>æˆ¿äº§ç»çºªäºº</strong></h3></span>
 	  	 <!--<img alt="image" class="img-responsive" src="pic/as.png">-->
 	   </div>
 	   </div>
@@ -1122,18 +1161,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       <img alt="image"  src="pic/wenhao.png">
 	   </div>
  	</div>
- 	 <!--×ó±ß end-->
- 	 <!--ÖĞ¼ästartÏß-->
+ 	 <!--å·¦è¾¹ end-->
+ 	 <!--ä¸­é—´startçº¿-->
  	<div class="col-xs-1" >
  		<div style="float:right;width: 1px;height: 563px; background: white;margin:20 0"></div>
  	</div>
- 	 <!--ÖĞ¼äendÏß-->
+ 	 <!--ä¸­é—´endçº¿-->
  	
- 	 <!--ÓÒ±ß start-->
+ 	 <!--å³è¾¹ start-->
  	<div class="col-xs-8">
- 	      <!--ÁĞ±í start-->
+ 	      <!--åˆ—è¡¨ start-->
  		 <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="margin:20 20 20 5">
- 		    <!--µÚÒ»¸öÔªËØstart-->
+ 		    <!--ç¬¬ä¸€ä¸ªå…ƒç´ start-->
  		 	 <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;">
            		  <div class="media">
           			  <a class="pull-left" href="#" target="_parent">
@@ -1141,16 +1180,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            			  </a>
            		 	  <div class="clearfix visible-sm"></div>
            		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
-                		  <h4 class="media-heading"><b>ÀîÏÈÉú</b></h4>
-                		  <h6>´ÓÒµ¾­Ñé£º8Äê</h6>
-                		  <h6>ÓïÑÔ£ºÆÕÍ¨»°¡¢ÔÁÓï¡¢Ó¢ÎÄ</h6>
-                		  <h6>ÇøÓò£ºSourth Melbourne</h6>
+                		  <h4 class="media-heading"><b>æå…ˆç”Ÿ</b></h4>
+                		  <h6>ä»ä¸šç»éªŒï¼š8å¹´</h6>
+                		  <h6>è¯­è¨€ï¼šæ™®é€šè¯ã€ç²¤è¯­ã€è‹±æ–‡</h6>
+                		  <h6>åŒºåŸŸï¼šSourth Melbourne</h6>
                 		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
             		 </div>
       			 </div>
      		 </div>
-     		 <!--µÚÒ»¸öÔªËØend-->
-     		 <!--µÚ¶ş¸öÔªËØstart-->
+     		 <!--ç¬¬ä¸€ä¸ªå…ƒç´ end-->
+     		 <!--ç¬¬äºŒä¸ªå…ƒç´ start-->
      		  <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;">
            		  <div class="media">
           			  <a class="pull-left" href="#" target="_parent">
@@ -1158,16 +1197,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            			  </a>
            		 	  <div class="clearfix visible-sm"></div>
            		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
-                		  <h4 class="media-heading"><b>ÀîÏÈÉú</b></h4>
-                		  <h6>´ÓÒµ¾­Ñé£º8Äê</h6>
-                		  <h6>ÓïÑÔ£ºÆÕÍ¨»°¡¢ÔÁÓï¡¢Ó¢ÎÄ</h6>
-                		  <h6>ÇøÓò£ºSourth Melbourne</h6>
+                		  <h4 class="media-heading"><b>æå…ˆç”Ÿ</b></h4>
+                		  <h6>ä»ä¸šç»éªŒï¼š8å¹´</h6>
+                		  <h6>è¯­è¨€ï¼šæ™®é€šè¯ã€ç²¤è¯­ã€è‹±æ–‡</h6>
+                		  <h6>åŒºåŸŸï¼šSourth Melbourne</h6>
                 		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
             		 </div>
       			 </div>
      		 </div>
-     		 <!--µÚ¶ş¸öÔªËØend-->
-     		 <!--µÚÈı¸öÔªËØstart-->
+     		 <!--ç¬¬äºŒä¸ªå…ƒç´ end-->
+     		 <!--ç¬¬ä¸‰ä¸ªå…ƒç´ start-->
      		  <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;">
            		  <div class="media">
           			  <a class="pull-left" href="#" target="_parent">
@@ -1175,28 +1214,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            			  </a>
            		 	  <div class="clearfix visible-sm"></div>
            		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
-                		  <h4 class="media-heading"><b>ÀîÏÈÉú</b></h4>
-                		  <h6>´ÓÒµ¾­Ñé£º8Äê</h6>
-                		  <h6>ÓïÑÔ£ºÆÕÍ¨»°¡¢ÔÁÓï¡¢Ó¢ÎÄ</h6>
-                		  <h6>ÇøÓò£ºSourth Melbourne</h6>
+                		  <h4 class="media-heading"><b>æå…ˆç”Ÿ</b></h4>
+                		  <h6>ä»ä¸šç»éªŒï¼š8å¹´</h6>
+                		  <h6>è¯­è¨€ï¼šæ™®é€šè¯ã€ç²¤è¯­ã€è‹±æ–‡</h6>
+                		  <h6>åŒºåŸŸï¼šSourth Melbourne</h6>
                 		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
             		 </div>
       			 </div>
      		 </div>
-     		 <!--µÚÈı¸öÔªËØend-->
+     		 <!--ç¬¬ä¸‰ä¸ªå…ƒç´ end-->
  		 </div>
- 		  <!--ÁĞ±í end-->
+ 		  <!--åˆ—è¡¨ end-->
  	</div>
- 	 <!--ÓÒ±ßend-->
+ 	 <!--å³è¾¹end-->
  </div>	
 </div>
 
 
 
-<!--ĞÂÎÅ±¨µÀ-->
+<!--æ–°é—»æŠ¥é“-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default" id="MyPanel">
-	<div class="heading1"><strong>ÍÆ¼öÏîÄ¿</strong><br></div>
+	<div class="heading1"><strong>æ¨èé¡¹ç›®</strong><br></div>
 	<div class="panel-body">
   		<div class="row">
           <div class="news_position">
@@ -1205,7 +1244,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p class="desc">·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö</p>
+		         <p class="desc">æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°</p>
 		          
 		        </div>
            </div>
@@ -1215,7 +1254,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p class="desc">·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö</p>
+		         <p class="desc">æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°</p>
 		          
 		        </div>
            </div>
@@ -1225,7 +1264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p class="desc">·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö·¿ÎİÃèÊö</p>
+		         <p class="desc">æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°æˆ¿å±‹æè¿°</p>
 		          
 		        </div>
 		   </div>
@@ -1241,7 +1280,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </div>
-
+ <!-- æ¨¡æ€æ¡†ï¼ˆModalï¼‰ -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:-300px;height:600px;width:1210px;">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               Bing Maps
+            </h4>
+         </div>
+         <div class="modal-body">
+            <div id='popMap' style="position:relative; width:1170px; height:500px;"></div>
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- æ¨¡æ€æ¡† -->
  <jsp:include page="foot.jsp" /> 
  <script src="/js/familyStatus.js"></script>
  <script src="/js/trend.js"></script>

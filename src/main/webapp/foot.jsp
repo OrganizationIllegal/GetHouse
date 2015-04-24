@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312" isELIgnored="false"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -20,13 +20,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-2"></div>
 		<div class="col-md-2" >
 			<span class="glyphicon glyphicon-phone-alt" style="font-size:20px;color:white;valign:bottom;"></spa>
-       <span style="font-size:20px;color:white;">º£ÍâÓÅÑ¡</span>
+       <span style="font-size:20px;color:white;">æµ·å¤–ä¼˜é€‰</span>
 			</div>
 		<div class="col-md-3" >
-			<p style="font-size:20px;color:white;">±±¾©ÊĞ³¯ÑôÇøÖĞº£¹ã³¡12²ã</p>
+			<p style="font-size:20px;color:white;">åŒ—äº¬å¸‚æœé˜³åŒºä¸­æµ·å¹¿åœº12å±‚</p>
 			</div>
 		<div class="col-md-3 style="color:white;">
-			 <p style="font-size:20px;color:white;">ÁªÏµµç»°£º400-810-9685</p>
+			 <p style="font-size:20px;color:white;">è”ç³»ç”µè¯ï¼š400-810-9685</p>
 			</div>
 		<div class="col-md-2></div>
 	</div>		
@@ -40,19 +40,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a style="font-size:20px;color:white;target="_blank" href="#"">Who we are</a>
 						</div>
 					<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">ÁªÏµÎÒÃÇ</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">è”ç³»æˆ‘ä»¬</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">¼ÓÈëÎÒÃÇ</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">åŠ å…¥æˆ‘ä»¬</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;"target="_blank" href="#">¹ØÓÚÎÒÃÇ</a>
+						<a style="font-size:15px;color:white;"target="_blank" href="#">å…³äºæˆ‘ä»¬</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">ĞÂÎÅ²©¿Í</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">æ–°é—»åšå®¢</a>
 						</div>
 					</dd>
 				</dl>
@@ -65,19 +65,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a style="font-size:20px;color:white;" target="_blank" href="#">Who we do</a>
 						</div>
 					<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">Ö°ÒµÖ¸µ¼</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">èŒä¸šæŒ‡å¯¼</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">Âô¼Ò·şÎñ</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">å–å®¶æœåŠ¡</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;"target="_blank" href="#">ÏÖ½ğ·µ»¹</a>
+						<a style="font-size:15px;color:white;"target="_blank" href="#">ç°é‡‘è¿”è¿˜</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">´û¿î¼ÆËã</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">è´·æ¬¾è®¡ç®—</a>
 						</div>
 					</dd>
 				</dl>
@@ -90,23 +90,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a style="font-size:20px;color:white;" target="_blank" href="#">Province</a>
 						</div>
 					<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">Ä«¶û±¾</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">å¢¨å°”æœ¬</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">Ï¤Äá</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">æ‚‰å°¼</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;"target="_blank" href="#">²¼ÀïË¹°à</a>
+						<a style="font-size:15px;color:white;"target="_blank" href="#">å¸ƒé‡Œæ–¯ç­</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">°¢µÂÀ³µÂ</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">é˜¿å¾·è±å¾·</a>
 						</div>
 						
 						<div>
-						<a style="font-size:15px;color:white;" target="_blank" href="#">çêË¹</a>
+						<a style="font-size:15px;color:white;" target="_blank" href="#">ç€æ–¯</a>
 						</div>
 						
 					</dd>
@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="row" style="background-color:black;padding: 10px 0px;">
 		    <div class="col-md-2"></div>
 		    <div class="col-md-8">
-		       <span style="font-size:12px;color:LightSlateGray;opacity:0.5;">ÍøÂçÎÄ»¯¾­ÓªĞí¿ÉÖ¤¾©ÍøÎÄ[2014]2148-348ºÅ   ÎÄÃ÷°ìÍøÎÄÃ÷ÉÏÍø¾Ù±¨µç»°£º4006561155 CopyRight@ 2014-2015 ¾©¶«JD.com °æÈ¨ËùÓĞ</span>
+		       <span style="font-size:12px;color:LightSlateGray;opacity:0.5;">ç½‘ç»œæ–‡åŒ–ç»è¥è®¸å¯è¯äº¬ç½‘æ–‡[2014]2148-348å·   æ–‡æ˜åŠç½‘æ–‡æ˜ä¸Šç½‘ä¸¾æŠ¥ç”µè¯ï¼š4006561155 CopyRight@ 2014-2015 äº¬ä¸œJD.com ç‰ˆæƒæ‰€æœ‰</span>
 		    </div>
 		    <div class="col-md-2"></div>
 		</div>

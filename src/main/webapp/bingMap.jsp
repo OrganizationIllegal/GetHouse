@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312" isELIgnored="false"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">
-   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script> 
+   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script> 
    <script src="/js/bingMap.js"></script>
 
    <link href="/css/mapleft.css" rel="stylesheet">
@@ -27,19 +27,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div id="title"  >
           <div class="btn-group btn-group-justified" role="group" aria-label="...">
   <div class="btn-group" role="group">
-      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">·¿ÎİÀàĞÍ <span class="caret"></span>
+      <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">æˆ¿å±‹ç±»å‹ <span class="caret"></span>
            </button>
             <ul class="dropdown-menu">
-                <li><a href="#">Ò»¾ÓÊÒ</a></li>
-                <li><a href="#">Á½¾ÓÊÒ</a></li>
-                <li><a href="#">º£¾°·¿</a></li>
+                <li><a href="#">ä¸€å±…å®¤</a></li>
+                <li><a href="#">ä¸¤å±…å®¤</a></li>
+                <li><a href="#">æµ·æ™¯æˆ¿</a></li>
              </ul>
   </div>
   <div class="btn-group" role="group">
-     <button type="button" class="btn btn-inverse">¼Û¸ñ´ÓµÍµ½¸ß</button>
+     <button type="button" class="btn btn-inverse">ä»·æ ¼ä»ä½åˆ°é«˜</button>
   </div>
   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-inverse ">¼Û¸ñ´Ó¸ßµ½µÍ</button>
+    <button type="button" class="btn btn-inverse ">ä»·æ ¼ä»é«˜åˆ°ä½</button>
   </div>
 </div>
 </div>
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <!--one item-->
    <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
        <div>
-          <h6>ÏîÄ¿µØÖ·£º°ÄÖŞ²úÑôÈª¿ªÀ´</h6>
+          <h6>é¡¹ç›®åœ°å€ï¼šæ¾³æ´²äº§é˜³æ³‰å¼€æ¥</h6>
        </div>
       
        <div class="media">
@@ -58,11 +58,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </a>
             <div class="clearfix visible-sm"></div>
             <div class="media-body fnt-smaller">
-                <h6 class="media-heading">°Ä´óÀûÑÇ·¿²ú</h6>
-                <h6>ÏîÄ¿¼Û¸ñ<span class="right">$550,000</span></h6>
-                <h6>ÏîÄ¿Ãæ»ı<span class="right">58-119</span></h6>
-                <h6>¿ÉÊÛÌ×Êı<span class="right">47</span></h6>
-                <h6>Æ½¾ùµ¥¼Û<span class="right">$550,000</span></h6>
+                <h6 class="media-heading">æ¾³å¤§åˆ©äºšæˆ¿äº§</h6>
+                <h6>é¡¹ç›®ä»·æ ¼<span class="right">$550,000</span></h6>
+                <h6>é¡¹ç›®é¢ç§¯<span class="right">58-119</span></h6>
+                <h6>å¯å”®å¥—æ•°<span class="right">47</span></h6>
+                <h6>å¹³å‡å•ä»·<span class="right">$550,000</span></h6>
             </div>
        </div>
       </div>
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <!--one item-->
    <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
        <div>
-          <h6>ÏîÄ¿µØÖ·£º°ÄÖŞ²úÑôÈª¿ªÀ´</h6>
+          <h6>é¡¹ç›®åœ°å€ï¼šæ¾³æ´²äº§é˜³æ³‰å¼€æ¥</h6>
        </div>
       
        <div class="media">
@@ -79,11 +79,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </a>
             <div class="clearfix visible-sm"></div>
             <div class="media-body fnt-smaller">
-                <h6 class="media-heading">°Ä´óÀûÑÇ·¿²ú</h6>
-                <h6>ÏîÄ¿¼Û¸ñ<span class="right">$550,000</span></h6>
-                <h6>ÏîÄ¿Ãæ»ı<span class="right">58-119</span></h6>
-                <h6>¿ÉÊÛÌ×Êı<span class="right">47</span></h6>
-                <h6>Æ½¾ùµ¥¼Û<span class="right">$550,000</span></h6>
+                <h6 class="media-heading">æ¾³å¤§åˆ©äºšæˆ¿äº§</h6>
+                <h6>é¡¹ç›®ä»·æ ¼<span class="right">$550,000</span></h6>
+                <h6>é¡¹ç›®é¢ç§¯<span class="right">58-119</span></h6>
+                <h6>å¯å”®å¥—æ•°<span class="right">47</span></h6>
+                <h6>å¹³å‡å•ä»·<span class="right">$550,000</span></h6>
             </div>
        </div>
       </div>
@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <!--one item-->
    <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
        <div>
-          <h6>ÏîÄ¿µØÖ·£º°ÄÖŞ²úÑôÈª¿ªÀ´</h6>
+          <h6>é¡¹ç›®åœ°å€ï¼šæ¾³æ´²äº§é˜³æ³‰å¼€æ¥</h6>
        </div>
       
        <div class="media">
@@ -100,11 +100,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </a>
             <div class="clearfix visible-sm"></div>
             <div class="media-body fnt-smaller">
-                 <h6 class="media-heading">°Ä´óÀûÑÇ·¿²ú</h6>
-                <h6>ÏîÄ¿¼Û¸ñ<span class="right">$550,000</span></h6>
-                <h6>ÏîÄ¿Ãæ»ı<span class="right">58-119</span></h6>
-                <h6>¿ÉÊÛÌ×Êı<span class="right">47</span></h6>
-                <h6>Æ½¾ùµ¥¼Û<span class="right">$550,000</span></h6>
+                 <h6 class="media-heading">æ¾³å¤§åˆ©äºšæˆ¿äº§</h6>
+                <h6>é¡¹ç›®ä»·æ ¼<span class="right">$550,000</span></h6>
+                <h6>é¡¹ç›®é¢ç§¯<span class="right">58-119</span></h6>
+                <h6>å¯å”®å¥—æ•°<span class="right">47</span></h6>
+                <h6>å¹³å‡å•ä»·<span class="right">$550,000</span></h6>
             </div>
        </div>
       </div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <!--one item-->
    <div id="firsthouse" style="border:1px solid #E6E6FA;padding:0 5 10 5">
        <div>
-          <h6>ÏîÄ¿µØÖ·£º°ÄÖŞ²úÑôÈª¿ªÀ´</h6>
+          <h6>é¡¹ç›®åœ°å€ï¼šæ¾³æ´²äº§é˜³æ³‰å¼€æ¥</h6>
        </div>
       
        <div class="media">
@@ -121,11 +121,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </a>
             <div class="clearfix visible-sm"></div>
             <div class="media-body fnt-smaller">
-                 <h6 class="media-heading">°Ä´óÀûÑÇ·¿²ú</h6>
-                <h6>ÏîÄ¿¼Û¸ñ<span class="right">$550,000</span></h6>
-                <h6>ÏîÄ¿Ãæ»ı<span class="right">58-119</span></h6>
-                <h6>¿ÉÊÛÌ×Êı<span class="right">47</span></h6>
-                <h6>Æ½¾ùµ¥¼Û<span class="right">$550,000</span></h6>
+                 <h6 class="media-heading">æ¾³å¤§åˆ©äºšæˆ¿äº§</h6>
+                <h6>é¡¹ç›®ä»·æ ¼<span class="right">$550,000</span></h6>
+                <h6>é¡¹ç›®é¢ç§¯<span class="right">58-119</span></h6>
+                <h6>å¯å”®å¥—æ•°<span class="right">47</span></h6>
+                <h6>å¹³å‡å•ä»·<span class="right">$550,000</span></h6>
             </div>
        </div>
       </div>
@@ -144,10 +144,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form class="navbar-form navbar-left" role="search" id="form">
          <div class="form-group has-feedback">
             <!--<i class="glyphicon glyphicon-search form-control-feedback"></i>-->
-            <input id="txtQuery" type="text" placeholder="MelbourneÄ«¶û±¾" class="form-control" style="width:235px;height:20px;">
+            <input id="txtQuery" type="text" placeholder="Melbourneå¢¨å°”æœ¬" class="form-control" style="width:235px;height:20px;">
          </div>
-         <!--<button type="button" onclick="LoadSearchModule()">ËÑË÷</button>-->
-         <a href="#" onclick="LoadSearchModule()">ËÑË÷</a>
+         <!--<button type="button" onclick="LoadSearchModule()">æœç´¢</button>-->
+         <a href="#" onclick="LoadSearchModule()">æœç´¢</a>
       </form>    
       </div>
 	<div class="col-md-6 col-md-offset-1" id="dropdown">
@@ -155,13 +155,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	 <li class="divider-vertical"></li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
-               ·¿ÎİÀàĞÍ 
+               æˆ¿å±‹ç±»å‹ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">Ò»¾ÓÊÒ</a></li>
-               <li><a href="#">Á½¾ÓÊÒ</a></li>
-               <li><a href="#">º£¾°·¿</a></li>
+               <li><a href="#">ä¸€å±…å®¤</a></li>
+               <li><a href="#">ä¸¤å±…å®¤</a></li>
+               <li><a href="#">æµ·æ™¯æˆ¿</a></li>
             </ul>
          </li>
       </ul>
@@ -169,7 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <li class="divider-vertical"></li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
-               ¼Û¸ñ·¶Î§ 
+               ä»·æ ¼èŒƒå›´ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
@@ -183,13 +183,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   <li class="divider-vertical"></li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
-               ½»·¿Ê±¼ä 
+               äº¤æˆ¿æ—¶é—´ 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">ËÄÔÂµ×</a></li>
-               <li><a href="#">ÎåÔÂµ×</a></li>
-               <li><a href="#">ÁùÔÂµ×</a></li>
+               <li><a href="#">å››æœˆåº•</a></li>
+               <li><a href="#">äº”æœˆåº•</a></li>
+               <li><a href="#">å…­æœˆåº•</a></li>
             </ul>
          </li>
       </ul>
@@ -202,6 +202,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>    
    </div>
    </div>
+   <!-- æ¨¡æ€æ¡†ï¼ˆModalï¼‰ -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:-300px;height:600px;width:1210px;">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               Bing Maps
+            </h4>
+         </div>
+         <div class="modal-body">
+            <div id='popMap' style="position:relative; width:1170px; height:500px;"></div>
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- æ¨¡æ€æ¡† -->
    <jsp:include page="foot.jsp" />
 </body>
 
