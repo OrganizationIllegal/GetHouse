@@ -2,20 +2,22 @@ $(function(){
     		var myChart = echarts.init(document.getElementById('GouFang_pie')); 
 	        
 	        var option = {
+	        	title : {
+			        text: '最新更新日期：2015-04-26             ',
+			        x:'right',
+			        show:true
+			    	},
 	        	animation:false,
 	        	tooltip: {
 				        trigger: 'item',
 				        formatter: "{a} <br/>{b} : {c} ({d}%)"
 				    },
-			    title : {
-			        x:'center'
-			    },
 			    legend: {
 			        orient : 'vertical',
 			        x : 'left',
 			        padding: 10,
 			        itemGap: 20,
-			        data:['印花税','律师费','律师费','律师费','律师费'],
+			        data:['印花税','营业费','城建费','安全费','环保费'],
 			        show:true
 			    },
 			    calculable : true,
@@ -27,10 +29,10 @@ $(function(){
 			            itemStyle : {
 			                normal : {
 			                    label : {
-			                        show : false
+			                        show : true
 			                    },
 			                    labelLine : {
-			                        show : false
+			                        show : true
 			                    }
 			                },
 			                emphasis : {
@@ -47,10 +49,10 @@ $(function(){
 			            center: ['50%', '50%'],
 			            data:[
 			                {value:335, name:'印花税'},
-			                // {value:310, name:'律师费'},
-			                // {value:234, name:'律师费'},
-			                // {value:135, name:'律师费'},
-			                {value:1548, name:'律师费'}
+			                {value:310, name:'营业费'},
+			                {value:234, name:'城建费'},
+			                {value:135, name:'安全费'},
+			                {value:1548, name:'环保费'}
 			            ]
 			        }
 			    ]
@@ -131,6 +133,11 @@ $('#costTabs a').click(function (e) {
       var myChart1 = echarts.init(document.getElementById('ChengBen_pie')); 
 	        
 	        var option1={
+	        		title : {
+			        text: '最新更新日期：2015-04-26             ',
+			        x:'right',
+			        show:true
+			    	},
 	        		animation:false,
 				    tooltip: {
 				        trigger: 'item',
@@ -153,10 +160,10 @@ $('#costTabs a').click(function (e) {
 			            itemStyle : {
 			                normal : {
 			                    label : {
-			                        show : false
+			                        show : true
 			                    },
 			                    labelLine : {
-			                        show : false
+			                        show : true
 			                    }
 			                },
 			                emphasis : {

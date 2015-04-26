@@ -47,6 +47,10 @@ $(function(){
 				};
 				var radius = [60, 75];
 				option = {
+					title:{
+						text:"最新更新时间:2015-04-28",
+						x:"right"
+					},
 				    legend: {
 				        x : 'center',
 				        y : 'center',

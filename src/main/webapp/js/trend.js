@@ -2,6 +2,11 @@
     		var myChart = echarts.init(document.getElementById('price_line')); 
 	        
 	        var option = {
+	        	title:{
+	        		text:"最新更新时间:2015-04-25",
+	        		x:"right"
+	        		
+	        	},
 			    tooltip : {
 			        trigger: 'axis'
 			    },
@@ -29,7 +34,7 @@
 			            name:'房价',
 			            type:'line',
 			            stack: '价格',
-			            data:[120, 132, 101, 134, 90, 230, 210]
+			            data:[120, 12, 101, 104, 190, 230, 210]
 			        }
 			    ]
 			};
@@ -51,6 +56,11 @@ $('#trendTabs a').click(function (e) {
       var myChart1 = echarts.init(document.getElementById('rent_line')); 
 	        
 	        var option1 = {
+	        	title:{
+	        		text:"最新更新时间:2015-04-26",
+	        		x:"right"
+	        		
+	        	},
 			    tooltip : {
 			        trigger: 'axis'
 			    },
@@ -88,6 +98,11 @@ $('#trendTabs a').click(function (e) {
 
 	        var myChart2 = echarts.init(document.getElementById('emptypercent_line')); 
 	        var option2 = {
+	        	title:{
+	        		text:"最新更新时间:2015-04-27",
+	        		x:"right"
+	        		
+	        	},
 			    tooltip : {
 			        trigger: 'axis'
 			    },
@@ -115,7 +130,7 @@ $('#trendTabs a').click(function (e) {
 			            name:'空置率',
 			            type:'line',
 			            stack: '百分比',
-			            data:[120, 132, 101, 134, 90, 230, 210]
+			            data:[10, 32, 101, 134, 90, 30, 210]
 			        }
 			    ]
 			};
