@@ -1,4 +1,4 @@
-/*Ò³Ã¼Ò³½Å*/
+/*Ò³Ã¼Ò³ï¿½ï¿½*/
 #headbar a{
 	color:#9C9C9C;
 	font-weight:bold;
@@ -10,8 +10,8 @@
 }
 .fooder{
 background: -ms-linear-gradient(top,rgba(19, 51, 89, 1),rgba(51, 51, 51, 51));        /* IE 10 */
-background:-moz-linear-gradient(top,rgba(19, 51, 89, 1),rgba(51, 51, 51, 51));/*»ðºü*/ 
-background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(19, 51, 89, 1)), to(rgba(51, 51, 51, 51)));/*¹È¸è*/ 
+background:-moz-linear-gradient(top,rgba(19, 51, 89, 1),rgba(51, 51, 51, 51));/*ï¿½ï¿½ï¿½*/ 
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(19, 51, 89, 1)), to(rgba(51, 51, 51, 51)));/*ï¿½È¸ï¿½*/ 
 }
 #tab a{
 	padding-top:5px;
@@ -24,7 +24,7 @@ background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(19, 51, 89, 1)), to
 	background-color:rgba(19, 51, 89, 1);
 	color:#EEEE00;
 }
-/*index nav-tab ±³¾°ÑÕÉ«*/  
+/*index nav-tab ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«*/  
 	.nav-tabs > li > a {
       color: #555555;
       cursor: default;
@@ -32,7 +32,7 @@ background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(rgba(19, 51, 89, 1)), to
       border: 1px solid #dddddd;
       border-bottom-color: transparent;
       } 
-/*index ÖÐÎ»Êý*/ 
+/*index ï¿½ï¿½Î»ï¿½ï¿½*/ 
 #block .col-md-2{
 background-color:red;
 }   
@@ -83,6 +83,7 @@ background-color:red;
 		letter-spacing:0.5px;
 		margin:10px;
 	}
+	
 	.btn{
 		width:160px;
 		margin:0 auto;
@@ -90,6 +91,7 @@ background-color:red;
 		margin-top:10px;
 		margin-bottom:20px;
 	}
+	
 	#MyPanel{
 		background-color:rgb(200, 221, 244);
 	}
@@ -117,7 +119,7 @@ background-color:red;
 		background-color:white;
 		padding: 2px 0px 10px 20px;
 		margin-top: 10px;
-		height£º98px;
+		heightï¿½ï¿½98px;
 	}
 	.news_action{
 	 	padding:20px;

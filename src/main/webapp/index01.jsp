@@ -11,9 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
-   <link href="/css/index.css" rel="stylesheet">
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script> 
-   <script src="/js/bingMap.js"></script>
+   <!--<script src="/js/bingMap.js"></script>-->
 
    <link href="/css/mapleft.css" rel="stylesheet">
  <!-- 绘制圆形 -->
@@ -43,21 +42,112 @@ $(function(){
     ctx.fill();　　　　　　//使用ctx.fill();就是填充色；                 
 })
 </script>
+<style style="text/css">
+     select{
+        height: auto !important;
+        padding: 0px 0px !important;
+     }
+     .btn{
+     	padding:9px 12px !important;
+     	width:auto !important;
+		margin:auto auto !important;
+		display:auto !important;
+		margin-top:auto !important;
+		margin-bottom:auto !important;
+     }
+</style>
 </head>
 <body style="padding-top: 105px;">
  <jsp:include page="head.jsp" />
  <div class="container">
+ <!--搜索-->
+ <div style="" class="col-lg-12">
+        <div class="col-lg-12" style="height:400px;background:url(pic/indexsearch1.jpg);background-repeat:no-repeat;background-size: contain;">
+            <div style="padding-top:70px;" class="col-lg-10 col-lg-offset-1">
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="input-group" class="col-lg-12">
+                        <div style="margin-left:20px;float:left;">
+                        <select id="territory">
+                        <option value ="austrilia">澳洲</option>
+                        <option value ="america">美洲</option>
+                        <option value ="asia">亚洲</option>
+                        <option value ="africa">非洲</option>
+                        <option value ="europe">欧洲</option>
+                        </select>
+                        </div>
+                        
+                        <div style="float:left;">
+                            <ul style="list-style-type:none;text-align:left;padding-left:10px;" id="cities">
+                                <li style="float:left;padding-left:8px;"><a style="color:white">墨尔本</a></li>
+                                <li style="float:left;padding-left:8px;"><a style="color:white">悉尼</a></li>
+                                <li style="float:left;padding-left:8px;"><a style="color:white">布里斯班</a></li>
+                                <li style="float:left;padding-left:8px;"><a style="color:white">阿德莱德</a></li>
+                                <li style="float:left;padding-left:8px;"><a style="color:white">珀斯</a></li>
+                            </ul>
+                        </div>
+                    </div>
+        
+            </div>
+            <form role="form" action="" method="post" >
+                 <div class="row" style="margin-bottom:5px;">
+                  <div class="col-lg-6">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="searchTerritory" name="searchcity">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                </div><!-- /.row -->
+                <div class="row">
+                    <div class="input-group" class="col-lg-3">
+                        <div style="margin-left:20px;float:left;">
+                        <select id="territory" class="form-control input-sm" name="type">
+                        <option value ="">房屋类型</option>
+                        <option value ="america">一居室</option>
+                        <option value ="asia">二居室</option>
+                        <option value ="africa">三居室</option>
+                        <option value ="europe">四居室</option>
+                        </select>
+                        </div>
+                        <div style="margin-left:20px;float:left;">
+                        <select id="territory" class="form-control input-sm" name="minimumprice">
+                        <option value ="">最小价格</option>
+                        <option value ="10000">10,000</option>
+                        <option value ="20000">20,000</option>
+                        <option value ="30000">30,000</option>
+                        <option value ="40000">40,000</option>
+                        </select>
+                        </div>
+                        <div style="margin-left:20px;float:left;">
+                        <select id="territory" class="form-control input-sm" name="maximumprice">
+                        <option value ="">最大价格</option>
+                        <option value ="70000">70,000</option>
+                        <option value ="80000">80,000</option>
+                        <option value ="90000">90,000</option>
+                        <option value ="100000">100,000</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+            
+    </div>
+    
+</div>
+ 
+ <!--搜索end-->
+ 
  
  <!--我们重新定义-->
- <div style="background-color:rgba(21, 63, 101, 1)">
- <div class="row" >
-					<div class="col-md-offset-4 col-md-3">
-					<img src="pic/jt.jpg">
-					</div>
-			
-					<div class="col-md-5">
-						</div>
+ <div style="background-color:rgba(21, 63, 101, 1);height:120px;margin-top:380px;padding-left:-20px;padding-right:-20px">
+ 	<div>
+		<div class="col-md-offset-4 col-md-3">
+		<img src="pic/jt.jpg">
 		</div>
+	</div>
  </div>
 
  
@@ -214,6 +304,7 @@ $(function(){
 </div>
 <!-- 妯℃�妗�-->
    <jsp:include page="foot.jsp" />
+   <script type="text/javascript" src="js/houseinfosearch.js"></script>
 </body>
 
 </html>
