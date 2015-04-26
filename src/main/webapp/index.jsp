@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -1095,14 +1095,25 @@ function tab6(){
 </div>
 
 <!--新闻报道-->
+<!--新闻报道-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default" id="MyPanel">
 	<div class="heading1"><strong>新闻报道</strong><br></div>
 	<div class="panel-body">
   		<div class="row">
           <div class="news_position">
-                <div class="scroll" id="left">
-                     <img src="/images/news.jpg" alt="" width=350px height=255px>
+          		<div class="info" id="left">
+                <!-- <div class="scroll" id="left"> -->
+                     <!-- <img src="/images/news.jpg" alt="" width=350px height=255px> -->
+                     <div class="news_action_left" style="display:none;">
+	                     <ul class="list_l" id="list_scroll_left">
+							  <li >Cras justo odio</li>
+							  <li >span Dapibus ac facilisis in</li>
+							  <li >Morbi leo risus</li>
+							  <li >Vestibulum at eros</li>
+						</ul>
+                    
+                     </div>
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：北京信息</h3>
@@ -1110,9 +1121,9 @@ function tab6(){
 		        </div>
            </div>
 		   <div class="news_position" id="MyNews">
-		      	<div class="info">
-                     <div class="news_action" style="display:none;">
-	                     <ul class="list" id="list_scroll">
+		      	<div class="info" id="middle">
+                     <div class="news_action_middle" style="display:none;">
+	                     <ul class="list_m" id="list_scroll_middle">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
@@ -1127,9 +1138,22 @@ function tab6(){
 		        </div>
 		   </div>
 		   <div class="news_position">
-		      <div class="scroll" id="right">
-                     <img src="/images/news.jpg" alt="" width=350px height=255px>
+		   		<div class="info" id="right">
+                <!-- <div class="scroll" id="left"> -->
+                     <!-- <img src="/images/news.jpg" alt="" width=350px height=255px> -->
+                     <div class="news_action_right" style="display:none;">
+	                     <ul class="list_r" id="list_scroll_right">
+							  <li >Cras justo odio</li>
+							  <li >span Dapibus ac facilisis in</li>
+							  <li >Morbi leo risus</li>
+							  <li >Vestibulum at eros</li>
+						</ul>
+                    
+                     </div>
                 </div>
+		      <!-- <div class="scroll" id="right">
+                     <img src="/images/news.jpg" alt="" width=350px height=255px>
+                </div> -->
                 <div class="caption_my" style="height:98px;">
 		         <h3 class="title_news" style="font-weight: bold; font-size:20px;">新闻标题：北京信息</h3>
 		         <p>新闻来源：北京   &nbsp;&nbsp;&nbsp;&nbsp;时间：2015</p>
