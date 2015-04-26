@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		</div>
        </div>
        </div>
-   <div class="row"style="background-color:white;padding-top:25px;">
+   <div class="row" style="background-color:white;padding-top:25px;">
 		<div class="col-md-1"></div>
 		<div class="col-md-2">
 		  <img src="images/logo.PNG" style="margin-top:-20px;"/>
@@ -67,5 +67,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="col-md-1"></div>
    </div>
 </nav>
+
 </body>
 </html>
