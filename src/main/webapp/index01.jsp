@@ -47,6 +47,84 @@ $(function(){
 <body style="padding-top: 105px;">
  <jsp:include page="head.jsp" />
  <div class="container">
+ 
+ <!--我们重新定义-->
+ <div style="background-color:rgba(21, 63, 101, 1)">
+ <div class="row" >
+					<div class="col-md-offset-4 col-md-3">
+					<img src="pic/jt.jpg">
+					</div>
+			
+					<div class="col-md-5">
+						</div>
+		</div>
+ </div>
+
+ 
+ <!--我们重新定义-->
+ 
+ 
+ 
+ 
+ <!-- 轮播-->
+<div>
+<div id="myCarousel" class="carousel slide">
+   <!-- 轮播（Carousel）指标 -->
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active" style="background-color:#8E8E8E"></li>
+      <li data-target="#myCarousel" data-slide-to="1" style="background-color:#8E8E8E"></li>
+      <li data-target="#myCarousel" data-slide-to="2" style="background-color:#8E8E8E"></li>
+   </ol>   
+   <!-- 轮播（Carousel）项目 -->
+   <div class="carousel-inner">
+      <div class="item active">
+         <img src="pic/a.jpg" alt="First slide">
+         <div class="carousel-caption"></div>
+      </div>
+      <div class="item">
+         <img src="pic/a.jpg" alt="Second slide">
+         <div class="carousel-caption"></div>
+      </div>
+      <div class="item">
+         <img src="pic/a.jpg" alt="Third slide">
+         <div class="carousel-caption"></div>
+      </div>
+   </div>
+   </div>
+   
+   </div>
+<!-- 轮播-->
+ 
+ 
+ <!--why-->
+
+ <div style="background-color:rgba(234, 234, 234, 1)">
+		
+		
+		<div class="row" >
+				<div class="col-md-4 col-md-offset-4" style="Margin-top:40px;">
+					<span style="font-size:20px;color:Black;">Why work with TheRedpln</span>
+			</div>
+		
+		<div class="col-md-4">
+			</div>
+ 		</div>
+    
+    <div class="row">
+    	<div class="col-md-8 col-md-offset-2" style="Margin-top:40px;Margin-bottom:40px;">
+    		<img src="pic/sss.jpg" >
+    		</div>
+    		
+    	<div clss="col-md-2" style="Margin-bottom:40px;">
+    		</div>
+    	
+    	</div>
+    </div>
+ <!--why-->
+ 
+ 
+ <!--郭瑞-->
+ <div>
  <div class="row" style="padding-top:50px;">
  <div class="col-md-5"></div>
  <div class="col-md-2">
@@ -74,6 +152,65 @@ $(function(){
   </div>
  <div class="col-md-4"></div>
  </div>
+</div>
+<!--郭瑞-->
+
+<!--last-->
+<div>
+  	<div class="row">
+  		<div class="col-md-4 col-md-offset-5" >
+  			<span style="font-size:22px;color:Black;">Our latest blog posts</span>
+  			</div>
+  		
+  		<div class="col-md-3"></div>
+  		
+  		
+  		</div>
+  		
+  	<div class="row">
+  		<div class="col-md-6 col-md-offset-4" style="Margin-top:10px;">
+  			<span style="font-size:20px;color:Black;">From Toronto's real estate market to home staging tips</span>
+  			</div>
+  		
+  		<div class="col-md-2"></div>
+  		
+  		</div>
+  		
+  	<div class="row" style="margin-top:40px;margin-bottom:40px;">
+  		<div class="col-md-2 col-md-offset-2">
+  			
+  			<div>
+  				<img src="pic/last.jpg">
+  				<span>dsgadgdsgasdgasgasdg </span>
+  				
+  				</div>
+  		</div>
+  		
+  		<div class="col-md-2 col-md-offset-1">
+  				<div>
+  				<img src="pic/last.jpg">
+  				<span> </span>
+  				
+  				</div>
+  		</div>
+  		
+  		<div class="col-md-2 col-md-offset-1">
+  				<div>
+  				<img src="pic/last.jpg">
+  				<span> </span>
+  				
+  				</div>
+  		</div>
+  		
+  		</div>
+
+
+
+
+
+    </div>
+<!--last-->
+
 </div>
 <!-- 妯℃�妗�-->
    <jsp:include page="foot.jsp" />
