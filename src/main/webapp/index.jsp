@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
-   <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+   <script src="http://echarts.baidu.com/build/dist/echarts-all.js" charset="GBK"></script>
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script>
    <script src="/js/bingMap.js"></script>
    <link href="/css/List-Grid-View.css" rel="stylesheet">
@@ -640,7 +640,7 @@ function tab6(){
   		<div class="panel-body">
   			<div class="item  col-xs-6 col-lg-6">
             <div class="thumbnail">
-                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" />
+                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
                         附近学校</h4>
@@ -656,7 +656,7 @@ function tab6(){
 	     </div>
 	     <div class="item  col-xs-6 col-lg-6">
 	            <div class="thumbnail">
-	                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" />
+	                <img class="group list-group-image" src="/pic/onfoot.jpg" alt=""  data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
 	                <div class="caption">
 	                    <h4 class="group inner list-group-item-heading">
 	                        附近配套</h4>
@@ -926,18 +926,18 @@ function tab6(){
     <div class="tab-content">
       <div class="tab-pane active" id="price">
       	<div>
-      		<div id="price_line" style="height:250px"></div>
+      		<div id="price_line" style="height:350px"></div>
       	</div>
       </div> 
       <div class="tab-pane" id="rent">
       	<div>
-      		<div id="rent_line" style="height:250px">
+      		<div id="rent_line" style="height:350px">
       			</div>
       	</div>
       </div> 
       <div class="tab-pane" id="emptypercent">
       	<div>
-      		<div id="emptypercent_line" style="height:250px">
+      		<div id="emptypercent_line" style="height:350px">
       			</div>
       	</div>
       </div> 
@@ -1327,9 +1327,14 @@ function tab6(){
 </div>
 <!-- 模态框 -->
  <jsp:include page="foot.jsp" /> 
- <script src="/js/familyStatus.js"></script>
- <script src="/js/trend.js"></script>
- <script src="/js/cost.js"></script>
+ <script src="/js/familyStatus.js" charset="GBK"></script>
+ <script src="/js/trend.js" charset="GBK"></script>
+ <script src="/js/cost.js" charset="GBK"</script>
  <script src="/js/news.js"></script>
+ <script type="text/javascript">
+ 	$(function () {
+  		$('[data-toggle="popover"]').popover()
+	});
+ </script>
 </body>
 </html>
