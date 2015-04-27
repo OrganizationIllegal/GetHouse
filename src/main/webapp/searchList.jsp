@@ -11,18 +11,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
-   <link href="/css/index.css" rel="stylesheet">
-   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script> 
-   <script src="/js/bingMap.js"></script>
-   <link href="/css/mapleft.css" rel="stylesheet">
+   <script src="/bootstrap/js/bootstrap-paginator.min.js"></script>
 </head>
 <body style="padding-top: 105px;">
  <jsp:include page="head.jsp" />
  <div class="container">
- <div class="row" style="padding-top:50px;">
+ <div class="row" style="padding-top:20px;">
  <div class="col-md-3"></div>
  <div class="col-md-5">
- <ul class="pagination">
+  <div id="example"></div>
+  <ul class="pagination">
   <li><a href="#">&laquo;</a></li>
   <li><a href="#">1</a></li>
   <li><a href="#">2</a></li>
@@ -37,9 +35,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <li><a href="#">&raquo;</a></li>
 </ul> 
  </div>
- <div class="col-md-1">
+ <div class="col-md-1" style="margin-left:-50px;">
+ <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:80px;margin-top:20px;margin-bottom:0px;background-color:#DBDBDB;">
+      排序
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">升序</a></li>
+      <li><a href="#">降序</a></li>
+    </ul>
+  </div>
  </div>
- <div class="col-md-3"></div>
+ <div class="col-md-3" style="padding-top:10px;padding-left:30px;">
+ <div class="btn-group">
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="bingMap.jsp">地图找房</a></button>
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="#">列表找房</a></button>
+</div>
+ </div>
  </div>
 </div>
 <!-- 妯℃�妗�-->
