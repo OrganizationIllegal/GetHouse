@@ -640,7 +640,15 @@ function tab6(){
   		<div class="panel-body">
   			<div class="item  col-xs-6 col-lg-6">
             <div class="thumbnail">
-                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
+            	<div>
+            	<center>
+                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                
+                </img>
+                </center>
+                <span style="position: absolute; top: 160; left: 250;font-weight:bold;font-size:22">99</span>
+                
+                </div>
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
                         附近学校</h4>
@@ -656,7 +664,16 @@ function tab6(){
 	     </div>
 	     <div class="item  col-xs-6 col-lg-6">
 	            <div class="thumbnail">
-	                <img class="group list-group-image" src="/pic/onfoot.jpg" alt=""  data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
+	            	<div>
+		            	<center>
+		                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+		                
+		                </img>
+		                </center>
+		                <span style="position: absolute; top: 160; left: 275;font-weight:bold;font-size:22">100</span>
+		                
+		             </div>
+	                
 	                <div class="caption">
 	                    <h4 class="group inner list-group-item-heading">
 	                        附近配套</h4>
