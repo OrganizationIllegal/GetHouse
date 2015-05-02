@@ -34,7 +34,7 @@
  		 addPushpin3();
  		 addPushpin4();
  		 addPushpin5();
- 		 map2 = new Microsoft.Maps.Map(document.getElementById('eyeMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn', center: LA2, mapTypeId: Microsoft.Maps.MapTypeId.birdseye, zoom:18,showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false});
+ 		 map2 = new Microsoft.Maps.Map(document.getElementById('eyeMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn', center: LA, mapTypeId: Microsoft.Maps.MapTypeId.birdseye, zoom: 15,showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
       }
      /* 增加pushpin*/
       function addDefaultPushpin()

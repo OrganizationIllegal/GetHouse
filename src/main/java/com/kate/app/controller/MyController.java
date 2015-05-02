@@ -85,7 +85,7 @@ public class MyController {
 			houseInfo.setHouse_img("http://image.baidu.com/i?ct=503316480&tn=baiduimagedetail&statnum=girl&ipn=d&z=0&s=0&ic=0&lm=-1&itg=0&cg=girl&word=%E7%BE%8E%E5%A5%B3&ie=utf-8&in=3354&cl=2&st=&pn=5&rn=1&di=&ln=31000&&fmq=1378374347070_R&se=&sme=0&tab=&face=&&is=0,-1&cs=0,0&adpicid=0&pi=14339958427&os=0&istype=&ist=&jit=&objurl=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F023b5bb5c9ea15ceadb56f6fb5003af33a87b279.jpg"+i);
 			houseInfo.setHouse_detail_add("北京市丰台区"+i);
 			houseInfo.setHouse_name("顺景园"+i);
-			houseInfo.setHouse_price(209);
+			houseInfo.setHouse_price("209");
 			houseInfo.setHouse_room_num(21+i);
 			houseInfo.setHouse_room_size(211);
 			houseInfo.setHouse_size(2111+i);

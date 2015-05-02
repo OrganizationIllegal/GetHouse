@@ -15,7 +15,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js" charset="GBK"></script>
-   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script>
+   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+   <!--<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>-->
    <script src="/js/bingMap.js"></script>
    <link href="/css/List-Grid-View.css" rel="stylesheet">
    <script src="/echarts/echarts-all.js"></script>
@@ -30,7 +31,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/script_p.js"></script>
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "/js/video-js.swf";</script>
-<!-- 锚定位 -->
+<!-- 计算器 start -->
+<script type="text/javascript">
+function compute(){
+var a=$('#select1').find("option:selected").val();
+var b=$('#select2').find("option:selected").val();
+var c=$('#select3').find("option:selected").val();
+var d=$('#input1').val();
+var e=$('#input2').val();
+}
+</script>
+<!-- 计算器end -->
+<!-- 锚定位 start -->
 <script type="text/javascript">
 function offSet(){
 	  if(location.hash){
@@ -68,6 +80,24 @@ function tab6(){
 	 offSet();
 } 
 </script>
+<!-- 锚定位 end -->
+<!-- pop guorui start -->
+<script type="text/javascript">
+function pop(type,img){
+  $('#title').empty();	
+  $('#title').append("<h4>户型"+type+"</h4>");
+  $('#image').attr("src",img);
+  $('#housestyle').modal('show');
+   
+}
+function pop1(){
+  $('#recentquotation').modal('show');
+}
+function pop2(){
+  $('#completehouse').modal('show');
+}
+</script>
+<!-- pop guorui end -->
 </head>
 <body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getIndexMap();">
 <jsp:include page="head.jsp" />
@@ -83,7 +113,7 @@ function tab6(){
    <li><a href="#invest"  onclick="tab6()">投资分析</a></li>
 </ul>
 </nav>
-
+<!--项目图片-->
 <div style="margin-top:20px;/* background-color:white; */">
     <div class="ad_position" style="height:600px;/* background-color:white; */">
 
@@ -133,10 +163,50 @@ function tab6(){
     </div>
 </div>
 
+<!--关键字-->
+<div style="margin-top:20px;background-color:white;">
+	<div class="row">
+     <div class="col-md-1"></div>
+     <div class="col-md-2">
+      <div class="checkbox">
+      <label>
+      <input type="checkbox"> 请打勾
+      </label>
+   </div>
+     </div>
+     <div class="col-md-2">
+      <div class="checkbox">
+      <label>
+      <input type="checkbox"> 请打勾
+      </label>
+   </div>
+     </div>
+     <div class="col-md-2">
+      <div class="checkbox">
+      <label>
+      <input type="checkbox"> 请打勾
+      </label>
+   </div>
+     </div>
+     <div class="col-md-2">
+      <div class="checkbox">
+      <label>
+      <input type="checkbox"> 请打勾
+      </label>
+   </div>
+     </div>
+     <div class="col-md-2">
+      <div class="checkbox">
+      <label>
+      <input type="checkbox"> 请打勾
+      </label>
+   </div>
+     </div>
+     <div class="col-md-1"></div>
+</div>
+</div>
 
-
-
-
+<!--The Elements-->
 <div style="margin-top:20px;background-color:white;">
 <div class="container"  >
 <div class="col-md-2" >
@@ -460,116 +530,43 @@ function tab6(){
   	</div>
 </div>
 <!--户型及价格-->
-
 <div style="margin-top:20px;background-color:white;" id="price" >
 <div class="panel panel-default">
 <div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">户型及价格</div>
 <div class="panel-body">
+<c:forEach var="obj" items="${HouseInfoList}"> 
 <div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
-<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
+<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">户型 ${obj.house_type}</div>
 <div class="col-md-1">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_room_num}</div>
 <div style="text-align:center;font-weight:bold;font-family:SimHei;">卧室</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_toilet_num}</div>
 <div style="text-align:center;font-weight:bold;font-family:SimHei;">卫生间</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size}</div>
 <div style="text-align:center;font-weight:bold;font-family:SimHei;">面积</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_price}</div>
 <div style="text-align:center;font-weight:bold;font-family:SimHei;">房价</div>
 </div>
 <div class="col-md-4" style="width:200px;margin-top:12px;">
 <div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;点击查看户型图</button>
+<button type="button" onclick="pop('${obj.house_type}','${obj.house_img}')" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;点击查看户型图</button>
 </div>
 </div>
 </div>
-<hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:0px;" />	
-<div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
-<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
-<div class="col-md-1">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卧室</div>
-</div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卫生间</div>
-</div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">面积</div>
-</div>
-<div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">房价</div>
-</div>
-<div class="col-md-4" style="width:200px;margin-top:12px;">
-<div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;点击查看户型图</button>
-</div>
-</div>
-</div>	
-<hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:0px;" />	
-<div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
-<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
-<div class="col-md-1">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卧室</div>
-</div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卫生间</div>
-</div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">面积</div>
-</div>
-<div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">房价</div>
-</div>
-<div class="col-md-4" style="width:200px;margin-top:12px;">
-<div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;点击查看户型图</button>
-</div>
-</div>
-</div>	
-<hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:0px;" />	
-<div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
-<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">Unit SUITE 202</div>
-<div class="col-md-1">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卧室</div>
-</div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">2</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卫生间</div>
-</div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">1901</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">面积</div>
-</div>
-<div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">$500,000</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">房价</div>
-</div>
-<div class="col-md-4" style="width:200px;margin-top:12px;">
-<div class="dropdown">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;点击查看户型图</button>
-</div>
-</div>
-</div>
+<hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:0px;" />
+ </c:forEach> 	
 <div class="row">
 <div class="col-md-2 col-md-offset-8" style="margin-top:10px;">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;最新价格</button>
+<button type="button" onclick="pop1()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;最新价格</button>
 </div>
 <div class="col-md-2" style="margin-top:10px;">
-<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;完整户型</button>
+<button type="button" onclick="pop2()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;完整户型</button>
 </div>
 </div>	  
 </div></div></div>
@@ -770,58 +767,46 @@ function tab6(){
 <div style="color:white;font-weight:900;font-size:100px;font-family:SimHei;">?</div>
 </div>
 <div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">房款总额</div>
-<div class="input-group"> <input type="text" class="form-control" placeholder="$400,000" style="margin-top:8px;width:220px;"></div>
-</div>
-<div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">税率</div>
-<div class="input-group"> <input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;width:220px;"></div>
-</div>
-<div class="col-md-3" style="padding-left:0px;">
 <div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">贷款方式</div>
-<div class="input-group" style="width:220px;">
-<input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;width:190px;">
-<div class="input-group-btn">
-     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="height:34px;margin-top:8px;background-color:#CDC5BF;width:30px;"><span class="caret"></span></button>
-     <ul class="dropdown-menu" role="menu" style="margin-left:-191;width:220px;opacity:0.7;margin-top:-22px">
-      <li><a href="#">2%</a></li>
-      <li><a href="#">2.48%</a></li>
-      <li><a href="#">3%</a></li>
-   </ul>
+<select class="form-control" style="margin-top:8px;width:220px;" id="select1">
+    <option>只还利息</option>
+    <option>无息贷款</option>
+    <option>连本带利</option>
+  </select>      
 </div>
+<div class="col-md-3" style="padding-left:0px;">
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">首付比例</div>
+<select class="form-control" style="margin-top:8px;width:220px;margin-left:15px;" id="select2">
+    <option>20%</option>
+    <option>25%</option>
+    <option>30%</option>
+  </select> 
 </div>
+<div class="col-md-3" style="padding-left:0px;">
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">贷款年限</div>
+<select class="form-control" style="margin-top:8px;width:220px;margin-left:15px;" id="select3">
+    <option>25年</option>
+    <option>30年</option>
+    <option>35年</option>
+  </select>
 </div>
 </div>
 <div class="row"  >
 <div class="col-md-3 col-md-offset-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">首付比例</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">房款总额</div>
 <div class="input-group" style="width:220px;">
-<input type="text" class="form-control" placeholder="20%" style="margin-top:8px;width:190px;">
-<div class="input-group-btn">
-     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="height:34px;margin-top:8px;background-color:#CDC5BF;width:30px;"><span class="caret"></span></button>
-     <ul class="dropdown-menu" role="menu" style="margin-left:-191;width:220px;opacity:0.7;margin-top:-22px">
-      <li><a href="#">20%</a></li>
-      <li><a href="#">25%</a></li>
-      <li><a href="#">30%</a></li>
-   </ul>
-</div>
+<input type="text" class="form-control" placeholder="$400,000" style="margin-top:8px;" id="input1">
 </div>
 </div>
 <div class="col-md-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">贷款年限</div>
+<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">税率</div>
 <div class="input-group" style="width:220px;">
-<input type="text" class="form-control" placeholder="25年" style="margin-top:8px;width:190px;">
-<div class="input-group-btn">
-     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="height:34px;margin-top:8px;background-color:#CDC5BF;width:30px;"><span class="caret"></span></button>
-      <ul class="dropdown-menu" role="menu" style="margin-left:-191;width:220px;opacity:0.7;margin-top:-22px">
-      <li><a href="#">20年</a></li>
-      <li><a href="#">25年</a></li>
-      <li><a href="#">30年</a></li>
-   </ul>
+<input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;" id="input2">
 </div>
 </div>
+<div class="col-md-3">
+<button type="button" onclick="compute()" class="btn btn-default" style="margin-left:0px;width:220px;">计算</button>
 </div>
-<div class="col-md-3"></div>
 </div>
 <div class="row" style="margin-top:50px;">
 <div class="col-md-9 col-md-offset-3" style="margin-top:-20px;background-color:#4682B4;height:60px;margin-left:288px;width:755px;">
@@ -1321,7 +1306,7 @@ function tab6(){
 
 
 </div>
- <!-- 模态框（Modal） -->
+ <!-- 项目位置模态框start-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
@@ -1331,7 +1316,7 @@ function tab6(){
                data-dismiss="modal" aria-hidden="true">
                   &times;
             </button>
-            <h4 class="modal-title" id="myModalLabel">
+            <h4 class="modal-title">
                Bing Maps
             </h4>
          </div>
@@ -1342,7 +1327,178 @@ function tab6(){
       </div>
 </div>
 </div>
-<!-- 模态框 -->
+<!-- 项目位置模态框end -->
+<!-- house style1模态框start-->
+<div class="modal fade" id="housestyle" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:-230px;height:700px;width:1030px;">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <div class="modal-title" id="title">
+               
+            </div>
+         </div>
+         <div class="modal-body">
+            <img src="" width="1000" height="600" id="image"/>
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- house style模态框end -->
+<!-- 最新价格模态框start-->
+<div class="modal fade" id="recentquotation" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:100px;height:495px;width:400px;">
+         <div class="modal-header" style="background-color:#EEEEE0;">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" >
+               最新价格
+            </h4>
+         </div>
+         <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
+            <form class="form-horizontal" role="form">
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="firstname" 
+            placeholder="姓名">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="登录密码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电话号码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电子邮箱">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+        <input type="text" class="form-control" id="lastname" 
+            placeholder="最新价格">
+  </select>      
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+            placeholder="留言"></textarea>
+            
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default">发送</button>
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+</form>
+
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- 最新价格模态框end -->
+<!-- 完整户型模态框start-->
+<div class="modal fade" id="completehouse" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:100px;height:495px;width:400px;">
+         <div class="modal-header" style="background-color:#EEEEE0;">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title">
+               完整户型
+            </h4>
+         </div>
+         <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
+            <form class="form-horizontal" role="form">
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="firstname" 
+            placeholder="姓名">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="登录密码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电话号码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电子邮箱">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+       <input type="text" class="form-control" id="lastname" 
+            placeholder="完整户型">      
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+            placeholder="留言"></textarea>
+            
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default">发送</button>
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+</form>
+
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- 完整户型模态框end -->
+<div>
+</div>
  <jsp:include page="foot.jsp" /> 
  <script src="/js/familyStatus.js" charset="GBK"></script>
  <script src="/js/trend.js" charset="GBK"></script>
