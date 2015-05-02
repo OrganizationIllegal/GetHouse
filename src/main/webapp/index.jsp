@@ -96,6 +96,9 @@ function pop1(){
 function pop2(){
   $('#completehouse').modal('show');
 }
+function pop3(){
+  $('#demandprice').modal('show');
+}
 </script>
 <!-- pop guorui end -->
 </head>
@@ -297,13 +300,13 @@ function pop2(){
 					</div>
 					
 						<div style="padding-left:35px">
-						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>索取完整价格单</button>
+						<button type="button" onclick="pop3()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>索取完整价格单</button>
 						</div>
 			</div>
 			</div>
 			
 			<div class="col-md-5 col-md-offset-3">
-						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"华文彩云";margin-top:30px;position:absolute;bottom:0;">返现金额:$10,000</span></button>
+						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"华文彩云";margin-top:30px;position:absolute;bottom:0;">返现金额:${returnPrice}</span></button>
 				</div>
 	
 	</div>
@@ -1497,6 +1500,79 @@ function pop2(){
 </div>
 </div>
 <!-- 完整户型模态框end -->
+<!-- 索取完整价格单模态框start-->
+<div class="modal fade" id="demandprice" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:100px;height:495px;width:400px;">
+         <div class="modal-header" style="background-color:#EEEEE0;">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title">
+               索取完整价格单
+            </h4>
+         </div>
+         <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
+            <form class="form-horizontal" role="form">
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="firstname" 
+            placeholder="姓名">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="登录密码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电话号码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电子邮箱">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+       <input type="text" class="form-control" id="lastname" 
+            placeholder="索取完整价格单">      
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+            placeholder="留言"></textarea>
+            
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default">发送</button>
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+</form>
+
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- 索取完整价格单模态框end -->
 <div>
 </div>
  <jsp:include page="foot.jsp" /> 

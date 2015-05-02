@@ -20,25 +20,8 @@ public class BuyInfoController {
 	
 	@RequestMapping({ "/", "/BuyInfo" })
 	public String getBuyInfo(HttpServletRequest req,HttpServletResponse resp){
-		int returnMoney=buyInfoService.getReturnMoney();
-		System.out.println(returnMoney);
-		//金额格式转换
-		String str1=String.valueOf(returnMoney);
-		str1 = new StringBuilder(str1).reverse().toString();     //先将字符串颠倒顺序
-		String str2 = "";
-		for(int i=0;i<str1.length();i++){
-			if(i*3+3>str1.length()){
-				str2 += str1.substring(i*3, str1.length());
-				break;
-			}
-			str2 += str1.substring(i*3, i*3+3)+",";
-		}
-		if(str2.endsWith(",")){
-			str2 = str2.substring(0, str2.length()-1);
-		}
-		//最后再将顺序反转过来
-		String result="$"+new StringBuilder(str2).reverse().toString();
-		req.setAttribute("returnmoney", result);
+		String returnMoney=buyInfoService.getReturnMoney();
+		req.setAttribute("returnmoney", returnMoney);
 		return "index01.jsp";
 	}
 
