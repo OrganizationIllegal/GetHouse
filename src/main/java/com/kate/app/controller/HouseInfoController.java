@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.service.BuyInfoService;
 import com.kate.app.service.HouseInfoService;
+import com.kate.app.service.RecoProjectSerivice;
+
 
 @Controller
 public class HouseInfoController {
@@ -20,6 +22,8 @@ public class HouseInfoController {
 	private HouseInfoService houseInfoService;
 	@Autowired
 	private BuyInfoService buyInfoService;
+	@Autowired
+	private RecoProjectSerivice recoprojectserivice;
 	@RequestMapping({ "/", "/index" })
 	public String getHouseInfo(HttpServletRequest req,HttpServletResponse resp){
 		List<HouseInfo> list = new ArrayList<HouseInfo>();
@@ -27,6 +31,13 @@ public class HouseInfoController {
 		String returnPrice=buyInfoService.getReturnMoney();
 		req.setAttribute("returnPrice", returnPrice);
 		req.setAttribute("HouseInfoList", list);
+		
+		String projectdescription=recoprojectserivice.getProjectdescription();
+		System.out.println(projectdescription);
+		
+		
+		req.setAttribute("projectdescription",projectdescription);
+		
 		return "/index.jsp";
 	}
     
