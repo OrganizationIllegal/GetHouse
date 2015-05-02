@@ -135,7 +135,7 @@ function tab6(){
 
 
 
-<!--起付金额-->
+
 
 <div style="margin-top:20px;background-color:white;">
 <div class="container"  >
@@ -206,8 +206,6 @@ function tab6(){
 					</div>
 					</div>
 </div>
-<!--起付金额-->
-
 
 <!--价格区间-->
 <div style="margin-top:20px;background-color:white;">
@@ -379,7 +377,7 @@ function tab6(){
 		<div class="row" style="margin-top:45px;width:80%; margin-left:10%;margin-right:10%;" >
 			
 			<div>
-			<span style="font-size:22px;">想要了解更多吗</span>
+			<span style="font-size:22px;">想要了解更多吗？</span>
 			</div>
 			
 			<div>
@@ -1287,7 +1285,7 @@ function tab6(){
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p>${projectdescription}</p>
+		         <p class="desc">房屋描述房屋描述房屋描述房屋描述房屋描述</p>
 		          
 		        </div>
            </div>
@@ -1297,7 +1295,7 @@ function tab6(){
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p >${projectdescription}</p>
+		         <p class="desc">房屋描述房屋描述房屋描述房屋描述房屋描述</p>
 		          
 		        </div>
            </div>
@@ -1307,7 +1305,7 @@ function tab6(){
                 </div>
                 <div class="caption_my" style="height:98px;">
 		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p>${projectdescription}</p>
+		         <p class="desc">房屋描述房屋描述房屋描述房屋描述房屋描述</p>
 		          
 		        </div>
 		   </div>
