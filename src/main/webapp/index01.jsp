@@ -11,10 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
-   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=zh-cn"></script> 
-   <!--<script src="/js/bingMap.js"></script>-->
-
-   <link href="/css/mapleft.css" rel="stylesheet">
  <!-- 绘制圆形 -->
    <script type="text/javascript">
 $(function(){
@@ -61,7 +57,7 @@ $(function(){
  <jsp:include page="head.jsp" />
  <div class="container">
  <!--搜索-->
- <div style="" class="col-lg-12">
+ <div style="">
         <div class="col-lg-12" style="height:400px;background:url(pic/indexsearch1.jpg);background-repeat:no-repeat;background-size: contain;">
             <div style="padding-top:70px;" class="col-lg-10 col-lg-offset-1">
                 <div class="row" style="margin-bottom:5px;">
@@ -139,8 +135,9 @@ $(function(){
 </div>
  
  <!--搜索end-->
- 
- 
+ <!--空白-->
+ <div style="height:20px;"></div>
+ <!--end空白-->
  <!--我们重新定义-->
  <div style="background-color:rgba(21, 63, 101, 1);height:120px;margin-top:380px;padding-left:-20px;padding-right:-20px">
  	<div>

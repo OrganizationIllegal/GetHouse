@@ -428,7 +428,7 @@ function pop3(){
 				  		<div class="row">
 				  			
 				  			<p style="font-size:10px;">
-				  				${projectdescription}
+				  				现在一次付款买房的还是少数，大家都在贷款买房，实际资金从银行直接到开发商的，银行是不会简单的把钱转给开发商，要严格的审查，如果开发商的实力不好，银行是不会让其有房贷的资格的。照你说的情况，开发商如真的跑了，因为其只拥有土地的使用权，土地出让的主管部门只会收回土地的使用权另行出让，或者由另外的开发商接受继续开发。
 				  				</p>
 				  			
 				  			</div>		
@@ -675,10 +675,10 @@ function pop3(){
                         附近学校</h4>
                     
                     <ul class="list-group">
-                    	<c:forEach items="${nearSchoolList}" var="item" begin="0" end="4" step="1" varStatus="var">
-                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.schoolName}</span>${item.schoolType}</li>
-					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.schoolDistance}km</span>学校排名 第${item.schoolRank}名</li>
-                    	</c:forEach>
+					  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
+					  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
+					  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
+					  <li class="list-group-item"><span class="badge">4.1km</span>Porta ac consectetur ac</li>
 					</ul>
                 </div>
             </div>
@@ -700,10 +700,10 @@ function pop3(){
 	                        附近配套</h4>
 	                    
 	                    <ul class="list-group">
-						  <c:forEach items="${nearSchoolFacility}" var="item" begin="0" end="4" step="1" varStatus="var">
-                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.facility_name}</span>${item.facility_type}</li>
-					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.facility_distance}km</span>学校排名 第${item.facility_rank}名</li>
-                    	</c:forEach>
+						  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
+						  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
+						  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
+						  <li class="list-group-item"><span class="badge">2.1km</span>Vestibulum at eros</li>
 						</ul>
 	                </div>
 	            </div>
@@ -734,14 +734,11 @@ function pop3(){
       			<p>估计总购房税费</p>
       		</div>
       		<div>
-      			<b>约${houseTaxSum}澳元</b>
-      			<!--
       			<select id="MySelect">
 				<option>约5万澳元</option>
 				<option>约15万澳元</option>
 				<option>约115万澳元</option>
 				</select>
-				-->
       		</div>
       	</div>
       	<div>
@@ -754,16 +751,12 @@ function pop3(){
       			<p>预估每年持有成本</p>
       		</div>
       		<div style="float:left;">
-      			<b>约${holdingTaxSunm}澳元</b>
-      			<!--
       			<select id="MySelect1">
 				<option value='5'>约5万澳元</option>
 				<option value='15'>约15万澳元</option>
 				<option value='115'>约115万澳元</option>
 				</select>
-				-->
       		</div>
-      		<!--
       		<div style="margin-left:20px;float:left;">
       			<p>税费范围</p>
       		</div>
@@ -773,7 +766,6 @@ function pop3(){
       		<div style="margin-left:20px;float:left;">
       			<p>约7万澳元</p>
       		</div>
-      		-->
       	</div>
       	<div>
       		<div id="ChengBen_pie" style="height:200px">
@@ -994,15 +986,48 @@ function pop3(){
     		</tr>
     	</thead>
     	<tbody>
-    		<c:forEach items="${latestSaleInfoVolist}" var="item" begin="0" end="4" step="1" varStatus="var">
-			<tr class="row">
-    			<td>${item.address}</td>
-    			<td><span>$</span>${item.price}</td>
-    			<td>${item.chaung_num}</td>
-    			<td>${item.sale_type}</td>
-    			<td>${item.sale_time}</td>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
     		</tr>
-			 </c:forEach> 
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>	
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
+    		<tr class="row">
+    			<td>1712/83 Whiteman St</td>
+    			<td>$407,000</td>
+    			<td>2</td>
+    			<td>普通销售</td>
+    			<td>11/04/15</td>
+    		</tr>
     	</tbody>
   	  </table>
 	</div>
@@ -1014,27 +1039,21 @@ function pop3(){
   	<div class="panel-heading" style="background-color:white;">Sourth Melbourne 地区特点</div>
   	 <div class="panel-body">
   	     	<div class="col-xs-6">
-  	     	<ol>
-  	     	<c:forEach items="${featureList}"
-			 var="item"
-			 begin="0"
-			 end="4"
-			 step="1"
-			 varStatus="var">
-				<li>${item}</li>
-			 </c:forEach>
+  	     		<ol>
+  	     			<li>平均房价在VIC排名 NO.25</li>
+  	     			<li>平均租金在VIC排名 NO.25</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
   	     		</ol>
   	     	</div>
   	     	<div class="col-xs-6">
   	     		<ol start="6">
-  	     			<c:forEach items="${featureList}"
-					 var="item"
-					 begin="5"
-					 end="9"
-					 step="1"
-					 varStatus="var">
-						<li>${item}</li>
-					 </c:forEach>
+  	     			<li>平均房价在VIC排名 NO.25</li>
+  	     			<li>平均租金在VIC排名 NO.25</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
+  	     			<li>本区有优秀小学</li>
   	     		</ol>
   	     	</div>
      </div>
@@ -1578,27 +1597,6 @@ function pop3(){
 <div>
 </div>
  <jsp:include page="foot.jsp" /> 
- <script type="text/javascript">
-
-  var houseTaxStr=${houseTaxStr};
-  var housetaxdata=${housetaxdata};
-
-  var holdingTaxStr=${holdingTaxStr};
-  var holdingdata=${holdingdata};
- </script>
- <script  type="text/javascript">
-  var family={num1:"${dulirateVo}",num2:"${youngfamilyVo}",num3:"${oldfamilyVo}"};
-
-  var trend_areamiddle_year="${areaMiddleYeatList}";
-  var trend_areamiddle_rate="${areaMiddleRateList}";
-  var areaZujinYeatList="${areaZujinYeatList}";
-  var areaZujinRateList="${areaZujinRateList}";
-  var areaZhikongYeatList="${areaZhikongYeatList}";
-  var areaZhikongRateList="${areaZhikongRateList}";
-
-  
-
- </script>
  <script src="/js/familyStatus.js" charset="GBK"></script>
  <script src="/js/trend.js" charset="GBK"></script>
  <script src="/js/cost.js" charset="GBK"</script>

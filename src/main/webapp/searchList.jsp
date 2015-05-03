@@ -4,9 +4,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>   
 <head>
+<<<<<<< HEAD
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <title></title>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap-paginator.min.js"></script>
 <script src="js/jquery-1.6.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -131,9 +136,41 @@
         </div>
         <div class="col-md-9">
           <div class="demo-content">
-            <nav>
-              <ul id="page" class="pagination"></ul>
-          </nav>
+            <div class="col-md-5">
+  <div id="example"></div>
+  <ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">6</a></li>
+  <li><a href="#">7</a></li>
+  <li><a href="#">8</a></li>
+  <li><a href="#">9</a></li>
+  <li><a href="#">10</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul> 
+ </div>
+ <div class="col-md-1" style="margin-left:-50px;">
+ <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:80px;margin-top:20px;margin-bottom:0px;background-color:#DBDBDB;">
+      ÅÅÐò
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="#">ÉýÐò</a></li>
+      <li><a href="#">½µÐò</a></li>
+    </ul>
+  </div>
+ </div>
+ <div class="col-md-3" style="padding-top:10px;padding-left:30px;">
+ <div class="btn-group">
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="bingMap.jsp">µØÍ¼ÕÒ·¿</a></button>
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="#">ÁÐ±íÕÒ·¿</a></button>
+</div>
+ </div>
           <!--start ËÑË÷ÁÐ±í-->
 <div id="SearchList">
 <!--startÖÐ¼ä²¿·Ö-->
@@ -221,6 +258,12 @@
           </div>
         </div>
   </div>
-  
+
+   
+   
+
+
+
+   <jsp:include page="foot.jsp" />
 </body>
 </html>

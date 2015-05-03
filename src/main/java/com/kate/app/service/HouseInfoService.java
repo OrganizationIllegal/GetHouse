@@ -6,23 +6,27 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kate.app.dao.BuyInfoDao;
-import com.kate.app.model.BuyInfo;
+import com.kate.app.dao.HouseInfoDao;
+import com.kate.app.model.HouseInfo;
 
 @Service
-public class BuyInfoService {
+public class HouseInfoService {
 	@Autowired
-	private BuyInfoDao buyInfoDao;
-	public String getReturnMoney(){
-		int returnMoney=buyInfoDao.BuyInfoDao();
-		String returnprice=getMoney(returnMoney);
-		return returnprice;
+	private HouseInfoDao houseInfoDao;
+	public List<HouseInfo> getHouseInfoList(){
+		List<HouseInfo> list=new ArrayList<HouseInfo>();
+		list=houseInfoDao.HouseInfoDao();
+		for(int i=0;i<list.size();i++){
+			String houseprice=list.get(i).getHouse_price();
+			String price=getMoney(houseprice);
+			list.get(i).setHouse_price(price);
+			}
+		return list;
 	}
-	
-	public String getMoney(int money){
+    public String getMoney(String money){
     	//閲戦鏍煎紡杞崲
-    			String str1=String.valueOf(money);
-    			str1 = new StringBuilder(str1).reverse().toString();     //鍏堝皢瀛楃涓查鍊掗『搴�
+    			//String str1=String.valueOf(money);
+    			String str1 = new StringBuilder(money).reverse().toString();     //鍏堝皢瀛楃涓查鍊掗『搴�
     			String str2 = "";
     			for(int i=0;i<str1.length();i++){
     				if(i*3+3>str1.length()){

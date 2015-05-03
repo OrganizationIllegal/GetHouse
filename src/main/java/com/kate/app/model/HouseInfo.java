@@ -5,7 +5,7 @@ public class HouseInfo {
 	private String house_name;
 	private String house_img;
 	private String house_detail_add;
-	private int house_price;
+	private String house_price;
 	private int house_room_num;
 	private int house_room_size;
 	private int house_bath_num;
@@ -41,10 +41,10 @@ public class HouseInfo {
 	public void setHouse_detail_add(String house_detail_add) {
 		this.house_detail_add = house_detail_add;
 	}
-	public int getHouse_price() {
+	public String getHouse_price() {
 		return house_price;
 	}
-	public void setHouse_price(int house_price) {
+	public void setHouse_price(String house_price) {
 		this.house_price = house_price;
 	}
 	public int getHouse_room_num() {

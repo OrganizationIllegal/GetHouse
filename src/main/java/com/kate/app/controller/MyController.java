@@ -86,6 +86,7 @@ public class MyController {
 		req.setAttribute("youngfamilyVo", youngfamilyVo);
 		req.setAttribute("oldfamilyVo", oldfamilyVo);
 	}
+
 	/**
 	 * 地区特点
 	 * @author wenruijie 
@@ -94,6 +95,7 @@ public class MyController {
 	public void getAreaFeature(HttpServletRequest req, HttpServletResponse resp){
 		List<String> featureList=areaFeatureService.getAreaFeature();
 		req.setAttribute("featureList", featureList);
+
 	}
 	/**
 	 * 近期区域成交情况
