@@ -96,8 +96,13 @@ $(function(){
 				        
 				    ]
 				};
-                    
-
+        option.series[0].data[1].value=parseFloat(family.num1);
+		option.series[0].data[0].value=parseFloat(100-parseFloat(family.num1));
+		option.series[1].data[1].value=parseFloat(parseFloat(family.num2).toFixed(2));
+		option.series[1].data[0].value=parseFloat(100-parseFloat(family.num2)).toFixed(2);
+		option.series[2].data[1].value=parseFloat(parseFloat(family.num3).toFixed(2));
+		option.series[2].data[0].value=parseFloat(100-parseFloat(family.num3)).toFixed(2);
+		
 	        // 为echarts对象加载数据 
 	        myChart.setOption(option); 
 

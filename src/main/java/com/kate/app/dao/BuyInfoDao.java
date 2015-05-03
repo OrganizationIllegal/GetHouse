@@ -24,7 +24,6 @@ public class BuyInfoDao extends BaseDao{
 				buyInfo.setReturn_money(rs.getInt("return_money"));
 				returnMoney=buyInfo.getReturn_money();
 			}
-			
 		}catch (Exception e) {
             
         }

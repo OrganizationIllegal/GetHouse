@@ -10,7 +10,8 @@ $(function(){
 	        	animation:false,
 	        	tooltip: {
 				        trigger: 'item',
-				        formatter: "{a} <br/>{b} : {c} ({d}%)"
+				        formatter: "{a} <br/>{b} : {c} ({d}%)",
+				        show:false
 				    },
 			    legend: {
 			        orient : 'vertical',
@@ -23,7 +24,7 @@ $(function(){
 			    calculable : true,
 			    series : [
 			        {
-			            name:'访问来源',
+			            
 			            type:'pie',
 			            radius : '55%',
 			            itemStyle : {
@@ -37,7 +38,7 @@ $(function(){
 			                },
 			                emphasis : {
 			                    label : {
-			                        show : true,
+			                        show : false,
 			                        position : 'center',
 			                        textStyle : {
 			                            fontSize : '30',
@@ -57,7 +58,8 @@ $(function(){
 			        }
 			    ]
 			};
-
+			option.legend.data=eval(houseTaxStr);
+			option.series[0].data=eval(housetaxdata);
 	        // 为echarts对象加载数据 
 	        myChart.setOption(option); 
 
@@ -141,7 +143,8 @@ $('#costTabs a').click(function (e) {
 	        		animation:false,
 				    tooltip: {
 				        trigger: 'item',
-				        formatter: "{a} <br/>{b} : {c} ({d}%)"
+				        formatter: "{a} <br/>{b} : {c} ({d}%)",
+				        show:false
 				    },
 				    legend: {
 				        orient : 'vertical',
@@ -153,7 +156,7 @@ $('#costTabs a').click(function (e) {
 				    calculable : true,
 				    series : [
 			        {
-			            name:'访问来源',
+			            
 			            type:'pie',
 			            radius : '55%',
 			            center: ['50%', '50%'],
@@ -168,7 +171,7 @@ $('#costTabs a').click(function (e) {
 			                },
 			                emphasis : {
 			                    label : {
-			                        show : true,
+			                        show : false,
 			                        position : 'center',
 			                        textStyle : {
 			                            fontSize : '30',
@@ -188,7 +191,8 @@ $('#costTabs a').click(function (e) {
 			    ]
 
 				};
-                    
+            option1.legend.data=eval(holdingTaxStr);
+			option1.series[0].data=eval(holdingdata);
 	        // 为echarts对象加载数据 
 	        myChart1.setOption(option1);
     }); 

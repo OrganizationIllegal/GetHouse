@@ -1,120 +1,218 @@
 package com.kate.app.controller;
 
 import java.io.PrintWriter;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.alibaba.fastjson.JSONObject;
-import com.kate.app.model.BrokerInfo;
-import com.kate.app.model.HouseInfo;
-import com.kate.app.model.HouseProject;
-import com.kate.app.service.HouseProjectService;
-import com.kate.app.service.MyService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.alibaba.fastjson.JSONArray;
+import com.kate.app.model.AreaMiddle;
+import com.kate.app.model.AreaZhikong;
+import com.kate.app.model.AreaZujin;
+import com.kate.app.model.HoldingTaxVo;
+import com.kate.app.model.HouseTaxData;
+import com.kate.app.model.HouseTaxVo;
+import com.kate.app.model.LatestSaleInfoVo;
+import com.kate.app.model.NearSchoolFacility;
+import com.kate.app.model.NearSchoolVo;
+import com.kate.app.service.AreaFamilyService;
+import com.kate.app.service.AreaFeatureService;
+import com.kate.app.service.AreaTrendService;
+import com.kate.app.service.HouseProjectService;
+import com.kate.app.service.HouseTaxService;
+import com.kate.app.service.LatestSaleInfoListService;
+import com.kate.app.service.MyService;
+import com.kate.app.service.SchoolNearService;
 
 @Controller
 public class MyController {
 	@Autowired
 	private MyService myService;
-	
 	@Autowired
 	private HouseProjectService houseProjectService;
+	@Autowired
+	private AreaFamilyService areaFamilyService;
+	@Autowired
+	private AreaFeatureService areaFeatureService;
+	@Autowired
+	private AreaTrendService  areaTrendService;
+	@Autowired
+	private LatestSaleInfoListService  latestSaleInfoListService;
+	@Autowired
+	private SchoolNearService  schoolNearService;
+	@Autowired
+	private HouseTaxService  houseTaxService;
 	
-	
-	@RequestMapping({ "/", "/My" })
-	public String test_controller(HttpServletRequest req, HttpServletResponse resp){
-		JSONObject json = new JSONObject();
-		String name = myService.test();
-		//json.put("result", "Kate");
-		req.setAttribute("result", name);
-		/*try{
-		writeJson(json.toJSONString(),resp);
-		}catch(Exception e){
-			e.printStackTrace();
-		}*/
-		//return "/My1.jsp";
-		return "/bingMap.jsp";
+	@RequestMapping({ "/Index" })
+	public String Index(HttpServletRequest req, HttpServletResponse resp){
+		 getAreaFamily(req,resp);
+		 getAreaFeature(req,resp);
+		 getLatestSaleInfo(req,resp);
+		 getAreaTrend(req,resp);
+		 getSchoolAndNear(req,resp);
+		 getHouseTax(req,resp);
+		 return "/index.jsp";
 	}
-	
-	@RequestMapping({ "/HouseProject" })
-	public String getProjectInfo(HttpServletRequest req, HttpServletResponse resp){
-		List<HouseProject> list = new ArrayList<HouseProject>();
-		list = houseProjectService.getHouseProjectList();
-		/*DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");  
-		Timestamp time = new Timestamp(System.currentTimeMillis());
-		for(int i=0; i<5; i++){
-			HouseProject projectInfo = new HouseProject();
-			projectInfo.setProject_area(100);
-			projectInfo.setProject_detail_add("北京市朝阳区"+i);
-			projectInfo.setProject_style("别墅"+i);
-			projectInfo.setProject_img("http://image.baidu.com/i?ct=503316480&tn=baiduimagedetail&statnum=girl&ipn=d&z=0&s=0&ic=0&lm=-1&itg=0&cg=girl&word=%E7%BE%8E%E5%A5%B3&ie=utf-8&in=3354&cl=2&st=&pn=5&rn=1&di=&ln=31000&&fmq=1378374347070_R&se=&sme=0&tab=&face=&&is=0,-1&cs=0,0&adpicid=0&pi=14339958427&os=0&istype=&ist=&jit=&objurl=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F023b5bb5c9ea15ceadb56f6fb5003af33a87b279.jpg"+i);
-			projectInfo.setProject_name("北京房产"+i);
-			projectInfo.setProject_price_avg(122211);
-			projectInfo.setProject_sales_remain(90);
-			projectInfo.setProject_finish_time(time);
-			projectInfo.setProject_desc("Good House"+i);
-			list.add(projectInfo);
-		}*/
-		req.setAttribute("HouseProjectList", list);
-		return "/index.jsp";
+	/**
+	 * 获取家庭情况构成
+	 * @author wenruijie 
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping({"/Index/AreaFamily"})
+	public void  getAreaFamily(HttpServletRequest req, HttpServletResponse resp){
+		//独立青年处理
+		Integer dulirate=new Integer(areaFamilyService.getdulirate());
+		String dulirateStr=dulirate.toString();
+		String dulirateVo=dulirateStr.substring(0, 2)+"."+dulirateStr.substring(2, 4);
+		//青年家庭处理
+		Integer youngfamilyrate=new Integer(areaFamilyService.getyoungfamilyrate());	
+		String youngfamilystr=youngfamilyrate.toString();
+		String youngfamilyVo=youngfamilystr.substring(0, 2)+"."+youngfamilystr.substring(2, 4);
+		//老年家庭
+		Integer oldfamilyrate=new Integer(areaFamilyService.getoldfamilyrate());
+		String oldfamilystr=oldfamilyrate.toString();
+		String oldfamilyVo=oldfamilystr.substring(0, 2)+"."+oldfamilystr.substring(2, 4);
+		
+		req.setAttribute("dulirateVo", dulirateVo);
+		req.setAttribute("youngfamilyVo", youngfamilyVo);
+		req.setAttribute("oldfamilyVo", oldfamilyVo);
 	}
-	
-	@RequestMapping({ "/HouseInfo" })
-	public String getHouseInfo(HttpServletRequest req, HttpServletResponse resp){
-		List<HouseInfo> list = new ArrayList<HouseInfo>();
-		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");  
-		Timestamp time = new Timestamp(System.currentTimeMillis());
-		for(int i=0; i<5; i++){
-			HouseInfo houseInfo = new HouseInfo();
-			houseInfo.setHouse_bath_num(12+i);
-			houseInfo.setHouse_bath_size(29+i);
-			houseInfo.setHouse_city("China"+i);
-			houseInfo.setHouse_img("http://image.baidu.com/i?ct=503316480&tn=baiduimagedetail&statnum=girl&ipn=d&z=0&s=0&ic=0&lm=-1&itg=0&cg=girl&word=%E7%BE%8E%E5%A5%B3&ie=utf-8&in=3354&cl=2&st=&pn=5&rn=1&di=&ln=31000&&fmq=1378374347070_R&se=&sme=0&tab=&face=&&is=0,-1&cs=0,0&adpicid=0&pi=14339958427&os=0&istype=&ist=&jit=&objurl=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F023b5bb5c9ea15ceadb56f6fb5003af33a87b279.jpg"+i);
-			houseInfo.setHouse_detail_add("北京市丰台区"+i);
-			houseInfo.setHouse_name("顺景园"+i);
-			houseInfo.setHouse_price(209);
-			houseInfo.setHouse_room_num(21+i);
-			houseInfo.setHouse_room_size(211);
-			houseInfo.setHouse_size(2111+i);
-			houseInfo.setHouse_toilet_num(22+i);
-			houseInfo.setHouse_toilet_size(2+i);
-			houseInfo.setHouse_type("别墅");
-			list.add(houseInfo);
+	/**
+	 * 地区特点
+	 * @author wenruijie 
+	 */
+	@RequestMapping({"/Index/AreaFeature"})
+	public void getAreaFeature(HttpServletRequest req, HttpServletResponse resp){
+		List<String> featureList=areaFeatureService.getAreaFeature();
+		req.setAttribute("featureList", featureList);
+	}
+	/**
+	 * 近期区域成交情况
+	 * @author wenruijie
+	 */
+	@RequestMapping({"/Index/LatestSaleInfo"})
+	public void getLatestSaleInfo(HttpServletRequest req, HttpServletResponse resp){
+		List<LatestSaleInfoVo> latestSaleInfoVolist=latestSaleInfoListService.getLatestSaleInfo();
+		req.setAttribute("latestSaleInfoVolist", latestSaleInfoVolist);
+	}
+	/**
+	 * 区域中位数房价走势
+	 * @author wenruijie
+	 * @param req
+	 * @param resp
+	 * @return
+	 */
+	@RequestMapping({"/Index/AreaTrend"})
+	public void getAreaTrend(HttpServletRequest req, HttpServletResponse resp){
+		//区域中位数房价走势
+		List<AreaMiddle> areaMiddleList=new ArrayList<AreaMiddle>();
+		areaMiddleList=areaTrendService.getAreaMiddleTrend();
+		List<String> areaMiddleYeatList=new ArrayList<String>();
+		List<Integer> areaMiddleRateList=new ArrayList<Integer>();
+		for(AreaMiddle areaMiddle:areaMiddleList){
+			String year=areaMiddle.getYear();
+			int rate=areaMiddle.getRate();
+			if(year!=null && rate>=0){
+				areaMiddleYeatList.add(year);
+				areaMiddleRateList.add(rate);
+			}
 		}
-		req.setAttribute("HouseInfoList", list);
-		return "/My1.jsp";
-	}
-	
-	@RequestMapping({ "/BrokerInfo" })
-	public String getBrokerInfo(HttpServletRequest req, HttpServletResponse resp){
-		List<BrokerInfo> list = new ArrayList<BrokerInfo>();
-		for(int i=0; i<5; i++){
-			BrokerInfo brokerInfo = new BrokerInfo();
-			brokerInfo.setBroker_name("哈哈"+i);
-			brokerInfo.setBroker_language("Chinese"+i);
-			brokerInfo.setBroker_region("北京"+i);
-			brokerInfo.setBroker_img("http://image.baidu.com/i?ct=503316480&tn=baiduimagedetail&statnum=girl&ipn=d&z=0&s=0&ic=0&lm=-1&itg=0&cg=girl&word=%E7%BE%8E%E5%A5%B3&ie=utf-8&in=3354&cl=2&st=&pn=5&rn=1&di=&ln=31000&&fmq=1378374347070_R&se=&sme=0&tab=&face=&&is=0,-1&cs=0,0&adpicid=0&pi=14339958427&os=0&istype=&ist=&jit=&objurl=http%3A%2F%2Fd.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F023b5bb5c9ea15ceadb56f6fb5003af33a87b279.jpg"+i);
-			list.add(brokerInfo);
+		req.setAttribute("areaMiddleYeatList", areaMiddleYeatList);
+		req.setAttribute("areaMiddleRateList", areaMiddleRateList);
+		//区域租金走势
+		List<AreaZujin> areaZujinList=new ArrayList<AreaZujin>();
+		areaZujinList=areaTrendService.getAreaZujinTrend();
+		List<String> areaZujinYeatList=new ArrayList<String>();
+		List<Integer> areaZujinRateList=new ArrayList<Integer>();
+		for(AreaZujin areaZujin:areaZujinList){
+			String year=areaZujin.getYear();
+			int rate=areaZujin.getRate();
+			if(year!=null && rate>=0){
+				areaZujinYeatList.add(year);
+				areaZujinRateList.add(rate);
+			}
 		}
-		req.setAttribute("BrokerInfoList", list);
-		return "/My1.jsp";
+		req.setAttribute("areaZujinYeatList", areaZujinYeatList);
+		req.setAttribute("areaZujinRateList", areaZujinRateList);
+		//区域空置率走势
+		List<AreaZhikong> areaZhikongList=new ArrayList<AreaZhikong>();
+		areaZhikongList=areaTrendService.getAreaZhikongTrend();
+		List<String> areaZhikongYeatList=new ArrayList<String>();
+		List<Integer> areaZhikongRateList=new ArrayList<Integer>();
+		for(AreaZhikong areaZhikong:areaZhikongList){
+			String year=areaZhikong.getYear();
+			int rate=areaZhikong.getRate()/1000;
+			if(year!=null && rate>=0){
+				areaZhikongYeatList.add(year);
+				areaZhikongRateList.add(rate);
+			}
+		}
+		req.setAttribute("areaZhikongYeatList", areaZhikongYeatList);
+		req.setAttribute("areaZhikongRateList", areaZhikongRateList);
 	}
+/**
+ * 学校及附近
+ * @param req
+ * @param resp
+ */
+public void getSchoolAndNear(HttpServletRequest req, HttpServletResponse resp){
+	List<NearSchoolVo> nearSchoolList=schoolNearService.getNearSchoolInfo();
+	req.setAttribute("nearSchoolList", nearSchoolList);
+	List<NearSchoolFacility> nearSchoolFacility=schoolNearService.getNearSchoolFacilityInfo();
+	req.setAttribute("nearSchoolFacility", nearSchoolFacility);
+}
+/**	
+ * 购房税费和持有成本
+ * @param req
+ * @param resp
+ */
+@RequestMapping({"/Index/HouseTax"})
+public void getHouseTax(HttpServletRequest req, HttpServletResponse resp){
+	 List<HouseTaxVo> houseTaxVoList=houseTaxService.getHouseTaxVo();
+	 List<String> houseTaxStr=new ArrayList<String>();
+	 int houseTaxSum=0;
+	 List<HoldingTaxVo> holdingTaxVoList=houseTaxService.getHoldingTaxVo();
+	 List<String> holdingTaxStr=new ArrayList<String>();
+	 int holdingTaxSunm=0;
+	 for(HouseTaxVo houseTaxVo:houseTaxVoList){
+		 String type=houseTaxVo.getType();
+		 int price=houseTaxVo.getPrice();
+		 String desc=houseTaxVo.getDescription();
+		 houseTaxSum=houseTaxSum+price;
+		 String ahouseStr=type+"    "+"约"+price+"澳元"+"\n"+desc;
+		 houseTaxStr.add(ahouseStr);
+	 }
+	 req.setAttribute("houseTaxStr", JSONArray.toJSON(houseTaxStr));
+	 req.setAttribute("houseTaxSum",houseTaxSum);
+	 
+	 for(HoldingTaxVo holdingTaxVo:holdingTaxVoList){
+		 String type=holdingTaxVo.getType();
+		 int price=holdingTaxVo.getPrice();
+		 String desc=holdingTaxVo.getDescription();
+		 holdingTaxSunm=holdingTaxSunm+price;
+		 String aholdingStr=type+"    "+"约"+price+"澳元"+"\n"+desc;
+		 holdingTaxStr.add(aholdingStr);
+	 }
+	 req.setAttribute("holdingTaxStr", JSONArray.toJSON(holdingTaxStr));
+	 req.setAttribute("holdingTaxSunm",JSONArray.toJSON(holdingTaxSunm));
+	 List<HouseTaxData> housetaxdata=houseTaxService.getHouseTaxData();
+	 List<HouseTaxData> holdingdata=houseTaxService.getHoldingData();
+	 req.setAttribute("housetaxdata",  JSONArray.toJSON(housetaxdata));
+	 req.setAttribute("holdingdata", JSONArray.toJSON(holdingdata));
+}	
 	
 	
-
+	
+	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
 	    response.setCharacterEncoding("UTF-8");

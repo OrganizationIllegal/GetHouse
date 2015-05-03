@@ -646,10 +646,10 @@ function tab6(){
                         附近学校</h4>
                     
                     <ul class="list-group">
-					  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
-					  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
-					  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
-					  <li class="list-group-item"><span class="badge">4.1km</span>Porta ac consectetur ac</li>
+                    	<c:forEach items="${nearSchoolList}" var="item" begin="0" end="4" step="1" varStatus="var">
+                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.schoolName}</span>${item.schoolType}</li>
+					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.schoolDistance}km</span>学校排名 第${item.schoolRank}名</li>
+                    	</c:forEach>
 					</ul>
                 </div>
             </div>
@@ -662,10 +662,10 @@ function tab6(){
 	                        附近配套</h4>
 	                    
 	                    <ul class="list-group">
-						  <li class="list-group-item"><span class="badge">1.4km</span>Cras justo odio</li>
-						  <li class="list-group-item"><span class="badge">3.3km</span>Dapibus ac facilisis in</li>
-						  <li class="list-group-item"><span class="badge">1.1km</span>Morbi leo risus</li>
-						  <li class="list-group-item"><span class="badge">2.1km</span>Vestibulum at eros</li>
+						  <c:forEach items="${nearSchoolFacility}" var="item" begin="0" end="4" step="1" varStatus="var">
+                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.facility_name}</span>${item.facility_type}</li>
+					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.facility_distance}km</span>学校排名 第${item.facility_rank}名</li>
+                    	</c:forEach>
 						</ul>
 	                </div>
 	            </div>
@@ -696,11 +696,14 @@ function tab6(){
       			<p>估计总购房税费</p>
       		</div>
       		<div>
+      			<b>约${houseTaxSum}澳元</b>
+      			<!--
       			<select id="MySelect">
 				<option>约5万澳元</option>
 				<option>约15万澳元</option>
 				<option>约115万澳元</option>
 				</select>
+				-->
       		</div>
       	</div>
       	<div>
@@ -713,12 +716,16 @@ function tab6(){
       			<p>预估每年持有成本</p>
       		</div>
       		<div style="float:left;">
+      			<b>约${holdingTaxSunm}澳元</b>
+      			<!--
       			<select id="MySelect1">
 				<option value='5'>约5万澳元</option>
 				<option value='15'>约15万澳元</option>
 				<option value='115'>约115万澳元</option>
 				</select>
+				-->
       		</div>
+      		<!--
       		<div style="margin-left:20px;float:left;">
       			<p>税费范围</p>
       		</div>
@@ -728,6 +735,7 @@ function tab6(){
       		<div style="margin-left:20px;float:left;">
       			<p>约7万澳元</p>
       		</div>
+      		-->
       	</div>
       	<div>
       		<div id="ChengBen_pie" style="height:200px">
@@ -960,48 +968,15 @@ function tab6(){
     		</tr>
     	</thead>
     	<tbody>
-    		<tr class="row">
-    			<td>1712/83 Whiteman St</td>
-    			<td>$407,000</td>
-    			<td>2</td>
-    			<td>普通销售</td>
-    			<td>11/04/15</td>
+    		<c:forEach items="${latestSaleInfoVolist}" var="item" begin="0" end="4" step="1" varStatus="var">
+			<tr class="row">
+    			<td>${item.address}</td>
+    			<td><span>$</span>${item.price}</td>
+    			<td>${item.chaung_num}</td>
+    			<td>${item.sale_type}</td>
+    			<td>${item.sale_time}</td>
     		</tr>
-    		<tr class="row">
-    			<td>1712/83 Whiteman St</td>
-    			<td>$407,000</td>
-    			<td>2</td>
-    			<td>普通销售</td>
-    			<td>11/04/15</td>
-    		</tr>
-    		<tr class="row">
-    			<td>1712/83 Whiteman St</td>
-    			<td>$407,000</td>
-    			<td>2</td>
-    			<td>普通销售</td>
-    			<td>11/04/15</td>
-    		</tr>	
-    		<tr class="row">
-    			<td>1712/83 Whiteman St</td>
-    			<td>$407,000</td>
-    			<td>2</td>
-    			<td>普通销售</td>
-    			<td>11/04/15</td>
-    		</tr>
-    		<tr class="row">
-    			<td>1712/83 Whiteman St</td>
-    			<td>$407,000</td>
-    			<td>2</td>
-    			<td>普通销售</td>
-    			<td>11/04/15</td>
-    		</tr>
-    		<tr class="row">
-    			<td>1712/83 Whiteman St</td>
-    			<td>$407,000</td>
-    			<td>2</td>
-    			<td>普通销售</td>
-    			<td>11/04/15</td>
-    		</tr>
+			 </c:forEach> 
     	</tbody>
   	  </table>
 	</div>
@@ -1013,21 +988,27 @@ function tab6(){
   	<div class="panel-heading" style="background-color:white;">Sourth Melbourne 地区特点</div>
   	 <div class="panel-body">
   	     	<div class="col-xs-6">
-  	     		<ol>
-  	     			<li>平均房价在VIC排名 NO.25</li>
-  	     			<li>平均租金在VIC排名 NO.25</li>
-  	     			<li>本区有优秀小学</li>
-  	     			<li>本区有优秀小学</li>
-  	     			<li>本区有优秀小学</li>
+  	     	<ol>
+  	     	<c:forEach items="${featureList}"
+			 var="item"
+			 begin="0"
+			 end="4"
+			 step="1"
+			 varStatus="var">
+				<li>${item}</li>
+			 </c:forEach>
   	     		</ol>
   	     	</div>
   	     	<div class="col-xs-6">
   	     		<ol start="6">
-  	     			<li>平均房价在VIC排名 NO.25</li>
-  	     			<li>平均租金在VIC排名 NO.25</li>
-  	     			<li>本区有优秀小学</li>
-  	     			<li>本区有优秀小学</li>
-  	     			<li>本区有优秀小学</li>
+  	     			<c:forEach items="${featureList}"
+					 var="item"
+					 begin="5"
+					 end="9"
+					 step="1"
+					 varStatus="var">
+						<li>${item}</li>
+					 </c:forEach>
   	     		</ol>
   	     	</div>
      </div>
@@ -1327,6 +1308,27 @@ function tab6(){
 </div>
 <!-- 模态框 -->
  <jsp:include page="foot.jsp" /> 
+ <script type="text/javascript">
+
+  var houseTaxStr=${houseTaxStr};
+  var housetaxdata=${housetaxdata};
+
+  var holdingTaxStr=${holdingTaxStr};
+  var holdingdata=${holdingdata};
+ </script>
+ <script  type="text/javascript">
+  var family={num1:"${dulirateVo}",num2:"${youngfamilyVo}",num3:"${oldfamilyVo}"};
+
+  var trend_areamiddle_year="${areaMiddleYeatList}";
+  var trend_areamiddle_rate="${areaMiddleRateList}";
+  var areaZujinYeatList="${areaZujinYeatList}";
+  var areaZujinRateList="${areaZujinRateList}";
+  var areaZhikongYeatList="${areaZhikongYeatList}";
+  var areaZhikongRateList="${areaZhikongRateList}";
+
+  
+
+ </script>
  <script src="/js/familyStatus.js" charset="GBK"></script>
  <script src="/js/trend.js" charset="GBK"></script>
  <script src="/js/cost.js" charset="GBK"</script>

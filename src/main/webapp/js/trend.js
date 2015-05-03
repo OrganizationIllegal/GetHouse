@@ -40,7 +40,8 @@
 			};
                     
                     
-
+	        option.xAxis[0].data=eval(trend_areamiddle_year);
+	        option.series[0].data=eval(trend_areamiddle_rate);
 	        // 为echarts对象加载数据 
 	        myChart.setOption(option); 
 
@@ -92,7 +93,8 @@ $('#trendTabs a').click(function (e) {
 			        }
 			    ]
 			};
-                    
+            option1.xAxis[0].data=eval(areaZujinYeatList);
+	        option1.series[0].data=eval(areaZujinRateList);
 	        // 为echarts对象加载数据 
 	        myChart1.setOption(option1);
 
@@ -134,7 +136,8 @@ $('#trendTabs a').click(function (e) {
 			        }
 			    ]
 			};
-                    
+            option2.xAxis[0].data=eval(areaZhikongYeatList);
+	        option2.series[0].data=eval(areaZhikongRateList);
 	        // 为echarts对象加载数据 
 	        myChart2.setOption(option2);
     });

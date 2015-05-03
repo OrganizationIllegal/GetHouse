@@ -244,6 +244,30 @@ $(function(){
  </div>
 </div>
 <!--郭瑞-->
+ <!--start 墨尔本-->
+<div id="Molbourne">
+<div id="left" class="col-xs-2">
+</div>
+<div style="margin-top:20px;" class="col-xs-8">
+  <div class="panel panel-default">
+  	<div class="panel-heading" style="background-color:white;">墨尔本</div>
+  	 <div class="panel-body">
+  	       <div class="col-xs-4" >
+  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
+  	     	</div>
+  	     	<div class="col-xs-4">
+  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
+  	     	</div>
+  	     	<div class="col-xs-4">
+  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
+  	     	</div>
+     </div>
+  </div>
+<div>
+<div id="right" class="col-xs-2">
+</div>
+<div>
+<!--end 墨尔本-->
 
 <!--last-->
 <div>
