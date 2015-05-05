@@ -60,7 +60,7 @@ public class AreaTrendDao extends BaseDao {
 	  List<AreaZhikong> areaZhikongeTrendList=new ArrayList<AreaZhikong>();
 	  int houseProId=1;
 	  try {
-			String sql = " select year,rate from area_zhikong t  where  t.house_pro_id="+houseProId+" ORDER BY t.year";
+			String sql = " select year,rate from area_kongzhi t  where  t.house_pro_id="+houseProId+" ORDER BY t.year";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			String year=null;
