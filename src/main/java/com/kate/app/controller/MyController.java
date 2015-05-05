@@ -16,12 +16,16 @@ import com.alibaba.fastjson.JSONArray;
 import com.kate.app.model.AreaMiddle;
 import com.kate.app.model.AreaZhikong;
 import com.kate.app.model.AreaZujin;
+import com.kate.app.model.FamilyIncome;
 import com.kate.app.model.HoldingTaxVo;
 import com.kate.app.model.HouseTaxData;
 import com.kate.app.model.HouseTaxVo;
 import com.kate.app.model.LatestSaleInfoVo;
 import com.kate.app.model.NearSchoolFacility;
 import com.kate.app.model.NearSchoolVo;
+import com.kate.app.model.PeopleForeign;
+import com.kate.app.model.PeopleInfo;
+import com.kate.app.model.PeopleNation;
 import com.kate.app.service.AreaFamilyService;
 import com.kate.app.service.AreaFeatureService;
 import com.kate.app.service.AreaTrendService;
@@ -29,6 +33,7 @@ import com.kate.app.service.HouseProjectService;
 import com.kate.app.service.HouseTaxService;
 import com.kate.app.service.LatestSaleInfoListService;
 import com.kate.app.service.MyService;
+import com.kate.app.service.PeopleInfoService;
 import com.kate.app.service.SchoolNearService;
 
 @Controller
@@ -49,7 +54,8 @@ public class MyController {
 	private SchoolNearService  schoolNearService;
 	@Autowired
 	private HouseTaxService  houseTaxService;
-	
+	@Autowired
+	private PeopleInfoService peopleInfoService;
 	@RequestMapping({ "/Index" })
 	public String Index(HttpServletRequest req, HttpServletResponse resp){
 		 getAreaFamily(req,resp);
@@ -58,6 +64,7 @@ public class MyController {
 		 getAreaTrend(req,resp);
 		 getSchoolAndNear(req,resp);
 		 getHouseTax(req,resp);
+		 getPeopleRegion(req,resp);
 		 return "/index.jsp";
 	}
 	/**
@@ -211,8 +218,25 @@ public void getHouseTax(HttpServletRequest req, HttpServletResponse resp){
 	 req.setAttribute("housetaxdata",  JSONArray.toJSON(housetaxdata));
 	 req.setAttribute("holdingdata", JSONArray.toJSON(holdingdata));
 }	
-	
-	
+/**	
+ * 区域人口分布
+ */
+@RequestMapping({"/Index/PeopleRegion"})
+public void getPeopleRegion(HttpServletRequest req, HttpServletResponse resp){
+	//人口总数
+	List<PeopleInfo> peopleInfoList=peopleInfoService.getPeopleInfo();
+	req.setAttribute("peopleInfoList",peopleInfoList);
+	//出生国家
+	List<PeopleNation> peopleNationList=peopleInfoService.getPeopleNation();
+	req.setAttribute("peopleNationList",peopleNationList);
+	//海外出生
+	List<PeopleForeign> peopleForeignList=peopleInfoService.getPeopleForeign();
+	req.setAttribute("peopleForeignList",peopleForeignList);
+	req.setAttribute("peopleForeignNum",peopleForeignList.size());
+	//平均家庭收入
+	List<FamilyIncome> familyIncomeList=peopleInfoService.getFamilyIncome();
+	req.setAttribute("familyIncomeList",familyIncomeList);
+}
 	
 	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{

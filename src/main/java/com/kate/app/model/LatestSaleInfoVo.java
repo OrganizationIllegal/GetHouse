@@ -5,13 +5,13 @@ import java.sql.Timestamp;
 public class LatestSaleInfoVo {
 	private String address;
 	private int price;
-    private int chaung_num;
+    private int house_type;
 	private String sale_type;
 	private String sale_time;
-	public LatestSaleInfoVo(String address,int price,int chuang_num,String sale_type,String sale_time){
+	public LatestSaleInfoVo(String address,int price,int house_type,String sale_type,String sale_time){
 		this.address=address;
 		this.price=price;
-		this.chaung_num=chuang_num;
+		this.house_type=house_type;
 		this.sale_type=sale_type;
 		this.sale_time=sale_time;
 	}
@@ -27,11 +27,12 @@ public class LatestSaleInfoVo {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getChaung_num() {
-		return chaung_num;
+	
+	public int getHouse_type() {
+		return house_type;
 	}
-	public void setChaung_num(int chaung_num) {
-		this.chaung_num = chaung_num;
+	public void setHouse_type(int house_type) {
+		this.house_type = house_type;
 	}
 	public String getSale_type() {
 		return sale_type;
