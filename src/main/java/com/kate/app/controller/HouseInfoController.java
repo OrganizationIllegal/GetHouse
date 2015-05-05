@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSONArray;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.service.BuyInfoService;
 import com.kate.app.service.HouseInfoService;
@@ -31,7 +32,7 @@ public class HouseInfoController {
 		String returnPrice=buyInfoService.getReturnMoney();
 		req.setAttribute("returnPrice", returnPrice);
 		req.setAttribute("HouseInfoList", list);
-		
+		//req.setAttribute("HouseInfoJson", JSONArray.toJSON(list));
 		String projectdescription=recoprojectserivice.getProjectdescription();
 		System.out.println(projectdescription);
 		

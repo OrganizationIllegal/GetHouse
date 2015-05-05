@@ -1,17 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="gb2312"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="gb2312" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>   
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<title></title>
+<base href="<%=basePath%>">
+<title>serchList</title>
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="/js/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/bootstrap/js/bootstrap-paginator.min.js"></script>
-
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/mapleft.css" rel="stylesheet">
@@ -85,9 +86,9 @@
           });
           $("#page").page({ 
           remote: {
-              url: '/BootstrapPage/GetData',  //ÇëÇóµØÖ·
+              url: '/BootstrapPage/GetData',  //ï¿½ï¿½ï¿½ï¿½ï¿½Ö·
               callback: function (result) {
-                  //»Øµ÷º¯Êý£¬resultÎª·µ»ØµÄÊý¾Ý
+                  //ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½resultÎªï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½
               }
         },
     });
@@ -104,10 +105,10 @@
         <div class="col-md-3">
           <div class="side-content">
             <div style="height:200px;">
-              <div style="margin-bottom:4px;"><b><a href="#" >½øÒ»²½ËÑË÷</a></b></br></div>
-              <b>·¿²ú</b>
+              <div style="margin-bottom:4px;"><b><a href="#" >ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></b></br></div>
+              <b>ï¿½ï¿½ï¿½ï¿½</b>
               <hr style="margin-top:4px;margin-bottom:4px;width:65%">
-              <b>¼Û¸ñ</b>  <font style="color:#FF5500;float:right;margin-right:20%">100K-2M+</font>
+              <b>ï¿½Û¸ï¿½</b>  <font style="color:#FF5500;float:right;margin-right:20%">100K-2M+</font>
               <div style="">
                 <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="100000" data-slider-max="2000000" data-slider-step="100000" data-slider-value="100000" style="height:16;" size="10"/>
               </div>
@@ -117,17 +118,17 @@
                 <input id="ex2" data-slider-id='ex1Slider' type="text" data-slider-min="100000" data-slider-max="2000000" data-slider-step="100000" data-slider-value="100000"/>
               </div>
               <br/>
-              <b>ÎÔÊÒ</b>  <font style="color:#FF5500;float:right;margin-right:20%">0-10+</font>
+              <b>ï¿½ï¿½ï¿½ï¿½</b>  <font style="color:#FF5500;float:right;margin-right:20%">0-10+</font>
               <div width="70%">
                 <input id="ex3" data-slider-id='ex1Slider' type="text" data-slider-min="100000" data-slider-max="2000000" data-slider-step="100000" data-slider-value="100000"/>
               </div>
               <br/>
-              <b>Ô¡ÊÒ</b>  <font style="color:#FF5500;float:right;margin-right:20%">0-10+</font>
+              <b>Ô¡ï¿½ï¿½</b>  <font style="color:#FF5500;float:right;margin-right:20%">0-10+</font>
               <div width="70%">
                 <input id="ex4" data-slider-id='ex1Slider' type="text" data-slider-min="100000" data-slider-max="2000000" data-slider-step="100000" data-slider-value="100000"/>
               </div>
               <div style="text-align:right;">
-                <button type="button" class="btn btn-default" style="margin-right:45%">ËÑË÷</button>
+                <button type="button" class="btn btn-default" style="margin-right:45%">ï¿½ï¿½ï¿½ï¿½</button>
               </div>
             </div>
             
@@ -155,28 +156,28 @@
  <div class="col-md-1" style="margin-left:-50px;">
  <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:80px;margin-top:20px;margin-bottom:0px;background-color:#DBDBDB;">
-      ÅÅÐò
+      ï¿½ï¿½ï¿½ï¿½
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li><a href="#">ÉýÐò</a></li>
-      <li><a href="#">½µÐò</a></li>
+      <li><a href="#">ï¿½ï¿½ï¿½ï¿½</a></li>
+      <li><a href="#">ï¿½ï¿½ï¿½ï¿½</a></li>
     </ul>
   </div>
  </div>
  <div class="col-md-3" style="padding-top:10px;padding-left:30px;">
  <div class="btn-group">
-  <button type="button" class="btn btn-warning" style="width:100px;"><a href="bingMap.jsp">µØÍ¼ÕÒ·¿</a></button>
-  <button type="button" class="btn btn-warning" style="width:100px;"><a href="#">ÁÐ±íÕÒ·¿</a></button>
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="bingMap.jsp">ï¿½ï¿½Í¼ï¿½Ò·ï¿½</a></button>
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="#">ï¿½Ð±ï¿½ï¿½Ò·ï¿½</a></button>
 </div>
  </div>
-          <!--start ËÑË÷ÁÐ±í-->
+          <!--start ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½-->
 <div id="SearchList">
-<!--startÖÐ¼ä²¿·Ö-->
+<!--startï¿½Ð¼ä²¿ï¿½ï¿½-->
 <div style="margin-top:20px;" class="col-xs-12">
-<!--startµÚÒ»¸öitem-->
+<!--startï¿½ï¿½Ò»ï¿½ï¿½item-->
   <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">°Ä´óÀûÑÇ·¿²ú</span><span style="color:white">WON GSG JG DS GDSJIG</span></div>
+  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">ï¿½Ä´ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½</span><span style="color:white">WON GSG JG DS GDSJIG</span></div>
   	 <div class="panel-body">
   	       <div id="item" >
            		  <div class="media">
@@ -187,34 +188,34 @@
            			  </div>
            		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
                 		 <div class="col-xs-8">
-                		 	<h4><b>ÍêÕûµÄ¹º·¿·þÎñ</b></h4>
+                		 	<h4><b>ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</b></h4>
                 		 	<hr/>
-                		 	<span>7*24Ð¡Ê±È«ÌìºòÔÚÏß£¬È«</span><br/>
-                		 	<span>·½Î»·þÎñµÄ×¨Òµ´úÀí·þÎñ¡£</span><br/>
-                		 	<span>ÎÒÃÇÌá¹©ÁË»ùÓÚÄúµÄÂúÒâ¸¶·Ñ·¿µØ²ú¾­¼ÍÈË¡£</span>
+                		 	<span>7*24Ð¡Ê±È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½È«</span><br/>
+                		 	<span>ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½×¨Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</span><br/>
+                		 	<span>ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¸¶ï¿½Ñ·ï¿½ï¿½Ø²ï¿½ï¿½ï¿½Ë¡ï¿½</span>
                 		 	<br/>
                 		 	<br/>
                 		 	<br/>
                 		 	<img alt="image" class="img-responsive" src="pic/logo2.png">
                 		 </div>
                 		  <div class="col-xs-4">
-                		     <h4><b>²ÎÊý</b></h4>
+                		     <h4><b>ï¿½ï¿½ï¿½ï¿½</b></h4>
                 		     <hr/>
-                		     <b>×î¶à£º</b><span class="right">$550,000</span><br/>
-                		     <b>×îÉÙ£º</b><span class="right">$299,000</span><br/>
-                		     <b>Ãæ»ý(M2)</b>:<span class="right">58-119</span><br/>
-                		     <b>¿ÉÊÛ:</b><span class="right">47</span><br/>
-                		     <b>·µÏÖ:</b><span class="right">$117</span><br/>
+                		     <b>ï¿½ï¿½à£º</b><span class="right">$550,000</span><br/>
+                		     <b>ï¿½ï¿½ï¿½Ù£ï¿½</b><span class="right">$299,000</span><br/>
+                		     <b>ï¿½ï¿½ï¿½(M2)</b>:<span class="right">58-119</span><br/>
+                		     <b>ï¿½ï¿½ï¿½ï¿½:</b><span class="right">47</span><br/>
+                		     <b>ï¿½ï¿½ï¿½ï¿½:</b><span class="right">$117</span><br/>
                 		 </div>
             		 </div>
       			 </div>
      		 </div>
      </div>
   </div>
-  <!--endµÚÒ»¸öÔªËØ-->
-  <!--startµÚ¶þ¸öitem-->
+  <!--endï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½-->
+  <!--startï¿½Ú¶ï¿½ï¿½ï¿½item-->
   <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">°Ä´óÀûÑÇ·¿²ú</span><span style="color:white">WON GSG JG DS GDSJIG</span></div>
+  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">ï¿½Ä´ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½</span><span style="color:white">WON GSG JG DS GDSJIG</span></div>
   	 <div class="panel-body">
   	       <div id="item" >
            		  <div class="media">
@@ -225,35 +226,35 @@
            			  </div>
            		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
                 		 <div class="col-xs-8">
-                		 	<h4><b>ÍêÕûµÄ¹º·¿·þÎñ</b></h4>
+                		 	<h4><b>ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</b></h4>
                 		 	<hr/>
-                		 	<span>7*24Ð¡Ê±È«ÌìºòÔÚÏß£¬È«</span><br/>
-                		 	<span>·½Î»·þÎñµÄ×¨Òµ´úÀí·þÎñ¡£</span><br/>
-                		 	<span>ÎÒÃÇÌá¹©ÁË»ùÓÚÄúµÄÂúÒâ¸¶·Ñ·¿µØ²ú¾­¼ÍÈË¡£</span>
+                		 	<span>7*24Ð¡Ê±È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½È«</span><br/>
+                		 	<span>ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½×¨Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</span><br/>
+                		 	<span>ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¸¶ï¿½Ñ·ï¿½ï¿½Ø²ï¿½ï¿½ï¿½Ë¡ï¿½</span>
                 		 	<br/>
                 		 	<br/>
                 		 	<br/>
                 		 	<img alt="image" class="img-responsive" src="pic/logo2.png">
                 		 </div>
                 		  <div class="col-xs-4">
-                		     <h4><b>²ÎÊý</b></h4>
+                		     <h4><b>ï¿½ï¿½ï¿½ï¿½</b></h4>
                 		     <hr/>
-                		     <b>×î¶à£º</b><span class="right">$550,000</span><br/>
-                		     <b>×îÉÙ£º</b><span class="right">$299,000</span><br/>
-                		     <b>Ãæ»ý(M2)</b>:<span class="right">58-119</span><br/>
-                		     <b>¿ÉÊÛ:</b><span class="right">47</span><br/>
-                		     <b>·µÏÖ:</b><span class="right">$117</span><br/>
+                		     <b>ï¿½ï¿½à£º</b><span class="right">$550,000</span><br/>
+                		     <b>ï¿½ï¿½ï¿½Ù£ï¿½</b><span class="right">$299,000</span><br/>
+                		     <b>ï¿½ï¿½ï¿½(M2)</b>:<span class="right">58-119</span><br/>
+                		     <b>ï¿½ï¿½ï¿½ï¿½:</b><span class="right">47</span><br/>
+                		     <b>ï¿½ï¿½ï¿½ï¿½:</b><span class="right">$117</span><br/>
                 		 </div>
             		 </div>
       			 </div>
      		 </div>
      </div>
   </div>
-  <!--endµÚ¶þ¸öÔªËØ-->
+  <!--endï¿½Ú¶ï¿½ï¿½ï¿½Ôªï¿½ï¿½-->
 <div>
-<!--endÖÐ¼ä²¿·Ö-->
+<!--endï¿½Ð¼ä²¿ï¿½ï¿½-->
 <div>
-<!--end ËÑË÷ÁÐ±í-->
+<!--end ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½-->
           </div>
         </div>
   </div>
