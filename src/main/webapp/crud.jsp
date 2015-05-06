@@ -35,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
         </button>
+        <button id="add" class="btn btn-danger">
+            insertRow 
+        </button>
     </div>
     <table id="table"
            data-toolbar="#toolbar"
@@ -48,17 +51,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/json/welcome.json"
+           data-url="/touzi/findData"
            data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
-            <th data-field="id" data-sortable="true"
-                data-footer-formatter="totalTextFormatter">ID</th>
-            <th data-field="name" data-sortable="true" data-editable="true"
-                data-footer-formatter="totalNameFormatter">Item Name</th>
-            <th data-field="price" data-sortable="true" data-editable="true"
-                data-footer-formatter="totalPriceFormatter">Item Price</th>
+            <th data-field="id" data-sortable="true">ID</th>
+            <th data-field="middle_price" data-sortable="true" data-editable="true">middle_price</th>
+            <th data-field="middle_zu_price" data-sortable="true" data-editable="true">middle_zu_price</th>
+            <th data-field="price_review" data-sortable="true" data-editable="true">price_review</th>
+            <th data-field="year_increment_rate" data-sortable="true" data-editable="true">year_increment_rate</th>
+            <th data-field="zu_house_rate" data-sortable="true" data-editable="true">zu_house_rate</th>
+            <th data-field="zu_xuqiu" data-sortable="true" data-editable="true">zu_xuqiu</th>
+            <th data-field="data_exam" data-sortable="true" data-editable="true">data_exam</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -70,10 +75,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script>
     var $table = $('#table'),
         $remove = $('#remove'),
+        $add = $('#add'),
         selections = [];
-
+	var i=0;
     $(function () {
-        
+        $('#add').click(function () {
+            $table.bootstrapTable('insertRow', {index: 0, row:{id:'x'+(i++)} });
+        });
         $table.bootstrapTable({
             height: getHeight()
         });
@@ -88,12 +96,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $table.on('all.bs.table', function (e, name, args) {
             // console.log(name, args);
         });
+       // $table.on('editable-save.bs.table',function(field, row, oldValue,$el){
+           // alert(field+row.toString()+oldValue.toString()+$el.toString());
+        //});
         $remove.click(function () {
-            var ids = getIdSelections();
+        	var ids = getIdSelections();
+            ids = '"'+ids+'"';
+            alert(ids);
+            $.ajax({
+	 	    type: "POST",
+	 		data: { ids : ids},
+	 		dateType: "json",
+	 		url: "/touzi/deleteAllData",
+	 		
+	 		success:function(data){
+	 			alert("删除成功")
+	 			window.location.reload();
+	 		},
+	 		error:function(){
+	 			alert("error")
+	 		}
+	 	});
+	 	
+            
             $table.bootstrapTable('remove', {
                 field: 'id',
                 values: ids
             });
+     
             $remove.prop('disabled', true);
         });
         $(window).resize(function () {
@@ -130,9 +160,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     window.operateEvents = {
         'click .like': function (e, value, row, index) {
             alert('You click like action, row: ' + JSON.stringify(row));
+            var id=row.id;
+            if(isNaN(id)){
+            alert("hehe add")
+            	$.ajax({
+	 	    type: "POST",
+	 		data: {middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam},
+	 		dateType: "json",
+	 		url: "/touzi/addData",
+	 		
+	 		success:function(data){
+	 			alert("增加成功")
+	 		},
+	 		error:function(){
+	 			alert("error")
+	 		}
+	 	});
+          }
+          else{
+          alert("hehe edit")
+	           $.ajax({
+		 	    type: "POST",
+		 		data: {id: row.id, middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam},
+		 		dateType: "json",
+		 		url: "/touzi/editData",
+		 		
+		 		success:function(data){
+		 			alert("修改成功")
+		 		},
+		 		error:function(){
+		 			alert("error")
+		 		}
+	 		});
+          }
+          
+            
+            
         },
         'click .remove': function (e, value, row, index) {
-            alert("ddddddddd");
+            alert(row.id);
+            var id = row.id;
+            if(id="x"){
+            	//$table.bootstrapTable('remove', {field: 'id', values: 'x'});
+            }else{
+             $.ajax({
+		 	    type: "POST",
+		 		data: {id: id},
+		 		dateType: "json",
+		 		url: "/touzi/deleteData",
+		 		
+		 		success:function(data){
+		 			alert("修改成功")
+		 		},
+		 		error:function(){
+		 			alert("error")
+		 		}
+	 	});
+            }
+           
+            
             $table.bootstrapTable('remove', {
                 field: 'id',
                 values: [row.id]
@@ -140,21 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
     };
 
-    function totalTextFormatter(data) {
-        return 'Total';
-    }
-
-    function totalNameFormatter(data) {
-        return data.length;
-    }
-
-    function totalPriceFormatter(data) {
-        var total = 0;
-        $.each(data, function (i, row) {
-            total += +(row.price.substring(1));
-        });
-        return '$' + total;
-    }
+    
 
     function getHeight() {
         return $(window).height() - $('h1').outerHeight(true);
