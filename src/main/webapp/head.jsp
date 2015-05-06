@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312" isELIgnored="false"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
@@ -9,64 +9,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
    <title>HouseSale</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-   <!--<script src="/js/jquery.min.js"></script>
-   <script src="/bootstrap/js/bootstrap.min.js"></script>-->
+   <script src="/js/jquery.min.js"></script>
+   <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">
 </head>
-<body style="padding-top: 120px;">
+<body>
  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="row" style="background-color:rgba(19, 51, 89, 1);">
+    <div class="row" style="background-color:rgba(19, 51, 89, 1);padding-top:10px;padding-bottom: 5px;">
 	  <div class="col-md-1"></div>
       <div class="col-md-6" >
-      <span style="font-size:20px;color:yellow;style="text-align:bottom;">�����(haitunhui,cn)</span>
-      <span style="font-size:15px;color:white;">�ɾ����������й���ҵ���乲ͬ����</span>
+      <span style="font-size:18px;color:yellow;style="text-align:bottom;font-family:SimHei;">海豚会(haitunhui.cn)</span>
+      <span style="font-size:8px;color:white;font-family:SimHei;">由《经理人》联合中国商业领袖共同发起的、基于移动互联网技术的智慧型公益组织。</span>
       </div>
-      <div class="col-md-2" >
-       <span class="glyphicon glyphicon-phone-alt" style="font-size:20px;color:yellow;"></span>
-       <span style="font-size:20px;color:yellow;">400-810-9685</span>
+      <div class="col-md-2 col-md-offset-1" >
+       <span class="glyphicon glyphicon-phone-alt" style="font-size:18px;color:yellow;"></span>
+       <span style="font-size:18px;color:yellow;">400&nbsp;810&nbsp;9685</span>
        </div>     
-       <div class="col-md-2">      
-       		<ul class="navbar-header">
-       			<a class="glyphicon glyphicon-user" style="font-size:20px;color:white;"></a>
-       			<a href="#" style="color:white;">��Ա��¼</a>
-       			<a style="color:white;">&nbsp|&nbsp</a>
-       			<a href="#" style="color:yellow;">ע��</a>
-       		</ul>
+       <div class="col-md-2" style="margin-left:-50px;">      
+       		<div>
+       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
+       			<a href="#" style="color:white;font-size:12px;font-family:SimHei;">会员登录</a>
+       			<span class="divider-vertical"></span>
+       			<a href="#" style="color:yellow;font-size:12px;font-family:SimHei;">注册</a>
+       		</div>
        </div>
-       <div class="col-md-1"></div>
        </div>
-   <div class="row"style="background-color:white;padding-top:30px;">
+   <div class="row" style="background-color:white;padding-top:25px;">
 		<div class="col-md-1"></div>
 		<div class="col-md-2">
-		  <span style="font-size:20px;color:black;style="text-align:bottom;">ʤ����</span>
+		  <img src="images/logo.PNG" style="margin-top:-20px;"/>
 		</div>
-       <div class="col-md-6" >
-      	<ul class="navbar-header">
-       			<a href="#">��ҳ</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">���⹺��</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">��������</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">�������</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">�����Ŷ�</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">��ҵָ��</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">��������</a>
-       			<a>&nbsp|&nbsp</a>
-       			<a href="#">��������</a>
-       		</ul>
+       <div class="col-md-7" >
+      	<div class="navbar-header" id="headbar">
+       			<a href="#">首页</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">海外购房</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">购房返现</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">海外贷款</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">服务团队</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">置业指导</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">海外新闻</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">关于我们</a>
+       		</div>
        </div>  
-       <div class="col-md-2" >	
-       	<ul class="navbar-header">
-       	<a class="glyphicon glyphicon-list-alt" style="font-size:20px;color:LightSlateGray ;"></a>
-       		<a href="#"style="font-size:20px;color:LightSlateGray ;">Blog</a>
-       	</ul>
+       <div class="col-md-1" >	
+       	<div>
+       	<span class="glyphicon glyphicon-list-alt" style="color:#9C9C9C;"></span>
+       		<a href="#"style="font-size:17px;color:#9C9C9C;font-weight:bold;">Blog</a>
+       	</div>
        	</div>
        <div class="col-md-1"></div>
    </div>
 </nav>
+
 </body>
 </html>
