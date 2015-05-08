@@ -62,8 +62,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </div>
  <div class="col-md-10">
  <!--start item1-->
+ <c:forEach items="${searchList}" var="item" begin="0" end="4" step="1" varStatus="var">
   <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">澳大利亚房产</span><span style="color:white">WON GSG JG DS GDSJIG</span></div>
+  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">${item.project_name}</span></div>
   	 <div class="panel-body">
   	       <div id="item" >
            		  <div class="media">
@@ -87,56 +88,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		  <div class="col-xs-4">
                 		     <h4><b>详情简介</b></h4>
                 		     <hr/>
-                		     <b>最多：</b><span class="right">$550,000</span><br/>
-                		     <b>最少</b><span class="right">$299,000</span><br/>
-                		     <b>面积(M2)</b>:<span class="right">58-119</span><br/>
-                		     <b>可售:</b><span class="right">47</span><br/>
-                		     <b>返现:</b><span class="right">$117</span><br/>
+                		     <b>最多:</b><span class="right"><span>$</span>${item.maxPrice}</span><br/>
+                		     <b>最少:</b><span class="right"><span>$</span>${item.minPrice}</span><br/>
+                		     <b>面积(M2)</b>:<span class="right">${item.minArea}<span>-</span>${item.maxArea}</span><br/>
+                		     <b>可售:</b><span class="right">${item.keshou}</span><br/>
+                		     <b>返现:</b><span class="right"><span>$</span>${item.fanxian}</span><br/>
                 		 </div>
             		 </div>
       			 </div>
      		 </div>
      </div>
   </div>
+  </c:forEach>
   <!--end item1-->
-  <!--start item2-->
- <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">澳大利亚房产</span><span style="color:white">WON GSG JG DS GDSJIG</span></div>
-  	 <div class="panel-body">
-  	       <div id="item" >
-           		  <div class="media">
-           		      <div class="col-xs-5">
-          			 	 <a class="pull-left" href="#" target="_parent">
-              				<img alt="image" class="img-responsive" src="pic/house2.jpg">
-           			  	 </a>
-           			  </div>
-           		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
-                		 <div class="col-xs-8">
-                		 	<h4><b>完整的购房服务</b></h4>
-                		 	<hr/>
-                		 	<span>7*24小时全天候在线，全</span><br/>
-                		 	<span>方位服务的专业代理服务。</span><br/>
-                		 	<span>我们提供了基于您的满意付费房地产经纪人。</span>
-                		 	<br/>
-                		 	<br/>
-                		 	<br/>
-                		 	<img alt="image" class="img-responsive" src="pic/logo2.png">
-                		 </div>
-                		  <div class="col-xs-4">
-                		     <h4><b>详情简介</b></h4>
-                		     <hr/>
-                		     <b>最多：</b><span class="right">$550,000</span><br/>
-                		     <b>最少</b><span class="right">$299,000</span><br/>
-                		     <b>面积(M2)</b>:<span class="right">58-119</span><br/>
-                		     <b>可售:</b><span class="right">47</span><br/>
-                		     <b>返现:</b><span class="right">$117</span><br/>
-                		 </div>
-            		 </div>
-      			 </div>
-     		 </div>
-     </div>
-  </div>
-  <!--end item2-->
  </div>
  </div>
  <div class="row" style="padding-top:20px;">

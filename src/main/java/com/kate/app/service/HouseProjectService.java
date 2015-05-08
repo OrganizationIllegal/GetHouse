@@ -17,7 +17,6 @@ public class HouseProjectService {
 	public List<HouseProject> getHouseProjectList(){
 		List<HouseProject> list = new ArrayList<HouseProject>();
 		list = houseProjectDao.HouseProjectDao();
-		System.out.println("ffffffff"+list.size());
 		return list;
 				
 	}
