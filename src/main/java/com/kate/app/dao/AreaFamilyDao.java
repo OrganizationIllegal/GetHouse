@@ -13,7 +13,7 @@ public class AreaFamilyDao extends BaseDao {
 		int houseProId=1;
 		int dulirate=0;
 		try {
-			String sql = " SELECT rate from area_family t where  t.family_type='独立人士'  AND t.house_pro_id="+houseProId;
+			String sql = " SELECT rate from area_family t where binary t.family_type='独立人士'  AND t.house_pro_id="+houseProId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -29,7 +29,7 @@ public class AreaFamilyDao extends BaseDao {
 		int houseProId=1;
 		int youngfamilyrate=0;
 		try {
-			String sql = " SELECT rate from area_family t where  t.family_type='青年家庭'  AND t.house_pro_id="+houseProId;
+			String sql = " SELECT rate from area_family t where binary t.family_type='青年家庭'  AND t.house_pro_id="+houseProId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -45,7 +45,7 @@ public class AreaFamilyDao extends BaseDao {
 		int houseProId=1;
 		int oldfamilyrate=0;
 		try {
-			String sql = " SELECT rate from area_family t where  t.family_type='老年家庭'  AND t.house_pro_id="+houseProId;
+			String sql = " SELECT rate from area_family t where binary t.family_type='老年家庭'  AND t.house_pro_id="+houseProId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
