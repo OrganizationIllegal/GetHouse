@@ -1,5 +1,6 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.alibaba.fastjson.JSONArray;
 import com.kate.app.model.FamilyIncome;
 import com.kate.app.model.PeopleForeign;
 import com.kate.app.model.PeopleInfo;
@@ -105,5 +107,248 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return familyIncomeList;
 	}
-	
+	//人口总数  增
+	public int InsertPeople(String people_count,int area,int city,int house_pro_id){
+		int exeResult=0;
+		try {
+			String sql = "insert into people_info(people_count,area,city,house_pro_id) values("+"'"+people_count+"'"+","+area+","+city+","+house_pro_id+") ";
+			Statement stmt = con.createStatement();
+			exeResult = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//人口总数  删
+	public int DelPeopleInfo(int id){
+		int exeResult=0;
+		try {
+			String sql = "delete from people_info where id="+id;
+			Statement stmt = con.createStatement();
+			exeResult = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//人口总数  查
+	public JSONArray listPeopleInfo(){
+		JSONArray jsonArray=new JSONArray();
+		try {
+			String sql = " select t.id,t.people_count,t.area,t.city,t.house_pro_id,h.project_name from people_info t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			jsonArray=ResultSetConverter.convert(rs);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonArray;
+	} 
+	//人口总数  改
+	public int updateAreaFamily(int id,String people_count,int area,int city,int house_pro_id){
+		int exeResult=0;
+		try {
+			String sql = "update people_info set people_count=?,area=?,city=? where id=? and house_pro_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, people_count);
+			pstmt.setInt(2, area);
+			pstmt.setInt(3, city);
+			pstmt.setInt(4, id);
+			pstmt.setInt(5, house_pro_id);
+			exeResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//出生国家 增
+	public int InsertPeopleNation(String born_city,int area,int city,int house_pro_id){
+		int exeResult=0;
+		try {
+			String sql = "insert into born_nation(born_city,area,city,house_pro_id) values(?,?,?,?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, born_city);
+			pstmt.setInt(2, area);
+			pstmt.setInt(3, city);
+			pstmt.setInt(4, house_pro_id);
+			exeResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//出生国家 删
+	public int DelPeopleNation(int id){
+		int exeResult=0;
+		try {
+			String sql = "delete from born_nation where id="+id;
+			Statement stmt = con.createStatement();
+			exeResult = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//出生国家 查
+	public JSONArray listPeopleNation(){
+		JSONArray jsonArray=new JSONArray();
+		try {
+			String sql = " select t.id,t.born_city,t.area,t.city,t.house_pro_id,h.project_name from born_nation t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			jsonArray=ResultSetConverter.convert(rs);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonArray;
+	} 
+	//出生国家 改
+	public int updatePeopleNation(int id,String born_city,int area,int city,int house_pro_id){
+		int exeResult=0;
+		try {
+			String sql = "update born_nation set born_city=?,area=?,city=? where id=? and house_pro_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, born_city);
+			pstmt.setInt(2, area);
+			pstmt.setInt(3, city);
+			pstmt.setInt(4, id);
+			pstmt.setInt(5, house_pro_id);
+			exeResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//海外出生 增
+	public int InsertPeopleForeign(String born_foreign,int area,int city,int house_pro_id){
+		int exeResult=0;
+		try {
+			String sql = "insert into born_foreigns(born_foreign,area,city,house_pro_id) values(?,?,?,?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, born_foreign);
+			pstmt.setInt(2, area);
+			pstmt.setInt(3, city);
+			pstmt.setInt(4, house_pro_id);
+			exeResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//海外出生 删
+	public int DelPeopleForeign(int id){
+		int exeResult=0;
+		try {
+			String sql = "delete from born_foreigns where id="+id;
+			Statement stmt = con.createStatement();
+			exeResult = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+	}
+	//海外出生 查
+		public JSONArray listPeopleForeign(){
+			JSONArray jsonArray=new JSONArray();
+			try {
+				String sql = " select t.id,t.born_foreign,t.area,t.city,t.house_pro_id,h.project_name from born_foreigns t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				jsonArray=ResultSetConverter.convert(rs);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return jsonArray;
+		} 
+	//海外出生 改
+		public int updatePeopleForeign(int id,String born_foreign,int area,int city,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "update born_foreigns set born_foreign=?,area=?,city=? where id=? and house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, born_foreign);
+				pstmt.setInt(2, area);
+				pstmt.setInt(3, city);
+				pstmt.setInt(4, id);
+				pstmt.setInt(5, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
+		//平均家庭收入 增
+		public int InsertFamilyIncome(String family_income,int area,int city,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "insert into family_income(family_income,area,city,house_pro_id) values(?,?,?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, family_income);
+				pstmt.setInt(2, area);
+				pstmt.setInt(3, city);
+				pstmt.setInt(4, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
+		//平均家庭收入 删
+		public int DelFamilyIncome(int id){
+			int exeResult=0;
+			try {
+				String sql = "delete from family_income where id="+id;
+				Statement stmt = con.createStatement();
+				exeResult = stmt.executeUpdate(sql);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
+		//平均家庭收入 查
+		public JSONArray listFamilyIncome(){
+			JSONArray jsonArray=new JSONArray();
+			try {
+				String sql = " select t.id,t.family_income,t.area,t.city,t.house_pro_id,h.project_name from family_income t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				jsonArray=ResultSetConverter.convert(rs);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return jsonArray;
+		} 	
+		//平均家庭收入 改
+		public int updateFamilyIncome(int id,String family_income,int area,int city,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "update family_income set family_income=?,area=?,city=? where id=? and house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, family_income);
+				pstmt.setInt(2, area);
+				pstmt.setInt(3, city);
+				pstmt.setInt(4, id);
+				pstmt.setInt(5, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
 }

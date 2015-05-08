@@ -1,5 +1,6 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.alibaba.fastjson.JSONArray;
 import com.kate.app.model.HoldingTaxVo;
 import com.kate.app.model.HouseTaxData;
 import com.kate.app.model.HouseTaxVo;
@@ -102,5 +104,128 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	 }
-
+	 //购房税费 List
+	 public JSONArray listHouseTax(){
+			JSONArray jsonArray=new JSONArray();
+			try {
+				String sql = "select t.id,t.type,t.price,t.description,t.house_pro_id,h.project_name from  house_tax t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				jsonArray=ResultSetConverter.convert(rs);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return jsonArray;
+		} 
+	//购房税费 Add
+	 public int InsertHouseTax(String type,int price,String description,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "insert into house_tax(type,price,description,house_pro_id) values(?,?,?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, type);
+				pstmt.setInt(2, price);
+				pstmt.setString(3, description);
+				pstmt.setInt(4, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}  
+	//购房税费 update
+	 public int updateHouseTax(int id,String type,int price,String description,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "update house_tax set type=?,price=?,description=? where id=? and house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, type);
+				pstmt.setInt(2, price);
+				pstmt.setString(3, description);
+				pstmt.setInt(4, id);
+				pstmt.setInt(5, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
+	//购房税费 delete
+	 public int delHouseTax(int id){
+			int exeResult=0;
+			try {
+				String sql = "delete from house_tax where id="+id;
+				Statement stmt = con.createStatement();
+				exeResult = stmt.executeUpdate(sql);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
+	//持有成本 List
+	 public JSONArray listHoldingCost(){
+			JSONArray jsonArray=new JSONArray();
+			try {
+				String sql = "select t.id,t.type,t.price,t.description,t.house_pro_id,h.project_name from holding_finace t LEFT JOIN house_project h on t.house_pro_id=h.id";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				jsonArray=ResultSetConverter.convert(rs);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return jsonArray;
+		} 
+	//持有成本 Add
+	 public int InsertHoldingCost(String type,int price,String description,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "insert into holding_finace(type,price,description,house_pro_id) values(?,?,?,?)";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, type);
+				pstmt.setInt(2, price);
+				pstmt.setString(3, description);
+				pstmt.setInt(4, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}  
+	//持有成本 update
+	 public int updateHoldingCost(int id,String type,int price,String description,int house_pro_id){
+			int exeResult=0;
+			try {
+				String sql = "update holding_finace set type=?,price=?,description=? where id=? and house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, type);
+				pstmt.setInt(2, price);
+				pstmt.setString(3, description);
+				pstmt.setInt(4, id);
+				pstmt.setInt(5, house_pro_id);
+				exeResult = pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
+	//持有成本 delete
+	 public int delHoldingCost(int id){
+			int exeResult=0;
+			try {
+				String sql = "delete from holding_finace where id="+id;
+				Statement stmt = con.createStatement();
+				exeResult = stmt.executeUpdate(sql);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return exeResult;
+		}
 }
