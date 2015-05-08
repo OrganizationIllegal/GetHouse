@@ -9,6 +9,13 @@ public class InvestmentDate {
 	private String zu_xuqiu;
 	private String price_review;
 	private String data_exam;
+	private int house_pro_id;
+	public int getHouse_pro_id() {
+		return house_pro_id;
+	}
+	public void setHouse_pro_id(int house_pro_id) {
+		this.house_pro_id = house_pro_id;
+	}
 	public String getData_exam() {
 		return data_exam;
 	}

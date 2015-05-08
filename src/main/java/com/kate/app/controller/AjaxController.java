@@ -34,7 +34,7 @@ public class AjaxController {
 	@Autowired
 	private AjaxService ajaxService;
 	
-	@RequestMapping({ "/touzi/findData" })
+	@RequestMapping({ "/touzi/findData" })    //����Ͷ�����
 	public void selectData(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();
@@ -50,10 +50,57 @@ public class AjaxController {
 		}
 	}
 	
+	@RequestMapping({ "/find/houseInfo" })    //������ݷ��ݼ��۸�
+	public void findHouseInfo(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.selectHouseInfo();
+		int count = ajaxService.countHouseInfo();
+		json.put("total", count);
+		json.put("rows", array);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
+	@RequestMapping({ "/find/houseProject" })    //������ݷ��ݼ��۸�
+	public void findHouseProject(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.selectHouseProject();
+		int count = ajaxService.countHouseProject();
+		json.put("total", count);
+		json.put("rows", array);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping({ "/find/ByInfo" })    //����Ͷ�����
+	public void findByInfo(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.select();
+		int count = ajaxService.count();
+		json.put("total", count);
+		json.put("rows", array);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	@RequestMapping({ "/touzi/addData" })
 	public void addData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
 		String middle_price_str = req.getParameter("middle_price");
 		int middle_price  = middle_price_str==null? 0 :Integer.parseInt(middle_price_str);
 		String middle_zu_price_str = req.getParameter("middle_zu_price");
@@ -75,7 +122,7 @@ public class AjaxController {
 		
 		boolean flag = false;
 		JSONObject json = new JSONObject();
-		flag = ajaxService.addTouziData(middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam);
+		flag = ajaxService.addTouziData(project_name,middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam);
 		json.put("data", flag);
 		
 		try{
@@ -85,8 +132,37 @@ public class AjaxController {
 		}
 	}
 	
+	@RequestMapping({ "/add/HouseInfo" })
+	public void addHouseInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
+		String house_type = req.getParameter("house_type");
+		String house_room_num_str = req.getParameter("house_room_num");
+		int house_room_num  = house_room_num_str==null? 0 :Integer.parseInt(house_room_num_str);
+		String house_toilet_num_str = req.getParameter("house_toilet_num");
+		int house_toilet_num  = house_toilet_num_str==null? 0 :Integer.parseInt(house_toilet_num_str);
+		
+		String house_size_str = req.getParameter("house_size");
+		int house_size  = house_size_str==null? 0 :Integer.parseInt(house_size_str);
+		String house_price  = req.getParameter("house_price");
+		String house_img  = req.getParameter("house_img");
+		
+		boolean flag = false;
+		JSONObject json = new JSONObject();
+		flag = ajaxService.addHouseInfo(project_name, house_type, house_room_num, house_toilet_num, house_size, house_price, house_img);
+		json.put("data", flag);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	@RequestMapping({ "/touzi/editData" })
 	public void editData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
 		int id = Integer.parseInt(req.getParameter("id"));
 		int middle_price  = Integer.parseInt(req.getParameter("middle_price"));
 		int middle_zu_price  = Integer.parseInt(req.getParameter("middle_zu_price"));
@@ -96,7 +172,7 @@ public class AjaxController {
 		int zu_house_rate  = Integer.parseInt(req.getParameter("zu_house_rate"));
 		String data_exam  = req.getParameter("data_exam");
 		
-		boolean flag = ajaxService.editTouziData(id, middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate,zu_xuqiu,data_exam);
+		boolean flag = ajaxService.editTouziData(id, project_name, middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate,zu_xuqiu,data_exam);
 		JSONObject json = new JSONObject();
 		json.put("data", flag);
 		try{
@@ -107,10 +183,65 @@ public class AjaxController {
 	}
 	
 	
+	@RequestMapping({ "/edit/HouseInfo" })
+	public void editHouseInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
+		int id = Integer.parseInt(req.getParameter("id"));
+		String house_type = req.getParameter("house_type");
+		String house_room_num_str = req.getParameter("house_room_num");
+		int house_room_num  = house_room_num_str==null? 0 :Integer.parseInt(house_room_num_str);
+		String house_toilet_num_str = req.getParameter("house_toilet_num");
+		int house_toilet_num  = house_toilet_num_str==null? 0 :Integer.parseInt(house_toilet_num_str);
+		
+		String house_size_str = req.getParameter("house_size");
+		int house_size  = house_size_str==null? 0 :Integer.parseInt(house_size_str);
+		String house_price  = req.getParameter("house_price");
+		String house_img  = req.getParameter("house_img");
+		
+		boolean flag = false;
+		JSONObject json = new JSONObject();
+		flag = ajaxService.editHouseInfo(id, project_name, house_type, house_room_num, house_toilet_num, house_size, house_price, house_img);
+		json.put("data", flag);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	@RequestMapping({ "/touzi/deleteData" })
 	public void deleteData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		int id = Integer.parseInt(req.getParameter("id"));
 		boolean flag = ajaxService.deleteTouziData(id);
+		JSONObject json = new JSONObject();
+		json.put("data", flag);
+		try{
+		writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping({ "/delete/HouseInfo" })
+	public void deleteHouseInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		boolean flag = ajaxService.deleteHouseInfo(id);
+		JSONObject json = new JSONObject();
+		json.put("data", flag);
+		try{
+		writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping({ "/delete/HouseProject" })
+	public void deleteHouseProject(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		boolean flag = ajaxService.deleteHouseProject(id);
 		JSONObject json = new JSONObject();
 		json.put("data", flag);
 		try{
@@ -141,10 +272,19 @@ public class AjaxController {
 	
 	@RequestMapping({ "/addPro" })
 	public void addPro(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String name =  req.getParameter("name");
-		String lan  = req.getParameter("lan");
-		String detail  = req.getParameter("detail");
-		boolean flag = ajaxService.addPro(name, lan, detail);
+		String project_name =  req.getParameter("project_name");
+		String project_lan  = req.getParameter("project_lan");
+		String project_desc  = req.getParameter("project_desc");
+		String project_nation  = req.getParameter("project_nation");
+		String project_address  = req.getParameter("project_address");
+		String project_area  = req.getParameter("project_area");
+		int project_sales_remain  =  Integer.parseInt(req.getParameter("project_sales_remain"));
+		String project_finish_time  = req.getParameter("project_finish_time");
+		String project_city = req.getParameter("project_city");
+		String project_price = req.getParameter("project_price");
+		
+		
+		boolean flag = ajaxService.addPro(project_name, project_lan, project_desc,project_nation,project_address,project_area,project_sales_remain,project_finish_time,project_city,project_price);
 		JSONObject json = new JSONObject();
 		json.put("data", flag);
 		try{
@@ -158,10 +298,17 @@ public class AjaxController {
 	@RequestMapping({ "/editPro" })
 	public void editPro(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		int proid = Integer.parseInt(req.getParameter("proid"));
-		String name =  req.getParameter("name");
-		String lan  = req.getParameter("lan");
-		String detail  = req.getParameter("detail");
-		boolean flag = ajaxService.editPro(proid, name, lan, detail);
+		String project_name =  req.getParameter("project_name");
+		String project_lan  = req.getParameter("project_lan");
+		String project_desc  = req.getParameter("project_desc");
+		String project_nation  = req.getParameter("project_nation");
+		String project_address  = req.getParameter("project_address");
+		String project_area  = req.getParameter("project_area");
+		int project_sales_remain  =  Integer.parseInt(req.getParameter("project_sales_remain"));
+		String project_finish_time  = req.getParameter("project_finish_time");
+		String project_city = req.getParameter("project_city");
+		String project_price = req.getParameter("project_price");
+		boolean flag = ajaxService.editPro(proid, project_name, project_lan, project_desc,project_nation,project_address,project_area,project_sales_remain,project_finish_time,project_city,project_price);
 		JSONObject json = new JSONObject();
 		json.put("data", flag);
 		try{

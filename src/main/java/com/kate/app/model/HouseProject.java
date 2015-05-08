@@ -7,14 +7,20 @@ public class HouseProject {
 	private String project_name;
 	private String project_img;
 	private String project_nation;
-	private String project_detail_add;
+	private String project_address;
 	private int project_area;
 	private int project_price_avg;
-	private String project_style;
+	private String project_type;
 	private int project_sales_remain;
 	private Timestamp project_finish_time;
 	private String project_desc;
 	private int developer_id;
+	private String project_city;
+	private String project_house_type;
+	private int project_high;
+	private String project_price;
+	private String project_lan;
+	private String project_peitao_img;
 	public int getId() {
 		return id;
 	}
@@ -39,11 +45,11 @@ public class HouseProject {
 	public void setProject_nation(String project_nation) {
 		this.project_nation = project_nation;
 	}
-	public String getProject_detail_add() {
-		return project_detail_add;
+	public String getProject_address() {
+		return project_address;
 	}
-	public void setProject_detail_add(String project_detail_add) {
-		this.project_detail_add = project_detail_add;
+	public void setProject_address(String project_address) {
+		this.project_address = project_address;
 	}
 	public int getProject_area() {
 		return project_area;
@@ -57,11 +63,11 @@ public class HouseProject {
 	public void setProject_price_avg(int project_price_avg) {
 		this.project_price_avg = project_price_avg;
 	}
-	public String getProject_style() {
-		return project_style;
+	public String getProject_type() {
+		return project_type;
 	}
-	public void setProject_style(String project_style) {
-		this.project_style = project_style;
+	public void setProject_type(String project_type) {
+		this.project_type = project_type;
 	}
 	public int getProject_sales_remain() {
 		return project_sales_remain;
@@ -87,8 +93,41 @@ public class HouseProject {
 	public void setDeveloper_id(int developer_id) {
 		this.developer_id = developer_id;
 	}
-	
-	
-	
+	public String getProject_city() {
+		return project_city;
+	}
+	public void setProject_city(String project_city) {
+		this.project_city = project_city;
+	}
+	public String getProject_house_type() {
+		return project_house_type;
+	}
+	public void setProject_house_type(String project_house_type) {
+		this.project_house_type = project_house_type;
+	}
+	public int getProject_high() {
+		return project_high;
+	}
+	public void setProject_high(int project_high) {
+		this.project_high = project_high;
+	}
+	public String getProject_price() {
+		return project_price;
+	}
+	public void setProject_price(String project_price) {
+		this.project_price = project_price;
+	}
+	public String getProject_lan() {
+		return project_lan;
+	}
+	public void setProject_lan(String project_lan) {
+		this.project_lan = project_lan;
+	}
+	public String getProject_peitao_img() {
+		return project_peitao_img;
+	}
+	public void setProject_peitao_img(String project_peitao_img) {
+		this.project_peitao_img = project_peitao_img;
+	}
 	
 }

@@ -25,14 +25,12 @@ public class HouseProjectDao extends BaseDao{
 				HouseProject projectInfo = new HouseProject();
 				projectInfo.setProject_area(rs.getInt("project_area"));
 				projectInfo.setProject_desc(rs.getString("project_desc"));
-				projectInfo.setProject_detail_add(rs.getString("project_detail_add"));
 				projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
 				projectInfo.setProject_img(rs.getString("project_img"));
 				projectInfo.setProject_name(rs.getString("project_name"));
 				projectInfo.setProject_nation(rs.getString("project_nation"));
 				projectInfo.setProject_price_avg(rs.getInt("project_price_avg"));
 				projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
-				projectInfo.setProject_style(rs.getString("project_style"));
 				list.add(projectInfo);
 			}
 			
