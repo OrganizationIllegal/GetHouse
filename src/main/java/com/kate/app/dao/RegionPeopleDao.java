@@ -65,17 +65,17 @@ public class RegionPeopleDao extends BaseDao {
 		List<PeopleForeign> peopleForeignList=new ArrayList<PeopleForeign>();
 		int houseProId=1;
 		try {
-			String sql = "select t.bron_foreign,t.area,t.city from born_foreigns t where t.house_pro_id="+houseProId;
+			String sql = "select t.born_foreign,t.area,t.city from born_foreigns t where t.house_pro_id="+houseProId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			String bron_foreign=null;
+			String born_foreign=null;
 			float area=0;
 			float city=0;
 			while(rs.next()){
-				bron_foreign=rs.getString("bron_foreign");
+				born_foreign=rs.getString("born_foreign");
 				area=rs.getInt("area")/100;
 				city=rs.getInt("city")/100;
-				PeopleForeign peopleForeign=new PeopleForeign(bron_foreign,area,city);
+				PeopleForeign peopleForeign=new PeopleForeign(born_foreign,area,city);
 				peopleForeignList.add(peopleForeign);
 			}
 		} catch (Exception e) {
