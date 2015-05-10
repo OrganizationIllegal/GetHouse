@@ -4,7 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
 <head>
    <title>HouseSale</title>
@@ -125,11 +125,7 @@ function pop3(){
 
                 <table class="ad_left_big" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <tr><td><img src="images/a.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><video id="example_video_1" class="video-js vjs-default-skin" controls preload="none"  data-setup="{}"width="850" height="600" >
-                        <source src="s.mp4" type='video/mp4'/>
-                        <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>Tracks need an ending tag thanks to IE9
-                        <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track>Tracks need an ending tag thanks to IE9
-                    </video>
+                    <tr><td><div id="youkuplayer" style="width:850px;height:600px"></div>
                     </td>
                     </tr>
                     <tr><td><img src="images/c.jpg" width="850" height="600" /></a></td></tr>
@@ -1559,6 +1555,27 @@ function pop3(){
  	$(function () {
   		$('[data-toggle="popover"]').popover()
 	});
+	
  </script>
+ <script type="text/javascript" src="http://player.youku.com/jsapi">
+		
+		player = new YKU.Player('youkuplayer',{
+			styleid: '0',
+			client_id: '6e97509b4cd3378b',
+			vid: 'XOTUxNDk2NDQ0',
+			events:{
+			onPlayStart: function(){ alert("kaishi") },
+			onPlayEnd: function(){ alert("jieshu") }
+			}
+			});
+			function playVideo(){
+			player.playVideo();
+				alert("kaishi");
+			}
+			function pauseVideo(){
+			player.pauseVideo();
+				alert("zanting")
+			}
+	</script>
 </body>
 </html>

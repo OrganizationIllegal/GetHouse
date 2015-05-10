@@ -65,14 +65,14 @@ public class RegionPeopleDao extends BaseDao {
 		List<PeopleForeign> peopleForeignList=new ArrayList<PeopleForeign>();
 		int houseProId=1;
 		try {
-			String sql = "select t.bron_foreign,t.area,t.city from born_foreigns t where t.house_pro_id="+houseProId;
+			String sql = "select t.born_foreign,t.area,t.city from born_foreigns t where t.house_pro_id="+houseProId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			String bron_foreign=null;
 			float area=0;
 			float city=0;
 			while(rs.next()){
-				bron_foreign=rs.getString("bron_foreign");
+				bron_foreign=rs.getString("born_foreign");
 				area=rs.getInt("area")/100;
 				city=rs.getInt("city")/100;
 				PeopleForeign peopleForeign=new PeopleForeign(bron_foreign,area,city);
@@ -107,7 +107,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return familyIncomeList;
 	}
-	//ÈË¿Ú×ÜÊý  Ôö
+	//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½
 	public int InsertPeople(String people_count,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -120,7 +120,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//ÈË¿Ú×ÜÊý  É¾
+	//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½  É¾
 	public int DelPeopleInfo(int id){
 		int exeResult=0;
 		try {
@@ -133,7 +133,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//ÈË¿Ú×ÜÊý  ²é
+	//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½
 	public JSONArray listPeopleInfo(){
 		JSONArray jsonArray=new JSONArray();
 		try {
@@ -147,7 +147,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//ÈË¿Ú×ÜÊý  ¸Ä
+	//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½
 	public int updateAreaFamily(int id,String people_count,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -165,7 +165,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//³öÉú¹ú¼Ò Ôö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public int InsertPeopleNation(String born_city,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -182,7 +182,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//³öÉú¹ú¼Ò É¾
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ É¾
 	public int DelPeopleNation(int id){
 		int exeResult=0;
 		try {
@@ -195,7 +195,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//³öÉú¹ú¼Ò ²é
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public JSONArray listPeopleNation(){
 		JSONArray jsonArray=new JSONArray();
 		try {
@@ -209,7 +209,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//³öÉú¹ú¼Ò ¸Ä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public int updatePeopleNation(int id,String born_city,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -227,7 +227,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//º£Íâ³öÉú Ôö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public int InsertPeopleForeign(String born_foreign,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -244,7 +244,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//º£Íâ³öÉú É¾
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ É¾
 	public int DelPeopleForeign(int id){
 		int exeResult=0;
 		try {
@@ -257,7 +257,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//º£Íâ³öÉú ²é
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		public JSONArray listPeopleForeign(){
 			JSONArray jsonArray=new JSONArray();
 			try {
@@ -271,7 +271,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return jsonArray;
 		} 
-	//º£Íâ³öÉú ¸Ä
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		public int updatePeopleForeign(int id,String born_foreign,int area,int city,int house_pro_id){
 			int exeResult=0;
 			try {
@@ -289,7 +289,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return exeResult;
 		}
-		//Æ½¾ù¼ÒÍ¥ÊÕÈë Ôö
+		//Æ½ï¿½ï¿½ï¿½Í¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		public int InsertFamilyIncome(String family_income,int area,int city,int house_pro_id){
 			int exeResult=0;
 			try {
@@ -306,7 +306,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return exeResult;
 		}
-		//Æ½¾ù¼ÒÍ¥ÊÕÈë É¾
+		//Æ½ï¿½ï¿½ï¿½Í¥ï¿½ï¿½ï¿½ï¿½ É¾
 		public int DelFamilyIncome(int id){
 			int exeResult=0;
 			try {
@@ -319,7 +319,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return exeResult;
 		}
-		//Æ½¾ù¼ÒÍ¥ÊÕÈë ²é
+		//Æ½ï¿½ï¿½ï¿½Í¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		public JSONArray listFamilyIncome(){
 			JSONArray jsonArray=new JSONArray();
 			try {
@@ -333,7 +333,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return jsonArray;
 		} 	
-		//Æ½¾ù¼ÒÍ¥ÊÕÈë ¸Ä
+		//Æ½ï¿½ï¿½ï¿½Í¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		public int updateFamilyIncome(int id,String family_income,int area,int city,int house_pro_id){
 			int exeResult=0;
 			try {

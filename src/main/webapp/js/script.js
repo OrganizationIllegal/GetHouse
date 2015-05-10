@@ -1,3 +1,4 @@
+
 $(function(){
 	//幻灯片广告播放--开始
 	//jQuery(".ad_position .limit .ad_small_box ul li").css("opacity","0.5");
@@ -22,7 +23,18 @@ $(function(){
 	
 	//悬停广告区域时播放停止
 	jQuery(".ad_position").hover(function(){clearInterval(ad_huandeng_setInterval);}, function(){ad_huandeng_setInterval = setInterval(ad_huandeng_play,interval_time);});
-	
+	function videoplay(){
+		alert("jdskfj");
+		clearInterval(ad_huandeng_setInterval);
+	}
+	function videopause(){
+	alert("jdskfj");
+		ad_huandeng_setInterval = setInterval(ad_huandeng_play,interval_time);
+	}
+	function videoend(){
+	alert("jdskfj");
+		clearInterval(ad_huandeng_setInterval);
+	}
 	//小图点击时，开始动画
 	jQuery(".ad_position .limit .ad_small_box ul li").dblclick(function(){
 		ad_huandeng_click_i=jQuery(".ad_position .limit .ad_small_box ul li").index(jQuery(this));		
