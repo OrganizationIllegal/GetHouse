@@ -18,6 +18,7 @@ import com.kate.app.model.AreaZhikong;
 import com.kate.app.model.AreaZujin;
 import com.kate.app.model.FamilyIncome;
 import com.kate.app.model.HoldingTaxVo;
+import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseTaxData;
 import com.kate.app.model.HouseTaxVo;
 import com.kate.app.model.LatestSaleInfoVo;
@@ -29,11 +30,14 @@ import com.kate.app.model.PeopleNation;
 import com.kate.app.service.AreaFamilyService;
 import com.kate.app.service.AreaFeatureService;
 import com.kate.app.service.AreaTrendService;
+import com.kate.app.service.BuyInfoService;
+import com.kate.app.service.HouseInfoService;
 import com.kate.app.service.HouseProjectService;
 import com.kate.app.service.HouseTaxService;
 import com.kate.app.service.LatestSaleInfoListService;
 import com.kate.app.service.MyService;
 import com.kate.app.service.PeopleInfoService;
+import com.kate.app.service.RecoProjectSerivice;
 import com.kate.app.service.SchoolNearService;
 
 @Controller
@@ -56,6 +60,12 @@ public class MyController {
 	private HouseTaxService  houseTaxService;
 	@Autowired
 	private PeopleInfoService peopleInfoService;
+	@Autowired
+	private HouseInfoService houseInfoService;
+	@Autowired
+	private BuyInfoService buyInfoService;
+	@Autowired
+	private RecoProjectSerivice recoprojectserivice;
 	@RequestMapping({ "/Index" })
 	public String Index(HttpServletRequest req, HttpServletResponse resp){
 		 getAreaFamily(req,resp);
@@ -65,6 +75,9 @@ public class MyController {
 		 getSchoolAndNear(req,resp);
 		 getHouseTax(req,resp);
 		 getPeopleRegion(req,resp);
+		 getHouseInfo(req,resp);
+		 getBuyInfo(req,resp);
+		 getProjectdescription(req,resp);
 		 return "/index.jsp";
 	}
 	/**
@@ -237,7 +250,25 @@ public void getPeopleRegion(HttpServletRequest req, HttpServletResponse resp){
 	List<FamilyIncome> familyIncomeList=peopleInfoService.getFamilyIncome();
 	req.setAttribute("familyIncomeList",familyIncomeList);
 }
-	
+
+/*户型及价格*/
+@RequestMapping({"/Index/HouseInfo"})
+public void getHouseInfo(HttpServletRequest req, HttpServletResponse resp){
+	List<HouseInfo> houseInfoList=houseInfoService.getHouseInfoList();
+	req.setAttribute("HouseInfoList", houseInfoList);
+}
+
+/*价格区间*/
+@RequestMapping({"/Index/BuyInfo"})
+public void getBuyInfo(HttpServletRequest req, HttpServletResponse resp){
+	String returnPrice=buyInfoService.getReturnMoney();
+	req.setAttribute("returnPrice", returnPrice);
+}
+/*推荐项目*/
+public void getProjectdescription(HttpServletRequest req, HttpServletResponse resp){
+	String projectdescription=recoprojectserivice.getProjectdescription();
+	req.setAttribute("projectdescription",projectdescription);
+}
 	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");

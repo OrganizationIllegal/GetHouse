@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>House Type List</title>
+    <title>CRUD</title>
      <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <link href="/bootstrap/css/bootstrap-table.css" rel="stylesheet">
      <link href="/bootstrap/css/bootstrap-editable.css" rel="stylesheet">
@@ -27,7 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div class="container">
-    <h1>House Type List</h1>
+    <div class="ribbon">
+        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
+    </div>
+    <h1>HouseProject 
+    <!-- <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a> --></h1>
     <div id="toolbar">
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
@@ -48,19 +52,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/find/houseInfo"
+           data-url="/find/houseProject"
            data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
+            
+            
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="house_type" data-sortable="true" data-editable="true">HouseType</th>
-            <th data-field="house_room_num" data-sortable="true" data-editable="true">RoomNum</th>
-            <th data-field="house_toilet_num" data-sortable="true" data-editable="true">ToiletNum</th>
-            <th data-field="house_size" data-sortable="true" data-editable="true">HouseSize</th>
-            <th data-field="house_price" data-sortable="true" data-editable="true">HousePrice</th>
-            <th data-field="house_img" data-sortable="true" data-editable="true">HouseImg</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">ProjectName</th>
+            <th data-field="project_name" data-sortable="true" data-editable="true">Project_name</th>
+            <th data-field="project_nation" data-sortable="true" data-editable="true">Project_nation</th>
+            <th data-field="project_address" data-sortable="true" data-editable="true">Project_address</th>
+            <th data-field="project_area" data-sortable="true" data-editable="true">Project_area</th>
+            <th data-field="project_sales_remain" data-sortable="true" data-editable="true">Project_sales_remain</th>
+            <th data-field="project_finish_time" data-sortable="true" data-editable="true">Project_finish_time</th>
+            <th data-field="project_desc" data-sortable="true" data-editable="true">Project_desc</th>
+            <th data-field="project_city" data-sortable="true" data-editable="true">Project_city</th>
+            <th data-field="project_house_type" data-sortable="true" data-editable="true">Project_house_type</th>
+            <th data-field="project_price" data-sortable="true" data-editable="true">project_price</th>
+            <th data-field="developer_name" data-sortable="true" data-editable="true">developer_name</th>
+            <th data-field="developer_logos" data-sortable="true" data-editable="true">developer_logo</th> 
+           
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -93,9 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $table.on('all.bs.table', function (e, name, args) {
             // console.log(name, args);
         });
-       // $table.on('editable-save.bs.table',function(field, row, oldValue,$el){
-           // alert(field+row.toString()+oldValue.toString()+$el.toString());
-        //});
+  
         $remove.click(function () {
         	var ids = getIdSelections();
             ids = '"'+ids+'"';
@@ -156,25 +166,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     window.operateEvents = {
         'click .like': function (e, value, row, index) {
-            //alert('You click like action, row: ' + JSON.stringify(row));
-           
+            alert('You click like action, row: ' + JSON.stringify(row));
             var id=row.id;
             if(isNaN(id)){
-            //alert("hehe add")
-            	$.ajax({
+            $.ajax({
 	 	    type: "POST",
-	 		data: {house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+	 		data: {project_name: row.project_name, project_nation: row.project_nation, project_address: row.project_address, project_area: row.project_area,project_sales_remain: row.project_sales_remain, project_finish_time: row.project_finish_time, project_desc: row.projece_desc,project_city:row.project_city,project_house_type:row.project_house_type,project_price:row.project_price, developer_name:row.developer_name},
 	 		dateType: "json",
-	 		url: "/add/HouseInfo",
+	 		url: "/addPro",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
-	 			if(data.result==0){
+	 			if(data.result==-1){
 	 				alert("项目名称不能为空！")
 	 			}
-	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
-	 			}else if(data.result==-2){
+	 			else if(data.result==-3){
+	 				alert("项目名称已经存在！")
+	 			}
+	 			else if(data.result==-2){
+	 				alert("开发商名称不能为空！")
+	 			}
+	 			else if(data.result==false){
 	 				alert("增加失败")
 	 			}
 	 			else{
@@ -187,21 +199,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          //alert("hehe edit")
-	           $.ajax({
+         	$.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+		 		data: {id:row.id,project_name: row.project_name, project_nation: row.project_nation, project_address: row.project_address, project_area: row.project_area,project_sales_remain: row.project_sales_remain, project_finish_time: row.project_finish_time, project_desc: row.projece_desc,project_city:row.project_city,project_house_type:row.project_house_type,project_price:row.project_price, developer_name:row.developer_name, developer_logo:row.developer_logo},
 		 		dateType: "json",
-		 		url: "/edit/HouseInfo",
+		 		url: "/editPro",
 		 		
 		 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
+		 		data=$.parseJSON(data);
+		 		if(data.result==-1){
 	 				alert("项目名称不能为空！")
 	 			}
-	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
-	 			}else if(data.result==-2){
+	 			else if(data.result==-2){
+	 				alert("开发商名称不能为空！")
+	 			}
+	 			else if(data.result==false){
 	 				alert("修改失败")
 	 			}
 	 			else{
@@ -218,22 +230,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
         },
         'click .remove': function (e, value, row, index) {
-       
+            alert(row.id);
             var id = row.id;
+            
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: id},
 		 		dateType: "json",
-		 		url: "/delete/HouseInfo",
+		 		url: "/deletePro",
 		 		
 		 		success:function(data){
-		 			alert("删除成功！")
+		 			alert("删除成功")
 		 		},
 		 		error:function(){
 		 			alert("error")
 		 		}
 	 	});
-        
+            
            
             
             $table.bootstrapTable('remove', {

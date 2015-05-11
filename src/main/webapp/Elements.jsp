@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>House Type List</title>
+    <title>zy2_HouseProject</title>
      <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <link href="/bootstrap/css/bootstrap-table.css" rel="stylesheet">
      <link href="/bootstrap/css/bootstrap-editable.css" rel="stylesheet">
@@ -27,15 +27,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div class="container">
-    <h1>House Type List</h1>
-    <div id="toolbar">
-        <button id="remove" class="btn btn-danger" disabled>
-            <i class="glyphicon glyphicon-remove"></i> Delete
-        </button>
-        <button id="add" class="btn btn-danger">
-            insertRow 
-        </button>
+    <div class="ribbon">
+        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
     </div>
+    <h1>The Elements</h1>
+    <!-- <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1> -->
+    
+    
+    
     <table id="table"
            data-toolbar="#toolbar"
            data-search="true"
@@ -48,23 +47,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/find/houseInfo"
+           data-url="/selectInfomation"
            data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
-            <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="house_type" data-sortable="true" data-editable="true">HouseType</th>
-            <th data-field="house_room_num" data-sortable="true" data-editable="true">RoomNum</th>
-            <th data-field="house_toilet_num" data-sortable="true" data-editable="true">ToiletNum</th>
-            <th data-field="house_size" data-sortable="true" data-editable="true">HouseSize</th>
-            <th data-field="house_price" data-sortable="true" data-editable="true">HousePrice</th>
-            <th data-field="house_img" data-sortable="true" data-editable="true">HouseImg</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">ProjectName</th>
-            <th data-field="operate"
-                data-formatter="operateFormatter"
-                data-events="operateEvents">Item Operate</th>
-        </tr>
+            
+            
+            <th data-field="id" data-sortable="true" >ID</th>
+            <th data-field="project_name" data-sortable="true" >Project_name</th>
+            <th data-field="first_money" data-sortable="true" >First_money</th>
+            <th data-field="stamp_tax" data-sortable="true" >Stamp_tax</th>
+            <th data-field="developer_name" data-sortable="true" >Developer_name</th>
+            <th data-field="developer_logo" data-sortable="true" >Developer_logo</th>
+            <th data-field="project_finish_time" data-sortable="true" >Project_finish_time</th>
+          </tr>
         </thead>
     </table>
 </div>
@@ -93,9 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $table.on('all.bs.table', function (e, name, args) {
             // console.log(name, args);
         });
-       // $table.on('editable-save.bs.table',function(field, row, oldValue,$el){
-           // alert(field+row.toString()+oldValue.toString()+$el.toString());
-        //});
+  
         $remove.click(function () {
         	var ids = getIdSelections();
             ids = '"'+ids+'"';
@@ -156,30 +151,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     window.operateEvents = {
         'click .like': function (e, value, row, index) {
-            //alert('You click like action, row: ' + JSON.stringify(row));
-           
+            alert('You click like action, row: ' + JSON.stringify(row));
             var id=row.id;
             if(isNaN(id)){
-            //alert("hehe add")
+            alert("hehe add")
             	$.ajax({
 	 	    type: "POST",
-	 		data: {house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+	 		data: {},
 	 		dateType: "json",
-	 		url: "/add/HouseInfo",
+	 		url: "/touzi/addData",
 	 		
 	 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
-	 			}
-	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
-	 			}else if(data.result==-2){
-	 				alert("增加失败")
-	 			}
-	 			else{
-	 				alert("增加成功")
-	 			}
+	 			alert("增加成功")
 	 		},
 	 		error:function(){
 	 			alert("error")
@@ -187,27 +170,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          //alert("hehe edit")
+          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+		 		data: {},
 		 		dateType: "json",
-		 		url: "/edit/HouseInfo",
+		 		url: "/touzi/editData",
 		 		
 		 		success:function(data){
-	 			data=$.parseJSON(data);
-	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
-	 			}
-	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
-	 			}else if(data.result==-2){
-	 				alert("修改失败")
-	 			}
-	 			else{
-	 				alert("修改成功")
-	 			}
-	 		},
+		 			alert("修改成功")
+		 		},
 		 		error:function(){
 		 			alert("error")
 		 		}
@@ -218,22 +190,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
         },
         'click .remove': function (e, value, row, index) {
-       
+            alert(row.id);
             var id = row.id;
+            if(id="x"){
+            	//$table.bootstrapTable('remove', {field: 'id', values: 'x'});
+            }else{
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: id},
 		 		dateType: "json",
-		 		url: "/delete/HouseInfo",
+		 		url: "/touzi/deleteData",
 		 		
 		 		success:function(data){
-		 			alert("删除成功！")
+		 			alert("修改成功")
 		 		},
-		 		error:function(){
+		 		error:function(){s
 		 			alert("error")
 		 		}
 	 	});
-        
+            }
            
             
             $table.bootstrapTable('remove', {

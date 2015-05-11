@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>House Type List</title>
+    <title>Invest Data List</title>
      <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <link href="/bootstrap/css/bootstrap-table.css" rel="stylesheet">
      <link href="/bootstrap/css/bootstrap-editable.css" rel="stylesheet">
@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div class="container">
-    <h1>House Type List</h1>
+    <h1>Invest Data List</h1>
     <div id="toolbar">
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
@@ -48,18 +48,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/find/houseInfo"
+           data-url="/touzi/findData"
            data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="house_type" data-sortable="true" data-editable="true">HouseType</th>
-            <th data-field="house_room_num" data-sortable="true" data-editable="true">RoomNum</th>
-            <th data-field="house_toilet_num" data-sortable="true" data-editable="true">ToiletNum</th>
-            <th data-field="house_size" data-sortable="true" data-editable="true">HouseSize</th>
-            <th data-field="house_price" data-sortable="true" data-editable="true">HousePrice</th>
-            <th data-field="house_img" data-sortable="true" data-editable="true">HouseImg</th>
+            <th data-field="middle_price" data-sortable="true" data-editable="true">middle_price</th>
+            <th data-field="middle_zu_price" data-sortable="true" data-editable="true">middle_zu_price</th>
+            <th data-field="price_review" data-sortable="true" data-editable="true">price_review</th>
+            <th data-field="year_increment_rate" data-sortable="true" data-editable="true">year_increment_rate</th>
+            <th data-field="zu_house_rate" data-sortable="true" data-editable="true">zu_house_rate</th>
+            <th data-field="zu_xuqiu" data-sortable="true" data-editable="true">zu_xuqiu</th>
+            <th data-field="data_exam" data-sortable="true" data-editable="true">data_exam</th>
             <th data-field="project_name" data-sortable="true" data-editable="true">ProjectName</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
@@ -163,12 +164,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //alert("hehe add")
             	$.ajax({
 	 	    type: "POST",
-	 		data: {house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+	 		data: {middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam, project_name: row.project_name},
 	 		dateType: "json",
-	 		url: "/add/HouseInfo",
+	 		url: "/touzi/addData",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
+	 		
 	 			if(data.result==0){
 	 				alert("项目名称不能为空！")
 	 			}
@@ -190,9 +192,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           //alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+		 		data: {id: row.id, middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam, project_name: row.project_name},
 		 		dateType: "json",
-		 		url: "/edit/HouseInfo",
+		 		url: "/touzi/editData",
 		 		
 		 		success:function(data){
 	 			data=$.parseJSON(data);
@@ -218,13 +220,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
         },
         'click .remove': function (e, value, row, index) {
-       
-            var id = row.id;
+             var id = row.id;
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: id},
 		 		dateType: "json",
-		 		url: "/delete/HouseInfo",
+		 		url: "/touzi/deleteData",
 		 		
 		 		success:function(data){
 		 			alert("删除成功！")
@@ -233,7 +234,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 			alert("error")
 		 		}
 	 	});
-        
            
             
             $table.bootstrapTable('remove', {

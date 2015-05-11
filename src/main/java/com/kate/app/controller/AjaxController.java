@@ -34,12 +34,16 @@ public class AjaxController {
 	@Autowired
 	private AjaxService ajaxService;
 	
-	@RequestMapping({ "/touzi/findData" })    //ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½
-	public void selectData(HttpServletRequest req, HttpServletResponse resp){
+	/*
+	 * ²éÕÒÆäËûÏàÓ¦ÐÅÏ¢The ElementsÄ£¿é
+	 */
+	
+	@RequestMapping({ "/selectInfomation" })    
+	public void selectInfomation(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();
-		array = ajaxService.select();
-		int count = ajaxService.count();
+		array = ajaxService.selectInfomation();
+		int count = ajaxService.countHouseProject();
 		json.put("total", count);
 		json.put("rows", array);
 		
@@ -50,12 +54,15 @@ public class AjaxController {
 		}
 	}
 	
-	@RequestMapping({ "/find/houseInfo" })    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½Ý¼ï¿½ï¿½Û¸ï¿½
-	public void findHouseInfo(HttpServletRequest req, HttpServletResponse resp){
+	/*
+	 * ²éÕÒ¼Û¸ñÐÅÏ¢Ä£¿é
+	 */
+	@RequestMapping({ "/selectPriceInfo" })    
+	public void selectPriceInfo(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();
-		array = ajaxService.selectHouseInfo();
-		int count = ajaxService.countHouseInfo();
+		array = ajaxService.selectPriceInfo();
+		int count = ajaxService.countHouseProject();
 		json.put("total", count);
 		json.put("rows", array);
 		
@@ -66,7 +73,32 @@ public class AjaxController {
 		}
 	}
 	
-	@RequestMapping({ "/find/houseProject" })    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½Ý¼ï¿½ï¿½Û¸ï¿½
+	/*
+	 * ²éÕÒ¾­¼ÍÈËÐÅÏ¢Ä£¿é
+	 */
+	@RequestMapping({ "/selectBrokerInfo" })    
+	public void selectBrokerInfo(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.selectBrokerInfo();
+		int count = ajaxService.countBrokerInfo();
+		json.put("total", count);
+		json.put("rows", array);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	/*
+	 * ÓÐ¹ØÏîÄ¿µÄÔöÉ¾¸Ä²é
+	 */
+	
+	@RequestMapping({ "/find/houseProject" })    //²éÕÒÏîÄ¿ÐÅÏ¢
 	public void findHouseProject(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();
@@ -82,7 +114,43 @@ public class AjaxController {
 		}
 	}
 	
-	@RequestMapping({ "/find/ByInfo" })    //ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	
+	
+	@RequestMapping({ "/touzi/findData" })    //²éÕÒÍ¶×ÊÊý¾Ý
+	public void selectData(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.select();
+		int count = ajaxService.count();
+		json.put("total", count);
+		json.put("rows", array);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping({ "/find/houseInfo" })    //²éÕÒÊý¾Ý·¿ÎÝ¼°¼Û¸ñ
+	public void findHouseInfo(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.selectHouseInfo();
+		int count = ajaxService.countHouseInfo();
+		json.put("total", count);
+		json.put("rows", array);
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	@RequestMapping({ "/findBuyInfo" })    //²éÕÒÍ¶×ÊÊý¾Ý
 	public void findByInfo(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();
@@ -97,6 +165,217 @@ public class AjaxController {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * ²éÕÒÍÆ¼öÏîÄ¿ÐÅÏ¢
+	 */
+	
+		@RequestMapping({ "/selectRecomProject" })    
+		public void selectRecomProject(HttpServletRequest req, HttpServletResponse resp){
+			JSONObject json = new JSONObject();
+			JSONArray array = new JSONArray();
+			array = ajaxService.selectRecomProject();
+			int count = ajaxService.countRecomendProject();
+			json.put("total", count);
+			json.put("rows", array);
+			
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		
+		/*-------------------*/
+		/*
+		 * ²éÕÒÐÂÎÅÐÅÏ¢
+		 */
+		@RequestMapping({ "/selectNewsInfo" })   
+		public void selectNewsInfo(HttpServletRequest req, HttpServletResponse resp){
+			JSONObject json = new JSONObject();
+			JSONArray array = new JSONArray();
+			array = ajaxService.selectNewsInfo();
+			int count = ajaxService.countNewsInfo();
+			json.put("total", count);
+			json.put("rows", array);
+			
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	
+	/*
+	 * Ôö¼ÓÐÂÎÅÐÅÏ¢
+	 */
+	@RequestMapping({ "/addNewsInfo" })
+	public void addNewsInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
+		String title  = req.getParameter("title");
+		String source  = req.getParameter("source");
+		String time = req.getParameter("time");
+		String detail  = req.getParameter("detail");
+		String news_img  = req.getParameter("news_img");
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.addNewsInfo(project_name, title, source, time, detail, news_img);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * ÐÞ¸ÄÐÂÎÅÐÅÏ¢
+	 */
+	@RequestMapping({ "/editNewsInfo" })
+	public void editNewsInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		String project_name = req.getParameter("project_name");
+		String title  = req.getParameter("title");
+		String source  = req.getParameter("source");
+		String time = req.getParameter("time");
+		String detail  = req.getParameter("detail");
+		String news_img  = req.getParameter("news_img");
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.editNewsInfo(id, project_name, title, source, time, detail, news_img);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/*------------------------*/
+	/*
+	 * ²é¿´ÇøÓòÌØµãÐÅÏ¢
+	 */
+	@RequestMapping({ "/selectArea" })    
+	public void selectArea(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		array = ajaxService.selectArea();
+		int count = ajaxService.countArea();
+		json.put("total", count);
+		json.put("rows", array);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * Ôö¼ÓÇøÓòÌØµãÐÅÏ¢
+	 */
+	@RequestMapping({ "/addArea" })
+	public void addArea(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
+		String area_character  = req.getParameter("area_character");
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.addArea(project_name, area_character);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * ÐÞ¸ÄÇøÓòÌØµãÐÅÏ¢
+	 */
+	@RequestMapping({ "/editArea" })
+	public void editArea(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		String project_name = req.getParameter("project_name");
+		String area_character  = req.getParameter("area_character");
+		
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.editArea(id, project_name, area_character);
+			json.put("result", flag);
+		}
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+/*
+ * É¾³ýÇøÓòÌØµã
+ */
+	@RequestMapping({ "/deleteArea" })
+	public void deleteArea(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		boolean flag = ajaxService.deleteArea(id);
+		JSONObject json = new JSONObject();
+		json.put("data", flag);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	/*------------------------*/
+	
+	
+	
+	/*
+	 * É¾³ý¾­¼ÍÈËÐÅÏ¢
+	 */
+		@RequestMapping({ "/deleteBrokerInfo" })
+		public void deleteBrokerInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+			int id = Integer.parseInt(req.getParameter("id"));
+			boolean flag = ajaxService.deleteBrokerInfo(id);
+			JSONObject json = new JSONObject();
+			json.put("data", flag);
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	
+	
+	
+	
 	
 	@RequestMapping({ "/touzi/addData" })
 	public void addData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
@@ -120,13 +399,139 @@ public class AjaxController {
 		String zu_xuqiu  = req.getParameter("zu_xuqiu");
 		String data_exam  = req.getParameter("data_exam");
 		
-		boolean flag = false;
+		int flag = 0;
 		JSONObject json = new JSONObject();
-		flag = ajaxService.addTouziData(project_name,middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam);
-		json.put("data", flag);
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.addTouziData(project_name,middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam);	
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * Ôö¼ÓÍÆ¼öÏîÄ¿
+	 */
+	@RequestMapping({ "/addRecoProject" })
+	public void addRecoProject(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String project_name = req.getParameter("project_name");
+		String recommend_project_name = req.getParameter("recommend_project_name");
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.addRecoProject(project_name, recommend_project_name);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/*
+	 * Ôö¼ÓÍÆ¼öÏîÄ¿
+	 */
+	@RequestMapping({ "/addBrokerInfo" })
+	public void addBrokerInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String broker_name = req.getParameter("broker_name");
+		String broker_language = req.getParameter("broker_language");
+		String broker_region = req.getParameter("broker_region");
+		String broker_img = req.getParameter("broker_img");
+		
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(broker_name==null || "".equals(broker_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.addBrokerInfo(broker_name, broker_language, broker_region, broker_img);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	/*
+	 * ÐÞ¸Ä¾­¼ÍÈËÐÅÏ¢
+	 */
+	@RequestMapping({ "/editBrokerInfo" })
+	public void editBrokerInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		String broker_name = req.getParameter("broker_name");
+		String broker_language = req.getParameter("broker_language");
+		String broker_region = req.getParameter("broker_region");
+		String broker_img = req.getParameter("broker_img");
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(broker_name==null || "".equals(broker_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.editBrokerInfo(id, broker_name, broker_language, broker_region, broker_img);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	/*
+	 * ÐÞ¸ÄÍÆ¼öÏîÄ¿
+	 */
+	@RequestMapping({ "/editRecoProject" })
+	public void editRecoProject(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		String project_name = req.getParameter("project_name");
+		String recommend_project_name = req.getParameter("recommend_project_name");
+		
+		int flag = 0;
+		JSONObject json = new JSONObject();
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.editRecoProject(id, project_name, recommend_project_name);
+			json.put("result", flag);
+		}
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping({ "/deleteRecomProject" })
+	public void deleteRecomProject(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		boolean flag = ajaxService.deleteRecomProject(id);
+		JSONObject json = new JSONObject();
+		if(flag==true){
+			json.put("data", 1);   //É¾³ý³É¹¦
+		}else{
+			json.put("data", 0);   //É¾³ýÊ§°Ü
+		}
 		
 		try{
-		writeJson(json.toJSONString(),resp);
+			writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -146,11 +551,15 @@ public class AjaxController {
 		String house_price  = req.getParameter("house_price");
 		String house_img  = req.getParameter("house_img");
 		
-		boolean flag = false;
+		int flag = 0;
 		JSONObject json = new JSONObject();
-		flag = ajaxService.addHouseInfo(project_name, house_type, house_room_num, house_toilet_num, house_size, house_price, house_img);
-		json.put("data", flag);
-		
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.addHouseInfo(project_name, house_type, house_room_num, house_toilet_num, house_size, house_price, house_img);			json.put("result", flag);
+			json.put("result", flag);
+		}
 		try{
 			writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
@@ -171,10 +580,15 @@ public class AjaxController {
 		String zu_xuqiu  = req.getParameter("zu_xuqiu");
 		int zu_house_rate  = Integer.parseInt(req.getParameter("zu_house_rate"));
 		String data_exam  = req.getParameter("data_exam");
-		
-		boolean flag = ajaxService.editTouziData(id, project_name, middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate,zu_xuqiu,data_exam);
+		int flag = 0;
 		JSONObject json = new JSONObject();
-		json.put("data", flag);
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag =  ajaxService.editTouziData(id, project_name, middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate,zu_xuqiu,data_exam);
+			json.put("result", flag);
+		}
 		try{
 		    writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
@@ -198,11 +612,15 @@ public class AjaxController {
 		String house_price  = req.getParameter("house_price");
 		String house_img  = req.getParameter("house_img");
 		
-		boolean flag = false;
+		int flag = 0;
 		JSONObject json = new JSONObject();
-		flag = ajaxService.editHouseInfo(id, project_name, house_type, house_room_num, house_toilet_num, house_size, house_price, house_img);
-		json.put("data", flag);
-		
+		if(project_name==null || "".equals(project_name)){
+			json.put("result", 0);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.editHouseInfo(id, project_name, house_type, house_room_num, house_toilet_num, house_size, house_price, house_img);
+			json.put("result", flag);
+		}
 		try{
 			writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
@@ -238,7 +656,7 @@ public class AjaxController {
 		}
 	}
 	
-	@RequestMapping({ "/delete/HouseProject" })
+	@RequestMapping({ "/touzi/deleteHouseProject" })
 	public void deleteHouseProject(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		int id = Integer.parseInt(req.getParameter("id"));
 		boolean flag = ajaxService.deleteHouseProject(id);
@@ -278,41 +696,77 @@ public class AjaxController {
 		String project_nation  = req.getParameter("project_nation");
 		String project_address  = req.getParameter("project_address");
 		String project_area  = req.getParameter("project_area");
-		int project_sales_remain  =  Integer.parseInt(req.getParameter("project_sales_remain"));
+		String project_sales_remain_str = req.getParameter("project_sales_remain");
+		int project_sales_remain  = project_sales_remain_str==null? 0 :Integer.parseInt(project_sales_remain_str);
 		String project_finish_time  = req.getParameter("project_finish_time");
 		String project_city = req.getParameter("project_city");
+		String project_house_type = req.getParameter("project_house_type");
 		String project_price = req.getParameter("project_price");
+		String developer_name  = req.getParameter("developer_name");
+		String developer_logo = req.getParameter("developer_logo");
+		String developer_desc = "";    //¿ª·¢ÉÌÃèÊö
 		
 		
-		boolean flag = ajaxService.addPro(project_name, project_lan, project_desc,project_nation,project_address,project_area,project_sales_remain,project_finish_time,project_city,project_price);
 		JSONObject json = new JSONObject();
-		json.put("data", flag);
+		if(project_name == null ||"".equals(project_name)){
+			json.put("result", -1);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		else if(ajaxService.findProByName(project_name)==true){
+			json.put("result", -3);    //ÏîÄ¿Ãû³ÆÒÑ¾­´æÔÚ
+		}
+		else if(developer_name==null || "".equals(developer_name)){
+			json.put("result", -2);    //¿ª·¢ÉÌÃû³ÆÎª¿Õ
+		}
+		else{
+			boolean flag = ajaxService.addPro(project_name, project_lan, project_desc, project_nation, project_address, project_area, project_sales_remain, project_finish_time, project_city, project_house_type, project_price, developer_name, developer_logo, developer_desc);
+			json.put("result", flag);
+		}
+			
 		try{
-		writeJson(json.toJSONString(),resp);
+			writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
 	
+	
 	@RequestMapping({ "/editPro" })
 	public void editPro(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		int proid = Integer.parseInt(req.getParameter("proid"));
+		int proid = Integer.parseInt(req.getParameter("id"));
 		String project_name =  req.getParameter("project_name");
 		String project_lan  = req.getParameter("project_lan");
 		String project_desc  = req.getParameter("project_desc");
 		String project_nation  = req.getParameter("project_nation");
 		String project_address  = req.getParameter("project_address");
 		String project_area  = req.getParameter("project_area");
-		int project_sales_remain  =  Integer.parseInt(req.getParameter("project_sales_remain"));
+		String project_sales_remain_str = req.getParameter("project_sales_remain");
+		int project_sales_remain  = project_sales_remain_str==null? 0 :Integer.parseInt(project_sales_remain_str);
 		String project_finish_time  = req.getParameter("project_finish_time");
 		String project_city = req.getParameter("project_city");
+		String project_house_type = req.getParameter("project_house_type");
 		String project_price = req.getParameter("project_price");
-		boolean flag = ajaxService.editPro(proid, project_name, project_lan, project_desc,project_nation,project_address,project_area,project_sales_remain,project_finish_time,project_city,project_price);
+		String  developer_name= req.getParameter("developer_name");
+		String developer_logo = req.getParameter("developer_logo");
+		String developer_desc = "";    //¿ª·¢ÉÌÃèÊö
+		
+		boolean flag = false;
 		JSONObject json = new JSONObject();
-		json.put("data", flag);
+		
+		
+		if(project_name == null ||"".equals(project_name)){
+			json.put("result", -1);    //ÏîÄ¿Ãû³ÆÎª¿Õ
+		}
+		
+		else if(developer_name==null || "".equals(developer_name)){
+			json.put("result", -2);    //¿ª·¢ÉÌÃû³ÆÎª¿Õ
+		}
+		else{
+			flag = ajaxService.editPro(proid, project_name, project_lan, project_desc, project_nation, project_address, project_area, project_sales_remain, project_finish_time, project_city, project_house_type, project_price, developer_name, developer_logo, developer_desc);
+			json.put("result", flag);
+		}
 		try{
-		writeJson(json.toJSONString(),resp);
+			writeJson(json.toJSONString(),resp);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -321,7 +775,7 @@ public class AjaxController {
 	
 	@RequestMapping({ "/deletePro" })
 	public void deletePro(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		int proid = Integer.parseInt(req.getParameter("proid"));
+		int proid = Integer.parseInt(req.getParameter("id"));
 		boolean flag = ajaxService.deletePro(proid);
 		JSONObject json = new JSONObject();
 		json.put("data", flag);
@@ -331,6 +785,23 @@ public class AjaxController {
 			e.printStackTrace();
 		}
 	}
+	
+
+	@RequestMapping({ "/deleteNewsInfo" })
+	public void deleteNewsInfo(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		int id = Integer.parseInt(req.getParameter("id"));
+		boolean flag = ajaxService.deleteNewsInfo(id);
+		JSONObject json = new JSONObject();
+		json.put("data", flag);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	
 
 	/*@RequestMapping({ "/HouseProject" })

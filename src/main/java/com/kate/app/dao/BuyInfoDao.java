@@ -15,7 +15,7 @@ public class BuyInfoDao extends BaseDao{
 		int returnMoney=0;
 		int houseId=1;
 		try{
-			String sql = " select return_money from Buy_Info where house_info_id="+houseId;
+			String sql = " select return_money from Buy_Info where house_pro_id="+houseId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			

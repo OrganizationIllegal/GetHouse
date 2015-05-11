@@ -19,22 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div class="container">
  <div class="row" style="padding-top:20px;">
  <div class="col-md-4"></div>
- <div class="col-md-5">
-  <div id="example"></div>
-  <ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">6</a></li>
-  <li><a href="#">7</a></li>
-  <li><a href="#">8</a></li>
-  <li><a href="#">9</a></li>
-  <li><a href="#">10</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul> 
+ <div class="col-md-5" style="padding-top:5px;">
+ <table id="Result" cellspacing="0" cellpadding="0">            
+                <tr>  
+                    <th></th>
+                    <th></th>
+                </tr>                                                                                               
+        </table>  
+        <div id="Pagination" class="pagination"></div>
  </div>
  <!--<div class="col-md-1" style="margin-left:-50px;">
  <div class="btn-group">
@@ -62,6 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </div>
  <div class="col-md-10">
  <!--start item1-->
+ <table id="Result" cellspacing="0" cellpadding="0">
+  <tr><th>
  <c:forEach items="${searchList}" var="item" begin="0" end="4" step="1" varStatus="var">
   <div class="panel panel-default">
   	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">${item.project_name}</span></div>
@@ -100,49 +94,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div>
   </div>
   </c:forEach>
+  </th></tr></table>
   <!--end item1-->
- </div>
- </div>
- <div class="row" style="padding-top:20px;">
- <div class="col-md-4"></div>
- <div class="col-md-5">
-  <div id="example"></div>
-  <ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">6</a></li>
-  <li><a href="#">7</a></li>
-  <li><a href="#">8</a></li>
-  <li><a href="#">9</a></li>
-  <li><a href="#">10</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul> 
- </div>
- <!--<div class="col-md-1" style="margin-left:-50px;">
- <div class="btn-group">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="width:80px;margin-top:20px;margin-bottom:0px;background-color:#DBDBDB;">
-      排序
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="#">升序</a></li>
-      <li><a href="#">降序</a></li>
-    </ul>
-  </div>
- </div>-->
- <div class="col-md-3" style="padding-top:10px;padding-left:30px;">
- <div class="btn-group">
-  <button type="button" class="btn btn-warning" style="width:100px;"><a href="bingMap.jsp">地图找房</a></button>
-  <button type="button" class="btn btn-warning" style="width:100px;"><a href="#">列表找房</a></button>
-</div>
  </div>
  </div>
 </div>
    <jsp:include page="foot.jsp" />
+   <script src="/js/jquery.pagination.js"></script>
+   <script type="text/javascript">
+         var pageIndex = 0;     //页面索引初始值   
+         var pageSize = 15;     //每页显示条数初始化，修改显示条数，修改这里即可   
+         $(function () {
+              InitTable(0);    //Load事件，初始化表格数据，页面索引为0（第一页）
+                //分页，PageCount是总条目数，这是必选参数，其它参数都是可选
+                $("#Pagination").pagination(150,{
+                    callback: PageCallback,  //PageCallback() 为翻页调用次函数。
+                    prev_text: "« 上一页",
+                    next_text: "下一页 »",
+                    items_per_page:pageSize,
+                    num_edge_entries: 1,       //两侧首尾分页条目数
+                    num_display_entries: 5,    //连续分页主体部分分页条目数
+                    current_page: pageIndex,   //当前页索引
+                });
+                //翻页调用   
+                function PageCallback(index, jq) {             
+                    InitTable(index);  
+                }  
+                //请求数据   
+                function InitTable(pageIndex) {                                  
+                    $.ajax({   
+                        type: "POST",  
+                        dataType: "json",  
+                        url: '/json/welcome.json',      //提交到一般处理程序请求数据   
+                        data: "pageIndex=" + (pageIndex) + "&pageSize=" + pageSize,          //提交两个参数：pageIndex(页面索引)，pageSize(显示条数)                   
+                        success: function(data) {
+                            $("#Result tr:gt(0)").remove();        //移除Id为Result的表格里的行，从第二行开始（这里根据页面布局不同页变）   
+                            $("#Result").append(data);             //将返回的数据追加到表格   
+                        }  
+                    }); 
+                }
+            }); 
+   </script>
 </body>
 
 </html>
