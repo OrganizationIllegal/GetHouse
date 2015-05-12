@@ -178,12 +178,12 @@ public class AjaxService {
 					deve_id = ajaxDao.findDeveByName(developer_name);
 				}
 			flag = ajaxDao.addPro(project_name, project_lan, project_desc, project_nation, project_address, project_area, project_sales_remain, project_finish_time, project_city, project_house_type, project_price, deve_id);	
+			}
 		}else{
 			boolean flag_deve_edit = ajaxDao.editDeveloperInfo(searchDeveId, developer_name, developer_logo, project_desc);
-			flag = ajaxDao.addPro(project_name, project_lan, project_desc, project_nation, project_address, project_area, project_sales_remain, project_finish_time, project_city, project_house_type, project_price, deve_id);	
+			flag = ajaxDao.addPro(project_name, project_lan, project_desc, project_nation, project_address, project_area, project_sales_remain, project_finish_time, project_city, project_house_type, project_price, searchDeveId);	
 		}
-		
-	}
+
 		return flag;	
 }
 	

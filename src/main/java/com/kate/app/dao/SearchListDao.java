@@ -15,7 +15,7 @@ public class SearchListDao extends BaseDao {
 	public List<SearchList> listSearchList(){
 		List<SearchList> searchInfoList=new ArrayList<SearchList>();
 		try {
-			String sql = "select t.id,t.project_img,t.project_name,t.project_sales_remain, MAX(h.house_price) as maxprice,MIN(h.house_price) as  minprice,MAX(h.house_size) as maxarea,Min(h.house_size) as minarea,b.return_money from house_project t LEFT JOIN house_info  h ON t.id=h.house_project_id  LEFT JOIN buy_info b on  b.house_pro_id=h.house_project_id ORDER BY h.house_project_id";
+			String sql = "select t.id,t.project_img,t.project_name,t.project_sales_remain, MAX(h.house_price) as maxprice,MIN(h.house_price) as  minprice,MAX(h.house_size) as maxarea,Min(h.house_size) as minarea,b.return_money from house_project t JOIN house_info  h ON t.id=h.house_project_id  JOIN buy_info b on  b.house_pro_id=h.house_project_id GROUP BY h.house_project_id";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
