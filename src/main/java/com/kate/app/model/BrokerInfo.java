@@ -6,6 +6,20 @@ public class BrokerInfo {
 	private String broker_language;
 	private String broker_region;
 	private String broker_img;
+	private String office;
+	private String introduction;
+	public BrokerInfo(){
+		
+	}
+	public BrokerInfo(int id,String broker_name,String broker_language,String broker_region,String broker_img,String office,String introduction){
+		this.id=id;
+		this.broker_name=broker_name;
+		this.broker_language=broker_language;
+		this.broker_region=broker_region;
+		this.broker_img=broker_img;
+		this.office=office;
+		this.introduction=introduction;
+	}
 	public int getId() {
 		return id;
 	}
@@ -36,4 +50,17 @@ public class BrokerInfo {
 	public void setBroker_img(String broker_img) {
 		this.broker_img = broker_img;
 	}
+	public String getOffice() {
+		return office;
+	}
+	public void setOffice(String office) {
+		this.office = office;
+	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+	
 }

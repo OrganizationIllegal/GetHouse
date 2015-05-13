@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.AreaFeatureDao;
 import com.kate.app.dao.AreaTrendDao;
+import com.kate.app.dao.CoordinatesDao;
 import com.kate.app.dao.HouseTaxDao;
 import com.kate.app.dao.LatestSaleInfoListDao;
 import com.kate.app.dao.RegionPeopleDao;
@@ -39,6 +40,8 @@ public class AdminAreaController {
 	private HouseTaxDao houseTaxDao;
 	@Autowired
 	private SchoolNearDao schoolNearDao;
+	@Autowired
+	private CoordinatesDao coordinatesDao;
 	
 	//管理员   区域家庭情况构成  列表
 	@RequestMapping({"/Area/ListAreaFamily"})
@@ -1258,6 +1261,95 @@ public class AdminAreaController {
 					e.printStackTrace();
 				}
 	}
+	//经纬度 list
+	@RequestMapping({"/Area/ListCoordinates"})
+	public void listCoordinates(HttpServletRequest req,HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray jsonAreaFeature=coordinatesDao.listCoordinates();
+		json.put("total", jsonAreaFeature.size());
+		json.put("rows", jsonAreaFeature);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	//经纬度 add
+	@RequestMapping({"/Area/AddCoordinates"})
+	public void InsertCoordinates(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 float longitude=Float.parseFloat(req.getParameter("longitude"));
+		 float latitude=Float.parseFloat(req.getParameter("latitude"));
+		 String place=req.getParameter("place");
+		 String project_name=req.getParameter("project_name");
+		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
+		 if(house_pro_id==0){
+			json.put("house_pro_id", house_pro_id);
+		}
+		 else{
+			int insertResult=coordinatesDao.InsertCoordinates(longitude, latitude, place, house_pro_id);
+			if(insertResult!=0){
+				flag=true;
+			 }
+		}
+		json.put("flag", flag);
+		try{
+			PrintWriter out = resp.getWriter();
+			out.print(json);
+			}catch(Exception e){
+				e.printStackTrace();
+		    }
+	}
+	//经纬度 update
+	@RequestMapping({"/Area/UpdateCoordinates"})
+	public void UpdateCoordinates(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 float longitude=Float.parseFloat(req.getParameter("longitude"));
+		 float latitude=Float.parseFloat(req.getParameter("latitude"));
+		 String place=req.getParameter("place");
+		 String project_name=req.getParameter("project_name");
+		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
+		 if(house_pro_id==0){
+				json.put("house_pro_id", house_pro_id);
+			}
+		 else{
+			 int insertResult=coordinatesDao.updateCoordinates(id, longitude, latitude, place, house_pro_id);
+			 if(insertResult!=0){
+					flag=true;
+			 }
+		 }
+		 json.put("flag", flag);
+			try{
+				PrintWriter out = resp.getWriter();
+			 	out.print(json);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+	}
+	//经纬度 delete
+	@RequestMapping({"/Area/DeleteCoordinates"})
+	public void DelCoordinates(HttpServletRequest req,HttpServletResponse resp){
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 int insertResult=coordinatesDao.delCoordinates(id);
+		 boolean flag=false;
+			if(insertResult!=0){
+				flag=true;
+			}
+			JSONObject json = new JSONObject();
+			json.put("flag", flag);
+			try{
+				PrintWriter out = resp.getWriter();
+			    out.print(json);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+	}
+	
+	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
 	    response.setCharacterEncoding("UTF-8");

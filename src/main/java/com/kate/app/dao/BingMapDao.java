@@ -13,7 +13,7 @@ public class BingMapDao extends BaseDao {
 	public List<BingMapVo> listBingMap(){
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id ORDER BY h.house_project_id";
+			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id group BY h.house_project_id";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -62,7 +62,7 @@ public class BingMapDao extends BaseDao {
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  where h.house_type='"+housetype+"' ORDER BY h.house_project_id ";
+			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  where h.house_type='"+housetype+"' group BY h.house_project_id ";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -106,7 +106,7 @@ public class BingMapDao extends BaseDao {
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  ORDER BY h.house_project_id,t.project_price_avg "+orderstr;
+			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  group BY h.house_project_id order by t.project_price_avg "+orderstr;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
