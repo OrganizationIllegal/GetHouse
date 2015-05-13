@@ -260,10 +260,10 @@ $(function(){
   	     	</div>
      </div>
   </div>
-<div>
+</div>
 <div id="right" class="col-xs-2">
 </div>
-<div>
+</div>
 <!--end 墨尔本-->
 
 <!--last-->
@@ -292,7 +292,7 @@ $(function(){
   			
   			<div>
   				<img src="pic/last.jpg">
-  				<span>dsgadgdsgasdgasgasdg </span>
+  				<span></span>
   				
   				</div>
   		</div>

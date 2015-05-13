@@ -13,7 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div style="height:200px;background-color:#cccccc;padding-top:70px;padding-left:100px;">
+    <jsp:include page="head.jsp" />
+	<div style="height:200px;background-color:#cccccc;padding-top:70px;padding-left:100px;margin-top: -20;">
 		<div style="color:white;font-size:40px;font-weight:bolder;font-family:黑体;">专业的服务团队为您提供专业的服务</div>
 		<div style="color:white;font-size:17px;font-weight:bold;">持有海外认证资质的房产经纪人、会计师、律师、贷款咨询师为您提供定制化的服务</div>
 	</div>
@@ -21,10 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="rows" style="margin-top:15px;">
 		<form class="form-horizontal" role="form">			
 			 <div class="form-group">
-			 	 <div class="col-md-3"><input type="text" class="form-control" id="lastname" placeholder="经纪姓名"></div>
-			 	 <div class="col-md-2" style="width:230px;"><input type="text" class="form-control" id="lastname" placeholder="类型"></div>
-			 	 <div class="col-md-2" style="width:230px;"><input type="text" class="form-control" id="lastname" placeholder="区域"></div>
-			 	 <div class="col-md-2" style="width:230px;"><input type="text" class="form-control" id="lastname" placeholder="语言"></div>
+			 	 <div class="col-md-3" style="padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="经纪姓名"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="类型"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="区域"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="语言"></div>
 			 	 <div class="col-md-1" ><button type="submit" class="btn btn-default" style="width:120px;background-color:red;color:white;">搜索</button></div>
 			 	 <div class="col-md-2"></div>
              </div>
@@ -36,54 +37,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row" style="margin-top:15px;">
 			<div class="col-md-1" style="width:70px;"></div>
 			<div class="col-md-6">
+				<c:forEach items="${brokerInfoList}"  var="item">
 				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
 					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
 					<div class="col-md-8" style="padding-left:0px;">
-						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">李先生</div>
-						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">房产经纪人</span></div>
-						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">8年专业房产经验&nbsp;澳洲注册经纪人</div>
+						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">${item.broker_name}</div>
+						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.office}</span></div>
+						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">${item.introduction}</div>
 						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div ><span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span>&nbsp;&nbsp;<span style="font-weight:bold;">SouthMelbourne</span></div>
+						<div ><span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_region}</span></div>
 						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div style="margin-top:5px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<span style="font-weight:bold;">普通话、粤语、英文</span><span class="glyphicon glyphicon-home" style="margin-left:120px;color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span><span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span></div>
+						<div style="margin-top:5px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_language}</span><span class="glyphicon glyphicon-home" style="margin-left:120px;color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span><span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span></div>
 					</div>
 				</div>
-				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
-					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
-					<div class="col-md-8" style="padding-left:0px;">
-						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">李先生</div>
-						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">房产经纪人</span></div>
-						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">8年专业房产经验&nbsp;澳洲注册经纪人</div>
-						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div ><span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span>&nbsp;&nbsp;<span style="font-weight:bold;">SouthMelbourne</span></div>
-						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div style="margin-top:5px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<span style="font-weight:bold;">普通话、粤语、英文</span><span class="glyphicon glyphicon-home" style="margin-left:120px;color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span><span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span></div>
-					</div>
-				</div>
-				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
-					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
-					<div class="col-md-8" style="padding-left:0px;">
-						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">李先生</div>
-						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">房产经纪人</span></div>
-						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">8年专业房产经验&nbsp;澳洲注册经纪人</div>
-						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div ><span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span>&nbsp;&nbsp;<span style="font-weight:bold;">SouthMelbourne</span></div>
-						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div style="margin-top:5px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<span style="font-weight:bold;">普通话、粤语、英文</span><span class="glyphicon glyphicon-home" style="margin-left:120px;color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span><span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span></div>
-					</div>
-				</div>
-				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
-					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
-					<div class="col-md-8" style="padding-left:0px;">
-						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">李先生</div>
-						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">房产经纪人</span></div>
-						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">8年专业房产经验&nbsp;澳洲注册经纪人</div>
-						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div ><span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span>&nbsp;&nbsp;<span style="font-weight:bold;">SouthMelbourne</span></div>
-						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div style="margin-top:5px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<span style="font-weight:bold;">普通话、粤语、英文</span><span class="glyphicon glyphicon-home" style="margin-left:120px;color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span><span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span></div>
-					</div>
-				</div>
+			</c:forEach>	
 			</div>
 			<div class="col-md-4" style="margin-left:30px;width:410px;">
 				<div style="height:160px;background-color:black;padding-top:60px;">
@@ -134,5 +101,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-1"></div>
 		</div>
 	</div>
+ <jsp:include page="foot.jsp" /> 
 </body>
 </html>

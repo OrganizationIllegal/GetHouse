@@ -164,50 +164,30 @@ function pop3(){
 
 <!--关键字-->
 <div style="margin-top:20px;background-color:white;">
-	<div class="row">
-     <div class="col-md-1"></div>
+	<div class="row" style="padding-top:15px;">
+     <div class="col-md-1" style="height:30px;width:150px;"></div>
      <div class="col-md-2">
-      <div class="checkbox">
-      <label>
-      <input type="checkbox"> 请打勾
-      </label>
-   </div>
+      <label>学区房</label>
      </div>
      <div class="col-md-2">
-      <div class="checkbox">
-      <label>
-      <input type="checkbox"> 请打勾
-      </label>
+     <label>经济房</label>
    </div>
-     </div>
      <div class="col-md-2">
-      <div class="checkbox">
-      <label>
-      <input type="checkbox"> 请打勾
-      </label>
+      <label>廉租房</label>
    </div>
-     </div>
      <div class="col-md-2">
-      <div class="checkbox">
-      <label>
-      <input type="checkbox"> 请打勾
-      </label>
+     <label>海景房</label>
    </div>
-     </div>
      <div class="col-md-2">
-      <div class="checkbox">
-      <label>
-      <input type="checkbox"> 请打勾
-      </label>
+     <label>总统房</label>
    </div>
-     </div>
      <div class="col-md-1"></div>
 </div>
 </div>
 
 <!--The Elements-->
 <div style="margin-top:20px;background-color:white;">
-<div class="container"  >
+<div class="container"  style="padding-top:15px;">
 <div class="col-md-2" >
 				<dl class="fore1">
 				<dd>
@@ -278,7 +258,7 @@ function pop3(){
 
 <!--价格区间-->
 <div style="margin-top:20px;background-color:white;">
-	<div class="row">
+	<div class="row" style="padding-top:15px;">
 		<div class="col-md-2 col-md-offset-1">
 		<span style="font-size:20px;color:black;">
 					&nbsp;价格区间
