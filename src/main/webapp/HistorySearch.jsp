@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<c:forEach items="${list}" var="item" step="1" varStatus="var">
 			<tr class="row">
     			<td>${item.search_content}</td>
-    			<td>${item.userName}</td>
+    			<td>${item.useruame}</td>
     			<td>${item.search_time}</td>
     		</tr>
 			 </c:forEach> 

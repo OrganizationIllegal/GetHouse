@@ -28,7 +28,7 @@ public class HistorySearchDao extends BaseDao {
 					data.setId(rs.getInt("id"));
 					data.setSearch_content(rs.getString("search_content"));
 					data.setSearch_time(rs.getTimestamp("search_time"));
-					data.setUserid(rs.getInt("userid"));
+					data.setUser_id(rs.getInt("userid"));
 					list.add(data);
 				}
 			}else{
@@ -40,8 +40,8 @@ public class HistorySearchDao extends BaseDao {
 					data.setId(rs.getInt("id"));
 					data.setSearch_content(rs.getString("search_content"));
 					data.setSearch_time(rs.getTimestamp("search_time"));
-					data.setUserid(rs.getInt("userid"));
-					data.setUserName(rs.getString("nick_name"));
+					data.setUser_id(rs.getInt("userid"));
+					data.setUsername(rs.getString("nick_name"));
 					list.add(data);
 				}
 			}

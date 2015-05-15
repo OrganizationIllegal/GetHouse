@@ -15,18 +15,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <jsp:include page="head.jsp" />
 	<div style="height:200px;background-color:#cccccc;padding-top:70px;padding-left:100px;margin-top: -20;">
+
+
 		<div style="color:white;font-size:40px;font-weight:bolder;font-family:黑体;">专业的服务团队为您提供专业的服务</div>
 		<div style="color:white;font-size:17px;font-weight:bold;">持有海外认证资质的房产经纪人、会计师、律师、贷款咨询师为您提供定制化的服务</div>
+
+
 	</div>
 	<div class="container">
 		<div class="rows" style="margin-top:15px;">
 		<form class="form-horizontal" role="form">			
 			 <div class="form-group">
+
 			 	 <div class="col-md-3" style="padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="经纪姓名"></div>
 			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="类型"></div>
 			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="区域"></div>
 			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="语言"></div>
 			 	 <div class="col-md-1" ><button type="submit" class="btn btn-default" style="width:120px;background-color:red;color:white;">搜索</button></div>
+
 			 	 <div class="col-md-2"></div>
              </div>
 		</form>
@@ -37,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row" style="margin-top:15px;">
 			<div class="col-md-1" style="width:70px;"></div>
 			<div class="col-md-6">
+
 				<c:forEach items="${brokerInfoList}"  var="item">
 				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
 					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
@@ -63,29 +70,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <c:forEach items="${userList}"  var="item">
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
+
          <input type="text" class="form-control" name="name" 
             placeholder=${item.nick_name}>
+
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" >
       <div class="col-sm-10 col-sm-offset-1">
+
          <input type="text" class="form-control" name="email" 
             placeholder=${item.email}>
+
+
+
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" >
       <div class="col-sm-10 col-sm-offset-1">
+
          <input type="text" class="form-control" name="tel" 
             placeholder=${item.tel}>
+
+
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" >
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" name="message_content" 
-            placeholder="留言"></textarea>
+
+         <textarea type="text" rows="5" cols="20" class="form-control" name="message_content"  placeholder="留言"></textarea>
             
       </div>
       <div class="col-sm-1"></div>
@@ -94,6 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	   <div class="col-sm-7"></div>
       <div class="col-sm-5">
          <button type="submit" class="btn btn-default" style="width:105px;background-color:red;color:white;" type="submit" id="submit">提交</button>
+
       </div>
      
    </div>

@@ -29,7 +29,7 @@ public class HistorySearchController {
 			int userIdInfo = Integer.parseInt(userId);
 			list = historySearchDao.searchHistory(userIdInfo);
 			for(HistorySearch item : list){
-				System.out.println(item.getUserName());
+				System.out.println(item.getUsername());
 				
 			}
 			System.out.println(list.size());

@@ -27,9 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div class="container">
-    <div class="ribbon">
-        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
-    </div>
     <h1>Recommend Project</h1>
     <div id="toolbar">
         <button id="remove" class="btn btn-danger" disabled>

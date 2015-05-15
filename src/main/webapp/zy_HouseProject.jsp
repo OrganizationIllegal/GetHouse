@@ -27,11 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div class="container">
-    <div class="ribbon">
-        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
-    </div>
-    <h1>HouseProject 
-    <!-- <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a> --></h1>
+   
+    <h1>HouseProject</h1>
     <div id="toolbar">
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
