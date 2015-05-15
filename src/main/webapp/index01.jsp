@@ -11,6 +11,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
+   <link href="/css/shaixuan.css" rel="stylesheet">
+   <style type="text/css">
+   dl{
+	   margin-top:0!important;
+	   margin-bottom:0px!important
+   }
+   .highfilter{
+   		font-size:12px;
+   }
+   </style>
  <!-- 绘制圆形 -->
    <script type="text/javascript">
 $(function(){
@@ -84,13 +94,13 @@ $(function(){
                     </div>
         
             </div>
-            <form role="form" action="" method="post" >
+            <form role="form" action="/index01" method="post" >
                  <div class="row" style="margin-bottom:5px;">
                   <div class="col-lg-6">
                     <div class="input-group">
                       <input type="text" class="form-control" id="searchTerritory" name="searchcity">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        <button class="btn btn-default" type="submit" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                       </span>
                     </div><!-- /input-group -->
                   </div><!-- /.col-lg-6 -->
@@ -124,9 +134,82 @@ $(function(){
                         <option value ="90000">90,000</option>
                         <option value ="100000">100,000</option>
                         </select>
+                        
                         </div>
+                        <div style="margin-left:100px;float:left;color:white;"><span class="more1" style=" "><em class="open"></em>更多</span></div>
                     </div>
+                    
                 </div>
+                <div style="width:980px;height:400px;margin:20px auto 0 auto;display:none;backgroud:black;z-index:100;" class="highfilter">
+					
+						<div class="list-screen" style="background:white;">
+							<div style="padding:10px 30px 10px 10px;">
+								<div class="screen-term">
+									<div class="selectNumberScreen">
+										<div id="selectList" class="screenBox screenBackground">
+											<dl class="listIndex">
+												<dt>酒店价格</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">100元以下</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">100-300元 </a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="600" values1="300" attrval="300-600">300-600元</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">600-1500元</a></label>
+													
+												</dd>
+											</dl>
+											<dl class="listIndex">
+												<dt>酒店星级</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a> </label>
+													<label><input name="checkbox2" type="checkbox" value="ab" /><a href="javascript:;"> 五星/豪华</a></label>
+													<label><input name="checkbox3" type="checkbox" value="ab" /><a href="javascript:;">四星/高档</a></label>
+													<label><input name="checkbox4" type="checkbox" value="ab" /><a href="javascript:;">三星/舒适</a></label>
+												</dd>
+											</dl>
+											<dl class="listIndex">
+											<dt>主题风格</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a></label>
+													<label><input name="checkbox5" type="checkbox" value="ab" /><a href="javascript:;">客栈</a></label>
+													<label><input name="checkbox6" type="checkbox" value="ab" /><a href="javascript:;">精品酒店</a> </label>
+													<label><input name="checkbox7" type="checkbox" value="ab" /><a href="javascript:;">情侣酒店</a> </label>
+													<label><input name="checkbox8" type="checkbox" value="ab" /><a href="javascript:;">园林庭院</a></label>
+													
+												</dd> 
+											</dl>
+											<dl class="listIndex more-none" style="border:none">
+											<dt>主题风格</dt>
+											<dd>
+												<label><a href="javascript:;" attrval="不限">不限</a></label>
+												 
+													<label><input name="checkbox9" type="checkbox" value="ab" /><a href="javascript:;">精品酒店2</a></label>
+													<label><input name="checkbox10" type="checkbox" value="ab" /><a href="javascript:;">精品酒店3</a> </label> 
+													<label><input name="checkbox11" type="checkbox" value="ab" /><a href="javascript:;">精品酒店4</a> </label>  
+												
+											</dl>
+										</div>
+									</div>   
+								</div>
+							</div>
+						
+							<div class="hasBeenSelected clearfix">
+								<span id="time-num"><font>208</font>家酒店</span>
+								<div style="float:right;" class="eliminateCriteria">【清空全部】</div>
+								<dl>
+									<dt>已选条件：</dt>
+									<dd style="display:none" class="clearDd">
+										<div class="clearList"></div>
+									</dd>
+								</dl>
+							</div>
+							
+							
+						
+						</div>
+					
+					 <div style="clear:both"></div>
+				</div>
             </form>
         </div>
             
@@ -142,7 +225,7 @@ $(function(){
  <div style="background-color:rgba(21, 63, 101, 1);height:120px;margin-top:380px;padding-left:-20px;padding-right:-20px">
  	<div>
 		<div class="col-md-offset-4 col-md-3">
-		<img src="pic/jt.jpg">
+		<!--<div style="background-position:center center;width:374px;background-image:url('/pic/jt.jpg');background-repeat:no-repeat;background-size: contain;height:90px;"></div>-->
 		</div>
 	</div>
  </div>
@@ -326,6 +409,33 @@ $(function(){
 <!-- 妯℃�妗�-->
    <jsp:include page="foot.jsp" />
    <script type="text/javascript" src="js/houseinfosearch.js"></script>
+   
+   <script>
+   	$(function(){
+   		
+		$(".more1").on("click",function(){
+		    //通过判断按钮btn有没有active这个class名判断是否已经点击过
+		    if($(this).hasClass("active")){
+			    $(this).addClass("more_bg");
+				$(this).find("em").eq(0).addClass("more_bg");
+				$(".highfilter").show();
+			    $(this).removeClass("active");
+		    }else{
+			    $(this).removeClass("more_bg");
+				$(this).find("em").eq(0).removeClass("more_bg");
+				$(".highfilter").hide();
+			    $(this).addClass("active");
+		    }
+		});
+   	});
+   	
+   </script>
+   <script src="/js/shaixuan.js" type="text/javascript"></script>
+   <script type="text/javascript">
+   		$("#search").click(function(){
+   			
+   		});
+   </script>
 </body>
 
 </html>
