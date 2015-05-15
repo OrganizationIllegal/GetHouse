@@ -15,18 +15,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <jsp:include page="head.jsp" />
 	<div style="height:200px;background-color:#cccccc;padding-top:70px;padding-left:100px;margin-top: -20;">
-		<div style="color:white;font-size:40px;font-weight:bolder;font-family:ºÚÌå;">×¨ÒµµÄ·şÎñÍÅ¶ÓÎªÄúÌá¹©×¨ÒµµÄ·şÎñ</div>
-		<div style="color:white;font-size:17px;font-weight:bold;">³ÖÓĞº£ÍâÈÏÖ¤×ÊÖÊµÄ·¿²ú¾­¼ÍÈË¡¢»á¼ÆÊ¦¡¢ÂÉÊ¦¡¢´û¿î×ÉÑ¯Ê¦ÎªÄúÌá¹©¶¨ÖÆ»¯µÄ·şÎñ</div>
+		<div style="color:white;font-size:40px;font-weight:bolder;font-family:é»‘ä½“;">ä¸“ä¸šçš„æœåŠ¡å›¢é˜Ÿä¸ºæ‚¨æä¾›ä¸“ä¸šçš„æœåŠ¡</div>
+		<div style="color:white;font-size:17px;font-weight:bold;">æŒæœ‰æµ·å¤–è®¤è¯èµ„è´¨çš„æˆ¿äº§ç»çºªäººã€ä¼šè®¡å¸ˆã€å¾‹å¸ˆã€è´·æ¬¾å’¨è¯¢å¸ˆä¸ºæ‚¨æä¾›å®šåˆ¶åŒ–çš„æœåŠ¡</div>
 	</div>
 	<div class="container">
 		<div class="rows" style="margin-top:15px;">
 		<form class="form-horizontal" role="form">			
 			 <div class="form-group">
-			 	 <div class="col-md-3" style="padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="¾­¼ÍĞÕÃû"></div>
-			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="ÀàĞÍ"></div>
-			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="ÇøÓò"></div>
-			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="ÓïÑÔ"></div>
-			 	 <div class="col-md-1" ><button type="submit" class="btn btn-default" style="width:120px;background-color:red;color:white;">ËÑË÷</button></div>
+			 	 <div class="col-md-3" style="padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="ç»çºªå§“å"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="ç±»å‹"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="åŒºåŸŸ"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="è¯­è¨€"></div>
+			 	 <div class="col-md-1" ><button type="submit" class="btn btn-default" style="width:120px;background-color:red;color:white;">æœç´¢</button></div>
 			 	 <div class="col-md-2"></div>
              </div>
 		</form>
@@ -37,11 +37,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row" style="margin-top:15px;">
 			<div class="col-md-1" style="width:70px;"></div>
 			<div class="col-md-6">
-			<c:forEach items="${brokerInfoList}"  var="item">
+				<c:forEach items="${brokerInfoList}"  var="item">
 				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
 					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
 					<div class="col-md-8" style="padding-left:0px;">
-						<div style="font-size:25px;font-weight:bolder;font-family:ºÚÌå;margin-bottom:5px;">${item.broker_name}</div>
+						<div style="font-size:25px;font-weight:bolder;font-family:é»‘ä½“;margin-bottom:5px;">${item.broker_name}</div>
 						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.office}</span></div>
 						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">${item.introduction}</div>
 						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
@@ -51,41 +51,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 			</c:forEach>	
-				
-				
+
 			</div>
 			<div class="col-md-4" style="margin-left:30px;width:410px;">
 				<div style="height:160px;background-color:black;padding-top:60px;">
-					<div style="color:white;text-align: center;">ÈÃÎÒÃÇÍÆ¼öÒ»¸ö×îºÏÊÊ</div>
-					<div style="color:white;text-align: center;">ÄúµÄ·¿²ú¾­¼Í</div>
+					<div style="color:white;text-align: center;">è®©æˆ‘ä»¬æ¨èä¸€ä¸ªæœ€åˆé€‚</div>
+					<div style="color:white;text-align: center;">æ‚¨çš„æˆ¿äº§ç»çºª</div>
 				</div>
 					<div style="padding-top:20px;background-color:#d9d2e9;">
-					 <form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="/ServiceTeam/MessageSubmit" method="post">
+ <c:forEach items="${userList}"  var="item">
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="name" 
-            placeholder="ĞÕÃû">
+         <input type="text" class="form-control" name="name" 
+            placeholder=${item.nick_name}>
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" >
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
-            placeholder="ÓÊÏä">
+         <input type="text" class="form-control" name="email" 
+            placeholder=${item.email}>
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" >
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
-            placeholder="µç»°">
+         <input type="text" class="form-control" name="tel" 
+            placeholder=${item.tel}>
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" >
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
-            placeholder="ÁôÑÔ"></textarea>
+         <textarea type="text" rows="5" cols="20" class="form-control" name="message_content" 
+            placeholder="ç•™è¨€"></textarea>
             
       </div>
       <div class="col-sm-1"></div>
@@ -93,10 +93,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="form-group" style="padding-bottom:40px;">
    	   <div class="col-sm-7"></div>
       <div class="col-sm-5">
-         <button type="submit" class="btn btn-default" style="width:105px;background-color:red;color:white;">Ìá½»</button>
+         <button type="submit" class="btn btn-default" style="width:105px;background-color:red;color:white;" type="submit" id="submit">æäº¤</button>
       </div>
      
    </div>
+ </c:forEach>
 </form></div>
 <div style="margin-top:10px;"><img src="/images/book.PNG" style="width:380px;height:200px;"></div>				
 			</div>

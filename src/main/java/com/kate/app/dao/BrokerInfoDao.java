@@ -1,13 +1,14 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.kate.app.model.BingMapVo;
 import com.kate.app.model.BrokerInfo;
 
 @Repository 
@@ -44,4 +45,25 @@ public class BrokerInfoDao extends BaseDao {
 		}
 		return brokerInfoList;
 	} 
+	//发送留言
+	public int InsertMessage(String message_content,String message_time,int project_id,int viewed,int type,int userid){
+		int exeResult=0;
+		try {
+			String sql = "insert into message(message_content,message_time,project_id,viewed,type,userid) values (?,?,?,?,?,?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, message_content);
+			pstmt.setString(2, message_time);
+			pstmt.setInt(3, project_id);
+			pstmt.setInt(4, viewed);
+			pstmt.setInt(5, type);
+			pstmt.setInt(6, userid);
+			exeResult = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return exeResult;
+		
+	}
+	
 }

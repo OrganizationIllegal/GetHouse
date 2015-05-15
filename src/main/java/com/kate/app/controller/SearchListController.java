@@ -24,7 +24,7 @@ public class SearchListController {
 	@Autowired
 	private AjaxDao ajaxDao;
 	
-	//·¿ÎÝËÑË÷ÁÐ±íÏÔÊ¾
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ê¾
 	@RequestMapping({"/SearchList"})
 	public String search_controller(HttpServletRequest req, HttpServletResponse resp){
 		List<SearchList> searchList=searchListDao.listSearchList();
@@ -35,13 +35,13 @@ public class SearchListController {
 	
 	
 	
-	//·¿ÎÝËÑË÷ÁÐ±íÏÔÊ¾
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ê¾
 		@RequestMapping({"/SearchListPage"})
 		public void SearchListPage(HttpServletRequest req, HttpServletResponse resp){
-			String pageIndex = req.getParameter("pageIndex");   //µ±Ç°Ò³Êý
+			String pageIndex = req.getParameter("pageIndex");   //ï¿½ï¿½Ç°Ò³ï¿½ï¿½
 			int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
 			
-			String pageSize_str  = req.getParameter("pageSize");  //Ã¿Ò³ÃæµÄÊýÁ¿
+			String pageSize_str  = req.getParameter("pageSize");  //Ã¿Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
 			
 			List<SearchList> searchList=searchListDao.listSearchList();
@@ -51,13 +51,13 @@ public class SearchListController {
 			int pageEnd = pageNum * pageSize;
 			int end = pageEnd < total ? pageEnd : total;
 			
-			int start = pageEnd - (pageNum-1) * pageSize;
+			int start = (pageNum-1) * pageSize;
 			int pageStart = start == pageEnd ? 0 : start;
 			
 			JSONObject json = new JSONObject();
 			JSONArray array = new JSONArray();
 			if(pageStart <= end){
-				List<SearchList> resultList=searchList.subList(pageStart, end);
+				List<SearchList> resultList=searchList.subList(start, end);
 				for(SearchList item : resultList){
 					JSONObject obj = new JSONObject();
 					obj.put("id", item.getId());
