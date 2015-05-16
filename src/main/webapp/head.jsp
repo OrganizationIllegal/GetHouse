@@ -35,11 +35,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
        </div>
    <div class="row" style="background-color:white;padding-top:25px;">
-		<div class="col-md-1"></div>
+		<div class="col-md-1" style="height:2px;"></div>
 		<div class="col-md-2">
 		  <img src="images/logo.PNG" style="margin-top:-20px;"/>
 		</div>
-       <div class="col-md-7" >
+       <div class="col-md-7" style="width:930px;">
       	<div class="navbar-header" id="headbar">
        			<a href="#">首页</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
@@ -56,6 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        			<a href="#">海外新闻</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
        			<a href="#">关于我们</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="#">新闻博客</a>
        		</div>
        </div>  
        <div class="col-md-1" >	
