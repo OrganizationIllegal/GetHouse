@@ -37,9 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			alert("error")
 	 		}
         });
+        });
  
  })
- </script>
+</script>
 </head>
 <body style="padding-top: 105px;" onload="getMap();">
  <jsp:include page="head.jsp" />

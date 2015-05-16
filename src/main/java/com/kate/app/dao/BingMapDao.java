@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.kate.app.model.BingMapVo;
+import com.kate.app.model.Coordinates;
 @Repository 
 public class BingMapDao extends BaseDao {
 	public List<BingMapVo> listBingMap(){
@@ -20,7 +21,7 @@ public class BingMapDao extends BaseDao {
 		    String project_address=null;
 		    String project_name=null;
 		    int project_sales_remain=0;
-		    int project_price=0;//ĞèÒª¸Ä¶¯
+		    int project_price=0;//ï¿½ï¿½Òªï¿½Ä¶ï¿½
 		    int project_price_avg=0;
 		    int maxarea=0;
 		    int minarea=0;
@@ -32,7 +33,7 @@ public class BingMapDao extends BaseDao {
 		    	project_sales_remain=rs.getInt("project_sales_remain");
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
-		    	project_price=rs.getInt("project_price_avg");//´Ë´¦ÏîÄ¿¼Û¸ñÄ¿Ç°¸øµÄÊÇÏîÄ¿Æ½¾ù¼Û¸ñ
+		    	project_price=rs.getInt("project_price_avg");//ï¿½Ë´ï¿½ï¿½ï¿½Ä¿ï¿½Û¸ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Æ½ï¿½ï¿½Û¸ï¿½
 		    	project_price_avg=rs.getInt("project_price_avg");
 		    	house_type=rs.getString("house_type");
 		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_avg,house_type);
@@ -51,13 +52,13 @@ public class BingMapDao extends BaseDao {
 		switch(type)
 		{
 		case 1:
-			housetype="Ò»¾ÓÊÒ";
+			housetype="Ò»ï¿½ï¿½ï¿½ï¿½";
 			break;
 		case 2:
-			housetype="¶ş¾ÓÊÒ";
+			housetype="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			break;
 		case 3:
-			housetype="º£¾°·¿";
+			housetype="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			break;
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
@@ -69,7 +70,7 @@ public class BingMapDao extends BaseDao {
 		    String project_address=null;
 		    String project_name=null;
 		    int project_sales_remain=0;
-		    int project_price=0;//ĞèÒª¸Ä¶¯
+		    int project_price=0;//ï¿½ï¿½Òªï¿½Ä¶ï¿½
 		    int project_price_avg=0;
 		    int maxarea=0;
 		    int minarea=0;
@@ -81,7 +82,7 @@ public class BingMapDao extends BaseDao {
 		    	project_sales_remain=rs.getInt("project_sales_remain");
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
-		    	project_price=rs.getInt("project_price_avg");//´Ë´¦ÏîÄ¿¼Û¸ñÄ¿Ç°¸øµÄÊÇÏîÄ¿Æ½¾ù¼Û¸ñ
+		    	project_price=rs.getInt("project_price_avg");//ï¿½Ë´ï¿½ï¿½ï¿½Ä¿ï¿½Û¸ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Æ½ï¿½ï¿½Û¸ï¿½
 		    	project_price_avg=rs.getInt("project_price_avg");
 		    	house_type=rs.getString("house_type");
 		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_avg,house_type);
@@ -113,7 +114,7 @@ public class BingMapDao extends BaseDao {
 		    String project_address=null;
 		    String project_name=null;
 		    int project_sales_remain=0;
-		    int project_price=0;//ĞèÒª¸Ä¶¯
+		    int project_price=0;//ï¿½ï¿½Òªï¿½Ä¶ï¿½
 		    int project_price_avg=0;
 		    int maxarea=0;
 		    int minarea=0;
@@ -125,7 +126,7 @@ public class BingMapDao extends BaseDao {
 		    	project_sales_remain=rs.getInt("project_sales_remain");
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
-		    	project_price=rs.getInt("project_price_avg");//´Ë´¦ÏîÄ¿¼Û¸ñÄ¿Ç°¸øµÄÊÇÏîÄ¿Æ½¾ù¼Û¸ñ
+		    	project_price=rs.getInt("project_price_avg");//ï¿½Ë´ï¿½ï¿½ï¿½Ä¿ï¿½Û¸ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Æ½ï¿½ï¿½Û¸ï¿½
 		    	project_price_avg=rs.getInt("project_price_avg");
 		    	house_type=rs.getString("house_type");
 		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_avg,house_type);
@@ -137,4 +138,31 @@ public class BingMapDao extends BaseDao {
 		}
 		return bingMapList;
 	}
+	//ç»çº¬åº¦åŠå…¶ç›¸å…³ä¿¡æ¯
+	public List<Coordinates> listCoordinates(){
+		List<Coordinates> coordinatesList=new ArrayList<Coordinates>();
+		try {
+			String sql = "SELECT  c.id,c.latitude,c.longitude,c.place,h.project_name,h.project_price,h.project_price_avg,h.project_img FROM `coordinates` AS c, house_project AS h WHERE c.house_project_id=h.id";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+		    while(rs.next()){
+		    	Coordinates coordinates=new Coordinates();
+		    	coordinates.setId(rs.getInt("id"));
+		    	coordinates.setLatitude(rs.getFloat("latitude"));
+		    	coordinates.setLongitude(rs.getFloat("longitude"));
+		    	coordinates.setPlace(rs.getString("place"));
+		    	coordinates.setProject_name(rs.getString("project_name"));
+		    	coordinates.setProject_img(rs.getString("project_img"));
+		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinates.setProject_price_avg(rs.getInt("project_price_avg"));
+		    	coordinatesList.add(coordinates);
+		    }
+		    
+		  
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return coordinatesList;
+	} 
 }
