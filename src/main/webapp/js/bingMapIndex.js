@@ -1,19 +1,39 @@
  var map = null;
- var searchManager = null;  
- var defaltCenter=new Microsoft.Maps.Location(39.916927,116.404269);//天安门         
+ var map2=null; 
+ var defaltCenter=new Microsoft.Maps.Location(39.916927,116.404269);//天安门   
       /*加载地图*/
-      function getMap()
-      {
-       map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
-       map.setView({ zoom: 11, center: defaltCenter });	
-       addDefaultPushpin(); 
+      function getIndexMap(){
+    	 map = new Microsoft.Maps.Map(document.getElementById('indexMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
+    	 map2 = new Microsoft.Maps.Map(document.getElementById('eyeMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn', mapTypeId: Microsoft.Maps.MapTypeId.birdseye,showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
+    	 map.setView({ zoom: 11, center: defaltCenter });
+    	 map2.setView({ zoom: 15, center: defaltCenter });
+    	 addDefaultPushpin();	
       }
       function getPopMap(){
     	  map = new Microsoft.Maps.Map(document.getElementById('popMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false});
     	  map.setView({ zoom: 11, center: defaltCenter });
     	  addDefaultPushpin2();
       }
-     
+      function getEyeMap(){ 
+      map=new Microsoft.Maps.Map(document.getElementById('eyeMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn', mapTypeId: Microsoft.Maps.MapTypeId.birdseye,showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
+       $.ajax({
+	 	    type: "GET",
+	 		dateType: "json",
+	 		url: "/BingMap/Coordinates", 		
+	 		success:function(data){
+	 		data=$.parseJSON(data);
+	 		    var items=data.List;
+	 		    for(var i=0;i<items.length;i++){
+	 		        var LA=new Microsoft.Maps.Location(items[i].latitude,items[i].longitude);
+	 		        map.setView({ zoom: 15, center: LA });	 		        		        	        
+	 		    }
+	 		},
+	 		error:function(){
+	 			alert("getMap error")
+	 		}
+        });		 
+      }
+       
       /* 增加pushpin*/
       function addDefaultPushpin()
       {
@@ -27,7 +47,8 @@
 	 		    for(var i=0;i<items.length;i++){
 	 		        var LA=new Microsoft.Maps.Location(items[i].latitude,items[i].longitude);
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
-	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', popModal); 	
+	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', popModal); 
+	 		        Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', getEyeMap); 	
 				    map.entities.push(pushpin);	  		        	        
 	 		    }
 	 		},
@@ -86,45 +107,3 @@
 		  getPopMap();
 		  $('#myModal').modal('show');
 	  }
-	 /* 搜索*/
-	    function createSearchManager() 
-  {
-      map.addComponent('searchManager', new Microsoft.Maps.Search.SearchManager(map)); 
-      searchManager = map.getComponent('searchManager'); 
-  }
-  function LoadSearchModule()
-  {
-    Microsoft.Maps.loadModule('Microsoft.Maps.Search', { callback: geocodeRequest })
-  }
-  function geocodeRequest() 
-  { 
-    createSearchManager(); 
-    //var where = 'Denver, CO';
-	var where =document.getElementById("txtQuery").value;
-    var userData = { name: 'Maps Test User', id: 'XYZ' }; 
-    var request = 
-    { 
-        where: where, 
-        count: 5, 
-        bounds: map.getBounds(), 
-        callback: onGeocodeSuccess, 
-        errorCallback: onGeocodeFailed, 
-        userData: userData 
-    }; 
-    searchManager.geocode(request); 
-  } 
-  function onGeocodeSuccess(result, userData) 
-  { 
-    if (result) { 
-        map.entities.clear(); 
-        var topResult = result.results && result.results[0]; 
-        if (topResult) { 
-            var pushpin = new Microsoft.Maps.Pushpin(topResult.location, null); 
-            map.setView({ center: topResult.location, zoom: 12 });
-            map.entities.push(pushpin); 
-        } 
-    } 
-  } 
-  function onGeocodeFailed(result, userData) { 
-    alert('Geocode failed'); 
-  } 
