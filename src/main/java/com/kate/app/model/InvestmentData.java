@@ -1,6 +1,6 @@
 package com.kate.app.model;
 
-public class InvestmentDate {
+public class InvestmentData {
 	private int id;
 	private int year_increment_rate;
 	private int middle_price;
@@ -10,6 +10,13 @@ public class InvestmentDate {
 	private String price_review;
 	private String data_exam;
 	private int house_pro_id;
+	private int area_id;
+	public int getArea_id() {
+		return area_id;
+	}
+	public void setArea_id(int area_id) {
+		this.area_id = area_id;
+	}
 	public int getHouse_pro_id() {
 		return house_pro_id;
 	}

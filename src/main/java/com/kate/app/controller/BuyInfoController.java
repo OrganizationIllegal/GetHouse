@@ -15,7 +15,7 @@ import com.kate.app.service.BuyInfoService;
 
 @Controller
 public class BuyInfoController {
-	@Autowired
+	/*@Autowired
 	private BuyInfoService buyInfoService;
 	
 	@RequestMapping({ "/", "/BuyInfo" })
@@ -23,6 +23,6 @@ public class BuyInfoController {
 		String returnMoney=buyInfoService.getReturnMoney();
 		req.setAttribute("returnmoney", returnMoney);
 		return "index01.jsp";
-	}
+	}*/
 
 }

@@ -27,7 +27,7 @@ public class BrokerInfoDao extends BaseDao {
 		    String office=null;
 		    String introduction=null;
 		    while(rs.next()){
-		    	id=rs.getInt("id");
+		    	/*id=rs.getInt("id");
 		    	broker_img=rs.getString("broker_img");
 		    	broker_language=rs.getString("broker_language");
 		    	broker_name=rs.getString("broker_name");
@@ -35,7 +35,7 @@ public class BrokerInfoDao extends BaseDao {
 		    	office=rs.getString("office");
 		    	introduction=rs.getString("introduction");
 		    	BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction);
-		    	brokerInfoList.add(brokerInfo);
+		    	brokerInfoList.add(brokerInfo);*/
 		    }
 		    
 		  
@@ -45,7 +45,7 @@ public class BrokerInfoDao extends BaseDao {
 		}
 		return brokerInfoList;
 	} 
-	//发送留言
+	//鍙戦�鐣欒█
 	public int InsertMessage(String message_content,String message_time,int project_id,int viewed,int type,int userid){
 		int exeResult=0;
 		try {

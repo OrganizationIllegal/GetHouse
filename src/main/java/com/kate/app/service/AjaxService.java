@@ -18,7 +18,7 @@ import com.kate.app.model.BuyInfo;
 import com.kate.app.model.DeveloperInfo;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseProject;
-import com.kate.app.model.InvestmentDate;
+import com.kate.app.model.InvestmentData;
 import com.kate.app.model.NewsInfo;
 
 @Service
@@ -28,8 +28,8 @@ public class AjaxService {
 	
 	public JSONArray select(){
 		JSONArray array = new JSONArray();
-		List<InvestmentDate> list = ajaxDao.select();
-		for(InvestmentDate data : list){
+		List<InvestmentData> list = ajaxDao.select();
+		for(InvestmentData data : list){
 			JSONObject obj = new JSONObject();
 			obj.put("id", data.getId());
 			obj.put("data_exam", data.getData_exam()==null?"":data.getData_exam());
@@ -85,7 +85,7 @@ public class AjaxService {
 			obj.put("house_type", data.getHouse_type()==null?"":data.getHouse_type());
 			obj.put("house_room_num", data.getHouse_room_num());
 			obj.put("house_toilet_num", data.getHouse_toilet_num());
-			obj.put("house_size", data.getHouse_size());
+			obj.put("house_size", data.getHouse_size_in());
 			obj.put("house_price", data.getHouse_price()==null?"":data.getHouse_price());
 			obj.put("house_img", data.getHouse_img()==null?"":data.getHouse_img());
 			int proId = data.getHouse_project_id();
@@ -133,7 +133,7 @@ public class AjaxService {
 			obj.put("project_city", data.getProject_city()==null?"":data.getProject_city());
 			obj.put("project_house_type", data.getProject_house_type()==null?"":data.getProject_house_type());
 			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
-			obj.put("project_lan", data.getProject_lan()==null?"":data.getProject_lan());  // 项目一句话
+			obj.put("project_lan", data.getProject_lan_cn()==null?"":data.getProject_lan_cn());  // 项目一句话
 			if(data.getDeveloper_id()==0){
 				obj.put("developer_name", "");
 				obj.put("developer_logo", "");
@@ -271,7 +271,7 @@ public class AjaxService {
 			String project_name = data.getProject_name()==null? "":data.getProject_name();
 			String project_price_qujian = data.getProject_price()==null?"":data.getProject_price();
 			obj.put("project_name", project_name);
-			obj.put("project_price_avg", data.getProject_price_avg());   //平均价格
+			obj.put("project_price_avg", data.getProject_price_qi());   //平均价格
 			obj.put("project_price_qujian", project_price_qujian);   //价格区间
 			
 			List<BuyInfo> listInfo = ajaxDao.selectBuyInfo(data.getId());

@@ -1,5 +1,6 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,13 +12,13 @@ import com.kate.app.model.BuyInfo;
 import com.kate.app.model.HouseProject;
 @Repository 
 public class BuyInfoDao extends BaseDao{
-	public int BuyInfoDao(){
+	public int BuyInfoDao(int houseProId){
 		int returnMoney=0;
-		int houseId=1;
 		try{
-			String sql = " select return_money from Buy_Info where house_pro_id="+houseId;
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = " select return_money from buy_info where house_pro_id=? ";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, houseProId);
+			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				BuyInfo buyInfo = new BuyInfo();

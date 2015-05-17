@@ -28,16 +28,16 @@ public class HouseInfoController {
 	@RequestMapping({ "/", "/index" })
 	public String getHouseInfo(HttpServletRequest req,HttpServletResponse resp){
 		List<HouseInfo> list = new ArrayList<HouseInfo>();
-		list=houseInfoService.getHouseInfoList();
-		String returnPrice=buyInfoService.getReturnMoney();
-		req.setAttribute("returnPrice", returnPrice);
+		//list=houseInfoService.getHouseInfoList();
+		//String returnPrice=buyInfoService.getReturnMoney();
+		//req.setAttribute("returnPrice", returnPrice);
 		req.setAttribute("HouseInfoList", list);
 		//req.setAttribute("HouseInfoJson", JSONArray.toJSON(list));
-		String projectdescription=recoprojectserivice.getProjectdescription();
+		/*//String projectdescription=recoprojectserivice.getProjectdescription();
 		System.out.println(projectdescription);
 		
 		
-		req.setAttribute("projectdescription",projectdescription);
+		req.setAttribute("projectdescription",projectdescription);*/
 		
 		return "/index.jsp";
 	}

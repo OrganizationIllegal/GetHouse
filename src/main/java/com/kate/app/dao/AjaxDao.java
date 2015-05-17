@@ -21,21 +21,21 @@ import com.kate.app.model.BuyInfo;
 import com.kate.app.model.DeveloperInfo;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseProject;
-import com.kate.app.model.InvestmentDate;
+import com.kate.app.model.InvestmentData;
 import com.kate.app.model.MyInfo;
 import com.kate.app.model.NewsInfo;
 
 
 	@Repository 
 	public class AjaxDao extends BaseDao{
-		public List<InvestmentDate> select(){
-			List<InvestmentDate> list = new ArrayList<InvestmentDate>();
+		public List<InvestmentData> select(){
+			List<InvestmentData> list = new ArrayList<InvestmentData>();
 			try{
 				String sql = " select * from investment_data";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
-					InvestmentDate data = new InvestmentDate();
+					InvestmentData data = new InvestmentData();
 					data.setId(rs.getInt("id"));
 					data.setData_exam(rs.getString("data_exam"));
 					data.setMiddle_price(rs.getInt("middle_price"));
@@ -95,7 +95,7 @@ import com.kate.app.model.NewsInfo;
 					house.setHouse_bath_num(rs.getInt("house_bath_num"));
 					house.setHouse_bath_size(rs.getInt("house_bath_size"));
 					house.setHouse_price_area(rs.getInt("house_price_area"));
-					house.setHouse_size(rs.getInt("house_size"));
+					house.setHouse_size_in(rs.getInt("house_size"));
 					house.setHouse_city(rs.getString("house_city"));
 					house.setHouse_type(rs.getString("house_type"));
 					house.setHouse_toilet_num(rs.getInt("house_toilet_num"));
@@ -140,22 +140,28 @@ import com.kate.app.model.NewsInfo;
 					HouseProject projectInfo = new HouseProject();
 					projectInfo.setId(rs.getInt("id"));
 					projectInfo.setProject_name(rs.getString("project_name"));
-					projectInfo.setProject_area(rs.getInt("project_area"));
-					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
-					projectInfo.setProject_desc(rs.getString("project_desc"));
-					projectInfo.setProject_address(rs.getString("project_address"));
 					projectInfo.setProject_img(rs.getString("project_img"));
-					projectInfo.setProject_city(rs.getString("project_city"));
-					projectInfo.setProject_house_type(rs.getString("project_house_type"));
-					projectInfo.setProject_lan(rs.getString("project_lan"));
 					projectInfo.setProject_nation(rs.getString("project_nation"));
-					projectInfo.setProject_price_avg(rs.getInt("project_price_avg"));
+					projectInfo.setProject_address(rs.getString("project_address"));
+					projectInfo.setProject_area(rs.getString("project_area"));
+					projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
 					projectInfo.setProject_type(rs.getString("project_type"));
 					projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 					projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+					projectInfo.setProject_desc(rs.getString("project_desc"));
+					projectInfo.setProject_city(rs.getString("project_city"));
+					projectInfo.setProject_house_type(rs.getString("project_house_type"));
 					projectInfo.setProject_high(rs.getInt("project_high"));
-					projectInfo.setProject_peitao_img(rs.getString("project_peitao_img"));
 					projectInfo.setProject_price(rs.getString("project_price"));
+					projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
+					projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
+					projectInfo.setProject_num(rs.getString("project_num"));
+					projectInfo.setProject_vedio(rs.getString("project_vedio"));
+					projectInfo.setProject_zhou(rs.getString("project_zhou"));
+					projectInfo.setArea_qujian(rs.getString("area_qujian"));
+					projectInfo.setGps(rs.getString("gps"));
+					projectInfo.setReturn_money(rs.getString("return_money"));
+					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
 					list.add(projectInfo);
 				}
 			}catch (Exception e) {
@@ -449,22 +455,28 @@ import com.kate.app.model.NewsInfo;
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
 					projectInfo.setProject_name(rs.getString("project_name"));
-					projectInfo.setProject_area(rs.getInt("project_area"));
-					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
-					projectInfo.setProject_desc(rs.getString("project_desc"));
-					projectInfo.setProject_address(rs.getString("project_address"));
 					projectInfo.setProject_img(rs.getString("project_img"));
-					projectInfo.setProject_city(rs.getString("project_city"));
-					projectInfo.setProject_house_type(rs.getString("project_house_type"));
-					projectInfo.setProject_lan(rs.getString("project_lan"));
 					projectInfo.setProject_nation(rs.getString("project_nation"));
-					projectInfo.setProject_price_avg(rs.getInt("project_price_avg"));
+					projectInfo.setProject_address(rs.getString("project_address"));
+					projectInfo.setProject_area(rs.getString("project_area"));
+					projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
 					projectInfo.setProject_type(rs.getString("project_type"));
 					projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 					projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+					projectInfo.setProject_desc(rs.getString("project_desc"));
+					projectInfo.setProject_city(rs.getString("project_city"));
+					projectInfo.setProject_house_type(rs.getString("project_house_type"));
 					projectInfo.setProject_high(rs.getInt("project_high"));
-					projectInfo.setProject_peitao_img(rs.getString("project_peitao_img"));
 					projectInfo.setProject_price(rs.getString("project_price"));
+					projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
+					projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
+					projectInfo.setProject_num(rs.getString("project_num"));
+					projectInfo.setProject_vedio(rs.getString("project_vedio"));
+					projectInfo.setProject_zhou(rs.getString("project_zhou"));
+					projectInfo.setArea_qujian(rs.getString("area_qujian"));
+					projectInfo.setGps(rs.getString("gps"));
+					projectInfo.setReturn_money(rs.getString("return_money"));
+					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
 				}
 				
 			}catch (Exception e) {

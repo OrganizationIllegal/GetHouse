@@ -14,7 +14,6 @@ public class BaseDao {
 	protected static String password = null;
 	protected static Connection con = null;
 	static {
-		System.out.println("fffffffff");
 		try{   
 		    //加载MySql的驱动类   
 		    Class.forName("com.mysql.jdbc.Driver") ;   
@@ -24,12 +23,13 @@ public class BaseDao {
 		    e.printStackTrace() ;   
 		}   
 		try {
-            url = "jdbc:mysql://54.187.200.118:3306/house";
-            username = "root";
-            password = "admin";
+            url = "jdbc:mysql://101.200.174.253/gethouse";
+            username = "dboperator2";
+            password = "gethouse";
             con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
-           
+           System.out.print("DriverManager.getConnection faild");
+           System.out.println(e.toString());
         }
 	}
 	
