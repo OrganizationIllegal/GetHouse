@@ -42,10 +42,37 @@ public class BingMapController {
 	}
 	
 	@RequestMapping({ "/BingMap/Coordinates" })    
-	public void selectInfomation(HttpServletRequest req, HttpServletResponse resp){
+	public void listMap(HttpServletRequest req, HttpServletResponse resp){
 		JSONObject json = new JSONObject();
 		JSONArray array = new JSONArray();
 		array = bingMapService.jsonCoordinates();
+		json.put("List", array);		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping({ "/BingMap/FileterType2" })    
+	public void filterByHouseType2(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		int type=Integer.parseInt(req.getParameter("house_type"));
+		array = bingMapService.filterByHouseType2(type);
+		json.put("List", array);		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping({ "/BingMap/FileterKeyWord" })    
+	public void filterByKeyWord(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		String key=req.getParameter("keyword");
+		array = bingMapService.filterByKeyWord(key);
 		json.put("List", array);		
 		try{
 			writeJson(json.toJSONString(),resp);

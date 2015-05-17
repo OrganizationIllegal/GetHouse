@@ -8,18 +8,26 @@ public class HouseProject {
 	private String project_img;
 	private String project_nation;
 	private String project_address;
-	private int project_area;
-	private int project_price_avg;
+	private String project_area;    //
+	private int project_price_qi;
 	private String project_type;
 	private int project_sales_remain;
 	private Timestamp project_finish_time;
 	private String project_desc;
 	private int developer_id;
+	private BrokerInfo brokerInfo;
 	private String project_city;
 	private String project_house_type;
 	private int project_high;
 	private String project_price;
-	private String project_lan;
+	private String project_lan_en;
+	private String project_lan_cn;
+	private String project_num;
+	private String project_vedio;
+	private String project_zhou;
+	private String area_qujian;
+	private String gps;
+	private String return_money;
 	private String project_peitao_img;
 	public int getId() {
 		return id;
@@ -51,17 +59,17 @@ public class HouseProject {
 	public void setProject_address(String project_address) {
 		this.project_address = project_address;
 	}
-	public int getProject_area() {
+	public String getProject_area() {
 		return project_area;
 	}
-	public void setProject_area(int project_area) {
+	public void setProject_area(String project_area) {
 		this.project_area = project_area;
 	}
-	public int getProject_price_avg() {
-		return project_price_avg;
+	public int getProject_price_qi() {
+		return project_price_qi;
 	}
-	public void setProject_price_avg(int project_price_avg) {
-		this.project_price_avg = project_price_avg;
+	public void setProject_price_qi(int project_price_qi) {
+		this.project_price_qi = project_price_qi;
 	}
 	public String getProject_type() {
 		return project_type;
@@ -117,11 +125,53 @@ public class HouseProject {
 	public void setProject_price(String project_price) {
 		this.project_price = project_price;
 	}
-	public String getProject_lan() {
-		return project_lan;
+	public String getProject_lan_en() {
+		return project_lan_en;
 	}
-	public void setProject_lan(String project_lan) {
-		this.project_lan = project_lan;
+	public void setProject_lan_en(String project_lan_en) {
+		this.project_lan_en = project_lan_en;
+	}
+	public String getProject_lan_cn() {
+		return project_lan_cn;
+	}
+	public void setProject_lan_cn(String project_lan_cn) {
+		this.project_lan_cn = project_lan_cn;
+	}
+	public String getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}
+	public String getProject_vedio() {
+		return project_vedio;
+	}
+	public void setProject_vedio(String project_vedio) {
+		this.project_vedio = project_vedio;
+	}
+	public String getProject_zhou() {
+		return project_zhou;
+	}
+	public void setProject_zhou(String project_zhou) {
+		this.project_zhou = project_zhou;
+	}
+	public String getArea_qujian() {
+		return area_qujian;
+	}
+	public void setArea_qujian(String area_qujian) {
+		this.area_qujian = area_qujian;
+	}
+	public String getGps() {
+		return gps;
+	}
+	public void setGps(String gps) {
+		this.gps = gps;
+	}
+	public String getReturn_money() {
+		return return_money;
+	}
+	public void setReturn_money(String return_money) {
+		this.return_money = return_money;
 	}
 	public String getProject_peitao_img() {
 		return project_peitao_img;

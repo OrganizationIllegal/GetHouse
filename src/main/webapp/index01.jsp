@@ -300,61 +300,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--end 墨尔本-->
 
-<!--last-->
-<div>
-  	<div class="row">
-  		<div class="col-md-4 col-md-offset-5" >
-  			<div style="font-weight:bolder;font-size:23px;font-family:黑体;">最新博客</div>
-  			</div>
-  		
-  		<div class="col-md-3"></div>
-  		
-  		
-  		</div>
-  		
-  	<div class="row">
-  		<div class="col-md-6 col-md-offset-4" style="Margin-top:10px;">
-  			<span style="font-size:20px;color:Black;">From Toronto's real estate market to home staging tips</span>
-  			</div>
-  		
-  		<div class="col-md-2"></div>
-  		
-  		</div>
-  		
-  	<div class="row" style="margin-top:40px;margin-bottom:40px;">
-  		<div class="col-md-2 col-md-offset-2">
-  			
-  			<div>
-  				<img src="pic/last.jpg">
-  				<span></span>
-  				
-  				</div>
-  		</div>
-  		
-  		<div class="col-md-2 col-md-offset-1">
-  				<div>
-  				<img src="pic/last.jpg">
-  				<span> </span>
-  				
-  				</div>
-  		</div>
-  		
-  		<div class="col-md-2 col-md-offset-1">
-  				<div>
-  				<img src="pic/last.jpg">
-  				<span> </span>
-  				
-  				</div>
-  		</div>
-  		
-  		</div>
-
-
-
-
-
-    </div>
-<!--last-->
+<!--last guo-->
+<div class="row" style="text-align:center;margin-top:300px;">
+			<div style="font-weight:bolder;font-size:23px;font-family:黑体;">最新博客</div>
+			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
+			<div class="row" style="padding-top:30px;">
+			<div class="col-md-2" style="width:150px;"></div>
+			<div class="col-md-3">
+				<div><img src="./images/newestblog.PNG"></div>
+				<div>图片描述图片描述图片描述图片描述</div>
+			</div>
+			<div class="col-md-3">
+				<div><img src="./images/newestblog.PNG"></div>
+				<div>图片描述图片描述图片描述图片描述</div>
+			</div>
+			<div class="col-md-3">
+				<div><img src="./images/newestblog.PNG"></div>
+				<div>图片描述图片描述图片描述图片描述</div>
+			</div>
+			<div class="col-md-1"></div>
+			</div>
+		</div>
+<!--last guo-->
 
 </div>
 <!-- 妯℃�妗�-->
