@@ -85,7 +85,11 @@ public class AjaxService {
 			obj.put("house_type", data.getHouse_type()==null?"":data.getHouse_type());
 			obj.put("house_room_num", data.getHouse_room_num());
 			obj.put("house_toilet_num", data.getHouse_toilet_num());
+<<<<<<< HEAD
 			obj.put("house_size", data.getHouse_size_in());
+=======
+			//obj.put("house_size", data.getHouse_size());
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 			obj.put("house_price", data.getHouse_price()==null?"":data.getHouse_price());
 			obj.put("house_img", data.getHouse_img()==null?"":data.getHouse_img());
 			int proId = data.getHouse_project_id();
@@ -108,7 +112,7 @@ public class AjaxService {
 		return array;
 	}
 	/*
-	 * ²éÕÒÏîÄ¿ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ï¢
 	 */
 	public JSONArray selectHouseProject(){
 		JSONArray array = new JSONArray();
@@ -129,11 +133,15 @@ public class AjaxService {
 				timeResule = df.format(time);
 			}
 			obj.put("project_finish_time", timeResule==null?"":timeResule);
-			obj.put("project_desc", data.getProject_desc()==null?"":data.getProject_desc());  // ÏîÄ¿ÏêÇé
+			obj.put("project_desc", data.getProject_desc()==null?"":data.getProject_desc());  // ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½
 			obj.put("project_city", data.getProject_city()==null?"":data.getProject_city());
 			obj.put("project_house_type", data.getProject_house_type()==null?"":data.getProject_house_type());
 			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+<<<<<<< HEAD
 			obj.put("project_lan", data.getProject_lan_cn()==null?"":data.getProject_lan_cn());  // ÏîÄ¿Ò»¾ä»°
+=======
+			//obj.put("project_lan", data.getProject_lan()==null?"":data.getProject_lan());  // ï¿½ï¿½Ä¿Ò»ï¿½ä»°
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 			if(data.getDeveloper_id()==0){
 				obj.put("developer_name", "");
 				obj.put("developer_logo", "");
@@ -153,7 +161,7 @@ public class AjaxService {
 	}
 	
 	/*
-	 * É¾³ýÏîÄ¿ÐÅÏ¢
+	 * É¾ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ï¢
 	 */
 	
 	public boolean deletePro(int proid) throws Exception{
@@ -162,15 +170,15 @@ public class AjaxService {
 	}
 	
 	/*
-	 * Ôö¼ÓÏîÄ¿ºÍ¿ª·¢ÉÌÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public boolean addPro(String project_name, String project_lan, String project_desc, String project_nation, String project_address, String project_area, int project_sales_remain, String project_finish_time, String project_city, String project_house_type, String project_price, String developer_name, String developer_logo, String developer_desc) throws Exception{
 		int deve_id = 0;
 		boolean flag = false;
 		int searchDeveId = ajaxDao.findDeveByName(developer_name);
-		if(searchDeveId==0){   //Ã»ÓÐ²éµ½¿ª·¢ÉÌ
+		if(searchDeveId==0){   //Ã»ï¿½Ð²éµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			boolean flag_deve = ajaxDao.addDeveInfo(developer_name, developer_logo, developer_desc);
-			if(flag_deve==true){    //Ôö¼Ó³É¹¦
+			if(flag_deve==true){    //ï¿½ï¿½ï¿½Ó³É¹ï¿½
 				if(null==developer_name||"".equals(developer_name)){
 					deve_id = 0;
 				}
@@ -189,12 +197,12 @@ public class AjaxService {
 	
 	
 	/*
-	 * ²éÕÒÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public boolean findProByName(String project_name) throws Exception{
 		boolean flag = false;
 		int id = ajaxDao.findProByName(project_name);
-		if(id!=0){          //Ãû³ÆÒÑ¾­´æÔÚ
+		if(id!=0){          //ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
 			return true;
 		}
 		return flag;	
@@ -202,7 +210,7 @@ public class AjaxService {
 	
 	
 	/*
-	 * Ñ¡È¡ÆäËûÐÅÏ¢
+	 * Ñ¡È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public JSONArray selectInfomation(){
 		JSONArray array = new JSONArray();
@@ -220,8 +228,8 @@ public class AjaxService {
 				timeResule = df.format(time);
 			}
 			
-			obj.put("id", data.getId());    //ÏîÄ¿id
-			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());    //ÏîÄ¿Ãû³Æ
+			obj.put("id", data.getId());    //ï¿½ï¿½Ä¿id
+			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());    //ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½
 			obj.put("project_finish_time", timeResule==null?"":timeResule);
 			DeveloperInfo deve = new DeveloperInfo();
 			if(data.getDeveloper_id()==0){
@@ -229,8 +237,8 @@ public class AjaxService {
 				obj.put("developer_logo", "");
 			}
 			else{
-				deve = ajaxDao.selectDevInfo(data.getDeveloper_id());   //µÃµ½¿ª·¢ÉÌ
-				if(deve!=null){   //¿ª·¢ÉÌÐÅÏ¢´æÔÚ
+				deve = ajaxDao.selectDevInfo(data.getDeveloper_id());   //ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				if(deve!=null){   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 					String name = deve.getDeveloper_name()==null?"":deve.getDeveloper_name();
 					String logo = deve.getDeveloper_logo()==null?"":deve.getDeveloper_logo();
 					obj.put("developer_name", name);
@@ -238,10 +246,10 @@ public class AjaxService {
 				}
 			}
 			
-			List<BuyInfo> listInfo = ajaxDao.selectBuyInfo(data.getId());   //¹ºÂòÐÅÏ¢
+			List<BuyInfo> listInfo = ajaxDao.selectBuyInfo(data.getId());   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			BuyInfo buyInfo = new BuyInfo();
 			if(listInfo.size()>0){
-				buyInfo = ajaxDao.selectBuyInfo(data.getId()).get(0);   //È¡ÆäÖÐµÚÒ»ÌõÊý¾Ý
+				buyInfo = ajaxDao.selectBuyInfo(data.getId()).get(0);   //È¡ï¿½ï¿½ï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
 				obj.put("first_money", buyInfo.getFirst_money());
 				obj.put("stamp_tax", buyInfo.getStamp_tax());
 			}
@@ -256,7 +264,7 @@ public class AjaxService {
 	
 	
 	/*
-	 * ¼Û¸ñÇø¼äÏÔÊ¾
+	 * ï¿½Û¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 	 */
 	public JSONArray selectPriceInfo(){
 		JSONArray array = new JSONArray();
@@ -267,12 +275,17 @@ public class AjaxService {
 		}
 		for(HouseProject data : list){
 			JSONObject obj = new JSONObject();
-			obj.put("id", data.getId());    //ÏîÄ¿id
+			obj.put("id", data.getId());    //ï¿½ï¿½Ä¿id
 			String project_name = data.getProject_name()==null? "":data.getProject_name();
 			String project_price_qujian = data.getProject_price()==null?"":data.getProject_price();
 			obj.put("project_name", project_name);
+<<<<<<< HEAD
 			obj.put("project_price_avg", data.getProject_price_qi());   //Æ½¾ù¼Û¸ñ
 			obj.put("project_price_qujian", project_price_qujian);   //¼Û¸ñÇø¼ä
+=======
+			//obj.put("project_price_avg", data.getProject_price_avg());   //Æ½ï¿½ï¿½Û¸ï¿½
+			obj.put("project_price_qujian", project_price_qujian);   //ï¿½Û¸ï¿½ï¿½ï¿½ï¿½
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 			
 			List<BuyInfo> listInfo = ajaxDao.selectBuyInfo(data.getId());
 			BuyInfo buyInfo = new BuyInfo();
@@ -290,7 +303,7 @@ public class AjaxService {
 	
 	
 	/*
-	 * ²éÕÒÏîÄ¿ÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ï¢
 	 */
 	public JSONArray selectRecomProject(){
 		JSONArray array = new JSONArray();
@@ -299,7 +312,7 @@ public class AjaxService {
 	}
 	
 	/*
-	 * ²éÕÒÐÂÎÅÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public JSONArray selectNewsInfo(){
 		JSONArray array = new JSONArray();
@@ -337,12 +350,12 @@ public class AjaxService {
 	}
 	
 	/*
-	 * Ôö¼ÓÐÂÎÅÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public int addNewsInfo(String project_name, String title, String source, String time, String detail, String news_img) throws Exception{
 	    boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -358,12 +371,12 @@ public class AjaxService {
 	
 	
 	/*
-	 * ÐÞ¸ÄÐÂÎÅÐÅÏ¢
+	 * ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	public int editNewsInfo(int id, String project_name, String title, String source, String time, String detail, String news_img) throws Exception{
 		boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -377,7 +390,7 @@ public class AjaxService {
 	
 	/*--------------------------*/
 	/*
-	 * ²éÕÒÇøÓòÌØµãÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
 	 */
 	public JSONArray selectArea(){
 		JSONArray array = new JSONArray();
@@ -386,12 +399,12 @@ public class AjaxService {
 	}
 	
 	/*
-	 * Ôö¼ÓÇøÓòÌØµãÐÅÏ¢
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
 	 */
 	public int addArea(String project_name, String area_character) throws Exception{
 	    boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -405,12 +418,12 @@ public class AjaxService {
 	}
 	
 	/*
-	 * ÐÞ¸ÄÇøÓòÌØµãÐÅÏ¢
+	 * ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
 	 */
 	public int editArea(int id, String project_name, String area_character) throws Exception{
 		boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -423,7 +436,7 @@ public class AjaxService {
 	}
 
 	/*
-	 * É¾³ýÇøÓòÌØµãÐÅÏ¢
+	 * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢
 	 */
 	public boolean deleteArea(int id) throws Exception{
 		boolean flag = ajaxDao.deleteArea(id);
@@ -470,7 +483,7 @@ public class AjaxService {
 	public int addTouziData(String project_name, int middle_price, int middle_zu_price, int price_review, int year_increment_rate, int zu_house_rate, String zu_xuqiu,String data_exam) throws Exception{
 	    boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -479,12 +492,12 @@ public class AjaxService {
 				return 1;   
 			}
 			else
-				return -2;    //Ìí¼ÓÊ§°Ü
+				return -2;    //ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
 				
 		}		
 	}
 	/*
-	 * Ôö¼ÓÍÆ¼öÏîÄ¿
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ä¿
 	 */
 	
 	public int addRecoProject(String project_name, String recommend_project_name) throws Exception{
@@ -504,7 +517,7 @@ public class AjaxService {
 			return -2;	
 	}
 	/*
-	 * ÐÞ¸ÄÍÆ¼öÏîÄ¿
+	 * ï¿½Þ¸ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ä¿
 	 */
 	public int editRecoProject(int id, String project_name, String recommend_project_name) throws Exception{
 	    boolean result = false;
@@ -531,7 +544,7 @@ public class AjaxService {
 	public int addHouseInfo(String project_name, String house_type, int house_room_num, int house_toilet_num, int house_size, String house_price, String house_img) throws Exception{
 	    boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -559,7 +572,7 @@ public class AjaxService {
 	public int editTouziData(int id, String project_name, int middle_price, int middle_zu_price, int price_review, int year_increment_rate, int zu_house_rate, String zu_xuqiu,String data_exam) throws Exception{
 		boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -568,7 +581,7 @@ public class AjaxService {
 				return 1;   
 			}
 			else
-				return -2;    //Ìí¼ÓÊ§°Ü
+				return -2;    //ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
 		}		
 	}
 	
@@ -581,7 +594,7 @@ public class AjaxService {
 				return 1;   
 			}
 			else
-				return -2;    //Ìí¼ÓÊ§°Ü
+				return -2;    //ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
 	}		
 
 	
@@ -591,7 +604,7 @@ public class AjaxService {
 	public int editHouseInfo(int id, String project_name, String house_type, int house_room_num, int house_toilet_num, int house_size, String house_price, String house_img) throws Exception{
 		boolean result = false;
 		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //ÏîÄ¿Ãû³Æ´íÎó
+		if(proId==0){    //ï¿½ï¿½Ä¿ï¿½ï¿½Æ´ï¿½ï¿½ï¿½
 			return -1;
 		}
 		else{
@@ -651,7 +664,7 @@ public class AjaxService {
 		int deve_id = 0;
 		boolean flag = false;
 		deve_id = ajaxDao.findDeveByName(developer_name);
-		if(deve_id == 0){   // ¿ª·¢ÉÌÃû³Æ±ØÐëÒÑ¾­´æÔÚ
+		if(deve_id == 0){   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
 			return flag;
 		}
 		else{

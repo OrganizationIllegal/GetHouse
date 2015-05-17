@@ -37,9 +37,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			alert("error")
 	 		}
         });
+        });
  
  })
- </script>
+</script>
 </head>
 <body style="padding-top: 105px;" onload="getMap();">
  <jsp:include page="head.jsp" />
@@ -110,28 +111,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form class="navbar-form navbar-left" role="search" id="form">
          <div class="form-group has-feedback">
             <!--<i class="glyphicon glyphicon-search form-control-feedback"></i>-->
-            <input id="txtQuery" type="text" placeholder="Melbourne墨尔本" class="form-control" style="width:235px;height:20px;">
+            <input id="keyWord" name="keyword" type="text" placeholder="Melbourne墨尔本" class="form-control" style="width:235px;height:20px;">
          </div>
          <!--<button type="button" onclick="LoadSearchModule()">搜索</button>-->
-         <a href="#" onclick="LoadSearchModule()">搜索</a>
+         <a href="#" onclick="addPushpinsearch()">搜索</a>
       </form>    
       </div>
 	<div class="col-md-6 col-md-offset-1" id="dropdown">
       <ul class="nav navbar-nav">
-      	 <li class="divider-vertical"></li>
+      	<!-- <li class="divider-vertical"></li>-->
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
                房屋类型 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-               <li><a href="#">一居室</a></li>
-               <li><a href="#">两居室</a></li>
-               <li><a href="#">海景房</a></li>
+               <li><a href="#" onclick="addPushpin1()">一居室</a></li>
+               <li><a href="#" onclick="addPushpin2()">两居室</a></li>
+               <li><a href="#" onclick="addPushpin3()">三居室</a></li>
             </ul>
          </li>
       </ul>
-	   <ul class="nav navbar-nav">
+	   <!--<ul class="nav navbar-nav">
 	   <li class="divider-vertical"></li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:8px 10px 15px 0px;">
@@ -158,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <li><a href="#">六月底</a></li>
             </ul>
          </li>
-      </ul>
+      </ul>-->
    </div>
    </div>
    </nav>

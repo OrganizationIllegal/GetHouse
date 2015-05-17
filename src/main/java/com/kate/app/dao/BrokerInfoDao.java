@@ -34,8 +34,13 @@ public class BrokerInfoDao extends BaseDao {
 		    	broker_region=rs.getString("broker_region");
 		    	office=rs.getString("office");
 		    	introduction=rs.getString("introduction");
+<<<<<<< HEAD
 		    	BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction);
 		    	brokerInfoList.add(brokerInfo);*/
+=======
+		    	//BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction);
+		    	//brokerInfoList.add(brokerInfo);
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 		    }
 		    
 		  

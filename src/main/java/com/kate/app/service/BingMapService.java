@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.BingMapDao;
 import com.kate.app.model.BingMapVo;
+import com.kate.app.model.HouseProject;
 @Service
 public class BingMapService {
 	@Autowired
@@ -27,5 +30,48 @@ public class BingMapService {
 		bingMapList=bingMapDao.orderByPrice(order);
 		return bingMapList;
 	}
-
+//经纬度及其相关信息
+	public JSONArray jsonCoordinates(){
+		JSONArray array = new JSONArray();
+		List<HouseProject> list = bingMapDao.listMap();
+		for(HouseProject data : list){
+			JSONObject obj = new JSONObject();
+			obj.put("id", data.getId());
+			obj.put("gps", data.getGps()==null?"":data.getGps());
+			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
+			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
+			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			array.add(obj);
+		}
+		return array;
+	}
+	
+	public JSONArray filterByHouseType2(int type){
+		JSONArray array = new JSONArray();
+		List<HouseProject> list = bingMapDao.filterByHouseType2(type);
+		for(HouseProject data : list){
+			JSONObject obj = new JSONObject();
+			obj.put("id", data.getId());
+			obj.put("gps", data.getGps()==null?"":data.getGps());
+			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
+			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
+			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			array.add(obj);
+		}
+		return array;
+	}
+	public JSONArray filterByKeyWord(String key){
+		JSONArray array = new JSONArray();
+		List<HouseProject> list = bingMapDao.filterByKeyWord(key);
+		for(HouseProject data : list){
+			JSONObject obj = new JSONObject();
+			obj.put("id", data.getId());
+			obj.put("gps", data.getGps()==null?"":data.getGps());
+			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
+			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
+			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			array.add(obj);
+		}
+		return array;
+	}
 }

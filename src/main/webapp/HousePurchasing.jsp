@@ -9,9 +9,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
    <title>HousePurchasing</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <script src="/js/jquery.bootpag.min.js"></script>
+=======
+   <script src="/js/jquery.min.js"></script>
+   <script src="/bootstrap/js/bootstrap.min.js"></script>
+   
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 </head>
 <body style="padding-top: 105px;">
  <jsp:include page="head.jsp" />
@@ -29,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-lg-7">
                 <div class="row">
                     <div class="panel panel-default">
+<<<<<<< HEAD
                       <div class="panel-heading" id="leftpanel">1-${pageCount}的${total}篇文章</div>
                       <div class="panel-body">
                         <ul class="media-list" id="mainlist">
@@ -53,6 +60,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </ul>
                        <div id="page-selection"></div>
                         
+=======
+                      <div class="panel-heading">1-11的27篇文章</div>
+                      <div class="panel-body">
+                        <ul class="media-list">
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="180px" height="140px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading">李先生高等数学个人投资者</h4>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                <p style="font-size:120x;">房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人</p>
+                                <a href="">全文></a>
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="180px" height="140px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading">李先生高等数学个人投资者</h4>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                <p style="font-size:120x;">房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人</p>
+                                <a href="">全文></a>
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="180px" height="140px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading">李先生高等数学个人投资者</h4>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                <p style="font-size:120x;">房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人</p>
+                                <a href="">全文></a>
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="180px" height="140px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading">李先生高等数学个人投资者</h4>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                <p style="font-size:120x;">房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人</p>
+                                <a href="">全文></a>
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="180px" height="140px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading">李先生高等数学个人投资者</h4>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                <p style="font-size:120x;">房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人</p>
+                                <a href="">全文></a>
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="180px" height="140px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h4 class="media-heading">李先生高等数学个人投资者</h4>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                <p style="font-size:120x;">房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人房产经纪人</p>
+                                <a href="">全文></a>
+                              </div>
+                          </li>
+                        </ul>
+                       
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
                     </div>
                 </div>
             </div>
@@ -68,11 +160,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="panel panel-default">
               <div class="panel-heading">分类浏览</div>
               <div class="panel-body"> 
+<<<<<<< HEAD
                 <select id="type">
                     <option>请选择一个类别</option>
                     <c:forEach items="${fenleiList}" var="item">
                     	<option>${item}</option>
                     </c:forEach>
+=======
+                <select>
+                    <option>请选择一个类别</option>
+                    <option>类别一</option>
+                    <option>类别二</option>
+                    <option>类别三</option>
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
                 </select>
               </div>
             </div>
@@ -80,6 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="panel-heading">最新博客文章</div>
               <div class="panel-body"> 
                 <ul class="media-list">
+<<<<<<< HEAD
                 <c:forEach items="${newsList}" var="item" varStatus="status">
                 		 <li class="media">
                              <div class="media-left">
@@ -97,6 +198,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </c:forEach>
                          
                          
+=======
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="64px" height="58px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..." width="64px" height="58px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                
+                              </div>
+                          </li>
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
                         </ul>
               </div>
             </div>
@@ -104,6 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="panel-heading">置业指导</div>
               <div class="panel-body"> 
                 <ul class="media-list">
+<<<<<<< HEAD
                 	 <c:forEach items="${lastestList}" var="item" varStatus="status">
                 	 	 <li class="media">
                              <div class="media-left">
@@ -120,6 +260,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	 </c:forEach>
                          
                         
+=======
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                
+                              </div>
+                          </li>
+                          <li class="media">
+                             <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
+                                <p style="font-size:12px;">房产经纪人</p>
+                                
+                              </div>
+                          </li>
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
                         </ul>
               </div>
             </div>
@@ -132,6 +310,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button class="buttton">注册</button>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="row" style="height:20px;"></div>
    <jsp:include page="foot.jsp" />
    <script type="text/javascript">
@@ -200,6 +379,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	    
 	</script>
+=======
+   
+
+
+   <jsp:include page="foot.jsp" />
+   
+>>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 </body>
 
 </html>

@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js" charset="GBK"></script>
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
    <!--<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>-->
-   <script src="/js/bingMap.js"></script>
+   <script src="/js/bingMapIndex.js"></script>
    <link href="/css/List-Grid-View.css" rel="stylesheet">
    <script src="/echarts/echarts-all.js"></script>
    <link href="./bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">

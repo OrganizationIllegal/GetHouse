@@ -8,20 +8,21 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.kate.app.model.BingMapVo;
+import com.kate.app.model.HouseProject;
 @Repository 
 public class BingMapDao extends BaseDao {
 	public List<BingMapVo> listBingMap(){
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id group BY h.house_project_id";
+			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_qi, MIN(h.house_size_in) as minarea,MAX(h.house_size_in) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id group BY h.house_project_id";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
 		    String project_address=null;
 		    String project_name=null;
 		    int project_sales_remain=0;
-		    int project_price=0;//ĞèÒª¸Ä¶¯
-		    int project_price_avg=0;
+		    int project_price=0;//ï¿½ï¿½Òªï¿½Ä¶ï¿½
+		    int project_price_qi=0;
 		    int maxarea=0;
 		    int minarea=0;
 		    String house_type=null;
@@ -32,10 +33,10 @@ public class BingMapDao extends BaseDao {
 		    	project_sales_remain=rs.getInt("project_sales_remain");
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
-		    	project_price=rs.getInt("project_price_avg");//´Ë´¦ÏîÄ¿¼Û¸ñÄ¿Ç°¸øµÄÊÇÏîÄ¿Æ½¾ù¼Û¸ñ
-		    	project_price_avg=rs.getInt("project_price_avg");
+		    	project_price=rs.getInt("project_price_qi");//ï¿½Ë´ï¿½ï¿½ï¿½Ä¿ï¿½Û¸ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Æ½ï¿½ï¿½Û¸ï¿½
+		    	project_price_qi=rs.getInt("project_price_qi");
 		    	house_type=rs.getString("house_type");
-		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_avg,house_type);
+		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type);
 		    	bingMapList.add(bingMapVo);
 		    }
 		    
@@ -51,26 +52,26 @@ public class BingMapDao extends BaseDao {
 		switch(type)
 		{
 		case 1:
-			housetype="Ò»¾ÓÊÒ";
+			housetype="Ò»ï¿½ï¿½ï¿½ï¿½";
 			break;
 		case 2:
-			housetype="¶ş¾ÓÊÒ";
+			housetype="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			break;
 		case 3:
-			housetype="º£¾°·¿";
+			housetype="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			break;
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  where h.house_type='"+housetype+"' group BY h.house_project_id ";
+			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_qi, MIN(h.house_size_in) as minarea,MAX(h.house_size_in) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  where h.house_type='"+housetype+"' group BY h.house_project_id ";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
 		    String project_address=null;
 		    String project_name=null;
 		    int project_sales_remain=0;
-		    int project_price=0;//ĞèÒª¸Ä¶¯
-		    int project_price_avg=0;
+		    int project_price=0;//ï¿½ï¿½Òªï¿½Ä¶ï¿½
+		    int project_price_qi=0;
 		    int maxarea=0;
 		    int minarea=0;
 		    String house_type=null;
@@ -81,10 +82,10 @@ public class BingMapDao extends BaseDao {
 		    	project_sales_remain=rs.getInt("project_sales_remain");
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
-		    	project_price=rs.getInt("project_price_avg");//´Ë´¦ÏîÄ¿¼Û¸ñÄ¿Ç°¸øµÄÊÇÏîÄ¿Æ½¾ù¼Û¸ñ
-		    	project_price_avg=rs.getInt("project_price_avg");
+		    	project_price=rs.getInt("project_price_qi");//ï¿½Ë´ï¿½ï¿½ï¿½Ä¿ï¿½Û¸ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Æ½ï¿½ï¿½Û¸ï¿½
+		    	project_price_qi=rs.getInt("project_price_qi");
 		    	house_type=rs.getString("house_type");
-		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_avg,house_type);
+		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type);
 		    	bingMapList.add(bingMapVo);
 		    }
 		} catch (Exception e) {
@@ -106,15 +107,15 @@ public class BingMapDao extends BaseDao {
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_avg, MIN(h.house_size) as minarea,MAX(h.house_size) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  group BY h.house_project_id order by t.project_price_avg "+orderstr;
+			String sql = "select t.id,t.project_address,t.project_name,t.project_sales_remain,t.project_price_qi, MIN(h.house_size_in) as minarea,MAX(h.house_size_in) as maxarea ,h.house_type from house_project t LEFT JOIN house_info h on t.id=h.house_project_id  group BY h.house_project_id order by t.project_price_qi "+orderstr;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
 		    String project_address=null;
 		    String project_name=null;
 		    int project_sales_remain=0;
-		    int project_price=0;//ĞèÒª¸Ä¶¯
-		    int project_price_avg=0;
+		    int project_price=0;//ï¿½ï¿½Òªï¿½Ä¶ï¿½
+		    int project_price_qi=0;
 		    int maxarea=0;
 		    int minarea=0;
 		    String house_type=null;
@@ -125,10 +126,10 @@ public class BingMapDao extends BaseDao {
 		    	project_sales_remain=rs.getInt("project_sales_remain");
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
-		    	project_price=rs.getInt("project_price_avg");//´Ë´¦ÏîÄ¿¼Û¸ñÄ¿Ç°¸øµÄÊÇÏîÄ¿Æ½¾ù¼Û¸ñ
-		    	project_price_avg=rs.getInt("project_price_avg");
+		    	project_price=rs.getInt("project_price_qi");//ï¿½Ë´ï¿½ï¿½ï¿½Ä¿ï¿½Û¸ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Æ½ï¿½ï¿½Û¸ï¿½
+		    	project_price_qi=rs.getInt("project_price_qi");
 		    	house_type=rs.getString("house_type");
-		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_avg,house_type);
+		        BingMapVo bingMapVo=new BingMapVo(id,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type);
 		    	bingMapList.add(bingMapVo);
 		    }
 		} catch (Exception e) {
@@ -136,5 +137,85 @@ public class BingMapDao extends BaseDao {
 			e.printStackTrace();
 		}
 		return bingMapList;
+	}
+	//ç»çº¬åº¦åŠå…¶ç›¸å…³ä¿¡æ¯
+	public List<HouseProject> listMap(){
+		List<HouseProject> coordinatesList=new ArrayList<HouseProject>();
+		try {
+			String sql = "SELECT * FROM `house_project` WHERE gps!=''";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+		    while(rs.next()){
+		    	HouseProject coordinates=new HouseProject();
+		    	coordinates.setId(rs.getInt("id"));
+		    	coordinates.setGps(rs.getString("gps"));
+		    	coordinates.setProject_name(rs.getString("project_name"));
+		    	coordinates.setProject_img(rs.getString("project_img"));
+		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinatesList.add(coordinates);
+		    }
+		    
+		  
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return coordinatesList;
+	} 
+	
+	public List<HouseProject> filterByHouseType2(int type){
+		List<HouseProject> coordinatesList=new ArrayList<HouseProject>();
+		try {
+			String housetype=null;
+			switch(type)
+			{
+			case 1:
+				housetype="%1å±…å®¤%";
+				break;
+			case 2:
+				housetype="%2å±…å®¤%";
+				break;
+			case 3:
+				housetype="%3å±…å®¤%";
+				break;
+			}
+			String sql = "SELECT * FROM `house_project` WHERE gps!='' and project_house_type like '"+housetype+"'";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+		    	HouseProject coordinates=new HouseProject();
+		    	coordinates.setId(rs.getInt("id"));
+		    	coordinates.setGps(rs.getString("gps"));
+		    	coordinates.setProject_name(rs.getString("project_name"));
+		    	coordinates.setProject_img(rs.getString("project_img"));
+		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinatesList.add(coordinates);
+		    }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return coordinatesList;
+	}
+	public List<HouseProject> filterByKeyWord(String key){
+		List<HouseProject> coordinatesList=new ArrayList<HouseProject>();
+		try {
+			String sql = "SELECT * FROM `house_project` WHERE gps!='' and project_address like '%"+key+"%'";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+		    	HouseProject coordinates=new HouseProject();
+		    	coordinates.setId(rs.getInt("id"));
+		    	coordinates.setGps(rs.getString("gps"));
+		    	coordinates.setProject_name(rs.getString("project_name"));
+		    	coordinates.setProject_img(rs.getString("project_img"));
+		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinatesList.add(coordinates);
+		    }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return coordinatesList;
 	}
 }
