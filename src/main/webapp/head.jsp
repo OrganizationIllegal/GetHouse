@@ -35,29 +35,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
        </div>
    <div class="row" style="background-color:white;padding-top:25px;">
-		<div class="col-md-1" style="height:2px;"></div>
+		<div class="col-md-1"></div>
 		<div class="col-md-2">
 		  <img src="images/logo.PNG" style="margin-top:-20px;"/>
 		</div>
-       <div class="col-md-7" style="width:930px;">
+       <div class="col-md-7" >
       	<div class="navbar-header" id="headbar">
-       			<a href="#">首页</a>
+       			<a href="/index01.jsp">首页</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">海外购房</a>
+       			<a href="/searchList.jsp">海外购房</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">购房返现</a>
+       			<a href="/serviceTeam.jsp">服务团队</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">海外贷款</a>
+       			<a href="/HousePurchasing.jsp">置业指导</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">服务团队</a>
+       			<a href="/overseas.jsp">海外新闻</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">置业指导</a>
-       			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">海外新闻</a>
-       			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">关于我们</a>
-       			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="#">新闻博客</a>
+       			<a href="/AboutUs.jsp">关于我们</a>
        		</div>
        </div>  
        <div class="col-md-1" >	
