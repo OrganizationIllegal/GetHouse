@@ -26,11 +26,9 @@ public class HouseInfoDao extends BaseDao{
 				houseInfo.setHouse_type(rs.getString("house_type"));
 				houseInfo.setHouse_room_num(rs.getInt("house_room_num"));
 				houseInfo.setHouse_toilet_num(rs.getInt("house_toilet_num"));
-<<<<<<< HEAD
+
 				houseInfo.setHouse_size_in(rs.getInt("house_size_in"));
-=======
-				//houseInfo.setHouse_size(rs.getInt("house_size"));
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 				houseInfo.setHouse_price(rs.getString("house_price"));
 				houseInfo.setHouse_img(rs.getString("house_img"));
 				list.add(houseInfo);

@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 				
 			<div class="col-md-7" style="padding-top:20px;">
-				<div><span style="font-size:20px">李斯</span></div>
+				<div><span style="font-size:20px">${brokerInfo.broker_name}</span></div>
 				
 				<div><img src="pic/4a.png"><span>房产经济人</span></div>
 					
@@ -61,19 +61,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 					<div class="row" style="background-color:rgba(16, 50, 80, 1);">
 						<div>
-						<span style="font-size:25px;color:white;">8</span>
+						<span style="font-size:25px;color:white;">${brokerInfo.broker_experience}</span>
 						</div>
 					</div>
 					</div>
 					
 				<div margin-top:10px;">
 				<div style="padding-top:20px;">
-					<div class="row" style="background-color:rgba(199, 39, 63, 1); >
+					<div class="row" style="background-color:rgba(199, 39, 63, 1);">
 						<span style="font-size:10px;color:white;">语言 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="pic/10a.png"></span>
 						</div>
 						
-					<div class="row" style="background-color:rgba(199, 39, 63, 1); >
-						<span style="font-size:10px;color:white;">中文 &nbsp 英语</span>
+					<div class="row" style="background-color:rgba(199, 39, 63, 1);">
+						<span style="font-size:10px;color:white;">${brokerInfo.broker_language }</span>
 						</div>
 					</div>
 					</div>
@@ -91,13 +91,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 			<div style="font-size:10px;background-color:rgba(245, 244, 244, 1);margin-bottom:10px;">
 				 <img src="pic/3a.png">
-				 <span>Southyarra</span>
+				 <span>${brokerInfo.broker_region}</span>
 				</div>
-				
+			<!-- 	
 			<div style="font-size:10px;background-color:rgba(245, 244, 244, 1);">
 				 <img src="pic/3a.png">
 				 <span>Bulswisk</span>
-				</div>
+				</div> -->
 						
 						
 						
@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div>
 						<span style="font-size:15px;color:black;">房产经纪人资格</span>
 						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<span style="font-size:15px;color:black;">209478654</span>
+						<span style="font-size:15px;color:black;">${brokerInfo.broker_zizhi }</span>
 						</div>
 					
 					<div style="padding-top:10px;"> 
@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 					
 					<div style="padding-top:10px;"> 
-						<span style="font-size:16px;color:black;">8年专业房产经验澳洲注册经济人8年专业房产经验,澳洲注册经济人业房产经验，澳洲注册经济人房产经纪人。</span>
+						<span style="font-size:16px;color:black;">${brokerInfo.introduction}</span>
 				</div>
 				
 				<div> 

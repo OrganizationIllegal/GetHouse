@@ -77,7 +77,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public List<HouseInfo> selectHouseInfo(){    //���ҷ�����Ϣ
+		public List<HouseInfo> selectHouseInfo(){    //锟斤拷锟揭凤拷锟斤拷锟斤拷息
 			List<HouseInfo> list = new ArrayList<HouseInfo>();
 			try{
 				String sql = " select * from house_info";
@@ -95,11 +95,11 @@ import com.kate.app.model.NewsInfo;
 					house.setHouse_bath_num(rs.getInt("house_bath_num"));
 					house.setHouse_bath_size(rs.getInt("house_bath_size"));
 					house.setHouse_price_area(rs.getInt("house_price_area"));
-<<<<<<< HEAD
+
 					house.setHouse_size_in(rs.getInt("house_size"));
-=======
+
 					//house.setHouse_size(rs.getInt("house_size"));
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 					house.setHouse_city(rs.getString("house_city"));
 					house.setHouse_type(rs.getString("house_type"));
 					house.setHouse_toilet_num(rs.getInt("house_toilet_num"));
@@ -112,7 +112,7 @@ import com.kate.app.model.NewsInfo;
 	        }
 			return list;
 		}
-		public List<BuyInfo> selectBuyInfo(int proId){    //һ����Ŀ��Ӧһ��
+		public List<BuyInfo> selectBuyInfo(int proId){    //一锟斤拷锟斤拷目锟斤拷应一锟斤拷
 			List<BuyInfo> list = new ArrayList<BuyInfo>();
 			try{
 				String sql = " select * from buy_info where house_pro_id=?";
@@ -134,7 +134,7 @@ import com.kate.app.model.NewsInfo;
 			return list;
 		}
 
-		public List<HouseProject> selectHouseProject(){    //���ҷ�����Ϣ
+		public List<HouseProject> selectHouseProject(){    //锟斤拷锟揭凤拷锟斤拷锟斤拷息
 			List<HouseProject> list = new ArrayList<HouseProject>();
 			try{
 				String sql = " select * from house_project";
@@ -175,7 +175,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ��ѯ�Ƽ���Ŀ
+		 * 锟斤拷询锟狡硷拷锟斤拷目
 		 */
 		
 		public JSONArray selectRecomProject(){    
@@ -226,7 +226,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ��ѯ�ط������ص�
+		 * 锟斤拷询锟截凤拷锟斤拷锟斤拷锟截碉拷
 		 */
 		public JSONArray selectArea(){    
 			JSONArray array = new JSONArray();
@@ -257,7 +257,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public DeveloperInfo selectDevInfo(int id){    //���ҿ�������Ϣ
+		public DeveloperInfo selectDevInfo(int id){    //锟斤拷锟揭匡拷锟斤拷锟斤拷锟斤拷息
 			DeveloperInfo deve = new DeveloperInfo();
 			try{
 				String sql = " select * from developer_info where id =?";
@@ -276,10 +276,10 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ����������Ϣ
+		 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷息
 		 */
 		
-		public List<NewsInfo> selectNewsInfo(){    //���ҿ�������Ϣ
+		public List<NewsInfo> selectNewsInfo(){    //锟斤拷锟揭匡拷锟斤拷锟斤拷锟斤拷息
 			List<NewsInfo> list = new ArrayList<NewsInfo>();
 			try{
 				String sql = " select * from news_info";
@@ -381,7 +381,7 @@ import com.kate.app.model.NewsInfo;
 			
 			
 			/*
-			 * �����Ƽ���Ŀ����
+			 * 锟斤拷锟斤拷锟狡硷拷锟斤拷目锟斤拷锟斤拷
 			 */
 			public int countRecomendProject(){
 				int count = 0;
@@ -415,7 +415,7 @@ import com.kate.app.model.NewsInfo;
 			}
 			
 			
-		/*public HouseProject findProByName(String proName){    //ͨ����Ʋ�����Ŀ��Ϣ
+		/*public HouseProject findProByName(String proName){    //通锟斤拷锟斤拷撇锟斤拷锟斤拷锟侥匡拷锟较�
 			HouseProject projectInfo = new HouseProject();
 			try{
 				String sql = " select * from house_project where project_name= ?";
@@ -450,7 +450,7 @@ import com.kate.app.model.NewsInfo;
 			return projectInfo;
 		}*/
 		
-		public HouseProject findProById(int id){    //ͨ����������Ŀ��Ϣ
+		public HouseProject findProById(int id){    //通锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷目锟斤拷息
 			HouseProject projectInfo = new HouseProject();
 			try{
 				String sql = " select * from house_project where id= ?";
@@ -521,7 +521,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * ���ӵط������ص�
+		 * 锟斤拷锟接地凤拷锟斤拷锟斤拷锟截碉拷
 		 */
 		public boolean addArea(String area_character, int proId) throws SQLException{
 			boolean flag = true;
@@ -540,7 +540,7 @@ import com.kate.app.model.NewsInfo;
 			return flag;
 		}
 		/*
-		 * �޸ĵط������ص�
+		 * 锟睫改地凤拷锟斤拷锟斤拷锟截碉拷
 		 */
 		public boolean editArea(int id, String area_character, int proId) throws SQLException{
 			boolean flag = true;
@@ -561,7 +561,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ɾ��ط������ص�
+		 * 删锟斤拷胤锟斤拷锟斤拷锟斤拷氐锟�
 		 */
 		public boolean deleteArea(int id) throws SQLException{
 			boolean flag = true;
@@ -584,7 +584,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * �����Ƽ���Ŀ
+		 * 锟斤拷锟斤拷锟狡硷拷锟斤拷目
 		 */
 		public boolean addRecoProject(int recomendId, int proId) throws SQLException{
 			boolean flag = true;
@@ -606,7 +606,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * �޸��Ƽ���Ŀ
+		 * 锟睫革拷锟狡硷拷锟斤拷目
 		 */
 		public boolean editRecoProject(int id, int recomendId, int proId) throws SQLException{
 			boolean flag = true;
@@ -726,7 +726,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * ���ӿ�������Ϣ
+		 * 锟斤拷锟接匡拷锟斤拷锟斤拷锟斤拷息
 		 */
 		public boolean addDeveInfo(String developer_name, String developer_logo, String developer_desc) throws SQLException{
 			boolean flag = true;
@@ -751,7 +751,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * ���ӿ�������Ϣ
+		 * 锟斤拷锟接匡拷锟斤拷锟斤拷锟斤拷息
 		 */
 		public boolean addBrokerInfo(String broker_name, String broker_language, String broker_region, String broker_img) throws SQLException{
 			boolean flag = true;
@@ -834,7 +834,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		public boolean deleteTouziData(int id){     //ɾ��Ͷ�����
+		public boolean deleteTouziData(int id){     //删锟斤拷投锟斤拷锟斤拷锟�
 			boolean flag = true;
 			try{
 				String sql = " delete from investment_data where id= ?";
@@ -853,7 +853,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		
-		public boolean deleteBrokerInfo(int id){     //ɾ��Ͷ�����
+		public boolean deleteBrokerInfo(int id){     //删锟斤拷投锟斤拷锟斤拷锟�
 			boolean flag = true;
 			try{
 				String sql = " delete from broker_info where id= ?";
@@ -873,7 +873,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public boolean deleteHouseInfo(int id){    //ɾ������Ϣ
+		public boolean deleteHouseInfo(int id){    //删锟斤拷锟斤拷锟斤拷息
 			boolean flag = true;
 			try{
 				String sql = " delete from house_info where id= ?";
@@ -892,7 +892,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		
-		public boolean deleteHouseProject(int id){    //ɾ����Ŀ��Ϣ
+		public boolean deleteHouseProject(int id){    //删锟斤拷锟斤拷目锟斤拷息
 			boolean flag = true;
 			try{
 				String sql = " delete  from house_project where id= ?";
@@ -912,7 +912,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * �Ƽ���Ŀɾ��
+		 * 锟狡硷拷锟斤拷目删锟斤拷
 		 */
 		public boolean deleteRecomHouseProject(int id){    
 			boolean flag = true;
@@ -1042,7 +1042,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * �޸Ŀ�������Ϣ
+		 * 锟睫改匡拷锟斤拷锟斤拷锟斤拷息
 		 */
 		public boolean editDeveloperInfo(int deveId, String developer_name, String developer_logo, String developer_desc) throws SQLException{
 			boolean flag = true;
@@ -1067,7 +1067,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * �޸Ŀ�������Ϣ
+		 * 锟睫改匡拷锟斤拷锟斤拷锟斤拷息
 		 */
 		public boolean editBrokerInfo(int id, String broker_name, String broker_language, String broker_region, String broker_img) throws SQLException{
 			boolean flag = true;
@@ -1127,7 +1127,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		public int findProByName(String name) throws SQLException{   //ͨ����Ʋ���id
+		public int findProByName(String name) throws SQLException{   //通锟斤拷锟斤拷撇锟斤拷锟絠d
 			HouseProject projectInfo = new HouseProject();
 			try{
 				String sql = " select id from house_project where project_name= ?";
@@ -1147,9 +1147,9 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * ͨ������Ʋ���id
+		 * 通锟斤拷锟斤拷锟斤拷撇锟斤拷锟絠d
 		 */
-		public int findDeveByName(String name) throws SQLException{   //ͨ����Ʋ���id
+		public int findDeveByName(String name) throws SQLException{   //通锟斤拷锟斤拷撇锟斤拷锟絠d
 			DeveloperInfo developerInfo = new DeveloperInfo();
 			try{
 				String sql = " select id from developer_info where developer_name= ?";

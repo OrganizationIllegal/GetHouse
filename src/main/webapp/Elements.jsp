@@ -56,6 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="stamp_tax" data-sortable="true" >Stamp_tax</th>
             <th data-field="developer_name" data-sortable="true" >Developer_name</th>
             <th data-field="developer_logo" data-sortable="true" >Developer_logo</th>
+            <th data-field="wuyefei" data-sortable="true" >wuyefei</th>
             <th data-field="project_finish_time" data-sortable="true" >Project_finish_time</th>
           </tr>
         </thead>

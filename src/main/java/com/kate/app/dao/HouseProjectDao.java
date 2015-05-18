@@ -9,10 +9,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.kate.app.model.BrokerInfo;
-<<<<<<< HEAD
+
 import com.kate.app.model.DeveloperInfo;
-=======
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 import com.kate.app.model.HouseProject;
 import com.kate.app.model.ProjectImage;
 @Repository 
@@ -49,15 +48,14 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setGps(rs.getString("gps"));
 				projectInfo.setReturn_money(rs.getString("return_money"));
 				projectInfo.setDeveloper_id(rs.getInt("developer_id"));
-<<<<<<< HEAD
+
 				projectInfo.setArea_id(rs.getInt("area_id"));
 				projectInfo.setMianji(rs.getString("mianji"));
 				projectInfo.setRecommend_id_1(rs.getInt("recommend_id_1"));
 				projectInfo.setRecommend_id_2(rs.getInt("recommend_id_2"));
 				projectInfo.setRecommend_id_3(rs.getInt("recommend_id_3"));
 				projectInfo.setWuyefei(rs.getString("wuyefei"));
-=======
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 			}
 			
 		}catch (Exception e) {
@@ -94,7 +92,7 @@ public class HouseProjectDao extends BaseDao{
 		return brokerInfo;
 	}
 	
-<<<<<<< HEAD
+
 	
 	
 	/*
@@ -121,8 +119,7 @@ public class HouseProjectDao extends BaseDao{
 	
 	
 	
-=======
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 	/*
 	 * Project Images
 	 */

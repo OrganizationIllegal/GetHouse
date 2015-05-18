@@ -8,18 +8,13 @@ public class HouseProject {
 	private String project_img;
 	private String project_nation;
 	private String project_address;
-<<<<<<< HEAD
 	private String project_area;    
-=======
-	private String project_area;    //
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
 	private int project_price_qi;
 	private String project_type;
 	private int project_sales_remain;
 	private Timestamp project_finish_time;
 	private String project_desc;
 	private int developer_id;
-<<<<<<< HEAD
 	private int area_id;
 	private String mianji;
 	private int recommend_id_1;
@@ -68,8 +63,7 @@ public class HouseProject {
 	public void setBrokerInfo(BrokerInfo brokerInfo) {
 		this.brokerInfo = brokerInfo;
 	}
-=======
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 	private BrokerInfo brokerInfo;
 	private String project_city;
 	private String project_house_type;
@@ -182,8 +176,11 @@ public class HouseProject {
 	}
 	public String getProject_lan_en() {
 		return project_lan_en;
-<<<<<<< HEAD
+
 	}
+	
+
+
 	public void setProject_lan_en(String project_lan_en) {
 		this.project_lan_en = project_lan_en;
 	}
@@ -226,51 +223,7 @@ public class HouseProject {
 	public String getReturn_money() {
 		return return_money;
 	}
-=======
-	}
-	public void setProject_lan_en(String project_lan_en) {
-		this.project_lan_en = project_lan_en;
-	}
-	public String getProject_lan_cn() {
-		return project_lan_cn;
-	}
-	public void setProject_lan_cn(String project_lan_cn) {
-		this.project_lan_cn = project_lan_cn;
-	}
-	public String getProject_num() {
-		return project_num;
-	}
-	public void setProject_num(String project_num) {
-		this.project_num = project_num;
-	}
-	public String getProject_vedio() {
-		return project_vedio;
-	}
-	public void setProject_vedio(String project_vedio) {
-		this.project_vedio = project_vedio;
-	}
-	public String getProject_zhou() {
-		return project_zhou;
-	}
-	public void setProject_zhou(String project_zhou) {
-		this.project_zhou = project_zhou;
-	}
-	public String getArea_qujian() {
-		return area_qujian;
-	}
-	public void setArea_qujian(String area_qujian) {
-		this.area_qujian = area_qujian;
-	}
-	public String getGps() {
-		return gps;
-	}
-	public void setGps(String gps) {
-		this.gps = gps;
-	}
-	public String getReturn_money() {
-		return return_money;
-	}
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 	public void setReturn_money(String return_money) {
 		this.return_money = return_money;
 	}

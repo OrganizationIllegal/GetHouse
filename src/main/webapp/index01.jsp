@@ -283,15 +283,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="panel panel-default">
   	<div class="panel-heading" style="background-color:white;">墨尔本</div>
   	 <div class="panel-body">
-  	       <div class="col-xs-4" >
-  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
+  	 <c:forEach var="item" items="${projectList}">
+  	 	<div class="col-xs-4" >
+  	     		<img alt="image" class="img-responsive" src="${item.project_img }">
   	     	</div>
-  	     	<div class="col-xs-4">
-  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
-  	     	</div>
-  	     	<div class="col-xs-4">
-  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
-  	     	</div>
+  	 </c:forEach>
+ 
      </div>
   </div>
 </div>
@@ -306,18 +303,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
 			<div class="row" style="padding-top:30px;">
 			<div class="col-md-2" style="width:150px;"></div>
-			<div class="col-md-3">
-				<div><img src="./images/newestblog.PNG"></div>
-				<div>图片描述图片描述图片描述图片描述</div>
-			</div>
-			<div class="col-md-3">
-				<div><img src="./images/newestblog.PNG"></div>
-				<div>图片描述图片描述图片描述图片描述</div>
-			</div>
-			<div class="col-md-3">
-				<div><img src="./images/newestblog.PNG"></div>
-				<div>图片描述图片描述图片描述图片描述</div>
-			</div>
+			<c:forEach var="item" items="${newsList}">
+		  	 	    <div class="col-md-3">
+						<div><img src="${item.news_image}"></div>
+						<div>${item.news_abstract}</div>
+					</div>
+  	 		</c:forEach>
 			<div class="col-md-1"></div>
 			</div>
 		</div>

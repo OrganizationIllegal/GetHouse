@@ -24,13 +24,10 @@ public class BaseDao {
 		}   
 		try {
             url = "jdbc:mysql://101.200.174.253/gethouse";
-<<<<<<< HEAD
+
             username = "dboperator2";
             password = "gethouse";
-=======
-            username = "root";
-            password = "gethouse2015";
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
             con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
            System.out.print("DriverManager.getConnection faild");

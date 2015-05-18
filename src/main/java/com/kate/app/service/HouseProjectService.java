@@ -17,7 +17,7 @@ public class HouseProjectService {
 	@Autowired
     private HouseProjectDao houseProjectDao;
 	
-<<<<<<< HEAD
+
 	public HouseProject getHouseProject(int id){
 		HouseProject projectInfo = new HouseProject();		
 		projectInfo = houseProjectDao.HouseProjectDao(id);
@@ -43,11 +43,13 @@ public class HouseProjectService {
 	public List<ProjectImage> getHouseProjectImage(){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
 		list = houseProjectDao.HouseProjectImageDao();
-=======
+		return list;
+	}
+
 	public List<HouseProject> getHouseProjectList(){
 		List<HouseProject> list = new ArrayList<HouseProject>();
 		//list = houseProjectDao.HouseProjectDao();
->>>>>>> 66f097a98aebc8214fa790214879ba3ab7bda7cc
+
 		return list;
 				
 	}
