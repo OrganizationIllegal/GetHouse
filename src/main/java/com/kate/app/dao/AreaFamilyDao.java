@@ -3,10 +3,13 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 @Repository 
 public class AreaFamilyDao extends BaseDao {
 	public int getdulirate(){
@@ -58,12 +61,21 @@ public class AreaFamilyDao extends BaseDao {
 		return oldfamilyrate;
 	}
 	//Ôö
-	public int InsertAreaFamily(String family_type,int rate,int house_pro_id){
+	public int InsertAreaFamily(String family_one,int family_one_rate,String family_two,int family_two_rate,String family_three,int family_three_rate,String data_source,String update_time,int area_id){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_family(family_type,rate,house_pro_id) values("+"'"+family_type+"'"+","+rate+","+house_pro_id+") ";
-			Statement stmt = con.createStatement();
-			exeResult = stmt.executeUpdate(sql);
+			String sql = "insert into area_family(family_one,family_one_rate,family_two,family_two_rate,family_three,family_three_rate,data_souce,update_time,area_id) values(?,?,?,?,?,?,?,?,?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, family_one);
+			pstmt.setInt(2, family_one_rate);
+			pstmt.setString(3, family_two);
+			pstmt.setInt(4, family_two_rate);
+			pstmt.setString(5, family_three);
+			pstmt.setInt(6, family_three_rate);
+			pstmt.setString(7, data_source);
+			pstmt.setString(8, update_time);
+			pstmt.setInt(9, area_id);
+			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,10 +100,31 @@ public class AreaFamilyDao extends BaseDao {
 	public JSONArray listAreaFamily(){
 		JSONArray jsonArray=new JSONArray();
 		try {
-			String sql = " select t.id,t.family_type,t.rate,t.house_pro_id,h.project_name from area_family t LEFT JOIN house_project h on  t.house_pro_id=h.id";
+			String sql = " select * from area_family";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			jsonArray=ResultSetConverter.convert(rs);
+			while(rs.next()){
+				JSONObject obj = new JSONObject();
+				obj.put("id", rs.getInt("id"));
+				obj.put("family_one", rs.getString("family_one"));
+				obj.put("family_one_rate", rs.getInt("family_one_rate"));
+				obj.put("family_two", rs.getString("family_two"));
+				obj.put("family_two_rate", rs.getInt("family_two_rate"));
+				obj.put("family_three", rs.getString("family_three"));
+				obj.put("family_three_rate", rs.getInt("family_three_rate"));
+				obj.put("data_souce", rs.getString("data_souce"));
+				obj.put("area_id", rs.getInt("area_id"));
+				
+				String update_time = null;
+				Timestamp time=rs.getTimestamp("update_time");
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+				if(time ==null){
+					time= new Timestamp(System.currentTimeMillis());
+				}
+			    update_time=df.format(time);
+				obj.put("update_time", update_time);
+				jsonArray.add(obj);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,15 +132,20 @@ public class AreaFamilyDao extends BaseDao {
 		return jsonArray;
 	} 
 	//¸Ä
-	public int updateAreaFamily(int id,String family_type,int rate,int house_pro_id){
+	public int updateAreaFamily(int id,String family_one,int family_one_rate,String family_two,int family_two_rate,String family_three,int family_three_rate,String data_source,String update_time,int area_id){
 		int exeResult=0;
 		try {
-			String sql = "update area_family set family_type=?,rate=? where id=? and house_pro_id=?";
+			String sql = "update area_family set family_one=?,family_one_rate=?,family_two=?,family_two_rate=?,family_three=?,family_three_rate=?, data_souce=?,update_time=?,area_id=? where id="+id;
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, family_type);
-			pstmt.setInt(2, rate);
-			pstmt.setInt(3, id);
-			pstmt.setInt(4, house_pro_id);
+			pstmt.setString(1, family_one);
+			pstmt.setInt(2, family_one_rate);
+			pstmt.setString(3, family_two);
+			pstmt.setInt(4, family_two_rate);
+			pstmt.setString(5, family_three);
+			pstmt.setInt(6, family_three_rate);
+			pstmt.setString(7, data_source);
+			pstmt.setString(8, update_time);
+			pstmt.setInt(9, area_id);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

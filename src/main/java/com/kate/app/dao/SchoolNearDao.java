@@ -68,11 +68,11 @@ public class SchoolNearDao extends BaseDao {
 		}
 		return nearSchoolFacilityList;
 	}
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÑ§Ð£  List
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½Ñ§Ð£  List
 	 public JSONArray listNearSchool(){
 			JSONArray jsonArray=new JSONArray();
 			try {
-				String sql = "select t.id,t.school_type,t.school_name,t.school_distance,t.school_rank,t.traffic_num,t.house_pro_id,h.project_name from school_and_near t LEFT JOIN house_project h on t.house_pro_id=h.id";
+				String sql = "select t.id,t.school_name,t.school_distance,h.project_name from near_school t JOIN house_project h on t.house_pro_id=h.id";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				jsonArray=ResultSetConverter.convert(rs);
@@ -82,18 +82,15 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return jsonArray;
 		} 
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÑ§Ð£  Add
-	 public int InsertNearSchool(String school_type,String school_name,int school_distance,int school_rank,int traffic_num,int house_pro_id){
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½Ñ§Ð£  Add
+	 public int InsertNearSchool(String school_name,int school_distance,int house_pro_id){
 			int exeResult=0;
 			try {
-				String sql = "insert into school_and_near(school_type,school_name,school_distance,school_rank,traffic_num,house_pro_id) values(?,?,?,?,?,?)";
+				String sql = "insert into near_school(school_name,school_distance,house_pro_id) values(?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, school_type);
-				pstmt.setString(2, school_name);
-				pstmt.setInt(3, school_distance);
-				pstmt.setInt(4, school_rank);
-				pstmt.setInt(5, traffic_num);
-				pstmt.setInt(6, house_pro_id);
+				pstmt.setString(1, school_name);
+				pstmt.setInt(2, school_distance);
+				pstmt.setInt(3, house_pro_id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -101,19 +98,16 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return exeResult;
 		}  
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÑ§Ð£  update
-	 public int updateNearSchool(int id,String school_type,String school_name,int school_distance,int school_rank,int traffic_num,int house_pro_id){
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½Ñ§Ð£  update
+	 public int updateNearSchool(int id,String school_name,int school_distance,int house_pro_id){
 			int exeResult=0;
 			try {
-				String sql = "update school_and_near set school_type=?,school_name=?,school_distance=?,school_rank=?,traffic_num=? where id=? and house_pro_id=?";
+				String sql = "update near_school set school_name=?,school_distance=? where id=? and house_pro_id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, school_type);
-				pstmt.setString(2, school_name);
-				pstmt.setInt(3, school_distance);
-				pstmt.setInt(4, school_rank);
-				pstmt.setInt(5, traffic_num);
-				pstmt.setInt(6, id);
-				pstmt.setInt(7, house_pro_id);
+				pstmt.setString(1, school_name);
+				pstmt.setInt(2, school_distance);
+				pstmt.setInt(3, id);
+				pstmt.setInt(4, house_pro_id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -121,11 +115,11 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return exeResult;
 		}
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÑ§Ð£  delete
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½Ñ§Ð£  delete
 	 public int delNearSchool(int id){
 			int exeResult=0;
 			try {
-				String sql = "delete from school_and_near where id="+id;
+				String sql = "delete from near_school where id="+id;
 				Statement stmt = con.createStatement();
 				exeResult = stmt.executeUpdate(sql);
 			} catch (Exception e) {
@@ -134,11 +128,11 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return exeResult;
 		}
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÅäÌ×  list
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  list
 	 public JSONArray listNearFacility(){
 			JSONArray jsonArray=new JSONArray();
 			try {
-				String sql = "select t.id,t.facility_type,t.facility_name,t.facility_distance,t.facility_rank,t.walk_num,t.house_pro_id,h.project_name from school_near_facility t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+				String sql = "select t.id,t.market_type,t.market_name,t.market_distance,t.house_pro_id,h.project_name from near_peitao t  JOIN house_project h on t.house_pro_id=h.id;";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				jsonArray=ResultSetConverter.convert(rs);
@@ -148,18 +142,16 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return jsonArray;
 		} 
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÅäÌ×  add
-	 public int InsertNearFacility(String facility_type,String facility_name,int facility_distance,int facility_rank,int walk_num,int house_pro_id){
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  add
+	 public int InsertNearFacility(String market_type,String market_name,int market_distance,int house_pro_id){
 			int exeResult=0;
 			try {
-				String sql = "insert into school_near_facility(facility_type,facility_name,facility_distance,facility_rank,walk_num,house_pro_id) values(?,?,?,?,?,?)";
+				String sql = "insert into near_peitao(market_type,market_name,market_distance,house_pro_id) values(?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, facility_type);
-				pstmt.setString(2, facility_name);
-				pstmt.setInt(3, facility_distance);
-				pstmt.setInt(4, facility_rank);
-				pstmt.setInt(5, walk_num);
-				pstmt.setInt(6, house_pro_id);
+				pstmt.setString(1, market_type);
+				pstmt.setString(2, market_name);
+				pstmt.setInt(3, market_distance);
+				pstmt.setInt(4, house_pro_id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -167,19 +159,17 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return exeResult;
 		}  
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÅäÌ×  update
-	 public int updateNearFacility(int id,String facility_type,String facility_name,int facility_distance,int facility_rank,int walk_num,int house_pro_id){
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  update
+	 public int updateNearFacility(int id,String market_type,String market_name,int market_distance,int house_pro_id){
 			int exeResult=0;
 			try {
-				String sql = "update school_near_facility set facility_type=?,facility_name=?,facility_distance=?,facility_rank=?,walk_num=? where id=? and house_pro_id=?";
+				String sql = "update near_peitao set market_type=?,market_name=?,market_distance=? where id=? and house_pro_id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, facility_type);
-				pstmt.setString(2, facility_name);
-				pstmt.setInt(3, facility_distance);
-				pstmt.setInt(4, facility_rank);
-				pstmt.setInt(5, walk_num);
-				pstmt.setInt(6, id);
-				pstmt.setInt(7, house_pro_id);
+				pstmt.setString(1, market_type);
+				pstmt.setString(2, market_name);
+				pstmt.setInt(3, market_distance);
+				pstmt.setInt(4, id);
+				pstmt.setInt(5, house_pro_id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -187,11 +177,11 @@ public class SchoolNearDao extends BaseDao {
 			}
 			return exeResult;
 		}
-	//Ñ§Ð£ºÍÖÜ±ß->¸½½üÅäÌ×  delete
+	//Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  delete
 	 public int delNearFacility(int id){
 			int exeResult=0;
 			try {
-				String sql = "delete from school_near_facility where id="+id;
+				String sql = "delete from near_peitao where id="+id;
 				Statement stmt = con.createStatement();
 				exeResult = stmt.executeUpdate(sql);
 			} catch (Exception e) {

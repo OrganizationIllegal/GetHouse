@@ -55,7 +55,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
             <th data-field="area_character" data-sortable="true" data-editable="true">area_character</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
+             <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
+             <th data-field="area_id" data-sortable="true" data-editable="true">area_id</th>
+              <th data-field="data_souce" data-sortable="true" data-editable="true">data_souce</th>
+              <th data-field="update_time" data-sortable="true" data-editable="true">update_time</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -155,13 +158,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {area_character:row.area_character,project_name:row.project_name},
+	 		data: {area_character:row.area_character,view_shunxu:row.view_shunxu,area_id:row.area_id,data_source:row.data_source, update_time:row.update_time},
 	 		dateType: "text json",
 	 		url: "/Area/AddAreaFeature",
 	 		success:function(data){
 	 			data=$.parseJSON(data);
-	 			if(data.house_pro_id==0){
-	 			  alert("项目名称输入有误")
+	 			if(data.area_id==0){
+	 			  alert("area_id不存在")
 	 			}
 	 			else
 	 			{
@@ -170,6 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("添加成功")
+	 				window.location.reload()
 	 			}
 	 			}
 	 			
@@ -180,15 +184,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,area_character:row.area_character,project_name:row.project_name},
+		 		data: {id: row.id,area_character:row.area_character,view_shunxu:row.view_shunxu,area_id:row.area_id,data_source:row.data_source, update_time:row.update_time},
 		 		url: "/Area/UpdateAreaFeature",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
-	 			if(data.house_pro_id==0){
-	 			  alert("项目名称输入有误")
+	 			if(data.area_id==0){
+	 			  alert("area_id不存在")
 	 			}
 	 			else
 	 			{
@@ -197,6 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("更新成功")
+	 				window.location.reload()
 	 			}
 	 			}
 		 		},
