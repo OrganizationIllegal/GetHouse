@@ -1,36 +1,36 @@
 package com.kate.app.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-
 import com.kate.app.model.HouseProject;
+import com.kate.app.model.RecoProject;
 @Repository 
 public class RecoProjectDao extends BaseDao{
-	public String getRecoProjectDao(){
-		String projectdescription=null;
-		int RecommendId=2;
-		System.out.println("qqqqqqqqqq");
-		HouseProject houseproject = new HouseProject();
+	public RecoProject getRecoProjectDao(int proId){
+		RecoProject data = new RecoProject();
 		try{
-			System.out.println("fffflllllll");
-			String sql = "select project_desc from house_project AS a,recommend_project AS b where a.id=b.recommend_id AND a.id=2";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			System.out.println("ffff"+sql);
+			String sql = "select * from recommend_project where house_pro_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, proId);
+			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next()){
-				houseproject.setProject_desc(rs.getString("project_desc"));
-				projectdescription=houseproject.getProject_desc();
-				System.out.println("ffff"+projectdescription);
+				data.setId(rs.getInt("id"));
+				data.setRecommend_id_1(rs.getInt("recommend_id_1"));
+				data.setRecommend_id_2(rs.getInt("recommend_id_2"));
+				data.setRecommend_id_3(rs.getInt("recommend_id_3"));
+				
 			}
 			
 		}catch (Exception e) {
             
         }
-		return projectdescription;
+		return data;
 		
 	}
 

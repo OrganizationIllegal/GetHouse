@@ -24,7 +24,9 @@
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
 	 		    for(var i=0;i<items.length;i++){
-	 		        var LA=new Microsoft.Maps.Location(items[i].latitude,items[i].longitude);
+	 		        var arr=new Array();
+	 		        arr=items[i].gps.split(",");
+	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        map.setView({ zoom: 15, center: LA });	 		        		        	        
 	 		    }
 	 		},
@@ -45,7 +47,9 @@
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
 	 		    for(var i=0;i<items.length;i++){
-	 		        var LA=new Microsoft.Maps.Location(items[i].latitude,items[i].longitude);
+	 		        var arr=new Array();
+	 		        arr=items[i].gps.split(",");
+	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
 	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', popModal); 
 	 		        Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', getEyeMap); 	
@@ -67,7 +71,9 @@
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
 	 		    for(var i=0;i<items.length;i++){
-	 		        var LA=new Microsoft.Maps.Location(items[i].latitude,items[i].longitude);
+	 		        var arr=new Array();
+	 		        arr=items[i].gps.split(",");
+	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
 	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', addDefaultInfobox); 
 				    map.entities.push(pushpin);	  		        	        
@@ -89,8 +95,10 @@
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
 	 		    for(var i=0;i<items.length;i++){
-	 		        var LA=new Microsoft.Maps.Location(items[i].latitude,items[i].longitude);
-	 		        var name=items[i].place;
+	 		        var arr=new Array();
+	 		        arr=items[i].gps.split(",");
+	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
+	 		        var name=items[i].project_name;
 	 		        var desc=items[i].project_price;	
 				    var infoboxOptions = {width :200, height :100,title:name, description:desc,offset:new Microsoft.Maps.Point(0,20)}; 
 				    var defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions );    

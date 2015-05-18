@@ -20,14 +20,14 @@ public class RecoProjectController {
 	@Autowired
 	private RecoProjectSerivice recoprojectSerivice;
 	
-	@RequestMapping({ "/", "/RecoProject" })
-	public String getreco(HttpServletRequest req,HttpServletResponse resp){
+	//@RequestMapping({ "/", "/RecoProject" })
+	/*public String getreco(HttpServletRequest req,HttpServletResponse resp){
 		String projectdescription=recoprojectSerivice.getProjectdescription();
 		System.out.println(projectdescription+"ssssss");
 		
 		
 		req.setAttribute("projectdescription",projectdescription);
 		return "index.jsp";
-	}
+	}*/
 
 }

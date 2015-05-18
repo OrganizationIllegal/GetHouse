@@ -21,21 +21,21 @@ import com.kate.app.model.BuyInfo;
 import com.kate.app.model.DeveloperInfo;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseProject;
-import com.kate.app.model.InvestmentDate;
+import com.kate.app.model.InvestmentData;
 import com.kate.app.model.MyInfo;
 import com.kate.app.model.NewsInfo;
 
 
 	@Repository 
 	public class AjaxDao extends BaseDao{
-		public List<InvestmentDate> select(){
-			List<InvestmentDate> list = new ArrayList<InvestmentDate>();
+		public List<InvestmentData> select(){
+			List<InvestmentData> list = new ArrayList<InvestmentData>();
 			try{
 				String sql = " select * from investment_data";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
-					InvestmentDate data = new InvestmentDate();
+					InvestmentData data = new InvestmentData();
 					data.setId(rs.getInt("id"));
 					data.setData_exam(rs.getString("data_exam"));
 					data.setMiddle_price(rs.getInt("middle_price"));
@@ -77,7 +77,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public List<HouseInfo> selectHouseInfo(){    //²éÕÒ·¿ÎİĞÅÏ¢
+		public List<HouseInfo> selectHouseInfo(){    //é”Ÿæ–¤æ‹·é”Ÿæ­å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 			List<HouseInfo> list = new ArrayList<HouseInfo>();
 			try{
 				String sql = " select * from house_info";
@@ -95,7 +95,11 @@ import com.kate.app.model.NewsInfo;
 					house.setHouse_bath_num(rs.getInt("house_bath_num"));
 					house.setHouse_bath_size(rs.getInt("house_bath_size"));
 					house.setHouse_price_area(rs.getInt("house_price_area"));
-					house.setHouse_size(rs.getInt("house_size"));
+
+					house.setHouse_size_in(rs.getInt("house_size"));
+
+					//house.setHouse_size(rs.getInt("house_size"));
+
 					house.setHouse_city(rs.getString("house_city"));
 					house.setHouse_type(rs.getString("house_type"));
 					house.setHouse_toilet_num(rs.getInt("house_toilet_num"));
@@ -108,7 +112,7 @@ import com.kate.app.model.NewsInfo;
 	        }
 			return list;
 		}
-		public List<BuyInfo> selectBuyInfo(int proId){    //Ò»¸öÏîÄ¿¶ÔÓ¦Ò»Ìõ
+		public List<BuyInfo> selectBuyInfo(int proId){    //ä¸€é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ç›®é”Ÿæ–¤æ‹·åº”ä¸€é”Ÿæ–¤æ‹·
 			List<BuyInfo> list = new ArrayList<BuyInfo>();
 			try{
 				String sql = " select * from buy_info where house_pro_id=?";
@@ -130,7 +134,7 @@ import com.kate.app.model.NewsInfo;
 			return list;
 		}
 
-		public List<HouseProject> selectHouseProject(){    //²éÕÒ·¿ÎİĞÅÏ¢
+		public List<HouseProject> selectHouseProject(){    //é”Ÿæ–¤æ‹·é”Ÿæ­å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 			List<HouseProject> list = new ArrayList<HouseProject>();
 			try{
 				String sql = " select * from house_project";
@@ -140,22 +144,28 @@ import com.kate.app.model.NewsInfo;
 					HouseProject projectInfo = new HouseProject();
 					projectInfo.setId(rs.getInt("id"));
 					projectInfo.setProject_name(rs.getString("project_name"));
-					projectInfo.setProject_area(rs.getInt("project_area"));
-					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
-					projectInfo.setProject_desc(rs.getString("project_desc"));
-					projectInfo.setProject_address(rs.getString("project_address"));
 					projectInfo.setProject_img(rs.getString("project_img"));
-					projectInfo.setProject_city(rs.getString("project_city"));
-					projectInfo.setProject_house_type(rs.getString("project_house_type"));
-					projectInfo.setProject_lan(rs.getString("project_lan"));
 					projectInfo.setProject_nation(rs.getString("project_nation"));
-					projectInfo.setProject_price_avg(rs.getInt("project_price_avg"));
+					projectInfo.setProject_address(rs.getString("project_address"));
+					projectInfo.setProject_area(rs.getString("project_area"));
+					projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
 					projectInfo.setProject_type(rs.getString("project_type"));
 					projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 					projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+					projectInfo.setProject_desc(rs.getString("project_desc"));
+					projectInfo.setProject_city(rs.getString("project_city"));
+					projectInfo.setProject_house_type(rs.getString("project_house_type"));
 					projectInfo.setProject_high(rs.getInt("project_high"));
-					projectInfo.setProject_peitao_img(rs.getString("project_peitao_img"));
 					projectInfo.setProject_price(rs.getString("project_price"));
+					projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
+					projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
+					projectInfo.setProject_num(rs.getString("project_num"));
+					projectInfo.setProject_vedio(rs.getString("project_vedio"));
+					projectInfo.setProject_zhou(rs.getString("project_zhou"));
+					projectInfo.setArea_qujian(rs.getString("area_qujian"));
+					projectInfo.setGps(rs.getString("gps"));
+					projectInfo.setReturn_money(rs.getString("return_money"));
+					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
 					list.add(projectInfo);
 				}
 			}catch (Exception e) {
@@ -165,7 +175,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ²éÑ¯ÍÆ¼öÏîÄ¿
+		 * é”Ÿæ–¤æ‹·è¯¢é”Ÿç‹¡ç¡·æ‹·é”Ÿæ–¤æ‹·ç›®
 		 */
 		
 		public JSONArray selectRecomProject(){    
@@ -216,7 +226,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ²éÑ¯µØ·½ÇøÓòÌØµã
+		 * é”Ÿæ–¤æ‹·è¯¢é”Ÿæˆªå‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæˆªç¢‰æ‹·
 		 */
 		public JSONArray selectArea(){    
 			JSONArray array = new JSONArray();
@@ -247,7 +257,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public DeveloperInfo selectDevInfo(int id){    //²éÕÒ¿ª·¢ÉÌĞÅÏ¢
+		public DeveloperInfo selectDevInfo(int id){    //é”Ÿæ–¤æ‹·é”Ÿæ­åŒ¡æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 			DeveloperInfo deve = new DeveloperInfo();
 			try{
 				String sql = " select * from developer_info where id =?";
@@ -266,10 +276,10 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ²éÕÒĞÂÎÅĞÅÏ¢
+		 * é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 		 */
 		
-		public List<NewsInfo> selectNewsInfo(){    //²éÕÒ¿ª·¢ÉÌĞÅÏ¢
+		public List<NewsInfo> selectNewsInfo(){    //é”Ÿæ–¤æ‹·é”Ÿæ­åŒ¡æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 			List<NewsInfo> list = new ArrayList<NewsInfo>();
 			try{
 				String sql = " select * from news_info";
@@ -371,7 +381,7 @@ import com.kate.app.model.NewsInfo;
 			
 			
 			/*
-			 * ²éÕÒÍÆ¼öÏîÄ¿ÊıÁ¿
+			 * é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡ç¡·æ‹·é”Ÿæ–¤æ‹·ç›®é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
 			 */
 			public int countRecomendProject(){
 				int count = 0;
@@ -405,7 +415,7 @@ import com.kate.app.model.NewsInfo;
 			}
 			
 			
-		/*public HouseProject findProByName(String proName){    //Í¨¹ıÃû³Æ²éÕÒÏîÄ¿ĞÅÏ¢
+		/*public HouseProject findProByName(String proName){    //é€šé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ’‡é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿä¾¥åŒ¡æ‹·é”Ÿè¾ƒï¿½
 			HouseProject projectInfo = new HouseProject();
 			try{
 				String sql = " select * from house_project where project_name= ?";
@@ -440,7 +450,7 @@ import com.kate.app.model.NewsInfo;
 			return projectInfo;
 		}*/
 		
-		public HouseProject findProById(int id){    //Í¨¹ıÍâ¼ü²éÕÒÏîÄ¿ĞÅÏ¢
+		public HouseProject findProById(int id){    //é€šé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ç›®é”Ÿæ–¤æ‹·æ¯
 			HouseProject projectInfo = new HouseProject();
 			try{
 				String sql = " select * from house_project where id= ?";
@@ -449,22 +459,28 @@ import com.kate.app.model.NewsInfo;
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
 					projectInfo.setProject_name(rs.getString("project_name"));
-					projectInfo.setProject_area(rs.getInt("project_area"));
-					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
-					projectInfo.setProject_desc(rs.getString("project_desc"));
-					projectInfo.setProject_address(rs.getString("project_address"));
 					projectInfo.setProject_img(rs.getString("project_img"));
-					projectInfo.setProject_city(rs.getString("project_city"));
-					projectInfo.setProject_house_type(rs.getString("project_house_type"));
-					projectInfo.setProject_lan(rs.getString("project_lan"));
 					projectInfo.setProject_nation(rs.getString("project_nation"));
-					projectInfo.setProject_price_avg(rs.getInt("project_price_avg"));
+					projectInfo.setProject_address(rs.getString("project_address"));
+					projectInfo.setProject_area(rs.getString("project_area"));
+					projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
 					projectInfo.setProject_type(rs.getString("project_type"));
 					projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 					projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+					projectInfo.setProject_desc(rs.getString("project_desc"));
+					projectInfo.setProject_city(rs.getString("project_city"));
+					projectInfo.setProject_house_type(rs.getString("project_house_type"));
 					projectInfo.setProject_high(rs.getInt("project_high"));
-					projectInfo.setProject_peitao_img(rs.getString("project_peitao_img"));
 					projectInfo.setProject_price(rs.getString("project_price"));
+					projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
+					projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
+					projectInfo.setProject_num(rs.getString("project_num"));
+					projectInfo.setProject_vedio(rs.getString("project_vedio"));
+					projectInfo.setProject_zhou(rs.getString("project_zhou"));
+					projectInfo.setArea_qujian(rs.getString("area_qujian"));
+					projectInfo.setGps(rs.getString("gps"));
+					projectInfo.setReturn_money(rs.getString("return_money"));
+					projectInfo.setDeveloper_id(rs.getInt("developer_id"));
 				}
 				
 			}catch (Exception e) {
@@ -505,7 +521,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * Ôö¼ÓµØ·½ÇøÓòÌØµã
+		 * é”Ÿæ–¤æ‹·é”Ÿæ¥åœ°å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæˆªç¢‰æ‹·
 		 */
 		public boolean addArea(String area_character, int proId) throws SQLException{
 			boolean flag = true;
@@ -524,7 +540,7 @@ import com.kate.app.model.NewsInfo;
 			return flag;
 		}
 		/*
-		 * ĞŞ¸ÄµØ·½ÇøÓòÌØµã
+		 * é”Ÿç«æ”¹åœ°å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæˆªç¢‰æ‹·
 		 */
 		public boolean editArea(int id, String area_character, int proId) throws SQLException{
 			boolean flag = true;
@@ -545,7 +561,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * É¾³ıµØ·½ÇøÓòÌØµã
+		 * åˆ é”Ÿæ–¤æ‹·èƒ¤é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ°é”Ÿï¿½
 		 */
 		public boolean deleteArea(int id) throws SQLException{
 			boolean flag = true;
@@ -568,7 +584,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * Ôö¼ÓÍÆ¼öÏîÄ¿
+		 * é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç‹¡ç¡·æ‹·é”Ÿæ–¤æ‹·ç›®
 		 */
 		public boolean addRecoProject(int recomendId, int proId) throws SQLException{
 			boolean flag = true;
@@ -590,7 +606,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * ĞŞ¸ÄÍÆ¼öÏîÄ¿
+		 * é”Ÿç«é©æ‹·é”Ÿç‹¡ç¡·æ‹·é”Ÿæ–¤æ‹·ç›®
 		 */
 		public boolean editRecoProject(int id, int recomendId, int proId) throws SQLException{
 			boolean flag = true;
@@ -710,7 +726,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * Ôö¼Ó¿ª·¢ÉÌĞÅÏ¢
+		 * é”Ÿæ–¤æ‹·é”Ÿæ¥åŒ¡æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 		 */
 		public boolean addDeveInfo(String developer_name, String developer_logo, String developer_desc) throws SQLException{
 			boolean flag = true;
@@ -735,7 +751,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * Ôö¼Ó¿ª·¢ÉÌĞÅÏ¢
+		 * é”Ÿæ–¤æ‹·é”Ÿæ¥åŒ¡æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 		 */
 		public boolean addBrokerInfo(String broker_name, String broker_language, String broker_region, String broker_img) throws SQLException{
 			boolean flag = true;
@@ -818,7 +834,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		public boolean deleteTouziData(int id){     //É¾³ıÍ¶×ÊÊı¾İ
+		public boolean deleteTouziData(int id){     //åˆ é”Ÿæ–¤æ‹·æŠ•é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½
 			boolean flag = true;
 			try{
 				String sql = " delete from investment_data where id= ?";
@@ -837,7 +853,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		
-		public boolean deleteBrokerInfo(int id){     //É¾³ıÍ¶×ÊÊı¾İ
+		public boolean deleteBrokerInfo(int id){     //åˆ é”Ÿæ–¤æ‹·æŠ•é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½
 			boolean flag = true;
 			try{
 				String sql = " delete from broker_info where id= ?";
@@ -857,7 +873,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public boolean deleteHouseInfo(int id){    //É¾³ı·¿ÎİĞÅÏ¢
+		public boolean deleteHouseInfo(int id){    //åˆ é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 			boolean flag = true;
 			try{
 				String sql = " delete from house_info where id= ?";
@@ -876,7 +892,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		
-		public boolean deleteHouseProject(int id){    //É¾³ıÏîÄ¿ĞÅÏ¢
+		public boolean deleteHouseProject(int id){    //åˆ é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ç›®é”Ÿæ–¤æ‹·æ¯
 			boolean flag = true;
 			try{
 				String sql = " delete  from house_project where id= ?";
@@ -896,7 +912,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * ÍÆ¼öÏîÄ¿É¾³ı
+		 * é”Ÿç‹¡ç¡·æ‹·é”Ÿæ–¤æ‹·ç›®åˆ é”Ÿæ–¤æ‹·
 		 */
 		public boolean deleteRecomHouseProject(int id){    
 			boolean flag = true;
@@ -1026,7 +1042,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * ĞŞ¸Ä¿ª·¢ÉÌĞÅÏ¢
+		 * é”Ÿç«æ”¹åŒ¡æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 		 */
 		public boolean editDeveloperInfo(int deveId, String developer_name, String developer_logo, String developer_desc) throws SQLException{
 			boolean flag = true;
@@ -1051,7 +1067,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		/*
-		 * ĞŞ¸Ä¿ª·¢ÉÌĞÅÏ¢
+		 * é”Ÿç«æ”¹åŒ¡æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯
 		 */
 		public boolean editBrokerInfo(int id, String broker_name, String broker_language, String broker_region, String broker_img) throws SQLException{
 			boolean flag = true;
@@ -1111,7 +1127,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		public int findProByName(String name) throws SQLException{   //Í¨¹ıÃû³Æ²éÕÒid
+		public int findProByName(String name) throws SQLException{   //é€šé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ’‡é”Ÿæ–¤æ‹·é”Ÿçµ d
 			HouseProject projectInfo = new HouseProject();
 			try{
 				String sql = " select id from house_project where project_name= ?";
@@ -1131,9 +1147,9 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		/*
-		 * Í¨¹ı¿ª·¢ÉÌÃû³Æ²éÕÒid
+		 * é€šé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ’‡é”Ÿæ–¤æ‹·é”Ÿçµ d
 		 */
-		public int findDeveByName(String name) throws SQLException{   //Í¨¹ıÃû³Æ²éÕÒid
+		public int findDeveByName(String name) throws SQLException{   //é€šé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ’‡é”Ÿæ–¤æ‹·é”Ÿçµ d
 			DeveloperInfo developerInfo = new DeveloperInfo();
 			try{
 				String sql = " select id from developer_info where developer_name= ?";
