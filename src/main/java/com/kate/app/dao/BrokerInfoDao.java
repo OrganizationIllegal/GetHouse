@@ -16,7 +16,7 @@ public class BrokerInfoDao extends BaseDao {
 	public List<BrokerInfo> listBrokerInfo(){
 		List<BrokerInfo> brokerInfoList=new ArrayList<BrokerInfo>();
 		try {
-			String sql = "select t.id,t.broker_img,t.broker_language,t.broker_name,t.broker_region,t.office,t.introduction from broker_info t";
+			String sql = "select * from broker_info t";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -26,20 +26,27 @@ public class BrokerInfoDao extends BaseDao {
 		    String broker_region=null;
 		    String office=null;
 		    String introduction=null;
+		    String broker_num=null;
+		    int broker_experience=0;
+		    String broker_type=null;
+		    String broker_zizhi=null;
 		    while(rs.next()){
-		    	/*id=rs.getInt("id");
+		    	id=rs.getInt("id");
 		    	broker_img=rs.getString("broker_img");
 		    	broker_language=rs.getString("broker_language");
 		    	broker_name=rs.getString("broker_name");
 		    	broker_region=rs.getString("broker_region");
 		    	office=rs.getString("office");
 		    	introduction=rs.getString("introduction");
+		    	broker_num=rs.getString("broker_num");
+		    	broker_experience=rs.getInt("broker_experience");
+		    	broker_type=rs.getString("broker_type");
+		    	broker_zizhi=rs.getString("broker_zizhi");
+		    	BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction,broker_num,broker_experience,broker_type,broker_zizhi);
+		    	brokerInfoList.add(brokerInfo);
 
-		    	BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction);
-		    	brokerInfoList.add(brokerInfo);*/
-
-		    	//BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction);
-		    	//brokerInfoList.add(brokerInfo);
+//		    	BrokerInfo brokerInfo=new BrokerInfo(id,broker_name,broker_language,broker_region, broker_img, office,introduction);
+//		    	brokerInfoList.add(brokerInfo);
 
 		    }
 		    
