@@ -18,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/mapleft.css" rel="stylesheet">
  <script>
  function order(){
- alert("ooooooooo")
  }
  $(function(){
  	 $('#orderasc').click(function () {
@@ -79,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
       
        <div class="media">
-            <a class="pull-left" href="#" target="_parent">
+            <a class="pull-left" href="/Index?projectId=${item.project_id}" target="_parent">
               <img alt="image" class="img-responsive" src="pic/house1.jpg">
             </a>
             <div class="clearfix visible-sm"></div>
