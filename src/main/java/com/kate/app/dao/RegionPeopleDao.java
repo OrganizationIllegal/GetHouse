@@ -9,12 +9,41 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
+import com.kate.app.model.AreaPeopleInfo;
 import com.kate.app.model.FamilyIncome;
 import com.kate.app.model.PeopleForeign;
 import com.kate.app.model.PeopleInfo;
 import com.kate.app.model.PeopleNation;
 @Repository 
 public class RegionPeopleDao extends BaseDao {
+	public List<AreaPeopleInfo> getAreaPeopleInfo(int areaId){   //通过区域id查找区域人口信息
+		List<AreaPeopleInfo> list = new ArrayList<AreaPeopleInfo>();
+		try {
+			String sql = "select * from area_people where area_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, areaId);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				AreaPeopleInfo data = new AreaPeopleInfo();
+				data.setColumn1(rs.getString("column1"));
+				data.setColumn2(rs.getString("column2"));
+				data.setColumn3(rs.getString("column3"));
+				data.setArea_code(rs.getString("area_code"));
+				data.setHouse_pro_id(rs.getInt("house_pro_id"));
+				data.setId(rs.getInt("id"));
+				data.setView_shunxu(rs.getInt("view_shunxu"));
+				list.add(data);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	
+	
 	public List<PeopleInfo> getPeopleInfo(){
 		List<PeopleInfo> peopleInfoList=new ArrayList<PeopleInfo>();
 		int houseProId=1;
@@ -108,7 +137,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return familyIncomeList;
 	}
-	//�˿�����  ��
+	//锟剿匡拷锟斤拷锟斤拷  锟斤拷
 	public int InsertPeople(String people_count,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -121,7 +150,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//�˿�����  ɾ
+	//锟剿匡拷锟斤拷锟斤拷  删
 	public int DelPeopleInfo(int id){
 		int exeResult=0;
 		try {
@@ -134,7 +163,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//�˿�����  ��
+	//锟剿匡拷锟斤拷锟斤拷  锟斤拷
 	public JSONArray listPeopleInfo(){
 		JSONArray jsonArray=new JSONArray();
 		try {
@@ -148,7 +177,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//�˿�����  ��
+	//锟剿匡拷锟斤拷锟斤拷  锟斤拷
 	public int updateAreaFamily(int id,String people_count,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -166,7 +195,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//������ ��
+	//锟斤拷锟斤拷锟斤拷 锟斤拷
 	public int InsertPeopleNation(String born_city,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -183,7 +212,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//������ ɾ
+	//锟斤拷锟斤拷锟斤拷 删
 	public int DelPeopleNation(int id){
 		int exeResult=0;
 		try {
@@ -196,7 +225,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//������ ��
+	//锟斤拷锟斤拷锟斤拷 锟斤拷
 	public JSONArray listPeopleNation(){
 		JSONArray jsonArray=new JSONArray();
 		try {
@@ -210,7 +239,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return jsonArray;
 	} 
-	//������ ��
+	//锟斤拷锟斤拷锟斤拷 锟斤拷
 	public int updatePeopleNation(int id,String born_city,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -228,7 +257,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//������� ��
+	//锟斤拷锟斤拷锟斤拷锟�锟斤拷
 	public int InsertPeopleForeign(String born_foreign,int area,int city,int house_pro_id){
 		int exeResult=0;
 		try {
@@ -245,7 +274,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//������� ɾ
+	//锟斤拷锟斤拷锟斤拷锟�删
 	public int DelPeopleForeign(int id){
 		int exeResult=0;
 		try {
@@ -258,7 +287,7 @@ public class RegionPeopleDao extends BaseDao {
 		}
 		return exeResult;
 	}
-	//������� ��
+	//锟斤拷锟斤拷锟斤拷锟�锟斤拷
 		public JSONArray listPeopleForeign(){
 			JSONArray jsonArray=new JSONArray();
 			try {
@@ -272,7 +301,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return jsonArray;
 		} 
-	//������� ��
+	//锟斤拷锟斤拷锟斤拷锟�锟斤拷
 		public int updatePeopleForeign(int id,String born_foreign,int area,int city,int house_pro_id){
 			int exeResult=0;
 			try {
@@ -290,7 +319,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return exeResult;
 		}
-		//ƽ���ͥ���� ��
+		//平锟斤拷锟酵ワ拷锟斤拷锟�锟斤拷
 		public int InsertFamilyIncome(String family_income,int area,int city,int house_pro_id){
 			int exeResult=0;
 			try {
@@ -307,7 +336,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return exeResult;
 		}
-		//ƽ���ͥ���� ɾ
+		//平锟斤拷锟酵ワ拷锟斤拷锟�删
 		public int DelFamilyIncome(int id){
 			int exeResult=0;
 			try {
@@ -320,7 +349,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return exeResult;
 		}
-		//ƽ���ͥ���� ��
+		//平锟斤拷锟酵ワ拷锟斤拷锟�锟斤拷
 		public JSONArray listFamilyIncome(){
 			JSONArray jsonArray=new JSONArray();
 			try {
@@ -334,7 +363,7 @@ public class RegionPeopleDao extends BaseDao {
 			}
 			return jsonArray;
 		} 	
-		//ƽ���ͥ���� ��
+		//平锟斤拷锟酵ワ拷锟斤拷锟�锟斤拷
 		public int updateFamilyIncome(int id,String family_income,int area,int city,int house_pro_id){
 			int exeResult=0;
 			try {

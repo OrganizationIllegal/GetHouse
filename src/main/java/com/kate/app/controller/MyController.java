@@ -19,8 +19,11 @@ import com.kate.app.dao.AjaxDao;
 import com.kate.app.dao.InvestDataDao;
 import com.kate.app.dao.MiddlePriceDao;
 import com.kate.app.dao.RecoProjectDao;
+import com.kate.app.dao.UtilDao;
+import com.kate.app.model.AreaFamily;
 import com.kate.app.model.AreaInfo;
 import com.kate.app.model.AreaMiddle;
+import com.kate.app.model.AreaPeopleInfo;
 import com.kate.app.model.AreaZhikong;
 import com.kate.app.model.AreaZujin;
 import com.kate.app.model.BuyInfo;
@@ -34,8 +37,8 @@ import com.kate.app.model.HouseTaxVo;
 import com.kate.app.model.InvestmentData;
 import com.kate.app.model.LatestSaleInfoVo;
 import com.kate.app.model.MiddlePrice;
-import com.kate.app.model.NearSchoolFacility;
-import com.kate.app.model.NearSchoolVo;
+import com.kate.app.model.NearPeiTao;
+import com.kate.app.model.NearSchool;
 import com.kate.app.model.NewsInfo;
 import com.kate.app.model.PeopleForeign;
 import com.kate.app.model.PeopleInfo;
@@ -70,6 +73,8 @@ public class MyController {
 	@Autowired
 	private AjaxDao ajaxDao;
 	@Autowired
+	private UtilDao utilDao;
+	@Autowired
 	private NewsInfoService newsInfoService;
 	
 	@Autowired
@@ -98,28 +103,50 @@ public class MyController {
 	private RecoProjectSerivice recoprojectserivice;
 	@RequestMapping({ "/Index" })
 	public String Index(HttpServletRequest req, HttpServletResponse resp){
-		String projectId = req.getParameter("projectId");
+		String proNum = req.getParameter("proNum");
+		//String areaNum = req.getParameter("areaNum");
 		int proId = 0;
-		if(projectId!=null && !"".equals(projectId)){
-			proId = Integer.parseInt(projectId);
+		int areaId = 0;
+		String project_type ="";
+		if(proNum!=null && !"".equals(proNum)){
+			proId = utilDao.getHouseProId(proNum);
+			
 		}
-		 ProjectImage(req,resp);
-		 ProjectPeitaoImage(req,resp);
-		 ProjectDetail(req,resp);
+		HouseProject project = houseProjectService.getHouseProject(proId);
+		if(project!=null){
+			areaId = project.getArea_id();
+			project_type = project.getProject_type();
+		}
+		
+		/*if(areaNum!=null && !"".equals(areaNum)){
+			areaId = utilDao.getAreaId(areaNum);
+		}*/
+		
+		 ProjectImage(req,resp,proId);
+		 ProjectPeitaoImage(req,resp,proId);
+		 TheElement(req,resp,proId);
+		 
+		 getAreaFeature(req,resp,areaId);    //区域特点
+		 getSchoolAndNear(req,resp,proId);   //学校及周边
+		 
+		 ProjectDetail(req,resp,proId);
 		 getBuyInfo(req,resp,proId);
 		 ProjectInfo(req,resp,proId);
-		 getHouseInfo(req,resp,proId);
-		 MiddlePriceInfo(req,resp,proId);
+		 getHouseInfo(req,resp,proId);    //户型及价格
+		 MiddlePriceInfo(req,resp,proId,areaId);
 		 GetNewsInfo(req,resp,proId);
 		 InvestData(req,resp,proId);
 		 RecommendProject(req,resp,proId);
-		 TheElement(req,resp,proId);
+		
+		 
+		 getAreaFamily(req,resp,proId);
+		 getAreaTrend(req,resp,project_type,areaId);
+		
+		 getHouseTax(req,resp,proId);
+		 getPeopleRegion(req,resp,proId);
 		 /*getAreaFamily(req,resp);
 		 getAreaFeature(req,resp);
 		 getLatestSaleInfo(req,resp);
-		 getAreaTrend(req,resp);
-		 getSchoolAndNear(req,resp);
-		 getHouseTax(req,resp);
 		 getPeopleRegion(req,resp);
 		 getHouseInfo(req,resp);
 		 getBuyInfo(req,resp);
@@ -134,8 +161,8 @@ public class MyController {
 	 */
 	
 	@RequestMapping({"/Index/ProjectImage"})
-	public void  ProjectImage(HttpServletRequest req, HttpServletResponse resp){
-		List<ProjectImage> list = houseProjectService.getHouseProjectImage();
+	public void  ProjectImage(HttpServletRequest req, HttpServletResponse resp,int proId){
+		List<ProjectImage> list = houseProjectService.getHouseProjectImage(proId);
 		List<ProjectImage> imageList = new ArrayList<ProjectImage>();
 		List<ProjectImage> vedioList = new ArrayList<ProjectImage>();
 		for(ProjectImage image : list){
@@ -157,8 +184,8 @@ public class MyController {
 	 */
 	
 	@RequestMapping({"/Index/ProjectPeitaoImage"})
-	public void  ProjectPeitaoImage(HttpServletRequest req, HttpServletResponse resp){
-		List<ProjectImage> list = houseProjectService.getHouseProjectImage();
+	public void  ProjectPeitaoImage(HttpServletRequest req, HttpServletResponse resp,int proId){
+		List<ProjectImage> list = houseProjectService.HousePeitaoImageDao(proId);
 		//System.out.println(list.get(0).getImage_name());
 		req.setAttribute("ProjectPeitaoImage", list);
 	}
@@ -193,12 +220,8 @@ public class MyController {
 	 */
 	
 	@RequestMapping({"/Index/ProjectDetail"})    
-	public void  ProjectDetail(HttpServletRequest req, HttpServletResponse resp){
-		String projectId = req.getParameter("projectId");
-		int proId = 0;
-		if(projectId!=null && !"".equals(projectId)){
-			proId = Integer.parseInt(projectId);
-		}
+	public void  ProjectDetail(HttpServletRequest req, HttpServletResponse resp,int proId){
+		
 		HouseProject pro = houseProjectService.getHouseProject(proId);
 		//System.out.println(list.get(0).getImage_name());
 		req.setAttribute("HouseProject", pro);
@@ -209,7 +232,7 @@ public class MyController {
 	 */
 	
 	@RequestMapping({"/Index/MiddlePriceInfo"})    
-	public void  MiddlePriceInfo(HttpServletRequest req, HttpServletResponse resp,int proId){
+	public void  MiddlePriceInfo(HttpServletRequest req, HttpServletResponse resp,int proId,int areaId){
 		HouseProject pro = houseProjectService.getHouseProject(proId);
 		AreaInfo areaInfo = new AreaInfo();
 		MiddlePrice middlePrice = new MiddlePrice();
@@ -217,16 +240,9 @@ public class MyController {
 		String proType = "";
 		if(pro!=null){
 			proType = pro.getProject_type();
-			int areaId = pro.getArea_id();
-			if(areaId!=0){
-				areaInfo = areaInfoService.getAreaInfo(areaId);
-				if(areaInfo!=null){
-					areaName = areaInfo.getArea_name();
-				}
-			}
-			middlePrice = middlePriceDao.getMiddlePrice(proType, areaName);
-			
 		}
+		middlePrice = middlePriceDao.getMiddlePrice(proType, areaId);
+		
 		req.setAttribute("areaName", areaName);
 		req.setAttribute("proType", proType);
 		req.setAttribute("middlePrice", middlePrice);
@@ -349,7 +365,7 @@ public class MyController {
 				timeResule = df.format(time);
 			} 
 		}
-		BuyInfo buyInfo = ajaxDao.selectBuyInfo(proId).get(0); 
+		BuyInfo buyInfo = ajaxDao.getBuyInfo(proId);
 		int stamp_tax = 0;
 		if(buyInfo!=null){
 			stamp_tax = buyInfo.getStamp_tax();
@@ -371,19 +387,31 @@ public class MyController {
 	 * @return
 	 */
 	@RequestMapping({"/Index/AreaFamily"})
-	public void  getAreaFamily(HttpServletRequest req, HttpServletResponse resp){
+	public void  getAreaFamily(HttpServletRequest req, HttpServletResponse resp,int proId){
 		//独立青年处理
-		Integer dulirate=new Integer(areaFamilyService.getdulirate());
-		String dulirateStr=dulirate.toString();
-		String dulirateVo=dulirateStr.substring(0, 2)+"."+dulirateStr.substring(2, 4);
-		//青年家庭处理
-		Integer youngfamilyrate=new Integer(areaFamilyService.getyoungfamilyrate());	
-		String youngfamilystr=youngfamilyrate.toString();
-		String youngfamilyVo=youngfamilystr.substring(0, 2)+"."+youngfamilystr.substring(2, 4);
-		//老年家庭
-		Integer oldfamilyrate=new Integer(areaFamilyService.getoldfamilyrate());
-		String oldfamilystr=oldfamilyrate.toString();
-		String oldfamilyVo=oldfamilystr.substring(0, 2)+"."+oldfamilystr.substring(2, 4);
+		AreaFamily data = areaFamilyService.getAreaFamily(proId);
+		Integer dulirate = 0;
+		String dulirateStr = "";
+		String dulirateVo = "";
+		String youngfamilystr= "";
+		String youngfamilyVo= "";
+		String oldfamilystr= "";
+		String oldfamilyVo= "";
+		Integer youngfamilyrate = 0;
+		Integer oldfamilyrate = 0;
+		if(data!=null){
+			 dulirate = data.getFamily_one_rate();
+			 dulirateStr=dulirate.toString();
+			 dulirateVo=dulirateStr;
+			youngfamilyrate = data.getFamily_two_rate();
+			 youngfamilystr=youngfamilyrate.toString();
+			 youngfamilyVo=youngfamilystr;
+			oldfamilyrate = data.getFamily_three_rate();
+			 oldfamilystr=oldfamilyrate.toString();
+			 oldfamilyVo=oldfamilystr;
+		}
+		
+		
 		
 		req.setAttribute("dulirateVo", dulirateVo);
 		req.setAttribute("youngfamilyVo", youngfamilyVo);
@@ -395,8 +423,8 @@ public class MyController {
 	 * @author wenruijie 
 	 */
 	@RequestMapping({"/Index/AreaFeature"})
-	public void getAreaFeature(HttpServletRequest req, HttpServletResponse resp){
-		List<String> featureList=areaFeatureService.getAreaFeature();
+	public void getAreaFeature(HttpServletRequest req, HttpServletResponse resp,int areaId){
+		List<String> featureList=areaFeatureService.getAreaFeature(areaId);
 		req.setAttribute("featureList", featureList);
 
 	}
@@ -417,15 +445,15 @@ public class MyController {
 	 * @return
 	 */
 	@RequestMapping({"/Index/AreaTrend"})
-	public void getAreaTrend(HttpServletRequest req, HttpServletResponse resp){
+	public void getAreaTrend(HttpServletRequest req, HttpServletResponse resp,String project_type,int areaId){
 		//区域中位数房价走势
 		List<AreaMiddle> areaMiddleList=new ArrayList<AreaMiddle>();
-		areaMiddleList=areaTrendService.getAreaMiddleTrend();
+		areaMiddleList=areaTrendService.getAreaMiddleTrend(project_type,areaId);
 		List<String> areaMiddleYeatList=new ArrayList<String>();
 		List<Integer> areaMiddleRateList=new ArrayList<Integer>();
 		for(AreaMiddle areaMiddle:areaMiddleList){
-			String year=areaMiddle.getYear();
-			int rate=areaMiddle.getRate();
+			String year=areaMiddle.getHeng();
+			int rate=areaMiddle.getZong();
 			if(year!=null && rate>=0){
 				areaMiddleYeatList.add(year);
 				areaMiddleRateList.add(rate);
@@ -435,12 +463,12 @@ public class MyController {
 		req.setAttribute("areaMiddleRateList", areaMiddleRateList);
 		//区域租金走势
 		List<AreaZujin> areaZujinList=new ArrayList<AreaZujin>();
-		areaZujinList=areaTrendService.getAreaZujinTrend();
+		areaZujinList=areaTrendService.getAreaZujinTrend(project_type,areaId);
 		List<String> areaZujinYeatList=new ArrayList<String>();
 		List<Integer> areaZujinRateList=new ArrayList<Integer>();
 		for(AreaZujin areaZujin:areaZujinList){
-			String year=areaZujin.getYear();
-			int rate=areaZujin.getRate();
+			String year=areaZujin.getHeng();
+			int rate=areaZujin.getZong();
 			if(year!=null && rate>=0){
 				areaZujinYeatList.add(year);
 				areaZujinRateList.add(rate);
@@ -450,12 +478,12 @@ public class MyController {
 		req.setAttribute("areaZujinRateList", areaZujinRateList);
 		//区域空置率走势
 		List<AreaZhikong> areaZhikongList=new ArrayList<AreaZhikong>();
-		areaZhikongList=areaTrendService.getAreaZhikongTrend();
+		areaZhikongList=areaTrendService.getAreaZhikongTrend(project_type,areaId);
 		List<String> areaZhikongYeatList=new ArrayList<String>();
 		List<Integer> areaZhikongRateList=new ArrayList<Integer>();
 		for(AreaZhikong areaZhikong:areaZhikongList){
-			String year=areaZhikong.getYear();
-			int rate=areaZhikong.getRate()/1000;
+			String year=areaZhikong.getHeng();
+			int rate=areaZhikong.getZong()/1000;
 			if(year!=null && rate>=0){
 				areaZhikongYeatList.add(year);
 				areaZhikongRateList.add(rate);
@@ -469,10 +497,10 @@ public class MyController {
  * @param req
  * @param resp
  */
-public void getSchoolAndNear(HttpServletRequest req, HttpServletResponse resp){
-	List<NearSchoolVo> nearSchoolList=schoolNearService.getNearSchoolInfo();
+public void getSchoolAndNear(HttpServletRequest req, HttpServletResponse resp,int proId){
+	List<NearSchool> nearSchoolList=schoolNearService.getNearSchoolInfo(proId);
 	req.setAttribute("nearSchoolList", nearSchoolList);
-	List<NearSchoolFacility> nearSchoolFacility=schoolNearService.getNearSchoolFacilityInfo();
+	List<NearPeiTao> nearSchoolFacility=schoolNearService.getNearSchoolFacilityInfo(proId);
 	req.setAttribute("nearSchoolFacility", nearSchoolFacility);
 }
 /**	
@@ -481,11 +509,11 @@ public void getSchoolAndNear(HttpServletRequest req, HttpServletResponse resp){
  * @param resp
  */
 @RequestMapping({"/Index/HouseTax"})
-public void getHouseTax(HttpServletRequest req, HttpServletResponse resp){
-	 List<HouseTaxVo> houseTaxVoList=houseTaxService.getHouseTaxVo();
+public void getHouseTax(HttpServletRequest req, HttpServletResponse resp,int proId){
+	 List<HouseTaxVo> houseTaxVoList=houseTaxService.getHouseTaxVo(proId);
 	 List<String> houseTaxStr=new ArrayList<String>();
 	 int houseTaxSum=0;
-	 List<HoldingTaxVo> holdingTaxVoList=houseTaxService.getHoldingTaxVo();
+	 List<HoldingTaxVo> holdingTaxVoList=houseTaxService.getHoldingTaxVo(proId);
 	 List<String> holdingTaxStr=new ArrayList<String>();
 	 int holdingTaxSunm=0;
 	 for(HouseTaxVo houseTaxVo:houseTaxVoList){
@@ -509,16 +537,20 @@ public void getHouseTax(HttpServletRequest req, HttpServletResponse resp){
 	 }
 	 req.setAttribute("holdingTaxStr", JSONArray.toJSON(holdingTaxStr));
 	 req.setAttribute("holdingTaxSunm",JSONArray.toJSON(holdingTaxSunm));
-	 List<HouseTaxData> housetaxdata=houseTaxService.getHouseTaxData();
-	 List<HouseTaxData> holdingdata=houseTaxService.getHoldingData();
+	 
+	 List<HouseTaxData> housetaxdata=houseTaxService.getHouseTaxData(proId);
+	 List<HouseTaxData> holdingdata=houseTaxService.getHoldingData(proId);
 	 req.setAttribute("housetaxdata",  JSONArray.toJSON(housetaxdata));
+	 System.out.println(JSONArray.toJSON(holdingdata)+"dddd"+housetaxdata);
 	 req.setAttribute("holdingdata", JSONArray.toJSON(holdingdata));
 }	
 /**	
  * 区域人口分布
  */
 @RequestMapping({"/Index/PeopleRegion"})
-public void getPeopleRegion(HttpServletRequest req, HttpServletResponse resp){
+public void getPeopleRegion(HttpServletRequest req, HttpServletResponse resp,int proId){
+	List<AreaPeopleInfo> list=peopleInfoService.getAreaPeopleInfo(proId);
+	req.setAttribute("list",list);
 	//人口总数
 	List<PeopleInfo> peopleInfoList=peopleInfoService.getPeopleInfo();
 	req.setAttribute("peopleInfoList",peopleInfoList);

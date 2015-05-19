@@ -15,20 +15,25 @@ import com.kate.app.model.AreaZujin;
 
 @Repository 
 public class AreaTrendDao extends BaseDao {
-  public List<AreaMiddle> getAreaMiddleTrend(){
+  public List<AreaMiddle> getAreaMiddleTrend(String project_type, int areaId){
 	  List<AreaMiddle> areaMiddleTrendList=new ArrayList<AreaMiddle>();
-	  int houseProId=1;
+	
 	  try {
-			String sql = " select year,rate from area_middle t  where  t.house_pro_id="+houseProId+" ORDER BY t.year";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			String year=null;
-			int rate=0;
+			String sql = " select * from area_middle where project_type=? and area_id=? order by heng";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, project_type);
+			pstmt.setInt(2, areaId);
+			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				year=rs.getString("year");
-				rate=rs.getInt("rate");
-			    AreaMiddle areaMiddle=new AreaMiddle(year,rate) ;
-				areaMiddleTrendList.add(areaMiddle);
+				AreaMiddle data = new AreaMiddle();
+				data.setArea_code(rs.getString("area_code"));
+				data.setArea_code(rs.getString("area_code"));
+				data.setHeng(rs.getString("heng"));
+				data.setId(rs.getInt("id"));
+				
+				data.setView_shunxu(rs.getInt("view_shunxu"));
+				data.setZong(rs.getInt("zong"));
+				areaMiddleTrendList.add(data);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -36,20 +41,27 @@ public class AreaTrendDao extends BaseDao {
 		}
 		return areaMiddleTrendList;
   }
-  public List<AreaZujin> getAreaZujinTrend(){
+  
+  public List<AreaZujin> getAreaZujinTrend(String project_type, int areaId){
 	  List<AreaZujin> areaZujinTrendList=new ArrayList<AreaZujin>();
-	  int houseProId=1;
+	 
 	  try {
-			String sql = " select year,rate from area_zujin t  where  t.house_project_id="+houseProId+" ORDER BY t.year";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			String year=null;
-			int rate=0;
+			String sql = " select * from area_zujin where project_type=? and area_id=? order by heng";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, project_type);
+			pstmt.setInt(2, areaId);
+			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next()){
-				year=rs.getString("year");
-				rate=rs.getInt("rate");
-				AreaZujin areaZujin=new AreaZujin(year,rate) ;
-				areaZujinTrendList.add(areaZujin);
+				AreaZujin data = new AreaZujin();
+				data.setArea_code(rs.getString("area_code"));
+				
+				data.setHeng(rs.getString("heng"));
+				data.setId(rs.getInt("id"));
+				
+				data.setView_shunxu(rs.getInt("view_shunxu"));
+				data.setZong(rs.getInt("zong"));
+				areaZujinTrendList.add(data);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -58,20 +70,26 @@ public class AreaTrendDao extends BaseDao {
 		return areaZujinTrendList;
   }
   
-  public List<AreaZhikong> getAreaZhikongTrend(){
+  public List<AreaZhikong> getAreaZhikongTrend(String project_type, int areaId){
 	  List<AreaZhikong> areaZhikongeTrendList=new ArrayList<AreaZhikong>();
-	  int houseProId=1;
+	  
 	  try {
-			String sql = " select year,rate from area_kongzhi t  where  t.house_pro_id="+houseProId+" ORDER BY t.year";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			String year=null;
-			int rate=0;
+			String sql = " select * from area_kongzhi where project_type=? and area_id=? order by heng"; 
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, project_type);
+			pstmt.setInt(2, areaId);
+			ResultSet rs = pstmt.executeQuery();
+			
 			while(rs.next()){
-				year=rs.getString("year");
-				rate=rs.getInt("rate");
-				AreaZhikong areaZhikong=new AreaZhikong(year,rate) ;
-			    areaZhikongeTrendList.add(areaZhikong);
+				AreaZhikong data = new AreaZhikong();
+				data.setArea_code(rs.getString("area_code"));
+				
+				data.setHeng(rs.getString("heng"));
+				data.setId(rs.getInt("id"));
+				
+				data.setView_shunxu(rs.getInt("view_shunxu"));
+				data.setZong(rs.getInt("zong"));
+				areaZhikongeTrendList.add(data);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -79,6 +97,12 @@ public class AreaTrendDao extends BaseDao {
 		}
 		return areaZhikongeTrendList;
   }
+  
+  
+  
+  
+  
+  
 //中位数房价走势 List
   public JSONArray listAreaMiddle(){
 		JSONArray jsonArray=new JSONArray();
@@ -109,6 +133,7 @@ public class AreaTrendDao extends BaseDao {
 		}
 		return exeResult;
 	}  
+ 
 //中位数房价走势 update
  public int updateAreaMiddle(int id,int year,int rate,int house_pro_id){
 		int exeResult=0;

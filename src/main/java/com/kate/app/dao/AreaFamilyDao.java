@@ -7,8 +7,36 @@ import java.sql.Statement;
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
+import com.kate.app.model.AreaFamily;
 @Repository 
 public class AreaFamilyDao extends BaseDao {
+	public AreaFamily getAreaFamily(int proId){
+		AreaFamily data = new AreaFamily();
+		try {
+			String sql = " SELECT * from area_family where house_pro_id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, proId);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				data.setArea_code(rs.getString("area_code"));
+				data.setArea_id(rs.getInt("area_id"));
+				data.setData_souce(rs.getString("data_souce"));
+				data.setFamily_one(rs.getString("family_one"));
+				data.setFamily_one_rate(rs.getInt("family_one_rate"));
+				data.setFamily_two(rs.getString("family_two"));
+				data.setFamily_two_rate(rs.getInt("family_two_rate"));
+				data.setFamily_three(rs.getString("family_three"));
+				data.setFamily_three_rate(rs.getInt("family_three_rate"));
+				data.setId(rs.getInt("id"));
+				data.setUpdate_time(rs.getTimestamp("update_time"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return data;
+	}
+	
 	public int getdulirate(){
 		int houseProId=1;
 		int dulirate=0;

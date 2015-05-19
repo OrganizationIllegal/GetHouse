@@ -5,11 +5,17 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.kate.app.dao.AreaFamilyDao;
+import com.kate.app.model.AreaFamily;
 
 @Service
 public class AreaFamilyService {
 	@Autowired
 	private AreaFamilyDao areaFamilyDao;
+	public AreaFamily getAreaFamily(int proId){
+		AreaFamily data=areaFamilyDao.getAreaFamily(proId);
+		return data;
+	}
+	
 	public int getdulirate(){
 		int dulirate=areaFamilyDao.getdulirate();
 		return dulirate;

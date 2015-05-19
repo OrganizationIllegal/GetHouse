@@ -11,12 +11,12 @@ import org.springframework.stereotype.Repository;
 import com.alibaba.fastjson.JSONArray;
 @Repository 
 public class AreaFeatureDao extends BaseDao{
-	public List<String> getAreaFeature(){
+	public List<String> getAreaFeature(int areaId){
 		List<String> featureList=new ArrayList<String>();
-		int houseProId=1;
+		
 		String afeature=null;
 		try {
-			String sql = " select area_character from area_features t  where  t.house_project_id="+houseProId;
+			String sql = " select area_character from area_features where area_id="+areaId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){

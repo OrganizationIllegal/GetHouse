@@ -14,13 +14,14 @@ import com.kate.app.model.HouseTaxData;
 import com.kate.app.model.HouseTaxVo;
 @Repository 
 public class HouseTaxDao extends BaseDao {
-	 public List<HouseTaxVo> getHouseTaxVo(){
+	 public List<HouseTaxVo> getHouseTaxVo(int proId){
 		  List<HouseTaxVo> houseTaxVoList=new ArrayList<HouseTaxVo>();
-		  int houseProId=1;
+		  
 		  try {
-				String sql = "select type,price,description from house_tax t where t.house_pro_id="+houseProId;
-				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);
+				String sql = "select type,price,description from house_tax t where t.house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, proId);
+				ResultSet rs = pstmt.executeQuery();
 				String type=null;
 				int price=0;
 				String description=null;
@@ -37,9 +38,9 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return houseTaxVoList;
 	  }
-	 public List<HoldingTaxVo> getHoldingTaxVo(){
+	 public List<HoldingTaxVo> getHoldingTaxVo(int houseProId){
 		  List<HoldingTaxVo> holdingTaxVoList=new ArrayList<HoldingTaxVo>();
-		  int houseProId=1;
+		 
 		  try {
 				String sql = "select type,price,description from holding_finace t where t.house_pro_id="+houseProId;
 				Statement stmt = con.createStatement();
@@ -51,7 +52,7 @@ public class HouseTaxDao extends BaseDao {
 					type=rs.getString("type");
 					price=rs.getInt("price");
 					description=rs.getString("description");
-					HoldingTaxVo holdingTaxVo=new HoldingTaxVo(type,price,description) ;
+					HoldingTaxVo holdingTaxVo=new HoldingTaxVo(type,price,description);
 					holdingTaxVoList.add(holdingTaxVo);
 				}
 			} catch (Exception e) {
@@ -60,9 +61,9 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	  }
-	 public List<HouseTaxData> getHouseTaxData(){
+	 public List<HouseTaxData> getHouseTaxData(int houseProId){
 		  List<HouseTaxData> holdingTaxVoList=new ArrayList<HouseTaxData>();
-		  int houseProId=1;
+		  
 		  try {
 				String sql = "select type,price,description from house_tax t where t.house_pro_id="+houseProId;
 				Statement stmt = con.createStatement();
@@ -82,9 +83,9 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	  }
-	 public List<HouseTaxData> getHoldingData(){
+	 public List<HouseTaxData> getHoldingData(int houseProId){
 		 List<HouseTaxData> holdingTaxVoList=new ArrayList<HouseTaxData>();
-		  int houseProId=1;
+		 
 		  try {
 				String sql = "select type,price,description from holding_finace t where t.house_pro_id="+houseProId;
 				Statement stmt = con.createStatement();
@@ -104,6 +105,12 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	 }
+	 
+	 
+	 
+	 
+	 
+	 
 	 //¹º·¿Ë°·Ñ List
 	 public JSONArray listHouseTax(){
 			JSONArray jsonArray=new JSONArray();

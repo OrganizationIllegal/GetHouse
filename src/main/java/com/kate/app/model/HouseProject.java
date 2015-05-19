@@ -9,7 +9,7 @@ public class HouseProject {
 	private String project_nation;
 	private String project_address;
 	private String project_area;    
-	private int project_price_qi;
+	private String project_price_qi;
 	private String project_type;
 	private int project_sales_remain;
 	private Timestamp project_finish_time;
@@ -114,10 +114,10 @@ public class HouseProject {
 	public void setProject_area(String project_area) {
 		this.project_area = project_area;
 	}
-	public int getProject_price_qi() {
+	public String getProject_price_qi() {
 		return project_price_qi;
 	}
-	public void setProject_price_qi(int project_price_qi) {
+	public void setProject_price_qi(String project_price_qi) {
 		this.project_price_qi = project_price_qi;
 	}
 	public String getProject_type() {

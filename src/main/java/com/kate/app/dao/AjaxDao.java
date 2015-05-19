@@ -133,6 +133,28 @@ import com.kate.app.model.NewsInfo;
 	        }
 			return list;
 		}
+		
+		
+		public BuyInfo getBuyInfo(int proId){    //一锟斤拷锟斤拷目锟斤拷应一锟斤拷
+			BuyInfo data = new BuyInfo();
+			try{
+				String sql = " select * from buy_info where house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, proId);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					data.setId(rs.getInt("id"));
+					data.setFirst_money(rs.getInt("first_money"));
+					data.setLawyer_fee(rs.getInt("lawyer_fee"));
+					data.setReturn_money(rs.getInt("return_money"));
+					data.setStamp_tax(rs.getInt("stamp_tax"));
+					
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return data;
+		}
 
 		public List<HouseProject> selectHouseProject(){    //锟斤拷锟揭凤拷锟斤拷锟斤拷息
 			List<HouseProject> list = new ArrayList<HouseProject>();
@@ -148,7 +170,7 @@ import com.kate.app.model.NewsInfo;
 					projectInfo.setProject_nation(rs.getString("project_nation"));
 					projectInfo.setProject_address(rs.getString("project_address"));
 					projectInfo.setProject_area(rs.getString("project_area"));
-					projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
+					projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
 					projectInfo.setProject_type(rs.getString("project_type"));
 					projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 					projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
@@ -463,7 +485,7 @@ import com.kate.app.model.NewsInfo;
 					projectInfo.setProject_nation(rs.getString("project_nation"));
 					projectInfo.setProject_address(rs.getString("project_address"));
 					projectInfo.setProject_area(rs.getString("project_area"));
-					projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
+					projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
 					projectInfo.setProject_type(rs.getString("project_type"));
 					projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 					projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));

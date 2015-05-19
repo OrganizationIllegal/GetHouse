@@ -30,7 +30,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setProject_nation(rs.getString("project_nation"));
 				projectInfo.setProject_address(rs.getString("project_address"));
 				projectInfo.setProject_area(rs.getString("project_area"));
-				projectInfo.setProject_price_qi(rs.getInt("project_price_qi"));
+				projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
 				projectInfo.setProject_type(rs.getString("project_type"));
 				projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
 				projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
@@ -123,19 +123,20 @@ public class HouseProjectDao extends BaseDao{
 	/*
 	 * Project Images
 	 */
-	public List<ProjectImage> HouseProjectImageDao(){
+	public List<ProjectImage> HouseProjectImageDao(int proId){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
 		try{
-			String sql = "select * from project_desc_image order by view_shunxu";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = "select * from project_desc_image where house_project_id=? order by view_shunxu";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, proId);
+			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				ProjectImage projectImage = new ProjectImage();
 				projectImage.setId(rs.getInt("id"));
 				projectImage.setImage_name(rs.getString("image_name"));
 				projectImage.setImage_type(rs.getInt("image_type"));
 				projectImage.setView_shunxu(rs.getInt("view_shunxu"));
-				projectImage.setHouse_pro_id(rs.getInt("house_project_id"));
+				
 				list.add(projectImage);
 			}
 			
@@ -148,12 +149,13 @@ public class HouseProjectDao extends BaseDao{
 	/*
 	 * Project Images
 	 */
-	public List<ProjectImage> HousePeitaoImageDao(){
+	public List<ProjectImage> HousePeitaoImageDao(int proId){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
 		try{
-			String sql = "select * from project_peitao_image order by view_shunxu";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = "select * from project_peitao_image where house_pro_id=? order by view_shunxu";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, proId);
+			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				ProjectImage projectImage = new ProjectImage();
 				projectImage.setId(rs.getInt("id"));

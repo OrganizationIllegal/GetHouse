@@ -40,13 +40,21 @@ public class HouseProjectService {
 				
 	}
 	
-	public List<ProjectImage> getHouseProjectImage(){
+	public List<ProjectImage> getHouseProjectImage(int proId){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
-		list = houseProjectDao.HouseProjectImageDao();
+		list = houseProjectDao.HouseProjectImageDao(proId);
 		return list;
 	}
-
-	public List<HouseProject> getHouseProjectList(){
+	
+	public List<ProjectImage> HousePeitaoImageDao(int proId){
+		List<ProjectImage> list = new ArrayList<ProjectImage>();
+		list = houseProjectDao.HousePeitaoImageDao(proId);
+		return list;
+	}
+	
+	
+	
+	public List<HouseProject> getHouseProjectList(int proId){
 		List<HouseProject> list = new ArrayList<HouseProject>();
 		//list = houseProjectDao.HouseProjectDao();
 

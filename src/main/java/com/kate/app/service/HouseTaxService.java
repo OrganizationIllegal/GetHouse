@@ -14,20 +14,20 @@ import com.kate.app.model.HouseTaxVo;
 public class HouseTaxService {
 	@Autowired
 	private HouseTaxDao houseTaxDao;
-	 public List<HouseTaxVo> getHouseTaxVo(){
-		 List<HouseTaxVo> HouseTaxVoList=houseTaxDao.getHouseTaxVo();
+	 public List<HouseTaxVo> getHouseTaxVo(int proId){
+		 List<HouseTaxVo> HouseTaxVoList=houseTaxDao.getHouseTaxVo(proId);
 		 return HouseTaxVoList;
 	 }
-	 public List<HoldingTaxVo> getHoldingTaxVo(){
-		 List<HoldingTaxVo> holdingTaxVoList=houseTaxDao.getHoldingTaxVo();
+	 public List<HoldingTaxVo> getHoldingTaxVo(int proId){
+		 List<HoldingTaxVo> holdingTaxVoList=houseTaxDao.getHoldingTaxVo(proId);
 		 return holdingTaxVoList;
 	 }
-	 public List<HouseTaxData> getHouseTaxData(){
-		 List<HouseTaxData> list=houseTaxDao.getHouseTaxData();
+	 public List<HouseTaxData> getHouseTaxData(int proId){
+		 List<HouseTaxData> list=houseTaxDao.getHouseTaxData(proId);
 		 return list;
 	 }
-	 public List<HouseTaxData> getHoldingData(){
-		 List<HouseTaxData> list=houseTaxDao.getHoldingData();
+	 public List<HouseTaxData> getHoldingData(int proId){
+		 List<HouseTaxData> list=houseTaxDao.getHoldingData(proId);
 		 return list;
 	 }
 }

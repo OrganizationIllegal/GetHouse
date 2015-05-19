@@ -25,17 +25,25 @@ public class ServiceController {
 	@RequestMapping({"/Service"})
 	public String Service(HttpServletRequest req,HttpServletResponse resp){
 		String projectId = req.getParameter("projectId");
+		String brokerId_str = req.getParameter("brokerId");
 		BrokerInfo brokerInfo = new BrokerInfo();
 		int proId = 0;
 		int brokerId = 0;
 		if(projectId!=null && !"".equals(projectId)){
 			proId = Integer.parseInt(projectId);
 		}
+		if(brokerId_str!=null && !"".equals(brokerId_str)){
+			brokerId = Integer.parseInt(brokerId_str);
+		}
 		List<BrokerInfo> list = brokerInfoDao.BrokerInfoList(proId);
 		if(list!=null){
-			brokerInfo = list.get(0);
-		}
-		
+			for(BrokerInfo data : list){
+				if(data.getId()==brokerId){
+					brokerInfo = data;
+					break;
+				}
+			}
+		}	
 		req.setAttribute("brokerInfo", brokerInfo);
 	
 		return "/Serivice.jsp";

@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="/css/pgwslider.min.css" rel="stylesheet">
 <link href="/css/video-js.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.5.min.js"></script>-->
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/script_p.js"></script>
 <script src="js/video.js"></script>
@@ -210,7 +210,7 @@ function popInfo(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.project_price_qi}</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">$${project.project_price_qi}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">首付金额（起价） </span>
@@ -249,7 +249,7 @@ function popInfo(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">${stamp_tax}</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">$${stamp_tax}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">印花税</span>
@@ -638,7 +638,6 @@ function popInfo(){
             	<div>
             	<center>
                 <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                
                 </img>
                 </center>
                 <span style="position: absolute; top: 160; left: 250;font-weight:bold;font-size:22">99</span>
@@ -650,8 +649,8 @@ function popInfo(){
                     
                     <ul class="list-group">
                     	<c:forEach items="${nearSchoolList}" var="item" begin="0" end="4" step="1" varStatus="var">
-                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.schoolName}</span>${item.schoolType}</li>
-					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.schoolDistance}km</span>学校排名 第${item.schoolRank}名</li>
+                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.school_distance}km</span>${item.school_name}</li>
+					  		<li class="list-group-item" style="background-color:white"><span style="float:right"></span></li>
                     	</c:forEach>
 					</ul>
                 </div>
@@ -675,8 +674,8 @@ function popInfo(){
 	                    
 	                    <ul class="list-group">
 						  <c:forEach items="${nearSchoolFacility}" var="item" begin="0" end="4" step="1" varStatus="var">
-                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.facility_name}</span>${item.facility_type}</li>
-					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.facility_distance}km</span>学校排名 第${item.facility_rank}名</li>
+                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.market_distance}km</span>${item.market_name}</li>
+					  		<li class="list-group-item" style="background-color:white"><span style="float:right"></span></li>
                     	</c:forEach>
 						</ul>
 	                </div>
@@ -878,7 +877,7 @@ function popInfo(){
 <div class="col-md-2"></div>
  <div class="col-md-2" style="padding-left:70px;padding-right:0px;">
  <div><img src="images/buy.png"></div>
- <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$561,000</div>
+ <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$${middlePrice.buy_price }</div>
  </div>
  <div class="col-md-3" style="padding-left:50px;width:340px;">
  <div style="color:#000000;font-weight:900;font-size:16px;">${areaName }中位数${proTypes }房价</div>
@@ -886,38 +885,38 @@ function popInfo(){
  </div>
  <div class="col-md-4">
  <div><img src="images/rent.png"></div>
- <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;560/周</div>
+ <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${middlePrice.zu_price }/周</div>
  </div>
 </div>
 <div class="row">
 <div class="col-md-5 col-md-offset-1">
  <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">1居</div>
-     <div style="color:#000000;font-weight:900;">$409,000</div>
+     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_one_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_one_price }</div>
      </button>
       <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">2居</div>
-     <div style="color:#000000;font-weight:900;">$409,000</div>
+     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_two_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_two_price }</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">3居</div>
-     <div style="color:#000000;font-weight:900;">$409,000</div>
+     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_three_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_three_price }</div>
      </button>
  </div></div>
  <div class="col-md-6">
  <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">1居</div>
-     <div style="color:#000000;font-weight:900;">$409</div>
+     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_one_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_one_price }</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">2居</div>
-     <div style="color:#000000;font-weight:900;">$409</div>
+     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_two_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_two_price }</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">3居</div>
-     <div style="color:#000000;font-weight:900;">$409</div>
+     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_three_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_three_price }</div>
      </button>
  </div></div>
 </div>
@@ -988,7 +987,7 @@ function popInfo(){
   	<div class="panel-heading" style="background-color:white;">Sourth Melbourne 地区特点</div>
   	 <div class="panel-body">
   	     	<div class="col-xs-6">
-  	     	<ol>
+  	     	<ul style="list-style-type:none">
   	     	<c:forEach items="${featureList}"
 			 var="item"
 			 begin="0"
@@ -997,10 +996,10 @@ function popInfo(){
 			 varStatus="var">
 				<li>${item}</li>
 			 </c:forEach>
-  	     		</ol>
+  	     		</ul>
   	     	</div>
   	     	<div class="col-xs-6">
-  	     		<ol start="6">
+  	     		<ul start="6" style="list-style-type:none">
   	     			<c:forEach items="${featureList}"
 					 var="item"
 					 begin="5"
@@ -1009,7 +1008,7 @@ function popInfo(){
 					 varStatus="var">
 						<li>${item}</li>
 					 </c:forEach>
-  	     		</ol>
+  	     		</ul>
   	     	</div>
      </div>
   </div>
@@ -1022,14 +1021,18 @@ function popInfo(){
 	  <table class="table table-striped">
 	  	
     	<thead>
+    		
+    		<c:forEach items="${list}" var="item" varStatus="var">
     		<tr class="row">
-    		<th class="col-md-4">人口总数</th>
-    		<th class="col-md-4">区域</th>
-    		<th class="col-md-4">城市</th>
+    		<th class="col-md-4">${item.column1 }</th>
+    		<th class="col-md-4">${item.column2 }</th>
+    		<th class="col-md-4">${item.column3 }</th>
+    		
     		</tr>
+    		</c:forEach>
     	</thead>
     	
-    	<tbody>
+    	<%-- <tbody>
     	<c:forEach items="${peopleInfoList}" var="item" varStatus="var">
 			<tr class="row">
     			<td>${item.count}</td>
@@ -1037,9 +1040,9 @@ function popInfo(){
     			<td>${item.city}</td>
     		</tr>
 		</c:forEach> 
-    	</tbody>
+    	</tbody> --%>
   	  </table>
-  	  <table class="table table-striped">
+  	 <%--  <table class="table table-striped">
 	  	
     	<thead>
     		<tr class="row">
@@ -1097,7 +1100,7 @@ function popInfo(){
     			<td><span>$</span>${item.city}</td>
     		</tr>
 		</c:forEach> 
-    	</tbody>
+    	</tbody> --%>
   	  </table>
 	</div>
 </div>
@@ -1585,7 +1588,7 @@ function popInfo(){
 
   var houseTaxStr=${houseTaxStr};
   var housetaxdata=${housetaxdata};
-
+ alert(housetaxdata)
   var holdingTaxStr=${holdingTaxStr};
   var holdingdata=${holdingdata};
  </script>

@@ -39,13 +39,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
        <div class="col-md-7" >
       	<div class="navbar-header" id="headbar">
-       			<a href="/index01.jsp">首页</a>
+       			<a href="/first/index01">首页</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/searchList.jsp">海外购房</a>
+       			<a href="/SearchList">海外购房</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/serviceTeam.jsp">服务团队</a>
+       			<a href="/ServiceTeam">服务团队</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/HousePurchasing.jsp">置业指导</a>
+       			<a href="/ZhiYeInfo">置业指导</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
        			<a href="/overseas.jsp">海外新闻</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>

@@ -19,12 +19,12 @@ import com.kate.app.model.SearchList;
 
 @Controller
 public class SearchListController {
-	/*@Autowired
+	@Autowired
 	private SearchListDao searchListDao;
 	@Autowired
 	private AjaxDao ajaxDao;
-	*/
-	/*//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
+	
+	//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
 	@RequestMapping({"/SearchList"})
 	public String search_controller(HttpServletRequest req, HttpServletResponse resp){
 		List<SearchList> searchList=searchListDao.listSearchList();
@@ -32,10 +32,10 @@ public class SearchListController {
 		req.setAttribute("searchList",searchList);
 		return "/searchList.jsp";
 	}
-	*/
 	
 	
-	/*//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
+	
+	//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
 		@RequestMapping({"/SearchListPage"})
 		public void SearchListPage(HttpServletRequest req, HttpServletResponse resp){
 			String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
@@ -84,7 +84,7 @@ public class SearchListController {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}*/
+		}
 		
 		
 		public void writeJson(String json, HttpServletResponse response)throws Exception{
