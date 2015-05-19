@@ -15,19 +15,18 @@ public class BaseDao {
 	protected static Connection con = null;
 	static {
 		try{   
-		    //¼ÓÔØMySqlµÄÇý¶¯Àà   
+		    //ï¿½ï¿½ï¿½ï¿½MySqlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   
 		    Class.forName("com.mysql.jdbc.Driver") ;   
 		}
 		catch(ClassNotFoundException e){   
-		    System.out.println("ÕÒ²»µ½Çý¶¯³ÌÐòÀà £¬¼ÓÔØÇý¶¯Ê§°Ü£¡");   
+		    System.out.println("ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½");   
 		    e.printStackTrace() ;   
 		}   
 		try {
             url = "jdbc:mysql://101.200.174.253/gethouse";
 
-            username = "dboperator2";
+            username = "dboperator1";
             password = "gethouse";
-
             con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
            System.out.print("DriverManager.getConnection faild");

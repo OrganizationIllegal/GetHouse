@@ -24,7 +24,7 @@ public class IndexController {
 	@Autowired
 	private SearchService searchService;
 	
-	@RequestMapping({"/index01" })
+	@RequestMapping({"/index02" })
 	public String search(HttpServletRequest req,HttpServletResponse resp){
 		
 		int max=Integer.parseInt(req.getParameter("maximumprice"));

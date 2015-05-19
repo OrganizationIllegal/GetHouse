@@ -54,11 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="facility_type" data-sortable="true" data-editable="true">facility_type</th>
-             <th data-field="facility_name" data-sortable="true" data-editable="true">facility_name</th>
-              <th data-field="facility_distance" data-sortable="true" data-editable="true">facility_distance</th>
-               <th data-field="facility_rank" data-sortable="true" data-editable="true">facility_rank</th>
-                <th data-field="walk_num" data-sortable="true" data-editable="true">walk_num</th>
+            <th data-field="market_type" data-sortable="true" data-editable="true">market_type</th>
+             <th data-field="market_name" data-sortable="true" data-editable="true">market_name</th>
+              <th data-field="market_distance" data-sortable="true" data-editable="true">market_distance</th>
             <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
@@ -159,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {facility_type:row.facility_type,facility_name:row.facility_name,facility_distance:row.facility_distance,facility_rank:row.facility_rank,walk_num:row.walk_num,project_name:row.project_name},
+	 		data: {market_type:row.market_type,market_name:row.market_name,market_distance:row.market_distance,project_name:row.project_name},
 	 		dateType: "text json",
 	 		url: "/Area/AddNearFacility",
 	 		success:function(data){
@@ -174,6 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("添加成功")
+	 				window.location.reload()
 	 			}
 	 			}
 	 			
@@ -184,10 +183,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,facility_type:row.facility_type,facility_name:row.facility_name,facility_distance:row.facility_distance,facility_rank:row.facility_rank,walk_num:row.walk_num,project_name:row.project_name},
+		 		data: {id: row.id,market_type:row.market_type,market_name:row.market_name,market_distance:row.market_distance,project_name:row.project_name},
 		 		url: "/Area/UpdateNearFacility",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
@@ -201,6 +199,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("更新成功")
+	 				window.location.reload()
 	 			}
 	 			}
 		 		},

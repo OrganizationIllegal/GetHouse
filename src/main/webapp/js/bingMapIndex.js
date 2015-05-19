@@ -1,6 +1,6 @@
  var map = null;
  var map2=null; 
- var defaltCenter=new Microsoft.Maps.Location(39.916927,116.404269);//天安门   
+ var defaltCenter=new Microsoft.Maps.Location(-37.847019, 145.064643);  
       /*加载地图*/
       function getIndexMap(){
     	 map = new Microsoft.Maps.Map(document.getElementById('indexMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
@@ -100,8 +100,10 @@
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        var name=items[i].project_name;
 	 		        var desc=items[i].project_price;	
-				    var infoboxOptions = {width :200, height :100,title:name, description:desc,offset:new Microsoft.Maps.Point(0,20)}; 
-				    var defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions );    
+				    //var infoboxOptions = {width :200, height :100,title:name, description:desc,offset:new Microsoft.Maps.Point(0,20)};
+	 		        var infoboxOptions = {width :400, height :100,offset:new Microsoft.Maps.Point(0,20)};
+				    var defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions );
+				    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="http://101.200.174.253:8080/projects/Elfin/The%20Elfin_%E9%A1%B9%E7%9B%AE_03.jpg" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price+'</b><a id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name+'</a></div>'); 
 				    map.entities.push(defaultInfobox); 		        	        
 	 		    }
 	 		},

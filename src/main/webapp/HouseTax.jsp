@@ -58,6 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <th data-field="price" data-sortable="true" data-editable="true">price</th>
               <th data-field="description" data-sortable="true" data-editable="true">description</th>
             <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
+             <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -157,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {type:row.type,price:row.price,description:row.description,project_name:row.project_name},
+	 		data: {type:row.type,price:row.price,description:row.description,project_name:row.project_name,view_shunxu:row.view_shunxu},
 	 		dateType: "text json",
 	 		url: "/Area/AddHouseTax",
 	 		success:function(data){
@@ -172,6 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("添加成功")
+	 				window.location.reload()
 	 			}
 	 			}
 	 			
@@ -182,10 +184,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,type:row.type,price:row.price,description:row.description,project_name:row.project_name},
+		 		data: {id: row.id,type:row.type,price:row.price,description:row.description,project_name:row.project_name,view_shunxu:row.view_shunxu},
 		 		url: "/Area/updateHouseTax",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
@@ -199,6 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("更新成功")
+	 				window.location.reload()
 	 			}
 	 			}
 		 		},

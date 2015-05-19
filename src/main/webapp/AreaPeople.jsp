@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
  <body>
    <div class="container">
-    <h1> AreaZhikong <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1>
+    <h1> AreaPeople <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1>
     <div id="toolbar">
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
@@ -48,17 +48,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/Area/ListAreaZhikong"
+           data-url="/Area/ListAreaPeople"
            data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="heng" data-sortable="true" data-editable="true">heng</th>
-             <th data-field="zong" data-sortable="true" data-editable="true">zong</th>
+            <th data-field="column1" data-sortable="true" data-editable="true">column1</th>
+            <th data-field="column2" data-sortable="true" data-editable="true">column2</th>
+            <th data-field="column3" data-sortable="true" data-editable="true">column3</th>
              <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
              <th data-field="area_id" data-sortable="true" data-editable="true">area_id</th>
-             <th data-field="project_type" data-sortable="true" data-editable="true">project_type</th>
+            
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -102,10 +103,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	    type: "POST",
 	 		data: { ids : ids},
 	 		dateType: "json",
-	 		url: "/Area/DelAreaMiddle",
+	 		url: "/Area/DelFamilyIncome",
 	 		
 	 		success:function(data){
-	 			alert("閸掔娀鏁撻弬銈嗗閺呮帡鏁撻敓锟�")
+	 			alert("删锟斤拷晒锟�")
 	 			window.location.reload();
 	 		},
 	 		error:function(){
@@ -158,24 +159,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_id:row.area_id,project_type:row.project_type},
+	 		data: {column1:row.column1,column2:row.column2,column3:row.column3,view_shunxu:row.view_shunxu, area_id:row.area_id},
 	 		dateType: "text json",
-	 		url: "/Area/AddAreaZhikong",
+	 		url: "/Area/AddAreaPeople",
 	 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.area_id==0){
-	 				alert("area_id不存在")
+	 			  alert("area_id不存在")
 	 			}
-	 			else{
+	 			else
+	 			{
 	 			if(data.flag==false){
 	 			    alert("添加失败")
 	 			}
 	 			else{
 	 				alert("添加成功")
-	 				window.location.reload();
+	 				window.location.reload()
 	 			}
 	 			}
-	 			
 	 			
 	 		},
 	 		error:function(){
@@ -186,21 +187,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else{
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_id:row.area_id,project_type:row.project_type},
-		 		url: "/Area/updateAreaZhikong",
+		 		data: {id: row.id,column1:row.column1,column2:row.column2,column3:row.column3,view_shunxu:row.view_shunxu, area_id:row.area_id},
+		 		url: "/Area/UpdateAreaPeople",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
-		 		if(data.area_id==0){
-	 				alert("area_id不存在")
+	 			if(data.area_id==0){
+	 			  alert("area_id不存在")
+	 			}
+	 			else
+	 			{
+	 			if(data.flag==false){
+	 			  	alert("更新失败")
 	 			}
 	 			else{
-	 			 if(data.flag==false){
-	 			  	alert("更新失败")
-	 			 }
-	 			 else{
 	 				alert("更新成功")
-	 				window.location.reload();
-	 			 }
+	 				window.location.reload()
+	 			}
 	 			}
 		 		},
 		 		error:function(){
@@ -218,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 	    type: "POST",
 		 		data: {id: row.id},
 		 		dateType: "json",
-		 		url: "/Area/DelAreaZhikong",
+		 		url: "/Area/DeleteAreaPeople",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
 		 			if(data.flag==false){

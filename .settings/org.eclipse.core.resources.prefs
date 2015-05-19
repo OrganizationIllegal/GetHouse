@@ -1,11 +1,15 @@
 #Tue May 19 14:56:33 CST 2015
 eclipse.preferences.version=1
+encoding//src/main/java/com/kate/app/controller/AdminAreaController.java=GB2312
 encoding//src/main/java/com/kate/app/controller/BuyInfoController.java=GBK
 encoding//src/main/java/com/kate/app/controller/MyController.java=GBK
 encoding//src/main/java/com/kate/app/controller/SearchListController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/ZhiYeZhiDaoController.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/AjaxDao.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/AreaFamilyDao.java=GBK
+<<<<<<< HEAD
+encoding//src/main/java/com/kate/app/dao/AreaTrendDao.java=GB2312
+=======
 encoding//src/main/java/com/kate/app/dao/AreaInfoDao.java=GBK
 encoding//src/main/java/com/kate/app/dao/BrokerInfoDao.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/Index01Dao.java=GBK
@@ -15,10 +19,11 @@ encoding//src/main/java/com/kate/app/dao/UtilDao.java=GBK
 encoding//src/main/java/com/kate/app/service/AjaxService.java=UTF-8
 encoding//src/main/java/com/kate/app/service/BuyInfoService.java=UTF-8
 encoding//src/main/java/com/kate/app/service/HouseInfoService.java=UTF-8
+>>>>>>> efc214e9d4f42cfa1327d82d0863d102e41cb198
 encoding//src/main/resources=GBK
 encoding//src/main/webapp/AreaFamily.jsp=UTF-8
-encoding//src/main/webapp/AreaFeature.jsp=UTF-8
 encoding//src/main/webapp/AreaMiddle.jsp=UTF-8
+encoding//src/main/webapp/AreaPeople.jsp=UTF-8
 encoding//src/main/webapp/AreaZhikong.jsp=UTF-8
 encoding//src/main/webapp/AreaZujin.jsp=UTF-8
 encoding//src/main/webapp/Coordinates.jsp=UTF-8

@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				<c:forEach items="${brokerInfoList}"  var="item">
 				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
-					<div class="col-md-4"><img src="/images/jingjiren.PNG"></div>
+					<div class="col-md-4"><a href="/Service?brokerId=${item.id}"><img src="/images/jingjiren.PNG"></a></div>
 					<div class="col-md-8" style="padding-left:0px;">
 						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">${item.broker_name}</div>
 						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.office}</span></div>
