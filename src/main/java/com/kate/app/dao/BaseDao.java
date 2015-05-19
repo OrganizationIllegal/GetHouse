@@ -13,23 +13,43 @@ public class BaseDao {
 	protected static String username = null;
 	protected static String password = null;
 	protected static Connection con = null;
+	
+	public BaseDao()
+	{
+		if(con == null){
+			try {
+	            url = "jdbc:mysql://101.200.174.253/gethouse";
+	
+	            username = "dboperator1";
+	            password = "gethouse";
+	            con = DriverManager.getConnection(url, username, password);
+	        } catch (Exception e) {
+	           System.out.print("DriverManager.getConnection faild");
+	           System.out.println(e.toString());
+	        }
+		}else{
+			
+		}
+		
+	}
 	static {
-		System.out.println("fffffffff");
 		try{   
-		    //¼ÓÔØMySqlµÄÇı¶¯Àà   
+		    //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·MySqlé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·   
 		    Class.forName("com.mysql.jdbc.Driver") ;   
 		}
 		catch(ClassNotFoundException e){   
-		    System.out.println("ÕÒ²»µ½Çı¶¯³ÌĞòÀà £¬¼ÓÔØÇı¶¯Ê§°Ü£¡");   
+		    System.out.println("é”Ÿæ­è¯§æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿï¿½é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·å¤±é”Ÿæ°ï½æ‹·");   
 		    e.printStackTrace() ;   
 		}   
 		try {
-            url = "jdbc:mysql://54.187.200.118:3306/house";
-            username = "root";
-            password = "admin";
+            url = "jdbc:mysql://101.200.174.253/gethouse";
+
+            username = "dboperator1";
+            password = "gethouse";
             con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
-           
+           System.out.print("DriverManager.getConnection faild");
+           System.out.println(e.toString());
         }
 	}
 	

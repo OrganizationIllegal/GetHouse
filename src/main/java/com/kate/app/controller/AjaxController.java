@@ -20,7 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.kate.app.model.BrokerInfo;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseProject;
-import com.kate.app.model.InvestmentDate;
+import com.kate.app.model.InvestmentData;
 import com.kate.app.service.AjaxService;
 import com.kate.app.service.HouseProjectService;
 import com.kate.app.service.MyService;

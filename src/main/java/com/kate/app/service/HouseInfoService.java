@@ -13,9 +13,9 @@ import com.kate.app.model.HouseInfo;
 public class HouseInfoService {
 	@Autowired
 	private HouseInfoDao houseInfoDao;
-	public List<HouseInfo> getHouseInfoList(){
+	public List<HouseInfo> getHouseInfoList(int proId){
 		List<HouseInfo> list=new ArrayList<HouseInfo>();
-		list=houseInfoDao.HouseInfoDao();
+		list=houseInfoDao.HouseInfoDao(proId);
 		for(int i=0;i<list.size();i++){
 			String houseprice=list.get(i).getHouse_price();
 			String price=getMoney(houseprice);
@@ -24,9 +24,9 @@ public class HouseInfoService {
 		return list;
 	}
     public String getMoney(String money){
-    	//閲戦鏍煎紡杞崲
+    	//闁叉垿顤傞弽鐓庣础鏉烆剚宕�
     			//String str1=String.valueOf(money);
-    			String str1 = new StringBuilder(money).reverse().toString();     //鍏堝皢瀛楃涓查鍊掗『搴�
+    			String str1 = new StringBuilder(money).reverse().toString();     //閸忓牆鐨㈢�妤冾儊娑撴煡顤呴崐鎺椼�鎼达拷
     			String str2 = "";
     			for(int i=0;i<str1.length();i++){
     				if(i*3+3>str1.length()){
@@ -38,7 +38,7 @@ public class HouseInfoService {
     			if(str2.endsWith(",")){
     				str2 = str2.substring(0, str2.length()-1);
     			}
-    			//鏈�悗鍐嶅皢椤哄簭鍙嶈浆杩囨潵
+    			//閺堬拷鎮楅崘宥呯殺妞ゅ搫绨崣宥堟祮鏉╁洦娼�
     			String result="$"+new StringBuilder(str2).reverse().toString();
     		return result;
     }

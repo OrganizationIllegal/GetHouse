@@ -54,11 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="school_type" data-sortable="true" data-editable="true">school_type</th>
              <th data-field="school_name" data-sortable="true" data-editable="true">school_name</th>
               <th data-field="school_distance" data-sortable="true" data-editable="true">school_distance</th>
-               <th data-field="school_rank" data-sortable="true" data-editable="true">school_rank</th>
-                <th data-field="traffic_num" data-sortable="true" data-editable="true">traffic_num</th>
             <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
@@ -159,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {school_type:row.school_type,school_name:row.school_name,school_distance:row.school_distance,school_rank:row.school_rank,traffic_num:row.traffic_num,project_name:row.project_name},
+	 		data: {school_name:row.school_name,school_distance:row.school_distance,project_name:row.project_name},
 	 		dateType: "text json",
 	 		url: "/Area/AddNearSchool",
 	 		success:function(data){
@@ -174,6 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("添加成功")
+	 				window.location.reload()
 	 			}
 	 			}
 	 			
@@ -184,10 +182,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,school_type:row.school_type,school_name:row.school_name,school_distance:row.school_distance,school_rank:row.school_rank,traffic_num:row.traffic_num,project_name:row.project_name},
+		 		data: {id: row.id,school_name:row.school_name,school_distance:row.school_distance,project_name:row.project_name},
 		 		url: "/Area/UpdateNearSchool",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
@@ -201,6 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("更新成功")
+	 				window.location.reload()
 	 			}
 	 			}
 		 		},

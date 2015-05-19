@@ -8,12 +8,12 @@ import com.kate.app.dao.RecoProjectDao;
 public class RecoProjectSerivice {
 	@Autowired
 	private RecoProjectDao recoproject;
-	public String getProjectdescription(){
+	/*public String getProjectdescription(){
 		String projectdescription=recoproject.getRecoProjectDao();
 		System.out.println(projectdescription+"dddddd");
 		return projectdescription;
 		
-	}
+	}*/
 	
 
 }

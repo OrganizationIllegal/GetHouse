@@ -11,12 +11,15 @@ public class HouseInfo {
 	private int house_bath_num;
 	private int house_bath_size;
 	private int house_price_area;
-	private int house_size;
+	private int house_size_in;
 	private String house_city;
 	private String house_type;
 	private int house_toilet_num;
 	private int house_toilet_size;
 	private int house_project_id;
+	private int tudi_area;
+	private int jianzhu_area;
+	private int house_size_out;
 	public int getId() {
 		return id;
 	}
@@ -77,11 +80,11 @@ public class HouseInfo {
 	public void setHouse_price_area(int house_price_area) {
 		this.house_price_area = house_price_area;
 	}
-	public int getHouse_size() {
-		return house_size;
+	public int getHouse_size_in() {
+		return house_size_in;
 	}
-	public void setHouse_size(int house_size) {
-		this.house_size = house_size;
+	public void setHouse_size_in(int house_size_in) {
+		this.house_size_in = house_size_in;
 	}
 	public String getHouse_city() {
 		return house_city;
@@ -113,8 +116,23 @@ public class HouseInfo {
 	public void setHouse_project_id(int house_project_id) {
 		this.house_project_id = house_project_id;
 	}
-	
-	
-	
+	public int getTudi_area() {
+		return tudi_area;
+	}
+	public void setTudi_area(int tudi_area) {
+		this.tudi_area = tudi_area;
+	}
+	public int getJianzhu_area() {
+		return jianzhu_area;
+	}
+	public void setJianzhu_area(int jianzhu_area) {
+		this.jianzhu_area = jianzhu_area;
+	}
+	public int getHouse_size_out() {
+		return house_size_out;
+	}
+	public void setHouse_size_out(int house_size_out) {
+		this.house_size_out = house_size_out;
+	}
 	
 }

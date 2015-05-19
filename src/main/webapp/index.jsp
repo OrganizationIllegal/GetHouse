@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="/css/pgwslider.min.css" rel="stylesheet">
 <link href="/css/video-js.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-1.5.min.js"></script>-->
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/script_p.js"></script>
 <script src="js/video.js"></script>
@@ -99,6 +99,11 @@ function pop2(){
 function pop3(){
   $('#demandprice').modal('show');
 }
+
+function popInfo(){
+  $('#projectInfo').modal('show');
+}
+
 </script>
 <!-- pop guorui end -->
 </head>
@@ -124,15 +129,15 @@ function pop3(){
             <div style="float:left;width:850px;display:inline;">
 
                 <table class="ad_left_big" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
-                    <tr><td><img src="images/a.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><div id="youkuplayer" style="width:850px;height:600px"></div>
+                    <c:forEach var="item"  items="${imageList}"   varStatus="status">
+                    	<tr><td><img src="${item.image_name}" width="850" height="600" /></a></td></tr>
+                    </c:forEach>
+                   <c:forEach var="item"  items="${vedioList}"   varStatus="status">
+                   	 <tr><td><div id="youkuplayer" style="width:850px;height:600px"></div>
                     </td>
                     </tr>
-                    <tr><td><img src="images/c.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/d.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/e.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/f.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/g.jpg" width="850" height="600" /></a></td></tr>
+                   </c:forEach>
+                   
                 </table>
             </div>
 
@@ -140,14 +145,13 @@ function pop3(){
                 <div class="top_button off"></div>
                 <div class="small_right_limit">
                     <ul style="margin-top: 0px;">
-
-                        <li><img src="images/a.jpg" width="250" height="140"/></li>
-                        <li><img src="images/b.jpg" width="250" height="140"/></li>
-                        <li><img src="images/c.jpg" width="250" height="140"/></li>
-                        <li><img src="images/d.jpg" width="250" height="140"/></li>
-                        <li><img src="images/e.jpg" width="250" height="140"/></li>
-                        <li><img src="images/f.jpg" width="250" height="140"/></li>
-                        <li><img src="images/g.jpg" width="250" height="140"/></li>
+			            <c:forEach var="item"  items="${imageList}"   varStatus="status">
+                    		<li><img src="${item.image_name}" width="250" height="140"/></li>
+                    	</c:forEach>
+                        <c:forEach var="item"  items="${vedioList}"   varStatus="status">
+                    		<li><img src="${item.image_name}" width="250" height="140"/></li>
+                    	</c:forEach>
+                       
                     </ul>
                     <div class="this_ad" style="top:0px;"><img src="images/this_ad.gif" width="250" height="159" /></div>
                 </div>
@@ -192,7 +196,7 @@ function pop3(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">The Elements</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.project_name}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">IDLand</span>
@@ -206,7 +210,7 @@ function pop3(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">2011.03</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">$${project.project_price_qi}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">首付金额（起价） </span>
@@ -219,7 +223,7 @@ function pop3(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">$5.000</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">${timeResule}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">交房日期 </span>
@@ -232,7 +236,7 @@ function pop3(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">$5.000</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.wuyefei}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">物业费/每月 </span>
@@ -245,7 +249,7 @@ function pop3(){
 				<dl class="fore1">
 				<dd>
 					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">$0.37</span>
+						<span style="font-size:20px;color:black;target="_blank" href="#"">$${stamp_tax}</span>
 						</div>
 						<div>
 							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">印花税</span>
@@ -272,7 +276,7 @@ function pop3(){
 				<div>
 
 				<div>
-					<span style="font-size:30px;color:black;font-family:"黑体";">$950K-$2.2M</span>
+					<span style="font-size:30px;color:black;font-family:"黑体";">${priceQuJian}</span>
 					</div>
 					
 						<div style="padding-left:35px">
@@ -312,67 +316,67 @@ function pop3(){
 							<dd>
 								<div>
 							<span style="font-size:16px;">
-								开发商:XXX
+								开发商:${DeveloperInfo.developer_name}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								类型：公寓别墅
+								类型：${HouseProject.project_type}
 							</span>
 						</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								国家：澳大利亚
+								国家：${HouseProject.project_nation}
 							</span>
 						</div>
 								
 							<div>
 							<span style="font-size:16px;">
-								城市：墨尔本
+								城市：${HouseProject.project_city}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								位置：XXX&nbsp;182XXXXX
+								位置：${HouseProject.gps}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								面积：52-170M
+								面积：${HouseProject.mianji}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								户型：1局
+								户型：${HouseProject.project_house_type}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								城市：墨尔本
+								城市：${HouseProject.project_city}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								价格：$145M
+								价格：${HouseProject.project_price}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								预交房日期：2016年第3季度
+								预交房日期：${timeResule}
 							</span>
 							</div>
 							
 							<div>
 							<span style="font-size:16px;">
-								可售房数：6
+								可售房数：${HouseProject.project_sales_remain}
 							</span>
 							</div>
 							
@@ -388,7 +392,7 @@ function pop3(){
 								
 								<div class="col-md-8">
 								<div class="row">
-								<span style="font-size:25px;">The Elements</span>
+								<span style="font-size:25px;">${HouseProject.project_name}</span>
 								</div>
 								
 								<div class="row">
@@ -404,7 +408,7 @@ function pop3(){
 				  		<div class="row">
 				  			
 				  			<p style="font-size:10px;">
-				  				${projectdescription}
+				  				${HouseProject.project_desc}
 				  				</p>
 				  			
 				  			</div>		
@@ -513,17 +517,14 @@ function pop3(){
   		<div class="panel-body">
   			<div>
   			 <!--  <hr> -->
-				<h2>The Elements</h2>
-				<p class="lead">世界级的建筑</p>
+				<h2>${HouseProject.project_name}</h2>
+				<p class="lead">${HouseProject.project_lan_cn}</p>
   			</div>
   			<div id="detail">
-  			           正在寻找阿里旺旺官方下载？阿里旺旺买家版2013是阿里巴巴为淘宝买家度身定做的免费网上沟通软件，阿里旺旺还可以让您在购物后随时了解交易状态。直接搜索商品。快速进入淘宝网。阿里旺旺官方下载2013买家版能帮您轻松找客户，发布、管理商业信息；及时把握商机，随时洽谈做生意！
+  			           ${HouseProject.project_desc}
   			<p>
-  			正在寻找阿里旺旺官方下载？阿里旺旺买
-  			</div>
-  			<div class="container">
- 				<button type="button" class="btn">详情咨询</button>
-  			
+  			<div class="container" >
+ 				<button type="button" onclick="popInfo()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin:0 auto;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;详情咨询</button>
 			</div>
   		</div>
   		 
@@ -546,7 +547,7 @@ function pop3(){
 <div style="text-align:center;font-weight:bold;font-family:SimHei;">卫生间</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size}</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_in}</div>
 <div style="text-align:center;font-weight:bold;font-family:SimHei;">面积</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
@@ -582,12 +583,10 @@ function pop3(){
         <div class="limit_p" style="height:600px;width:1100px;">
             <div style="float:left;width:850px;display:inline;">
                 <table class="ad_left_big_p" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
-                    <tr><td><img src="images/a.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/c.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/d.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/e.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/f.jpg" width="850" height="600" /></a></td></tr>
-                    <tr><td><img src="images/g.jpg" width="850" height="600" /></a></td></tr>
+                    <c:forEach items="${ProjectPeitaoImage}" var="item" >
+                    	<tr><td><img src="${item.image_name}" width="850" height="600" /></a></td></tr>
+                    </c:forEach>
+                    
                 </table>
             </div>
 
@@ -595,12 +594,11 @@ function pop3(){
                 <div class="top_button off"></div>
                 <div class="small_right_limit_p">
                     <ul style="margin-top: 0px;">
-						<li><img src="images/a.jpg" width="250" height="140"/></li>
-                        <li><img src="images/c.jpg" width="250" height="140"/></li>
-                        <li><img src="images/d.jpg" width="250" height="140"/></li>
-                        <li><img src="images/e.jpg" width="250" height="140"/></li>
-                        <li><img src="images/f.jpg" width="250" height="140"/></li>
-                        <li><img src="images/g.jpg" width="250" height="140"/></li>
+                    	<c:forEach items="${ProjectPeitaoImage}" var="item" >
+                    		<li><img src="${item.image_name}" width="250" height="140"/></li>
+                    	
+                    </c:forEach>
+                    	
                     </ul>
                     <div class="this_ad_p" style="top:0px;"><img src="images/this_ad.gif" width="250" height="159" /></div>
                 </div>
@@ -640,7 +638,6 @@ function pop3(){
             	<div>
             	<center>
                 <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                
                 </img>
                 </center>
                 <span style="position: absolute; top: 160; left: 250;font-weight:bold;font-size:22">99</span>
@@ -652,8 +649,8 @@ function pop3(){
                     
                     <ul class="list-group">
                     	<c:forEach items="${nearSchoolList}" var="item" begin="0" end="4" step="1" varStatus="var">
-                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.schoolName}</span>${item.schoolType}</li>
-					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.schoolDistance}km</span>学校排名 第${item.schoolRank}名</li>
+                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.school_distance}km</span>${item.school_name}</li>
+					  		<li class="list-group-item" style="background-color:white"><span style="float:right"></span></li>
                     	</c:forEach>
 					</ul>
                 </div>
@@ -677,8 +674,8 @@ function pop3(){
 	                    
 	                    <ul class="list-group">
 						  <c:forEach items="${nearSchoolFacility}" var="item" begin="0" end="4" step="1" varStatus="var">
-                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.facility_name}</span>${item.facility_type}</li>
-					  		<li class="list-group-item" style="background-color:white"><span style="float:right">${item.facility_distance}km</span>学校排名 第${item.facility_rank}名</li>
+                    		<li class="list-group-item" style="background-color:#f2eada"><span style="float:right">${item.market_distance}km</span>${item.market_name}</li>
+					  		<li class="list-group-item" style="background-color:white"><span style="float:right"></span></li>
                     	</c:forEach>
 						</ul>
 	                </div>
@@ -836,8 +833,8 @@ function pop3(){
 <!--投资数据-->
 <div style="margin-top:20px;background-color:white;" id="invest">
 <div class="panel panel-default">
-	  <div class="heading">South Melbourne投资数据<br>
-	 <span id="detail"> 投资数据参考2卧室房产</span>
+	  <div class="heading">${areaName }投资数据<br>
+	 <span id="detail">${data.data_exam }</span>
 	  
 	  </div>
 	  <hr>
@@ -853,13 +850,13 @@ function pop3(){
         <th>现金回报</td>
     </tr> 
     <tr class="table_tab1"> 
-        <td>1.1%</td> 
-        <td>$561K</td> 
-        <td>S560周</td> 
-        <td>5.0%</td> 
-        <td>低
+        <td>${data.year_increment_rate}</td> 
+        <td>$ ${data.middle_price} K</td> 
+        <td>S ${data.middle_zu_price }周</td> 
+        <td>${data.zu_house_rate }</td> 
+        <td>${data.zu_xuqiu }
         </td> 
-        <td>￥129/月</td> 
+        <td>￥ ${data.price_review }/月</td> 
     </tr> 
     <tr class="table_tab2"> 
         <td></td> 
@@ -880,46 +877,46 @@ function pop3(){
 <div class="col-md-2"></div>
  <div class="col-md-2" style="padding-left:70px;padding-right:0px;">
  <div><img src="images/buy.png"></div>
- <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$561,000</div>
+ <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$${middlePrice.buy_price }</div>
  </div>
  <div class="col-md-3" style="padding-left:50px;width:340px;">
- <div style="color:#000000;font-weight:900;font-size:16px;">South Melbourne中位数公寓房价</div>
+ <div style="color:#000000;font-weight:900;font-size:16px;">${areaName }中位数${proTypes }房价</div>
  <div style="color:#333;font-size:8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价格最后更新日期为2015.02.02</div>
  </div>
  <div class="col-md-4">
  <div><img src="images/rent.png"></div>
- <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;560/周</div>
+ <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${middlePrice.zu_price }/周</div>
  </div>
 </div>
 <div class="row">
 <div class="col-md-5 col-md-offset-1">
  <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">1居</div>
-     <div style="color:#000000;font-weight:900;">$409,000</div>
+     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_one_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_one_price }</div>
      </button>
       <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">2居</div>
-     <div style="color:#000000;font-weight:900;">$409,000</div>
+     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_two_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_two_price }</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">3居</div>
-     <div style="color:#000000;font-weight:900;">$409,000</div>
+     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_three_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_three_price }</div>
      </button>
  </div></div>
  <div class="col-md-6">
  <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">1居</div>
-     <div style="color:#000000;font-weight:900;">$409</div>
+     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_one_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_one_price }</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">2居</div>
-     <div style="color:#000000;font-weight:900;">$409</div>
+     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_two_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_two_price }</div>
      </button>
      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">3居</div>
-     <div style="color:#000000;font-weight:900;">$409</div>
+     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_three_name }</div>
+     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_three_price }</div>
      </button>
  </div></div>
 </div>
@@ -990,7 +987,7 @@ function pop3(){
   	<div class="panel-heading" style="background-color:white;">Sourth Melbourne 地区特点</div>
   	 <div class="panel-body">
   	     	<div class="col-xs-6">
-  	     	<ol>
+  	     	<ul style="list-style-type:none">
   	     	<c:forEach items="${featureList}"
 			 var="item"
 			 begin="0"
@@ -999,10 +996,10 @@ function pop3(){
 			 varStatus="var">
 				<li>${item}</li>
 			 </c:forEach>
-  	     		</ol>
+  	     		</ul>
   	     	</div>
   	     	<div class="col-xs-6">
-  	     		<ol start="6">
+  	     		<ul start="6" style="list-style-type:none">
   	     			<c:forEach items="${featureList}"
 					 var="item"
 					 begin="5"
@@ -1011,7 +1008,7 @@ function pop3(){
 					 varStatus="var">
 						<li>${item}</li>
 					 </c:forEach>
-  	     		</ol>
+  	     		</ul>
   	     	</div>
      </div>
   </div>
@@ -1024,14 +1021,18 @@ function pop3(){
 	  <table class="table table-striped">
 	  	
     	<thead>
+    		
+    		<c:forEach items="${list}" var="item" varStatus="var">
     		<tr class="row">
-    		<th class="col-md-4">人口总数</th>
-    		<th class="col-md-4">区域</th>
-    		<th class="col-md-4">城市</th>
+    		<th class="col-md-4">${item.column1 }</th>
+    		<th class="col-md-4">${item.column2 }</th>
+    		<th class="col-md-4">${item.column3 }</th>
+    		
     		</tr>
+    		</c:forEach>
     	</thead>
     	
-    	<tbody>
+    	<%-- <tbody>
     	<c:forEach items="${peopleInfoList}" var="item" varStatus="var">
 			<tr class="row">
     			<td>${item.count}</td>
@@ -1039,9 +1040,9 @@ function pop3(){
     			<td>${item.city}</td>
     		</tr>
 		</c:forEach> 
-    	</tbody>
+    	</tbody> --%>
   	  </table>
-  	  <table class="table table-striped">
+  	 <%--  <table class="table table-striped">
 	  	
     	<thead>
     		<tr class="row">
@@ -1099,7 +1100,7 @@ function pop3(){
     			<td><span>$</span>${item.city}</td>
     		</tr>
 		</c:forEach> 
-    	</tbody>
+    	</tbody> --%>
   	  </table>
 	</div>
 </div>
@@ -1138,13 +1139,13 @@ function pop3(){
                      </div>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：北京信息</h3>
-		         <p>新闻来源：北京   &nbsp;&nbsp;&nbsp;&nbsp;时间：2015</p>
+		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_one.title}</h3>
+		         <p>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</p>
 		        </div>
            </div>
 		   <div class="news_position" id="MyNews">
 		      	<div class="info" id="middle">
-                     <div class="news_action_middle" style="display:none;">
+                     <div class="news_action_middle" style="display:none;">s
 	                     <ul class="list_m" id="list_scroll_middle">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
@@ -1155,8 +1156,8 @@ function pop3(){
                      </div>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <h3 style="font-weight: bold; font-size:20px;">新闻标题新闻标题</h3>
-		         <p style="font-weight: bold; font-size:20px;">新闻标题新闻标题</p>
+		          <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_two.title}</h3>
+		         <p>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleTwo }</p>
 		        </div>
 		   </div>
 		   <div class="news_position">
@@ -1177,8 +1178,8 @@ function pop3(){
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div> -->
                 <div class="caption_my" style="height:98px;">
-		         <h3 class="title_news" style="font-weight: bold; font-size:20px;">新闻标题：北京信息</h3>
-		         <p>新闻来源：北京   &nbsp;&nbsp;&nbsp;&nbsp;时间：2015</p>
+		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_Three.title}</h3>
+		         <p>新闻来源：${newsInfo_Three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleThree }</p>
 		        </div>
 		   </div>
 		   
@@ -1199,31 +1200,31 @@ function pop3(){
   		<div class="row">
           <div class="news_position">
                 <div class="scroll" id="left">
-                     <img src="/images/pic.jpg" alt="" width=350px height=255px>
+                     <img src="${RecommendProject1.project_img}" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p>${projectdescription}</p>
+		         <p class="desc"><a href="#">${RecommendProject1.project_name}</a> </p>
+		         <p>${RecommendProject1.project_desc}</p>
 		          
 		        </div>
            </div>
 		   <div class="news_position">
                 <div class="scroll" id="left">
-                     <img src="/images/pic.jpg" alt="" width=350px height=255px>
+                     <img src="${RecommendProject2.project_img}" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p>${projectdescription}</p>
+		         <p class="desc"><a href="#">${RecommendProject2.project_name}</a> </p>
+		         <p>${RecommendProject2.project_desc}</p>
 		          
 		        </div>
            </div>
 		   <div class="news_position">
 		      <div class="scroll" id="right">
-                     <img src="/images/pic.jpg" alt="" width=350px height=255px>
+                     <img src="${RecommendProject3.project_img}" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;">
-		         <p class="desc"><a href="#">Lorem ipsum dolor sit amet</a> </p>
-		         <p>${projectdescription}</p>
+		         <p class="desc"><a href="#">${RecommendProject3.project_name}</a> </p>
+		         <p>${RecommendProject3.project_desc}</p>s
 		          
 		        </div>
 		   </div>
@@ -1430,6 +1431,83 @@ function pop3(){
 </div>
 </div>
 <!-- 完整户型模态框end -->
+
+<!-- house style模态框end -->
+<!-- 最新价格模态框start-->
+<div class="modal fade" id="projectInfo" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:100px;height:495px;width:400px;">
+         <div class="modal-header" style="background-color:#EEEEE0;">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              	   详情咨询
+            </h4>
+         </div>
+         <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
+            <form class="form-horizontal" role="form">
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="firstname" 
+            placeholder="姓名">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="登录密码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电话号码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" id="lastname" 
+            placeholder="电子邮箱">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+        <input type="text" class="form-control" id="lastname" 
+            placeholder="项目咨询" disabled="disabled">     
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+            placeholder="留言"></textarea>
+            
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default">发送</button>
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+</form>
+
+         </div>
+   
+      </div>
+</div>
+</div>
+<!-- 最新价格模态框end -->
+
+
 <!-- 索取完整价格单模态框start-->
 <div class="modal fade" id="demandprice" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1510,7 +1588,7 @@ function pop3(){
 
   var houseTaxStr=${houseTaxStr};
   var housetaxdata=${housetaxdata};
-
+ alert(housetaxdata)
   var holdingTaxStr=${holdingTaxStr};
   var holdingdata=${holdingdata};
  </script>

@@ -54,9 +54,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="family_type" data-sortable="true" data-editable="true">family_type</th>
-            <th data-field="rate" data-sortable="true" data-editable="true">rate</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
+            <th data-field="family_one" data-sortable="true" data-editable="true">family_one</th>
+            <th data-field="family_one_rate" data-sortable="true" data-editable="true">family_one_rate</th>
+             <th data-field="family_two" data-sortable="true" data-editable="true">family_two</th>
+            <th data-field="family_two_rate" data-sortable="true" data-editable="true">family_two_rate</th>
+             <th data-field="family_three" data-sortable="true" data-editable="true">family_three</th>
+            <th data-field="family_three_rate" data-sortable="true" data-editable="true">family_three_rate</th>
+            
+            <th data-field="data_souce" data-sortable="true" data-editable="true">data_souce</th>
+            <th data-field="update_time" data-sortable="true" data-editable="true">update_time</th>
+            <th data-field="area_id" data-sortable="true" data-editable="true">area_id</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -153,21 +160,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     window.operateEvents = {
         'click .like': function (e, value, row, index) {
             var id=row.id;
-            var rate=row.rate;
-            if(isNaN(rate)){
-                alert("rate应为整数！")
-            }
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {family_type:row.family_type,rate:row.rate,project_name:row.project_name},
+	 		data: {family_one:row.family_one,family_one_rate:row.family_one_rate,family_two:row.family_two,family_two_rate:row.family_two_rate,family_three:row.family_three,family_three_rate:row.family_three_rate,data_souce:row.data_souce,update_time:row.update_time,area_id:row.area_id},
 	 		dateType: "text json",
 	 		url: "Area/AddAreaFamily",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
-	 		    alert(data)
-	 		    alert(data.house_pro_id)
 	 			if(data.house_pro_id==0){
 	 			  alert("项目名称输入错误")
 	 			}
@@ -188,15 +189,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,family_type:row.family_type,rate:row.rate,project_name:row.project_name},
+		 		data: {id: row.id,family_one:row.family_one,family_one_rate:row.family_one_rate,family_two:row.family_two,family_two_rate:row.family_two_rate,family_three:row.family_three,family_three_rate:row.family_three_rate,data_souce:row.data_souce,update_time:row.update_time,area_id:row.area_id},
 		 		url: "/Area/UpdateAreaFamily",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
-	 		        alert(data)
-	 		        alert(data.house_pro_id)
 	 			if(data.house_pro_id==0){
 	 			  alert("项目名称输入错误")
 	 			}

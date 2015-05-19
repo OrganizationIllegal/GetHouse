@@ -13,16 +13,16 @@ import com.kate.app.model.AreaZujin;
 public class AreaTrendService {
 		@Autowired
 		private AreaTrendDao areaTrendDao;
-		public List<AreaMiddle> getAreaMiddleTrend(){
-			List<AreaMiddle> areaMiddleList=areaTrendDao.getAreaMiddleTrend();
+		public List<AreaMiddle> getAreaMiddleTrend(String project_type, int areaId){
+			List<AreaMiddle> areaMiddleList=areaTrendDao.getAreaMiddleTrend(project_type,areaId);
 			return areaMiddleList;
 		}
-		public List<AreaZujin> getAreaZujinTrend(){
-			List<AreaZujin> areaZujinList=areaTrendDao.getAreaZujinTrend();
+		public List<AreaZujin> getAreaZujinTrend(String project_type, int areaId){
+			List<AreaZujin> areaZujinList=areaTrendDao.getAreaZujinTrend(project_type,areaId);
 			return areaZujinList;
 		}
-		public List<AreaZhikong> getAreaZhikongTrend(){
-			List<AreaZhikong> areaZhikongList=areaTrendDao.getAreaZhikongTrend();
+		public List<AreaZhikong> getAreaZhikongTrend(String project_type, int areaId){
+			List<AreaZhikong> areaZhikongList=areaTrendDao.getAreaZhikongTrend(project_type,areaId);
 			return areaZhikongList;
 		}
 }

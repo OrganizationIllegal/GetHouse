@@ -24,7 +24,7 @@ public class SearchListController {
 	@Autowired
 	private AjaxDao ajaxDao;
 	
-	//���������б���ʾ
+	//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
 	@RequestMapping({"/SearchList"})
 	public String search_controller(HttpServletRequest req, HttpServletResponse resp){
 		List<SearchList> searchList=searchListDao.listSearchList();
@@ -35,19 +35,18 @@ public class SearchListController {
 	
 	
 	
-	//���������б���ʾ
+	//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
 		@RequestMapping({"/SearchListPage"})
 		public void SearchListPage(HttpServletRequest req, HttpServletResponse resp){
-			String pageIndex = req.getParameter("pageIndex");   //��ǰҳ��
+			String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
 			int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
 			
-			String pageSize_str  = req.getParameter("pageSize");  //ÿҳ�������
+			String pageSize_str  = req.getParameter("pageSize");  //每页锟斤拷锟斤拷锟斤拷锟�
 			int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
 			
 			List<SearchList> searchList=searchListDao.listSearchList();
 			
 			int total = searchList.size();
-			System.out.println(total+"fefe");
 			int pageEnd = pageNum * pageSize;
 			int end = pageEnd < total ? pageEnd : total;
 			

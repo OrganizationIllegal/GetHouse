@@ -3,20 +3,24 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 @Repository 
 public class AreaFeatureDao extends BaseDao{
-	public List<String> getAreaFeature(){
+	public List<String> getAreaFeature(int areaId){
 		List<String> featureList=new ArrayList<String>();
-		int houseProId=1;
+		
 		String afeature=null;
 		try {
-			String sql = " select area_character from area_features t  where  t.house_project_id="+houseProId;
+			String sql = " select area_character from area_features where area_id="+areaId;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -29,28 +33,50 @@ public class AreaFeatureDao extends BaseDao{
 		}
 		return featureList;
 	}
-	//µØÇøÌØµã  List
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½  List
 	public JSONArray listAreaFeature(){
 		JSONArray jsonArray=new JSONArray();
 		try {
-			String sql = "select t.id,t.area_character,t.house_project_id,h.project_name from area_features t LEFT JOIN house_project h on t.house_project_id=h.id";
+			String sql = "select * from area_features";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			jsonArray=ResultSetConverter.convert(rs);
+			while(rs.next()){
+				JSONObject obj = new JSONObject();
+				obj.put("id", rs.getInt("id"));
+				obj.put("area_character", rs.getString("area_character"));
+				obj.put("house_project_id", rs.getInt("house_project_id"));
+				obj.put("view_shunxu", rs.getInt("view_shunxu"));
+				obj.put("area_id", rs.getInt("area_id"));
+				obj.put("data_souce", rs.getString("data_souce"));
+				
+				String update_time = null;
+				Timestamp time=rs.getTimestamp("update_time");
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+				if(time ==null){
+					time= new Timestamp(System.currentTimeMillis());
+				}
+			    update_time=df.format(time);
+				obj.put("update_time", update_time);
+				jsonArray.add(obj);
+			}
+			//jsonArray=ResultSetConverter.convert(rs);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jsonArray;
 	} 
-	//µØÇøÌØµã  Add
-	public int InsertAreaFeature(String area_character,int house_pro_id){
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½  Add
+	public int InsertAreaFeature(String area_character,int view_shunxu,int area_id,String data_souce,String update_time){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_features(area_character,house_project_id) values(?,?)";
+			String sql = "insert into area_features(area_character,view_shunxu,area_id,data_souce,update_time) values(?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, area_character);
-			pstmt.setInt(2, house_pro_id);
+			pstmt.setInt(2, view_shunxu);
+			pstmt.setInt(3, area_id);
+			pstmt.setString(4, data_souce);
+			pstmt.setString(5, update_time);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -58,15 +84,18 @@ public class AreaFeatureDao extends BaseDao{
 		}
 		return exeResult;
 	}
-	//µØÇøÌØµã  update
-	public int updateAreaFeature(int id,String area_character,int house_pro_id){
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½  update
+	public int updateAreaFeature(int id,String area_character,int view_shunxu,int area_id,String data_souce,String update_time){
 		int exeResult=0;
 		try {
-			String sql = "update area_features set area_character=? where id=? and house_project_id=?";
+			String sql = "update area_features set area_character=?,view_shunxu=?,area_id=?,data_souce=?,update_time=? where id="+id;
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, area_character);
-			pstmt.setInt(2, id);
-			pstmt.setInt(3, house_pro_id);
+			pstmt.setInt(2, view_shunxu);
+			pstmt.setInt(3, area_id);
+			pstmt.setString(4, data_souce);
+			pstmt.setString(5, update_time);
+			pstmt.setInt(6, id);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -74,7 +103,7 @@ public class AreaFeatureDao extends BaseDao{
 		}
 		return exeResult;
 	}
-	//µØÇøÌØµã  delete
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½  delete
 	public int delAreaFeature(int id){
 		int exeResult=0;
 		try {

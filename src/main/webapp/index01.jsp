@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
         
             </div>
-            <form role="form" action="/index01" method="post" >
+            <form role="form" action="/index02" method="post" >
                  <div class="row" style="margin-bottom:5px;">
                   <div class="col-lg-6">
                     <div class="input-group">
@@ -301,15 +301,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="panel panel-default">
   	<div class="panel-heading" style="background-color:white;">墨尔本</div>
   	 <div class="panel-body">
-  	       <div class="col-xs-4" >
-  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
+  	 <c:forEach var="item" items="${projectList}">
+  	 	<div class="col-xs-4" >
+  	     		<img alt="image" class="img-responsive" src="${item.project_img }">
   	     	</div>
-  	     	<div class="col-xs-4">
-  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
-  	     	</div>
-  	     	<div class="col-xs-4">
-  	     		<img alt="image" class="img-responsive" src="pic/house2.jpg">
-  	     	</div>
+  	 </c:forEach>
+ 
      </div>
   </div>
 </div>
@@ -318,61 +315,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--end 墨尔本-->
 
-<!--last-->
-<div>
-  	<div class="row">
-  		<div class="col-md-4 col-md-offset-5" >
-  			<div style="font-weight:bolder;font-size:23px;font-family:黑体;">最新博客</div>
-  			</div>
-  		
-  		<div class="col-md-3"></div>
-  		
-  		
-  		</div>
-  		
-  	<div class="row">
-  		<div class="col-md-6 col-md-offset-4" style="Margin-top:10px;">
-  			<span style="font-size:20px;color:Black;">From Toronto's real estate market to home staging tips</span>
-  			</div>
-  		
-  		<div class="col-md-2"></div>
-  		
-  		</div>
-  		
-  	<div class="row" style="margin-top:40px;margin-bottom:40px;">
-  		<div class="col-md-2 col-md-offset-2">
-  			
-  			<div>
-  				<img src="pic/last.jpg">
-  				<span></span>
-  				
-  				</div>
-  		</div>
-  		
-  		<div class="col-md-2 col-md-offset-1">
-  				<div>
-  				<img src="pic/last.jpg">
-  				<span> </span>
-  				
-  				</div>
-  		</div>
-  		
-  		<div class="col-md-2 col-md-offset-1">
-  				<div>
-  				<img src="pic/last.jpg">
-  				<span> </span>
-  				
-  				</div>
-  		</div>
-  		
-  		</div>
-
-
-
-
-
-    </div>
-<!--last-->
+<!--last guo-->
+<div class="row" style="text-align:center;margin-top:300px;">
+			<div style="font-weight:bolder;font-size:23px;font-family:黑体;">最新博客</div>
+			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
+			<div class="row" style="padding-top:30px;">
+			<div class="col-md-2" style="width:150px;"></div>
+			<c:forEach var="item" items="${newsList}">
+		  	 	    <div class="col-md-3">
+						<div><img src="${item.news_image}"></div>
+						<div>${item.news_abstract}</div>
+					</div>
+  	 		</c:forEach>
+			<div class="col-md-1"></div>
+			</div>
+		</div>
+<!--last guo-->
 
 </div>
 <!-- 妯℃�妗�-->

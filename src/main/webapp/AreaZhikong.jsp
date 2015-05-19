@@ -54,9 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="year" data-sortable="true" data-editable="true">year</th>
-             <th data-field="rate" data-sortable="true" data-editable="true">rate</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
+            <th data-field="heng" data-sortable="true" data-editable="true">heng</th>
+             <th data-field="zong" data-sortable="true" data-editable="true">zong</th>
+             <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
+             <th data-field="area_id" data-sortable="true" data-editable="true">area_id</th>
+             <th data-field="project_type" data-sortable="true" data-editable="true">project_type</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -156,23 +158,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {year:row.year,rate:row.rate,project_name:row.project_name},
+	 		data: {heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_id:row.area_id,project_type:row.project_type},
 	 		dateType: "text json",
 	 		url: "/Area/AddAreaZhikong",
 	 		success:function(data){
 	 			data=$.parseJSON(data);
-	 			if(data.house_pro_id==0){
-	 			  alert("项目名称输入错误")
+	 			if(data.area_id==0){
+	 				alert("area_id不存在")
 	 			}
-	 			else
-	 			{
+	 			else{
 	 			if(data.flag==false){
 	 			    alert("添加失败")
 	 			}
 	 			else{
 	 				alert("添加成功")
+	 				window.location.reload();
 	 			}
 	 			}
+	 			
 	 			
 	 		},
 	 		error:function(){
@@ -181,24 +184,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	});
           }
           else{
-          alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,year:row.year,rate:row.rate,project_name:row.project_name},
+		 		data: {id: row.id,heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_id:row.area_id,project_type:row.project_type},
 		 		url: "/Area/updateAreaZhikong",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
-	 			if(data.house_pro_id==0){
-	 			  alert("项目名称输入错误")
-	 			}
-	 			else
-	 			{
-	 			if(data.flag==false){
-	 			  	alert("更新失败")
+		 		if(data.area_id==0){
+	 				alert("area_id不存在")
 	 			}
 	 			else{
+	 			 if(data.flag==false){
+	 			  	alert("更新失败")
+	 			 }
+	 			 else{
 	 				alert("更新成功")
-	 			}
+	 				window.location.reload();
+	 			 }
 	 			}
 		 		},
 		 		error:function(){

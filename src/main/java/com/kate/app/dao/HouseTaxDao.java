@@ -14,13 +14,14 @@ import com.kate.app.model.HouseTaxData;
 import com.kate.app.model.HouseTaxVo;
 @Repository 
 public class HouseTaxDao extends BaseDao {
-	 public List<HouseTaxVo> getHouseTaxVo(){
+	 public List<HouseTaxVo> getHouseTaxVo(int proId){
 		  List<HouseTaxVo> houseTaxVoList=new ArrayList<HouseTaxVo>();
-		  int houseProId=1;
+		  
 		  try {
-				String sql = "select type,price,description from house_tax t where t.house_pro_id="+houseProId;
-				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);
+				String sql = "select type,price,description from house_tax t where t.house_pro_id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, proId);
+				ResultSet rs = pstmt.executeQuery();
 				String type=null;
 				int price=0;
 				String description=null;
@@ -37,9 +38,9 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return houseTaxVoList;
 	  }
-	 public List<HoldingTaxVo> getHoldingTaxVo(){
+	 public List<HoldingTaxVo> getHoldingTaxVo(int houseProId){
 		  List<HoldingTaxVo> holdingTaxVoList=new ArrayList<HoldingTaxVo>();
-		  int houseProId=1;
+		 
 		  try {
 				String sql = "select type,price,description from holding_finace t where t.house_pro_id="+houseProId;
 				Statement stmt = con.createStatement();
@@ -51,7 +52,7 @@ public class HouseTaxDao extends BaseDao {
 					type=rs.getString("type");
 					price=rs.getInt("price");
 					description=rs.getString("description");
-					HoldingTaxVo holdingTaxVo=new HoldingTaxVo(type,price,description) ;
+					HoldingTaxVo holdingTaxVo=new HoldingTaxVo(type,price,description);
 					holdingTaxVoList.add(holdingTaxVo);
 				}
 			} catch (Exception e) {
@@ -60,9 +61,9 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	  }
-	 public List<HouseTaxData> getHouseTaxData(){
+	 public List<HouseTaxData> getHouseTaxData(int houseProId){
 		  List<HouseTaxData> holdingTaxVoList=new ArrayList<HouseTaxData>();
-		  int houseProId=1;
+		  
 		  try {
 				String sql = "select type,price,description from house_tax t where t.house_pro_id="+houseProId;
 				Statement stmt = con.createStatement();
@@ -72,7 +73,7 @@ public class HouseTaxDao extends BaseDao {
 				String description=null;
 				while(rs.next()){
 					price=rs.getInt("price");
-					type=rs.getString("type")+"    "+"Ô¼"+price+"°ÄÔª"+"\n"+rs.getString("description");
+					type=rs.getString("type")+"    "+"Ô¼"+price+"ï¿½ï¿½Ôª"+"\n"+rs.getString("description");
 					HouseTaxData holdingTaxVo=new HouseTaxData(type,price);
 					holdingTaxVoList.add(holdingTaxVo);
 				}
@@ -82,9 +83,9 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	  }
-	 public List<HouseTaxData> getHoldingData(){
+	 public List<HouseTaxData> getHoldingData(int houseProId){
 		 List<HouseTaxData> holdingTaxVoList=new ArrayList<HouseTaxData>();
-		  int houseProId=1;
+		 
 		  try {
 				String sql = "select type,price,description from holding_finace t where t.house_pro_id="+houseProId;
 				Statement stmt = con.createStatement();
@@ -94,7 +95,7 @@ public class HouseTaxDao extends BaseDao {
 				String description=null;
 				while(rs.next()){
 					price=rs.getInt("price");
-					type=rs.getString("type")+"    "+"Ô¼"+price+"°ÄÔª"+"\n"+rs.getString("description");
+					type=rs.getString("type")+"    "+"Ô¼"+price+"ï¿½ï¿½Ôª"+"\n"+rs.getString("description");
 					HouseTaxData holdingTaxVo=new HouseTaxData(type,price);
 					holdingTaxVoList.add(holdingTaxVo);
 				}
@@ -104,11 +105,16 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return holdingTaxVoList;
 	 }
+
+ 
 	 //¹º·¿Ë°·Ñ List
+
+	 //ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½ List
+
 	 public JSONArray listHouseTax(){
 			JSONArray jsonArray=new JSONArray();
 			try {
-				String sql = "select t.id,t.type,t.price,t.description,t.house_pro_id,h.project_name from  house_tax t LEFT JOIN house_project h on t.house_pro_id=h.id;";
+				String sql = "select t.id,t.type,t.price,t.description,t.house_pro_id,h.project_name,t.view_shunxu from house_tax t LEFT JOIN house_project h on t.house_pro_id=h.id";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				jsonArray=ResultSetConverter.convert(rs);
@@ -118,16 +124,17 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return jsonArray;
 		} 
-	//¹º·¿Ë°·Ñ Add
-	 public int InsertHouseTax(String type,int price,String description,int house_pro_id){
+	//ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½ Add
+	 public int InsertHouseTax(String type,int price,String description,int house_pro_id,int view_shunxu){
 			int exeResult=0;
 			try {
-				String sql = "insert into house_tax(type,price,description,house_pro_id) values(?,?,?,?)";
+				String sql = "insert into house_tax(type,price,description,house_pro_id,view_shunxu) values(?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, type);
 				pstmt.setInt(2, price);
 				pstmt.setString(3, description);
 				pstmt.setInt(4, house_pro_id);
+				pstmt.setInt(5, view_shunxu);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -135,17 +142,17 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return exeResult;
 		}  
-	//¹º·¿Ë°·Ñ update
-	 public int updateHouseTax(int id,String type,int price,String description,int house_pro_id){
+	//ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½ update
+	 public int updateHouseTax(int id,String type,int price,String description,int house_pro_id,int view_shunxu){
 			int exeResult=0;
 			try {
-				String sql = "update house_tax set type=?,price=?,description=? where id=? and house_pro_id=?";
+				String sql = "update house_tax set type=?,price=?,description=? ,house_pro_id=?,view_shunxu=? where id="+id;
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, type);
 				pstmt.setInt(2, price);
 				pstmt.setString(3, description);
-				pstmt.setInt(4, id);
-				pstmt.setInt(5, house_pro_id);
+				pstmt.setInt(4, house_pro_id);
+				pstmt.setInt(5, view_shunxu);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -153,7 +160,7 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return exeResult;
 		}
-	//¹º·¿Ë°·Ñ delete
+	//ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½ delete
 	 public int delHouseTax(int id){
 			int exeResult=0;
 			try {
@@ -166,11 +173,11 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return exeResult;
 		}
-	//³ÖÓÐ³É±¾ List
+	//ï¿½ï¿½ï¿½Ð³É±ï¿½ List
 	 public JSONArray listHoldingCost(){
 			JSONArray jsonArray=new JSONArray();
 			try {
-				String sql = "select t.id,t.type,t.price,t.description,t.house_pro_id,h.project_name from holding_finace t LEFT JOIN house_project h on t.house_pro_id=h.id";
+				String sql = "select t.id,t.type,t.price,t.description,t.house_pro_id,h.project_name,t.view_shunxu from holding_finace t LEFT JOIN house_project h on t.house_pro_id=h.id";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				jsonArray=ResultSetConverter.convert(rs);
@@ -180,16 +187,17 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return jsonArray;
 		} 
-	//³ÖÓÐ³É±¾ Add
-	 public int InsertHoldingCost(String type,int price,String description,int house_pro_id){
+	//ï¿½ï¿½ï¿½Ð³É±ï¿½ Add
+	 public int InsertHoldingCost(String type,int price,String description,int house_pro_id,int view_shunxu){
 			int exeResult=0;
 			try {
-				String sql = "insert into holding_finace(type,price,description,house_pro_id) values(?,?,?,?)";
+				String sql = "insert into holding_finace(type,price,description,house_pro_id,view_shunxu) values(?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, type);
 				pstmt.setInt(2, price);
 				pstmt.setString(3, description);
 				pstmt.setInt(4, house_pro_id);
+				pstmt.setInt(5, view_shunxu);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -197,17 +205,18 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return exeResult;
 		}  
-	//³ÖÓÐ³É±¾ update
-	 public int updateHoldingCost(int id,String type,int price,String description,int house_pro_id){
+	//ï¿½ï¿½ï¿½Ð³É±ï¿½ update
+	 public int updateHoldingCost(int id,String type,int price,String description,int house_pro_id,int view_shunxu){
 			int exeResult=0;
 			try {
-				String sql = "update holding_finace set type=?,price=?,description=? where id=? and house_pro_id=?";
+				String sql = "update holding_finace set type=?,price=?,description=?,view_shunxu=? where id=? and house_pro_id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, type);
 				pstmt.setInt(2, price);
 				pstmt.setString(3, description);
-				pstmt.setInt(4, id);
-				pstmt.setInt(5, house_pro_id);
+				pstmt.setInt(4, view_shunxu);
+				pstmt.setInt(5, id);
+				pstmt.setInt(6, house_pro_id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -215,7 +224,7 @@ public class HouseTaxDao extends BaseDao {
 			}
 			return exeResult;
 		}
-	//³ÖÓÐ³É±¾ delete
+	//ï¿½ï¿½ï¿½Ð³É±ï¿½ delete
 	 public int delHoldingCost(int id){
 			int exeResult=0;
 			try {
