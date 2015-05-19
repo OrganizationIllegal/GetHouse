@@ -109,11 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </select>
                         
                         </div>
-                        <div style="margin-left:100px;float:left;color:white;"><span class="more1" style=" "><em class="open"></em>更多</span></div>
+                        <div style="margin-left:100px;float:left;color:white;"><span class="more1 active" style=" "><em class="open"></em>更多</span></div>
                     </div>
                     
                 </div>
-                <div style="width:980px;height:400px;margin:20px auto 0 auto;display:none;backgroud:black;z-index:100;" class="highfilter">
+                <div style="width:980px;height:450px;margin:20px auto 0 auto;display:none;backgroud:black;z-index:100;" class="highfilter">
 					
 						<div class="list-screen" style="background:white;">
 							<div style="padding:10px 30px 10px 10px;">
@@ -121,60 +121,78 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<div class="selectNumberScreen">
 										<div id="selectList" class="screenBox screenBackground">
 											<dl class="listIndex">
-												<dt>酒店价格</dt>
+												<dt>国家</dt>
 												<dd>
 													<label><a href="javascript:;" attrval="不限">不限</a></label>
-													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">100元以下</a></label>
-													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">100-300元 </a></label>
-													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="600" values1="300" attrval="300-600">300-600元</a></label>
-													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">600-1500元</a></label>
-													
+													<label><input name="country" type="radio" value="ab" class="australia"/><a href="javascript:;" values2="99" values1="1" attrval="1-99" class="australia">澳大利亚</a></label>
+													<label><input name="country" type="radio" value="ab" class="canada"/><a href="javascript:;" values2="300" values1="100" attrval="100-300" class="canada">加拿大</a></label>
 												</dd>
 											</dl>
-											<dl class="listIndex">
-												<dt>酒店星级</dt>
-												<dd>
-													<label><a href="javascript:;" attrval="不限">不限</a> </label>
-													<label><input name="checkbox2" type="checkbox" value="ab" /><a href="javascript:;"> 五星/豪华</a></label>
-													<label><input name="checkbox3" type="checkbox" value="ab" /><a href="javascript:;">四星/高档</a></label>
-													<label><input name="checkbox4" type="checkbox" value="ab" /><a href="javascript:;">三星/舒适</a></label>
-												</dd>
-											</dl>
-											<dl class="listIndex">
-											<dt>主题风格</dt>
+											<dl class="listIndex" id="australiacity">
+												<dt>城市</dt>
 												<dd>
 													<label><a href="javascript:;" attrval="不限">不限</a></label>
-													<label><input name="checkbox5" type="checkbox" value="ab" /><a href="javascript:;">客栈</a></label>
-													<label><input name="checkbox6" type="checkbox" value="ab" /><a href="javascript:;">精品酒店</a> </label>
-													<label><input name="checkbox7" type="checkbox" value="ab" /><a href="javascript:;">情侣酒店</a> </label>
-													<label><input name="checkbox8" type="checkbox" value="ab" /><a href="javascript:;">园林庭院</a></label>
-													
+													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">墨尔本(Melbourne)</a></label>
+													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">悉尼(Sydney)</a></label>
+													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="600" values1="300" attrval="300-600">布里斯班(Brisbane)</a></label>
+													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">阿德莱德(Adelaide)</a></label>
+													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">珀斯(Perth)</a></label>
+												</dd>
+											</dl>
+											<dl class="listIndex more-none" id="canadiancity">
+												<dt>城市</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a></label>
+													<label><input name="city3" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">多伦多(Toronto)</a></label>
+													<label><input name="city3" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">温哥华(Vancouver)</a></label>
+													</dd>
+											</dl>
+											<!--
+											<dl class="listIndex">
+												<dt>价格</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">20万以下</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">20万-50万 </a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="600" values1="300" attrval="300-600">50万-100万</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">100万-150万</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">150万-200万</a></label>
+													<label><input name="radio2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">200万以上</a></label>
+												</dd>
+											</dl>
+											
+											<dl class="listIndex">
+											<dt>投资回报</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a></label>
+													<label><input name="checkbox5" type="checkbox" value="ab" /><a href="javascript:;">3%以下</a></label>
+													<label><input name="checkbox6" type="checkbox" value="ab" /><a href="javascript:;">3-5%</a> </label>
+													<label><input name="checkbox7" type="checkbox" value="ab" /><a href="javascript:;">5-8%</a> </label>
+													<label><input name="checkbox8" type="checkbox" value="ab" /><a href="javascript:;">8-10%</a></label>
+													<label><input name="checkbox8" type="checkbox" value="ab" /><a href="javascript:;">10%以上</a></label>
 												</dd> 
 											</dl>
-											<dl class="listIndex more-none" style="border:none">
-											<dt>主题风格</dt>
-											<dd>
-												<label><a href="javascript:;" attrval="不限">不限</a></label>
-												 
-													<label><input name="checkbox9" type="checkbox" value="ab" /><a href="javascript:;">精品酒店2</a></label>
-													<label><input name="checkbox10" type="checkbox" value="ab" /><a href="javascript:;">精品酒店3</a> </label> 
-													<label><input name="checkbox11" type="checkbox" value="ab" /><a href="javascript:;">精品酒店4</a> </label>  
-												
+											-->
+											<dl class="listIndex">
+												<dt>用途</dt>
+												<dd>
+													<label><a href="javascript:;" attrval="不限">不限</a> </label>
+													<label><input name="xinkaipan" type="checkbox" value="ab" /><a href="javascript:;">新开盘</a></label>
+													<label><input name="huaren" type="checkbox" value="ab" /><a href="javascript:;">华人区</a></label>
+													<label><input name="remen" type="checkbox" value="ab" /><a href="javascript:;">热门项目</a></label>
+													<label><input name="xuequ" type="checkbox" value="ab" /><a href="javascript:;">优秀学区</a></label>
+													<label><input name="baozu" type="checkbox" value="ab" /><a href="javascript:;">包租项目</a></label>
+													<label><input name="daxue" type="checkbox" value="ab" /><a href="javascript:;">大学附近</a></label>
+													<label><input name="center" type="checkbox" value="ab" /><a href="javascript:;">城市中心</a></label>
+													<label><input name="traffic" type="checkbox" value="ab" /><a href="javascript:;">轨道交通</a></label>
+													<label><input name="xianfang" type="checkbox" value="ab" /><a href="javascript:;">现房项目</a></label>
+													<label><input name="maidi" type="checkbox" value="ab" /><a href="javascript:;">买地建房</a></label>
+												</dd>
 											</dl>
+											
 										</div>
 									</div>   
 								</div>
-							</div>
-						
-							<div class="hasBeenSelected clearfix">
-								<span id="time-num"><font>208</font>家酒店</span>
-								<div style="float:right;" class="eliminateCriteria">【清空全部】</div>
-								<dl>
-									<dt>已选条件：</dt>
-									<dd style="display:none" class="clearDd">
-										<div class="clearList"></div>
-									</dd>
-								</dl>
 							</div>
 							
 							
@@ -377,6 +395,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$(".highfilter").hide();
 			    $(this).addClass("active");
 		    }
+		});
+		$(".canada").on("click",function(){
+		    //通过判断按钮btn有没有active这个class名判断是否已经点击过
+		    if($(this).attr("checked")==true){
+				$("#australiacity").show();
+				$("#canadiancity").hide();
+		    }else{
+			    
+				$("#australiacity").hide();
+				$("#canadiancity").show();
+		    }
+		});
+		$(".australia").on("click",function(){
+		    //通过判断按钮btn有没有active这个class名判断是否已经点击过
+		    if($(this).attr("checked")==true){
+				$("#australiacity").hide();
+				$("#canadiancity").show();
+		    }else{
+			    
+				$("#australiacity").show();
+				$("#canadiancity").hide();
+		    }
+		});
+		$("body").on("click",function(e){
+			if(e.target.nodeName!="SPAN" && e.target.nodeName!="A" && e.target.nodeName!="INPUT"){
+				$(".highfilter").hide();
+				$(".more1").addClass("active");
+			}
 		});
    	});
    	
