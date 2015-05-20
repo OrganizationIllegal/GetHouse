@@ -640,7 +640,7 @@ function popInfo(){
                 <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
                 </img>
                 </center>
-                <span style="position: absolute; top: 160; left: 250;font-weight:bold;font-size:22">99</span>
+                <span style="position: absolute; top: 162px; right: 252px;left: 250;font-weight:bold;font-size:22">99</span>
                 
                 </div>
                 <div class="caption">
@@ -664,7 +664,7 @@ function popInfo(){
 		                
 		                </img>
 		                </center>
-		                <span style="position: absolute; top: 160; left: 275;font-weight:bold;font-size:22">100</span>
+		                <span style="position: absolute; top: 162px; right: 286px;left: 275;font-weight:bold;font-size:22">100</span>
 		                
 		             </div>
 	                
@@ -924,9 +924,9 @@ function popInfo(){
 <!--trend-->
 <div  style="margin-top:20px;background-color:white;">
  <ul class="nav nav-tabs nav-justified" id="trendTabs">
-      <li class="active"><a href="#price" data-toggle="tab">South MelBourne区域中位数房价走势</a></li>
-      <li><a href="#rent" data-toggle="tab">South MelBourne区域租金走势</a></li>
-      <li><a href="#emptypercent" data-toggle="tab">South MelBourne区域空置率走势</a></li>
+      <li class="active"><a href="#price" data-toggle="tab">${area_name}区域中位数房价走势</a></li>
+      <li><a href="#rent" data-toggle="tab">${area_name}区域租金走势</a></li>
+      <li><a href="#emptypercent" data-toggle="tab">${area_name}区域空置率走势</a></li>
      <!-- <p class="navbar-text navbar-right">Signed in as Mark Otto</p>-->
     </ul>
     
@@ -952,10 +952,10 @@ function popInfo(){
 </div>
 
 
-<!--近期区域成交情况list-->
+<%-- <!--近期区域成交情况list-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
-	  <div class="panel-heading">South Melbourne近期区域成交情况<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
+	  <div class="panel-heading">${area_name}近期区域成交情况<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
 	  <table class="table table-striped">
     	<thead>
     		<tr class="row">
@@ -979,12 +979,12 @@ function popInfo(){
     	</tbody>
   	  </table>
 	</div>
-</div>
+</div> --%>
 
 <!--地区特点start-->
 <div style="margin-top:20px;">
   <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:white;">Sourth Melbourne 地区特点</div>
+  	<div class="panel-heading" style="background-color:white;">${area_name} 地区特点</div>
   	 <div class="panel-body">
   	     	<div class="col-xs-6">
   	     	<ul style="list-style-type:none">
@@ -1017,47 +1017,70 @@ function popInfo(){
 <!--人口分布-->
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
-	  <div class="panel-heading">South Melbourne区域人口分布<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
+	  <div class="panel-heading">${area_name}区域人口分布<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
 	  <table class="table table-striped">
 	  	
     	<thead>
     		
-    		<c:forEach items="${list}" var="item" varStatus="var">
+    		<c:forEach items="${list}" var="item" varStatus="var" begin="0" end="0">
+	    		<tr class="row">
+	    		<th class="col-md-4">${item.column1 }</th>
+	    		<th class="col-md-4">${item.column2 }</th>
+	    		<th class="col-md-4">${item.column3 }</th>
+	    		</tr>
+    		</c:forEach>
+    	</thead>
+    	
+    	<tbody>
+    	<c:forEach items="${list}" var="item" varStatus="var" begin="1" end="1">
+			<tr class="row">
+    			<td>${item.column1}</td>
+    			<td>${item.column2}</td>
+    			<td>${item.column3}</td>
+    		</tr>
+		</c:forEach> 
+    	</tbody>
+  	  </table>
+  	 <table class="table table-striped">
+	  	
+    	<thead>
+    		<c:forEach items="${list}" var="item" varStatus="var" begin="2" end="2">
     		<tr class="row">
-    		<th class="col-md-4">${item.column1 }</th>
-    		<th class="col-md-4">${item.column2 }</th>
-    		<th class="col-md-4">${item.column3 }</th>
-    		
+    		<th class="col-md-4">${item.column1}</th>
+    		<th class="col-md-4">${item.column2}</th>
+    		<th class="col-md-4">${item.column3}</th>
+    		</tr>
+    		</c:forEach> 
+    	</thead>
+    	
+    	<tbody>
+    	<c:forEach items="${list}" var="item" varStatus="var" begin="3" end="3">
+			<tr class="row">
+    			<td>${item.column1}</td>
+    			<td>${item.column2}<span>%</span></td>
+    			<td>${item.column3}<span>%</span></td>
+    		</tr>
+		</c:forEach> 
+    	</tbody>
+  	  </table>
+  	  <table class="table table-striped">
+	  	
+    	<thead>
+    	<c:forEach items="${list}" var="item" varStatus="var" begin="4" end="4">
+    		<tr class="row">
+    		<th class="col-md-4">${item.column1}</th>
+    		<th class="col-md-4">${item.column2}</th>
+    		<th class="col-md-4">${item.column3}</th>
     		</tr>
     		</c:forEach>
     	</thead>
     	
-    	<%-- <tbody>
-    	<c:forEach items="${peopleInfoList}" var="item" varStatus="var">
-			<tr class="row">
-    			<td>${item.count}</td>
-    			<td>${item.area}</td>
-    			<td>${item.city}</td>
-    		</tr>
-		</c:forEach> 
-    	</tbody> --%>
-  	  </table>
-  	 <%--  <table class="table table-striped">
-	  	
-    	<thead>
-    		<tr class="row">
-    		<th class="col-md-4">出生国家</th>
-    		<th class="col-md-4">区域</th>
-    		<th class="col-md-4">城市</th>
-    		</tr>
-    	</thead>
-    	
     	<tbody>
-    	<c:forEach items="${peopleNationList}" var="item" varStatus="var">
+    	<c:forEach items="${list}" var="item" varStatus="var" begin="5" end="9">
 			<tr class="row">
-    			<td>${item.born_nation}</td>
-    			<td>${item.area}<span>%</span></td>
-    			<td>${item.city}<span>%</span></td>
+    			<td>${item.column1}</td>
+    			<td>${item.column2}<span>%</span></td>
+    			<td>${item.column3}<span>%</span></td>
     		</tr>
 		</c:forEach> 
     	</tbody>
@@ -1065,42 +1088,24 @@ function popInfo(){
   	  <table class="table table-striped">
 	  	
     	<thead>
+    	<c:forEach items="${list}" var="item" varStatus="var" begin="10" end="10">
     		<tr class="row">
-    		<th class="col-md-4">海外出生-前${peopleForeignNum}位</th>
-    		<th class="col-md-4">区域</th>
-    		<th class="col-md-4">城市</th>
+    		<th  class="col-md-4">${item.column1}</th>
+    		<th  class="col-md-4">${item.column2}</th>
+    		<th  class="col-md-4">${item.column3}</th>
     		</tr>
+    		</c:forEach>
     	</thead>
     	
     	<tbody>
-    	<c:forEach items="${peopleForeignList}" var="item" varStatus="var">
+    	<c:forEach items="${list}" var="item" varStatus="var" begin="11" end="11">
 			<tr class="row">
-    			<td>${item.born_foreign}</td>
-    			<td>${item.area}<span>%</span></td>
-    			<td>${item.city}<span>%</span></td>
+    			<td>${item.column1}</td>
+    			<td><span>$</span>${item.column2}</td>
+    			<td><span>$</span>${item.column3}</td>
     		</tr>
 		</c:forEach> 
     	</tbody>
-  	  </table>
-  	  <table class="table table-striped">
-	  	
-    	<thead>
-    		<tr class="row">
-    		<th  class="col-md-4">平均家庭收入</th>
-    		<th  class="col-md-4">区域</th>
-    		<th  class="col-md-4">城市</th>
-    		</tr>
-    	</thead>
-    	
-    	<tbody>
-    	<c:forEach items="${familyIncomeList}" var="item" varStatus="var">
-			<tr class="row">
-    			<td>${item.family_income}</td>
-    			<td><span>$</span>${item.area}</td>
-    			<td><span>$</span>${item.city}</td>
-    		</tr>
-		</c:forEach> 
-    	</tbody> --%>
   	  </table>
 	</div>
 </div>
@@ -1109,7 +1114,7 @@ function popInfo(){
 <!--区域家庭情况构成pie-->
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
-	  <div class="panel-heading">South Melbourne区域家庭情况构成</div>
+	  <div class="panel-heading">${area_name}区域家庭情况构成</div>
 	  <div class="panel-body">
 	  	<div id="zonefamily_pie" style="height:200px">
       	</div>
@@ -1126,8 +1131,8 @@ function popInfo(){
   		<div class="row">
           <div class="news_position">
           		<div class="info" id="left">
-                <!-- <div class="scroll" id="left"> -->
-                     <!-- <img src="/images/news.jpg" alt="" width=350px height=255px> -->
+                <div class="scroll" id="left"> 
+                     <img src="${newsInfo_one.news_img}" alt="" width=350px height=255px>
                      <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
@@ -1135,7 +1140,7 @@ function popInfo(){
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    
+                    </div>
                      </div>
                 </div>
                 <div class="caption_my" style="height:98px;">
@@ -1145,6 +1150,8 @@ function popInfo(){
            </div>
 		   <div class="news_position" id="MyNews">
 		      	<div class="info" id="middle">
+		      	<div class="scroll" id="left"> 
+                     <img src="${newsInfo_two.news_img}" alt="" width=350px height=255px>
                      <div class="news_action_middle" style="display:none;">s
 	                     <ul class="list_m" id="list_scroll_middle">
 							  <li >Cras justo odio</li>
@@ -1154,16 +1161,17 @@ function popInfo(){
 						</ul>
                     
                      </div>
+                     </div>
                 </div>
                 <div class="caption_my" style="height:98px;">
 		          <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_two.title}</h3>
-		         <p>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleTwo }</p>
+		         <p>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuletwo }</p>
 		        </div>
 		   </div>
 		   <div class="news_position">
 		   		<div class="info" id="right">
-                <!-- <div class="scroll" id="left"> -->
-                     <!-- <img src="/images/news.jpg" alt="" width=350px height=255px> -->
+                <div class="scroll" id="left"> 
+                     <img src="${newsInfo_three.news_img}" alt="" width=350px height=255px> 
                      <div class="news_action_right" style="display:none;">
 	                     <ul class="list_r" id="list_scroll_right">
 							  <li >Cras justo odio</li>
@@ -1171,15 +1179,15 @@ function popInfo(){
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    
+                    </div>
                      </div>
                 </div>
 		      <!-- <div class="scroll" id="right">
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div> -->
                 <div class="caption_my" style="height:98px;">
-		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_Three.title}</h3>
-		         <p>新闻来源：${newsInfo_Three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleThree }</p>
+		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_three.title}</h3>
+		         <p>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleThree }</p>
 		        </div>
 		   </div>
 		   
@@ -1202,7 +1210,7 @@ function popInfo(){
                 <div class="scroll" id="left">
                      <img src="${RecommendProject1.project_img}" alt="" width=350px height=255px>
                 </div>
-                <div class="caption_my" style="height:98px;">
+                <div class="caption_my" style="height:98px;width=350px">
 		         <p class="desc"><a href="#">${RecommendProject1.project_name}</a> </p>
 		         <p>${RecommendProject1.project_desc}</p>
 		          
@@ -1212,7 +1220,7 @@ function popInfo(){
                 <div class="scroll" id="left">
                      <img src="${RecommendProject2.project_img}" alt="" width=350px height=255px>
                 </div>
-                <div class="caption_my" style="height:98px;">
+                <div class="caption_my" style="height:98px;width=350px">
 		         <p class="desc"><a href="#">${RecommendProject2.project_name}</a> </p>
 		         <p>${RecommendProject2.project_desc}</p>
 		          
@@ -1222,9 +1230,9 @@ function popInfo(){
 		      <div class="scroll" id="right">
                      <img src="${RecommendProject3.project_img}" alt="" width=350px height=255px>
                 </div>
-                <div class="caption_my" style="height:98px;">
+                <div class="caption_my" style="height:98px;width=350px">
 		         <p class="desc"><a href="#">${RecommendProject3.project_name}</a> </p>
-		         <p>${RecommendProject3.project_desc}</p>s
+		         <p>${RecommendProject3.project_desc}</p>
 		          
 		        </div>
 		   </div>
@@ -1588,7 +1596,6 @@ function popInfo(){
 
   var houseTaxStr=${houseTaxStr};
   var housetaxdata=${housetaxdata};
- alert(housetaxdata)
   var holdingTaxStr=${holdingTaxStr};
   var holdingdata=${holdingdata};
  </script>

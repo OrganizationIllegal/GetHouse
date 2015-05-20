@@ -68,6 +68,7 @@ public class SearchListController {
 					obj.put("MinPrice", item.getMinPrice());
 					obj.put("Project_img", item.getProject_img());
 					obj.put("Project_name", item.getProject_name());
+					obj.put("project_num", item.getProject_num());
 					array.add(obj);
 				}
 				json.put("List", array);

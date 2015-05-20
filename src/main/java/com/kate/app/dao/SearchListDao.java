@@ -15,7 +15,7 @@ public class SearchListDao extends BaseDao {
 	public List<SearchList> listSearchList(){
 		List<SearchList> searchInfoList=new ArrayList<SearchList>();
 		try {
-			String sql = "select t.id,t.project_img,t.project_name,t.project_sales_remain, MAX(h.house_price) as maxprice,MIN(h.house_price) as  minprice,MAX(h.house_size_in) as maxarea,Min(h.house_size_in) as minarea,b.return_money from house_project t JOIN house_info  h ON t.id=h.house_project_id  JOIN buy_info b on  b.house_pro_id=h.house_project_id GROUP BY h.house_project_id";
+			String sql = "select t.id,t.project_img,t.project_num,t.project_name,t.project_sales_remain, MAX(h.house_price) as maxprice,MIN(h.house_price) as  minprice,MAX(h.house_size_in) as maxarea,Min(h.house_size_in) as minarea,b.return_money from house_project t JOIN house_info  h ON t.id=h.house_project_id  JOIN buy_info b on  b.house_pro_id=h.house_project_id GROUP BY h.house_project_id";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -27,8 +27,10 @@ public class SearchListDao extends BaseDao {
 		    int maxarea=0;
 		    int minarea=0;
 		    int return_money=0;
+		    String project_num = "";
 		    while(rs.next()){
 		    	id=rs.getInt("id");
+		    	
 		    	project_img=rs.getString("project_img");
 		    	project_name=rs.getString("project_name");
 		    	project_sales_remain=rs.getInt("project_sales_remain");
@@ -37,7 +39,8 @@ public class SearchListDao extends BaseDao {
 		    	maxarea=rs.getInt("maxarea");
 		    	minarea=rs.getInt("minarea");
 		    	return_money=rs.getInt("return_money");
-		    	SearchList  searchList=new SearchList( id, project_img,project_name,maxPrice, minprice , maxarea,minarea, project_sales_remain, return_money );
+		    	project_num = rs.getString("project_num");
+		    	SearchList  searchList=new SearchList( id, project_num, project_img,project_name,maxPrice, minprice , maxarea,minarea, project_sales_remain, return_money );
 		    	searchInfoList.add(searchList);
 		    }
 		    

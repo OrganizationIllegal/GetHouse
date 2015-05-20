@@ -20,6 +20,8 @@ public class MiddlePriceDao extends BaseDao {
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				middlePrice.setArea_quyu(rs.getString("area_quyu"));
+				middlePrice.setBuy_price(rs.getInt("buy_price"));
+				middlePrice.setZu_price(rs.getInt("zu_price"));
 				middlePrice.setBuy_one_name(rs.getString("buy_one_name"));
 				middlePrice.setBuy_one_price(rs.getInt("buy_one_price"));
 				middlePrice.setBuy_two_name(rs.getString("buy_two_name"));

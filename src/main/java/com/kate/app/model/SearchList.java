@@ -10,8 +10,16 @@ public class SearchList {
 	private int minArea;
 	private int keshou;
 	private int fanxian;
-	public SearchList(int id,String project_img,String project_name,int maxPrice,int minPrice ,int maxArea,int minArea,int keshou,int fanxian ){
+	private String project_num;
+	public String getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}
+	public SearchList(int id,String project_num, String project_img,String project_name,int maxPrice,int minPrice ,int maxArea,int minArea,int keshou,int fanxian ){
 		this.id=id;
+		this.project_num = project_num;
 		this.project_img=project_img;
 		this.project_name=project_name;
 		this.maxPrice=maxPrice;

@@ -113,7 +113,37 @@ public class BrokerInfoDao extends BaseDao {
 	} 
 	
 	
-	
+	public BrokerInfo getBrokerInfo(int id){
+		BrokerInfo data = new BrokerInfo();
+		try {
+			String sql = "select * from broker_info where id = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			
+		    while(rs.next()){
+		    	
+		    	data.setBroker_experience(rs.getInt("broker_experience"));
+		    	data.setBroker_img(rs.getString("broker_img"));
+		    	data.setBroker_language(rs.getString("broker_language"));
+		    	data.setBroker_name(rs.getString("broker_name"));
+		    	data.setBroker_num(rs.getString("broker_num"));
+		    	data.setBroker_region(rs.getString("broker_region"));
+		    	data.setBroker_type(rs.getString("broker_type"));
+		    	data.setBroker_zizhi(rs.getString("broker_zizhi"));
+		    	data.setId(rs.getInt("id"));
+		    	data.setIntroduction(rs.getString("introduction"));
+		    	data.setOffice(rs.getString("office"));
+		    	
+		    }
+		    
+		  
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return data;
+	} 
 	
 	
 }

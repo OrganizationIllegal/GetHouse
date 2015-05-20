@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	    html+="<div class='panel panel-default'><div class='panel-heading' style='background-color:rgb(21,63,101);'>";
                 	    html+="<span style='color:white'>"+items[j].Project_name+"</span></div>";
  						html+="<div class='panel-body'><div id='item'><div class='media'><div class='col-xs-5'>";
- 						html+="<a class='pull-left' href='/Index?projectId="+items[j].id+"'"+" target='_parent'>";
+ 						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
  						html+="<img alt='image' class='img-responsive' src='pic/house2.jpg' ></a></div>";
  						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
   	                    html+="<h4><b>完整的购房服务</b></h4><hr/><span>7*24小时全天候在线，全</span><br/>";

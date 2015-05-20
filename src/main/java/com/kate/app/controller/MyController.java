@@ -108,6 +108,8 @@ public class MyController {
 		int proId = 0;
 		int areaId = 0;
 		String project_type ="";
+		String area_name ="";
+		AreaInfo areaInfo = new AreaInfo();
 		if(proNum!=null && !"".equals(proNum)){
 			proId = utilDao.getHouseProId(proNum);
 			
@@ -116,6 +118,10 @@ public class MyController {
 		if(project!=null){
 			areaId = project.getArea_id();
 			project_type = project.getProject_type();
+			areaInfo = areaInfoService.getAreaInfo(areaId);
+			if(areaInfo!=null){
+				area_name = areaInfo.getArea_name();
+			}
 		}
 		
 		/*if(areaNum!=null && !"".equals(areaNum)){
@@ -144,6 +150,7 @@ public class MyController {
 		
 		 getHouseTax(req,resp,proId);
 		 getPeopleRegion(req,resp,proId);
+		 req.setAttribute("area_name", area_name);
 		 /*getAreaFamily(req,resp);
 		 getAreaFeature(req,resp);
 		 getLatestSaleInfo(req,resp);
@@ -272,7 +279,7 @@ public class MyController {
 			}
 			
 			newsInfo_two = newsList.get(1);
-			
+			System.out.println(newsInfo_two.getTime());
 			Timestamp timetwo = newsInfo_two.getTime();
 			SimpleDateFormat dftwo = new SimpleDateFormat("yyyy-MM-dd");
 			if(time!=null){
@@ -280,7 +287,7 @@ public class MyController {
 			}
 			
 			newsInfo_three = newsList.get(2);
-			
+			System.out.println(newsInfo_three .getTitle());
 			Timestamp timeThree = newsInfo_three.getTime();
 			SimpleDateFormat dfThree = new SimpleDateFormat("yyyy-MM-dd");
 			if(time!=null){
@@ -333,13 +340,25 @@ public class MyController {
 		HouseProject hp3 = new HouseProject();
 		if(data!=null){
 			hp1 = houseProjectService.getHouseProject(data.getRecommend_id_1());
+			String desc1 = hp1.getProject_desc();
+			hp1.setProject_desc(desc1.substring(0, 20)+"...");
 			hp2 = houseProjectService.getHouseProject(data.getRecommend_id_2());
+			String desc2 = hp2.getProject_desc();
+			hp2.setProject_desc(desc2.substring(0, 20)+"...");
 			hp3 = houseProjectService.getHouseProject(data.getRecommend_id_3());
+			String desc3 = hp3.getProject_desc();
+			hp3.setProject_desc(desc3.substring(0, 20)+"...");
 		}
 		else if(project!=null){
 			hp1 = houseProjectService.getHouseProject(project.getRecommend_id_1());
+			String desc1 = hp1.getProject_desc();
+			hp1.setProject_desc(desc1.substring(0, 20)+"...");
 			hp2 = houseProjectService.getHouseProject(project.getRecommend_id_2());
+			String desc2 = hp2.getProject_desc();
+			hp2.setProject_desc(desc2.substring(0, 20)+"...");
 			hp3 = houseProjectService.getHouseProject(project.getRecommend_id_3());
+			String desc3 = hp3.getProject_desc();
+			hp3.setProject_desc(desc3.substring(0, 20)+"...");
 		}
 		//HouseProject pro = houseProjectService.getHouseProject(proId);
 		//System.out.println(list.get(0).getImage_name());

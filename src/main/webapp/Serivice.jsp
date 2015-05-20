@@ -109,22 +109,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 					<div>
-						<span style="font-size:15px;color:black;"><img src="pic/5a.png">独立别墅</span>
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<span style="font-size:15px;color:black;"><img src="pic/6a.png">联排别墅</span>
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						<span style="font-size:15px;color:black;"><img src="pic/7a.png">城市公寓</span>
+						<span style="font-size:15px;color:black;"><img src="pic/5a.png">${brokerInfo.broker_type }</span>
+						
 						</div>
 						
-					<div style="padding-top:20px;">
+					<div style="padding:40px 0px 40px 0px;">
 						<span style="font-size:22px;color:black;">专业资质<img src="pic/8a.png"></span> 
 						
 						</div>
 					
 					<div>
-						<span style="font-size:15px;color:black;">房产经纪人资格</span>
-						&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						<span style="font-size:15px;color:black;">${brokerInfo.broker_zizhi }</span>
+						
 						</div>
 					
 					<div style="padding-top:10px;"> 
@@ -135,9 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span style="font-size:16px;color:black;">${brokerInfo.introduction}</span>
 				</div>
 				
-				<div> 
-						<img src="pic/2a.png">
-				</div>
+				
 			 </div>
 				
 			<div class="col-md-3" style="background-color:rgba(83, 81, 65, 1); margin-top:15px;">

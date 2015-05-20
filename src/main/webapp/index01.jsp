@@ -304,7 +304,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	 <c:forEach var="item" items="${projectList}">
   	 	<div class="col-xs-4" >
   	     		<img alt="image" class="img-responsive" src="${item.project_img }">
-  	     	</div>
+  	    </div>
   	 </c:forEach>
  
      </div>
