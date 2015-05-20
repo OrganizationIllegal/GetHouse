@@ -25,7 +25,7 @@ public class Index01Controller {
 	@Autowired
 	private ZhiYeDao zhiYeDao;
 	
-	@RequestMapping({"/first/index01" })
+	@RequestMapping({"/index01" })
 	public String index01(HttpServletRequest req,HttpServletResponse resp){
 		List<Integer> list = index01Dao.getTuijian();
 		List<NewsBoke> newsList = zhiYeDao.selectNewsBoke();

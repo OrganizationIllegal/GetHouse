@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 </head>
 <body style="padding-top: 105px;">
- <jsp:include page="head.jsp" />
+<jsp:include page="head.jsp" />
  <div class="container">
  <!--搜索-->
  <div style="">
