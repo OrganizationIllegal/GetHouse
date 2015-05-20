@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  </div>-->
  <div class="col-md-3" style="padding-top:10px;padding-left:30px;">
  <div class="btn-group">
-  <button type="button" class="btn btn-warning" style="width:100px;"><a href="bingMap.jsp">地图找房</a></button>
+  <button type="button" class="btn btn-warning" style="width:100px;"><a href="/BingMap">地图找房</a></button>
   <button type="button" class="btn btn-warning" style="width:100px;"><a href="#">列表找房</a></button>
 </div>
  </div>

@@ -303,7 +303,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	 <div class="panel-body">
   	 <c:forEach var="item" items="${projectList}">
   	 	<div class="col-xs-4" >
-  	     		<img alt="image" class="img-responsive" src="${item.project_img }">
+  	     		<a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="${item.project_img }"></a>
   	    </div>
   	 </c:forEach>
  

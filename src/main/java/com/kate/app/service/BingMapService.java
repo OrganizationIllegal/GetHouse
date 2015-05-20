@@ -41,6 +41,7 @@ public class BingMapService {
 			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
 			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
 			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			obj.put("project_num", data.getProject_num()==null?"":data.getProject_num());
 			array.add(obj);
 		}
 		return array;
@@ -56,6 +57,7 @@ public class BingMapService {
 			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
 			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
 			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			obj.put("project_num", data.getProject_num()==null?"":data.getProject_num());
 			array.add(obj);
 		}
 		return array;
@@ -70,6 +72,7 @@ public class BingMapService {
 			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
 			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
 			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			obj.put("project_num", data.getProject_num()==null?"":data.getProject_num());
 			array.add(obj);
 		}
 		return array;

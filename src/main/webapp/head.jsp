@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
        </div>
    <div class="row" style="background-color:white;padding-top:25px;">
-		<div class="col-md-1"></div>
+		<div class="col-md-1" style="height:2px;"></div>
 		<div class="col-md-2">
 		  <img src="images/logo.PNG" style="margin-top:-20px;"/>
 		</div>
@@ -53,13 +53,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        			<a href="/AboutUs.jsp">关于我们</a>
        		</div>
        </div>  
-       <div class="col-md-1" >	
+       <!-- <div class="col-md-1" >	
        	<div>
        	<span class="glyphicon glyphicon-list-alt" style="color:#9C9C9C;"></span>
        		<a href="#"style="font-size:17px;color:#9C9C9C;font-weight:bold;">Blog</a>
        	</div>
-       	</div>
-       <div class="col-md-1"></div>
+       	</div> -->
+       <div class="col-md-2"></div>
    </div>
 </nav>
 

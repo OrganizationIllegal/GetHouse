@@ -152,6 +152,7 @@ public class BingMapDao extends BaseDao {
 		    	coordinates.setProject_name(rs.getString("project_name"));
 		    	coordinates.setProject_img(rs.getString("project_img"));
 		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinates.setProject_num(rs.getString("project_num"));
 		    	coordinatesList.add(coordinates);
 		    }
 		    
@@ -189,6 +190,7 @@ public class BingMapDao extends BaseDao {
 		    	coordinates.setProject_name(rs.getString("project_name"));
 		    	coordinates.setProject_img(rs.getString("project_img"));
 		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinates.setProject_num(rs.getString("project_num"));
 		    	coordinatesList.add(coordinates);
 		    }
 		} catch (Exception e) {
@@ -210,6 +212,7 @@ public class BingMapDao extends BaseDao {
 		    	coordinates.setProject_name(rs.getString("project_name"));
 		    	coordinates.setProject_img(rs.getString("project_img"));
 		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinates.setProject_num(rs.getString("project_num"));
 		    	coordinatesList.add(coordinates);
 		    }
 		} catch (Exception e) {
