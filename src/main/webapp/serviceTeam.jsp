@@ -28,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 <div class="form-group">
 
 			 	 <div class="col-md-3" style="padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="经纪姓名"></div>
-			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="类型"></div>
-			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="区域"></div>
-			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="语言"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" name="type" placeholder="类型"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" name="area" placeholder="区域"></div>
+			 	 <div class="col-md-2" style="width:230px;padding-top:10px;"><input type="text" class="form-control" name="lang" placeholder="语言"></div>
 			 	 <div class="col-md-1" ><button type="submit" class="btn btn-default" style="width:120px;background-color:red;color:white;">搜索</button></div>
 
 			 	 <div class="col-md-2"></div>
