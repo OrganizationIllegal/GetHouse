@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="row" style="height:70px;border:1px solid #FFE4E1;">
             <div class="col-lg-1"></div>
-            <div class="col-lg-2" style="font-size:24px;line-height:70px;height:100%;font-weight:bold;">置业指导</div>
+            <div class="col-lg-2" style="font-size:24px;line-height:70px;height:100%;font-weight:bold;">博客</div>
         </div>
         <div class="row" style="margin-top:20px;">
             <div class="col-lg-1"></div>
@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <div class="panel-heading" id="leftpanel">1-${pageCount}的${total}篇文章</div>
                       <div class="panel-body">
                         <ul class="media-list" id="mainlist">
-                        <c:forEach items="${resultList}" var="item" varStatus="status">
+                        <c:forEach items="${newsList}" var="item" varStatus="status">
                         	<c:if test="${status.index < 6}">
                         		<li class="media">
                              <div class="media-left">
@@ -42,9 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </a>
                               </div>
                               <div class="media-body">
-                                <h4 class="media-heading">${item.title}</h4>
-                                <p style="font-size:12px;">${item.fenlei}</p>
-                                <p style="font-size:120x;">${item.zhiye_abstract}</p>
+                                <h4 class="media-heading">${item.news_title}</h4>
+                                <p style="font-size:12px;">${item.news_fenlei}</p>
+                                <p style="font-size:120x;">${item.news_abstract}</p>
                                 <a href="">全文></a>
                               </div>
                           </li>
@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$.ajax({
                         type: "POST",  
                         dataType: "json",  
-                        url: '/ZhiYeFenYe',      //提交到一般处理程序请求数据   
+                        url: '/NewsBokeFenYe',      //提交到一般处理程序请求数据   
                         data: { pageIndex : 1,type:category},
                         success: function(data) {
                        

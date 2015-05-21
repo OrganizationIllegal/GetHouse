@@ -58,6 +58,94 @@ public class ZhiYeZhiDaoController {
 	}
 	
 	
+	@RequestMapping({"/BlogList"})
+	public String BlogList(HttpServletRequest req, HttpServletResponse resp){
+		List<ZhiYeZhiDao> zhiYeList=zhiYeDao.selectZhiYe();   //得到所有的信息，按时间排序
+		List<NewsBoke> newsList = zhiYeDao.selectNewsBoke();
+		int total = newsList.size();
+		int pageCount = total%PAGE_SIZE == 0 ? total/PAGE_SIZE: total/PAGE_SIZE+1;
+		List<ZhiYeZhiDao> lastestList = new ArrayList<ZhiYeZhiDao>();
+		/*if(zhiYeList!=null){
+			
+		}*/
+		if(zhiYeList.size() > 3){
+			lastestList = zhiYeList.subList(0, 3);
+		}
+		else{
+			lastestList = zhiYeList;
+		}
+		if(newsList.size() > 3){
+			newsList = newsList.subList(0, 3);
+		}
+		List<String> fenleiList = zhiYeDao.newsBokeFenlei();
+		System.out.println(pageCount);
+		//Collections.shuffle(zhiYeList);   //随机排序
+		req.setAttribute("resultList",zhiYeList);
+		req.setAttribute("lastestList",lastestList);
+		req.setAttribute("newsList",newsList);
+		req.setAttribute("fenleiList",fenleiList);
+		req.setAttribute("total",total);
+		req.setAttribute("pageCount",pageCount);
+		
+		return "/BlogList.jsp";
+	}
+	
+	@RequestMapping({"/NewsBokeFenYe"})
+	public void NewsBokeFenYe(HttpServletRequest req, HttpServletResponse resp){
+		String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
+		int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
+		List<NewsBoke> newsBokeList = new ArrayList(); 
+		String fenlei = req.getParameter("type");
+		if(fenlei==null||"".equals(fenlei)||fenlei.equals("请选择一个类别")){
+			newsBokeList = zhiYeDao.selectNewsBoke();  //得到所有的信息，按时间排序
+		}
+		else{
+			newsBokeList = zhiYeDao.selectNewsBokeByFenlei(fenlei);
+		}
+		int total = newsBokeList.size();
+		int pageCount = total%PAGE_SIZE == 0 ? total/PAGE_SIZE: total/PAGE_SIZE+1;
+		int pageEnd = pageNum * PAGE_SIZE;
+		int end = pageEnd < total ? pageEnd : total;
+		
+		int start = (pageNum-1) * PAGE_SIZE;
+		int pageStart = start == pageEnd ? 0 : start;
+		
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		if(pageStart <= end){
+			List<NewsBoke> resultList=newsBokeList.subList(start, end);
+			
+			for(NewsBoke item : resultList){
+				JSONObject obj = new JSONObject();
+				obj.put("id", item.getId());
+				obj.put("news_num", item.getNews_num());
+				obj.put("news_people", item.getNews_people());
+				obj.put("news_fenlei", item.getNews_fenlei());
+				obj.put("news_abstract", item.getNews_abstract());
+				obj.put("detail", item.getNews_detail());
+				obj.put("image", item.getNews_image());
+				obj.put("title", item.getNews_title());
+				array.add(obj);
+			}
+			json.put("List", array);
+			json.put("total", total);
+			json.put("pageCount", pageCount);
+			
+		}
+		else{
+			json.put("List", "");
+			json.put("total", total);
+			json.put("pageCount", pageCount);
+		}
+		
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
 	//锟斤拷锟斤拷锟斤拷锟斤拷锟叫憋拷锟斤拷示
