@@ -122,5 +122,61 @@ import com.kate.app.model.ZhiYeZhiDao;
 			return list;
 		}
 		
+		public int countNewsBoke(){    //统计总数
+			int count = 0;
+			try{
+				String sql = " select count(*) from news_boke";
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					count = rs.getInt(1);
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return count;
+			
+		}
 		
+		public List<String> newsBokeFenlei(){
+			List<String> list = new ArrayList<String>();
+			try{
+				String sql = " select distinct news_fenlei from news_boke";   // 按照时间排序最新
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					String fenlei = new String();
+					fenlei = rs.getString("news_fenlei");
+					list.add(fenlei);
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return list;
+		}
+		
+		public List<NewsBoke> selectNewsBokeByFenlei(String fenLei){
+			List<NewsBoke> list = new ArrayList<NewsBoke>();
+			try{
+				String sql = " select * from news_boke where news_fenlei=?";   // 按照时间排序最新
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, fenLei);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					NewsBoke data = new NewsBoke();
+					data.setId(rs.getInt("id"));
+					data.setNews_abstract(rs.getString("news_abstract"));
+					data.setNews_detail(rs.getString("news_detail"));
+					data.setNews_image(rs.getString("news_image"));
+					data.setNews_num(rs.getString("news_num"));
+					data.setNews_people(rs.getString("news_people"));
+					data.setNews_time(rs.getTimestamp("news_time"));
+					data.setNews_title(rs.getString("news_title"));
+					list.add(data);
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return list;
+		}
 }

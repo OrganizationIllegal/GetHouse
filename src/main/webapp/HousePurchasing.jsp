@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="panel panel-default">
               <div class="panel-heading">置业</div>
               <div class="panel-body"> 
-                <a href="/HousePurchasing" style="display:block;">置业指导</a><br>
+                <a href="/ZhiYeInfo" style="display:block;">置业指导</a><br>
                 <a href="/BlogList">博客</a>
               </div>
             </div>
