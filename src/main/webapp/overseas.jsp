@@ -157,45 +157,45 @@ $(function(){
             </h4>
          </div>
          <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="/UserInfo/AddAccount" method="post">
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="pwd" 
             placeholder="登录密码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="tel" 
             placeholder="电话号码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="email"
             placeholder="电子邮箱">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-       <input type="text" class="form-control" id="lastname" 
+       <input type="text" class="form-control" name="account"
             placeholder="开立账户">      
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+         <textarea type="text" rows="5" cols="20" class="form-control" name="msg" 
             placeholder="留言"></textarea>
             
       </div>

@@ -1,4 +1,3 @@
-#Tue May 19 22:47:43 CST 2015
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=efc214e9d4f42cfa1327d82d0863d102e41cb198
@@ -17,6 +16,7 @@ encoding//src/main/java/com/kate/app/dao/BrokerInfoDao.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/Index01Dao.java=GBK
 encoding//src/main/java/com/kate/app/dao/MiddlePriceDao.java=GBK
 encoding//src/main/java/com/kate/app/dao/RegionPeopleDao.java=UTF-8
+encoding//src/main/java/com/kate/app/dao/UserInfoDao.java=UTF-8
 encoding//src/main/java/com/kate/app/dao/UtilDao.java=GBK
 encoding//src/main/java/com/kate/app/service/AjaxService.java=UTF-8
 encoding//src/main/java/com/kate/app/service/BuyInfoService.java=UTF-8

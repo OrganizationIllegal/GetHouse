@@ -44,7 +44,7 @@
 	 		dateType: "json",
 	 		url: "/BingMap/Coordinates", 		
 	 		success:function(data){
-	 		alert(data)
+	 		//alert(data)
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
 	 		    for(var i=0;i<items.length;i++){

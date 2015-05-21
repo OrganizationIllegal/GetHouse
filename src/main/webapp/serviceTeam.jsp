@@ -49,12 +49,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-md-4"><a href="/Service?brokerId=${item.id}"><img src="/images/jingjiren.PNG"></a></div>
 					<div class="col-md-8" style="padding-left:0px;">
 						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">${item.broker_name}</div>
-						<div ><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.office}</span></div>
-						<div style="padding-left:20px;font-weight:bold;margin-top:5px;">${item.introduction}</div>
+						<div ><img  src="/images/serviceteam/b2.PNG">&nbsp;<span style="font-weight:bold;">${item.office}</span></div>
+						<div style="padding-left:30px;font-weight:bold;margin-top:5px;">${item.introduction}</div>
 						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div ><span class="glyphicon glyphicon-tree-conifer" style="color:red;"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_region}</span></div>
+						<div ><img  src="/images/serviceteam/b3.PNG">&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_region}</span></div>
 						<hr style="height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;" />
-						<div style="margin-top:5px;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_language}</span><span class="glyphicon glyphicon-home" style="margin-left:120px;color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span><span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span>&nbsp;<span class="glyphicon glyphicon-home" style="color:#9fc5e8;"></span></div>
+						<div style="margin-top:5px;"><img  src="/images/serviceteam/b4.PNG">&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_language}</span><img  src="/images/serviceteam/b1.PNG" style="margin-left:165px;"></div>
 					</div>
 				</div>
 			</c:forEach>	

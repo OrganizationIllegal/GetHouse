@@ -443,9 +443,10 @@ function popInfo(){
 		
 		<div class="row"	style="width:100%; margin-left:-3%;margin-right:10%;margin-top:20px;"> 
 		<div style="padding-left:5px;padding-right:5px;">
+		<form class="form-horizontal" role="form" action="/UserInfo/AddNeed" method="post">
 	<div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
       </div>
       <div class="col-sm-1"></div>
@@ -453,7 +454,7 @@ function popInfo(){
    
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="email" 
             placeholder="邮件">
       </div>
       <div class="col-sm-1"></div>
@@ -461,7 +462,7 @@ function popInfo(){
    
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="tel"
             placeholder="电话">
       </div>
       <div class="col-sm-1"></div>
@@ -469,7 +470,7 @@ function popInfo(){
    
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="need" 
             placeholder="需求">
       </div>
       <div class="col-sm-1"></div>
@@ -481,7 +482,7 @@ function popInfo(){
 			
 		 <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+         <textarea type="text" rows="5" cols="20" class="form-control" name="msg" 
             placeholder="留言"></textarea>
             
       </div>
@@ -494,7 +495,7 @@ function popInfo(){
       </div>
       <div class="col-sm-1"></div>
    </div>
-			
+</form>		
 		
 		</div>
 		</div>
@@ -1307,38 +1308,38 @@ function popInfo(){
             </h4>
          </div>
          <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="/UserInfo/AddNewestPrice" method="post">
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="pwd" 
             placeholder="登录密码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="tel"  
             placeholder="电话号码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="email" 
             placeholder="电子邮箱">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-        <input type="text" class="form-control" id="lastname" 
+        <input type="text" class="form-control" name="newestprice" 
             placeholder="最新价格">
   </select>      
       </div>
@@ -1346,7 +1347,7 @@ function popInfo(){
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+         <textarea type="text" rows="5" cols="20" class="form-control" name="msg"  
             placeholder="留言"></textarea>
             
       </div>
@@ -1381,45 +1382,45 @@ function popInfo(){
             </h4>
          </div>
          <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="/UserInfo/AddHouseType" method="post">
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="pwd" 
             placeholder="登录密码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="tel"  
             placeholder="电话号码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="email"
             placeholder="电子邮箱">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-       <input type="text" class="form-control" id="lastname" 
+       <input type="text" class="form-control" name="housetype"
             placeholder="完整户型">      
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+         <textarea type="text" rows="5" cols="20" class="form-control" name="msg" 
             placeholder="留言"></textarea>
             
       </div>
@@ -1441,7 +1442,7 @@ function popInfo(){
 <!-- 完整户型模态框end -->
 
 <!-- house style模态框end -->
-<!-- 最新价格模态框start-->
+<!-- 详情咨询模态框start-->
 <div class="modal fade" id="projectInfo" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
@@ -1456,45 +1457,45 @@ function popInfo(){
             </h4>
          </div>
          <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="/UserInfo/AddAsk" method="post">
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="pwd" 
             placeholder="登录密码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="tel" 
             placeholder="电话号码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="email" 
             placeholder="电子邮箱">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-        <input type="text" class="form-control" id="lastname" 
+        <input type="text" class="form-control" name="ask" 
             placeholder="项目咨询" disabled="disabled">     
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+         <textarea type="text" rows="5" cols="20" class="form-control" name="msg" 
             placeholder="留言"></textarea>
             
       </div>
@@ -1513,7 +1514,7 @@ function popInfo(){
       </div>
 </div>
 </div>
-<!-- 最新价格模态框end -->
+<!-- 详情咨询模态框end -->
 
 
 <!-- 索取完整价格单模态框start-->
@@ -1531,45 +1532,45 @@ function popInfo(){
             </h4>
          </div>
          <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="/UserInfo/AddAllPrice" method="post">
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="firstname" 
+         <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="pwd" 
             placeholder="登录密码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="tel" 
             placeholder="电话号码">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-         <input type="text" class="form-control" id="lastname" 
+         <input type="text" class="form-control" name="email" 
             placeholder="电子邮箱">
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
-       <input type="text" class="form-control" id="lastname" 
+       <input type="text" class="form-control" name="allprice" 
             placeholder="索取完整价格单">      
       </div>
       <div class="col-sm-1"></div>
    </div>
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
-         <textarea type="text" rows="5" cols="20" class="form-control" id="lastname" 
+         <textarea type="text" rows="5" cols="20" class="form-control" name="msg" 
             placeholder="留言"></textarea>
             
       </div>
