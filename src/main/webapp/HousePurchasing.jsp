@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<c:if test="${status.index < 6}">
                         		<li class="media">
                              <div class="media-left">
-                                <a href="#">
+                                <a href="/news_blog.jsp">
                                   <img class="media-object" src="" alt="" width="180px" height="140px">
                                 </a>
                               </div>
@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <h4 class="media-heading">${item.title}</h4>
                                 <p style="font-size:12px;">${item.fenlei}</p>
                                 <p style="font-size:120x;">${item.zhiye_abstract}</p>
-                                <a href="">全文></a>
+                                <a href="/news_blog.jsp">全文></a>
                               </div>
                           </li>
                         	</c:if>
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <c:forEach items="${newsList}" var="item" varStatus="status">
                 		 <li class="media">
                              <div class="media-left">
-                                <a href="#">
+                                <a href="/news_blog.jsp">
                                   <img class="media-object" src="" alt="" width="64px" height="58px">
                                 </a>
                               </div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	 <c:forEach items="${lastestList}" var="item" varStatus="status">
                 	 	 <li class="media">
                              <div class="media-left">
-                                <a href="#">
+                                <a href="/news_blog.jsp">
                                   <img class="media-object" src="" alt=""  width="64px" height="58px">
                                 </a>
                               </div>
@@ -195,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						html+="</a></div><div class='media-body'><h4 class='media-heading'>"+items[j].title;
  						html+="</h4><p style='font-size:12px;'>"+items[j].fenlei;
  						html+="</p><p style='font-size:120x;'>"+items[j].zhiye_abstract;
- 						html+="<a href=''>全文></a></div></li>";
+ 						html+="<a href='/news_blog.jsp'>全文></a></div></li>";
                 	}
                 }
                 else{

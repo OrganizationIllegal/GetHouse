@@ -33,7 +33,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
 				projectInfo.setProject_type(rs.getString("project_type"));
 				projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
-				projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+				//projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
 				projectInfo.setProject_desc(rs.getString("project_desc"));
 				projectInfo.setProject_city(rs.getString("project_city"));
 				projectInfo.setProject_house_type(rs.getString("project_house_type"));
@@ -65,7 +65,7 @@ public class HouseProjectDao extends BaseDao{
 	}
 	
 	/*
-	 * 查看经纪人的信息
+	 * 锟介看锟斤拷锟斤拷锟剿碉拷锟斤拷息
 	 */
 	public BrokerInfo BrokerInfoDao(int id){
 		BrokerInfo brokerInfo = new BrokerInfo();
@@ -96,7 +96,7 @@ public class HouseProjectDao extends BaseDao{
 	
 	
 	/*
-	 * 查看开发商的信息
+	 * 锟介看锟斤拷锟斤拷锟教碉拷锟斤拷息
 	 */
 	public DeveloperInfo DeveloperInfoDao(int id){
 		DeveloperInfo developerInfo = new DeveloperInfo();
@@ -134,7 +134,7 @@ public class HouseProjectDao extends BaseDao{
 				ProjectImage projectImage = new ProjectImage();
 				projectImage.setId(rs.getInt("id"));
 				projectImage.setImage_name(rs.getString("image_name"));
-				projectImage.setImage_type(rs.getInt("image_type"));
+				projectImage.setImage_type(rs.getString("image_type"));
 				projectImage.setView_shunxu(rs.getInt("view_shunxu"));
 				
 				list.add(projectImage);
@@ -160,7 +160,7 @@ public class HouseProjectDao extends BaseDao{
 				ProjectImage projectImage = new ProjectImage();
 				projectImage.setId(rs.getInt("id"));
 				projectImage.setImage_name(rs.getString("image_name"));
-				projectImage.setImage_type(rs.getInt("image_type"));
+				projectImage.setImage_type(rs.getString("image_type"));
 				projectImage.setView_shunxu(rs.getInt("view_shunxu"));
 				projectImage.setHouse_pro_id(rs.getInt("house_pro_id"));
 				list.add(projectImage);

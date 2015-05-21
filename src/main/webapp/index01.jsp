@@ -303,7 +303,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	 <div class="panel-body">
   	 <c:forEach var="item" items="${projectList}">
   	 	<div class="col-xs-4" >
-  	     		<a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="${item.project_img }"></a>
+  	     		<a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.project_img }"></a>
   	    </div>
   	 </c:forEach>
  
@@ -323,8 +323,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-2" style="width:150px;"></div>
 			<c:forEach var="item" items="${newsList}">
 		  	 	    <div class="col-md-3">
-						<div><img src="${item.news_image}"></div>
-						<div>${item.news_abstract}</div>
+						<div style="width:230px;"><a href="/news_blog.jsp"><img src="http://101.200.174.253:8080/all/${item.news_image}" width=230px></a></div>
+						<div style="height:100px;width:230px;">${item.news_abstract}</div>
 					</div>
   	 		</c:forEach>
 			<div class="col-md-1"></div>

@@ -21,6 +21,52 @@ public class HouseProject {
 	private int recommend_id_2;
 	private int recommend_id_3;
 	private String wuyefei;
+	private int tuijiandu;
+	private String buytaxInfo;
+	private String holdInfo;
+	private String project_min_price;
+	private String project_high_price;
+	private Timestamp housePrice_update_time;
+	
+	
+	
+	
+	public int getTuijiandu() {
+		return tuijiandu;
+	}
+	public void setTuijiandu(int tuijiandu) {
+		this.tuijiandu = tuijiandu;
+	}
+	public String getBuytaxInfo() {
+		return buytaxInfo;
+	}
+	public void setBuytaxInfo(String buytaxInfo) {
+		this.buytaxInfo = buytaxInfo;
+	}
+	public String getHoldInfo() {
+		return holdInfo;
+	}
+	public void setHoldInfo(String holdInfo) {
+		this.holdInfo = holdInfo;
+	}
+	public String getProject_min_price() {
+		return project_min_price;
+	}
+	public void setProject_min_price(String project_min_price) {
+		this.project_min_price = project_min_price;
+	}
+	public String getProject_high_price() {
+		return project_high_price;
+	}
+	public void setProject_high_price(String project_high_price) {
+		this.project_high_price = project_high_price;
+	}
+	public Timestamp getHousePrice_update_time() {
+		return housePrice_update_time;
+	}
+	public void setHousePrice_update_time(Timestamp housePrice_update_time) {
+		this.housePrice_update_time = housePrice_update_time;
+	}
 	public String getMianji() {
 		return mianji;
 	}

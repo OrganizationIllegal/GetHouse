@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
-   <script src="http://echarts.baidu.com/build/dist/echarts-all.js" charset="GBK"></script>
+   <script src="http://echarts.baidu.com/build/dist/echarts-all.js" charset="utf-8"></script>
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
    <!--<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>-->
    <script src="/js/bingMapIndex.js"></script>
@@ -130,7 +130,7 @@ function popInfo(){
 
                 <table class="ad_left_big" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <c:forEach var="item"  items="${imageList}"   varStatus="status">
-                    	<tr><td><img src="${item.image_name}" width="850" height="600" /></a></td></tr>
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></a></td></tr>
                     </c:forEach>
                    <c:forEach var="item"  items="${vedioList}"   varStatus="status">
                    	 <tr><td><div id="youkuplayer" style="width:850px;height:600px"></div>
@@ -146,10 +146,10 @@ function popInfo(){
                 <div class="small_right_limit">
                     <ul style="margin-top: 0px;">
 			            <c:forEach var="item"  items="${imageList}"   varStatus="status">
-                    		<li><img src="${item.image_name}" width="250" height="140"/></li>
+                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="250" height="140"/></li>
                     	</c:forEach>
                         <c:forEach var="item"  items="${vedioList}"   varStatus="status">
-                    		<li><img src="${item.image_name}" width="250" height="140"/></li>
+                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="250" height="140"/></li>
                     	</c:forEach>
                        
                     </ul>
@@ -1058,8 +1058,8 @@ function popInfo(){
     	<c:forEach items="${list}" var="item" varStatus="var" begin="3" end="3">
 			<tr class="row">
     			<td>${item.column1}</td>
-    			<td>${item.column2}<span>%</span></td>
-    			<td>${item.column3}<span>%</span></td>
+    			<td>${item.column2}<span></span></td>
+    			<td>${item.column3}<span></span></td>
     		</tr>
 		</c:forEach> 
     	</tbody>
@@ -1080,8 +1080,8 @@ function popInfo(){
     	<c:forEach items="${list}" var="item" varStatus="var" begin="5" end="9">
 			<tr class="row">
     			<td>${item.column1}</td>
-    			<td>${item.column2}<span>%</span></td>
-    			<td>${item.column3}<span>%</span></td>
+    			<td>${item.column2}<span></span></td>
+    			<td>${item.column3}<span></span></td>
     		</tr>
 		</c:forEach> 
     	</tbody>
