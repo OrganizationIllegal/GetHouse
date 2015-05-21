@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div class="container">
 		<div class="rows" style="margin-top:15px;">
-		<form class="form-horizontal" role="form">			
+		<form class="form-horizontal" role="form" action="/searchserviece">			
 			 <div class="form-group">
 
 			 	 <div class="col-md-3" style="padding-top:10px;"><input type="text" class="form-control" id="lastname" placeholder="经纪姓名"></div>

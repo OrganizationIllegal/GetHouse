@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="row" style="height:70px;border:1px solid #FFE4E1;">
             <div class="col-lg-1"></div>
-            <div class="col-lg-2" style="font-size:24px;line-height:70px;height:100%;font-weight:bold;">置业指导</div>
+            <div class="col-lg-2" style="font-size:24px;line-height:70px;height:100%;font-weight:bold;">博客</div>
         </div>
         <div class="row" style="margin-top:20px;">
             <div class="col-lg-1"></div>
