@@ -2,6 +2,8 @@ package com.kate.app.model;
 
 public class BingMapVo {
 	private int project_id;
+	private String project_img;
+	private String project_num;
 	private String project_address;
 	private String project_name;
 	private int project_price;
@@ -10,8 +12,10 @@ public class BingMapVo {
 	private int keshou;
 	private int average_price;
     private String house_type;
-	public BingMapVo(int project_id,String project_address, String project_name,int project_price,int minArea,int maxArea,int keshou,int average_price,String house_type){
+	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,int project_price,int minArea,int maxArea,int keshou,int average_price,String house_type){
 		this.project_id=project_id;
+		this.project_img=project_img;
+		this.project_num=project_num;
 		this.project_address=project_address;
 		this.project_name=project_name;
 		this.project_price=project_price;
@@ -28,6 +32,22 @@ public class BingMapVo {
 
 	public void setProject_id(int project_id) {
 		this.project_id = project_id;
+	}
+
+	public String getProject_img() {
+		return project_img;
+	}
+
+	public void setProject_img(String project_img) {
+		this.project_img = project_img;
+	}
+
+	public String getProject_num() {
+		return project_num;
+	}
+
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
 	}
 
 	public String getProject_address() {

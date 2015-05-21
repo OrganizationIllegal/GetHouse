@@ -44,6 +44,7 @@
 	 		dateType: "json",
 	 		url: "/BingMap/Coordinates", 		
 	 		success:function(data){
+	 		alert(data)
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
 	 		    for(var i=0;i<items.length;i++){
@@ -94,16 +95,19 @@
 	 		success:function(data){
 	 		data=$.parseJSON(data);
 	 		    var items=data.List;
-	 		    for(var i=0;i<items.length;i++){
+	 		   for(var i=0;i<items.length;i++){
 	 		        var arr=new Array();
 	 		        arr=items[i].gps.split(",");
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
+	 		        var num=items[i].project_num;
+	 		        var img=items[i].project_img;
+	 		        //var id=items[i].id;
 	 		        var name=items[i].project_name;
-	 		        var desc=items[i].project_price;	
-				    //var infoboxOptions = {width :200, height :100,title:name, description:desc,offset:new Microsoft.Maps.Point(0,20)};
-	 		        var infoboxOptions = {width :400, height :100,offset:new Microsoft.Maps.Point(0,20)};
-				    var defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions );
-				    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="http://101.200.174.253:8080/projects/Elfin/The%20Elfin_%E9%A1%B9%E7%9B%AE_03.jpg" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price+'</b><a id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name+'</a></div>'); 
+	 		        var price=items[i].project_price;	
+				    //var infoboxOptions = {width :200, height :100,title:name, description:desc,offset:new Microsoft.Maps.Point(0,20)}; 
+	 		        var infoboxOptions = {width :400, height :100,offset:new Microsoft.Maps.Point(0,20)}; 
+				    var defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions ); 
+				    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price+'</b><a href="/Index?proNum='+num+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name+'</a></div>'); 
 				    map.entities.push(defaultInfobox); 		        	        
 	 		    }
 	 		},
