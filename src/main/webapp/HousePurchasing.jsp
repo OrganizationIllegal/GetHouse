@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<c:if test="${status.index < 6}">
                         		<li class="media">
                              <div class="media-left">
-                                <a href="/news_blog.jsp">
+                                <a href="/Detail?id=${item.id}&type=0">
                                   <img class="media-object" src="" alt="" width="180px" height="140px">
                                 </a>
                               </div>
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <c:forEach items="${newsList}" var="item" varStatus="status">
                 		 <li class="media">
                              <div class="media-left">
-                                <a href="/news_blog.jsp">
+                                <a href="/Detail?id=${item.id}&type=1">
                                   <img class="media-object" src="" alt="" width="64px" height="58px">
                                 </a>
                               </div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	 <c:forEach items="${lastestList}" var="item" varStatus="status">
                 	 	 <li class="media">
                              <div class="media-left">
-                                <a href="/news_blog.jsp">
+                                <a href="/Detail?id=${item.id}&type=0">
                                   <img class="media-object" src="" alt=""  width="64px" height="58px">
                                 </a>
                               </div>

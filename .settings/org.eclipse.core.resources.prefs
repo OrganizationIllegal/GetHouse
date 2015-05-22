@@ -4,6 +4,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/kate/app/controller/AdminAreaController.java=GB2312
 encoding//src/main/java/com/kate/app/controller/BuyInfoController.java=GBK
+encoding//src/main/java/com/kate/app/controller/DetailInfoController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/MyController.java=GBK
 encoding//src/main/java/com/kate/app/controller/SearchController.java=UTF-8
 encoding//src/main/java/com/kate/app/controller/SearchListController.java=UTF-8

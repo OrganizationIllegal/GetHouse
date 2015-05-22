@@ -39,6 +39,32 @@ import com.kate.app.model.ZhiYeZhiDao;
 			return list;
 		}
 		
+		public ZhiYeZhiDao selectZhiYeById(int id){
+			ZhiYeZhiDao zhiye = new ZhiYeZhiDao();
+			try{
+				String sql = " select * from zhiye_zhidao where id =?";   // 按照时间排序最新
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					
+					zhiye.setZhiye_abstract(rs.getString("zhiye_abstract"));
+					zhiye.setDetail(rs.getString("detail"));
+					zhiye.setFabu_people(rs.getString("fabu_people"));
+					zhiye.setFabu_time(rs.getTimestamp("fabu_time"));
+					zhiye.setFenlei(rs.getString("fenlei"));
+					
+					zhiye.setImage(rs.getString("image"));
+					zhiye.setZhiye_num(rs.getString("zhiye_num"));
+					zhiye.setTitle(rs.getString("title"));
+					
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return zhiye;
+		}
+		
 		public int countZhiYe(){    //统计总数
 			int count = 0;
 			try{
@@ -121,6 +147,33 @@ import com.kate.app.model.ZhiYeZhiDao;
 	        }
 			return list;
 		}
+		
+		public NewsBoke selectNewsBokeById(int id){
+			NewsBoke data = new NewsBoke();
+			try{
+				String sql = " select * from news_boke where id =?";   // 按照时间排序最新
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					
+					data.setNews_abstract(rs.getString("news_abstract"));
+					data.setNews_detail(rs.getString("news_detail"));
+					data.setNews_fenlei(rs.getString("news_fenlei"));
+					data.setNews_image(rs.getString("news_image"));
+					data.setNews_num(rs.getString("news_num"));
+					data.setNews_people(rs.getString("news_people"));
+					data.setNews_time(rs.getTimestamp("news_time"));
+					data.setNews_title(rs.getString("news_title"));
+				
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return data;
+		}
+		
+	
 		
 		public int countNewsBoke(){    //统计总数
 			int count = 0;
