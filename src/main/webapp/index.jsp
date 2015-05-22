@@ -585,7 +585,7 @@ function popInfo(){
             <div style="float:left;width:850px;display:inline;">
                 <table class="ad_left_big_p" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <c:forEach items="${ProjectPeitaoImage}" var="item" >
-                    	<tr><td><img src="${item.image_name}" width="850" height="600" /></a></td></tr>
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></a></td></tr>
                     </c:forEach>
                     
                 </table>
@@ -596,7 +596,7 @@ function popInfo(){
                 <div class="small_right_limit_p">
                     <ul style="margin-top: 0px;">
                     	<c:forEach items="${ProjectPeitaoImage}" var="item" >
-                    		<li><img src="${item.image_name}" width="250" height="140"/></li>
+                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="250" height="140"/></li>
                     	
                     </c:forEach>
                     	
