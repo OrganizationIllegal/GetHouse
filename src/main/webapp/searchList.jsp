@@ -95,12 +95,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.pagination.js"></script>
    <script type="text/javascript">
          var pageIndex = 0;     //页面索引初始值   
-         var pageSize = 1;     //每页显示条数初始化，修改显示条数，修改这里即可  
+         var pageSize = 5;     //每页显示条数初始化，修改显示条数，修改这里即可  
          var total = 100;
          $(function () {
               total = InitTable(0);    //Load事件，初始化表格数据，页面索引为0（第一页）
                 //分页，PageCount是总条目数，这是必选参数，其它参数都是可选
-                $("#Pagination").pagination(total,{
+                $("#Pagination").pagination(100,{
                     callback: PageCallback,  //PageCallback() 为翻页调用次函数。
                     prev_text: "« 上一页",
                     next_text: "下一页 »",

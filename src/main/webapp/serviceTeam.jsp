@@ -45,8 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-6">
 
 				<c:forEach items="${brokerInfoList}"  var="item">
-				<div class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
-					<div class="col-md-4"><a href="/Service?brokerId=${item.id}"><img src="/images/jingjiren.PNG"></a></div>
+				<div id="dd" class="row" style="border: 1px solid #ddd;padding-top:15px;padding-bottom:15px;margin-bottom:15px;">
+					<div class="col-md-4" ><a href="/Service?brokerId=${item.id}"><img src="http://101.200.174.253:8080/all/${item.broker_img}" style="width:150px"></a></div>
 					<div class="col-md-8" style="padding-left:0px;">
 						<div style="font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;">${item.broker_name}</div>
 						<div ><img  src="/images/serviceteam/b2.PNG">&nbsp;<span style="font-weight:bold;">${item.office}</span></div>
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div style="margin-top:5px;"><img  src="/images/serviceteam/b4.PNG">&nbsp;&nbsp;<span style="font-weight:bold;">${item.broker_language}</span><img  src="/images/serviceteam/b1.PNG" style="margin-left:165px;"></div>
 					</div>
 				</div>
-			</c:forEach>	
+			</c:forEach>
 
 			</div>
 			<div class="col-md-4" style="margin-left:30px;width:410px;">
@@ -155,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $.ajax({   
                         type: "POST",  
                         dataType: "json",  
-                        url: '/SearchListPage',      //提交到一般处理程序请求数据   
+                        url: '/brokerinfoPage',      //提交到一般处理程序请求数据   
                         data: { pageIndex : pageIndex, pageSize : pageSize},
                         //data: "pageIndex=" + (pageIndex) + "&pageSize=" + pageSize,          //提交两个参数：pageIndex(页面索引)，pageSize(显示条数)                   
                         success: function(data) {
@@ -178,15 +178,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 var html="";
                 if(items!=null){
                 	for(var j=0;j<items.length;j++){
-                	    html+="<div class='panel panel-default'><div class='panel-heading' style='background-color:rgb(21,63,101);'>";
-                	    html+="<span style='color:white'>"+items[j].Project_name+"</span></div>";
- 						html+="<div class='panel-body'><div id='item'><div class='media'><div class='col-xs-5'>";
- 						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
- 						html+="<img alt='image' class='img-responsive' src='pic/house2.jpg' ></a></div>";
- 						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
-  	                    html+="<h4><b>完整的购房服务</b></h4><hr/><span>7*24小时全天候在线，全</span><br/>";
-  	       				html+="<span>方位服务的专业代理服务。</span><br/><span>我们提供了基于您的满意付费房地产经纪人。</span>";
-  	       				html+="<br/><br/><br/><img alt='image' class='img-responsive' src='pic/logo2.png'></div>";
+                	    html+="<div class='col-md-4'><a href='/Service?brokerId=" + ${items[j].id} + "'><img src='/images/jingjiren.PNG'></a></div>";
+                	    html+="<div class='col-md-8' style='padding-left:0px;'>";
+ 						html+="<div style='font-size:25px;font-weight:bolder;font-family:黑体;margin-bottom:5px;'>"+${item.broker_name}+"</div>";
+ 						html+="<div ><img  src='/images/serviceteam/b2.PNG'>&nbsp;<span style='font-weight:bold;'>"+${item.office}+"</span></div>";
+ 						html+="<div style='padding-left:30px;font-weight:bold;margin-top:5px;'>"+${item.introduction}+"</div>";
+ 						html+="<hr style='height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;' />";
+  	                    html+="<div ><img  src='/images/serviceteam/b3.PNG'>&nbsp;&nbsp;<span style='font-weight:bold;'>${item.broker_region}</span></div>";
+  	       				html+="<hr style='height:1px;border:none;border-top:2px dashed #666666;margin-top:5px;margin-bottom:5px;' />";
+  	       				html+="<div style='margin-top:5px;'><img  src='/images/serviceteam/b4.PNG'>&nbsp;&nbsp;<span style='font-weight:bold;'>${item.broker_language}</span><img  src='/images/serviceteam/b1.PNG' style='margin-left:165px;'></div>";
   	       				html+="<div class='col-xs-4'><h4><b>详情简介</b></h4><hr/>";
            		  		html+="<b>最多:</b><span class='right'><span>$</span>"+items[j].MaxPrice+"</span><br/>";
            		      	html+="<b>最少:</b><span class='right'><span>$</span>"+items[j].MinPrice+"</span><br/>";
