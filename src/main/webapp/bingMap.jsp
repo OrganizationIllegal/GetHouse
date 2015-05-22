@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="media">
             <a class="pull-left" href="/Index?proNum=${item.project_num}" target="_parent">
               <!-- <img alt="image" class="img-responsive" src="pic/house1.jpg">  -->
-              <img alt="image" class="img-responsive" src="${item.project_img}" width="180" > 
+              <img alt="image" class="img-responsive" src="${item.project_img}" width="100" > 
             </a>
             <div class="clearfix visible-sm"></div>
             <div class="media-body fnt-smaller">

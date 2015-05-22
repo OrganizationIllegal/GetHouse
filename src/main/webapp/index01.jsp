@@ -317,7 +317,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!--last guo-->
 <div class="row" style="text-align:center;margin-top:300px;">
-			<div style="font-weight:bolder;font-size:23px;font-family:黑体;">最新博客</div>
+			<div style="font-weight:bolder;font-size:23px;font-family:黑体;margin-top:79px;margin-bottom:10px;">最新博客</div>
 			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
 			<div class="row" style="padding-top:30px;">
 			<div class="col-md-2" style="width:150px;"></div>

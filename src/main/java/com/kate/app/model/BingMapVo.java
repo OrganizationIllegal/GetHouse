@@ -6,13 +6,13 @@ public class BingMapVo {
 	private String project_num;
 	private String project_address;
 	private String project_name;
-	private int project_price;
+	private String project_price;
 	private int minArea;
 	private int maxArea;
 	private int keshou;
-	private int average_price;
+	private String average_price;
     private String house_type;
-	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,int project_price,int minArea,int maxArea,int keshou,int average_price,String house_type){
+	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,String project_price,int minArea,int maxArea,int keshou,String average_price,String house_type){
 		this.project_id=project_id;
 		this.project_img=project_img;
 		this.project_num=project_num;
@@ -63,13 +63,7 @@ public class BingMapVo {
 		this.project_name = project_name;
 	}
 	
-	public int getProject_price() {
-		return project_price;
-	}
-
-	public void setProject_price(int project_price) {
-		this.project_price = project_price;
-	}
+	
 
 	public int getMinArea() {
 		return minArea;
@@ -89,12 +83,23 @@ public class BingMapVo {
 	public void setKeshou(int keshou) {
 		this.keshou = keshou;
 	}
-	public int getAverage_price() {
+	
+	public String getProject_price() {
+		return project_price;
+	}
+
+	public void setProject_price(String project_price) {
+		this.project_price = project_price;
+	}
+
+	public String getAverage_price() {
 		return average_price;
 	}
-	public void setAverage_price(int average_price) {
+
+	public void setAverage_price(String average_price) {
 		this.average_price = average_price;
 	}
+
 	public String getHouse_type() {
 		return house_type;
 	}
