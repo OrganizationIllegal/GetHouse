@@ -15,19 +15,19 @@ import com.kate.app.model.AreaZujin;
 
 @Repository 
 public class AreaTrendDao extends BaseDao {
-  public List<AreaMiddle> getAreaMiddleTrend(String project_type, int areaId){
+  public List<AreaMiddle> getAreaMiddleTrend(String project_type, String area_code){
 	  List<AreaMiddle> areaMiddleTrendList=new ArrayList<AreaMiddle>();
 	
 	  try {
-			String sql = " select * from area_middle where project_type=? and area_id=? order by heng";
+			String sql = " select * from area_middle where project_type=? and area_code=? order by heng";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, project_type);
-			pstmt.setInt(2, areaId);
+			pstmt.setString(2, area_code);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				AreaMiddle data = new AreaMiddle();
 				data.setArea_code(rs.getString("area_code"));
-				data.setArea_code(rs.getString("area_code"));
+				data.setArea_id(rs.getInt("area_id"));
 				data.setHeng(rs.getString("heng"));
 				data.setId(rs.getInt("id"));
 				
@@ -42,19 +42,19 @@ public class AreaTrendDao extends BaseDao {
 		return areaMiddleTrendList;
   }
   
-  public List<AreaZujin> getAreaZujinTrend(String project_type, int areaId){
+  public List<AreaZujin> getAreaZujinTrend(String project_type, String area_code){
 	  List<AreaZujin> areaZujinTrendList=new ArrayList<AreaZujin>();
 	 
 	  try {
-			String sql = " select * from area_zujin where project_type=? and area_id=? order by heng";
+			String sql = " select * from area_zujin where project_type=? and area_code=? order by heng";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, project_type);
-			pstmt.setInt(2, areaId);
+			pstmt.setString(2, area_code);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				AreaZujin data = new AreaZujin();
-				data.setArea_code(rs.getString("area_code"));
+				data.setArea_id(rs.getInt("area_id"));
 				
 				data.setHeng(rs.getString("heng"));
 				data.setId(rs.getInt("id"));
@@ -70,19 +70,19 @@ public class AreaTrendDao extends BaseDao {
 		return areaZujinTrendList;
   }
   
-  public List<AreaZhikong> getAreaZhikongTrend(String project_type, int areaId){
+  public List<AreaZhikong> getAreaZhikongTrend(String project_type, String area_code){
 	  List<AreaZhikong> areaZhikongeTrendList=new ArrayList<AreaZhikong>();
 	  
 	  try {
-			String sql = " select * from area_kongzhi where project_type=? and area_id=? order by heng"; 
+			String sql = " select * from area_kongzhi where project_type=? and area_code=? order by heng"; 
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, project_type);
-			pstmt.setInt(2, areaId);
+			pstmt.setString(2, area_code);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				AreaZhikong data = new AreaZhikong();
-				data.setArea_code(rs.getString("area_code"));
+				data.setArea_id(rs.getInt("area_id"));
 				
 				data.setHeng(rs.getString("heng"));
 				data.setId(rs.getInt("id"));

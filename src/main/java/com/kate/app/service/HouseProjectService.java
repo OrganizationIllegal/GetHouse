@@ -25,6 +25,13 @@ public class HouseProjectService {
 				
 	}
 	
+	public HouseProject getHouseProjectByNum(String proNum){
+		HouseProject projectInfo = new HouseProject();		
+		projectInfo = houseProjectDao.HouseProjectByNumDao(proNum);
+		return projectInfo;
+				
+	}
+	
 	public BrokerInfo getBrokerInfo(int id){
 		BrokerInfo brokerInfo = new BrokerInfo();		
 		brokerInfo = houseProjectDao.BrokerInfoDao(id);
@@ -40,15 +47,15 @@ public class HouseProjectService {
 				
 	}
 	
-	public List<ProjectImage> getHouseProjectImage(int proId){
+	public List<ProjectImage> getHouseProjectImage(String proNum){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
-		list = houseProjectDao.HouseProjectImageDao(proId);
+		list = houseProjectDao.HouseProjectImageDao(proNum);
 		return list;
 	}
 	
-	public List<ProjectImage> HousePeitaoImageDao(int proId){
+	public List<ProjectImage> HousePeitaoImageDao(String proNum){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
-		list = houseProjectDao.HousePeitaoImageDao(proId);
+		list = houseProjectDao.HousePeitaoImageDao(proNum);
 		return list;
 	}
 	

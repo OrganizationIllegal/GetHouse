@@ -33,7 +33,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
 				projectInfo.setProject_type(rs.getString("project_type"));
 				projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
-				//projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+				projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
 				projectInfo.setProject_desc(rs.getString("project_desc"));
 				projectInfo.setProject_city(rs.getString("project_city"));
 				projectInfo.setProject_house_type(rs.getString("project_house_type"));
@@ -48,7 +48,8 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setGps(rs.getString("gps"));
 				projectInfo.setReturn_money(rs.getString("return_money"));
 				projectInfo.setDeveloper_id(rs.getInt("developer_id"));
-
+				projectInfo.setProject_high_price(rs.getString("project_high_price"));
+				projectInfo.setProject_min_price(rs.getString("project_min_price"));
 				projectInfo.setArea_id(rs.getInt("area_id"));
 				projectInfo.setMianji(rs.getString("mianji"));
 				projectInfo.setRecommend_id_1(rs.getInt("recommend_id_1"));
@@ -63,6 +64,57 @@ public class HouseProjectDao extends BaseDao{
         }
 		return projectInfo;
 	}
+	
+	public HouseProject HouseProjectByNumDao(String pro_num){
+		HouseProject projectInfo = new HouseProject();
+		BrokerInfo brokerInfo = new BrokerInfo();
+		try{
+			String sql = "select * from house_project where project_num=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pro_num);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				projectInfo.setProject_name(rs.getString("project_name"));
+				projectInfo.setProject_img(rs.getString("project_img"));
+				projectInfo.setProject_nation(rs.getString("project_nation"));
+				projectInfo.setProject_address(rs.getString("project_address"));
+				projectInfo.setProject_area(rs.getString("project_area"));
+				projectInfo.setProject_num(rs.getString("project_num"));
+				projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
+				projectInfo.setProject_type(rs.getString("project_type"));
+				projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
+				projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+				projectInfo.setProject_desc(rs.getString("project_desc"));
+				projectInfo.setProject_city(rs.getString("project_city"));
+				projectInfo.setProject_house_type(rs.getString("project_house_type"));
+				projectInfo.setProject_high(rs.getInt("project_high"));
+				projectInfo.setProject_price(rs.getString("project_price"));
+				projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
+				projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
+				projectInfo.setId(rs.getInt("id"));
+				projectInfo.setProject_vedio(rs.getString("project_vedio"));
+				projectInfo.setProject_zhou(rs.getString("project_zhou"));
+				projectInfo.setArea_qujian(rs.getString("area_qujian"));
+				projectInfo.setGps(rs.getString("gps"));
+				projectInfo.setReturn_money(rs.getString("return_money"));
+				projectInfo.setDeveloper_id(rs.getInt("developer_id"));
+				projectInfo.setProject_high_price(rs.getString("project_high_price"));
+				projectInfo.setProject_min_price(rs.getString("project_min_price"));
+				projectInfo.setArea_id(rs.getInt("area_id"));
+				projectInfo.setMianji(rs.getString("mianji"));
+				projectInfo.setRecommend_id_1(rs.getInt("recommend_id_1"));
+				projectInfo.setRecommend_id_2(rs.getInt("recommend_id_2"));
+				projectInfo.setRecommend_id_3(rs.getInt("recommend_id_3"));
+				projectInfo.setWuyefei(rs.getString("wuyefei"));
+
+			}
+			
+		}catch (Exception e) {
+			 e.printStackTrace();
+        }
+		return projectInfo;
+	}
+	
 	
 	/*
 	 * �鿴�����˵���Ϣ
@@ -123,12 +175,12 @@ public class HouseProjectDao extends BaseDao{
 	/*
 	 * Project Images
 	 */
-	public List<ProjectImage> HouseProjectImageDao(int proId){
+	public List<ProjectImage> HouseProjectImageDao(String proNum){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
 		try{
-			String sql = "select * from project_desc_image where house_project_id=? order by view_shunxu";
+			String sql = "select * from project_desc_image where project_num=? order by view_shunxu";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proId);
+			pstmt.setString(1, proNum);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				ProjectImage projectImage = new ProjectImage();
@@ -149,12 +201,12 @@ public class HouseProjectDao extends BaseDao{
 	/*
 	 * Project Images
 	 */
-	public List<ProjectImage> HousePeitaoImageDao(int proId){
+	public List<ProjectImage> HousePeitaoImageDao(String proNum){
 		List<ProjectImage> list = new ArrayList<ProjectImage>();
 		try{
-			String sql = "select * from project_peitao_image where house_pro_id=? order by view_shunxu";
+			String sql = "select * from project_peitao_image where project_num=? order by view_shunxu";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proId);
+			pstmt.setString(1, proNum);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				ProjectImage projectImage = new ProjectImage();

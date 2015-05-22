@@ -11,8 +11,8 @@ import com.kate.app.dao.AreaFeatureDao;
 public class AreaFeatureService {
 	@Autowired
 	private AreaFeatureDao areaFeatureDao;
-	public List<String> getAreaFeature(int areaId){
-		List<String> featureList=areaFeatureDao.getAreaFeature(areaId);
+	public List<String> getAreaFeature(String area_code){
+		List<String> featureList=areaFeatureDao.getAreaFeature(area_code);
 		return featureList;
 		
 	}

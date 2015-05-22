@@ -13,12 +13,12 @@ import com.kate.app.model.NearSchool;
 public class SchoolNearService {
 	@Autowired
 	private SchoolNearDao schoolNearDao;
-	public List<NearSchool> getNearSchoolInfo(int proId){
-		List<NearSchool> nearSchoolList=schoolNearDao.getNearSchoolInfo(proId);
+	public List<NearSchool> getNearSchoolInfo(String proNum){
+		List<NearSchool> nearSchoolList=schoolNearDao.getNearSchoolInfo(proNum);
 		return nearSchoolList;
 	}
-	public List<NearPeiTao> getNearSchoolFacilityInfo(int proId){
-		List<NearPeiTao> nearSchoolFacility=schoolNearDao.getNearSchoolFacilityInfo(proId);
+	public List<NearPeiTao> getNearSchoolFacilityInfo(String proNum){
+		List<NearPeiTao> nearSchoolFacility=schoolNearDao.getNearSchoolFacilityInfo(proNum);
 		return nearSchoolFacility;
 	}
 

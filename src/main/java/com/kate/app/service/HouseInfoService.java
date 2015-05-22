@@ -13,9 +13,9 @@ import com.kate.app.model.HouseInfo;
 public class HouseInfoService {
 	@Autowired
 	private HouseInfoDao houseInfoDao;
-	public List<HouseInfo> getHouseInfoList(int proId){
+	public List<HouseInfo> getHouseInfoList(String proNum){
 		List<HouseInfo> list=new ArrayList<HouseInfo>();
-		list=houseInfoDao.HouseInfoDao(proId);
+		list=houseInfoDao.HouseInfoDao(proNum);
 		for(int i=0;i<list.size();i++){
 			String houseprice=list.get(i).getHouse_price();
 			String price=getMoney(houseprice);

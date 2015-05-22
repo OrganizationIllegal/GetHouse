@@ -15,12 +15,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 @Repository 
 public class AreaFeatureDao extends BaseDao{
-	public List<String> getAreaFeature(int areaId){
+	public List<String> getAreaFeature(String area_code){
 		List<String> featureList=new ArrayList<String>();
 		
 		String afeature=null;
 		try {
-			String sql = " select area_character from area_features where area_id="+areaId;
+			String sql = " select area_character from area_features where area_code='"+area_code+"'";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){

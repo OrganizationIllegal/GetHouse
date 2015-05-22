@@ -18,7 +18,7 @@ public class UserInfoController {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
-	/*开立账户*/
+	/*寮�珛璐︽埛*/
 	@RequestMapping({ "/UserInfo/AddAccount" })
 	public String addAccount(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -29,14 +29,14 @@ public class UserInfoController {
 		String msg = req.getParameter("msg");
 		int flag = userInfoDao.addAccount(nick_name, pwd, tel, email, account, msg);
 		if(flag==0){
-			System.out.println("添加失败！");
+			System.out.println("娣诲姞澶辫触锛�");
 		}else{
-			System.out.println("添加成功！");
+			System.out.println("娣诲姞鎴愬姛锛�");
 		}
 		return "/overseas.jsp"; 
 	}
 	
-	/*索取完整价格单*/
+	/*绱㈠彇瀹屾暣浠锋牸鍗�/
 	@RequestMapping({ "/UserInfo/AddAllPrice" })
 	public void addAllPrice(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -47,13 +47,13 @@ public class UserInfoController {
 		String msg = req.getParameter("msg");
 		int flag = userInfoDao.addAllPrice(nick_name, pwd, tel, email, allprice, msg);
 		if(flag==0){
-			System.out.println("添加失败！");
+			System.out.println("娣诲姞澶辫触锛�);
 		}else{
-			System.out.println("添加成功！");
+			System.out.println("娣诲姞鎴愬姛锛�);
 		} 
 	}
 	
-	/*需求*/
+	/*闇�眰*/
 	@RequestMapping({ "/UserInfo/AddNeed" })
 	public void addNeed(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -63,13 +63,13 @@ public class UserInfoController {
 		String msg = req.getParameter("msg");
 		int flag = userInfoDao.addNeed(nick_name,tel, email, need, msg);
 		if(flag==0){
-			System.out.println("添加失败！");
+			System.out.println("娣诲姞澶辫触锛�");
 		}else{
-			System.out.println("添加成功！");
+			System.out.println("娣诲姞鎴愬姛锛�");
 		}
 	}
 	
-	/*详情咨询*/
+	/*璇︽儏鍜ㄨ*/
 	@RequestMapping({ "/UserInfo/AddAsk" })
 	public void addAsk(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -80,13 +80,13 @@ public class UserInfoController {
 		String msg = req.getParameter("msg");
 		int flag = userInfoDao.addAsk(nick_name, pwd, tel, email, ask, msg);
 		if(flag==0){
-			System.out.println("添加失败！");
+			System.out.println("娣诲姞澶辫触锛�");
 		}else{
-			System.out.println("添加成功！");
+			System.out.println("娣诲姞鎴愬姛锛�");
 		}
 	}
 	
-	/*最新价格*/
+	/*鏈�柊浠锋牸*/
 	@RequestMapping({ "/UserInfo/AddNewestPrice" })
 	public void addNewestPrice(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -97,13 +97,13 @@ public class UserInfoController {
 		String msg = req.getParameter("msg");
 		int flag = userInfoDao.addNewestPrice(nick_name, pwd, tel, email, newestprice, msg);
 		if(flag==0){
-			System.out.println("添加失败！");
+			System.out.println("娣诲姞澶辫触锛�");
 		}else{
-			System.out.println("添加成功！");
+			System.out.println("娣诲姞鎴愬姛锛�");
 		}
 	}
 	
-	/*完整户型*/
+	/*瀹屾暣鎴峰瀷*/
 	@RequestMapping({ "/UserInfo/AddHouseType" })
 	public void addHouseType(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -114,13 +114,13 @@ public class UserInfoController {
 		String msg = req.getParameter("msg");
 		int flag = userInfoDao.addHouseType(nick_name, pwd, tel, email, housetype, msg);
 		if(flag==0){
-			System.out.println("添加失败！");
+			System.out.println("娣诲姞澶辫触锛�:");
 		}else{
-			System.out.println("添加成功！");
+			System.out.println("娣诲姞鎴愬姛锛�");
 		}
 	}
 	
-	/*注册账户*/
+	/*娉ㄥ唽璐︽埛*/
 	@RequestMapping({ "/UserInfo/Register" })
 	public String register(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String nick_name = req.getParameter("nick_name");
@@ -130,9 +130,9 @@ public class UserInfoController {
 		String email = req.getParameter("email");
 		int flag = userInfoDao.register(nick_name, pwd, repwd, tel, email);
 		if(flag==0){
-			System.out.println("注册失败！");
+			System.out.println("娉ㄥ唽澶辫触锛�");
 		}else{
-			System.out.println("注册成功！");
+			System.out.println("娉ㄥ唽鎴愬姛锛�");
 		}
 		return "/AboutUs.jsp";
 	}
