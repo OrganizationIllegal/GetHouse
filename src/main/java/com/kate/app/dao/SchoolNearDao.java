@@ -15,12 +15,12 @@ import com.kate.app.model.NearSchoolFacility;
 
 @Repository 
 public class SchoolNearDao extends BaseDao {
-	public List<NearSchool> getNearSchoolInfo(int proId){
+	public List<NearSchool> getNearSchoolInfo(String proNum){
 		List<NearSchool> list=new ArrayList<NearSchool>();
 		try {
-			String sql = " select * from near_school where house_pro_id = ?";
+			String sql = " select * from near_school where project_num = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proId);
+			pstmt.setString(1, proNum);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -36,19 +36,19 @@ public class SchoolNearDao extends BaseDao {
 		}
 		return list;
 	}
-	public List<NearPeiTao> getNearSchoolFacilityInfo(int proId){
+	public List<NearPeiTao> getNearSchoolFacilityInfo(String proNum){
 		List<NearPeiTao> list=new ArrayList<NearPeiTao>();
 		
 		try {
-			String sql = "select * from near_peitao where house_pro_id = ?";
+			String sql = "select * from near_peitao where project_num = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proId);
+			pstmt.setString(1, proNum);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				NearPeiTao data = new NearPeiTao();
 				data.setId(rs.getInt("id"));
-				data.setMarket_distance(rs.getInt("market_distance"));
+				data.setMarket_distance(rs.getString("market_distance"));
 				data.setMarket_name(rs.getString("market_name"));
 				data.setMarket_type(rs.getString("market_type"));
 				list.add(data);

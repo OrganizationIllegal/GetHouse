@@ -11,6 +11,13 @@ public class NewsInfo {
 	private String news_img;
 	private String news_num;
 	private int house_pro_id;
+	public String getNews_abstract() {
+		return news_abstract;
+	}
+	public void setNews_abstract(String news_abstract) {
+		this.news_abstract = news_abstract;
+	}
+	private String news_abstract;
 	public int getId() {
 		return id;
 	}

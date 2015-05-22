@@ -4,7 +4,7 @@ public class NearPeiTao {
 	private int id;
 	private String market_type;
 	private String market_name;
-	private int market_distance; 
+	private String market_distance; 
 	private int house_pro_id;
 	public int getId() {
 		return id;
@@ -24,10 +24,11 @@ public class NearPeiTao {
 	public void setMarket_name(String market_name) {
 		this.market_name = market_name;
 	}
-	public int getMarket_distance() {
+	
+	public String getMarket_distance() {
 		return market_distance;
 	}
-	public void setMarket_distance(int market_distance) {
+	public void setMarket_distance(String market_distance) {
 		this.market_distance = market_distance;
 	}
 	public int getHouse_pro_id() {

@@ -852,19 +852,19 @@ function popInfo(){
     </tr> 
     <tr class="table_tab1"> 
         <td>${data.year_increment_rate}</td> 
-        <td>$ ${data.middle_price} K</td> 
-        <td>S ${data.middle_zu_price }周</td> 
-        <td>${data.zu_house_rate }</td> 
-        <td>${data.zu_xuqiu }
+        <td>${data.middle_price}</td> 
+        <td>${data.middle_zu_price}</td> 
+        <td>${data.zu_house_rate}</td> 
+        <td>${data.zu_xuqiu}
         </td> 
-        <td>￥ ${data.price_review }/月</td> 
+        <td>${data.price_review }</td> 
     </tr> 
     <tr class="table_tab2"> 
         <td></td> 
         <td></td> 
         <td></td> 
         <td></td> 
-        <td>每单位102探访</td> 
+        <td></td> 
         <td></td> 
     </tr> 
 	  	</table>
@@ -1133,7 +1133,7 @@ function popInfo(){
           <div class="news_position">
           		<div class="info" id="left">
                 <div class="scroll" id="left"> 
-                     <img src="${newsInfo_one.news_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" width=350px height=255px>
                      <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
@@ -1144,7 +1144,7 @@ function popInfo(){
                     </div>
                      </div>
                 </div>
-                <div class="caption_my" style="height:98px;">
+                <div class="caption_my" style="height:98px;width:350px;">
 		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_one.title}</h3>
 		         <p>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</p>
 		        </div>
@@ -1152,7 +1152,7 @@ function popInfo(){
 		   <div class="news_position" id="MyNews">
 		      	<div class="info" id="middle">
 		      	<div class="scroll" id="left"> 
-                     <img src="${newsInfo_two.news_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" width=350px height=255px>
                      <div class="news_action_middle" style="display:none;">s
 	                     <ul class="list_m" id="list_scroll_middle">
 							  <li >Cras justo odio</li>
@@ -1164,7 +1164,7 @@ function popInfo(){
                      </div>
                      </div>
                 </div>
-                <div class="caption_my" style="height:98px;">
+                <div class="caption_my" style="height:98px;width:350px;">
 		          <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_two.title}</h3>
 		         <p>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuletwo }</p>
 		        </div>
@@ -1172,7 +1172,7 @@ function popInfo(){
 		   <div class="news_position">
 		   		<div class="info" id="right">
                 <div class="scroll" id="left"> 
-                     <img src="${newsInfo_three.news_img}" alt="" width=350px height=255px> 
+                     <img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" width=350px height=255px> 
                      <div class="news_action_right" style="display:none;">
 	                     <ul class="list_r" id="list_scroll_right">
 							  <li >Cras justo odio</li>
@@ -1186,7 +1186,7 @@ function popInfo(){
 		      <!-- <div class="scroll" id="right">
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div> -->
-                <div class="caption_my" style="height:98px;">
+                <div class="caption_my" style="height:98px;width:350px;">
 		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_three.title}</h3>
 		         <p>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleThree }</p>
 		        </div>
@@ -1209,30 +1209,30 @@ function popInfo(){
   		<div class="row">
           <div class="news_position">
                 <div class="scroll" id="left">
-                     <img src="${RecommendProject1.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
-		         <p class="desc"><a href="#">${RecommendProject1.project_name}</a> </p>
+		         <p class="desc"><a href="Index?proNum=${RecommendProject1.project_num}">${RecommendProject1.project_name}</a> </p>
 		         <p>${RecommendProject1.project_desc}</p>
 		          
 		        </div>
            </div>
 		   <div class="news_position">
                 <div class="scroll" id="left">
-                     <img src="${RecommendProject2.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
-		         <p class="desc"><a href="#">${RecommendProject2.project_name}</a> </p>
+		         <p class="desc"><a href="Index?proNum=${RecommendProject2.project_num}">${RecommendProject2.project_name}</a> </p>
 		         <p>${RecommendProject2.project_desc}</p>
 		          
 		        </div>
            </div>
 		   <div class="news_position">
 		      <div class="scroll" id="right">
-                     <img src="${RecommendProject3.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" width=350px height=255px>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
-		         <p class="desc"><a href="#">${RecommendProject3.project_name}</a> </p>
+		         <p class="desc"><a href="Index?proNum=${RecommendProject3.project_num}">${RecommendProject3.project_name}</a> </p>
 		         <p>${RecommendProject3.project_desc}</p>
 		          
 		        </div>

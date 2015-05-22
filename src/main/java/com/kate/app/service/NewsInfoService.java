@@ -16,9 +16,9 @@ public class NewsInfoService {
 	@Autowired
     private NewsInfoDao newsInfoDao;
 	
-	public List<NewsInfo> getNewsInfoDaoList(int proId){
+	public List<NewsInfo> getNewsInfoDaoList(String project_num){
 		List<NewsInfo> list = new ArrayList<NewsInfo>();
-		list = newsInfoDao.getNewsInfo(proId);
+		list = newsInfoDao.getNewsInfo(project_num);
 		return list;			
 	}
 }

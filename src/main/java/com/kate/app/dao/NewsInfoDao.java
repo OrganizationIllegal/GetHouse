@@ -17,12 +17,12 @@ import com.kate.app.model.NewsInfo;
 
 	@Repository 
 	public class NewsInfoDao extends BaseDao{
-		public List<NewsInfo> getNewsInfo(int proId){
+		public List<NewsInfo> getNewsInfo(String project_num){
 			List <NewsInfo> newsList = new ArrayList<NewsInfo>();
 			try{
-				String sql = " select * from news_info where house_pro_id=?";
+				String sql = " select * from news_info where project_num=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, proId);
+				pstmt.setString(1, project_num);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()){
 					NewsInfo newsInfo = new NewsInfo();
@@ -33,6 +33,7 @@ import com.kate.app.model.NewsInfo;
 					newsInfo.setDetail(rs.getString("detail"));
 					newsInfo.setNews_img(rs.getString("news_img"));
 					newsInfo.setNews_num(rs.getString("news_num"));
+					newsInfo.setNews_abstract(rs.getString("news_abstract"));
 					newsList.add(newsInfo);
 				}
 			}catch (Exception e) {

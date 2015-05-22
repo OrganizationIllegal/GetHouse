@@ -11,8 +11,8 @@ import com.kate.app.model.AreaFamily;
 public class AreaFamilyService {
 	@Autowired
 	private AreaFamilyDao areaFamilyDao;
-	public AreaFamily getAreaFamily(int proId){
-		AreaFamily data=areaFamilyDao.getAreaFamily(proId);
+	public AreaFamily getAreaFamily(String area_code){
+		AreaFamily data=areaFamilyDao.getAreaFamily(area_code);
 		return data;
 	}
 	

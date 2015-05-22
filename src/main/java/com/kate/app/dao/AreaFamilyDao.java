@@ -14,15 +14,15 @@ import com.alibaba.fastjson.JSONObject;
 
 @Repository 
 public class AreaFamilyDao extends BaseDao {
-	public AreaFamily getAreaFamily(int proId){
+	public AreaFamily getAreaFamily(String area_code){
 		AreaFamily data = new AreaFamily();
 		try {
-			String sql = " SELECT * from area_family where house_pro_id=?";
+			String sql = " SELECT * from area_family where area_code=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proId);
+			pstmt.setString(1, area_code);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				data.setArea_code(rs.getString("area_code"));
+				//data.setArea_code(rs.getString("area_code"));
 				data.setArea_id(rs.getInt("area_id"));
 				data.setData_souce(rs.getString("data_souce"));
 				data.setFamily_one(rs.getString("family_one"));

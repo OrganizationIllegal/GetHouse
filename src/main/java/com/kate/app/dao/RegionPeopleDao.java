@@ -16,19 +16,19 @@ import com.kate.app.model.PeopleInfo;
 import com.kate.app.model.PeopleNation;
 @Repository 
 public class RegionPeopleDao extends BaseDao {
-	public List<AreaPeopleInfo> getAreaPeopleInfo(int areaId){   //通过区域id查找区域人口信息
+	public List<AreaPeopleInfo> getAreaPeopleInfo(String area_code){   //通过区域id查找区域人口信息
 		List<AreaPeopleInfo> list = new ArrayList<AreaPeopleInfo>();
 		try {
-			String sql = "select * from area_people where area_id=?";
+			String sql = "select * from area_people where area_code=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, areaId);
+			pstmt.setString(1, area_code);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				AreaPeopleInfo data = new AreaPeopleInfo();
 				data.setColumn1(rs.getString("column1"));
 				data.setColumn2(rs.getString("column2"));
 				data.setColumn3(rs.getString("column3"));
-				data.setArea_code(rs.getString("area_code"));
+				data.setArea_id(rs.getInt("area_id"));
 				data.setHouse_pro_id(rs.getInt("house_pro_id"));
 				data.setId(rs.getInt("id"));
 				data.setView_shunxu(rs.getInt("view_shunxu"));

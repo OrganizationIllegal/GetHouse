@@ -16,8 +16,8 @@ public class PeopleInfoService {
 	@Autowired
 	private RegionPeopleDao regionPeopleDao;
 	
-	public List<AreaPeopleInfo> getAreaPeopleInfo(int proId){
-		List<AreaPeopleInfo> list=regionPeopleDao.getAreaPeopleInfo(proId);
+	public List<AreaPeopleInfo> getAreaPeopleInfo(String area_code){
+		List<AreaPeopleInfo> list=regionPeopleDao.getAreaPeopleInfo(area_code);
 		return list;
 	}
 	
