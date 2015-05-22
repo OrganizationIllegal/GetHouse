@@ -61,14 +61,17 @@ public class HousePurchasingController {
 				for(SearchList item : resultList){
 					JSONObject obj = new JSONObject();
 					obj.put("id", item.getId());
+					obj.put("project_num",item.getProject_num());
 					obj.put("Fanxian", item.getFanxian());
 					obj.put("Keshou", item.getKeshou());
 					obj.put("MaxArea", item.getMaxArea());
 					obj.put("MaxPrice", item.getMaxPrice());
 					obj.put("MinArea", item.getMinArea());
 					obj.put("MinPrice", item.getMinPrice());
+					obj.put("mianji", item.getMianji());
 					obj.put("Project_img", item.getProject_img());
 					obj.put("Project_name", item.getProject_name());
+					obj.put("Project_lan_cn", item.getProject_lan_cn());
 					array.add(obj);
 				}
 				json.put("List", array);

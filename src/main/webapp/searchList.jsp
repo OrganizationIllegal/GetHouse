@@ -150,15 +150,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
  						html+="<img alt='image' class='img-responsive' src='pic/house2.jpg' ></a></div>";
  						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
-  	                    html+="<h4><b>完整的购房服务</b></h4><hr/><span>7*24小时全天候在线，全</span><br/>";
-  	       				html+="<span>方位服务的专业代理服务。</span><br/><span>我们提供了基于您的满意付费房地产经纪人。</span>";
+  	                    html+="<h4><b>完整的购房服务</b></h4><hr/><br/>";
+  	       				html+="<span><span>7*24小时全天候在线，全</span><br/><span>方位服务的专业代理服务。</span><br/><span>我们提供了基于您的满意付费房地产经纪人。</span></span>";
   	       				html+="<br/><br/><br/><img alt='image' class='img-responsive' src='pic/logo2.png'></div>";
   	       				html+="<div class='col-xs-4'><h4><b>详情简介</b></h4><hr/>";
            		  		html+="<b>最多:</b><span class='right'><span>$</span>"+items[j].MaxPrice+"</span><br/>";
            		      	html+="<b>最少:</b><span class='right'><span>$</span>"+items[j].MinPrice+"</span><br/>";
            		      	html+="<b>面积(M2)</b>:<span class='right'>"+items[j].MinArea+"<span>-</span>"+items[j].MaxArea+"</span><br/>";
-           		      	html+="<b>可售:</b><span class='right'>"+items[j].Keshou+"</span><br/>";
-            			html+="<b>返现:</b><span class='right'><span>$</span>"+items[j].Fanxian+"</span><br/>";
+           		      	html+="<b>可售:</b><span class='right'>"+items[j].keshou+"</span><br/>";
+            			html+="<b>返现:</b><span class='right'><span>$</span>"+items[j].fanxian+"</span><br/>";
             			html+="</div></div></div></div></div></div>";
                 	}
                 }

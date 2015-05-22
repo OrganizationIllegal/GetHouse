@@ -4,20 +4,36 @@ public class SearchList {
 	private int id;
 	private String project_img;
 	private String project_name;
-	private int maxPrice;
-	private int minPrice;
+	private String maxPrice;
+	private String minPrice;
 	private int maxArea;
 	private int minArea;
 	private int keshou;
-	private int fanxian;
+	private String fanxian;
 	private String project_num;
+    private String project_lan_cn;
+    private String mianji;
+    
+	public String getMianji() {
+		return mianji;
+	}
+	public void setMianji(String mianji) {
+		this.mianji = mianji;
+	}
 	public String getProject_num() {
 		return project_num;
 	}
 	public void setProject_num(String project_num) {
 		this.project_num = project_num;
 	}
-	public SearchList(int id,String project_num, String project_img,String project_name,int maxPrice,int minPrice ,int maxArea,int minArea,int keshou,int fanxian ){
+	
+	public String getProject_lan_cn() {
+		return project_lan_cn;
+	}
+	public void setProject_lan_cn(String project_lan_cn) {
+		this.project_lan_cn = project_lan_cn;
+	}
+	public SearchList(int id,String project_num, String project_img,String project_name,String maxPrice,String minPrice ,int maxArea,int minArea,int keshou,String fanxian,String project_lan_cn,String mianji ){
 		this.id=id;
 		this.project_num = project_num;
 		this.project_img=project_img;
@@ -28,6 +44,8 @@ public class SearchList {
 		this.minArea=minArea;
 		this.keshou=keshou;
 		this.fanxian=fanxian;
+		this.project_lan_cn=project_lan_cn;
+		this.mianji=mianji;
 	}
 	public String getProject_name() {
 		return project_name;
@@ -35,16 +53,18 @@ public class SearchList {
 	public void setProject_name(String project_name) {
 		this.project_name = project_name;
 	}
-	public int getMaxPrice() {
+	
+	
+	public String getMaxPrice() {
 		return maxPrice;
 	}
-	public void setMaxPrice(int maxPrice) {
+	public void setMaxPrice(String maxPrice) {
 		this.maxPrice = maxPrice;
 	}
-	public int getMinPrice() {
+	public String getMinPrice() {
 		return minPrice;
 	}
-	public void setMinPrice(int minPrice) {
+	public void setMinPrice(String minPrice) {
 		this.minPrice = minPrice;
 	}
 	public int getMaxArea() {
@@ -65,10 +85,11 @@ public class SearchList {
 	public void setKeshou(int keshou) {
 		this.keshou = keshou;
 	}
-	public int getFanxian() {
+
+	public String getFanxian() {
 		return fanxian;
 	}
-	public void setFanxian(int fanxian) {
+	public void setFanxian(String fanxian) {
 		this.fanxian = fanxian;
 	}
 	public int getId() {
