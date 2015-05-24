@@ -323,7 +323,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-2" style="width:150px;"></div>
 			<c:forEach var="item" items="${newsList}">
 		  	 	    <div class="col-md-3">
-						<div style="width:230px;"><a href="/news_blog.jsp"><img src="http://101.200.174.253:8080/all/${item.news_image}" width=230px></a></div>
+						<div style="width:230px;"><a href="/Detail?id=${item.id}&type=1"><img src="http://101.200.174.253:8080/all/${item.news_image}" width=230px></a></div>
 						<div style="height:100px;width:230px;">${item.news_abstract}</div>
 					</div>
   	 		</c:forEach>

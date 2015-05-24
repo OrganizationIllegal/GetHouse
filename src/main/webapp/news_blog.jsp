@@ -22,7 +22,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="row" style="height:70px;border:1px solid #FFE4E1;">
             <div class="col-lg-1" style="padding-top:10px;"></div>
-            <span style="font-family:华文中宋; font-size:25px;color:black; ">澳洲购房指南:你不得不知的八大退税技巧</span>
+            <c:choose>
+            	<c:when test="${type==0}">
+            		<span style="font-family:华文中宋; font-size:25px;color:black; ">${zhiYeDetail.title }</span>
+            	</c:when>
+            	<c:otherwise>
+            		<span style="font-family:华文中宋; font-size:25px;color:black; ">${newsBokeDetail.news_title }</span>
+            	</c:otherwise>
+            </c:choose>
+            
+            
            
         </div>
         <div class="row" style="margin-top:20px;">
@@ -36,21 +45,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                         
                           <li class="media">
-                            <img src="pic/1.jpg">
+                          <c:choose>
+            	<c:when test="${type==0}">
+            		<img src="http://101.200.174.253:8080/all/${zhiYeDetail.image}" width="626px">
+            	</c:when>
+            	<c:otherwise>
+            		<img src="http://101.200.174.253:8080/all/${newsBokeDetail.news_image}" width="626px">
+            	</c:otherwise>
+            </c:choose>
+                            
                           
                           </li>
                         
                         <li class="media">
                            <span>
-                           	asdfsadfsdafasdfsafsadf
-                           	asdfasdf
-                           	asdfasdfdsa
-                           	asdfasd
+	                            <c:choose>
+			                        <c:when test="${type==0}">
+			            				${zhiYeDetail.detail}
+			            			</c:when>
+			            			<c:otherwise>
+			            				${newsBokeDetail.news_detail}
+			            			</c:otherwise>
+			            		</c:choose>
                            	</span>
                           
                           </li>
                         
-                        <li class="media">
+                     <!--    <li class="media">
                            <span style="font-family:华文中宋; color:rgba(140, 181, 225, 1); ">八大房产投资退税技巧：</span>
                           
                           </li>
@@ -130,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            	asdfasd
                            	</span>
                           
-                          </li>
+                          </li> -->
                         
                          </li><li class="media">
                            <a href="#" target="_blank"><span style="font-family:华文中宋; color:rgba(140, 181, 225, 1); ">退税技巧</span></a>
@@ -175,42 +196,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="panel-heading">最新博客文章</div>
               <div class="panel-body"> 
                 <ul class="media-list">
-                          <li class="media">
+
+                <c:forEach items="${newsList}" var="item" varStatus="status">
+                		 <li class="media">
                              <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="..." alt="..." width="64px" height="58px">
+                                <a href="/Detail?id=${item.id}&type=1">
+                                  <img class="media-object" src="" alt="" width="64px" height="58px">
                                 </a>
                               </div>
                               <div class="media-body">
-                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
-                                <p style="font-size:12px;">房产经纪人</p>
+                                <h5 class="media-heading">${item.news_title}</h5>
+                                <p style="font-size:12px;">${item.news_people}</p>
                                 
                               </div>
                           </li>
-                          <li class="media">
-                             <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="..." alt="..." width="64px" height="58px">
-                                </a>
-                              </div>
-                              <div class="media-body">
-                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
-                                <p style="font-size:12px;">房产经纪人</p>
-                                
-                              </div>
-                          </li>
-                          <li class="media">
-                             <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
-                                </a>
-                              </div>
-                              <div class="media-body">
-                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
-                                <p style="font-size:12px;">房产经纪人</p>
-                                
-                              </div>
-                          </li>
+                
+                </c:forEach>
+                         
+                         
+
                         </ul>
               </div>
             </div>
@@ -218,44 +222,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="panel-heading">置业指导</div>
               <div class="panel-body"> 
                 <ul class="media-list">
-                          <li class="media">
+
+                	 <c:forEach items="${lastestList}" var="item" varStatus="status">
+                	 	 <li class="media">
                              <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
+                                <a href="/Detail?id=${item.id}&type=0">
+                                  <img class="media-object" src="" alt=""  width="64px" height="58px">
                                 </a>
                               </div>
                               <div class="media-body">
-                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
-                                <p style="font-size:12px;">房产经纪人</p>
+                                <h5 class="media-heading">${item.title}</h5>
+                                <p style="font-size:12px;">${item.fenlei}</p>
                                 
                               </div>
                           </li>
-                          <li class="media">
-                             <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
-                                </a>
-                              </div>
-                              <div class="media-body">
-                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
-                                <p style="font-size:12px;">房产经纪人</p>
-                                
-                              </div>
-                          </li>
-                          <li class="media">
-                             <div class="media-left">
-                                <a href="#">
-                                  <img class="media-object" src="..." alt="..."  width="64px" height="58px">
-                                </a>
-                              </div>
-                              <div class="media-body">
-                                <h5 class="media-heading">李先生高等数学个人投资者</h5>
-                                <p style="font-size:12px;">房产经纪人</p>
-                                
-                              </div>
-                          </li>
+                	 </c:forEach>
+                         
+                        
                         </ul>
               </div>
+            </div>
             </div>
         </div>
         
