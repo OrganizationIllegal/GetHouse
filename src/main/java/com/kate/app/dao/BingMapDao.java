@@ -192,6 +192,9 @@ public class BingMapDao extends BaseDao {
 			case 3:
 				housetype="%3居室%";
 				break;
+			case 4:
+				housetype="%4居室%";
+				break;
 			}
 			String sql = "SELECT * FROM `house_project` WHERE gps!='' and project_house_type like '"+housetype+"'";
 			Statement stmt = con.createStatement();

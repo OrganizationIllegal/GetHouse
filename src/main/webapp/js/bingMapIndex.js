@@ -1,4 +1,5 @@
  var map = null;
+ var defaultInfobox;
  var map2=null; 
  var defaltCenter=new Microsoft.Maps.Location(-37.847019, 145.064643);  
       /*加载地图*/
@@ -51,7 +52,9 @@
 	 		        var arr=new Array();
 	 		        arr=items[i].gps.split(",");
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
-	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
+	 		        var flag=i+1;
+	 		        var pushpinOptions={text:''+flag}
+	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
 	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', popModal); 
 	 		        Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', getEyeMap); 	
 				    map.entities.push(pushpin);	  		        	        
@@ -75,8 +78,14 @@
 	 		        var arr=new Array();
 	 		        arr=items[i].gps.split(",");
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
-	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
-	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', addDefaultInfobox); 
+	 		        var num=items[i].project_num;
+	 		        var img=items[i].project_img;
+	 		        var name=items[i].project_name;
+	 		        var price=items[i].project_price;
+	 		        var flag=i+1;
+	 		        var pushpinOptions={text:''+flag}
+	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
+				    add(name,img,price,num,pushpin,LA);
 				    map.entities.push(pushpin);	  		        	        
 	 		    }
 	 		},
@@ -85,8 +94,25 @@
 	 		}
         });		 
       }
+       function add(name,img,price,num,pushpin,LA){
+     	  Microsoft.Maps.Events.addHandler(pushpin, 'click', function(){
+ 		        var infoboxOptions = {width :400, height :100,offset:new Microsoft.Maps.Point(0,20), }; 
+ 		        var num1=num;
+ 		        var img1=img;
+ 		        var price1=price;
+ 		        var name1=name;
+ 		        if(defaultInfobox){
+ 		        	defaultInfobox.setOptions({ visible: false });
+ 		        }
+ 			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
+ 			    //alert(defaultInfobox.getId())
+ 			    map.entities.push(defaultInfobox); 
+ 			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+ 			    
+ 		    });
+       }
       /* 增加infobox*/
-	  function addDefaultInfobox()
+	  /*function addDefaultInfobox()
       { 
          $.ajax({
 	 	    type: "GET",
@@ -115,7 +141,7 @@
 	 			alert("addDefaultInfobox error")
 	 		}
         });		 
-      }
+      }*/
 	  /*弹出模态框*/
 	  function popModal(){
 		  getPopMap();

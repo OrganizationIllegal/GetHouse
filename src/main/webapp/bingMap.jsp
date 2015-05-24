@@ -129,6 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <li><a href="#" onclick="addPushpin1()">一居室</a></li>
                <li><a href="#" onclick="addPushpin2()">两居室</a></li>
                <li><a href="#" onclick="addPushpin3()">三居室</a></li>
+               <li><a href="#" onclick="addPushpin4()">四居室</a></li>
             </ul>
          </li>
       </ul>
