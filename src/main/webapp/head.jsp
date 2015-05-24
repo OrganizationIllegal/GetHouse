@@ -52,6 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        			<a href="/overseas.jsp">海外新闻</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
        			<a href="/AboutUs.jsp">关于我们</a>
+       			<span class="divider-vertical" style="margin-left:20px;"></span>
+       			<a href="/news_blog.jsp">新闻博客</a>
        		</div>
        </div>  
        <!-- <div class="col-md-1" >	
