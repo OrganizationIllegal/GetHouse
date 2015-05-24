@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <table id="Result" cellspacing="0" cellpadding="0">
   <tr><th id="ee">
   <div class="panel panel-default" id="dd">
-  <c:forEach var="item" items="${searchList }">
+<%-- <c:forEach var="item" items="${searchList}">
   	<div class="panel-heading" style="background-color:rgb(21,63,101);"><span style="color:white">${item.project_name}</span></div>
   	 <div class="panel-body">
   	       <div id="item" >
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		 </div>
      </div>
  
-     </c:forEach>
+     </c:forEach> --%>
   </div>
 
   </th></tr></table>
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <jsp:include page="foot.jsp" />
    <script src="/js/jquery.pagination.js"></script>
    <script type="text/javascript">
-        /*  var pageIndex = 0;     //页面索引初始值   
+         var pageIndex = 0;     //页面索引初始值   
          var pageSize = 5;     //每页显示条数初始化，修改显示条数，修改这里即可  
          var total = 100;
          $(function () {
@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $.ajax({   
                         type: "POST",  
                         dataType: "json",  
-                        url: '/SearchListPage',      //提交到一般处理程序请求数据   
+                        url: '/IndexSearchPage',      //提交到一般处理程序请求数据   
                         data: { pageIndex : pageIndex, pageSize : pageSize},
                         //data: "pageIndex=" + (pageIndex) + "&pageSize=" + pageSize,          //提交两个参数：pageIndex(页面索引)，pageSize(显示条数)                   
                         success: function(data) {
@@ -173,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	
                 	return html;
                 }
-            });  */
+            }); 
    </script>
 </body>
 

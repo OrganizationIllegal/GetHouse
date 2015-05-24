@@ -235,10 +235,11 @@ import com.kate.app.model.NewsInfo;
 				String sql = " select * from recommend_project";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
+				int proId=0;
 				while(rs.next()){
 					JSONObject obj = new JSONObject();
 					obj.put("id", rs.getInt("id"));
-					int proId = rs.getInt("house_pro_id");
+					String proNum = rs.getString("project_num");
 					if(proId==0){
 						obj.put("project_name", "");
 					}
