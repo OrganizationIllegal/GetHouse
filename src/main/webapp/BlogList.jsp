@@ -17,14 +17,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="padding-top: 105px;">
  <jsp:include page="head.jsp" />
 	<div class="container">
-        <div class="row" style="height:30px;background-color:#4B0082;">
+       <!-- <div class="row" style="height:30px;background-color:#4B0082;">
             <div class="col-lg-1"></div>
             <div class="col-lg-2" style="margin:0 auto;height:100%;line-height:30px;color:white;">博客   置业指导</div>
         </div>
         <div class="row" style="height:70px;border:1px solid #FFE4E1;">
             <div class="col-lg-1"></div>
             <div class="col-lg-2" style="font-size:24px;line-height:70px;height:100%;font-weight:bold;">博客</div>
-        </div>
+        </div>-->
         <div class="row" style="margin-top:20px;">
             <div class="col-lg-1"></div>
             <div class="col-lg-7">
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<c:if test="${status.index < 6}">
                         		<li class="media">
                              <div class="media-left">
-                                <a href="/news_blog.jsp">
+                                <a href="/Detail?id=${item.id}&type=1">
                                   <img class="media-object" src="" alt="" width="180px" height="140px">
                                 </a>
                               </div>
@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <h4 class="media-heading">${item.news_title}</h4>
                                 <p style="font-size:12px;">${item.news_fenlei}</p>
                                 <p style="font-size:120x;">${item.news_abstract}</p>
-                                <a href="/news_blog.jsp">全文></a>
+                                <a href="/Detail?id=${item.id}&type=1">全文></a>
                               </div>
                           </li>
                         	</c:if>
@@ -131,14 +131,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         
     </div>
-    <div class="row" style="height:200px;background-color:#4B0082;vertical-align:middle;text-align:center;position:relative;">
+    <div class="row" style="height:200px;width:1140px;background-color:rgb(20,51,82);vertical-align:middle;text-align:center;position:relative;margin-left:1px">
         <div style="left:40%;top:40%;position:absolute;">
             <font style="font-size:20px;font-weight:bold;color:#FFFFFF;">为您提供最好的海外购房服务</font><br>
             <button class="buttton">注册</button>
         </div>
     </div>
 
-    <div class="row" style="height:20px;"></div>
+    <!--<div class="row" style="height:20px;"></div>-->
    <jsp:include page="foot.jsp" />
    <script type="text/javascript">
 	    // init bootpag
@@ -195,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						html+="</a></div><div class='media-body'><h4 class='media-heading'>"+items[j].title;
  						html+="</h4><p style='font-size:12px;'>"+items[j].fenlei;
  						html+="</p><p style='font-size:120x;'>"+items[j].zhiye_abstract;
- 						html+="<a href='/news_blog.jsp'>全文></a></div></li>";
+ 						html+="<a href='/Detail?id=items[j].id&type=1'>全文></a></div></li>";
                 	}
                 }
                 else{

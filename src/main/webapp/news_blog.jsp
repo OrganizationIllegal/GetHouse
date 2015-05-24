@@ -16,11 +16,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body style="padding-top: 150px;">
  <jsp:include page="head.jsp" />
 	<div class="container">
-        <div class="row" style="height:30px;background-color:#4B0082;">
+       <!-- <div class="row" style="height:30px;background-color:#4B0082;">
             <div class="col-lg-1"></div>
             <div class="col-lg-2" style="margin:0 auto;height:100%;line-height:30px;color:white;">首页 &nbsp&nbsp 新闻博客 &nbsp&nbsp 置业指导</div>
-        </div>
-        <div class="row" style="height:70px;border:1px solid #FFE4E1;">
+        </div>-->
+         <!-- <div class="row" style="height:70px;border:1px solid #FFE4E1;">
             <div class="col-lg-1" style="padding-top:10px;"></div>
             <c:choose>
             	<c:when test="${type==0}">
@@ -30,10 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		<span style="font-family:华文中宋; font-size:25px;color:black; ">${newsBokeDetail.news_title }</span>
             	</c:otherwise>
             </c:choose>
-            
-            
-           
-        </div>
+        </div>-->
         <div class="row" style="margin-top:20px;">
             <div class="col-lg-1"></div>
             <div class="col-lg-7">
@@ -177,8 +174,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="panel panel-default">
               <div class="panel-heading">置业</div>
               <div class="panel-body"> 
-                <a href="/HousePurchasing.jsp?type=${j}&id=&{}" style="display:block;">置业指导</a><br>
-                <a href="">博客</a>
+               <!-- <a href="/HousePurchasing.jsp?type=${j}&id=&{}" style="display:block;">置业指导</a><br>-->
+               <a href="/ZhiYeInfo" style="display:block;">置业指导</a><br>
+                <a href="/BlogList">博客</a>
               </div>
             </div>
             <div class="panel panel-default">
