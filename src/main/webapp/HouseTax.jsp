@@ -57,8 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="type" data-sortable="true" data-editable="true">type</th>
              <th data-field="price" data-sortable="true" data-editable="true">price</th>
               <th data-field="description" data-sortable="true" data-editable="true">description</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
              <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
+              <th data-field="project_num" data-sortable="true" data-editable="true">project_num</th>
+               <th data-field="house_name" data-sortable="true" data-editable="true">house_name</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -158,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {type:row.type,price:row.price,description:row.description,project_name:row.project_name,view_shunxu:row.view_shunxu},
+	 		data: {type:row.type,price:row.price,description:row.description,project_num:row.project_num,view_shunxu:row.view_shunxu,house_name:row.house_name},
 	 		dateType: "text json",
 	 		url: "/Area/AddHouseTax",
 	 		success:function(data){
@@ -186,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else{
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,type:row.type,price:row.price,description:row.description,project_name:row.project_name,view_shunxu:row.view_shunxu},
+		 		data: {id: row.id,type:row.type,price:row.price,description:row.description,project_num:row.project_num,view_shunxu:row.view_shunxu,house_name:row.house_name},
 		 		url: "/Area/updateHouseTax",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
@@ -214,7 +215,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
         },
         'click .remove': function (e, value, row, index) {
-            alert(row.id);
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: row.id},

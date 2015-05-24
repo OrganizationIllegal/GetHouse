@@ -118,15 +118,15 @@ public class AreaTrendDao extends BaseDao {
 		return jsonArray;
 	} 
 //中位数房价走势 Add
- public int InsertAreaMiddle(int heng, int zong, int view_shunxu,int area_id,String project_type){
+ public int InsertAreaMiddle(int heng, int zong, int view_shunxu,String area_code,String project_type){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_middle(heng,zong,view_shunxu,area_id,project_type) values(?,?,?,?,?)";
+			String sql = "insert into area_middle(heng,zong,view_shunxu,area_code,project_type) values(?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, heng);
 			pstmt.setInt(2, zong);
 			pstmt.setInt(3, view_shunxu);
-			pstmt.setInt(4, area_id);
+			pstmt.setString(4, area_code);
 			pstmt.setString(5, project_type);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -137,15 +137,15 @@ public class AreaTrendDao extends BaseDao {
 	}  
  
 //中位数房价走势 update
- public int updateAreaMiddle(int id,int heng, int zong, int view_shunxu,int area_id,String project_type){
+ public int updateAreaMiddle(int id,int heng, int zong, int view_shunxu,String area_code,String project_type){
 		int exeResult=0;
 		try {
-			String sql = "update area_middle set heng=?,zong=?,view_shunxu=?,area_id=?,project_type=? where id=?";
+			String sql = "update area_middle set heng=?,zong=?,view_shunxu=?,area_code=?,project_type=? where id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, heng);
 			pstmt.setInt(2, zong);
 			pstmt.setInt(3, view_shunxu);
-			pstmt.setInt(4, area_id);
+			pstmt.setString(4, area_code);
 			pstmt.setString(5, project_type);
 			pstmt.setInt(6, id);
 			exeResult = pstmt.executeUpdate();
@@ -183,15 +183,15 @@ public class AreaTrendDao extends BaseDao {
 		return jsonArray;
 	} 
  //区域租金走势Add
- public int InsertAreaZujin(int heng, int zong, int view_shunxu,int area_id,String project_type){
+ public int InsertAreaZujin(int heng, int zong, int view_shunxu,String area_code,String project_type){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_zujin(heng,zong,view_shunxu,area_id,project_type) values(?,?,?,?,?)";
+			String sql = "insert into area_zujin(heng,zong,view_shunxu,area_code,project_type) values(?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, heng);
 			pstmt.setInt(2, zong);
 			pstmt.setInt(3, view_shunxu);
-			pstmt.setInt(4, area_id);
+			pstmt.setString(4, area_code);
 			pstmt.setString(5, project_type);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -201,15 +201,15 @@ public class AreaTrendDao extends BaseDao {
 		return exeResult;
 	}  
  //区域租金走势update
- public int updateAreaZujin(int id,int heng, int zong, int view_shunxu,int area_id,String project_type){
+ public int updateAreaZujin(int id,int heng, int zong, int view_shunxu,String area_code,String project_type){
 		int exeResult=0;
 		try {
-			String sql = "update area_zujin set heng=?,zong=?,view_shunxu=?,area_id=?,project_type=? where id=?";
+			String sql = "update area_zujin set heng=?,zong=?,view_shunxu=?,area_code=?,project_type=? where id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, heng);
 			pstmt.setInt(2, zong);
 			pstmt.setInt(3, view_shunxu);
-			pstmt.setInt(4, area_id);
+			pstmt.setString(4, area_code);
 			pstmt.setString(5, project_type);
 			pstmt.setInt(6, id);
 			exeResult = pstmt.executeUpdate();
@@ -247,15 +247,15 @@ public class AreaTrendDao extends BaseDao {
 		return jsonArray;
 	} 
  //区域空置率 Add
- public int InsertAreaZhikong(int heng, int zong, int view_shunxu,int area_id,String project_type){
+ public int InsertAreaZhikong(int heng, int zong, int view_shunxu,String area_code,String project_type){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_kongzhi(heng,zong,view_shunxu,area_id,project_type) values(?,?,?,?,?)";
+			String sql = "insert into area_kongzhi(heng,zong,view_shunxu,area_code,project_type) values(?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, heng);
 			pstmt.setInt(2, zong);
 			pstmt.setInt(3, view_shunxu);
-			pstmt.setInt(4, area_id);
+			pstmt.setString(4, area_code);
 			pstmt.setString(5, project_type);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -265,15 +265,15 @@ public class AreaTrendDao extends BaseDao {
 		return exeResult;
 	}  
  //区域空置率 update
- public int updateAreaZhikong(int id,int heng, int zong, int view_shunxu,int area_id,String project_type){
+ public int updateAreaZhikong(int id,int heng, int zong, int view_shunxu,String area_code,String project_type){
 		int exeResult=0;
 		try {
-			String sql = "update area_kongzhi set heng=?,zong=?,view_shunxu=?,area_id=?,project_type=? where id=?";
+			String sql = "update area_kongzhi set heng=?,zong=?,view_shunxu=?,area_code=?,project_type=? where id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, heng);
 			pstmt.setInt(2, zong);
 			pstmt.setInt(3, view_shunxu);
-			pstmt.setInt(4, area_id);
+			pstmt.setString(4, area_code);
 			pstmt.setString(5, project_type);
 			pstmt.setInt(6, id);
 			exeResult = pstmt.executeUpdate();

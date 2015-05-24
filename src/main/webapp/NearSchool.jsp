@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="id" data-sortable="true">ID</th>
              <th data-field="school_name" data-sortable="true" data-editable="true">school_name</th>
               <th data-field="school_distance" data-sortable="true" data-editable="true">school_distance</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
+            <th data-field="project_num" data-sortable="true" data-editable="true">project_num</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>

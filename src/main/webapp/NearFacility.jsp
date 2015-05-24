@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="market_type" data-sortable="true" data-editable="true">market_type</th>
              <th data-field="market_name" data-sortable="true" data-editable="true">market_name</th>
               <th data-field="market_distance" data-sortable="true" data-editable="true">market_distance</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">project_name</th>
+            <th data-field="project_num" data-sortable="true" data-editable="true">project_num</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>

@@ -25,16 +25,16 @@ public class AreaPeopleDao extends BaseDao{
 			return jsonArray;
 		} 
 	//区域人口分布Add
-	 public int InsertAreaPeople(String column1, String column2, String column3,int view_shunxu,int area_id){
+	 public int InsertAreaPeople(String column1, String column2, String column3,int view_shunxu,String area_code){
 			int exeResult=0;
 			try {
-				String sql = "insert into area_people(column1,column2,column3,view_shunxu,area_id) values(?,?,?,?,?)";
+				String sql = "insert into area_people(column1,column2,column3,view_shunxu,area_code) values(?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, column1);
 				pstmt.setString(2, column2);
 				pstmt.setString(3, column3);
 				pstmt.setInt(4, view_shunxu);
-				pstmt.setInt(5, area_id);
+				pstmt.setString(5, area_code);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -43,16 +43,16 @@ public class AreaPeopleDao extends BaseDao{
 			return exeResult;
 		}  
 	//中位数房价走势 update
-	 public int updateAreaPeople(int id,String column1, String column2, String column3,int view_shunxu,int area_id){
+	 public int updateAreaPeople(int id,String column1, String column2, String column3,int view_shunxu,String area_code){
 			int exeResult=0;
 			try {
-				String sql = "update area_people set column1=?,column2=?,column3=?,view_shunxu=?,area_id=? where id=?";
+				String sql = "update area_people set column1=?,column2=?,column3=?,view_shunxu=?,area_code=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, column1);
 				pstmt.setString(2, column2);
 				pstmt.setString(3, column3);
 				pstmt.setInt(4, view_shunxu);
-				pstmt.setInt(5, area_id);
+				pstmt.setString(5, area_code);
 				pstmt.setInt(6, id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {

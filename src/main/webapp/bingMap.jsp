@@ -54,9 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">房屋类型 <span class="caret"></span>
            </button>
             <ul class="dropdown-menu">
-                <li><a href="/BingMap/FileterType?house_type=1">一居室</a></li>
-                <li><a href="/BingMap/FileterType?house_type=2">两居室</a></li>
-                <li><a href="/BingMap/FileterType?house_type=3">海景房</a></li>
+                <li><a href="/BingMap/FileterType?house_type=1">公寓</a></li>
+                <li><a href="/BingMap/FileterType?house_type=2">别墅</a></li>
+                <li><a href="/BingMap/FileterType?house_type=3">联排别墅</a></li>
              </ul>
   </div>
   <div class="btn-group" role="group">
@@ -85,8 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="clearfix visible-sm"></div>
             <div class="media-body fnt-smaller">
                 <h6 class="media-heading">${item.project_name}</h6>
-                <h6>项目价格<span class="right"><span>$</span>${item.average_price}</span></h6>
-                <h6>项目面积<span class="right">${item.minArea}-${item.maxArea}</span></h6>
+                <h6>项目价格<span class="right">${item.project_min_price}<span>-</span>${item.project_high_price}</span></h6>
+                <h6>项目面积<span class="right">${item.minArea}-${item.maxArea}<span>${item.mianji}</span></h6>
                 <h6>可售套数<span class="right">${item.keshou}</span></h6>
                 <h6>平均单价<span class="right"><span>$</span>${item.average_price}</span></h6>
                 <h6>房屋类型<span class="right">${item.house_type}</span></h6>

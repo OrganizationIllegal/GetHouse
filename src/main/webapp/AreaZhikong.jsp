@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="heng" data-sortable="true" data-editable="true">heng</th>
              <th data-field="zong" data-sortable="true" data-editable="true">zong</th>
              <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
-             <th data-field="area_id" data-sortable="true" data-editable="true">area_id</th>
+             <th data-field="area_code" data-sortable="true" data-editable="true">area_code</th>
              <th data-field="project_type" data-sortable="true" data-editable="true">project_type</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_id:row.area_id,project_type:row.project_type},
+	 		data: {heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_code:row.area_code,project_type:row.project_type},
 	 		dateType: "text json",
 	 		url: "/Area/AddAreaZhikong",
 	 		success:function(data){
@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else{
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_id:row.area_id,project_type:row.project_type},
+		 		data: {id: row.id,heng:row.heng,zong:row.heng,view_shunxu:row.view_shunxu,area_code:row.area_code,project_type:row.project_type},
 		 		url: "/Area/updateAreaZhikong",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
