@@ -58,15 +58,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             <th data-field="id" data-sortable="true">ID</th>
             <th data-field="project_name" data-sortable="true" data-editable="true">Project_name</th>
+            <th data-field="project_img" data-sortable="true" data-editable="true">project_img</th>
             <th data-field="project_nation" data-sortable="true" data-editable="true">Project_nation</th>
             <th data-field="project_address" data-sortable="true" data-editable="true">Project_address</th>
             <th data-field="project_area" data-sortable="true" data-editable="true">Project_area</th>
+            <th data-field="project_price_qi" data-sortable="true" data-editable="true">project_price_qi</th>
+            <th data-field="project_type" data-sortable="true" data-editable="true">project_type</th>
             <th data-field="project_sales_remain" data-sortable="true" data-editable="true">Project_sales_remain</th>
             <th data-field="project_finish_time" data-sortable="true" data-editable="true">Project_finish_time</th>
             <th data-field="project_desc" data-sortable="true" data-editable="true">Project_desc</th>
             <th data-field="project_city" data-sortable="true" data-editable="true">Project_city</th>
             <th data-field="project_house_type" data-sortable="true" data-editable="true">Project_house_type</th>
+            <th data-field="project_high" data-sortable="true" data-editable="true">project_high</th>
             <th data-field="project_price" data-sortable="true" data-editable="true">project_price</th>
+            <th data-field="project_lan_cn" data-sortable="true" data-editable="true">project_lan_cn</th>
+            <th data-field="project_lan_en" data-sortable="true" data-editable="true">project_lan_en</th>
+            <th data-field="project_num" data-sortable="true" data-editable="true">project_num</th>
+            <th data-field="project_vedio" data-sortable="true" data-editable="true">project_vedio</th>
+            <th data-field="project_zhou" data-sortable="true" data-editable="true">project_zhou</th>
+            <th data-field="area_qujian" data-sortable="true" data-editable="true">area_qujian</th>
+            <th data-field="gps" data-sortable="true" data-editable="true">gps</th>
+            <th data-field="return_money" data-sortable="true" data-editable="true">return_money</th>
+            <th data-field="walk_num" data-sortable="true" data-editable="true">walk_num</th>
+            <th data-field="mianji" data-sortable="true" data-editable="true">mianji</th>
+            <th data-field="wuyefei" data-sortable="true" data-editable="true">wuyefei</th>
+            <th data-field="project_min_price" data-sortable="true" data-editable="true">project_min_price</th>
+            <th data-field="project_high_price" data-sortable="true" data-editable="true">project_high_price</th>
+            <th data-field="tuijiandu" data-sortable="true" data-editable="true">tuijiandu</th>
+            <th data-field="housePrice_update_time" data-sortable="true" data-editable="true">housePrice_update_time</th>
+            <th data-field="buytaxInfo" data-sortable="true" data-editable="true">buytaxInfo</th>
+            <th data-field="holdInfo" data-sortable="true" data-editable="true">holdInfo</th>
+            <th data-field="min_area" data-sortable="true" data-editable="true">min_area</th>
+            <th data-field="max_area" data-sortable="true" data-editable="true">max_area</th>
+            <th data-field="area_num" data-sortable="true" data-editable="true">area_num</th>
             <th data-field="developer_name" data-sortable="true" data-editable="true">developer_name</th>
             <th data-field="developer_logos" data-sortable="true" data-editable="true">developer_logo</th> 
            

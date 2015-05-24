@@ -61,7 +61,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="zu_house_rate" data-sortable="true" data-editable="true">zu_house_rate</th>
             <th data-field="zu_xuqiu" data-sortable="true" data-editable="true">zu_xuqiu</th>
             <th data-field="data_exam" data-sortable="true" data-editable="true">data_exam</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">ProjectName</th>
+            <th data-field="area_num" data-sortable="true" data-editable="true">area_num</th>
+            <th data-field="area_name" data-sortable="true" data-editable="true">area_name</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -164,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //alert("hehe add")
             	$.ajax({
 	 	    type: "POST",
-	 		data: {middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam, project_name: row.project_name},
+	 		data: {middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam, area_num : row.area_num, area_name: row.area_name},
 	 		dateType: "json",
 	 		url: "/touzi/addData",
 	 		
@@ -192,7 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           //alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam, project_name: row.project_name},
+		 		data: {id: row.id, middle_price: row.middle_price, middle_zu_price: row.middle_zu_price, price_review: row.price_review, year_increment_rate: row.year_increment_rate,zu_house_rate: row.zu_house_rate, zu_xuqiu: row.zu_xuqiu, data_exam: row.data_exam, area_num : row.area_num, area_name: row.area_name},
 		 		dateType: "json",
 		 		url: "/touzi/editData",
 		 		

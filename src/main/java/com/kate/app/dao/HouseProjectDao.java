@@ -37,7 +37,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setProject_desc(rs.getString("project_desc"));
 				projectInfo.setProject_city(rs.getString("project_city"));
 				projectInfo.setProject_house_type(rs.getString("project_house_type"));
-				projectInfo.setProject_high(rs.getInt("project_high"));
+				projectInfo.setProject_high(rs.getString("project_high"));
 				projectInfo.setProject_price(rs.getString("project_price"));
 				projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
 				projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
@@ -87,7 +87,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setProject_desc(rs.getString("project_desc"));
 				projectInfo.setProject_city(rs.getString("project_city"));
 				projectInfo.setProject_house_type(rs.getString("project_house_type"));
-				projectInfo.setProject_high(rs.getInt("project_high"));
+				projectInfo.setProject_high(rs.getString("project_high"));
 				projectInfo.setProject_price(rs.getString("project_price"));
 				projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
 				projectInfo.setProject_lan_en(rs.getString("project_lan_en"));

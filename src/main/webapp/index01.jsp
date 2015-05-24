@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
         
             </div>
-            <form role="form" action="/index02" method="post" >
+            <form role="form" action="/IndexSearch" method="get" >
                  <div class="row" style="margin-bottom:5px;">
                   <div class="col-lg-6">
                     <div class="input-group">
@@ -84,10 +84,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div style="margin-left:20px;float:left;">
                         <select id="territory" class="form-control input-sm" name="type">
                         <option value ="">房屋类型</option>
-                        <option value ="america">一居室</option>
-                        <option value ="asia">二居室</option>
-                        <option value ="africa">三居室</option>
-                        <option value ="europe">四居室</option>
+                        <option value ="公寓">公寓</option>
+                        <option value ="别墅">别墅</option>
+                        <option value ="联排别墅">联排别墅</option>
+                        
                         </select>
                         </div>
                         <div style="margin-left:20px;float:left;">
@@ -124,27 +124,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<dt>国家</dt>
 												<dd>
 													<label><a href="javascript:;" attrval="不限">不限</a></label>
-													<label><input name="country" type="radio" value="ab" class="australia"/><a href="javascript:;" values2="99" values1="1" attrval="1-99" class="australia">澳大利亚</a></label>
-													<label><input name="country" type="radio" value="ab" class="canada"/><a href="javascript:;" values2="300" values1="100" attrval="100-300" class="canada">加拿大</a></label>
+													<label><input name="country" type="radio" value="澳大利亚" class="australia"/><a href="javascript:;" values2="99" values1="1" attrval="1-99" class="australia">澳大利亚</a></label>
+													<label><input name="country" type="radio" value="加拿大" class="canada"/><a href="javascript:;" values2="300" values1="100" attrval="100-300" class="canada">加拿大</a></label>
 												</dd>
 											</dl>
 											<dl class="listIndex" id="australiacity">
 												<dt>城市</dt>
 												<dd>
 													<label><a href="javascript:;" attrval="不限">不限</a></label>
-													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">墨尔本(Melbourne)</a></label>
-													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">悉尼(Sydney)</a></label>
-													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="600" values1="300" attrval="300-600">布里斯班(Brisbane)</a></label>
-													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">阿德莱德(Adelaide)</a></label>
-													<label><input name="city2" type="radio" value="ab" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">珀斯(Perth)</a></label>
+													<label><input name="city2" type="radio" value="墨尔本" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">墨尔本(Melbourne)</a></label>
+													<label><input name="city2" type="radio" value="悉尼" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">悉尼(Sydney)</a></label>
+													<label><input name="city2" type="radio" value="布里斯班" /><a href="javascript:;" values2="600" values1="300" attrval="300-600">布里斯班(Brisbane)</a></label>
+													<label><input name="city2" type="radio" value="阿德莱德" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">阿德莱德(Adelaide)</a></label>
+													<label><input name="city2" type="radio" value="珀斯" /><a href="javascript:;" values2="1500" values1="600" attrval="5000以上">珀斯(Perth)</a></label>
 												</dd>
 											</dl>
 											<dl class="listIndex more-none" id="canadiancity">
 												<dt>城市</dt>
 												<dd>
 													<label><a href="javascript:;" attrval="不限">不限</a></label>
-													<label><input name="city3" type="radio" value="ab" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">多伦多(Toronto)</a></label>
-													<label><input name="city3" type="radio" value="ab" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">温哥华(Vancouver)</a></label>
+													<label><input name="city2" type="radio" value="多伦多" /><a href="javascript:;" values2="99" values1="1" attrval="1-99">多伦多(Toronto)</a></label>
+													<label><input name="city2" type="radio" value="温哥华" /><a href="javascript:;" values2="300" values1="100" attrval="100-300">温哥华(Vancouver)</a></label>
 													</dd>
 											</dl>
 											<!--
@@ -177,16 +177,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<dt>用途</dt>
 												<dd>
 													<label><a href="javascript:;" attrval="不限">不限</a> </label>
-													<label><input name="xinkaipan" type="checkbox" value="ab" /><a href="javascript:;">新开盘</a></label>
-													<label><input name="huaren" type="checkbox" value="ab" /><a href="javascript:;">华人区</a></label>
-													<label><input name="remen" type="checkbox" value="ab" /><a href="javascript:;">热门项目</a></label>
-													<label><input name="xuequ" type="checkbox" value="ab" /><a href="javascript:;">优秀学区</a></label>
-													<label><input name="baozu" type="checkbox" value="ab" /><a href="javascript:;">包租项目</a></label>
-													<label><input name="daxue" type="checkbox" value="ab" /><a href="javascript:;">大学附近</a></label>
-													<label><input name="center" type="checkbox" value="ab" /><a href="javascript:;">城市中心</a></label>
-													<label><input name="traffic" type="checkbox" value="ab" /><a href="javascript:;">轨道交通</a></label>
-													<label><input name="xianfang" type="checkbox" value="ab" /><a href="javascript:;">现房项目</a></label>
-													<label><input name="maidi" type="checkbox" value="ab" /><a href="javascript:;">买地建房</a></label>
+													<label><input name="xinkaipan" type="checkbox" value="新开盘" /><a href="javascript:;">新开盘</a></label>
+													<label><input name="huaren" type="checkbox" value="华人区" /><a href="javascript:;">华人区</a></label>
+													<label><input name="remen" type="checkbox" value="热门项目" /><a href="javascript:;">热门项目</a></label>
+													<label><input name="xuequ" type="checkbox" value="优秀学区" /><a href="javascript:;">优秀学区</a></label>
+													<label><input name="baozu" type="checkbox" value="包租项目" /><a href="javascript:;">包租项目</a></label>
+													<label><input name="daxue" type="checkbox" value="大学附近" /><a href="javascript:;">大学附近</a></label>
+													<label><input name="center" type="checkbox" value="城市中心" /><a href="javascript:;">城市中心</a></label>
+													<label><input name="traffic" type="checkbox" value="轨道交通" /><a href="javascript:;">轨道交通</a></label>
+													<label><input name="xianfang" type="checkbox" value="现房项目" /><a href="javascript:;">现房项目</a></label>
+													<label><input name="maidi" type="checkbox" value="买地建房" /><a href="javascript:;">买地建房</a></label>
 												</dd>
 											</dl>
 											

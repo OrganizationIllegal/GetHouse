@@ -1,9 +1,7 @@
 package com.kate.app.service;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,8 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.AjaxDao;
-import com.kate.app.dao.HouseProjectDao;
+import com.kate.app.dao.AreaInfoDao;
+import com.kate.app.model.AreaInfo;
 import com.kate.app.model.BrokerInfo;
 import com.kate.app.model.BuyInfo;
 import com.kate.app.model.DeveloperInfo;
@@ -25,21 +24,25 @@ import com.kate.app.model.NewsInfo;
 public class AjaxService {
 	@Autowired
     private AjaxDao ajaxDao;
+	@Autowired
+    private AreaInfoDao areaInfoDao;
 	
-	public JSONArray select(){
+	public JSONArray select(){    //投资数据
 		JSONArray array = new JSONArray();
 		List<InvestmentData> list = ajaxDao.select();
 		for(InvestmentData data : list){
 			JSONObject obj = new JSONObject();
 			obj.put("id", data.getId());
 			obj.put("data_exam", data.getData_exam()==null?"":data.getData_exam());
-			obj.put("middle_price", data.getMiddle_price());
-			obj.put("middle_zu_price", data.getMiddle_zu_price());
-			obj.put("price_review", data.getPrice_review());
-			obj.put("year_increment_rate", data.getYear_increment_rate());
-			obj.put("zu_house_rate", data.getZu_house_rate());
+			obj.put("middle_price", data.getMiddle_price()==null?"":data.getMiddle_price());
+			obj.put("middle_zu_price", data.getMiddle_zu_price()==null?"":data.getMiddle_zu_price());
+			obj.put("price_review", data.getPrice_review()==null?"":data.getPrice_review());
+			obj.put("year_increment_rate", data.getYear_increment_rate()==null?"":data.getYear_increment_rate());
+			obj.put("zu_house_rate", data.getZu_house_rate()==null?"":data.getZu_house_rate());
 			obj.put("zu_xuqiu", data.getZu_xuqiu()==null?"":data.getZu_xuqiu());
-			int proId = data.getHouse_pro_id();
+			obj.put("area_num", data.getArea_num()==null?"":data.getArea_num());
+			obj.put("area_name", data.getArea_name()==null?"":data.getArea_name());
+			/*int proId = data.getHouse_pro_id();
 			if(proId==0){
 				obj.put("project_name", "");
 			}
@@ -53,7 +56,7 @@ public class AjaxService {
 					String proName = name==null? "" : name;
 					obj.put("project_name", proName);
 				}
-			}
+			}*/
 			array.add(obj);
 		}
 		return array;
@@ -122,9 +125,12 @@ public class AjaxService {
 			JSONObject obj = new JSONObject();
 			obj.put("id", data.getId());
 			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
-			obj.put("project_area", data.getProject_area());
+			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
 			obj.put("project_nation", data.getProject_nation()==null?"":data.getProject_nation());
 			obj.put("project_address", data.getProject_address()==null?"":data.getProject_address());
+			obj.put("project_area", data.getProject_area()==null?"":data.getProject_area());
+			obj.put("project_price_qi", data.getProject_price_qi()==null?"":data.getProject_price_qi());
+			obj.put("project_type", data.getProject_type()==null?"":data.getProject_type());
 			obj.put("project_sales_remain", data.getProject_sales_remain());
 			String timeResule = null;
 			Timestamp time = data.getProject_finish_time();
@@ -133,14 +139,42 @@ public class AjaxService {
 				timeResule = df.format(time);
 			}
 			obj.put("project_finish_time", timeResule==null?"":timeResule);
+			
+			
 			obj.put("project_desc", data.getProject_desc()==null?"":data.getProject_desc());  // 锟斤拷目锟斤拷锟斤拷
 			obj.put("project_city", data.getProject_city()==null?"":data.getProject_city());
 			obj.put("project_house_type", data.getProject_house_type()==null?"":data.getProject_house_type());
+			obj.put("project_high", data.getProject_high()==null?"":data.getProject_high());
+			obj.put("project_high", data.getProject_high()==null?"":data.getProject_high());
 			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
-
-			obj.put("project_lan", data.getProject_lan_cn()==null?"":data.getProject_lan_cn());  // 项目一句话
-
-			//obj.put("project_lan", data.getProject_lan()==null?"":data.getProject_lan());  // 锟斤拷目一锟戒话
+			obj.put("project_lan_cn", data.getProject_lan_cn()==null?"":data.getProject_lan_cn());
+			obj.put("project_lan_en", data.getProject_lan_en()==null?"":data.getProject_lan_en());
+			obj.put("project_num", data.getProject_num()==null?"":data.getProject_num());
+			obj.put("project_vedio", data.getProject_vedio()==null?"":data.getProject_vedio());
+			obj.put("project_zhou", data.getProject_zhou()==null?"":data.getProject_zhou());
+			obj.put("area_qujian", data.getArea_qujian()==null?"":data.getArea_qujian());
+			obj.put("gps", data.getGps()==null?"":data.getGps());
+			obj.put("return_money", data.getReturn_money()==null?"":data.getReturn_money());
+			obj.put("walk_num", data.getWalk_num());
+			obj.put("mianji", data.getMianji());
+			obj.put("wuyefei", data.getWuyefei()==null?"":data.getWuyefei());
+			obj.put("project_min_price", data.getProject_min_price()==null?"":data.getProject_min_price());
+			obj.put("project_high_price", data.getProject_high_price()==null?"":data.getProject_high_price());
+			obj.put("tuijiandu", data.getTuijiandu());
+			String timeResule1 = null;
+			Timestamp time1 = data.getHousePrice_update_time();
+			SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+			if(time1!=null){
+				timeResule1 = df1.format(time1);
+			}
+			obj.put("price_update_time", timeResule1==null?"":timeResule1);
+			obj.put("buytaxInfo", data.getBuytaxInfo()==null?"":data.getBuytaxInfo());
+			obj.put("holdInfo", data.getHoldInfo()==null?"":data.getHoldInfo());
+			obj.put("min_area", data.getMin_area());
+			obj.put("max_area", data.getMax_area());
+			obj.put("area_num", data.getArea_num());
+			
+			
 
 			if(data.getDeveloper_id()==0){
 				obj.put("developer_name", "");
@@ -278,20 +312,23 @@ public class AjaxService {
 			JSONObject obj = new JSONObject();
 			obj.put("id", data.getId());    //锟斤拷目id
 			String project_name = data.getProject_name()==null? "":data.getProject_name();
-			String project_price_qujian = data.getProject_price()==null?"":data.getProject_price();
+			String project_high_price = data.getProject_high_price()==null?"":data.getProject_high_price();
+			String project_min_price = data.getProject_min_price()==null?"":data.getProject_min_price();
+			String project_price_qujian = project_high_price+"~"+project_min_price;
+			String return_money = data.getReturn_money()==null?"":data.getReturn_money();
 			obj.put("project_name", project_name);
-
-			obj.put("project_price_qi", data.getProject_price_qi());   //平均价格
+			obj.put("project_price_qi", data.getProject_price_qi());   //起价
 			obj.put("project_price_qujian", project_price_qujian);   //价格区间
-			List<BuyInfo> listInfo = ajaxDao.selectBuyInfo(data.getId());
+			obj.put("return_money", return_money);
+			/*List<BuyInfo> listInfo = ajaxDao.selectBuyInfo(data.getId());
 			BuyInfo buyInfo = new BuyInfo();
 			if(listInfo.size()>0){
 				buyInfo = ajaxDao.selectBuyInfo(data.getId()).get(0);
-				obj.put("return_money", buyInfo.getReturn_money());
+				obj.put("return_money", return_money);
 			}
-			else{
-				obj.put("return_money", 0);
-			}
+			else{*/
+				
+			//}
 			array.add(obj);
 		}
 		return array;
@@ -476,14 +513,14 @@ public class AjaxService {
 		return count;
 	}
 	
-	public int addTouziData(String project_name, int middle_price, int middle_zu_price, int price_review, int year_increment_rate, int zu_house_rate, String zu_xuqiu,String data_exam) throws Exception{
+	public int addTouziData(String area_name, String area_num, String middle_price, String middle_zu_price, String price_review, String year_increment_rate, String zu_house_rate, String zu_xuqiu,String data_exam) throws Exception{
 	    boolean result = false;
-		int proId= ajaxDao.findProByName(project_name);
-		if(proId==0){    //锟斤拷目锟斤拷拼锟斤拷锟�
+		int count = ajaxDao.countAreaInfo(area_num);
+		if(count<=0){
 			return -1;
 		}
 		else{
-			result = ajaxDao.addTouziData(middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam, proId);
+			result = ajaxDao.addTouziData(middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam, area_num, area_name);
 			if(result==true){
 				return 1;   
 			}
@@ -553,9 +590,9 @@ public class AjaxService {
 	}
 	
 	
-	public int addBrokerInfo(String broker_name, String broker_language, String broker_region, String broker_img) throws Exception{
+	public int addBrokerInfo(String broker_name, String broker_language, String broker_region, String broker_img,String broker_experience, String broker_num, String broker_type, String broker_zizhi, String introduction, String office) throws Exception{
 	    boolean result = false;
-		result = ajaxDao.addBrokerInfo(broker_name, broker_language, broker_region, broker_img);
+		result = ajaxDao.addBrokerInfo(broker_name, broker_language, broker_region, broker_img,broker_experience,broker_num,broker_type,broker_zizhi,introduction,office);
 		if(result==true)
 			return 1;
 		else
@@ -583,9 +620,9 @@ public class AjaxService {
 	
 	
 	
-	public int editBrokerInfo(int id, String broker_name, String broker_language, String broker_region, String broker_img) throws Exception{
+	public int editBrokerInfo(int id, String broker_name, String broker_language, String broker_region, String broker_img,String broker_experience, String broker_num, String broker_type, String broker_zizhi, String introduction, String office) throws Exception{
 		boolean result = false;
-		result = ajaxDao.editBrokerInfo(id, broker_name, broker_language, broker_region, broker_img);
+		result = ajaxDao.editBrokerInfo(id, broker_name, broker_language, broker_region, broker_img,broker_experience,broker_num,broker_type,broker_zizhi,broker_zizhi,office);
 			if(result==true){
 				return 1;   
 			}
