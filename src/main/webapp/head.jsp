@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        			<span class="divider-vertical" style="margin-left:20px;"></span>
        			<a href="/AboutUs.jsp">关于我们</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/news_blog.jsp">新闻博客</a>
+       			<a href="/BlogList">新闻博客</a>
        		</div>
        </div>  
        <!-- <div class="col-md-1" >	

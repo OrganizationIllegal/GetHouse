@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         		<li class="media">
                              <div class="media-left">
                                 <a href="/Detail?id=${item.id}&type=0">
-                                  <img class="media-object" src="" alt="" width="180px" height="140px">
+                                  <img class="media-object" src="http://101.200.174.253:8080/all/${item.image}" alt="" width="180px" height="140px">
                                 </a>
                               </div>
                               <div class="media-body">
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="panel-heading">置业</div>
               <div class="panel-body"> 
                 <a href="/ZhiYeInfo" style="display:block;">置业指导</a><br>
-                <a href="/BlogList">博客</a>
+                <a href="/BlogList">新闻博客</a>
               </div>
             </div>
             <div class="panel panel-default">
@@ -87,11 +87,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		 <li class="media">
                              <div class="media-left">
                                 <a href="/Detail?id=${item.id}&type=1">
-                                  <img class="media-object" src="http://101.200.174.253:8080/all/${news_image}" alt="" width="64px" height="58px">
+                                  <img class="media-object" src="http://101.200.174.253:8080/all/${item.news_image}" alt="" width="64px" height="58px">
                                 </a>
                               </div>
                               <div class="media-body">
-                                <h5 class="media-heading">${item.news_title}</h5>
+                                <a href="/Detail?id=${item.id}&type=1"> <h5 class="media-heading">${item.news_title}</h5></a>
                                 <p style="font-size:12px;">${item.news_people}</p>
                                 
                               </div>
@@ -113,11 +113,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	 	 <li class="media">
                              <div class="media-left">
                                 <a href="/Detail?id=${item.id}&type=0">
-                                  <img class="media-object" src="" alt=""  width="64px" height="58px">
+                                  <img class="media-object" src="http://101.200.174.253:8080/all/${item.image}" alt=""  width="64px" height="58px">
                                 </a>
                               </div>
                               <div class="media-body">
-                                <h5 class="media-heading">${item.title}</h5>
+                                  <a href="/Detail?id=${item.id}&type=0"><h5 class="media-heading">${item.title}</h5></a>
                                 <p style="font-size:12px;">${item.fenlei}</p>
                                 
                               </div>

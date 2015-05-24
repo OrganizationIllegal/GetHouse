@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            		  <div class="media">
            		      <div class="col-xs-5">
           			 	 <a class="pull-left" href="#" target="_parent" >
-              				<img alt="image" class="img-responsive" src="pic/house2.jpg" >
+              				<img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.Project_img}" >
            			  	 </a>
            			  </div>
            		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px">
@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	    html+="<span style='color:white'>"+items[j].Project_name+"</span></div>";
  						html+="<div class='panel-body'><div id='item'><div class='media'><div class='col-xs-5'>";
  						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
- 						html+="<img alt='image' class='img-responsive' src='pic/house2.jpg' ></a></div>";
+ 						html+="<img alt='image' class='img-responsive' src='http://101.200.174.253:8080/all/"+items[j].Project_img+"'></a></div>";
  						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
   	                    html+="<h4><b>完整的购房服务</b></h4><hr/><br/>";
   	       				html+="<span><span>7*24小时全天候在线，全</span><br/><span>方位服务的专业代理服务。</span><br/><span>我们提供了基于您的满意付费房地产经纪人。</span></span>";
