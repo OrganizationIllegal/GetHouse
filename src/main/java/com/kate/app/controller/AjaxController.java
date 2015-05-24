@@ -379,33 +379,32 @@ public class AjaxController {
 	
 	@RequestMapping({ "/touzi/addData" })
 	public void addData(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String project_name = req.getParameter("project_name");
-		String middle_price_str = req.getParameter("middle_price");
-		int middle_price  = middle_price_str==null? 0 :Integer.parseInt(middle_price_str);
-		String middle_zu_price_str = req.getParameter("middle_zu_price");
-		int middle_zu_price  = middle_zu_price_str==null? 0 :Integer.parseInt(middle_zu_price_str);
+		String middle_price = req.getParameter("middle_price");
 		
-		String price_review_str = req.getParameter("price_review");
-		int price_review  = price_review_str==null? 0 :Integer.parseInt(price_review_str);
+		String middle_zu_price = req.getParameter("middle_zu_price");
+	
+		
+		String price_review = req.getParameter("price_review");
 		
 		
-		String year_increment_rate_str = req.getParameter("year_increment_rate");
-		int year_increment_rate  = year_increment_rate_str==null? 0 :Integer.parseInt(year_increment_rate_str);
 		
-		String zu_house_rate_str = req.getParameter("zu_house_rate");
-		int zu_house_rate  = zu_house_rate_str==null? 0 :Integer.parseInt(zu_house_rate_str);
+		String year_increment_rate = req.getParameter("year_increment_rate");
+		
+		String zu_house_rate = req.getParameter("zu_house_rate");
 		
 		
 		String zu_xuqiu  = req.getParameter("zu_xuqiu");
 		String data_exam  = req.getParameter("data_exam");
+		String area_num = req.getParameter("area_num");
+		String area_name = req.getParameter("area_name");
 		
 		int flag = 0;
 		JSONObject json = new JSONObject();
-		if(project_name==null || "".equals(project_name)){
+		if(area_name==null || "".equals(area_name)){
 			json.put("result", 0);    //项目名称为空
 		}
 		else{
-			flag = ajaxService.addTouziData(project_name,middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam);	
+			flag = ajaxService.addTouziData(area_num, area_name, middle_price, middle_zu_price, price_review, year_increment_rate, zu_house_rate, zu_xuqiu, data_exam);	
 			json.put("result", flag);
 		}
 		try{
@@ -448,13 +447,19 @@ public class AjaxController {
 		String broker_region = req.getParameter("broker_region");
 		String broker_img = req.getParameter("broker_img");
 		
+		String broker_experience = req.getParameter("broker_experience");
+		String broker_num = req.getParameter("broker_num");
+		String broker_zizhi = req.getParameter("broker_zizhi");
+		String introduction = req.getParameter("introduction");
+		String office = req.getParameter("office");
+		String broker_type = req.getParameter("broker_type");
 		int flag = 0;
 		JSONObject json = new JSONObject();
 		if(broker_name==null || "".equals(broker_name)){
 			json.put("result", 0);    //项目名称为空
 		}
 		else{
-			flag = ajaxService.addBrokerInfo(broker_name, broker_language, broker_region, broker_img);
+			flag = ajaxService.addBrokerInfo(broker_name, broker_language, broker_region, broker_img,broker_experience,broker_num,broker_type,broker_zizhi,introduction,office);
 			json.put("result", flag);
 		}
 		try{
@@ -476,13 +481,19 @@ public class AjaxController {
 		String broker_language = req.getParameter("broker_language");
 		String broker_region = req.getParameter("broker_region");
 		String broker_img = req.getParameter("broker_img");
+		String broker_experience = req.getParameter("broker_experience");
+		String broker_num = req.getParameter("broker_num");
+		String broker_zizhi = req.getParameter("broker_zizhi");
+		String introduction = req.getParameter("introduction");
+		String office = req.getParameter("office");
+		String broker_type = req.getParameter("broker_type");
 		int flag = 0;
 		JSONObject json = new JSONObject();
 		if(broker_name==null || "".equals(broker_name)){
 			json.put("result", 0);    //项目名称为空
 		}
 		else{
-			flag = ajaxService.editBrokerInfo(id, broker_name, broker_language, broker_region, broker_img);
+			flag = ajaxService.editBrokerInfo(id, broker_name, broker_language, broker_region, broker_img,broker_experience,broker_num,broker_type,broker_zizhi,introduction,office);
 			json.put("result", flag);
 		}
 		try{

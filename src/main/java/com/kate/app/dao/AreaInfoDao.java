@@ -24,6 +24,8 @@ public class AreaInfoDao extends BaseDao {
 				areaInfo.setArea_num(rs.getString("area_num"));
 				areaInfo.setArea_zhou(rs.getString("area_zhou"));
 				areaInfo.setHouse_pro_id(rs.getInt("house_pro_id"));
+				areaInfo.setArea_type(rs.getString("area_type"));
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -31,5 +33,30 @@ public class AreaInfoDao extends BaseDao {
 		}
 		return areaInfo;
 	}
+	
+	public AreaInfo getAreaInfoByNum(String area_num){
+		AreaInfo areaInfo = new AreaInfo();
+		try {
+			String sql = " SELECT * from area_info where area_num=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, area_num);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				areaInfo.setArea_city(rs.getString("area_city"));
+				areaInfo.setArea_name(rs.getString("area_name"));
+				areaInfo.setArea_nation(rs.getString("area_nation"));
+				areaInfo.setId(rs.getInt("id"));
+				areaInfo.setArea_zhou(rs.getString("area_zhou"));
+				areaInfo.setHouse_pro_id(rs.getInt("house_pro_id"));
+				areaInfo.setArea_type(rs.getString("area_type"));
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return areaInfo;
+	}
+	
 	
 }

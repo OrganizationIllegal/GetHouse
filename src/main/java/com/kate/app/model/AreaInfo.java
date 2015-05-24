@@ -7,7 +7,15 @@ public class AreaInfo {
 	private String area_city;
 	private String area_zhou;
 	private String area_nation;
-	private int house_pro_id;
+	private int house_pro_id;   // Œﬁ”√
+	private String area_type;
+	
+	public String getArea_type() {
+		return area_type;
+	}
+	public void setArea_type(String area_type) {
+		this.area_type = area_type;
+	}
 	public int getId() {
 		return id;
 	}

@@ -58,6 +58,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="broker_language" data-sortable="true" data-editable="true">broker_language</th>
             <th data-field="broker_region" data-sortable="true" data-editable="true">broker_region</th>
             <th data-field="broker_img" data-sortable="true" data-editable="true">broker_img</th>
+            <th data-field="broker_experience" data-sortable="true" data-editable="true">broker_experience</th>
+            <th data-field="broker_num" data-sortable="true" data-editable="true">broker_num</th>
+            <th data-field="broker_type" data-sortable="true" data-editable="true">broker_type</th>
+            <th data-field="broker_zizhi" data-sortable="true" data-editable="true">broker_zizhi</th>
+            <th data-field="introduction" data-sortable="true" data-editable="true">introduction</th>
+            <th data-field="office" data-sortable="true" data-editable="true">office</th>
           
             <th data-field="operate"
                 data-formatter="operateFormatter"
@@ -161,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //alert("hehe add")
             	$.ajax({
 	 	    type: "POST",
-	 		data: {broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img},
+	 		data: {broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img, broker_experience:row.broker_experience, broker_num:row.broker_num, broker_type:row.broker_type, broker_zizhi:row.broker_zizhi, introduction:row.introduction, office:row.office},
 	 		dateType: "json",
 	 		url: "/addBrokerInfo",
 	 		
@@ -188,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           //alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img},
+		 		data: {broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img, broker_experience:row.broker_experience, broker_num:row.broker_num, broker_type:row.broker_type, broker_zizhi:row.broker_zizhi, introduction:row.introduction, office:row.office},
 		 		dateType: "json",
 		 		url: "/editBrokerInfo",
 		 		
