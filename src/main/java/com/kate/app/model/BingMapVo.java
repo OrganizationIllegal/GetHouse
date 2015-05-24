@@ -12,7 +12,10 @@ public class BingMapVo {
 	private int keshou;
 	private String average_price;
     private String house_type;
-	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,String project_price,int minArea,int maxArea,int keshou,String average_price,String house_type){
+    private String project_min_price;
+    private String project_high_price;
+    private String mianji;
+	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,String project_price,int minArea,int maxArea,int keshou,String average_price,String house_type,String project_min_price,String project_high_price,String mianji){
 		this.project_id=project_id;
 		this.project_img=project_img;
 		this.project_num=project_num;
@@ -24,8 +27,35 @@ public class BingMapVo {
 		this.keshou=keshou;
 		this.average_price=average_price;
 		this.house_type=house_type;
+		this.project_min_price=project_min_price;
+		this.project_high_price=project_high_price;
+		this.mianji=mianji;
 	}
 	
+	public String getProject_min_price() {
+		return project_min_price;
+	}
+
+	public void setProject_min_price(String project_min_price) {
+		this.project_min_price = project_min_price;
+	}
+
+	public String getProject_high_price() {
+		return project_high_price;
+	}
+
+	public void setProject_high_price(String project_high_price) {
+		this.project_high_price = project_high_price;
+	}
+
+	public String getMianji() {
+		return mianji;
+	}
+
+	public void setMianji(String mianji) {
+		this.mianji = mianji;
+	}
+
 	public int getProject_id() {
 		return project_id;
 	}

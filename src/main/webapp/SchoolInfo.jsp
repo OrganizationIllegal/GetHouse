@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
  <body>
    <div class="container">
-    <h1> AreaPeople <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1>
+    <h1> SchoolInfo <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1>
     <div id="toolbar">
         <button id="remove" class="btn btn-danger" disabled>
             <i class="glyphicon glyphicon-remove"></i> Delete
@@ -48,18 +48,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/Area/ListAreaPeople"
+           data-url="/Area/listSchoolInfo"
            data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="column1" data-sortable="true" data-editable="true">column1</th>
-            <th data-field="column2" data-sortable="true" data-editable="true">column2</th>
-            <th data-field="column3" data-sortable="true" data-editable="true">column3</th>
-             <th data-field="view_shunxu" data-sortable="true" data-editable="true">view_shunxu</th>
-             <th data-field="area_code" data-sortable="true" data-editable="true">area_code</th>
-            
+            <th data-field="school_name" data-sortable="true" data-editable="true">school_name</th>
+            <th data-field="school_ranking" data-sortable="true" data-editable="true">school_ranking</th>
+             <th data-field="school_type" data-sortable="true" data-editable="true">school_type</th>
+            <th data-field="stutent_total" data-sortable="true" data-editable="true">stutent_total</th>
+             <th data-field="teacher_total" data-sortable="true" data-editable="true">teacher_total</th>
+             <th data-field="school_position" data-sortable="true" data-editable="true">school_position</th>
+            <th data-field="gps" data-sortable="true" data-editable="true">gps</th>
+            <th data-field="net_info" data-sortable="true" data-editable="true">net_info</th>
+            <th data-field="not_en_stu_bili" data-sortable="true" data-editable="true">not_en_stu_bili</th>
+            <th data-field="school_image" data-sortable="true" data-editable="true">school_image</th>
+             <th data-field="school_desc" data-sortable="true" data-editable="true">school_desc</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -103,10 +108,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	    type: "POST",
 	 		data: { ids : ids},
 	 		dateType: "json",
-	 		url: "/Area/DelFamilyIncome",
+	 		url: "/touzi/deleteAllData",
 	 		
 	 		success:function(data){
-	 			alert("删锟斤拷晒锟�")
+	 			alert("删除成功")
 	 			window.location.reload();
 	 		},
 	 		error:function(){
@@ -159,13 +164,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {column1:row.column1,column2:row.column2,column3:row.column3,view_shunxu:row.view_shunxu, area_code:row.area_code},
+	 		data: {school_name:row.school_name,school_ranking:row.school_ranking,school_type:row.school_type,stutent_total:row.stutent_total,teacher_total:row.teacher_total,school_position:row.school_position,gps:row.gps,net_info:row.net_info,not_en_stu_bili:row.not_en_stu_bili,school_image:row.school_image,school_desc:row.school_desc},
 	 		dateType: "text json",
-	 		url: "/Area/AddAreaPeople",
+	 		url: "/Area/AddSchoolInfo",
+	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
-	 			if(data.area_id==0){
-	 			  alert("area_id不存在")
+	 			if(data.house_pro_id==0){
+	 			  alert("项目名称输入错误")
 	 			}
 	 			else
 	 			{
@@ -187,21 +193,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else{
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,column1:row.column1,column2:row.column2,column3:row.column3,view_shunxu:row.view_shunxu, area_code:row.area_code},
-		 		url: "/Area/UpdateAreaPeople",
+		 		data: {id: row.id,school_name:row.school_name,school_ranking:row.school_ranking,school_type:row.school_type,stutent_total:row.stutent_total,teacher_total:row.teacher_total,school_position:row.school_position,gps:row.gps,net_info:row.net_info,not_en_stu_bili:row.not_en_stu_bili,school_image:row.school_image,school_desc:row.school_desc},
+		 		url: "/Area/updateSchoolInfo",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
-	 			if(data.area_id==0){
-	 			  alert("area_id不存在")
+	 			if(data.house_pro_id==0){
+	 			  alert("项目名称输入错误")
 	 			}
 	 			else
 	 			{
 	 			if(data.flag==false){
-	 			  	alert("更新失败")
+	 			    alert("更新失败")
 	 			}
 	 			else{
 	 				alert("更新成功")
-	 				window.location.reload()
 	 			}
 	 			}
 		 		},
@@ -219,13 +224,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 	    type: "POST",
 		 		data: {id: row.id},
 		 		dateType: "json",
-		 		url: "/Area/DeleteAreaPeople",
+		 		url: "/Area/deleteSchoolInfo",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
 		 			if(data.flag==false){
-		 			    alert("删除失败")
+		 			    alert("删除失败！")
 		 			}else{
-		 			   alert("删除成功")
+		 			   alert("删除成功！")
 		 			}
 		 		},
 		 		error:function(){

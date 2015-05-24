@@ -63,7 +63,7 @@ public class SchoolNearDao extends BaseDao {
 	 public JSONArray listNearSchool(){
 			JSONArray jsonArray=new JSONArray();
 			try {
-				String sql = "select t.id,t.school_name,t.school_distance,h.project_name from near_school t JOIN house_project h on t.house_pro_id=h.id";
+				String sql = "select * from near_school";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				jsonArray=ResultSetConverter.convert(rs);
@@ -74,14 +74,14 @@ public class SchoolNearDao extends BaseDao {
 			return jsonArray;
 		} 
 	//ѧУ���ܱ�->����ѧУ  Add
-	 public int InsertNearSchool(String school_name,int school_distance,int house_pro_id){
+	 public int InsertNearSchool(String school_name,int school_distance,String project_num){
 			int exeResult=0;
 			try {
-				String sql = "insert into near_school(school_name,school_distance,house_pro_id) values(?,?,?)";
+				String sql = "insert into near_school(school_name,school_distance,project_num) values(?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, school_name);
 				pstmt.setInt(2, school_distance);
-				pstmt.setInt(3, house_pro_id);
+				pstmt.setString(3, project_num);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -90,15 +90,15 @@ public class SchoolNearDao extends BaseDao {
 			return exeResult;
 		}  
 	//ѧУ���ܱ�->����ѧУ  update
-	 public int updateNearSchool(int id,String school_name,int school_distance,int house_pro_id){
+	 public int updateNearSchool(int id,String school_name,int school_distance,String  project_num){
 			int exeResult=0;
 			try {
-				String sql = "update near_school set school_name=?,school_distance=? where id=? and house_pro_id=?";
+				String sql = "update near_school set school_name=?,school_distance=?,project_num=?  where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, school_name);
 				pstmt.setInt(2, school_distance);
-				pstmt.setInt(3, id);
-				pstmt.setInt(4, house_pro_id);
+				pstmt.setString(3, project_num);
+				pstmt.setInt(4, id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -123,7 +123,7 @@ public class SchoolNearDao extends BaseDao {
 	 public JSONArray listNearFacility(){
 			JSONArray jsonArray=new JSONArray();
 			try {
-				String sql = "select t.id,t.market_type,t.market_name,t.market_distance,t.house_pro_id,h.project_name from near_peitao t  JOIN house_project h on t.house_pro_id=h.id;";
+				String sql = "select * from near_peitao";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				jsonArray=ResultSetConverter.convert(rs);
@@ -134,15 +134,15 @@ public class SchoolNearDao extends BaseDao {
 			return jsonArray;
 		} 
 	//ѧУ���ܱ�->��������  add
-	 public int InsertNearFacility(String market_type,String market_name,int market_distance,int house_pro_id){
+	 public int InsertNearFacility(String market_type,String market_name,int market_distance,String project_num){
 			int exeResult=0;
 			try {
-				String sql = "insert into near_peitao(market_type,market_name,market_distance,house_pro_id) values(?,?,?,?)";
+				String sql = "insert into near_peitao(market_type,market_name,market_distance,project_num) values(?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, market_type);
 				pstmt.setString(2, market_name);
 				pstmt.setInt(3, market_distance);
-				pstmt.setInt(4, house_pro_id);
+				pstmt.setString(4, project_num);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -151,16 +151,16 @@ public class SchoolNearDao extends BaseDao {
 			return exeResult;
 		}  
 	//ѧУ���ܱ�->��������  update
-	 public int updateNearFacility(int id,String market_type,String market_name,int market_distance,int house_pro_id){
+	 public int updateNearFacility(int id,String market_type,String market_name,int market_distance,String project_num){
 			int exeResult=0;
 			try {
-				String sql = "update near_peitao set market_type=?,market_name=?,market_distance=? where id=? and house_pro_id=?";
+				String sql = "update near_peitao set market_type=?,market_name=?,market_distance=?,project_num=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, market_type);
 				pstmt.setString(2, market_name);
 				pstmt.setInt(3, market_distance);
-				pstmt.setInt(4, id);
-				pstmt.setInt(5, house_pro_id);
+				pstmt.setString(4, project_num);
+				pstmt.setInt(5, id);
 				exeResult = pstmt.executeUpdate();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

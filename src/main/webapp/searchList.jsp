@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $(function () {
               total = InitTable(0);    //Load事件，初始化表格数据，页面索引为0（第一页）
                 //分页，PageCount是总条目数，这是必选参数，其它参数都是可选
-                $("#Pagination").pagination(100,{
+                $("#Pagination").pagination(total,{
                     callback: PageCallback,  //PageCallback() 为翻页调用次函数。
                     prev_text: "« 上一页",
                     next_text: "下一页 »",
@@ -120,6 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	var count = 0;            
                     $.ajax({   
                         type: "POST",  
+                        async: false,
                         dataType: "json",  
                         url: '/SearchListPage',      //提交到一般处理程序请求数据   
                         data: { pageIndex : pageIndex, pageSize : pageSize},
@@ -157,8 +158,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            		  		html+="<b>最多:</b><span class='right'><span>$</span>"+items[j].MaxPrice+"</span><br/>";
            		      	html+="<b>最少:</b><span class='right'><span>$</span>"+items[j].MinPrice+"</span><br/>";
            		      	html+="<b>面积(M2)</b>:<span class='right'>"+items[j].MinArea+"<span>-</span>"+items[j].MaxArea+"</span><br/>";
-           		      	html+="<b>可售:</b><span class='right'>"+items[j].keshou+"</span><br/>";
-            			html+="<b>返现:</b><span class='right'><span>$</span>"+items[j].fanxian+"</span><br/>";
+           		      	html+="<b>可售:</b><span class='right'>"+items[j].Keshou+"</span><br/>";
+            			html+="<b>返现:</b><span class='right'>"+items[j].Fanxian+"</span><br/>";
             			html+="</div></div></div></div></div></div>";
                 	}
                 }

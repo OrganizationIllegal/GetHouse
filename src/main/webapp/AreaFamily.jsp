@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             <th data-field="data_souce" data-sortable="true" data-editable="true">data_souce</th>
             <th data-field="update_time" data-sortable="true" data-editable="true">update_time</th>
-            <th data-field="area_id" data-sortable="true" data-editable="true">area_id</th>
+            <th data-field="area_code" data-sortable="true" data-editable="true">area_code</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -163,7 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             	$.ajax({
 	 	    type: "POST",
-	 		data: {family_one:row.family_one,family_one_rate:row.family_one_rate,family_two:row.family_two,family_two_rate:row.family_two_rate,family_three:row.family_three,family_three_rate:row.family_three_rate,data_souce:row.data_souce,update_time:row.update_time,area_id:row.area_id},
+	 		data: {family_one:row.family_one,family_one_rate:row.family_one_rate,family_two:row.family_two,family_two_rate:row.family_two_rate,family_three:row.family_three,family_three_rate:row.family_three_rate,data_souce:row.data_souce,update_time:row.update_time,area_code:row.area_code},
 	 		dateType: "text json",
 	 		url: "Area/AddAreaFamily",
 	 		
@@ -179,6 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			}
 	 			else{
 	 				alert("添加成功")
+	 				window.location.reload()
 	 			}
 	 			}
 	 			
@@ -191,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else{
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id,family_one:row.family_one,family_one_rate:row.family_one_rate,family_two:row.family_two,family_two_rate:row.family_two_rate,family_three:row.family_three,family_three_rate:row.family_three_rate,data_souce:row.data_souce,update_time:row.update_time,area_id:row.area_id},
+		 		data: {id: row.id,family_one:row.family_one,family_one_rate:row.family_one_rate,family_two:row.family_two,family_two_rate:row.family_two_rate,family_three:row.family_three,family_three_rate:row.family_three_rate,data_souce:row.data_souce,update_time:row.update_time,area_code:row.area_code},
 		 		url: "/Area/UpdateAreaFamily",
 		 		success:function(data){
 		 			data=$.parseJSON(data);
@@ -218,7 +219,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
         },
         'click .remove': function (e, value, row, index) {
-            alert(row.id);
              $.ajax({
 		 	    type: "POST",
 		 		data: {id: row.id},

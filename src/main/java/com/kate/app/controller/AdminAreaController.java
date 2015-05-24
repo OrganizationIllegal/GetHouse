@@ -24,6 +24,7 @@ import com.kate.app.dao.CoordinatesDao;
 import com.kate.app.dao.HouseTaxDao;
 import com.kate.app.dao.LatestSaleInfoListDao;
 import com.kate.app.dao.RegionPeopleDao;
+import com.kate.app.dao.SchoolInfoDao;
 import com.kate.app.dao.SchoolNearDao;
 import com.kate.app.service.AreaFamilyService;
 
@@ -49,6 +50,8 @@ public class AdminAreaController {
 	private CoordinatesDao coordinatesDao;
 	@Autowired
 	private AreaPeopleDao areaPeopleDao;
+	@Autowired
+	private SchoolInfoDao schoolInfoDao;
 	
 	//管理员   区域家庭情况构成  列表
 	@RequestMapping({"/Area/ListAreaFamily"})
@@ -69,13 +72,17 @@ public class AdminAreaController {
 		JSONObject json = new JSONObject();
 		boolean flag = false;
 		String family_one=req.getParameter("family_one");
-		int family_one_rate=Integer.parseInt(req.getParameter("family_one_rate"));
+		//int family_one_rate=Integer.parseInt(req.getParameter("family_one_rate"));
+		String family_one_rate=req.getParameter("family_one_rate");
 		String family_two=req.getParameter("family_two");
-		int family_two_rate=Integer.parseInt(req.getParameter("family_two_rate"));
+		//int family_two_rate=Integer.parseInt(req.getParameter("family_two_rate"));
+		String family_two_rate=req.getParameter("family_two_rate");
 		String family_three=req.getParameter("family_three");
-		int family_three_rate=Integer.parseInt(req.getParameter("family_three_rate"));
-		String data_souce=req.getParameter("data_souce");
+		//int family_three_rate=Integer.parseInt(req.getParameter("family_three_rate"));
+		String family_three_rate=req.getParameter("family_three_rate");
 		
+		String data_souce=req.getParameter("data_souce");
+		String area_code=req.getParameter("area_code");
 		 String update_time_str=req.getParameter("update_time");
 		 Timestamp ts = new Timestamp(System.currentTimeMillis()); 
 			if(update_time_str==null||"".equals(update_time_str)){
@@ -88,17 +95,9 @@ public class AdminAreaController {
 	        } catch (Exception e) {   
 	            e.printStackTrace();   
 	        }  
-	        
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaFamilyDao.InsertAreaFamily(family_one, family_one_rate, family_two, family_two_rate, family_three, family_three_rate, data_souce, update_time_str, area_id);	  
+		  int insertResult=areaFamilyDao.InsertAreaFamily(family_one, family_one_rate, family_two, family_two_rate, family_three, family_three_rate, data_souce, update_time_str, area_code);	  
 		  if(insertResult!=0){
 				flag=true;
-		   }
 		 }
 		json.put("flag", flag);
 		try{
@@ -133,13 +132,16 @@ public class AdminAreaController {
 		boolean flag=false;
 		int id=Integer.parseInt(req.getParameter("id"));
 		String family_one=req.getParameter("family_one");
-		int family_one_rate=Integer.parseInt(req.getParameter("family_one_rate"));
+		//int family_one_rate=Integer.parseInt(req.getParameter("family_one_rate"));
+		String family_one_rate=req.getParameter("family_one_rate");
 		String family_two=req.getParameter("family_two");
-		int family_two_rate=Integer.parseInt(req.getParameter("family_two_rate"));
+		//int family_two_rate=Integer.parseInt(req.getParameter("family_two_rate"));
+		String family_two_rate=req.getParameter("family_two_rate");
 		String family_three=req.getParameter("family_three");
-		int family_three_rate=Integer.parseInt(req.getParameter("family_three_rate"));
+		//int family_three_rate=Integer.parseInt(req.getParameter("family_three_rate"));
+		String family_three_rate=req.getParameter("family_three_rate");
 		String data_souce=req.getParameter("data_souce");
-		
+		String area_code=req.getParameter("area_code");
 		 String update_time_str=req.getParameter("update_time");
 		 Timestamp ts = new Timestamp(System.currentTimeMillis()); 
 			if(update_time_str==null||"".equals(update_time_str)){
@@ -152,18 +154,12 @@ public class AdminAreaController {
 	        } catch (Exception e) {   
 	            e.printStackTrace();   
 	        }  
-	        
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaFamilyDao.updateAreaFamily(id, family_one, family_one_rate, family_two, family_two_rate, family_three, family_three_rate, data_souce, update_time_str, area_id);	  
+
+		  int insertResult=areaFamilyDao.updateAreaFamily(id, family_one, family_one_rate, family_two, family_two_rate, family_three, family_three_rate, data_souce, update_time_str, area_code);	  
 		  if(insertResult!=0){
 				flag=true;
 		   }
-		 }
+
 		json.put("flag", flag);
 		try{
 			 PrintWriter out = resp.getWriter();
@@ -750,17 +746,11 @@ public class AdminAreaController {
 		 int zong=Integer.parseInt(req.getParameter("zong"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String project_type=req.getParameter("project_type");
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaTrendDao.InsertAreaMiddle(heng, zong, view_shunxu,area_id,project_type);
+		 String area_code=req.getParameter("area_code");
+		  int insertResult=areaTrendDao.InsertAreaMiddle(heng, zong, view_shunxu,area_code,project_type);
 		  if(insertResult!=0){
 				flag=true;
 		   }
-		 }
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -779,17 +769,11 @@ public class AdminAreaController {
 		 int zong=Integer.parseInt(req.getParameter("zong"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String project_type=req.getParameter("project_type");
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-			 int insertResult=areaTrendDao.updateAreaMiddle(id, heng, zong, view_shunxu, area_id, project_type);
+		 String area_code=req.getParameter("area_code");
+			 int insertResult=areaTrendDao.updateAreaMiddle(id, heng, zong, view_shunxu, area_code, project_type);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -838,17 +822,12 @@ public class AdminAreaController {
 		 int zong=Integer.parseInt(req.getParameter("zong"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String project_type=req.getParameter("project_type");
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaTrendDao.InsertAreaZujin(heng, zong, view_shunxu, area_id, project_type);
+		 String area_code=req.getParameter("area_code");
+		
+		  int insertResult=areaTrendDao.InsertAreaZujin(heng, zong, view_shunxu, area_code, project_type);
 		  if(insertResult!=0){
 				flag=true;
 		   }
-		 }
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -867,17 +846,11 @@ public class AdminAreaController {
 		 int zong=Integer.parseInt(req.getParameter("zong"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String project_type=req.getParameter("project_type");
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-			 int insertResult=areaTrendDao.updateAreaZujin(id, heng, zong, view_shunxu, area_id, project_type);
+		 String area_code=req.getParameter("area_code");
+			 int insertResult=areaTrendDao.updateAreaZujin(id, heng, zong, view_shunxu, area_code, project_type);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -926,17 +899,11 @@ public class AdminAreaController {
 		 int zong=Integer.parseInt(req.getParameter("zong"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String project_type=req.getParameter("project_type");
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaTrendDao.InsertAreaZhikong(heng, zong, view_shunxu, area_id, project_type);
+		 String area_code=req.getParameter("area_code");
+		  int insertResult=areaTrendDao.InsertAreaZhikong(heng, zong, view_shunxu, area_code, project_type);
 		  if(insertResult!=0){
 				flag=true;
 		   }
-		 }
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -955,17 +922,11 @@ public class AdminAreaController {
 		 int zong=Integer.parseInt(req.getParameter("zong"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String project_type=req.getParameter("project_type");
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-			 int insertResult=areaTrendDao.updateAreaZhikong(id, heng, zong, view_shunxu, area_id, project_type);
+		 String area_code=req.getParameter("area_code");
+			 int insertResult=areaTrendDao.updateAreaZhikong(id, heng, zong, view_shunxu, area_code, project_type);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -1013,18 +974,14 @@ public class AdminAreaController {
 		 String type=req.getParameter("type");
 		 int price=Integer.parseInt(req.getParameter("price"));
 		 String description=req.getParameter("description");
-		 String project_name=req.getParameter("project_name");
+		 String project_num=req.getParameter("project_num");
 		 int  view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-			json.put("house_pro_id", house_pro_id);
-		}
-		 else{
-			int insertResult=houseTaxDao.InsertHouseTax(type, price, description, house_pro_id, view_shunxu);
+		 String house_name=req.getParameter("house_name");
+		
+			int insertResult=houseTaxDao.InsertHouseTax(type, price, description, project_num, view_shunxu,house_name);
 			if(insertResult!=0){
 				flag=true;
 			 }
-		}
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -1043,17 +1000,12 @@ public class AdminAreaController {
 		 int price=Integer.parseInt(req.getParameter("price"));
 		 String description=req.getParameter("description");
 		 int  view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-				json.put("house_pro_id", house_pro_id);
-			}
-		 else{
-			 int insertResult=houseTaxDao.updateHouseTax(id, type, price, description, house_pro_id, view_shunxu);
+		 String project_num=req.getParameter("project_num");
+		 String house_name=req.getParameter("house_name");
+			 int insertResult=houseTaxDao.updateHouseTax(id, type, price, description, project_num, view_shunxu,house_name);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -1102,17 +1054,13 @@ public class AdminAreaController {
 		 int price=Integer.parseInt(req.getParameter("price"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String description=req.getParameter("description");
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-			json.put("house_pro_id", house_pro_id);
-		}
-		 else{
-			int insertResult=houseTaxDao.InsertHoldingCost(type, price, description, house_pro_id, view_shunxu);
+		 String project_num=req.getParameter("project_num");
+		 String house_name=req.getParameter("house_name");
+	
+			int insertResult=houseTaxDao.InsertHoldingCost(type, price, description,project_num , view_shunxu,house_name);
 			if(insertResult!=0){
 				flag=true;
 			 }
-		}
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -1131,17 +1079,12 @@ public class AdminAreaController {
 		 int price=Integer.parseInt(req.getParameter("price"));
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
 		 String description=req.getParameter("description");
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-				json.put("house_pro_id", house_pro_id);
-			}
-		 else{
-			 int insertResult=houseTaxDao.updateHoldingCost(id, type, price, description, house_pro_id, view_shunxu);
+		 String project_num=req.getParameter("project_num");
+		 String house_name=req.getParameter("house_name");
+			 int insertResult=houseTaxDao.updateHoldingCost(id, type, price, description, project_num, view_shunxu,house_name);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -1188,17 +1131,11 @@ public class AdminAreaController {
 		 boolean flag = false;
 		 String school_name=req.getParameter("school_name");
 		 int school_distance=Integer.parseInt(req.getParameter("school_distance"));
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-			json.put("house_pro_id", house_pro_id);
-		}
-		 else{
-			int insertResult=schoolNearDao.InsertNearSchool(school_name, school_distance, house_pro_id);
+		 String project_num=req.getParameter("project_num");
+			int insertResult=schoolNearDao.InsertNearSchool(school_name, school_distance, project_num);
 			if(insertResult!=0){
 				flag=true;
 			 }
-		}
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -1215,17 +1152,11 @@ public class AdminAreaController {
 		 int id=Integer.parseInt(req.getParameter("id"));
 		 String school_name=req.getParameter("school_name");
 		 int school_distance=Integer.parseInt(req.getParameter("school_distance"));
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-				json.put("house_pro_id", house_pro_id);
-			}
-		 else{
-			 int insertResult=schoolNearDao.updateNearSchool(id, school_name, school_distance, house_pro_id);
+		 String project_num=req.getParameter("project_num");
+			 int insertResult=schoolNearDao.updateNearSchool(id, school_name, school_distance, project_num);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -1273,17 +1204,12 @@ public class AdminAreaController {
 		 String market_type=req.getParameter("market_type");
 		 String market_name=req.getParameter("market_name");
 		 int market_distance=Integer.parseInt(req.getParameter("market_distance"));
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-			json.put("house_pro_id", house_pro_id);
-		}
-		 else{
-			int insertResult=schoolNearDao.InsertNearFacility(market_type, market_name, market_distance, house_pro_id);
+		 String project_num=req.getParameter("project_num");
+		
+			int insertResult=schoolNearDao.InsertNearFacility(market_type, market_name, market_distance, project_num);
 			if(insertResult!=0){
 				flag=true;
 			 }
-		}
 		json.put("flag", flag);
 		try{
 			PrintWriter out = resp.getWriter();
@@ -1301,17 +1227,12 @@ public class AdminAreaController {
 		 String market_type=req.getParameter("market_type");
 		 String market_name=req.getParameter("market_name");
 		 int market_distance=Integer.parseInt(req.getParameter("market_distance"));
-		 String project_name=req.getParameter("project_name");
-		 int house_pro_id=areaFamilyService.findProjectIdByname(project_name);
-		 if(house_pro_id==0){
-				json.put("house_pro_id", house_pro_id);
-			}
-		 else{
-			 int insertResult=schoolNearDao.updateNearFacility(id, market_type, market_name, market_distance, house_pro_id);
+		 String project_num=req.getParameter("project_num");
+		
+			 int insertResult=schoolNearDao.updateNearFacility(id, market_type, market_name, market_distance, project_num);
 			 if(insertResult!=0){
 					flag=true;
 			 }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -1447,17 +1368,11 @@ public class AdminAreaController {
 		 String column2=req.getParameter("column2");
 		 String column3=req.getParameter("column3");
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
-		 
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaPeopleDao.InsertAreaPeople(column1, column2, column3, view_shunxu, area_id);
+		 String area_code=req.getParameter("area_code");
+
+		  int insertResult=areaPeopleDao.InsertAreaPeople(column1, column2, column3, view_shunxu, area_code);
 		  if(insertResult!=0){
 				flag=true;
-		   }
 		 }
 		json.put("flag", flag);
 		try{
@@ -1477,18 +1392,12 @@ public class AdminAreaController {
 		 String column2=req.getParameter("column2");
 		 String column3=req.getParameter("column3");
 		 int view_shunxu=Integer.parseInt(req.getParameter("view_shunxu"));
-		 
-		 int area_idtemp=Integer.parseInt(req.getParameter("area_id"));
-		 int area_id=areaTrendDao.findAreaid(area_idtemp);
-		 if(area_id==0){
-			 json.put("area_id", area_id);
-		 }
-		 else{
-		  int insertResult=areaPeopleDao.updateAreaPeople(id, column1, column2, column3, view_shunxu, area_id);
+		 String area_code=req.getParameter("area_code");
+		
+		  int insertResult=areaPeopleDao.updateAreaPeople(id, column1, column2, column3, view_shunxu, area_code);
 		  if(insertResult!=0){
 				flag=true;
 		   }
-		 }
 		 json.put("flag", flag);
 			try{
 				PrintWriter out = resp.getWriter();
@@ -1528,5 +1437,111 @@ public class AdminAreaController {
 	public int findProjectIdByName(String project_name){
 		int project_id=areaFamilyService.findProjectIdByname(project_name);
 		return project_id;
+	}
+	//学校信息list
+	@RequestMapping({"/Area/listSchoolInfo"})
+	public void listSchoolInfo(HttpServletRequest req,HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray jsonAreaFeature=schoolInfoDao.listSchoolInfo();
+		json.put("total", jsonAreaFeature.size());
+		json.put("rows", jsonAreaFeature);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	//学校信息add
+	@RequestMapping({"/Area/AddSchoolInfo"})
+	public void InsertSchoolinfo(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 String school_name=req.getParameter("school_name");
+		 String school_ranking=req.getParameter("school_ranking");
+		 String school_type=req.getParameter("school_type");
+		
+		 String student_total_str = req.getParameter("student_total");
+		 int student_total = student_total_str==null? 0 :Integer.parseInt(student_total_str);
+		 
+		 String teacher_total_str = req.getParameter("teacher_total");
+		 int teacher_total = teacher_total_str==null? 0 :Integer.parseInt(teacher_total_str);
+		 
+		 String school_position=req.getParameter("school_position");
+		 String gps=req.getParameter("gps");
+		 String net_info=req.getParameter("net_info");
+		 
+		 String not_en_stu_bili_str = req.getParameter("not_en_stu_bili");
+		 int not_en_stu_bili = not_en_stu_bili_str==null? 0 :Integer.parseInt(not_en_stu_bili_str);
+		 
+		 String school_image=req.getParameter("school_image");
+		 String school_desc=req.getParameter("school_desc");
+		
+		  int insertResult=schoolInfoDao.InsertSchoolinfo(school_name, school_ranking, school_type, student_total, teacher_total, school_position, gps, net_info, not_en_stu_bili, school_image, school_desc);
+		  if(insertResult!=0){
+				flag=true;
+		 }
+		json.put("flag", flag);
+		try{
+			PrintWriter out = resp.getWriter();
+			out.print(json);
+			}catch(Exception e){
+				e.printStackTrace();
+		    }
+	}
+	//学校信息update
+	@RequestMapping({"/Area/updateSchoolInfo"})
+	public void UpdateSchoolInfo(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 String school_name=req.getParameter("school_name");
+		 String school_ranking=req.getParameter("school_ranking");
+		 String school_type=req.getParameter("school_type");
+		
+		 String student_total_str = req.getParameter("student_total");
+		 int student_total = student_total_str==null? 0 :Integer.parseInt(student_total_str);
+		 
+		 String teacher_total_str = req.getParameter("teacher_total");
+		 int teacher_total = teacher_total_str==null? 0 :Integer.parseInt(teacher_total_str);
+		 
+		 String school_position=req.getParameter("school_position");
+		 String gps=req.getParameter("gps");
+		 String net_info=req.getParameter("net_info");
+		 
+		 String not_en_stu_bili_str = req.getParameter("not_en_stu_bili");
+		 int not_en_stu_bili = not_en_stu_bili_str==null? 0 :Integer.parseInt(not_en_stu_bili_str);
+		 
+		 String school_image=req.getParameter("school_image");
+		 String school_desc=req.getParameter("school_desc");
+		
+		  int insertResult=schoolInfoDao.updateSchoolInfo(id, school_name, school_ranking, school_type, student_total, teacher_total, school_position, gps, net_info, not_en_stu_bili, school_image, school_desc);
+		  if(insertResult!=0){
+				flag=true;
+		   }
+		 json.put("flag", flag);
+			try{
+				PrintWriter out = resp.getWriter();
+			 	out.print(json);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+	}
+	//学校信息delete
+	@RequestMapping({"/Area/deleteSchoolInfo"})
+	public void DelSchoolInfo(HttpServletRequest req,HttpServletResponse resp){
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 int insertResult=schoolInfoDao.delSchoolInfo(id);
+		 boolean flag=false;
+			if(insertResult!=0){
+				flag=true;
+			}
+			JSONObject json = new JSONObject();
+			json.put("flag", flag);
+			try{
+				PrintWriter out = resp.getWriter();
+			    out.print(json);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 	}
 }

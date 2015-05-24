@@ -90,20 +90,20 @@ public class AreaFamilyDao extends BaseDao {
 		return oldfamilyrate;
 	}
 	//Ôö
-	public int InsertAreaFamily(String family_one,int family_one_rate,String family_two,int family_two_rate,String family_three,int family_three_rate,String data_source,String update_time,int area_id){
+	public int InsertAreaFamily(String family_one,String family_one_rate,String family_two,String family_two_rate,String family_three,String family_three_rate,String data_source,String update_time,String area_code){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_family(family_one,family_one_rate,family_two,family_two_rate,family_three,family_three_rate,data_souce,update_time,area_id) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into area_family(family_one,family_one_rate,family_two,family_two_rate,family_three,family_three_rate,data_souce,update_time,area_code) values(?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, family_one);
-			pstmt.setInt(2, family_one_rate);
+			pstmt.setString(2, family_one_rate);
 			pstmt.setString(3, family_two);
-			pstmt.setInt(4, family_two_rate);
+			pstmt.setString(4, family_two_rate);
 			pstmt.setString(5, family_three);
-			pstmt.setInt(6, family_three_rate);
+			pstmt.setString(6, family_three_rate);
 			pstmt.setString(7, data_source);
 			pstmt.setString(8, update_time);
-			pstmt.setInt(9, area_id);
+			pstmt.setString(9, area_code);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -136,13 +136,13 @@ public class AreaFamilyDao extends BaseDao {
 				JSONObject obj = new JSONObject();
 				obj.put("id", rs.getInt("id"));
 				obj.put("family_one", rs.getString("family_one"));
-				obj.put("family_one_rate", rs.getInt("family_one_rate"));
+				obj.put("family_one_rate", rs.getString("family_one_rate"));
 				obj.put("family_two", rs.getString("family_two"));
-				obj.put("family_two_rate", rs.getInt("family_two_rate"));
+				obj.put("family_two_rate", rs.getString("family_two_rate"));
 				obj.put("family_three", rs.getString("family_three"));
-				obj.put("family_three_rate", rs.getInt("family_three_rate"));
+				obj.put("family_three_rate", rs.getString("family_three_rate"));
 				obj.put("data_souce", rs.getString("data_souce"));
-				obj.put("area_id", rs.getInt("area_id"));
+				obj.put("area_code", rs.getString("area_code"));
 				
 				String update_time = null;
 				Timestamp time=rs.getTimestamp("update_time");
@@ -161,20 +161,20 @@ public class AreaFamilyDao extends BaseDao {
 		return jsonArray;
 	} 
 	//¸Ä
-	public int updateAreaFamily(int id,String family_one,int family_one_rate,String family_two,int family_two_rate,String family_three,int family_three_rate,String data_source,String update_time,int area_id){
+	public int updateAreaFamily(int id,String family_one,String family_one_rate,String family_two,String family_two_rate,String family_three,String family_three_rate,String data_source,String update_time,String area_code){
 		int exeResult=0;
 		try {
-			String sql = "update area_family set family_one=?,family_one_rate=?,family_two=?,family_two_rate=?,family_three=?,family_three_rate=?, data_souce=?,update_time=?,area_id=? where id="+id;
+			String sql = "update area_family set family_one=?,family_one_rate=?,family_two=?,family_two_rate=?,family_three=?,family_three_rate=?, data_souce=?,update_time=?,area_code=? where id="+id;
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, family_one);
-			pstmt.setInt(2, family_one_rate);
+			pstmt.setString(2, family_one_rate);
 			pstmt.setString(3, family_two);
-			pstmt.setInt(4, family_two_rate);
+			pstmt.setString(4, family_two_rate);
 			pstmt.setString(5, family_three);
-			pstmt.setInt(6, family_three_rate);
+			pstmt.setString(6, family_three_rate);
 			pstmt.setString(7, data_source);
 			pstmt.setString(8, update_time);
-			pstmt.setInt(9, area_id);
+			pstmt.setString(9, area_code);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

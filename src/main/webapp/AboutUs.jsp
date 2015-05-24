@@ -12,6 +12,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">
     <script type="text/javascript">
+    function tab1(){
+     location.hash="#youxuan";
+	 offSet();
+    }
+     function tab2(){
+     location.hash="#story";
+	 offSet();
+    }
+     function tab3(){
+     location.hash="#team";
+	 offSet();
+    }
+     function tab4(){
+     location.hash="#news";
+	 offSet();
+    }
+     function tab5(){
+     location.hash="#telus";
+	 offSet();
+    }
      $(function(){
         var can = document.getElementById("circle1");
         var can2 = document.getElementById("circle2");
@@ -181,11 +201,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="col-md-1"></div>
-			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;">海房优选</div>
-			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;">我们的故事</div>
-			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;">我们的团队</div>
-			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;">新闻报道</div>
-			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;">联系方式</div>
+			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;"><a href="#youxuan"  onclick="tab1()">海房优选</a></div>
+			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;"><a href="#story"  onclick="tab2()">我们的故事</a></div>
+			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;"><a href="#team"  onclick="tab3()">我们的团队</a></div>
+			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;"><a href="#news"  onclick="tab4()">新闻报道</a></div>
+			<div class="col-md-2" style="font-size:15px;font-family:楷体;text-align:center;border-color:grey;border-right-style:solid;border-right-width:1px;"><a href="#telus"  onclick="tab5()">联系我们</a></div>
 			<div class="col-md-1"></div>
 		</div>
 		<div class="col-md-2"></div>
@@ -256,7 +276,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--end当前落后的购房服务 -->
 <!--start海房优选解决方案 -->
-<div class="row" style="padding:40px 0 ;text-align:center;background-color:rgb(247,248,250);height:500px" >
+<div id="youxuan" class="row" style="padding:40px 0 ;text-align:center;background-color:rgb(247,248,250);height:500px" >
 		<div style="margin:20px 0"><span  style="font-size:15px;font-family:楷体;text-align:center;">海房优选解决方案</span></div>
 		<div style="margin:20px 0"><span  style="font-size:25px;text-align:center;">互联网直接购房者和房产</span></div>
 		<!--start画圆圈 -->
@@ -304,7 +324,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--end风景-->
 <!--start海房优选的故事 -->
-<div class="row" style="padding:40px 0 ;text-align:center;background-color:rgb(247,248,250)" >
+<div id="story" class="row" style="padding:40px 0 ;text-align:center;background-color:rgb(247,248,250)" >
 		<div style="margin:20px 0"><span  style="font-size:15px;font-family:楷体;text-align:center;">海房优选的故事</span></div>
 		<div style="margin:20px 0"><span  style="font-size:25px;text-align:center;">为中国人提供更好的海外购房服务</span></div>
 		<!--star文字-->
@@ -323,7 +343,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--end海外优选的故事 -->
 <!--start我们的团队-->
-<div class="row" style="padding:40px 20px 40px 20px;text-align:center" >
+<div id="team" class="row" style="padding:40px 20px 40px 20px;text-align:center" >
 		<div style="margin:20px 0"><span  style="font-size:15px;font-family:楷体;text-align:center;">我们的团队</span></div>
 		<div style="margin:20px 0"><span  style="font-size:25px;text-align:center;">我们的背景涵盖房地产、互联网、金融和技术</span></div>
 		<!--start画圆圈 -->
