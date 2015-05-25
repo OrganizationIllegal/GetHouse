@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="house_size" data-sortable="true" data-editable="true">HouseSize</th>
             <th data-field="house_price" data-sortable="true" data-editable="true">HousePrice</th>
             <th data-field="house_img" data-sortable="true" data-editable="true">HouseImg</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">ProjectName</th>
+            <th data-field="project_num" data-sortable="true" data-editable="true">ProjectNum</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -160,20 +160,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            
             var id=row.id;
             if(isNaN(id)){
-            //alert("hehe add")
-            	$.ajax({
+            $.ajax({
 	 	    type: "POST",
-	 		data: {house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+	 		data: {house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_num: row.project_num},
 	 		dateType: "json",
 	 		url: "/add/HouseInfo",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("项目编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("增加失败")
 	 			}
@@ -190,17 +189,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           //alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_name: row.project_name},
+		 		data: {id: row.id, house_type: row.house_type, house_room_num: row.house_room_num, house_toilet_num: row.house_toilet_num, house_size: row.house_size,house_price: row.house_price, house_img: row.house_img, project_num: row.project_num},
 		 		dateType: "json",
 		 		url: "/edit/HouseInfo",
 		 		
 		 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("项目编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("修改失败")
 	 			}

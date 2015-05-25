@@ -173,10 +173,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			data=$.parseJSON(data);
 	 		
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("区域编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("区域编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("增加失败")
 	 			}
@@ -200,10 +200,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("区域编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("区域编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("修改失败")
 	 			}

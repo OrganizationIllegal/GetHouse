@@ -10,6 +10,8 @@ public class NewsInfo {
 	private String detail;
 	private String news_img;
 	private String news_num;
+	private String project_num;
+	private String news_abstract;
 	private int house_pro_id;
 	public String getNews_abstract() {
 		return news_abstract;
@@ -17,7 +19,13 @@ public class NewsInfo {
 	public void setNews_abstract(String news_abstract) {
 		this.news_abstract = news_abstract;
 	}
-	private String news_abstract;
+	
+	public String getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
+	}
 	public int getId() {
 		return id;
 	}

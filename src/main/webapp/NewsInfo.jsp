@@ -54,12 +54,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true"data-editable="true">ID</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">Project_name</th>
+            <th data-field="project_num" data-sortable="true" data-editable="true">Project_num</th>
             <th data-field="title" data-sortable="true" data-editable="true">Title</th>
             <th data-field="source" data-sortable="true" data-editable="true">Source</th>
             <th data-field="time" data-sortable="true" data-editable="true">Time</th>
             <th data-field="detail" data-sortable="true" data-editable="true">Detail</th>
             <th data-field="news_img" data-sortable="true" data-editable="true">News_img</th>
+            <th data-field="news_abstract" data-sortable="true" data-editable="true">News_abstract</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -158,17 +159,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             alert('You click like action, row: ' + JSON.stringify(row));
             var id=row.id;
             if(isNaN(id)){
-            alert("hehe add")
-            	$.ajax({
+            $.ajax({
 	 	    type: "POST",
-	 		data: {project_name: row.project_name, title: row.title,source: row.source,time: row.time,detail:row.detail,news_img:row.news_img},
+	 		data: {project_num: row.project_num, title: row.title,source: row.source,time: row.time,detail:row.detail,news_img:row.news_img, news_abstract:row.news_abstract},
 	 		dateType: "json",
 	 		url: "/addNewsInfo",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==false){
 	 				alert("添加失败")
@@ -186,14 +186,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, project_name: row.project_name, title: row.title,source: row.source,time: row.time,detail:row.detail,news_img:row.news_img},
+		 		data: {id: row.id, project_num: row.project_num, title: row.title,source: row.source,time: row.time,detail:row.detail,news_img:row.news_img, news_abstract:row.news_abstract},
 		 		dateType: "json",
 		 		url: "/editNewsInfo",
 		 		
 		 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==false){
 	 				alert("修改失败")
@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 		url: "/deleteNewsInfo",
 		 		
 		 		success:function(data){
-		 			alert("修改成功")
+		 			alert("删除成功")
 		 		},
 		 		error:function(){
 		 			alert("error")

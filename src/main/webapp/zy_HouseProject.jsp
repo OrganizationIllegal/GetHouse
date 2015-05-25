@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="return_money" data-sortable="true" data-editable="true">return_money</th>
             <th data-field="walk_num" data-sortable="true" data-editable="true">walk_num</th>
             <th data-field="mianji" data-sortable="true" data-editable="true">mianji</th>
-            <th data-field="wuyefei" data-sortable="true" data-editable="true">wuyefei</th>
+            
             <th data-field="project_min_price" data-sortable="true" data-editable="true">project_min_price</th>
             <th data-field="project_high_price" data-sortable="true" data-editable="true">project_high_price</th>
             <th data-field="tuijiandu" data-sortable="true" data-editable="true">tuijiandu</th>
@@ -91,8 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <th data-field="min_area" data-sortable="true" data-editable="true">min_area</th>
             <th data-field="max_area" data-sortable="true" data-editable="true">max_area</th>
             <th data-field="area_num" data-sortable="true" data-editable="true">area_num</th>
-            <th data-field="developer_name" data-sortable="true" data-editable="true">developer_name</th>
-            <th data-field="developer_logos" data-sortable="true" data-editable="true">developer_logo</th> 
+            <th data-field="developer_num" data-sortable="true" data-editable="true">developer_num</th>
            
             <th data-field="operate"
                 data-formatter="operateFormatter"
@@ -192,20 +191,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             if(isNaN(id)){
             $.ajax({
 	 	    type: "POST",
-	 		data: {project_name: row.project_name, project_nation: row.project_nation, project_address: row.project_address, project_area: row.project_area,project_sales_remain: row.project_sales_remain, project_finish_time: row.project_finish_time, project_desc: row.projece_desc,project_city:row.project_city,project_house_type:row.project_house_type,project_price:row.project_price, developer_name:row.developer_name},
+	 		data: {project_name: row.project_name, project_img: row.project_img, project_nation: row.project_nation, project_address: row.project_address, project_area: row.project_area, project_price_qi: row.project_price_qi, project_type: row.project_type, project_sales_remain : row.project_sales_remain, project_finish_time:row.project_finish_time, project_desc:row.project_desc, project_city:row.project_city, project_house_type:row.project_house_type, project_high:row.project_high, project_price:row.project_price, project_lan_cn:row.project_lan_cn, project_lan_en:row.project_lan_en, project_num:row.project_num, project_vedio:row.project_vedio, project_zhou:row.project_zhou, area_qujian:row.area_qujian, gps:row.gps, return_money:row.return_money, walk_num:row.walk_num, mianji:row.mianji, project_min_price:row.project_min_price, project_high_price:row.project_high_price, tuijiandu:row.tuijiandu, housePrice_update_time:row.housePrice_update_time, buytaxInfo:row.buytaxInfo, holdInfo:row.holdInfo, min_area:row.min_area, max_area:row.max_area, area_num:row.area_num, developer_num:row.developer_num},
 	 		dateType: "json",
 	 		url: "/addPro",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==-1){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==-3){
-	 				alert("项目名称已经存在！")
+	 				alert("项目编号已经存在！")
 	 			}
 	 			else if(data.result==-2){
-	 				alert("开发商名称不能为空！")
+	 				alert("开发商编号不能为空！")
 	 			}
 	 			else if(data.result==false){
 	 				alert("增加失败")
@@ -222,17 +221,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           else{
          	$.ajax({
 		 	    type: "POST",
-		 		data: {id:row.id,project_name: row.project_name, project_nation: row.project_nation, project_address: row.project_address, project_area: row.project_area,project_sales_remain: row.project_sales_remain, project_finish_time: row.project_finish_time, project_desc: row.projece_desc,project_city:row.project_city,project_house_type:row.project_house_type,project_price:row.project_price, developer_name:row.developer_name, developer_logo:row.developer_logo},
+		 		data: {id:row.id, project_name: row.project_name, project_img: row.project_img, project_nation: row.project_nation, project_address: row.project_address, project_area: row.project_area, project_price_qi: row.project_price_qi, project_type: row.project_type, project_sales_remain : row.project_sales_remain, project_finish_time:row.project_finish_time, project_desc:row.project_desc, project_city:row.project_city, project_house_type:row.project_house_type, project_high:row.project_high, project_price:row.project_price, project_lan_cn:row.project_lan_cn, project_lan_en:row.project_lan_en, project_num:row.project_num, project_vedio:row.project_vedio, project_zhou:row.project_zhou, area_qujian:row.area_qujian, gps:row.gps, return_money:row.return_money, walk_num:row.walk_num, mianji:row.mianji, project_min_price:row.project_min_price, project_high_price:row.project_high_price, tuijiandu:row.tuijiandu, housePrice_update_time:row.housePrice_update_time, buytaxInfo:row.buytaxInfo, holdInfo:row.holdInfo, min_area:row.min_area, max_area:row.max_area, area_num:row.area_num, developer_num:row.developer_num},
 		 		dateType: "json",
 		 		url: "/editPro",
 		 		
 		 		success:function(data){
 		 		data=$.parseJSON(data);
 		 		if(data.result==-1){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==-2){
-	 				alert("开发商名称不能为空！")
+	 				alert("开发商编号不能为空！")
 	 			}
 	 			else if(data.result==false){
 	 				alert("修改失败")
