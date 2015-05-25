@@ -164,8 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            
             var id=row.id;
             if(isNaN(id)){
-            //alert("hehe add")
-            	$.ajax({
+            $.ajax({
 	 	    type: "POST",
 	 		data: {broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img, broker_experience:row.broker_experience, broker_num:row.broker_num, broker_type:row.broker_type, broker_zizhi:row.broker_zizhi, introduction:row.introduction, office:row.office},
 	 		dateType: "json",
@@ -174,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("经纪人姓名不能为空！")
+	 				alert("经纪人编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
 	 				alert("项目名称不存在！")
@@ -194,7 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           //alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img, broker_experience:row.broker_experience, broker_num:row.broker_num, broker_type:row.broker_type, broker_zizhi:row.broker_zizhi, introduction:row.introduction, office:row.office},
+		 		data: {id : row.id, broker_name: row.broker_name, broker_language: row.broker_language, broker_region: row.broker_region, broker_img: row.broker_img, broker_experience:row.broker_experience, broker_num:row.broker_num, broker_type:row.broker_type, broker_zizhi:row.broker_zizhi, introduction:row.introduction, office:row.office},
 		 		dateType: "json",
 		 		url: "/editBrokerInfo",
 		 		

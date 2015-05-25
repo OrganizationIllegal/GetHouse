@@ -1,29 +1,26 @@
 package com.kate.app.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.kate.app.model.AreaTeDian;
 import com.kate.app.model.BrokerInfo;
 import com.kate.app.model.BuyInfo;
 import com.kate.app.model.DeveloperInfo;
+import com.kate.app.model.HoldingTaxVo;
 import com.kate.app.model.HouseInfo;
 import com.kate.app.model.HouseProject;
+import com.kate.app.model.HouseTaxVo;
 import com.kate.app.model.InvestmentData;
-import com.kate.app.model.MyInfo;
 import com.kate.app.model.NewsInfo;
+import com.kate.app.model.RecoProject;
 
 
 	@Repository 
@@ -105,16 +102,14 @@ import com.kate.app.model.NewsInfo;
 					house.setHouse_bath_num(rs.getInt("house_bath_num"));
 					house.setHouse_bath_size(rs.getInt("house_bath_size"));
 					house.setHouse_price_area(rs.getInt("house_price_area"));
-
-					house.setHouse_size_in(rs.getInt("house_size"));
-
-					//house.setHouse_size(rs.getInt("house_size"));
-
+					house.setHouse_size_in(rs.getString("house_size_in"));
+					house.setHouse_size_out(rs.getString("house_size_out"));
 					house.setHouse_city(rs.getString("house_city"));
 					house.setHouse_type(rs.getString("house_type"));
 					house.setHouse_toilet_num(rs.getInt("house_toilet_num"));
 					house.setHouse_toilet_size(rs.getInt("house_toilet_size"));
 					house.setHouse_project_id(rs.getInt("house_project_id"));
+					house.setProject_num(rs.getString("project_num"));
 					list.add(house);
 				}
 			}catch (Exception e) {
@@ -166,7 +161,7 @@ import com.kate.app.model.NewsInfo;
 			return data;
 		}
 
-		public List<HouseProject> selectHouseProject(){    //获取项目信息
+		public List<HouseProject> selectHouseProject(){    //获取项目信息（包括物业费）
 			List<HouseProject> list = new ArrayList<HouseProject>();
 			try{
 				String sql = " select * from house_project";
@@ -225,90 +220,112 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * 锟斤拷询锟狡硷拷锟斤拷目
+		 * 持有成本信息
+		 */
+		public List<HoldingTaxVo> selectHoldFinance(String project_num){    //获取项目信息（包括物业费）
+			List<HoldingTaxVo> list = new ArrayList<HoldingTaxVo>();
+			try{
+				String sql = " select * from holding_finace where project_num=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, project_num);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					int id = rs.getInt("id");
+					String type = rs.getString("type");
+					int price = rs.getInt("price");
+					String description = rs.getString("description");
+					HoldingTaxVo data = new HoldingTaxVo(id,  type, price, description);
+					
+					list.add(data);
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return list;
+		}
+		
+		/*
+		 * 购房税费信息
+		 */
+		public List<HouseTaxVo> selectHouseTax(String project_num){    //获取项目信息（包括物业费）
+			List<HouseTaxVo> list = new ArrayList<HouseTaxVo>();
+			try{
+				String sql = " select * from house_tax where project_num=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, project_num);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					int id = rs.getInt("id");
+					String type = rs.getString("type");
+					int price = rs.getInt("price");
+					String description = rs.getString("description");
+					HouseTaxVo data = new HouseTaxVo(id,  type, price, description);
+					
+					list.add(data);
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return list;
+		}
+		
+		
+		/*
+		 * 推荐项目信息
 		 */
 		
-		public JSONArray selectRecomProject(){    
-			JSONArray array = new JSONArray();
+		public List<RecoProject> selectRecomProject(){    
+			List<RecoProject> list = new ArrayList<RecoProject>();
 			
 			try{
 				String sql = " select * from recommend_project";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
-				int proId=0;
 				while(rs.next()){
-					JSONObject obj = new JSONObject();
-					obj.put("id", rs.getInt("id"));
-					String proNum = rs.getString("project_num");
-					if(proId==0){
-						obj.put("project_name", "");
-					}
-					else{
-						HouseProject project = findProById(proId);
-						if(project==null){
-							obj.put("project_name", "");
-						}
-						else{
-							String proName = project.getProject_name()==null?"":project.getProject_name();
-							obj.put("project_name", proName);
-						}
-					}
-					int recmId = rs.getInt("recommend_id");
-					if(recmId==0){
-						obj.put("recommend_project_name", "");
-					}
-					else{
-						HouseProject re_Project = findProById(recmId);
-						if(re_Project==null){
-							obj.put("recommend_project_name", "");
-						}
-						else{
-							String reName = re_Project.getProject_name()==null?"":re_Project.getProject_name();
-							obj.put("recommend_project_name", reName);
-						}
-					}
-					/*obj.put("recommend_project_desc", pro.getProject_desc());*/
-					array.add(obj);
+					RecoProject data = new RecoProject();
+					data.setId(rs.getInt("id"));
+					data.setProject_num(rs.getString("project_num"));
+					data.setRecommend_num_1(rs.getString("recommend_num_1"));
+					data.setRecommend_num_2(rs.getString("recommend_num_2"));
+					data.setRecommend_num_3(rs.getString("recommend_num_3"));
+					list.add(data);
 				}
 			}catch (Exception e) {
 	            e.printStackTrace();
 	        }
-			return array;
+			return list;
 		}
 		
 		/*
-		 * 锟斤拷询锟截凤拷锟斤拷锟斤拷锟截碉拷
+		 * 区域特点信息
 		 */
-		public JSONArray selectArea(){    
-			JSONArray array = new JSONArray();
+		public List<AreaTeDian> selectArea(){    
+			List<AreaTeDian> list = new ArrayList<AreaTeDian>();
 			try{
 				String sql = " select * from area_features";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
-					JSONObject obj = new JSONObject();
-					obj.put("id", rs.getInt("id"));
-					String area = rs.getString("area_character");
-					obj.put("area_character", area==null?"":area);
-					HouseProject project = findProById(rs.getInt("house_project_id"));
-					if(project==null){
-						obj.put("project_name", "");
-					}
-					else{
-						String proName = project.getProject_name()==null?"":project.getProject_name();
-						obj.put("project_name", proName);
-					}
-					array.add(obj);
+					AreaTeDian data = new AreaTeDian();
+					data.setId(rs.getInt("id"));
+					data.setArea_character(rs.getString("area_character"));
+					data.setArea_code(rs.getString("area_code"));
+					data.setArea_id(rs.getInt("area_id"));
+					data.setData_souce(rs.getString("data_source"));
+					data.setHouse_project_id(rs.getInt("house_project_id"));
+					data.setUpdate_time(rs.getTimestamp("update_time"));
+					data.setView_shunxu(rs.getInt("view_shunxu"));
+					list.add(data);
 				}
 			}catch (Exception e) {
 	            e.printStackTrace();
 	        }
-			return array;
+			return list;
 		}
 		
 		
 		
-		public DeveloperInfo selectDevInfo(int id){    //锟斤拷锟揭匡拷锟斤拷锟斤拷锟斤拷息
+		public DeveloperInfo selectDevInfo(int id){    //通过开发商id查找开发商信息
 			DeveloperInfo deve = new DeveloperInfo();
 			try{
 				String sql = " select * from developer_info where id =?";
@@ -326,11 +343,30 @@ import com.kate.app.model.NewsInfo;
 			return deve;
 		}
 		
+		public DeveloperInfo selectDevInfo(String developer_num){    //通过开发商num查找开发商信息
+			DeveloperInfo deve = new DeveloperInfo();
+			try{
+				String sql = " select * from developer_info where developer_num =?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, developer_num);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					deve.setDeveloper_desc(rs.getString("developer_desc"));
+					deve.setDeveloper_logo(rs.getString("developer_logo"));
+					deve.setDeveloper_name(rs.getString("developer_name"));
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return deve;
+		}
+		
+		
 		/*
 		 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷息
 		 */
 		
-		public List<NewsInfo> selectNewsInfo(){    //锟斤拷锟揭匡拷锟斤拷锟斤拷锟斤拷息
+		public List<NewsInfo> selectNewsInfo(){    //查找新闻信息
 			List<NewsInfo> list = new ArrayList<NewsInfo>();
 			try{
 				String sql = " select * from news_info";
@@ -340,6 +376,8 @@ import com.kate.app.model.NewsInfo;
 					NewsInfo info = new NewsInfo();
 					info.setId(rs.getInt("id"));
 					info.setDetail(rs.getString("detail"));
+					info.setProject_num(rs.getString("project_num"));
+					info.setNews_abstract(rs.getString("news_abstract"));
 					info.setHouse_pro_id(rs.getInt("house_pro_id"));
 					info.setNews_img(rs.getString("news_img"));
 					info.setSource(rs.getString("source"));
@@ -614,16 +652,62 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		/*
-		 * 锟斤拷锟接地凤拷锟斤拷锟斤拷锟截碉拷
-		 */
-		public boolean addArea(String area_character, int proId) throws SQLException{
+		public boolean editTouziData(int id, String middle_price, String middle_zu_price, String price_review, String year_increment_rate, String zu_house_rate, String zu_xuqiu,String data_exam, String area_num, String area_name) throws SQLException{
 			boolean flag = true;
 			try{
-				String sql = " insert into area_features(area_character, house_project_id) values(?,?)";
+				String sql = " update investment_data set year_increment_rate=?, middle_price=?, middle_zu_price=?, zu_house_rate=?, zu_xuqiu=?, price_review=?, data_exam=?, area_num=?, area_name=? where id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, year_increment_rate);
+				pstmt.setString(2, middle_price);
+				pstmt.setString(3, middle_zu_price);
+				pstmt.setString(4, zu_house_rate);
+				pstmt.setString(5, zu_xuqiu);
+				pstmt.setString(6, price_review);
+				pstmt.setString(7, data_exam);
+				pstmt.setString(8, area_num);
+				pstmt.setString(9, area_name);
+				pstmt.setInt(10, id);
+				
+				int result = pstmt.executeUpdate();
+				if(result == 0){
+					flag = false;
+				}
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }/*finally{
+	        	con.close();
+	        }*/
+			return flag;
+	        
+		}
+		
+		/*
+		 * 增加区域信息
+		 */
+		public boolean addArea(String area_code, String area_character, int view_shunxu, String data_source, String update_time) throws SQLException{
+			boolean flag = true;
+			String time_str = "";
+			Timestamp ts = new Timestamp(System.currentTimeMillis()); 
+			if(update_time==null||"".equals(update_time)){
+				update_time = "2015-05-09";
+			}
+	        try {   
+	        	time_str = update_time+" "+"00:00:00";
+	            ts = Timestamp.valueOf(time_str);   
+	            System.out.println(ts);   
+	        } catch (Exception e) {   
+	            e.printStackTrace();   
+	        }  
+	        
+			try{
+				String sql = " insert into area_features(area_character, area_code, view_shunxu, data_source, update_time) values(?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, area_character);
-				pstmt.setInt(2, proId);
+				pstmt.setString(2, area_code);
+				pstmt.setInt(3, view_shunxu);
+				pstmt.setString(4, data_source);
+				pstmt.setString(5, time_str);
+				
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -634,16 +718,31 @@ import com.kate.app.model.NewsInfo;
 			return flag;
 		}
 		/*
-		 * 锟睫改地凤拷锟斤拷锟斤拷锟截碉拷
+		 * 修改区域信息
 		 */
-		public boolean editArea(int id, String area_character, int proId) throws SQLException{
+		public boolean editArea(int id, String area_code, String area_character, int view_shunxu, String data_source, String update_time) throws SQLException{
 			boolean flag = true;
+			String time_str = "";
+			Timestamp ts = new Timestamp(System.currentTimeMillis()); 
+			if(update_time==null||"".equals(update_time)){
+				update_time = "2015-05-09";
+			}
+	        try {   
+	        	time_str = update_time+" "+"00:00:00";
+	            ts = Timestamp.valueOf(time_str);   
+	            System.out.println(ts);   
+	        } catch (Exception e) {   
+	            e.printStackTrace();   
+	        }  
 			try{
-				String sql = " update area_features set area_character=?, house_project_id=? where id=?";
+				String sql = " update area_features set area_character=?, area_code=?, view_shunxu=?, data_source=?, update_time=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, area_character);
-				pstmt.setInt(2, proId);
-				pstmt.setInt(3, id);
+				pstmt.setString(2, area_code);
+				pstmt.setInt(3, view_shunxu);
+				pstmt.setString(4, data_source);
+				pstmt.setString(5, time_str);
+				pstmt.setInt(6, id);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -655,7 +754,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		/*
-		 * 删锟斤拷胤锟斤拷锟斤拷锟斤拷氐锟�
+		 * 删除区域信息
 		 */
 		public boolean deleteArea(int id) throws SQLException{
 			boolean flag = true;
@@ -680,13 +779,15 @@ import com.kate.app.model.NewsInfo;
 		/*
 		 * 锟斤拷锟斤拷锟狡硷拷锟斤拷目
 		 */
-		public boolean addRecoProject(int recomendId, int proId) throws SQLException{
+		public boolean addRecoProject(String project_num, String recommend_project_num1,String recommend_project_num2,String recommend_project_num3) throws SQLException{
 			boolean flag = true;
 			try{
-				String sql = " insert into recommend_project(recommend_id, house_pro_id) values(?,?)";
+				String sql = " insert into recommend_project(project_num, recommend_project_num1, recommend_project_num2, recommend_project_num3) values(?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, recomendId);
-				pstmt.setInt(2, proId);
+				pstmt.setString(1, project_num);
+				pstmt.setString(2, recommend_project_num1);
+				pstmt.setString(3, recommend_project_num2);
+				pstmt.setString(4, recommend_project_num3);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -702,15 +803,16 @@ import com.kate.app.model.NewsInfo;
 		/*
 		 * 锟睫革拷锟狡硷拷锟斤拷目
 		 */
-		public boolean editRecoProject(int id, int recomendId, int proId) throws SQLException{
+		public boolean editRecoProject(int id, String project_num, String recommend_project_num1,String recommend_project_num2,String recommend_project_num3) throws SQLException{
 			boolean flag = true;
 			try{
-				String sql = " update recommend_project set recommend_id=?, house_pro_id=? where id=?";
+				String sql = " update recommend_project set project_num=?, recommend_project_num1=?, recommend_project_num2=?, recommend_project_num3=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, recomendId);
-				pstmt.setInt(2, proId);
-				pstmt.setInt(3, id);
-				
+				pstmt.setString(1, project_num);
+				pstmt.setString(2, recommend_project_num1);
+				pstmt.setString(3, recommend_project_num2);
+				pstmt.setString(4, recommend_project_num3);
+				pstmt.setInt(5, id);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -723,7 +825,7 @@ import com.kate.app.model.NewsInfo;
 			return flag;
 	        
 		}
-		public boolean addNewsInfo(String title, String source, String time, String detail, String news_img, int house_pro_id) throws SQLException{
+		public boolean addNewsInfo(String title, String source, String time, String detail, String news_img, String news_abstract,String project_num) throws SQLException{
 			boolean flag = true;
 			String time_str = "";
 			Timestamp ts = new Timestamp(System.currentTimeMillis()); 
@@ -738,14 +840,15 @@ import com.kate.app.model.NewsInfo;
 	            e.printStackTrace();   
 	        }  
 			try{
-				String sql = " insert into news_info(title, source, time, detail, news_img, house_pro_id) values(?,?,?,?,?,?)";
+				String sql = " insert into news_info(title, source, time, detail, news_img, news_abstract, project_num) values(?,?,?,?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, title);
 				pstmt.setString(2, source);
 				pstmt.setString(3, time_str);
 				pstmt.setString(4, detail);
 				pstmt.setString(5, news_img);
-				pstmt.setInt(6, house_pro_id);
+				pstmt.setString(6, news_abstract);
+				pstmt.setString(7, project_num);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -757,7 +860,7 @@ import com.kate.app.model.NewsInfo;
 	        
 		}
 		
-		public boolean editNewsInfo(int id, String title, String source, String time, String detail, String news_img, int house_pro_id) throws SQLException{
+		public boolean editNewsInfo(int id, String title, String source, String time, String detail, String news_img, String news_abstract,String project_num) throws SQLException{
 			boolean flag = true;
 			String time_str = "";
 			Timestamp ts = new Timestamp(System.currentTimeMillis()); 
@@ -772,15 +875,16 @@ import com.kate.app.model.NewsInfo;
 	            e.printStackTrace();   
 	        }  
 			try{
-				String sql = " update news_info set title=?, source=?, time=?, detail=?, news_img=?, house_pro_id=? where id=?";
+				String sql = " update news_info set title=?, source=?, time=?, detail=?, news_img=?, news_abstract=?, project_num=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, title);
 				pstmt.setString(2, source);
 				pstmt.setString(3, time_str);
 				pstmt.setString(4, detail);
 				pstmt.setString(5, news_img);
-				pstmt.setInt(6, house_pro_id);
-				pstmt.setInt(7, id);
+				pstmt.setString(6, news_abstract);
+				pstmt.setString(7, project_num);
+				pstmt.setInt(8, id);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -794,11 +898,11 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public boolean addHouseInfo(String house_type, int house_room_num, int house_toilet_num, int house_size, String house_price, String house_img, int house_pro_id) throws SQLException{
+		public boolean addHouseInfo(String house_type, int house_room_num, int house_toilet_num, int house_size, String house_price, String house_img, String project_num) throws SQLException{
 			boolean flag = true;
 			
 			try{
-				String sql = " insert into house_info(house_type, house_room_num, house_toilet_num, house_size, house_price, house_img, house_project_id) values(?,?,?,?,?,?,?)";
+				String sql = " insert into house_info(house_type, house_room_num, house_toilet_num, house_size, house_price, house_img, project_num) values(?,?,?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, house_type);
 				pstmt.setInt(2, house_room_num);
@@ -806,7 +910,7 @@ import com.kate.app.model.NewsInfo;
 				pstmt.setInt(4, house_size);
 				pstmt.setString(5, house_price);
 				pstmt.setString(6, house_img);
-				pstmt.setInt(7, house_pro_id);
+				pstmt.setString(7, project_num);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -877,10 +981,10 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public boolean editHouseInfo(int id, String house_type, int house_room_num, int house_toilet_num, int house_size, String house_price, String house_img, int house_pro_id) throws SQLException{
+		public boolean editHouseInfo(int id, String house_type, int house_room_num, int house_toilet_num, int house_size, String house_price, String house_img, String project_num) throws SQLException{
 			boolean flag = true;
 			try{
-				String sql = " update house_info set house_type=?, house_room_num=?, house_toilet_num=?, house_size=?, house_price=?, house_img=?, house_project_id=? where id=?";
+				String sql = " update house_info set house_type=?, house_room_num=?, house_toilet_num=?, house_size=?, house_price=?, house_img=?, project_num=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, house_type);
 				pstmt.setInt(2, house_room_num);
@@ -888,7 +992,7 @@ import com.kate.app.model.NewsInfo;
 				pstmt.setInt(4, house_size);
 				pstmt.setString(5, house_price);
 				pstmt.setString(6, house_img);
-				pstmt.setInt(7, house_pro_id);
+				pstmt.setString(7, project_num);
 				pstmt.setInt(8, id);
 				
 				int result = pstmt.executeUpdate();
@@ -905,33 +1009,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		public boolean editTouziData(int id, int middle_price, int middle_zu_price, int price_review, int year_increment_rate, int zu_house_rate, String zu_xuqiu,String data_exam, int proId) throws SQLException{
-			boolean flag = true;
-			try{
-				String sql = " update investment_data set year_increment_rate=?, middle_price=?, middle_zu_price=?, zu_house_rate=?, zu_xuqiu=?, price_review=?, data_exam=?, house_pro_id=? where id=?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, year_increment_rate);
-				pstmt.setInt(2, middle_price);
-				pstmt.setInt(3, middle_zu_price);
-				pstmt.setInt(4, zu_house_rate);
-				pstmt.setString(5, zu_xuqiu);
-				pstmt.setInt(6, price_review);
-				pstmt.setString(7, data_exam);
-				pstmt.setInt(8, proId);
-				pstmt.setInt(9, id);
-				
-				int result = pstmt.executeUpdate();
-				if(result == 0){
-					flag = false;
-				}
-			}catch (Exception e) {
-	            e.printStackTrace();
-	        }/*finally{
-	        	con.close();
-	        }*/
-			return flag;
-	        
-		}
+		
 		
 		
 		public boolean deleteTouziData(int id){     //删锟斤拷投锟斤拷锟斤拷锟�
@@ -1058,7 +1136,7 @@ import com.kate.app.model.NewsInfo;
 		
 		
 		
-		public boolean addPro(String project_name, String project_lan, String project_desc, String project_nation, String project_address, String project_area, int project_sales_remain, String project_finish_time, String project_city, String project_house_type, String project_price,int deve_id) throws SQLException{
+		public boolean addPro(String project_name, String project_img, String project_nation, String project_address, String project_area, String project_price_qi, String project_type, int project_sales_remain, String project_finish_time, String project_desc, String project_city, String project_house_type, String project_high, String project_price, String project_lan_cn, String project_lan_en, String project_num, String project_vedio, String project_zhou, String area_qujian, String gps, String return_money, int walk_num, String mianji, String project_min_price, String project_high_price, int tuijiandu, String housePrice_update_time, String buytaxInfo, String holdInfo, int min_area, int max_area, String area_num, String developer_num) throws SQLException{
 			boolean flag = true;
 			String time = "";
 			Timestamp ts = new Timestamp(System.currentTimeMillis()); 
@@ -1073,22 +1151,58 @@ import com.kate.app.model.NewsInfo;
 	        } catch (Exception e) {   
 	            e.printStackTrace();   
 	        }  
+	        String time1 = "";
+			Timestamp ts1 = new Timestamp(System.currentTimeMillis()); 
+			if(housePrice_update_time==null||"".equals(housePrice_update_time)){
+				housePrice_update_time = "2015-05-09";
+			}
+			 
+	        try {  
+	        	time1 = housePrice_update_time+" "+"00:00:00";
+	            ts1 = Timestamp.valueOf(time1);   
+	            
+	        } catch (Exception e) {   
+	            e.printStackTrace();   
+	        } 
 			
 			try{
-				String sql = " insert into house_project(project_name, project_lan, project_desc, project_nation,project_address, project_area, project_sales_remain, project_finish_time,  project_city, project_house_type, project_price, developer_id) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = " insert into house_project(project_name, project_img, project_nation, project_address, project_area, project_price_qi, project_type, project_sales_remain,  project_finish_time, project_desc, project_city, project_house_type, project_high, project_price, project_lan_cn, project_lan_en, project_num, project_vedio, project_zhou, area_qujian, gps, return_money, walk_num, mianji, project_min_price, project_high_price, tuijiandu, housePrice_update_time, buytaxInfo, holdInfo, min_area, max_area, area_num, developer_id_num) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, project_name);
-				pstmt.setString(2, project_lan);
-				pstmt.setString(3, project_desc);
-				pstmt.setString(4, project_nation);
-				pstmt.setString(5, project_address);
-				pstmt.setString(6, project_area);
-				pstmt.setInt(7, project_sales_remain);
-				pstmt.setString(8, project_finish_time);
-				pstmt.setString(9, project_city);
-				pstmt.setString(10, project_house_type);
-				pstmt.setString(11, project_price);
-				pstmt.setInt(12, deve_id);
+				pstmt.setString(2, project_img);
+				pstmt.setString(3, project_nation);
+				pstmt.setString(4, project_address);
+				pstmt.setString(5, project_area);
+				pstmt.setString(6, project_price_qi);
+				pstmt.setString(7, project_type);
+				pstmt.setInt(8, project_sales_remain);
+				pstmt.setString(9,time);
+				pstmt.setString(10,project_desc);
+				pstmt.setString(11, project_city);
+				pstmt.setString(12, project_house_type);
+				pstmt.setString(13, project_high);
+				pstmt.setString(14, project_price);
+				pstmt.setString(15, project_lan_cn);
+				pstmt.setString(16, project_lan_en);
+				pstmt.setString(17, project_num);
+				pstmt.setString(18, project_vedio);
+				pstmt.setString(19, project_zhou);
+				pstmt.setString(20, area_qujian);
+				pstmt.setString(21, gps);
+				pstmt.setString(22, return_money);
+				pstmt.setInt(23, walk_num);
+				pstmt.setString(24, mianji);
+				pstmt.setString(25, project_min_price);
+				pstmt.setString(26, project_high_price);
+				pstmt.setInt(27, tuijiandu);
+				pstmt.setString(28, time1);
+				pstmt.setString(29, buytaxInfo);
+				pstmt.setString(30, holdInfo);
+				pstmt.setInt(31, min_area);
+				pstmt.setInt(32, max_area);
+				pstmt.setString(33, area_num);
+				pstmt.setString(34, developer_num);
+				
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -1101,7 +1215,7 @@ import com.kate.app.model.NewsInfo;
 		}
 		
 		
-		public boolean editPro(int proid, String project_name, String project_lan, String project_desc, String project_nation, String project_address, String project_area, int project_sales_remain, String project_finish_time, String project_city, String project_house_type, String project_price, int deveId) throws SQLException{
+		public boolean editPro(int id, String project_name, String project_img, String project_nation, String project_address, String project_area, String project_price_qi, String project_type, int project_sales_remain, String project_finish_time, String project_desc, String project_city, String project_house_type, String project_high, String project_price, String project_lan_cn, String project_lan_en, String project_num, String project_vedio, String project_zhou, String area_qujian, String gps, String return_money, int walk_num, String mianji, String project_min_price, String project_high_price, int tuijiandu, String housePrice_update_time, String buytaxInfo, String holdInfo, int min_area, int max_area, String area_num, String developer_num) throws SQLException{
 			boolean flag = true;
 			String time = "";
 			Timestamp ts = new Timestamp(System.currentTimeMillis()); 
@@ -1114,23 +1228,58 @@ import com.kate.app.model.NewsInfo;
 	            System.out.println(ts);   
 	        } catch (Exception e) {   
 	            e.printStackTrace();   
-	        }  
+	        }
+	        String time1 = "";
+			Timestamp ts1 = new Timestamp(System.currentTimeMillis()); 
+			if(housePrice_update_time==null||"".equals(housePrice_update_time)){
+				housePrice_update_time = "2015-05-09";
+			}
+			 
+	        try {  
+	        	time1 = housePrice_update_time+" "+"00:00:00";
+	            ts1 = Timestamp.valueOf(time1);   
+	            
+	        } catch (Exception e) {   
+	            e.printStackTrace();   
+	        } 
 			try{
-				String sql = " update house_project set project_name=?, project_lan=?, project_desc=?, project_nation=?, project_address=?, project_area=?, project_sales_remain=?, project_finish_time=?, project_city=?, project_house_type=?, project_price=?, developer_id=? where id=?";
+				String sql = " update house_project set project_img=?, project_nation=?, project_address=?, project_area=?, project_price_qi=?, project_type=?, project_sales_remain=?, project_finish_time=?, project_desc=?, project_city=?, project_house_type=?, project_high=?, project_price=?, project_lan_cn=?, project_lan_en=?, project_num=?, project_vedio=?, project_zhou=?, area_qujian=?, gps=?, return_money=?, walk_num=?, mianji=?, project_min_price=?, project_high_price=?, tuijiandu=?, housePrice_update_time=?, buytaxInfo=?, holdInfo=?, min_area=?, max_area=?, area_num=?, developer_id_num=? where id=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, project_name);
-				pstmt.setString(2, project_lan);
-				pstmt.setString(3, project_desc);
-				pstmt.setString(4, project_nation);
-				pstmt.setString(5, project_address);
-				pstmt.setString(6, project_area);
-				pstmt.setInt(7, project_sales_remain);
-				pstmt.setString(8, project_finish_time);
-				pstmt.setString(9, project_city);
-				pstmt.setString(10, project_house_type);
-				pstmt.setString(11, project_price);
-				pstmt.setInt(12, deveId);
-				pstmt.setInt(13, proid);
+				pstmt.setString(2, project_img);
+				pstmt.setString(3, project_nation);
+				pstmt.setString(4, project_address);
+				pstmt.setString(5, project_area);
+				pstmt.setString(6, project_price_qi);
+				pstmt.setString(7, project_type);
+				pstmt.setInt(8, project_sales_remain);
+				pstmt.setString(9,time);
+				pstmt.setString(10,project_desc);
+				pstmt.setString(11, project_city);
+				pstmt.setString(12, project_house_type);
+				pstmt.setString(13, project_high);
+				pstmt.setString(14, project_price);
+				pstmt.setString(15, project_lan_cn);
+				pstmt.setString(16, project_lan_en);
+				pstmt.setString(17, project_num);
+				pstmt.setString(18, project_vedio);
+				pstmt.setString(19, project_zhou);
+				pstmt.setString(20, area_qujian);
+				pstmt.setString(21, gps);
+				pstmt.setString(22, return_money);
+				pstmt.setInt(23, walk_num);
+				pstmt.setString(24, mianji);
+				pstmt.setString(25, project_min_price);
+				pstmt.setString(26, project_high_price);
+				pstmt.setInt(27, tuijiandu);
+				pstmt.setString(28, time1);
+				pstmt.setString(29, buytaxInfo);
+				pstmt.setString(30, holdInfo);
+				pstmt.setInt(31, min_area);
+				pstmt.setInt(32, max_area);
+				pstmt.setString(33, area_num);
+				pstmt.setString(34, developer_num);
+				pstmt.setInt(35, id);
 				int result = pstmt.executeUpdate();
 				if(result == 0){
 					flag = false;
@@ -1257,7 +1406,7 @@ import com.kate.app.model.NewsInfo;
 			
 			int count = 0;
 			try{
-				String sql = " select count(*) from news_info where area_num=?";
+				String sql = " select count(*) from area_info where area_num=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, area_num);
 				ResultSet rs = pstmt.executeQuery();
@@ -1291,6 +1440,27 @@ import com.kate.app.model.NewsInfo;
 			return developerInfo.getId();
 	        
 		}
+		
+		public int findDeveByNum(String num) throws SQLException{   //通锟斤拷锟斤拷撇锟斤拷锟絠d
+			DeveloperInfo developerInfo = new DeveloperInfo();
+			try{
+				String sql = " select id from developer_info where developer_num= ?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, num);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()){
+					developerInfo.setId(rs.getInt("id"));
+				}
+				
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }/*finally{
+	        	con.close();
+	        }*/
+			return developerInfo.getId();
+	        
+		}
+		
 		
 		
 		

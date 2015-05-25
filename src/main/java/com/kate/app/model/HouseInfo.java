@@ -11,15 +11,16 @@ public class HouseInfo {
 	private int house_bath_num;
 	private int house_bath_size;
 	private int house_price_area;
-	private int house_size_in;
+	private String house_size_in;
 	private String house_city;
 	private String house_type;
 	private int house_toilet_num;
 	private int house_toilet_size;
 	private int house_project_id;
-	private int tudi_area;
-	private int jianzhu_area;
-	private int house_size_out;
+	private String tudi_area;
+	private String jianzhu_area;
+	private String house_size_out;
+	private String project_num;
 	public int getId() {
 		return id;
 	}
@@ -80,10 +81,10 @@ public class HouseInfo {
 	public void setHouse_price_area(int house_price_area) {
 		this.house_price_area = house_price_area;
 	}
-	public int getHouse_size_in() {
+	public String getHouse_size_in() {
 		return house_size_in;
 	}
-	public void setHouse_size_in(int house_size_in) {
+	public void setHouse_size_in(String house_size_in) {
 		this.house_size_in = house_size_in;
 	}
 	public String getHouse_city() {
@@ -116,23 +117,29 @@ public class HouseInfo {
 	public void setHouse_project_id(int house_project_id) {
 		this.house_project_id = house_project_id;
 	}
-	public int getTudi_area() {
+	public String getTudi_area() {
 		return tudi_area;
 	}
-	public void setTudi_area(int tudi_area) {
+	public void setTudi_area(String tudi_area) {
 		this.tudi_area = tudi_area;
 	}
-	public int getJianzhu_area() {
+	public String getJianzhu_area() {
 		return jianzhu_area;
 	}
-	public void setJianzhu_area(int jianzhu_area) {
+	public void setJianzhu_area(String jianzhu_area) {
 		this.jianzhu_area = jianzhu_area;
 	}
-	public int getHouse_size_out() {
+	public String getHouse_size_out() {
 		return house_size_out;
 	}
-	public void setHouse_size_out(int house_size_out) {
+	public void setHouse_size_out(String house_size_out) {
 		this.house_size_out = house_size_out;
+	}
+	public String getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(String project_num) {
+		this.project_num = project_num;
 	}
 	
 }
