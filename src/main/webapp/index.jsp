@@ -1125,7 +1125,7 @@ function popInfo(){
 
 <!--新闻报道-->
 <!--新闻报道-->
-<div style="margin-top:20px;background-color:white;">
+<!--<div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default" id="MyPanel">
 	<div class="heading1"><strong>新闻报道</strong><br></div>
 	<div class="panel-body">
@@ -1182,11 +1182,11 @@ function popInfo(){
 						</ul>
                     </div>
                      </div>
-                </div>
+                </div>-->
 		      <!-- <div class="scroll" id="right">
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div> -->
-                <div class="caption_my" style="height:98px;width:350px;">
+               <!-- <div class="caption_my" style="height:98px;width:350px;">
 		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_three.title}</h3>
 		         <p>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleThree }</p>
 		        </div>
@@ -1197,7 +1197,7 @@ function popInfo(){
   		</div>
   		 
   	</div>
-</div>
+</div>-->
 
 
 

@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $(function () {
               total = InitTable(0);    //Load事件，初始化表格数据，页面索引为0（第一页）
                 //分页，PageCount是总条目数，这是必选参数，其它参数都是可选
-                $("#Pagination").pagination(100,{
+                $("#Pagination").pagination(total,{
                     callback: PageCallback,  //PageCallback() 为翻页调用次函数。
                     prev_text: "« 上一页",
                     next_text: "下一页 »",
@@ -125,6 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $.ajax({   
                         type: "POST",  
                         dataType: "json",  
+                        async: false,
                         url: '/IndexSearchPage',      //提交到一般处理程序请求数据   
                         data: { pageIndex : pageIndex, pageSize : pageSize},
                         //data: "pageIndex=" + (pageIndex) + "&pageSize=" + pageSize,          //提交两个参数：pageIndex(页面索引)，pageSize(显示条数)                   
@@ -152,7 +153,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	    html+="<span style='color:white'>"+items[j].Project_name+"</span></div>";
  						html+="<div class='panel-body'><div id='item'><div class='media'><div class='col-xs-5'>";
  						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
- 						html+="<img alt='image' class='img-responsive' src='pic/house2.jpg' ></a></div>";
+ 						html+="<img alt='image' class='img-responsive' src='http://101.200.174.253:8080/all/"+items[j].Project_img+"'></a></div>";
  						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
   	                    html+="<h4><b>完整的购房服务</b></h4><hr/><br/>";
   	       				html+="<span><span>7*24小时全天候在线，全</span><br/><span>方位服务的专业代理服务。</span><br/><span>我们提供了基于您的满意付费房地产经纪人。</span></span>";
@@ -161,8 +162,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            		  		html+="<b>最多:</b><span class='right'><span>$</span>"+items[j].MaxPrice+"</span><br/>";
            		      	html+="<b>最少:</b><span class='right'><span>$</span>"+items[j].MinPrice+"</span><br/>";
            		      	html+="<b>面积(M2)</b>:<span class='right'>"+items[j].MinArea+"<span>-</span>"+items[j].MaxArea+"</span><br/>";
-           		      	html+="<b>可售:</b><span class='right'>"+items[j].keshou+"</span><br/>";
-            			html+="<b>返现:</b><span class='right'><span>$</span>"+items[j].fanxian+"</span><br/>";
+           		      	html+="<b>可售:</b><span class='right'>"+items[j].Keshou+"</span><br/>";
+            			html+="<b>返现:</b><span class='right'>"+items[j].Fanxian+"</span><br/>";
             			html+="</div></div></div></div></div></div>";
                 	}
                 }

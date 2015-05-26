@@ -33,7 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </head>
 <body style="padding-top: 105px;">
- <jsp:include page="head.jsp" />
  <div class="container">
  	<div class="row" style="padding-top:20px;">
  <!--start留言列表-->
@@ -142,7 +141,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>
  <!--model框end-->
-    <jsp:include page="foot.jsp" />
     <script src="/js/jquery.pagination.js"></script>
      <script type="text/javascript">
          var pageIndex = 0;     //页面索引初始值   

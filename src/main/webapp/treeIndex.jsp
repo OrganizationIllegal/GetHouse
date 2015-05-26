@@ -77,18 +77,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                text: '地区特点'	                
 	              },
 	              {
-	                text: '人口总数'	                
-	              },
-	              {
-	                text: '出生国家'	                
-	              },
-	              {
-	                text: '海外出生'	                
-	              },
-	              {
-	                text: '平均家庭收入'	                
-	              },
-	              {
 	                text: '近期区域成交情况'	                
 	              },
 	              {
@@ -111,6 +99,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              }
 	              
 	            ]
+	          },
+	          {
+	           text: '管理员',	
+	           nodes: [
+	              {
+	                text: '管理员查看留言'	                
+	              },
+	             ]
 	          }
 	        ];
 	        $("#showlist").load("zy_HouseProject.jsp");
@@ -134,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           $("#showlist").load("investDataList.jsp");
 	           }
 	           if(node.text=="地区特点"){
-	           $("#showlist").load("Area.jsp");
+	           $("#showlist").load("AreaFeature.jsp");
 	           }
 	           if(node.text=="新闻报道"){
 	           $("#showlist").load("NewsInfo.jsp");
@@ -193,6 +189,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           }
 	            if(node.text=="置业指导"){
 	           $("#showlist").load("ZhiYeZhiDao.jsp");
+	           }
+	             if(node.text=="管理员查看留言"){
+	           $("#showlist").load("Message.jsp");
 	           }
 	          }
 	        });

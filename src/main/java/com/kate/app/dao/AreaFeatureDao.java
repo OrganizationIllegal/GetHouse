@@ -47,7 +47,7 @@ public class AreaFeatureDao extends BaseDao{
 				obj.put("house_project_id", rs.getInt("house_project_id"));
 				obj.put("view_shunxu", rs.getInt("view_shunxu"));
 				obj.put("area_id", rs.getInt("area_id"));
-				obj.put("data_souce", rs.getString("data_souce"));
+				obj.put("data_source", rs.getString("data_source"));
 				
 				String update_time = null;
 				Timestamp time=rs.getTimestamp("update_time");
@@ -67,15 +67,15 @@ public class AreaFeatureDao extends BaseDao{
 		return jsonArray;
 	} 
 	//�����ص�  Add
-	public int InsertAreaFeature(String area_character,int view_shunxu,int area_id,String data_souce,String update_time){
+	public int InsertAreaFeature(String area_character,int view_shunxu,int area_id,String data_source,String update_time){
 		int exeResult=0;
 		try {
-			String sql = "insert into area_features(area_character,view_shunxu,area_id,data_souce,update_time) values(?,?,?,?,?)";
+			String sql = "insert into area_features(area_character,view_shunxu,area_id,data_source,update_time) values(?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, area_character);
 			pstmt.setInt(2, view_shunxu);
 			pstmt.setInt(3, area_id);
-			pstmt.setString(4, data_souce);
+			pstmt.setString(4, data_source);
 			pstmt.setString(5, update_time);
 			exeResult = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -85,15 +85,15 @@ public class AreaFeatureDao extends BaseDao{
 		return exeResult;
 	}
 	//�����ص�  update
-	public int updateAreaFeature(int id,String area_character,int view_shunxu,int area_id,String data_souce,String update_time){
+	public int updateAreaFeature(int id,String area_character,int view_shunxu,int area_id,String data_source,String update_time){
 		int exeResult=0;
 		try {
-			String sql = "update area_features set area_character=?,view_shunxu=?,area_id=?,data_souce=?,update_time=? where id="+id;
+			String sql = "update area_features set area_character=?,view_shunxu=?,area_id=?,data_source=?,update_time=? where id="+id;
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, area_character);
 			pstmt.setInt(2, view_shunxu);
 			pstmt.setInt(3, area_id);
-			pstmt.setString(4, data_souce);
+			pstmt.setString(4, data_source);
 			pstmt.setString(5, update_time);
 			pstmt.setInt(6, id);
 			exeResult = pstmt.executeUpdate();
