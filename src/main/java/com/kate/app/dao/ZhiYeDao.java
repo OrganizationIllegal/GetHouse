@@ -3,11 +3,15 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.kate.app.model.NewsBoke;
 import com.kate.app.model.ZhiYeZhiDao;
 
@@ -17,7 +21,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public List<ZhiYeZhiDao> selectZhiYe(){
 			List<ZhiYeZhiDao> list = new ArrayList<ZhiYeZhiDao>();
 			try{
-				String sql = " select * from zhiye_zhidao order by fabu_time desc";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select * from zhiye_zhidao order by fabu_time desc";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
@@ -42,7 +46,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public ZhiYeZhiDao selectZhiYeById(int id){
 			ZhiYeZhiDao zhiye = new ZhiYeZhiDao();
 			try{
-				String sql = " select * from zhiye_zhidao where id =?";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select * from zhiye_zhidao where id =?";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, id);
 				ResultSet rs = pstmt.executeQuery();
@@ -65,7 +69,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 			return zhiye;
 		}
 		
-		public int countZhiYe(){    //Í³¼Æ×ÜÊı
+		public int countZhiYe(){    //Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			int count = 0;
 			try{
 				String sql = " select count(*) from zhiye_zhidao";
@@ -84,7 +88,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public List<String> zhiYeFenlei(){
 			List<String> list = new ArrayList<String>();
 			try{
-				String sql = " select distinct fenlei from zhiye_zhidao";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select distinct fenlei from zhiye_zhidao";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
@@ -101,7 +105,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public List<ZhiYeZhiDao> selectZhiYeByFenlei(String fenLei){
 			List<ZhiYeZhiDao> list = new ArrayList<ZhiYeZhiDao>();
 			try{
-				String sql = " select * from zhiye_zhidao where fenlei=?";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select * from zhiye_zhidao where fenlei=?";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, fenLei);
 				ResultSet rs = pstmt.executeQuery();
@@ -112,6 +116,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 					zhiye.setFabu_people(rs.getString("fabu_people"));
 					zhiye.setFabu_time(rs.getTimestamp("fabu_time"));
 					zhiye.setId(rs.getInt("id"));
+					zhiye.setFenlei(rs.getString("fenLei"));
 					zhiye.setImage(rs.getString("image"));
 					zhiye.setZhiye_num(rs.getString("zhiye_num"));
 					zhiye.setTitle(rs.getString("title"));
@@ -126,7 +131,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public List<NewsBoke> selectNewsBoke(){
 			List<NewsBoke> list = new ArrayList<NewsBoke>();
 			try{
-				String sql = " select * from news_boke order by news_time desc";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select * from news_boke order by news_time desc";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
@@ -151,7 +156,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public NewsBoke selectNewsBokeById(int id){
 			NewsBoke data = new NewsBoke();
 			try{
-				String sql = " select * from news_boke where id =?";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select * from news_boke where id =?";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, id);
 				ResultSet rs = pstmt.executeQuery();
@@ -175,7 +180,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		
 	
 		
-		public int countNewsBoke(){    //Í³¼Æ×ÜÊı
+		public int countNewsBoke(){    //Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			int count = 0;
 			try{
 				String sql = " select count(*) from news_boke";
@@ -194,7 +199,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public List<String> newsBokeFenlei(){
 			List<String> list = new ArrayList<String>();
 			try{
-				String sql = " select distinct news_fenlei from news_boke";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select distinct news_fenlei from news_boke";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){
@@ -211,7 +216,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 		public List<NewsBoke> selectNewsBokeByFenlei(String fenLei){
 			List<NewsBoke> list = new ArrayList<NewsBoke>();
 			try{
-				String sql = " select * from news_boke where news_fenlei=?";   // °´ÕÕÊ±¼äÅÅĞò×îĞÂ
+				String sql = " select * from news_boke where news_fenlei=?";   // ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, fenLei);
 				ResultSet rs = pstmt.executeQuery();
@@ -225,6 +230,7 @@ import com.kate.app.model.ZhiYeZhiDao;
 					data.setNews_people(rs.getString("news_people"));
 					data.setNews_time(rs.getTimestamp("news_time"));
 					data.setNews_title(rs.getString("news_title"));
+					data.setNews_fenlei(rs.getString("news_fenlei"));
 					list.add(data);
 				}
 			}catch (Exception e) {
@@ -232,4 +238,123 @@ import com.kate.app.model.ZhiYeZhiDao;
 	        }
 			return list;
 		}
+		
+		//ç½®ä¸šæŒ‡å¯¼list
+		 public JSONArray listZhiye(){
+				JSONArray jsonArray=new JSONArray();
+				try {
+					String sql = "select * from zhiye_zhidao t;";
+					Statement stmt = con.createStatement();
+					ResultSet rs = stmt.executeQuery(sql);
+					while(rs.next()){
+						JSONObject obj = new JSONObject();
+						obj.put("id", rs.getInt("id"));
+						obj.put("zhiye_num", rs.getString("zhiye_num"));
+						obj.put("title", rs.getString("title"));
+						obj.put("fabu_people", rs.getString("fabu_people"));
+						obj.put("fenlei", rs.getString("fenlei"));
+						obj.put("zhiye_abstract", rs.getString("zhiye_abstract"));
+						obj.put("detail", rs.getString("detail"));
+						obj.put("image", rs.getString("image"));
+						
+						String update_time = null;
+						Timestamp time=rs.getTimestamp("fabu_time");
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+						if(time ==null){
+							time= new Timestamp(System.currentTimeMillis());
+						}
+					    update_time=df.format(time);
+						obj.put("fabu_time",update_time );
+						jsonArray.add(obj);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return jsonArray;
+			} 
+		//ç½®ä¸šæŒ‡å¯¼add
+		 public int InsertZhiye(String  zhiye_num,String title,String fabu_people,String fabu_time,String fenlei,String zhiye_abstract,String detail,String image){
+				int exeResult=0;
+				try {
+					String sql = "insert into zhiye_zhidao(zhiye_num,title,fabu_people,fabu_time,fenlei,zhiye_abstract,detail,image) values(?,?,?,?,?,?,?,?)";
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, zhiye_num);
+					pstmt.setString(2, title);
+					pstmt.setString(3, fabu_people);
+					pstmt.setString(4, fabu_time);
+					pstmt.setString(5, fenlei);
+					pstmt.setString(6, zhiye_abstract);
+					pstmt.setString(7, detail);
+					pstmt.setString(8, image);
+					exeResult = pstmt.executeUpdate();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return exeResult;
+			}  
+		//ç½®ä¸šæŒ‡å¯¼update
+		 public int updateZhiye(int id,String  zhiye_num,String title,String fabu_people,String fabu_time,String fenlei,String zhiye_abstract,String detail,String image){
+				int exeResult=0;
+				try {
+					String sql = "update zhiye_zhidao set zhiye_num=?,title=?,fabu_people=?,fabu_time=?,fenlei=?,zhiye_abstract=?,detail=?,image=? where id=?";
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, zhiye_num);
+					pstmt.setString(2, title);
+					pstmt.setString(3, fabu_people);
+					pstmt.setString(4, fabu_time);
+					pstmt.setString(5, fenlei);
+					pstmt.setString(6, zhiye_abstract);
+					pstmt.setString(7, detail);
+					pstmt.setString(8, image);
+					pstmt.setInt(9, id);
+					exeResult = pstmt.executeUpdate();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return exeResult;
+			}
+		//ç½®ä¸šæŒ‡å¯¼delete
+		 public int delZhiye(int id){
+				int exeResult=0;
+				try {
+					String sql = "delete from zhiye_zhidao where id="+id;
+					Statement stmt = con.createStatement();
+					exeResult = stmt.executeUpdate(sql);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return exeResult;
+			}
+		 //æ ¹æ®idè·å–ç½®ä¸šæŒ‡å¯¼
+		 public List<ZhiYeZhiDao> getZhiYeZhiDao(int  id){
+				List<ZhiYeZhiDao> list=new ArrayList<ZhiYeZhiDao>();
+				try {
+					String sql = " select * from zhiye_zhidao where id = ?";
+					PreparedStatement pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, id);
+					ResultSet rs = pstmt.executeQuery();
+					while(rs.next()){
+						ZhiYeZhiDao obj = new ZhiYeZhiDao();
+						obj.setId(rs.getInt("id"));
+						obj.setDetail(rs.getString("detail"));
+						obj.setFabu_people(rs.getString("fabu_people"));
+						obj.setFabu_time(rs.getTimestamp("fabu_time"));
+						obj.setFenlei(rs.getString("fenlei"));
+						obj.setImage(rs.getString("image"));
+						obj.setTitle(rs.getString("title"));
+						obj.setZhiye_abstract(rs.getString("zhiye_abstract"));
+						obj.setZhiye_num(rs.getString("zhiye_num"));
+						list.add(obj);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return list;
+			}
+		
 }

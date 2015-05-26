@@ -65,6 +65,7 @@ public class ZhiYeZhiDaoController {
 		int total = newsList.size();
 		int pageCount = total%PAGE_SIZE == 0 ? total/PAGE_SIZE: total/PAGE_SIZE+1;
 		List<ZhiYeZhiDao> lastestList = new ArrayList<ZhiYeZhiDao>();
+		List<NewsBoke> newslastestList = new ArrayList<NewsBoke>();
 		/*if(zhiYeList!=null){
 			
 		}*/
@@ -75,14 +76,15 @@ public class ZhiYeZhiDaoController {
 			lastestList = zhiYeList;
 		}
 		if(newsList.size() > 3){
-			newsList = newsList.subList(0, 3);
+			newslastestList = newsList.subList(0, 3);
 		}
 		List<String> fenleiList = zhiYeDao.newsBokeFenlei();
 		System.out.println(pageCount);
 		//Collections.shuffle(zhiYeList);   //随机排序
-		req.setAttribute("resultList",zhiYeList);
-		req.setAttribute("lastestList",lastestList);
-		req.setAttribute("newsList",newsList);
+		req.setAttribute("resultList",zhiYeList);//置业指导  所有记录
+		req.setAttribute("lastestList",lastestList);//置业指导  最新
+		req.setAttribute("newsList",newsList);//新闻博客所有
+		req.setAttribute("newslastestList",newslastestList);//新闻博客  最新
 		req.setAttribute("fenleiList",fenleiList);
 		req.setAttribute("total",total);
 		req.setAttribute("pageCount",pageCount);

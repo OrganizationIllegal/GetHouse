@@ -1133,7 +1133,7 @@ function popInfo(){
           <div class="news_position">
           		<div class="info" id="left">
                 <div class="scroll" id="left"> 
-                     <img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" width=350px height=255px>
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" width=350px height=255px></a>
                      <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
@@ -1201,7 +1201,7 @@ function popInfo(){
 
 
 
-<!--新闻报道-->
+<!--推荐项目-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default" id="MyPanel">
 	<div class="heading1"><strong>推荐项目</strong><br></div>
@@ -1209,7 +1209,9 @@ function popInfo(){
   		<div class="row">
           <div class="news_position">
                 <div class="scroll" id="left">
-                     <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" width=350px height=255px>
+                     <a href="Index?proNum=${RecommendProject1.project_num}">
+                    	 <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" width=350px height=255px>
+                     </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
 		         <p class="desc"><a href="Index?proNum=${RecommendProject1.project_num}">${RecommendProject1.project_name}</a> </p>
@@ -1219,7 +1221,9 @@ function popInfo(){
            </div>
 		   <div class="news_position">
                 <div class="scroll" id="left">
+                  <a href="Index?proNum=${RecommendProject2.project_num}">
                      <img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" width=350px height=255px>
+                  </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
 		         <p class="desc"><a href="Index?proNum=${RecommendProject2.project_num}">${RecommendProject2.project_name}</a> </p>
@@ -1229,7 +1233,9 @@ function popInfo(){
            </div>
 		   <div class="news_position">
 		      <div class="scroll" id="right">
+		        <a href="Index?proNum=${RecommendProject2.project_num}">
                      <img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" width=350px height=255px>
+                 </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
 		         <p class="desc"><a href="Index?proNum=${RecommendProject3.project_num}">${RecommendProject3.project_name}</a> </p>

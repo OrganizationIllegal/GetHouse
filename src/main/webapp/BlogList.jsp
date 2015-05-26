@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="panel-body"> 
                 <ul class="media-list">
 
-                <c:forEach items="${newsList}" var="item" varStatus="status">
+                <c:forEach items="${newslastestList}" var="item" varStatus="status">
                 		 <li class="media">
                              <div class="media-left">
                                 <a href="/Detail?id=${item.id}&type=1">
@@ -173,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         $.ajax({   
                         type: "POST",  
                         dataType: "json",  
-                        url: '/ZhiYeFenYe',      //提交到一般处理程序请求数据   
+                        url: '/NewsBokeFenYe',      //提交到一般处理程序请求数据   
                         data: { pageIndex : num},
                         //data: "pageIndex=" + (pageIndex) + "&pageSize=" + pageSize,          //提交两个参数：pageIndex(页面索引)，pageSize(显示条数)                   
                         success: function(data) {
@@ -190,12 +190,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 var html="";
                 if(items!=null){
                 	for(var j=0;j<items.length;j++){
-                	    html+="<li class='media'><div class='media-left'><a href='#'>";
+                	    html+="<li class='media'><div class='media-left'><a href='/Detail?id="+items[j].id+"&type=1'>";
                 	    html+="<img class='media-object' src='http://101.200.174.253:8080/all/"+items[j].image+"' alt='' width='180px' height='140px'>";
  						html+="</a></div><div class='media-body'><h4 class='media-heading'>"+items[j].title;
- 						html+="</h4><p style='font-size:12px;'>"+items[j].fenlei;
- 						html+="</p><p style='font-size:120x;'>"+items[j].zhiye_abstract;
- 						html+="<a href='/Detail?id=items[j].id&type=1'>全文></a></div></li>";
+ 						html+="</h4><p style='font-size:12px;'>"+items[j].news_fenlei;
+ 						html+="</p><p style='font-size:120x;'>"+items[j].news_abstract;
+ 						html+="<a href='/Detail?id="+items[j].id+"&type=1'>全文></a></div></li>";
                 	}
                 }
                 else{

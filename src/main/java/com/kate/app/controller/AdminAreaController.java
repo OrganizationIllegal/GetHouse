@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +24,13 @@ import com.kate.app.dao.AreaTrendDao;
 import com.kate.app.dao.CoordinatesDao;
 import com.kate.app.dao.HouseTaxDao;
 import com.kate.app.dao.LatestSaleInfoListDao;
+import com.kate.app.dao.NewsBokeDao;
 import com.kate.app.dao.RegionPeopleDao;
 import com.kate.app.dao.SchoolInfoDao;
 import com.kate.app.dao.SchoolNearDao;
+import com.kate.app.dao.ZhiYeDao;
+import com.kate.app.model.NewsBoke;
+import com.kate.app.model.ZhiYeZhiDao;
 import com.kate.app.service.AreaFamilyService;
 
 @Controller
@@ -52,7 +57,10 @@ public class AdminAreaController {
 	private AreaPeopleDao areaPeopleDao;
 	@Autowired
 	private SchoolInfoDao schoolInfoDao;
-	
+	@Autowired
+	private NewsBokeDao newsBokeDao;
+	@Autowired
+	private ZhiYeDao zhiYeDao;
 	//管理员   区域家庭情况构成  列表
 	@RequestMapping({"/Area/ListAreaFamily"})
 	public void  listAreaFamily(HttpServletRequest req,HttpServletResponse resp){
@@ -72,13 +80,10 @@ public class AdminAreaController {
 		JSONObject json = new JSONObject();
 		boolean flag = false;
 		String family_one=req.getParameter("family_one");
-		//int family_one_rate=Integer.parseInt(req.getParameter("family_one_rate"));
 		String family_one_rate=req.getParameter("family_one_rate");
 		String family_two=req.getParameter("family_two");
-		//int family_two_rate=Integer.parseInt(req.getParameter("family_two_rate"));
 		String family_two_rate=req.getParameter("family_two_rate");
 		String family_three=req.getParameter("family_three");
-		//int family_three_rate=Integer.parseInt(req.getParameter("family_three_rate"));
 		String family_three_rate=req.getParameter("family_three_rate");
 		
 		String data_souce=req.getParameter("data_souce");
@@ -1544,4 +1549,194 @@ public class AdminAreaController {
 					e.printStackTrace();
 				}
 	}
+	//新闻博客list
+	@RequestMapping({"/Area/listNewsBoke"})
+	public void listNewsInfo(HttpServletRequest req,HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray jsonAreaFeature=newsBokeDao.listNewsBoke();
+		json.put("total", jsonAreaFeature.size());
+		json.put("rows", jsonAreaFeature);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	//新闻博客Add
+	@RequestMapping({"/Area/AddNewsBoke"})
+	public String InsertNewsBoke(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 String news_num=req.getParameter("news_num");
+		 String news_title=req.getParameter("news_title");
+		 String news_people=req.getParameter("news_people");
+		 String news_time=req.getParameter("news_time");
+		 String news_fenlei=req.getParameter("news_fenlei");
+		 String news_abstract=req.getParameter("news_abstract");
+		 String news_detail=req.getParameter("news_detail");
+		 String news_image=req.getParameter("news_image");
+
+		  int insertResult=newsBokeDao.InsertNewsBoke(news_num, news_title, news_people, news_time, news_fenlei, news_abstract, news_detail, news_image);
+		  if(insertResult!=0){
+				flag=true;
+		 }
+		json.put("flag", flag);
+		try{
+			PrintWriter out = resp.getWriter();
+			out.print(json);
+			}catch(Exception e){
+				e.printStackTrace();
+		    }
+		return "/NewsBoke.jsp";
+	}
+	//新闻博客update
+	@RequestMapping({"/Area/UpdateNewsBoke"})
+	public String UpdateNewsBoke(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 String news_num=req.getParameter("news_num");
+		 String news_title=req.getParameter("news_title");
+		 String news_people=req.getParameter("news_people");
+		 String news_time=req.getParameter("news_time");
+		 String news_fenlei=req.getParameter("news_fenlei");
+		 String news_abstract=req.getParameter("news_abstract");
+		 String news_detail=req.getParameter("news_detail");
+		 String news_image=req.getParameter("news_image");
+
+
+		  int insertResult=newsBokeDao.updateNewsBoke(id, news_num, news_title, news_people, news_time, news_fenlei, news_abstract, news_detail, news_image);
+		  if(insertResult!=0){
+				flag=true;
+		 }
+		json.put("flag", flag);
+		try{
+			PrintWriter out = resp.getWriter();
+			out.print(json);
+			}catch(Exception e){
+				e.printStackTrace();
+		    }
+		return "/NewsBoke.jsp";
+	}
+	
+	//新闻博客delete
+	@RequestMapping({"/Area/deleteNewsInfo"})
+	public void DelNewsInfo(HttpServletRequest req,HttpServletResponse resp){
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 int insertResult=newsBokeDao.delNewsBoke(id);
+		 boolean flag=false;
+			if(insertResult!=0){
+				flag=true;
+			}
+			JSONObject json = new JSONObject();
+			json.put("flag", flag);
+			try{
+				PrintWriter out = resp.getWriter();
+			    out.print(json);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+	}
+	@RequestMapping({"/Area/editNewsInfo"})
+	public String getNewsInfo(HttpServletRequest req,HttpServletResponse resp){
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 List<NewsBoke> newsbokelist=newsBokeDao.getNewsBoke(id);
+		 req.setAttribute("newsbokelist", newsbokelist);
+		 return "/EditNewsBlog.jsp";
+	}
+	//置业指导list
+	@RequestMapping({"/Area/listZhiye"})
+	public void listZhiye(HttpServletRequest req,HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray jsonAreaFeature=zhiYeDao.listZhiye();
+		json.put("total", jsonAreaFeature.size());
+		json.put("rows", jsonAreaFeature);
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	//置业指导add
+	@RequestMapping({"/Area/AddZhiye"})
+	public String InsertZhiye(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 String zhiye_num=req.getParameter("zhiye_num");
+		 String title=req.getParameter("title");
+		 String fabu_people=req.getParameter("fabu_people");
+		 String fabu_time=req.getParameter("fabu_time");
+		 String fenlei=req.getParameter("fenlei");
+		 String zhiye_abstract=req.getParameter("zhiye_abstract");
+		 String detail=req.getParameter("detail");
+		 String image=req.getParameter("image");
+
+		  int insertResult=zhiYeDao.InsertZhiye(zhiye_num, title, fabu_people, fabu_time, fenlei, zhiye_abstract, detail, image);
+		  if(insertResult!=0){
+				flag=true;
+		 }
+		json.put("flag", flag);
+		try{
+			PrintWriter out = resp.getWriter();
+			out.print(json);
+			}catch(Exception e){
+				e.printStackTrace();
+		    }
+		return "/ZhiYeZhiDao.jsp";
+	}
+	//置业指导update
+	@RequestMapping({"/Area/UpdateZhiye"})
+	public String UpdateZhiye(HttpServletRequest req,HttpServletResponse resp) throws ParseException{
+		 JSONObject json = new JSONObject();
+		 boolean flag = false;
+		 String zhiye_num=req.getParameter("zhiye_num");
+		 String title=req.getParameter("title");
+		 String fabu_people=req.getParameter("fabu_people");
+		 String fabu_time=req.getParameter("fabu_time");
+		 String fenlei=req.getParameter("fenlei");
+		 String zhiye_abstract=req.getParameter("zhiye_abstract");
+		 String detail=req.getParameter("detail");
+		 String image=req.getParameter("image");
+		 int id=Integer.parseInt(req.getParameter("id"));
+
+		  int insertResult=zhiYeDao.updateZhiye(id, zhiye_num, title, fabu_people, fabu_time, fenlei, zhiye_abstract, detail, image);
+		  if(insertResult!=0){
+				flag=true;
+		 }
+		json.put("flag", flag);
+		try{
+			PrintWriter out = resp.getWriter();
+			out.print(json);
+			}catch(Exception e){
+				e.printStackTrace();
+		    }
+		return "/ZhiYeZhiDao.jsp";
+	}
+	//置业指导delete
+	@RequestMapping({"/Area/deleteZhiye"})
+	public void DelZhiye(HttpServletRequest req,HttpServletResponse resp){
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 int insertResult=zhiYeDao.delZhiye(id);
+		 boolean flag=false;
+			if(insertResult!=0){
+				flag=true;
+			}
+			JSONObject json = new JSONObject();
+			json.put("flag", flag);
+			try{
+				PrintWriter out = resp.getWriter();
+			    out.print(json);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+	}
+	@RequestMapping({"/Area/editZhiYe"})
+	public String getZhiYe(HttpServletRequest req,HttpServletResponse resp){
+		 int id=Integer.parseInt(req.getParameter("id"));
+		 List<ZhiYeZhiDao> zhiyelist=zhiYeDao.getZhiYeZhiDao(id);
+		 req.setAttribute("zhiyelist", zhiyelist);
+		 return "/EditZhiYe.jsp";
+	}
+
+	
 }

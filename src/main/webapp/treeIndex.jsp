@@ -102,7 +102,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              },
 	              {
 	                text: '附近配套'	               
+	              },
+	              {
+	                text: '新闻博客'
+	              },
+	              {
+	                text: '置业指导'
 	              }
+	              
 	            ]
 	          }
 	        ];
@@ -180,6 +187,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           }
 	            if(node.text=="附近配套"){
 	           $("#showlist").load("NearFacility.jsp");
+	           }
+	            if(node.text=="新闻博客"){
+	           $("#showlist").load("NewsBoke.jsp");
+	           }
+	            if(node.text=="置业指导"){
+	           $("#showlist").load("ZhiYeZhiDao.jsp");
 	           }
 	          }
 	        });

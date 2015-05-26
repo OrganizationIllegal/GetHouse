@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,42 +25,48 @@
 </head>
 <body>
 <div class="container">
-	<div class="row"><h2 align="center">新闻博客添加</h2></div>
-	<form role="form" action="/Area/AddNewsBoke">
+	<div class="row"><h2 align="center">置业指导更新</h2></div>
+	 <c:forEach var="item" items="${zhiyelist}"> 
+	<form role="form" action="/Area/UpdateZhiye?id=${item.id}">
+	
 	  <div class="form-group">
 	    <label for="title">编号</label>
-	    <input type="text" class="form-control" id="news_num" placeholder="编号" name="news_num">
+	    <input type="text" class="form-control" id="zhiye_num" placeholder="编号" name="zhiye_num" value="${item.zhiye_num}" >
+	    <input type="text" class="form-control" id="id" name="id" value="${item.id}" style="display:none">
+	    
 	  </div>
 	  <div class="form-group">
 	    <label for="title">标题</label>
-	    <input type="text" class="form-control" id="news_title" placeholder="标题" name="news_title">
+	    <input type="text" class="form-control" id="title" placeholder="标题" name="title" value="${item.title}">
 	  </div>
 	  <div class="form-group">
 	    <label for="publisher">发布人</label>
-	    <input type="text" class="form-control" id="news_people" placeholder="发布人" name="news_people">
+	    <input type="text" class="form-control" id="fabu_people" placeholder="发布人" name="fabu_people"  value="${item.fabu_people}">
 	  </div>
 	  <div class="form-group">
 	    <label for="type">分类</label>
-	    <input type="text" class="form-control" id="news_fenlei" placeholder="分类" name="news_fenlei">
+	    <input type="text" class="form-control" id="fenlei" placeholder="分类" name="fenlei" value="${item.fenlei}">
 	  </div>
 	  <div class="form-group">
 	    <label for="abstract">摘要</label>
-	    <input type="text" class="form-control" id="news_abstract" placeholder="摘要" name="news_abstract">
+	    <input type="text" class="form-control" id="zhiye_abstract" placeholder="摘要" name="zhiye_abstract" value="${item.zhiye_abstract}">
 	  </div>
 	  <div class="form-group">
 	    <label for="pic">图片</label>
-	    <input type="text" class="form-control" id="news_image" placeholder="图片" name="news_image">
+	    <input type="text" class="form-control" id="image" placeholder="图片" name="image" value="${item.image}">
 	  </div>
 	  <div class="form-group">
 	    <label for="detail">详情</label>
-	    <textarea  class="form-control" id="news_detail" placeholder="详情" name="news_detail"></textarea>
+	    <textarea class="form-control" id="detail" placeholder="详情" name="detail" >${item.detail} </textarea>
 	  </div>
+	 
 	  <button type="submit" class="btn btn-default">Submit</button>
 	</form>
+</c:forEach>
 </div>
 
 <script type="text/javascript">
-CKEDITOR.replace( 'news_detail' );
+CKEDITOR.replace( 'detail' );
 </script>
 </body>
 </html>

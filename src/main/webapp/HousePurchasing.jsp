@@ -190,13 +190,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 var html="";
                 if(items!=null){
                 	for(var j=0;j<items.length;j++){
-                	    html+="<li class='media'><div class='media-left'><a href='#'>";
-                	    html+="<img class='media-object' src='"+items[j].image+"' alt='' width='180px' height='140px'>";
+                	    html+="<li class='media'><div class='media-left'><a href='/Detail?id="+items[j].id+"&type=0'>";
+                	    html+="<img class='media-object' src='http://101.200.174.253:8080/all/"+items[j].image+"' alt='' width='180px' height='140px'>";
  						html+="</a></div><div class='media-body'><h4 class='media-heading'>"+items[j].title;
  						html+="</h4><p style='font-size:12px;'>"+items[j].fenlei;
  						html+="</p><p style='font-size:120x;'>"+items[j].zhiye_abstract;
  						
- 						html+="<a href='/Detail?id=items[j].id&type=0'>全文></a></div></li>";
+ 						html+="<a href='/Detail?id="+items[j].id+"&type=0'>全文></a></div></li>";
  						
                 	}
                 }

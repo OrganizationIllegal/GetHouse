@@ -21,42 +21,42 @@
 </head>
 <body>
 <div class="container">
-	<div class="row"><h2 align="center">新闻博客添加</h2></div>
-	<form role="form" action="/Area/AddNewsBoke">
+	<div class="row"><h2 align="center">置业指导添加</h2></div>
+	<form role="form" action="/Area/AddZhiye">
 	  <div class="form-group">
 	    <label for="title">编号</label>
-	    <input type="text" class="form-control" id="news_num" placeholder="编号" name="news_num">
+	    <input type="text" class="form-control" id="zhiye_num" placeholder="编号" name="zhiye_num">
 	  </div>
 	  <div class="form-group">
 	    <label for="title">标题</label>
-	    <input type="text" class="form-control" id="news_title" placeholder="标题" name="news_title">
+	    <input type="text" class="form-control" id="title" placeholder="标题" name="title">
 	  </div>
 	  <div class="form-group">
 	    <label for="publisher">发布人</label>
-	    <input type="text" class="form-control" id="news_people" placeholder="发布人" name="news_people">
+	    <input type="text" class="form-control" id="fabu_people" placeholder="发布人" name="fabu_people">
 	  </div>
 	  <div class="form-group">
 	    <label for="type">分类</label>
-	    <input type="text" class="form-control" id="news_fenlei" placeholder="分类" name="news_fenlei">
+	    <input type="text" class="form-control" id="fenlei" placeholder="分类" name="fenlei">
 	  </div>
 	  <div class="form-group">
 	    <label for="abstract">摘要</label>
-	    <input type="text" class="form-control" id="news_abstract" placeholder="摘要" name="news_abstract">
+	    <input type="text" class="form-control" id="zhiye_abstract" placeholder="摘要" name="zhiye_abstract">
 	  </div>
 	  <div class="form-group">
 	    <label for="pic">图片</label>
-	    <input type="text" class="form-control" id="news_image" placeholder="图片" name="news_image">
+	    <input type="text" class="form-control" id="image" placeholder="图片" name="image">
 	  </div>
 	  <div class="form-group">
 	    <label for="detail">详情</label>
-	    <textarea  class="form-control" id="news_detail" placeholder="详情" name="news_detail"></textarea>
+	    <textarea  class="form-control" id="detail" placeholder="详情" name="detail"></textarea>
 	  </div>
 	  <button type="submit" class="btn btn-default">Submit</button>
 	</form>
 </div>
 
 <script type="text/javascript">
-CKEDITOR.replace( 'news_detail' );
+CKEDITOR.replace( 'detail' );
 </script>
 </body>
 </html>
