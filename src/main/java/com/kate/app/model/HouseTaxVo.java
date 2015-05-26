@@ -1,14 +1,22 @@
 package com.kate.app.model;
 
 public class HouseTaxVo {
+	private int id;
 	private String type;
 	private int price;
 	private String description;
-    public HouseTaxVo(String type,int price,String description){
+    public HouseTaxVo(int id,String type,int price,String description){
+        this.id = id;
     	this.type=type;
     	this.price=price;
     	this.description=description;
     }
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getType() {
 		return type;
 	}

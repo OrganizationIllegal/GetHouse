@@ -54,9 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
             <th data-field="state" data-checkbox="true"></th>
             <th data-field="id" data-sortable="true"data-editable="true">ID</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">Project_name</th>
+            <th data-field="area_code" data-sortable="true" data-editable="true">Area_code</th>
             <th data-field="area_character" data-sortable="true" data-editable="true">Area_character</th>
-            
+            <th data-field="view_shunxu" data-sortable="true" data-editable="true">View_shunxu</th>
+            <th data-field="data_source" data-sortable="true" data-editable="true">Data_source</th>
+            <th data-field="update_time" data-sortable="true" data-editable="true">Update_time</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -155,10 +157,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             alert('You click like action, row: ' + JSON.stringify(row));
             var id=row.id;
             if(isNaN(id)){
-            alert("hehe add")
-            	$.ajax({
+           	$.ajax({
 	 	    type: "POST",
-	 		data: {project_name: row.project_name, area_character: row.area_character},
+	 		data: {area_code: row.area_code, area_character: row.area_character, view_shunxu:row.view_shunxu, data_source : row.data_source, update_time:row.update_time},
 	 		dateType: "json",
 	 		url: "/addArea",
 	 		
@@ -166,10 +167,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			data=$.parseJSON(data);
 	 		
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("区域编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("区域编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("增加失败")
 	 			}
@@ -186,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           alert("hehe edit")
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id: row.id, project_name: row.project_name, area_character: row.area_character},
+		 		data: {id:row.id, area_code: row.area_code, area_character: row.area_character, view_shunxu:row.view_shunxu, data_source : row.data_source, update_time:row.update_time},
 		 		dateType: "json",
 		 		url: "/editArea",
 		 		
@@ -194,15 +195,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 			data=$.parseJSON(data);
 	 		
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("区域编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("区域编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("修改失败")
 	 			}
 	 			else{
-	 				alert("修改失败")
+	 				alert("修改成功")
 	 			}
 	 		},
 		 		error:function(){
@@ -225,7 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 		url: "/deleteArea",
 		 		
 		 		success:function(data){
-		 			alert("修改成功")
+		 			alert("删除成功")
 		 		},
 		 		error:function(){
 		 			alert("error")

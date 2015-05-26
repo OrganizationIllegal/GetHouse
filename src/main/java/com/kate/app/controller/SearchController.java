@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.kate.app.dao.AjaxDao;
 import com.kate.app.dao.SearchListDao;
 import com.kate.app.dao.UserDao;
@@ -29,6 +31,7 @@ public class SearchController {
 	@Autowired
 	private UserDao userDao;
 	
+	private static List<SearchList> seachListResult;
 	//服务团队搜索
 	@RequestMapping({"/SearchService"})
 	public String SearchService(HttpServletRequest req, HttpServletResponse resp){
@@ -97,9 +100,6 @@ public class SearchController {
 			else{
 				city = searchcity;
 			}
-			
-			
-			
 			List<HouseProject> list = searchListDao.indexSericeList(city, type, minimumprice, maximumprice, xinkaipan, huaren, remen, xuequ, baozu, daxue, center, traffic, xianfang, maidi);
 			
 			List<SearchList> searchList = new ArrayList<SearchList>();
@@ -119,11 +119,64 @@ public class SearchController {
 		    	SearchList data=new SearchList(id,project_num,project_img,project_name,maxPrice,minprice,maxarea,minarea,project_sales_remain,return_money,project_lan_cn,mianji);
 		    	searchList.add(data);
 			}
-			
-			req.setAttribute("searchList",searchList);
-			return "/searchList01.jsp";
+			seachListResult = searchList;
+			//req.setAttribute("searchList",searchList);
+			return "searchList01.jsp";
 		}
 	
+		
+		@RequestMapping({"/IndexSearchPage"})
+		public void SearchListPage(HttpServletRequest req, HttpServletResponse resp){
+			String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
+			int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
+			
+			String pageSize_str  = req.getParameter("pageSize");  //每页锟斤拷锟斤拷锟斤拷锟�
+			int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
+			List<SearchList> searchList = seachListResult;
+			
+			
+			int total = searchList.size();
+			int pageEnd = pageNum * pageSize;
+			int end = pageEnd < total ? pageEnd : total;
+			
+			int start = (pageNum-1) * pageSize;
+			int pageStart = start == pageEnd ? 0 : start;
+			
+			JSONObject json = new JSONObject();
+			JSONArray array = new JSONArray();
+			if(pageStart <= end){
+				List<SearchList> resultList=searchList.subList(start, end);
+				for(SearchList item : resultList){
+					JSONObject obj = new JSONObject();
+					obj.put("id", item.getId());
+					obj.put("Fanxian", item.getFanxian());
+					obj.put("Keshou", item.getKeshou());
+					obj.put("MaxArea", item.getMaxArea());
+					obj.put("MaxPrice", item.getMaxPrice());
+					obj.put("MinArea", item.getMinArea());
+					obj.put("MinPrice", item.getMinPrice());
+					obj.put("Project_img", item.getProject_img());
+					obj.put("Project_name", item.getProject_name());
+					obj.put("project_num", item.getProject_num());
+					array.add(obj);
+				}
+				json.put("List", array);
+				json.put("total", total);
+			}
+			else{
+				json.put("List", "");
+				json.put("total", total);
+			}
+			
+			
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		
 		public void writeJson(String json, HttpServletResponse response)throws Exception{
 		    response.setContentType("text/html");
 		    response.setCharacterEncoding("UTF-8");

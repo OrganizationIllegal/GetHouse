@@ -56,8 +56,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
             
             <th data-field="id" data-sortable="true"data-editable="true">ID</th>
-            <th data-field="project_name" data-sortable="true" data-editable="true">Project_name</th>
-            <th data-field="recommend_project_name" data-sortable="true" data-editable="true">Recommend_name</th>
+            <th data-field="project_num" data-sortable="true" data-editable="true">Project_num</th>
+            <th data-field="recommend_project_num1" data-sortable="true" data-editable="true">Recommend_project_num1</th>
+            <th data-field="recommend_project_num2" data-sortable="true" data-editable="true">Recommend_project_num2</th>
+            <th data-field="recommend_project_num3" data-sortable="true" data-editable="true">Recommend_project_num3</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -157,17 +159,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            
             	$.ajax({
 	 	    type: "POST",
-	 		data: {id:row.id,project_name: row.project_name,recommend_project_name: row.recommend_project_name},
+	 		data: {project_num: row.project_num,recommend_project_num1: row.recommend_project_num1, recommend_project_num2: row.recommend_project_num2,recommend_project_num3: row.recommend_project_num3},
 	 		dateType: "json",
 	 		url: "/addRecoProject",
 	 		
 	 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("项目编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("增加失败")
 	 			}
@@ -184,17 +186,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
 	           $.ajax({
 		 	    type: "POST",
-		 		data: {id:row.id,project_name: row.project_name,recommend_name: row.recommend_name},
+		 		data: {id:row.id,project_num: row.project_num,recommend_project_num1: row.recommend_project_num1, recommend_project_num2: row.recommend_project_num2,recommend_project_num3: row.recommend_project_num3},
 		 		dateType: "json",
 		 		url: "/editRecoProject",
 		 		
 		 		success:function(data){
 	 			data=$.parseJSON(data);
 	 			if(data.result==0){
-	 				alert("项目名称不能为空！")
+	 				alert("项目编号不能为空！")
 	 			}
 	 			else if(data.result==-1){
-	 				alert("项目名称不存在！")
+	 				alert("项目编号不存在！")
 	 			}else if(data.result==-2){
 	 				alert("修改失败")
 	 			}

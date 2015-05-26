@@ -18,18 +18,20 @@ public class HouseTaxDao extends BaseDao {
 		  List<HouseTaxVo> houseTaxVoList=new ArrayList<HouseTaxVo>();
 		  
 		  try {
-				String sql = "select type,price,description from house_tax t where t.project_num=?";
+				String sql = "select id, type,price,description from house_tax t where t.project_num=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, proNum);
 				ResultSet rs = pstmt.executeQuery();
 				String type=null;
+				int id=0;
 				int price=0;
 				String description=null;
 				while(rs.next()){
+					id = rs.getInt("id");
 					type=rs.getString("type");
 					price=rs.getInt("price");
 					description=rs.getString("description");
-					HouseTaxVo houseTaxVo=new HouseTaxVo(type,price,description) ;
+					HouseTaxVo houseTaxVo=new HouseTaxVo(id,type,price,description) ;
 					houseTaxVoList.add(houseTaxVo);
 				}
 			} catch (Exception e) {
@@ -42,17 +44,19 @@ public class HouseTaxDao extends BaseDao {
 		  List<HoldingTaxVo> holdingTaxVoList=new ArrayList<HoldingTaxVo>();
 		 
 		  try {
-				String sql = "select type,price,description from holding_finace t where t.project_num='"+proNum+"'";
+				String sql = "select id,type,price,description from holding_finace t where t.project_num='"+proNum+"'";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				String type=null;
 				int price=0;
+				int id=0;
 				String description=null;
 				while(rs.next()){
+					id=rs.getInt("id");
 					type=rs.getString("type");
 					price=rs.getInt("price");
 					description=rs.getString("description");
-					HoldingTaxVo holdingTaxVo=new HoldingTaxVo(type,price,description);
+					HoldingTaxVo holdingTaxVo=new HoldingTaxVo(id,type,price,description);
 					holdingTaxVoList.add(holdingTaxVo);
 				}
 			} catch (Exception e) {

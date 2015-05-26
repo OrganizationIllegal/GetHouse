@@ -57,9 +57,12 @@
 	 		        arr=items[i].gps.split(",");
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        var num=items[i].project_num;
-	 		        var img=items[i].project_img;
 	 		        var name=items[i].project_name;
-	 		        var price=items[i].project_price;
+	 		        var image=items[i].project_img;
+	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+	 		        var minprice=items[i].project_min_price;
+	 		        var maxprice=items[i].project_high_price;
+	 		        var price="$"+minprice+"-$"+maxprice;
 	 		        var flag=i+1;
 	 		        var pushpinOptions={text:''+flag}
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
@@ -86,7 +89,7 @@
 			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
 			    //alert(defaultInfobox.getId())
 			    map.entities.push(defaultInfobox); 
-			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
 			    
 		    });
       }
@@ -143,9 +146,12 @@
 	 		        arr=items[i].gps.split(",");
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]); 
 	 		        var num=items[i].project_num;
-	 		        var img=items[i].project_img;
 	 		        var name=items[i].project_name;
-	 		        var price=items[i].project_price;
+	 		        var image=items[i].project_img;
+	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+	 		        var minprice=items[i].project_min_price;
+	 		        var maxprice=items[i].project_high_price;
+	 		        var price="$"+minprice+"-$"+maxprice;
 	 		        var flag=i+1;
 	 		        var pushpinOptions={text:''+flag}
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
@@ -174,7 +180,7 @@
 			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
 			    //alert(defaultInfobox.getId())
 			    map.entities.push(defaultInfobox); 
-			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
 			    
 		    });
       }
@@ -236,9 +242,12 @@
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        //map.entities.clear(); 
 	 		        var num=items[i].project_num;
-	 		        var img=items[i].project_img;
 	 		        var name=items[i].project_name;
-	 		        var price=items[i].project_price;
+	 		        var image=items[i].project_img;
+	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+	 		        var minprice=items[i].project_min_price;
+	 		        var maxprice=items[i].project_high_price;
+	 		        var price="$"+minprice+"-$"+maxprice;
 	 		        var flag=i+1;
 	 		        var pushpinOptions={text:''+flag}
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
@@ -267,7 +276,7 @@
  			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
  			    //alert(defaultInfobox.getId())
  			    map.entities.push(defaultInfobox); 
- 			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+ 			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
  			    
  		    });
        } 
@@ -329,9 +338,12 @@
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        //map.entities.clear(); 
 	 		        var num=items[i].project_num;
-	 		        var img=items[i].project_img;
 	 		        var name=items[i].project_name;
-	 		        var price=items[i].project_price;
+	 		        var image=items[i].project_img;
+	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+	 		        var minprice=items[i].project_min_price;
+	 		        var maxprice=items[i].project_high_price;
+	 		        var price="$"+minprice+"-$"+maxprice;
 	 		        var flag=i+1;
 	 		        var pushpinOptions={text:''+flag}
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
@@ -360,7 +372,7 @@
   			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
   			    //alert(defaultInfobox.getId())
   			    map.entities.push(defaultInfobox); 
-  			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+  			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
   			    
   		    });
         } 
@@ -423,9 +435,12 @@
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        //map.entities.clear(); 
 	 		        var num=items[i].project_num;
-	 		        var img=items[i].project_img;
 	 		        var name=items[i].project_name;
-	 		        var price=items[i].project_price;
+	 		        var image=items[i].project_img;
+	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+	 		        var minprice=items[i].project_min_price;
+	 		        var maxprice=items[i].project_high_price;
+	 		        var price="$"+minprice+"-$"+maxprice;
 	 		        var flag=i+1;
 	 		        var pushpinOptions={text:''+flag}
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
@@ -454,7 +469,7 @@
   			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
   			    //alert(defaultInfobox.getId())
   			    map.entities.push(defaultInfobox); 
-  			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+  			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
   			    
   		    });
         } 
@@ -519,9 +534,12 @@
 	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
 	 		        //map.entities.clear(); 
 	 		        var num=items[i].project_num;
-	 		        var img=items[i].project_img;
-	 		        var name=items[i].project_name;
-	 		        var price=items[i].project_price;
+	 		       var name=items[i].project_name;
+	 		        var image=items[i].project_img;
+	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+	 		        var minprice=items[i].project_min_price;
+	 		        var maxprice=items[i].project_high_price;
+	 		        var price="$"+minprice+"-$"+maxprice;
 	 		        var flag=i+1;
 	 		        var pushpinOptions={text:''+flag}
 	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, pushpinOptions); 
@@ -550,7 +568,7 @@
   			    defaultInfobox = new Microsoft.Maps.Infobox(LA, infoboxOptions);
   			    //alert(defaultInfobox.getId())
   			    map.entities.push(defaultInfobox); 
-  			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:300px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+  			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
   			    
   		    });
         } 
