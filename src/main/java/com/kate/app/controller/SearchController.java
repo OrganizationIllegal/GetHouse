@@ -94,16 +94,44 @@ public class SearchController {
 			String xianfang = req.getParameter("xianfang");
 			String maidi = req.getParameter("maidi");
 			String city = null;
+			List<HouseProject> list1 = new ArrayList<HouseProject>();
+			List<HouseProject> resultList = new ArrayList<HouseProject>();
+			if(searchcity!=null && !"".equals(searchcity)){
+				list1 = searchListDao.searchIndexList(searchcity);
+			}
 			if(city2!=null && !"".equals(city2)){
 				city = city2;
 			}
-			else{
-				city = searchcity;
-			}
+			
 			List<HouseProject> list = searchListDao.indexSericeList(city, type, minimumprice, maximumprice, xinkaipan, huaren, remen, xuequ, baozu, daxue, center, traffic, xianfang, maidi);
+			if(list1.size()>0){
+				if(list1.size()>list.size()){
+					for(int i=0; i<list1.size();i++){
+						for(int j=0;j<list.size();j++){
+							if(list.get(j).getProject_num().equals(list1.get(i).getProject_num())){
+								resultList.add(list.get(j));
+								break;
+							}
+						}
+					}
+				}
+				if(list1.size()<=list.size()){
+					for(int i=0; i<list.size();i++){
+						for(int j=0;j<list1.size();j++){
+							if(list1.get(j).getProject_num().equals(list.get(i).getProject_num())){
+								resultList.add(list1.get(j));
+								break;
+							}
+						}
+					}
+				}
+			}
+			else{
+				resultList = list;
+			}
 			
 			List<SearchList> searchList = new ArrayList<SearchList>();
-			for(HouseProject item : list){
+			for(HouseProject item : resultList){
 				int id=item.getId();
 		    	String project_img=item.getProject_img();
 		    	String project_name=item.getProject_name();

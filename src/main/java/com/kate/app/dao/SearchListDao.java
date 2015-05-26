@@ -137,7 +137,56 @@ public class SearchListDao extends BaseDao {
 			return brokerInfoList;
 		} 
 	
+	public List<HouseProject> searchIndexList(String city1){
+		List<HouseProject> houseProjectList=new ArrayList<HouseProject>();
+		try {
+			String sql = "select * from house_project where project_name like '%" +city1+ "%' or project_city like '%" +city1+ "%'";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+		    while(rs.next()){
+		    	HouseProject projectInfo = new HouseProject();
+				projectInfo.setProject_name(rs.getString("project_name"));
+				projectInfo.setProject_img(rs.getString("project_img"));
+				projectInfo.setProject_nation(rs.getString("project_nation"));
+				projectInfo.setProject_address(rs.getString("project_address"));
+				projectInfo.setProject_area(rs.getString("project_area"));
+				projectInfo.setProject_price_qi(rs.getString("project_price_qi"));
+				projectInfo.setProject_type(rs.getString("project_type"));
+				projectInfo.setProject_sales_remain(rs.getInt("project_sales_remain"));
+				projectInfo.setProject_finish_time(rs.getTimestamp("project_finish_time"));
+				projectInfo.setProject_desc(rs.getString("project_desc"));
+				projectInfo.setProject_city(rs.getString("project_city"));
+				projectInfo.setProject_house_type(rs.getString("project_house_type"));
+				projectInfo.setProject_high(rs.getString("project_high"));
+				projectInfo.setProject_price(rs.getString("project_price"));
+				projectInfo.setProject_lan_cn(rs.getString("project_lan_cn"));
+				projectInfo.setProject_lan_en(rs.getString("project_lan_en"));
+				projectInfo.setProject_num(rs.getString("project_num"));
+				projectInfo.setProject_vedio(rs.getString("project_vedio"));
+				projectInfo.setProject_zhou(rs.getString("project_zhou"));
+				projectInfo.setArea_qujian(rs.getString("area_qujian"));
+				projectInfo.setGps(rs.getString("gps"));
+				projectInfo.setReturn_money(rs.getString("return_money"));
+				projectInfo.setDeveloper_id(rs.getInt("developer_id"));
+				projectInfo.setProject_high_price(rs.getString("project_high_price"));
+				projectInfo.setProject_min_price(rs.getString("project_min_price"));
+				projectInfo.setArea_id(rs.getInt("area_id"));
+				projectInfo.setMianji(rs.getString("mianji"));
+				projectInfo.setRecommend_id_1(rs.getInt("recommend_id_1"));
+				projectInfo.setRecommend_id_2(rs.getInt("recommend_id_2"));
+				projectInfo.setRecommend_id_3(rs.getInt("recommend_id_3"));
+				projectInfo.setWuyefei(rs.getString("wuyefei"));
+				houseProjectList.add(projectInfo);
 
+				}
+		  
+			}
+			catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return houseProjectList;
+	} 
 	
 	public List<HouseProject> indexSericeList(String city, String type, String minimumprice, String maximumprice, String xinkaipan,String huaren,String remen,String xuequ,String baozu,String daxue,String center,String traffic,String xianfang,String maidi){
 		List<HouseProject> houseProjectList=new ArrayList<HouseProject>();
