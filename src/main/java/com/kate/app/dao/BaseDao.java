@@ -18,7 +18,7 @@ public class BaseDao {
 	{
 		if(con == null){
 			try {
-	            url = "jdbc:mysql://101.200.174.253/gethouse";
+	            url = "jdbc:mysql://101.200.174.253:3306/gethouse?autoReconnect=true";
 	
 	            username = "dboperator1";
 	            password = "gethouse";
@@ -42,7 +42,7 @@ public class BaseDao {
 		    e.printStackTrace() ;   
 		}   
 		try {
-            url = "jdbc:mysql://101.200.174.253/gethouse";
+            url = "jdbc:mysql://101.200.174.253:3306/gethouse?autoReconnect=true";
 
             username = "dboperator1";
             password = "gethouse";
