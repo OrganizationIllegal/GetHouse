@@ -6,9 +6,9 @@ public class User {
 	private String nick_name;
 	private String pwd;
 	private String email;
-	private int tel;
+	private String tel;
 	private int role;
-	public User(String nick_name,String pwd,String email,int tel,int role){
+	public User(String nick_name,String pwd,String email,String tel,int role){
 		this.nick_name=nick_name;
 		this.pwd=pwd;
 		this.email=email;
@@ -39,10 +39,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public int getRole() {
