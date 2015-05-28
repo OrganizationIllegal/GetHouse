@@ -3,17 +3,48 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.kate.app.model.BrokerInfo;
+import com.kate.app.model.User;
 
 @Repository 
 public class UserInfoDao extends BaseDao {
+	
+	//判断用户
+		public List<User> judge(String username) throws SQLException{
+			List<User> list = new ArrayList<User>();
+			try{
+				String sql = "select * from user where nick_name=?" ;
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, username);
+				ResultSet rs = pstmt.executeQuery();
+				int id=0;
+				String pwd=null;
+				String email=null;
+				String tel=null;
+				int role=0;
+				while(rs.next()){
+					id = rs.getInt("id");
+					pwd = rs.getString("pwd");
+					email = rs.getString("email");
+					tel = rs.getString("tel");
+					role = rs.getInt("role");
+					User data = new User(username, pwd, email, tel, role);
+					list.add(data);
+				}
+				
+			}catch (Exception e) {
+	            e.printStackTrace();
+	        }
+			return list;
+	        
+		}
+	
+	
+	
 	//开立账户
 	public int addAccount(String nick_name,String pwd,String tel,String email,String account,String msg) throws SQLException{
 		int exeResult=0;
@@ -134,13 +165,14 @@ public class UserInfoDao extends BaseDao {
 				public int register(String nick_name,String pwd,String repwd,String tel,String email) throws SQLException{
 					int exeResult=0;
 					try{
-						String sql = " insert into user(nick_name, pwd, repwd, tel, email) values(?,?,?,?,?)";
+						String sql = " insert into user(nick_name, pwd, repwd, tel, email,role) values(?,?,?,?,?,?)";
 						PreparedStatement pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, nick_name);
 						pstmt.setString(2, pwd);
 						pstmt.setString(3, repwd);
 						pstmt.setString(4, tel);
 						pstmt.setString(5, email);
+						pstmt.setInt(6, 1);
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();

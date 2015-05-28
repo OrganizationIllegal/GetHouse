@@ -35,13 +35,14 @@ public class SearchController {
 	//服务团队搜索
 	@RequestMapping({"/SearchService"})
 	public String SearchService(HttpServletRequest req, HttpServletResponse resp){
+		String username = (String)req.getSession().getAttribute("username");
 		String brokerName = req.getParameter("brokerName");
 		String type = req.getParameter("type");
 		String area = req.getParameter("area");
 		String lang = req.getParameter("lang");
 		
 		List<BrokerInfo> brokerInfoList = searchListDao.searchSericeList(brokerName, type, area, lang);
-		List<User> userList=userDao.listUser();
+		List<User> userList=userDao.listUser(username);
 		req.setAttribute("brokerInfoList",brokerInfoList);
 		req.setAttribute("userList", userList);
 		return "/serviceTeam.jsp";

@@ -3,6 +3,7 @@ package com.kate.app.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -58,13 +59,15 @@ public class BrokerInfoDao extends BaseDao {
 		return brokerInfoList;
 	} 
 	//鍙戦�鐣欒█
-	public int InsertMessage(String message_content,String message_time,int project_id,int viewed,int type,int userid){
+	public int InsertMessage(String message_content,String time,int project_id,int viewed,int type,int userid){
 		int exeResult=0;
+		
+		
 		try {
 			String sql = "insert into message(message_content,message_time,project_id,viewed,type,userid) values (?,?,?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, message_content);
-			pstmt.setString(2, message_time);
+			pstmt.setString(2, time);
 			pstmt.setInt(3, project_id);
 			pstmt.setInt(4, viewed);
 			pstmt.setInt(5, type);

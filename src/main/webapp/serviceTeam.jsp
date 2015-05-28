@@ -67,6 +67,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 					<div style="padding-top:20px;background-color:#d9d2e9;">
 <form class="form-horizontal" role="form" action="/ServiceTeam/MessageSubmit" method="post">
+<c:if test="${empty userList}">
+	<div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <input type="text" class="form-control" name="name" 
+            placeholder="姓名">
+
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" >
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <input type="text" class="form-control" name="email" 
+            placeholder="电子邮件">
+
+
+
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" >
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <input type="text" class="form-control" name="tel" 
+            placeholder="电话号码">
+
+
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" >
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <textarea type="text" rows="5" cols="20" class="form-control" name="message_content"  placeholder="留言"></textarea>
+            
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="padding-bottom:40px;">
+   	   <div class="col-sm-7"></div>
+      <div class="col-sm-5">
+         <button type="submit" class="btn btn-default" style="width:105px;background-color:red;color:white;" type="submit" id="submit">提交</button>
+
+      </div>
+     
+   </div>
+
+</c:if>
  <c:forEach items="${userList}"  var="item">
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">

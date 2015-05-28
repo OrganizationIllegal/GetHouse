@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSONArray;
 import com.kate.app.dao.AjaxDao;
+import com.kate.app.dao.BrokerInfoDao;
 import com.kate.app.dao.InvestDataDao;
 import com.kate.app.dao.MiddlePriceDao;
 import com.kate.app.dao.RecoProjectDao;
+import com.kate.app.dao.UserDao;
 import com.kate.app.dao.UtilDao;
 import com.kate.app.model.AreaFamily;
 import com.kate.app.model.AreaInfo;
@@ -26,6 +28,7 @@ import com.kate.app.model.AreaMiddle;
 import com.kate.app.model.AreaPeopleInfo;
 import com.kate.app.model.AreaZhikong;
 import com.kate.app.model.AreaZujin;
+import com.kate.app.model.BrokerInfo;
 import com.kate.app.model.BuyInfo;
 import com.kate.app.model.DeveloperInfo;
 import com.kate.app.model.FamilyIncome;
@@ -35,7 +38,6 @@ import com.kate.app.model.HouseProject;
 import com.kate.app.model.HouseTaxData;
 import com.kate.app.model.HouseTaxVo;
 import com.kate.app.model.InvestmentData;
-import com.kate.app.model.LatestSaleInfoVo;
 import com.kate.app.model.MiddlePrice;
 import com.kate.app.model.NearPeiTao;
 import com.kate.app.model.NearSchool;
@@ -45,6 +47,7 @@ import com.kate.app.model.PeopleInfo;
 import com.kate.app.model.PeopleNation;
 import com.kate.app.model.ProjectImage;
 import com.kate.app.model.RecoProject;
+import com.kate.app.model.User;
 import com.kate.app.service.AreaFamilyService;
 import com.kate.app.service.AreaFeatureService;
 import com.kate.app.service.AreaInfoService;
@@ -76,6 +79,10 @@ public class MyController {
 	private UtilDao utilDao;
 	@Autowired
 	private NewsInfoService newsInfoService;
+	@Autowired
+	private UserDao userDao;
+	@Autowired
+	private BrokerInfoDao brokerInfoDao;
 	
 	@Autowired
 	private HouseProjectService houseProjectService;
@@ -103,6 +110,7 @@ public class MyController {
 	private RecoProjectSerivice recoprojectserivice;
 	@RequestMapping({ "/Index" })
 	public String Index(HttpServletRequest req, HttpServletResponse resp){
+		String username = (String)req.getSession().getAttribute("username");
 		String proNum = req.getParameter("proNum");
 		//String areaNum = req.getParameter("areaNum");
 		int proId = 0;
@@ -111,6 +119,10 @@ public class MyController {
 		String area_name ="";
 		String area_num=null;
 		AreaInfo areaInfo = new AreaInfo();
+		if(username==null||"".equals(username) ){
+			req.setAttribute("error", 1);
+			return "/QuanxianError.jsp";
+		}
 		if(proNum!=null && !"".equals(proNum)){
 			proId = utilDao.getHouseProId(proNum);
 			
@@ -146,7 +158,8 @@ public class MyController {
 		 getAreaFamily(req,resp,area_num);
 		 GetNewsInfo(req,resp,proNum);
 		 RecommendProject(req,resp,proId,proNum);
-		 
+		 listSuoJia(req,resp,username);
+		 messageSubmit(req,resp,username,proId);
 		 /*ProjectDetail(req,resp,proId);
 		 
 		 
@@ -619,6 +632,37 @@ public class MyController {
 		req.setAttribute("RecommendProject2", hp2);
 		req.setAttribute("RecommendProject3", hp3);
 	}
+	
+	@RequestMapping({"/indexSuoJia"})
+	public void listSuoJia(HttpServletRequest req,HttpServletResponse resp, String username){
+		List<User> userList=userDao.listUser(username);
+		/*req.setAttribute("brokerInfoList", brokerInfoList);*/
+		req.setAttribute("userList", userList);
+		
+	}
+	
+	
+	//点击提交，提交留言
+		@RequestMapping({"/indexSuoJia/MessageSubmit"})
+		public void messageSubmit(HttpServletRequest req,HttpServletResponse resp, String username,int proId){
+			String message_content=req.getParameter("message_content");
+			String message_time = new java.sql.Timestamp(System.currentTimeMillis()).toString();
+			int viewed=0;
+			int type=2;
+			int result = 0;
+			int userid=userDao.findUserByName(username);
+			if(userid!=0){
+				result=brokerInfoDao.InsertMessage(message_content, message_time, proId, viewed, type, userid);
+			}
+			
+			req.setAttribute("result", result);
+			//List<BrokerInfo> brokerInfoList=brokerInfoDao.listBrokerInfo();
+			List<User> userList=userDao.listUser(username);
+			//req.setAttribute("brokerInfoList", brokerInfoList);
+			req.setAttribute("userList", userList);
+			//return "/index.jsp";
+		}
+	
 	
 	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{

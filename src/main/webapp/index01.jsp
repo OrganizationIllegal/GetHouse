@@ -48,6 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div style="margin-left:20px;float:left;">
                         <select id="territory">
                         <option value ="austrilia">澳大利亚</option>
+
                         <!-- <option value ="america">美洲</option>
                         <option value ="asia">亚洲</option>
                         <option value ="africa">非洲</option>
@@ -67,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
         
             </div>
-            <form role="form" action="/IndexSearch" method="get" >
+            <form role="form" action="/IndexSearch" method="get"  target="_blank">
                  <div class="row" style="margin-bottom:5px;">
                   <div class="col-lg-6">
                     <div class="input-group">
@@ -210,16 +211,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <!--搜索end-->
  <!--空白-->
- <div style="height:20px;"></div>
+ <div style="height:10px;"></div>
  <!--end空白-->
  <!--我们重新定义-->
- <div style="background-color:rgba(21, 63, 101, 1);height:120px;margin-top:380px;padding-left:-20px;padding-right:-20px">
+ 	<div class="row" style="background-color:rgba(21, 63, 101, 1);height:120px;margin-top:380px;margin-left:0px;margin-right:0px;">
+ 	<div class="col-md-3"></div>
+ 	<div class="col-md-6" style="padding-left:60px;">
  	<div>
-		<div class="col-md-offset-4 col-md-3">
-		<!--<div style="background-position:center center;width:374px;background-image:url('/pic/jt.jpg');background-repeat:no-repeat;background-size: contain;height:90px;"></div>-->
-		</div>
-	</div>
- </div>
+ 	<div style="color:white;font-size:38px;font-weight:bolder;font-family:黑体;position:absolute;filter:alpha(opacity=60);opacity:0.6;">我们</div>
+ 	<div style="color:white;font-size:8px;position:absolute;left:140px;margin-top:10px;">我们应用互联网思维和技术，为您提供更全、更多的海外项目信息，通过全方位服务，让您更方便、更快捷、更省钱的买到更合适的海外房产。</div>
+ 	<div style="color:white;font-size:30px;font-weight:bolder;font-family:黑体;position:absolute;filter:alpha(opacity=60);opacity:0.6;top:50px;border-top:2px solid white;">重新定义海外置业模式</div>
+ 	<div style="color:white;font-size:8px;position:absolute;left:390px;top:50px;">每天上百个新房源满足了越来越多的客户海外需求。</div>
+ 	</div>
+ 	</div>
+ 	<div class="col-md-3"></div>
+ 	</div>
 
  
  <!--我们重新定义-->
@@ -294,39 +300,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 <!--郭瑞-->
  <!--start 墨尔本-->
-<div id="Molbourne">
-<div id="left" class="col-xs-2">
-</div>
-<div style="margin-top:20px;" class="col-xs-8">
-  <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:white;">墨尔本</div>
-  	 <div class="panel-body">
-  	 <c:forEach var="item" items="${projectList}">
-  	 	<div class="col-xs-4" >
-  	     		<a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.project_img }"></a>
+<div class="row" style="margin-top:30px;">
+<div class="col-md-1"></div>
+<div class="col-md-10" style="padding-left:40px;">
+<div style="font-size:18px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;">墨尔本</div>
+<hr style="border-top:1px solid gray;margin-top:10px;width:905px;margin-left:0px;"/>
+<div>
+<c:forEach var="item" items="${projectList}">
+  	 	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:130px;width:290px;padding-top:5px;padding-bottom:5px;">
+  	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span><span style="margin-left:30px;">${item.project_type}</span></div>
+  	     		<div style="color:white;font-size:16px;font-weight:bold;">${item.project_price_qi}</div>
+  	     		</div>
   	    </div>
   	 </c:forEach>
- 
-     </div>
-  </div>
 </div>
-<div id="right" class="col-xs-2">
 </div>
+<div class="col-md-1"></div>
 </div>
 <!--end 墨尔本-->
-
+ <!--start 悉尼-->
+<div class="row" style="margin-top:20px;">
+<div class="col-md-1"></div>
+<div class="col-md-10" style="padding-left:40px;">
+<div style="font-size:18px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;">悉尼</div>
+<hr style="border-top:1px solid gray;margin-top:10px;width:905px;margin-left:0px;"/>
+<div>
+<c:forEach var="item" items="${projectList2}">
+  	 	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:130px;width:290px;padding-top:5px;padding-bottom:5px;">
+  	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span><span style="margin-left:30px;">${item.project_type}</span></div>
+  	     		<div style="color:white;font-size:16px;font-weight:bold;">${item.project_price_qi}</div>
+  	     		</div>
+  	    </div>
+  	 </c:forEach>
+</div>
+</div>
+<div class="col-md-1"></div>
+</div>
+<!--end 悉尼-->
 <!--last guo-->
-<div class="row" style="text-align:center;margin-top:300px;">
-			<div style="font-weight:bolder;font-size:23px;font-family:黑体;margin-top:79px;margin-bottom:10px;">最新博客</div>
+<div class="row" style="text-align:center;margin-bottom:15px;">
+			<div style="font-weight:bolder;font-size:23px;font-family:黑体;margin-top:50px;margin-bottom:10px;">新闻博客</div>
 			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
 			<div class="row" style="padding-top:30px;">
-			<div class="col-md-2" style="width:150px;"></div>
+			<div class="col-md-1"></div>
+			<div class="col-md-10" style="padding-left:55px;text-align:left;">
 			<c:forEach var="item" items="${newsList}">
-		  	 	    <div class="col-md-3">
-						<div style="width:230px;"><a href="/Detail?id=${item.id}&type=1"><img src="http://101.200.174.253:8080/all/${item.news_image}" width=230px></a></div>
-						<div style="height:100px;width:230px;">${item.news_abstract}</div>
+		  	 	    <div class="col-md-4" style="padding-left:0px;">
+						<div ><a href="/Detail?id=${item.id}&type=1"><img src="http://101.200.174.253:8080/all/${item.news_image}" style="border:1px solid gray;width:290px;"></a></div>
+						<div style="margin-top:15px;">${item.news_abstract}</div>
 					</div>
   	 		</c:forEach>
+  	 		</div>
 			<div class="col-md-1"></div>
 			</div>
 		</div>

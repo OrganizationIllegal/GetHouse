@@ -1,5 +1,6 @@
 package com.kate.app.controller;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,13 @@ public class BrokerInfoController {
 	@RequestMapping({"/ServiceTeam"})
 	public String listBingMap(HttpServletRequest req,HttpServletResponse resp){
 		List<BrokerInfo> brokerInfoList=brokerInfoDao.listBrokerInfo();
-		List<User> userList=userDao.listUser();
+		String username = (String)req.getSession().getAttribute("username");
+		//if(user==null)
+		/*if(username==null||"".equals(username) ){
+			req.setAttribute("error", 1);
+			return "/QuanxianError.jsp";
+		}*/
+		List<User> userList=userDao.listUser(username);
 		req.setAttribute("brokerInfoList", brokerInfoList);
 		req.setAttribute("userList", userList);
 		return "/serviceTeam.jsp";
@@ -36,17 +43,27 @@ public class BrokerInfoController {
 	//点击提交，提交留言
 	@RequestMapping({"/ServiceTeam/MessageSubmit"})
 	public String messageSubmit(HttpServletRequest req,HttpServletResponse resp){
+		String username = (String)req.getSession().getAttribute("username");
+		//if(user==null)
+		
 		String message_content=req.getParameter("message_content");
+		
+		
+		String message_time = new java.sql.Timestamp(System.currentTimeMillis()).toString();
+		
 		//String message_time=req.getParameter("message_time");
-		String message_time="20150513";
-		int project_id=1;
+		//String message_time=Timestamp.parse(System.currentTimeMillis());
+		int project_id=0;
 		int viewed=0;
-		int type=0;
-		int userid=1;
-		int result=brokerInfoDao.InsertMessage(message_content, message_time, project_id, viewed, type, userid);
+		int type=1;
+		int result = 0;
+		int userid=userDao.findUserByName(username);
+		if(userid!=0){
+			result=brokerInfoDao.InsertMessage(message_content, message_time, project_id, viewed, type, userid);
+		}
 		req.setAttribute("result", result);
 		List<BrokerInfo> brokerInfoList=brokerInfoDao.listBrokerInfo();
-		List<User> userList=userDao.listUser();
+		List<User> userList=userDao.listUser(username);
 		req.setAttribute("brokerInfoList", brokerInfoList);
 		req.setAttribute("userList", userList);
 		return "/serviceTeam.jsp";

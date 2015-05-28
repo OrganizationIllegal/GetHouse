@@ -1539,7 +1539,66 @@ function popInfo(){
          </div>
          <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
             <form class="form-horizontal" role="form" action="/UserInfo/AddAllPrice" method="post">
-   <div class="form-group" style="margin-bottom:0px;">
+            <c:forEach items="${userList}"  var="item">
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <input type="text" class="form-control" name="name" 
+            placeholder=${item.nick_name}>
+
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" >
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <input type="text" class="form-control" name="email" 
+            placeholder=${item.email}>
+
+
+
+      </div>
+      <div class="col-sm-1"></div>
+      
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+       <input type="text" class="form-control" name="allprice" 
+            placeholder="索取完整价格单">      
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" >
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <input type="text" class="form-control" name="tel" 
+            placeholder=${item.tel}>
+
+
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" >
+      <div class="col-sm-10 col-sm-offset-1">
+
+         <textarea type="text" rows="5" cols="20" class="form-control" name="message_content"  placeholder="留言"></textarea>
+            
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="padding-bottom:40px;">
+   	   <div class="col-sm-7"></div>
+      <div class="col-sm-5">
+         <button type="submit" class="btn btn-default" style="width:105px;background-color:red;color:white;" type="submit" id="submit">提交</button>
+
+      </div>
+     
+   </div>
+ </c:forEach>
+ 
+ 
+ 
+   <!-- <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
          <input type="text" class="form-control" name="nick_name" 
             placeholder="姓名">
@@ -1587,7 +1646,7 @@ function popInfo(){
          <button type="submit" class="btn btn-default">发送</button>
       </div>
       <div class="col-sm-1"></div>
-   </div>
+   </div> -->
 </form>
 
          </div>
