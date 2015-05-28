@@ -20,13 +20,13 @@ public class UserDao extends BaseDao {
 		    String nick_name=null;
 		    String pwd=null;
 		    String email=null;
-		    int tel=0;
+		    String tel=null;
 		    int role=0;
 		    while(rs.next()){
 		    	nick_name=rs.getString("nick_name");
 		    	pwd=rs.getString("pwd");
 		    	email=rs.getString("email");
-		    	tel=Integer.parseInt(rs.getString("tel"));
+		    	tel=rs.getString("tel");
 		    	role=Integer.parseInt(rs.getString("role"));
 		    	User user=new User(nick_name, pwd,email, tel, role);
 		    	userList.add(user);

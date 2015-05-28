@@ -14,26 +14,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="row" style="background-color:rgba(28, 69, 98, 1);padding-top:10px;padding-bottom: 5px;">
+    <div class="row" style="background-color:rgba(19, 51, 89, 1);padding-top:10px;padding-bottom: 5px;">
 	  <div class="col-md-1"></div>
       <div class="col-md-6" style="padding-right:0px;">
-      <span style="font-size:18px;color:rgba(233, 240, 25, 1);style="text-align:bottom;font-family:SimHei;">海豚会(haitunhui.cn)</span>
+      <span style="font-size:18px;color:yellow;style="text-align:bottom;font-family:SimHei;">海豚会(haitunhui.cn)</span>
       <span style="font-size:8px;color:white;font-family:SimHei;">由《经理人》联合中国商业领袖共同发起的、基于移动互联网技术的智慧型公益组织。</span>
       </div>
       <div class="col-md-2 col-md-offset-1" >
-       <!-- <span class="glyphicon glyphicon-phone-alt" style="font-size:18px;color:yellow;"></span> -->
-       <img src="images/phone.PNG">
-       <span style="font-size:18px;color:rgba(233, 240, 25, 1);">400&nbsp;810&nbsp;9685</span>
-       </div>     
-       <div class="col-md-2" style="margin-left:-50px;">      
-       		<div>
-       			<!-- <span class="glyphicon glyphicon-user" style="color:white;"></span> -->
-       			<img src="images/user.PNG">
-       			<a href="#" style="color:white;font-size:12px;font-family:SimHei;">会员登录</a>
-       			<span class="divider-vertical"></span>
-       			<a href="#" style="color:rgba(233, 240, 25, 1);font-size:12px;font-family:SimHei;">注册</a>
-       		</div>
+       <span class="glyphicon glyphicon-phone-alt" style="font-size:18px;color:yellow;"></span>
+       <span style="font-size:18px;color:yellow;">400&nbsp;810&nbsp;9685</span>
        </div>
+       <c:set var="userName" value="张三"/> 
+       <%
+            
+       		if(request.getSession().getAttribute("username")!=null){
+       			String role = request.getSession().getAttribute("role").toString();
+       %>   
+     <%--   <c:choose>
+       		<c:when test=" ${sessionScope.userName != null }"> --%>
+       			<div class="col-md-2" style="margin-left:-50px;">      
+	       		<div>
+	       		<%-- <c:if test="${sessionScope.role==0}">
+	       		dd</c:if> --%>
+	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
+	       			<a href="#" style="color:white;font-size:12px;font-family:SimHei;">欢迎<%
+	       				if("0".equals(role)){
+	       				
+	       			%>管理员${sessionScope.username}
+	       			<%
+	       				}else{%>
+	       				
+	       					普通用户${sessionScope.username}<%
+	       				}
+	       				%></a>
+	       			<span class="divider-vertical"></span>
+	       			<a href="${pageContext.request.contextPath}/logout.jsp"  style="color:yellow;font-size:12px;font-family:SimHei;">退出</a>
+	       		</div>
+	       </div>
+	       <%
+       		}
+	         else{
+	       %>
+       		<%-- </c:when>
+       		<c:otherwise> --%>
+       				<div class="col-md-2" style="margin-left:-50px;">      
+	       		<div>
+	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
+	       			<a href="${pageContext.request.contextPath}/login.jsp" style="color:white;font-size:12px;font-family:SimHei;">会员登录</a>
+	       			<span class="divider-vertical"></span>
+	       			<a href="#" style="color:yellow;font-size:12px;font-family:SimHei;">注册</a>
+	       		</div>
+	       </div>
+	       <%
+	         }
+	       %>
+       		<%-- </c:otherwise>
+       </c:choose>  --%>
+      
        </div>
    <div class="row" style="background-color:white;padding-top:25px;">
 		<div class="col-md-1" style="height:2px;"></div>
