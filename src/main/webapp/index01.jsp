@@ -48,15 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div style="margin-left:20px;float:left;">
                         <select id="territory">
                         <option value ="austrilia">澳洲</option>
-                        <option value ="america">美洲</option>
-                        <option value ="asia">亚洲</option>
-                        <option value ="africa">非洲</option>
-                        <option value ="europe">欧洲</option>
                         </select>
                         </div>
                         
                         <div style="float:left;">
-                            <ul style="list-style-type:none;text-align:left;padding-left:10px;" id="cities">
+                            <ul style="list-style-type:none;text-align:left;padding-left:10px;cursor:hand;" id="cities">
                                 <li style="float:left;padding-left:8px;"><a style="color:white">墨尔本</a></li>
                                 <li style="float:left;padding-left:8px;"><a style="color:white">悉尼</a></li>
                                 <li style="float:left;padding-left:8px;"><a style="color:white">布里斯班</a></li>
@@ -67,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
         
             </div>
-            <form role="form" action="/IndexSearch" method="get" >
+            <form role="form" action="/IndexSearch" method="get"  target="_blank">
                  <div class="row" style="margin-bottom:5px;">
                   <div class="col-lg-6">
                     <div class="input-group">
@@ -93,19 +89,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div style="margin-left:20px;float:left;">
                         <select id="territory" class="form-control input-sm" name="minimumprice">
                         <option value ="">最小价格</option>
-                        <option value ="10000">10,000</option>
-                        <option value ="20000">20,000</option>
-                        <option value ="30000">30,000</option>
-                        <option value ="40000">40,000</option>
+                        <option value ="10000">$10,000</option>
+                        <option value ="20000">$20,000</option>
+                        <option value ="30000">$30,000</option>
+                        <option value ="40000">$40,000</option>
                         </select>
                         </div>
                         <div style="margin-left:20px;float:left;">
                         <select id="territory" class="form-control input-sm" name="maximumprice">
                         <option value ="">最大价格</option>
-                        <option value ="70000">70,000</option>
-                        <option value ="80000">80,000</option>
-                        <option value ="90000">90,000</option>
-                        <option value ="100000">100,000</option>
+                        <option value ="70000">$70,000</option>
+                        <option value ="80000">$80,000</option>
+                        <option value ="90000">$90,000</option>
+                        <option value ="100000">$100,000</option>
                         </select>
                         
                         </div>

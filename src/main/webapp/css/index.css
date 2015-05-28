@@ -5,9 +5,9 @@
 	font-size:17px;
 	font-family:SimHei;
 }
-/* #headbar a:visited{
+.headerchange{
 	color:#5CACEE;
-} */
+} 
 #headbar a:hover{
 	color:#5CACEE;
 	text-decoration:none; 
