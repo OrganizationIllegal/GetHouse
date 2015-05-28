@@ -177,7 +177,7 @@ private static byte[] base64DecodeChars = new byte[] { -1, -1, -1, -1, -1,
 		session.setAttribute("username", str_username);
 		session.setAttribute("role", role);
 		
-		return "/index01.jsp";
+		return "/index01";
 	}
 	
 	@RequestMapping({ "/loginPanduan" })

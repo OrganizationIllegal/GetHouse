@@ -66,14 +66,14 @@ public class UserMessageController {
 			}
 		}
 	}
-	//普�?留言分页
+	//普�?留言分页
 	@RequestMapping({"/UserMessagePageList"})
 	public void MessageListPage(HttpServletRequest req, HttpServletResponse resp){
 		String username = (String)req.getSession().getAttribute("username");
 		String pageIndex = req.getParameter("pageIndex");  //页面索引 
 		int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
 		
-		String pageSize_str  = req.getParameter("pageSize");  //每个页面记录�?
+		String pageSize_str  = req.getParameter("pageSize");  //每个页面记录�?
 		int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
 		
 		List<MessageVo> messageList=userMessageDao.getUserMessage(username);
@@ -103,10 +103,10 @@ public class UserMessageController {
 				int seen=item.getViewed();
 				String viewed=null;
 				if(seen==1){
-					viewed="�Ѳ鿴";
+					viewed="已看";
 				}
 				else{
-					viewed="δ�鿴";
+					viewed="未看";
 				}
 				obj.put("viewed", viewed);
 				array.add(obj);
@@ -135,7 +135,7 @@ public class UserMessageController {
 		String pageIndex = req.getParameter("pageIndex");  //页面索引 
 		int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
 		
-		String pageSize_str  = req.getParameter("pageSize");  //每个页面记录�?
+		String pageSize_str  = req.getParameter("pageSize");  //每个页面记录�?
 		int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
 		
 		List<MessageVo> messageList=userMessageDao.getUserMessagePrice(username);
@@ -165,10 +165,10 @@ public class UserMessageController {
 				int seen=item.getViewed();
 				String viewed=null;
 				if(seen==1){
-					viewed="�Ѳ鿴";
+					viewed="�Ѳ鿴";
 				}
 				else{
-					viewed="δ�鿴";
+					viewed="δ�鿴";
 				}
 				obj.put("viewed", viewed);
 				array.add(obj);
@@ -190,14 +190,14 @@ public class UserMessageController {
 		}
 		
 	}
-	//获取�?��价格留言分页
+	//获取�?��价格留言分页
 	@RequestMapping({"/UserMessagePriceLatestPageList"})
 	public void MessagePricelatestListPage(HttpServletRequest req, HttpServletResponse resp){
 		String username = (String)req.getSession().getAttribute("username");
 		String pageIndex = req.getParameter("pageIndex");  //页面索引 
 		int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
 		
-		String pageSize_str  = req.getParameter("pageSize");  //每个页面记录�?
+		String pageSize_str  = req.getParameter("pageSize");  //每个页面记录�?
 		int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
 		
 		List<MessageVo> messageList=userMessageDao.getUserMessagLatestPrice(username);
@@ -227,10 +227,10 @@ public class UserMessageController {
 				int seen=item.getViewed();
 				String viewed=null;
 				if(seen==1){
-					viewed="�Ѳ鿴";
+					viewed="�Ѳ鿴";
 				}
 				else{
-					viewed="δ�鿴";
+					viewed="δ�鿴";
 				}
 				obj.put("viewed", viewed);
 				array.add(obj);

@@ -11,6 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
    <link href="/css/index.css" rel="stylesheet">
+   <script>
+   function pop(){
+       $('#modal').modal('show');
+     }
+   </script>
 </head>
 <body>
  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -37,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       		<%-- <c:if test="${sessionScope.role==0}">
 	       		dd</c:if> --%>
 	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
-	       			<a href="#" style="color:white;font-size:12px;font-family:SimHei;">欢迎<%
+	       			<a href="/UserMessageList" style="color:white;font-size:12px;font-family:SimHei;">欢迎<%
 	       				if("0".equals(role)){
 	       				
 	       			%>管理员${sessionScope.username}
@@ -62,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
 	       			<a href="${pageContext.request.contextPath}/login.jsp" style="color:white;font-size:12px;font-family:SimHei;">会员登录</a>
 	       			<span class="divider-vertical"></span>
-	       			<a href="#" style="color:yellow;font-size:12px;font-family:SimHei;">注册</a>
+	       			<a href="javasctipr:void(0);" onclick="pop()" style="color:yellow;font-size:12px;font-family:SimHei;">注册</a>
 	       		</div>
 	       </div>
 	       <%
@@ -104,6 +109,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="col-md-2"></div>
    </div>
 </nav>
-
+<!--end我们的团队-->
+</div>
+<!--start注册模态框-->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="margin-left:100px;height:300px;width:400px;">
+         <div class="modal-header" style="background-color:#EEEEE0;">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title">
+             注册
+            </h4>
+         </div>
+         <div class="modal-body" style="padding-top:30px;background-color:#EEEEE0;">
+            <form class="form-horizontal" role="form" action="/UserInfo/Register" method="post">
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" name="nick_name" 
+            placeholder="姓名">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" name="pwd" 
+            placeholder="登录密码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+    <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" name="repwd" 
+            placeholder="再次输入登录密码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group" style="margin-bottom:0px;">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" name="tel" 
+            placeholder="电话号码">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-1">
+         <input type="text" class="form-control" name="email" 
+            placeholder="电子邮箱">
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+         <button type="submit" class="btn btn-default">注册</button>
+      </div>
+      <div class="col-sm-1"></div>
+   </div>
+</form>
+</div>
+ </div>
+</div>
+</div>
+<!--end注册模态框-->
 </body>
 </html>

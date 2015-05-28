@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="input-group" class="col-lg-12">
                         <div style="margin-left:20px;float:left;">
                         <select id="territory">
-                        <option value ="austrilia">澳洲</option>
+                        <option value ="austrilia">澳大利亚</option>
                         </select>
                         </div>
                         
@@ -338,7 +338,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--end 悉尼-->
 <!--last guo-->
 <div class="row" style="text-align:center;margin-bottom:15px;">
-			<div style="font-weight:bolder;font-size:23px;font-family:黑体;margin-top:50px;margin-bottom:10px;">最新博客</div>
+			<div style="font-weight:bolder;font-size:23px;font-family:黑体;margin-top:50px;margin-bottom:10px;">新闻博客</div>
 			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
 			<div class="row" style="padding-top:30px;">
 			<div class="col-md-1"></div>

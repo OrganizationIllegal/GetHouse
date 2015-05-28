@@ -165,13 +165,14 @@ public class UserInfoDao extends BaseDao {
 				public int register(String nick_name,String pwd,String repwd,String tel,String email) throws SQLException{
 					int exeResult=0;
 					try{
-						String sql = " insert into user(nick_name, pwd, repwd, tel, email) values(?,?,?,?,?)";
+						String sql = " insert into user(nick_name, pwd, repwd, tel, email,role) values(?,?,?,?,?,?)";
 						PreparedStatement pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, nick_name);
 						pstmt.setString(2, pwd);
 						pstmt.setString(3, repwd);
 						pstmt.setString(4, tel);
 						pstmt.setString(5, email);
+						pstmt.setInt(6, 1);
 						exeResult = pstmt.executeUpdate();
 					}catch (Exception e) {
 			            e.printStackTrace();
