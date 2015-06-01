@@ -227,8 +227,8 @@ public class BingMapDao extends BaseDao {
 		    	coordinates.setProject_img(rs.getString("project_img"));
 		    	coordinates.setProject_price(rs.getString("project_price"));
 		    	coordinates.setProject_num(rs.getString("project_num"));
-		    	coordinates.setProject_num(rs.getString("project_min_price"));
-		    	coordinates.setProject_num(rs.getString("project_high_price"));
+		    	coordinates.setProject_min_price(rs.getString("project_min_price"));
+		    	coordinates.setProject_high_price(rs.getString("project_high_price"));
 		    	coordinatesList.add(coordinates);
 		    }
 		} catch (Exception e) {
@@ -251,8 +251,33 @@ public class BingMapDao extends BaseDao {
 		    	coordinates.setProject_img(rs.getString("project_img"));
 		    	coordinates.setProject_price(rs.getString("project_price"));
 		    	coordinates.setProject_num(rs.getString("project_num"));
-		    	coordinates.setProject_num(rs.getString("project_min_price"));
-		    	coordinates.setProject_num(rs.getString("project_high_price"));
+		    	coordinates.setProject_min_price(rs.getString("project_min_price"));
+		    	coordinates.setProject_high_price(rs.getString("project_high_price"));
+		    	coordinatesList.add(coordinates);
+		    }
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return coordinatesList;
+	}
+	
+	public List<HouseProject> filterByproNum(String pro){
+		List<HouseProject> coordinatesList=new ArrayList<HouseProject>();
+		try {
+			String sql = "SELECT * FROM `house_project` WHERE gps!='' and project_num = '"+pro+"'";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+		    	HouseProject coordinates=new HouseProject();
+		    	coordinates.setId(rs.getInt("id"));
+		    	coordinates.setGps(rs.getString("gps"));
+		    	coordinates.setProject_name(rs.getString("project_name"));
+		    	coordinates.setProject_img(rs.getString("project_img"));
+		    	coordinates.setProject_price(rs.getString("project_price"));
+		    	coordinates.setProject_num(rs.getString("project_num"));
+		    	coordinates.setProject_min_price(rs.getString("project_min_price"));
+		    	coordinates.setProject_high_price(rs.getString("project_high_price"));
 		    	coordinatesList.add(coordinates);
 		    }
 		} catch (Exception e) {

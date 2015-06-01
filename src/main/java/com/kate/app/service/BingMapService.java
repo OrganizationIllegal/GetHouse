@@ -83,4 +83,21 @@ public class BingMapService {
 		}
 		return array;
 	}
+	public JSONArray filterByproNum(String pro){
+		JSONArray array = new JSONArray();
+		List<HouseProject> list = bingMapDao.filterByproNum(pro);
+		for(HouseProject data : list){
+			JSONObject obj = new JSONObject();
+			obj.put("id", data.getId());
+			obj.put("gps", data.getGps()==null?"":data.getGps());
+			obj.put("project_name", data.getProject_name()==null?"":data.getProject_name());
+			obj.put("project_img", data.getProject_img()==null?"":data.getProject_img());
+			obj.put("project_price", data.getProject_price()==null?"":data.getProject_price());
+			obj.put("project_num", data.getProject_num()==null?"":data.getProject_num());
+			obj.put("project_min_price", data.getProject_min_price()==null?"":data.getProject_min_price());
+			obj.put("project_high_price", data.getProject_high_price()==null?"":data.getProject_high_price());
+			array.add(obj);
+		}
+		return array;
+	}
 }

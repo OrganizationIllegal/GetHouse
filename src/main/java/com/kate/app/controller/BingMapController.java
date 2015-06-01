@@ -81,6 +81,20 @@ public class BingMapController {
 		}
 	}
 	
+	@RequestMapping({ "/BingMap/FileterProNum" })    
+	public void filterByProNum(HttpServletRequest req, HttpServletResponse resp){
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		String pro=req.getParameter("proNum");
+		array = bingMapService.filterByproNum(pro);
+		json.put("List", array);		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
 	    response.setCharacterEncoding("UTF-8");

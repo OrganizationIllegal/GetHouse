@@ -4,14 +4,71 @@
       /*加载地图*/
       function getMap()
       {
-       map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false,showDashboard: false, disableZooming: true });
-       map.setView({ zoom: 11, center: defaltCenter });	
-       addDefaultPushpin(); 
+       map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false, disableZooming: true });
+       $.ajax({
+	 	    type: "GET",
+	 		dateType: "json",
+	 		url: "/BingMap/Coordinates", 		
+	 		success:function(data){
+	 		//alert(data)
+	 		data=$.parseJSON(data);
+	 		    var items=data.List;
+	 		    //alert(items[0].gps)
+	 		    var a=new Array();
+	 		    a=items[0].gps.split(",");
+	 		    var Center=new Microsoft.Maps.Location(a[0],a[1]);
+	 		    map.setView({ zoom: 11, center: Center });	
+	 		    for(var i=0;i<items.length;i++){
+	 		        var arr=new Array();
+	 		        arr=items[i].gps.split(",");
+	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
+	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null);
+	 		        Microsoft.Maps.Events.addHandler(pushpin, 'click', popModal); 
+				    map.entities.push(pushpin);
+	 		    }
+	 		   
+	 		},
+	 		error:function(){
+	 			alert("addDefaultPushpin error")
+	 		}
+       });		 
+       //addDefaultPushpin(); 
       }
       function getPopMap(){
     	  map = new Microsoft.Maps.Map(document.getElementById('popMap'), {credentials: 'AiI0UVY6YDQ0GtOirYyxVo0F_NckOJMIDtjDeuHjOqfENWZ3a_pDopdHYOTAZSjn',showMapTypeSelector:false,enableSearchLogo: false,showScalebar: false});
-    	  map.setView({ zoom: 11, center: defaltCenter });
-    	  addDefaultPushpin2();
+    	  $.ajax({
+  	 	    type: "GET",
+  	 		dateType: "json",
+  	 		url: "/BingMap/Coordinates", 		
+  	 		success:function(data){
+  	 		data=$.parseJSON(data);
+  	 		    var items=data.List;
+	 		    var a=new Array();
+	 		    a=items[0].gps.split(",");
+	 		    var Center=new Microsoft.Maps.Location(a[0],a[1]);
+	 		    map.setView({ zoom: 11, center: Center });	
+  	 		    for(var i=0;i<items.length;i++){
+  	 		        var arr=new Array();
+  	 		        arr=items[i].gps.split(",");
+  	 		        var LA=new Microsoft.Maps.Location(arr[0],arr[1]);
+  	 		        var num=items[i].project_num;
+  	 		        var name=items[i].project_name;
+  	 		        var image=items[i].project_img;
+  	 		        var img="http://101.200.174.253:8080/all/"+image;	 		        
+  	 		        var minprice=items[i].project_min_price;
+  	 		        var maxprice=items[i].project_high_price;
+  	 		        var price="$"+minprice+"-$"+maxprice;
+  	 		        var pushpin= new Microsoft.Maps.Pushpin(LA, null); 
+  				    add(name,img,price,num,pushpin,LA);
+  				    map.entities.push(pushpin);	
+  	 		    }
+  	 		   
+  	 		},
+  	 		error:function(){
+  	 			alert("addDefaultPushpin error")
+  	 		}
+          });		 
+    	 // addDefaultPushpin2();
       }
      
       /* 增加pushpin*/
