@@ -168,7 +168,7 @@ function popInfo(){
 </div>
 
 <!--关键字-->
-<div style="margin-top:20px;background-color:white;">
+<!-- <div style="margin-top:20px;background-color:white;">
 	<div class="row" style="padding-top:15px;">
      <div class="col-md-1" style="height:30px;width:150px;"></div>
      <div class="col-md-2">
@@ -188,10 +188,10 @@ function popInfo(){
    </div>
      <div class="col-md-1"></div>
 </div>
-</div>
+</div> -->
 
 <!--The Elements-->
-<div style="margin-top:20px;background-color:white;">
+<%-- <div style="margin-top:20px;background-color:white;">
 <div class="container"  style="padding-top:15px;">
 <div class="col-md-2" >
 				<dl class="fore1">
@@ -260,9 +260,9 @@ function popInfo(){
 					</div>
 					</div>
 </div>
-
+ --%>
 <!--价格区间-->
-<div style="margin-top:20px;background-color:white;">
+<%-- <div style="margin-top:20px;background-color:white;">
 	<div class="row" style="padding-top:15px;">
 		<div class="col-md-2 col-md-offset-1">
 		<span style="font-size:20px;color:black;">
@@ -292,17 +292,59 @@ function popInfo(){
 	
 	</div>
 	</div>
-
+ --%>
+ <div style="margin-top:16px;background-color:white;height:125px;">
+ <div class="row" style="padding:20px 20px 18px 20px;">
+ <div class="col-md-3 col-lg-3">
+ <div style="font-size:12px;">${project.developer_id_name}</div>
+ <div style="font-size:20px;font-weight:bold;padding-top:10px;">${project.project_name}</div>
+ <div style="font-size:12px;font-weight:bold;padding-top:10px;">价格区间：$${project.project_min_price}-$${project.project_high_price}</div>
+ </div>
+ <div class="col-md-3 col-lg-3" style="padding-top:30px;">
+ <img src="images/index/btn1.jpg" onclick="pop3()" style="cursor: pointer;">
+ </div>
+ <div class="col-md-6 col-lg-6">
+ <img  src="images/index/btn2.jpg" style="position:absolute;">
+ <div style="font-size:20px;color:white;font-weight:bold;position:absolute;top:25px;left:130px;">返现金额 : ${project.return_money}</div>
+ </div>
+ </div>
+ </div>
 <!--价格区间-->
 
 <!--基本信息-->
-<div style="margin-top:20px;background-color:white;" id="info">
-	<div class="row">
-		<div class="col-md-8">
-				<div class="row">
-					
-					<div class="col-md-3 col-md-offset-1" style="height:45px;">
-						<span style="font-size:20px;">
+<div style="margin-top:16px;background-color:white;height:378px;" id="info">
+<div class="row" style="padding:20px 20px 18px 20px;">
+<div class="col-md-8 col-lg-8">
+<div class="row" style="">
+<div class="col-md-6 col-lg-6" style="padding-right:0px;">
+<div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">基本信息</div>
+<div style="font-size:12px;padding-top:15px;">位置：${HouseProject.gps}</div>
+<div style="font-size:12px;padding-top:10px;">类型：${HouseProject.project_type}</div>
+<div style="font-size:12px;padding-top:10px;">国家：${HouseProject.project_nation}</div>
+<div style="font-size:12px;padding-top:10px;">州/省：${HouseProject.project_zhou}</div>
+<div style="font-size:12px;padding-top:10px;">城市：${HouseProject.project_city}</div>
+<div style="font-size:12px;padding-top:10px;">区域：${HouseProject.project_area}</div>
+<div style="font-size:12px;padding-top:10px;">面积：${HouseProject.min_area}${HouseProject.mianji}-${HouseProject.max_area}${HouseProject.mianji}</div>
+<div style="font-size:12px;padding-top:10px;">起价：${HouseProject.project_price_qi}</div>
+<div style="font-size:12px;padding-top:10px;">户型：${HouseProject.project_house_type}</div>
+<div style="font-size:12px;padding-top:10px;">层数：${HouseProject.project_high}</div>
+<div style="font-size:12px;padding-top:10px;">预计交房期：${HouseProject.project_finish_time}</div>
+</div>
+<div class="col-md-6 col-lg-6" style="padding-left:0px;">
+<div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">开发商介绍：${HouseProject.developer_id_name}</div>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-lg-3">
+</div>
+</div>
+</div>
+<%-- <div style="margin-top:16px;background-color:white;height:378px;" id="info">
+	<div class="row" style="padding:20px 20px 18px 20px;">
+		<div class="col-md-8 col-lg-8" style="padding:0px;">
+				<div class="row" style="padding:0px;">					
+					<div class="col-md-3 col-md-offset-1" style="padding:0px;">
+						<span style="font-size:20px;font-weight:bold;">
 								基本信息</span>
 							<hr style="width:800px;margin-top:0px;"/>
 							
@@ -507,7 +549,7 @@ function popInfo(){
 	</div>
 
 
-</div>
+</div> --%>
 <!--基本信息-->
 
 
