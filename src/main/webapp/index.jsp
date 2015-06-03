@@ -107,12 +107,13 @@ function popInfo(){
 </script>
 <!-- pop guorui end -->
 </head>
-<body style="padding-top: 105px;background-color:rgba(233, 243, 248, 1);" onload="getIndexMap();">
+<body onload="getIndexMap();">
 <jsp:include page="head.jsp" />
-<div class="container" style="">
+<div class="container">
+<div id="all">
 <!-- 导航标签 -->
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:30px;margin-bottom: 0px;">
-<ul class="nav nav-tabs nav-justified" id="tab">
+<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:27px;margin-bottom: 0px;margin-left:250px;width:990px;">
+<ul class="nav nav-tabs nav-justified">
    <li><a href="#info"  onclick="tab1()">项目介绍</a></li>
    <li><a href="#price"  onclick="tab2()">户型和价格</a></li>
    <li><a href="#position"  onclick="tab3()">项目位置</a></li>
@@ -130,7 +131,7 @@ function popInfo(){
 
                 <table class="ad_left_big" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <c:forEach var="item"  items="${imageList}"   varStatus="status">
-                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></a></td></tr>
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></td></tr>
                     </c:forEach>
                    <c:forEach var="item"  items="${vedioList}"   varStatus="status">
                    	 <tr><td><div id="youkuplayer" style="width:850px;height:600px"></div>
@@ -199,7 +200,7 @@ function popInfo(){
 						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.project_name}</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">IDLand</span>
+							<span style="font-size:16px;color:black;target="_blank" href="#"">IDLand</span>
 							</div>
 					</dd>
 				</dl>
@@ -213,7 +214,7 @@ function popInfo(){
 						<span style="font-size:20px;color:black;target="_blank" href="#"">$${project.project_price_qi}</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">首付金额（起价） </span>
+							<span style="font-size:16px;color:black;target="_blank" href="#"">首付金额（起价） </span>
 							</div>
 					</dd>
 				</dl>
@@ -226,7 +227,7 @@ function popInfo(){
 						<span style="font-size:20px;color:black;target="_blank" href="#"">${timeResule}</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">交房日期 </span>
+							<span style="font-size:16px;color:black;target="_blank" href="#"">交房日期 </span>
 							</div>
 					</dd>
 				</dl>
@@ -239,7 +240,7 @@ function popInfo(){
 						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.wuyefei}</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">物业费/每月 </span>
+							<span style="font-size:16px;color:black;target="_blank" href="#"">物业费/每月 </span>
 							</div>
 					</dd>
 				</dl>
@@ -252,7 +253,7 @@ function popInfo(){
 						<span style="font-size:20px;color:black;target="_blank" href="#"">$${stamp_tax}</span>
 						</div>
 						<div>
-							<span style="font-size:16px;font-family:宋体;color:black;target="_blank" href="#"">印花税</span>
+							<span style="font-size:16px;color:black;target="_blank" href="#"">印花税</span>
 							</div>
 					</dd>
 				</dl>
@@ -276,7 +277,7 @@ function popInfo(){
 				<div>
 
 				<div>
-					<span style="font-size:30px;color:black;font-family:"黑体";">${priceQuJian}</span>
+					<span style="font-size:30px;color:black;">${priceQuJian}</span>
 					</div>
 					
 						<div style="padding-left:35px">
@@ -286,7 +287,7 @@ function popInfo(){
 			</div>
 			
 			<div class="col-md-5 col-md-offset-3">
-						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;><span style="font-size:40px;color:white;font-family:"华文彩云";margin-top:30px;position:absolute;bottom:0;">返现金额:${returnPrice}</span></button>
+						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;"><span style="font-size:40px;color:white;margin-top:30px;position:absolute;bottom:0;">返现金额:${returnPrice}</span></button>
 				</div>
 	
 	</div>
@@ -301,9 +302,9 @@ function popInfo(){
 				<div class="row">
 					
 					<div class="col-md-3 col-md-offset-1" style="height:45px;">
-						<span style="font-size:20px;font-family:"宋体";">
-								基本信息
-							<hr style="width:800px;margin-top:0px;"></hr>
+						<span style="font-size:20px;">
+								基本信息</span>
+							<hr style="width:800px;margin-top:0px;"/>
 							
 					</div>
 				</div>
@@ -396,7 +397,7 @@ function popInfo(){
 								</div>
 								
 								<div class="row">
-								<button type="button" class="btn btn-info btn-lg" style="background-color:blue;width:180px;height:30px;padding-top:1px;"><span style="font-size:10px;color:white;font-family:"宋体";">AMITY</span></button>
+								<button type="button" class="btn btn-info btn-lg" style="background-color:blue;width:180px;height:30px;padding-top:1px;"><span style="font-size:10px;color:white;">AMITY</span></button>
 								</div>
 				  		
 				  		</div>
@@ -531,6 +532,7 @@ function popInfo(){
   		 
   	</div>
 </div>
+</div>
 <!--户型及价格-->
 <div style="margin-top:20px;background-color:white;" id="price" >
 <div class="panel panel-default">
@@ -538,22 +540,22 @@ function popInfo(){
 <div class="panel-body">
 <c:forEach var="obj" items="${HouseInfoList}"> 
 <div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
-<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;font-family:SimHei;padding-top: 15px;">户型 ${obj.house_type}</div>
+<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;padding-top: 15px;">户型 ${obj.house_type}</div>
 <div class="col-md-1">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_room_num}</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卧室</div>
+<div style="text-align:center;font-weight:bold;">卧室</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_toilet_num}</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">卫生间</div>
+<div style="text-align:center;font-weight:bold;">卫生间</div>
 </div>
 <div class="col-md-1" style="margin-left:40px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_in}</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">面积</div>
+<div style="text-align:center;font-weight:bold;">面积</div>
 </div>
 <div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_price}</div>
-<div style="text-align:center;font-weight:bold;font-family:SimHei;">房价</div>
+<div style="text-align:center;font-weight:bold;">房价</div>
 </div>
 <div class="col-md-4" style="width:200px;margin-top:12px;">
 <div class="dropdown">
@@ -585,7 +587,7 @@ function popInfo(){
             <div style="float:left;width:850px;display:inline;">
                 <table class="ad_left_big_p" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <c:forEach items="${ProjectPeitaoImage}" var="item" >
-                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></a></td></tr>
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></td></tr>
                     </c:forEach>
                     
                 </table>
@@ -638,8 +640,7 @@ function popInfo(){
             <div class="thumbnail">
             	<div>
             	<center>
-                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                </img>
+                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
                 </center>
                 <span style="position: absolute; top: 162px; right: 252px;left: 250;font-weight:bold;font-size:22">99</span>
                 
@@ -661,9 +662,7 @@ function popInfo(){
 	            <div class="thumbnail">
 	            	<div>
 		            	<center>
-		                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-		                
-		                </img>
+		                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
 		                </center>
 		                <span style="position: absolute; top: 162px; right: 286px;left: 275;font-weight:bold;font-size:22">100</span>
 		                
@@ -762,18 +761,18 @@ function popInfo(){
 <div style="margin-top:20px;background-color:#9FB6CD;height:400px;padding:30px 40px;">
 <div class="row">
 <div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:25px;font-family:SimHei;">贷款每月</div>
-<div style="color:white;font-weight:900;font-size:25px;font-family:SimHei;">还款是多少</div>
+<div style="color:white;font-weight:900;font-size:25px;">贷款每月</div>
+<div style="color:white;font-weight:900;font-size:25px;">还款是多少</div>
 </div>
 <div class="col-md-9"></div>
 </div>
 <hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:5px;opacity:0.5;" />
 <div class="row">
 <div class="col-md-3" style="margin-top:-30px;padding-left:40px;">
-<div style="color:white;font-weight:900;font-size:100px;font-family:SimHei;">?</div>
+<div style="color:white;font-weight:900;font-size:100px;">?</div>
 </div>
 <div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">贷款方式</div>
+<div style="color:white;font-weight:900;font-size:16px;">贷款方式</div>
 <select class="form-control" style="margin-top:8px;width:220px;" id="select1">
     <option>只还利息</option>
     <option>无息贷款</option>
@@ -781,7 +780,7 @@ function popInfo(){
   </select>      
 </div>
 <div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">首付比例</div>
+<div style="color:white;font-weight:900;font-size:16px;">首付比例</div>
 <select class="form-control" style="margin-top:8px;width:220px;margin-left:15px;" id="select2">
     <option>20%</option>
     <option>25%</option>
@@ -789,7 +788,7 @@ function popInfo(){
   </select> 
 </div>
 <div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">贷款年限</div>
+<div style="color:white;font-weight:900;font-size:16px;">贷款年限</div>
 <select class="form-control" style="margin-top:8px;width:220px;margin-left:15px;" id="select3">
     <option>25年</option>
     <option>30年</option>
@@ -799,13 +798,13 @@ function popInfo(){
 </div>
 <div class="row"  >
 <div class="col-md-3 col-md-offset-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">房款总额</div>
+<div style="color:white;font-weight:900;font-size:16px;">房款总额</div>
 <div class="input-group" style="width:220px;">
 <input type="text" class="form-control" placeholder="$400,000" style="margin-top:8px;" id="input1">
 </div>
 </div>
 <div class="col-md-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;font-family:SimHei;">税率</div>
+<div style="color:white;font-weight:900;font-size:16px;">税率</div>
 <div class="input-group" style="width:220px;">
 <input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;" id="input2">
 </div>
@@ -818,13 +817,13 @@ function popInfo(){
 <div class="col-md-9 col-md-offset-3" style="margin-top:-20px;background-color:#4682B4;height:60px;margin-left:288px;width:755px;">
 <div class="row">
 <div class="col-md-2 col-md-offset-2" style="margin-top: 18px;padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:18px;font-family:SimHei;">还款金额</div>
+<div style="color:white;font-weight:900;font-size:18px;">还款金额</div>
 </div>
 <div class="col-md-7" style="padding-right:0px;width: 425px;">
 <input type="text" class="form-control" style="margin-top:13px;width:400px;">
 </div>
 <div class="col-md-1" style="margin-top: 18px;padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:18px;font-family:SimHei;">/月</div>
+<div style="color:white;font-weight:900;font-size:18px;">/月</div>
 </div>
 </div>
 </div>
@@ -834,21 +833,21 @@ function popInfo(){
 <!--投资数据-->
 <div style="margin-top:20px;background-color:white;" id="invest">
 <div class="panel panel-default">
-	  <div class="heading">${areaName }投资数据<br>
+	  <div class="heading">${areaName }投资数据<br/>
 	 <span id="detail">${data.data_exam }</span>
 	  
 	  </div>
-	  <hr>
+	  <hr/>
 	  <div class="panel-body-info">
 	  	<table id="MyTable" align="center">
 	  	
     <tr> 
-        <th>年增长率</td> 
-        <th>中位数价格</td> 
-        <th>中位数租金</td>
-        <th>租房空置率</td>
-        <th>租赁需求</td>
-        <th>现金回报</td>
+        <th>年增长率</th> 
+        <th>中位数价格</th> 
+        <th>中位数租金</th>
+        <th>租房空置率</th>
+        <th>租赁需求</th>
+        <th>现金回报</th>
     </tr> 
     <tr class="table_tab1"> 
         <td>${data.year_increment_rate}</td> 
@@ -952,8 +951,7 @@ function popInfo(){
   	</div>
 </div>
 
-
-<%-- <!--近期区域成交情况list-->
+ <!--近期区域成交情况list-->
 <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
 	  <div class="panel-heading">${area_name}近期区域成交情况<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
@@ -980,7 +978,7 @@ function popInfo(){
     	</tbody>
   	  </table>
 	</div>
-</div> --%>
+</div> 
 
 <!--地区特点start-->
 <div style="margin-top:20px;">
@@ -1013,7 +1011,7 @@ function popInfo(){
   	     	</div>
      </div>
   </div>
-<div>
+</div>
 <!--地区特点end-->
 <!--人口分布-->
 <div style="margin-top:20px;background-color:white;">
@@ -1249,12 +1247,6 @@ function popInfo(){
   		</div>
   		 
   	</div>
-</div>
-
-
-
-
-</div>
  <!-- 项目位置模态框start-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1346,8 +1338,7 @@ function popInfo(){
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
         <input type="text" class="form-control" name="newestprice" 
-            placeholder="最新价格">
-  </select>      
+            placeholder="最新价格"/>     
       </div>
       <div class="col-sm-1"></div>
    </div>
@@ -1544,7 +1535,7 @@ function popInfo(){
       <div class="col-sm-10 col-sm-offset-1">
 
          <input type="text" class="form-control" name="name" 
-            placeholder=${item.nick_name}>
+            placeholder=${item.nick_name}/>
 
       </div>
       <div class="col-sm-1"></div>
@@ -1564,7 +1555,7 @@ function popInfo(){
    <div class="form-group">
       <div class="col-sm-10 col-sm-offset-1">
        <input type="text" class="form-control" name="allprice" 
-            placeholder="索取完整价格单">      
+            placeholder="索取完整价格单"/>      
       </div>
       <div class="col-sm-1"></div>
    </div>
@@ -1572,7 +1563,7 @@ function popInfo(){
       <div class="col-sm-10 col-sm-offset-1">
 
          <input type="text" class="form-control" name="tel" 
-            placeholder=${item.tel}>
+            placeholder=${item.tel}/>
 
 
       </div>
@@ -1655,7 +1646,7 @@ function popInfo(){
 </div>
 </div>
 <!-- 索取完整价格单模态框end -->
-<div>
+</div>
 </div>
  <jsp:include page="foot.jsp" /> 
  <script type="text/javascript">
@@ -1680,7 +1671,7 @@ function popInfo(){
  </script>
  <script src="/js/familyStatus.js" charset="GBK"></script>
  <script src="/js/trend.js" charset="GBK"></script>
- <script src="/js/cost.js" charset="GBK"</script>
+ <script src="/js/cost.js" charset="GBK"></script>
  <script src="/js/news.js"></script>
  <script type="text/javascript">
  	$(function () {
