@@ -285,9 +285,11 @@ public class MyController {
 			} 
 		}
 		DeveloperInfo developerInfo = houseProjectService.getDeveloperInfo(developerId);
+		System.out.println(developerInfo.getDeveloper_desc());
 		req.setAttribute("timeResule", timeResule);
 		req.setAttribute("HouseProject", pro);
 		req.setAttribute("DeveloperInfo", developerInfo);
+		
 	}
 	
 	/*户型及价格*/
@@ -359,6 +361,7 @@ public class MyController {
 	
 	@RequestMapping({"/Index/InvestData"})
 	public void  InvestData(HttpServletRequest req, HttpServletResponse resp,String areaName){
+		System.out.println(areaName);
  		InvestmentData data = investDataDao.getInvestmentDate(areaName);
  		/*int areaId = 0;
  		AreaInfo areaInfo = new AreaInfo();
