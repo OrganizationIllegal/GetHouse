@@ -285,8 +285,12 @@ function popInfo(){
 <div class="col-md-4 col-lg-4" style="width:270px;padding-left:0px;"><img alt="项目详情图" src="images/index/proinfo.png" style="height:370px;width:270px;"></div>
 </div>
 </div>
+<!--项目详情-->
+
 <!--户型及价格-->
-<div style="margin-top:20px;background-color:white;" id="price" >
+<div style="margin-top:16px;background-color:white;" id="price" >
+</div>
+<%-- <div style="margin-top:20px;background-color:white;" id="price" >
 <div class="panel panel-default">
 <div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">户型及价格</div>
 <div class="panel-body">
@@ -325,7 +329,7 @@ function popInfo(){
 <button type="button" onclick="pop2()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;完整户型</button>
 </div>
 </div>	  
-</div></div></div>
+</div></div></div> --%>
 
 
 
@@ -613,56 +617,34 @@ function popInfo(){
 <div class="col-md-6 col-lg-6"><div style="font-size:25px;font-weight:bold;color:rgba(236,136,6,1);margin-left:90px;">$${middlePrice.buy_price}</div></div>
 <div class="col-md-6 col-lg-6"><div style="font-size:25px;font-weight:bold;color:rgba(236,136,6,1);margin-left:-40px;">$${middlePrice.zu_price}/周</div></div>
 </div>
+<div class="row" style="padding-left:80px;padding-top:60px;">
+<div class="col-md-2 col-lg-2">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.buy_one_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.buy_one_price}</div>
 </div>
-<%-- <div style="margin-top:20px;background-color:white;padding:40px 0px;">
-<div class="row" style="height:200px;">
-<div class="col-md-2"></div>
- <div class="col-md-2" style="padding-left:70px;padding-right:0px;">
- <div><img src="images/buy.png"></div>
- <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$${middlePrice.buy_price }</div>
- </div>
- <div class="col-md-3" style="padding-left:50px;width:340px;">
- <div style="color:#000000;font-weight:900;font-size:16px;">${areaName }中位数${proTypes }房价</div>
- <div style="color:#333;font-size:8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价格最后更新日期为2015.02.02</div>
- </div>
- <div class="col-md-4">
- <div><img src="images/rent.png"></div>
- <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${middlePrice.zu_price }/周</div>
- </div>
+<div class="col-md-2 col-lg-2" style="width:130px;">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.buy_two_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.buy_two_price}</div>
 </div>
-<div class="row">
-<div class="col-md-5 col-md-offset-1">
- <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_one_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_one_price }</div>
-     </button>
-      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_two_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_two_price }</div>
-     </button>
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_three_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_three_price }</div>
-     </button>
- </div></div>
- <div class="col-md-6">
- <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_one_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_one_price }</div>
-     </button>
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_two_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_two_price }</div>
-     </button>
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_three_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_three_price }</div>
-     </button>
- </div></div>
+<div class="col-md-2 col-lg-2" >
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.buy_three_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.buy_three_price}</div>
 </div>
-</div> --%>
+<div class="col-md-2 col-lg-2" style="width:130px;">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.zu_one_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.zu_one_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" >
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.zu_two_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.zu_two_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" style="width:130px;">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.zu_three_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.zu_three_price}</div>
+</div>
+</div>
+</div>
+<!--中位数公寓房价-->
 <!--trend-->
 <div  style="margin-top:20px;background-color:white;">
  <ul class="nav nav-tabs nav-justified" id="trendTabs">
