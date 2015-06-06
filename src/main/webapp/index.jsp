@@ -167,155 +167,30 @@ function popInfo(){
     </div>
 </div>
 
-<!--关键字-->
-<!-- <div style="margin-top:20px;background-color:white;">
-	<div class="row" style="padding-top:15px;">
-     <div class="col-md-1" style="height:30px;width:150px;"></div>
-     <div class="col-md-2">
-      <label>学区房</label>
-     </div>
-     <div class="col-md-2">
-     <label>经济房</label>
-   </div>
-     <div class="col-md-2">
-      <label>廉租房</label>
-   </div>
-     <div class="col-md-2">
-     <label>海景房</label>
-   </div>
-     <div class="col-md-2">
-     <label>总统房</label>
-   </div>
-     <div class="col-md-1"></div>
-</div>
-</div> -->
-
-<!--The Elements-->
-<%-- <div style="margin-top:20px;background-color:white;">
-<div class="container"  style="padding-top:15px;">
-<div class="col-md-2" >
-				<dl class="fore1">
-				<dd>
-					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.project_name}</span>
-						</div>
-						<div>
-							<span style="font-size:16px;color:black;target="_blank" href="#"">IDLand</span>
-							</div>
-					</dd>
-				</dl>
-					</div>
-				<div class="col-md-2"></div>
-				
-			<div class="col-md-2" >
-				<dl class="fore1">
-				<dd>
-					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">$${project.project_price_qi}</span>
-						</div>
-						<div>
-							<span style="font-size:16px;color:black;target="_blank" href="#"">首付金额（起价） </span>
-							</div>
-					</dd>
-				</dl>
-					</div>
-					
-					<div class="col-md-2" >
-				<dl class="fore1">
-				<dd>
-					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">${timeResule}</span>
-						</div>
-						<div>
-							<span style="font-size:16px;color:black;target="_blank" href="#"">交房日期 </span>
-							</div>
-					</dd>
-				</dl>
-					</div>
-			
-					<div class="col-md-2" >
-				<dl class="fore1">
-				<dd>
-					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">${project.wuyefei}</span>
-						</div>
-						<div>
-							<span style="font-size:16px;color:black;target="_blank" href="#"">物业费/每月 </span>
-							</div>
-					</dd>
-				</dl>
-					</div>
-					
-					<div class="col-md-2" >
-				<dl class="fore1">
-				<dd>
-					<div>
-						<span style="font-size:20px;color:black;target="_blank" href="#"">$${stamp_tax}</span>
-						</div>
-						<div>
-							<span style="font-size:16px;color:black;target="_blank" href="#"">印花税</span>
-							</div>
-					</dd>
-				</dl>
-					</div>
-					</div>
-</div>
- --%>
 <!--价格区间-->
-<%-- <div style="margin-top:20px;background-color:white;">
-	<div class="row" style="padding-top:15px;">
-		<div class="col-md-2 col-md-offset-1">
-		<span style="font-size:20px;color:black;">
-					&nbsp;价格区间
-		</span>
-		<hr style="width:200;height:3;">
-			</div>
-		</div>
-	
-		<div class="row">
-			<div class="col-md-2 col-md-offset-1">
-				<div>
-
-				<div>
-					<span style="font-size:30px;color:black;">${priceQuJian}</span>
-					</div>
-					
-						<div style="padding-left:35px">
-						<button type="button" onclick="pop3()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:150px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>索取完整价格单</button>
-						</div>
-			</div>
-			</div>
-			
-			<div class="col-md-5 col-md-offset-3">
-						<button type="button" class="btn btn-info btn-lg" style="background-color:#EEAD0E;width:400px;height:76px;margin-left:15px;color:white;"><span style="font-size:40px;color:white;margin-top:30px;position:absolute;bottom:0;">返现金额:${returnPrice}</span></button>
-				</div>
-	
-	</div>
-	</div>
- --%>
- <div style="margin-top:16px;background-color:white;height:125px;">
+ <div style="margin-top:16px;background-color:white;height:135px;">
  <div class="row" style="padding:20px 20px 18px 20px;">
  <div class="col-md-3 col-lg-3">
  <div style="font-size:12px;">${project.developer_id_name}</div>
  <div style="font-size:20px;font-weight:bold;padding-top:10px;">${project.project_name}</div>
  <div style="font-size:12px;font-weight:bold;padding-top:10px;">价格区间：$${project.project_min_price}-$${project.project_high_price}</div>
  </div>
- <div class="col-md-3 col-lg-3" style="padding-top:30px;">
+ <div class="col-md-3 col-lg-3" style="padding-top:30px;padding-left:50px;">
  <img src="images/index/btn1.jpg" onclick="pop3()" style="cursor: pointer;">
  </div>
- <div class="col-md-6 col-lg-6">
+ <div class="col-md-6 col-lg-6" style="padding-top:10px;">
  <img  src="images/index/btn2.jpg" style="position:absolute;">
- <div style="font-size:20px;color:white;font-weight:bold;position:absolute;top:25px;left:130px;">返现金额 : ${project.return_money}</div>
+ <div style="font-size:20px;color:white;font-weight:bold;position:absolute;top:35px;left:130px;">返现金额 : ${project.return_money}</div>
  </div>
  </div>
  </div>
 <!--价格区间-->
 
 <!--基本信息-->
-<div style="margin-top:16px;background-color:white;height:378px;" id="info">
-<div class="row" style="padding:20px 20px 18px 20px;">
-<div class="col-md-8 col-lg-8">
-<div class="row" style="">
+<div style="margin-top:16px;background-color:white;height:420px;" id="info">
+<div class="row">
+<div class="col-md-8 col-lg-8" style="width:735px;">
+<div class="row" style="padding:20px 0px 18px 20px;">
 <div class="col-md-6 col-lg-6" style="padding-right:0px;">
 <div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">基本信息</div>
 <div style="font-size:12px;padding-top:15px;">位置：${HouseProject.gps}</div>
@@ -330,163 +205,18 @@ function popInfo(){
 <div style="font-size:12px;padding-top:10px;">层数：${HouseProject.project_high}</div>
 <div style="font-size:12px;padding-top:10px;">预计交房期：${HouseProject.project_finish_time}</div>
 </div>
-<div class="col-md-6 col-lg-6" style="padding-left:0px;">
+<div class="col-md-6 col-lg-6" style="padding-left:0px;padding-right:0px;">
 <div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">开发商介绍：${HouseProject.developer_id_name}</div>
+<img alt="开发商logo" src="images/index/devlogo.png" style="margin-top:20px;width:170px;height:25px;">
+<div>${DeveloperInfo.developer_desc}</div>
 </div>
 </div>
 </div>
-<div class="col-md-3 col-lg-3">
-</div>
-</div>
-</div>
-<%-- <div style="margin-top:16px;background-color:white;height:378px;" id="info">
-	<div class="row" style="padding:20px 20px 18px 20px;">
-		<div class="col-md-8 col-lg-8" style="padding:0px;">
-				<div class="row" style="padding:0px;">					
-					<div class="col-md-3 col-md-offset-1" style="padding:0px;">
-						<span style="font-size:20px;font-weight:bold;">
-								基本信息</span>
-							<hr style="width:800px;margin-top:0px;"/>
-							
-					</div>
-				</div>
-					
-					
-				<div class="row">
-					
-					<div class="col-md-3 col-md-offset-1">
-							<dl class="fore1">
-							<dd>
-								<div>
-							<span style="font-size:16px;">
-								开发商:${DeveloperInfo.developer_name}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								类型：${HouseProject.project_type}
-							</span>
-						</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								国家：${HouseProject.project_nation}
-							</span>
-						</div>
-								
-							<div>
-							<span style="font-size:16px;">
-								城市：${HouseProject.project_city}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								位置：${HouseProject.gps}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								面积：${HouseProject.mianji}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								户型：${HouseProject.project_house_type}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								城市：${HouseProject.project_city}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								价格：${HouseProject.project_price}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								预交房日期：${timeResule}
-							</span>
-							</div>
-							
-							<div>
-							<span style="font-size:16px;">
-								可售房数：${HouseProject.project_sales_remain}
-							</span>
-							</div>
-							
-						</dd>
-					</dl>
-						</div>
-						
-					
-					
-					<div class="col-md-4 col-md-offset-3">
-							
-							<div class="row">		
-								
-								<div class="col-md-8">
-								<div class="row">
-								<span style="font-size:25px;">${HouseProject.project_name}</span>
-								</div>
-								
-								<div class="row">
-								<button type="button" class="btn btn-info btn-lg" style="background-color:blue;width:180px;height:30px;padding-top:1px;"><span style="font-size:10px;color:white;">AMITY</span></button>
-								</div>
-				  		
-				  		</div>
-				  		
-				  		<div class="col-md-6"></div>
-				  			
-				  		</div>	
-				  		
-				  		<div class="row">
-				  			
-				  			<p style="font-size:10px;">
-				  				${HouseProject.project_desc}
-				  				</p>
-				  			
-				  			</div>		
-				  
-				  
-				  
-				  
-				  
-				  <div class="col-md-1"></div>
-				  
-					
-				</div>
-			</div>
-	</div>
-
-					
-	<div class="col-md-4" style="background-color:rgba(237, 237, 237, 1);">
-		
-		<div class="row" style="margin-top:45px;width:80%; margin-left:10%;margin-right:10%;" >
-			
-			<div>
-			<span style="font-size:22px;">想要了解更多吗？</span>
-			</div>
-			
-			<div>
-			<span style="font-size:15px;">填写信息我们会有专业人士一对一服务</span>
-			</div>
-			
-			
-			</div>
-		
-		
-		<div class="row"	style="width:100%; margin-left:-3%;margin-right:10%;margin-top:20px;"> 
-		<div style="padding-left:5px;padding-right:5px;">
-		<form class="form-horizontal" role="form" action="/UserInfo/AddNeed" method="post">
+<div class="col-md-4 col-lg-4" style="background-color:rgba(238, 238, 238, 1);width:270px;height:420px;padding-left:0px;">
+<div style="font-size:15px;font-weight:bold;padding-top:35px;padding-left:20px;">想要了解更多？</div>
+<div style="font-size:12px;padding-left:20px;">填写信息我们会有专业人员一对一服务</div>
+<div style="padding-top:25px;">
+<form class="form-horizontal" role="form" action="/UserInfo/AddNeed" method="post">
 	<div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
          <input type="text" class="form-control" name="nick_name" 
@@ -498,7 +228,7 @@ function popInfo(){
    <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
          <input type="text" class="form-control" name="email" 
-            placeholder="邮件">
+            placeholder="邮箱">
       </div>
       <div class="col-sm-1"></div>
    </div>
@@ -518,11 +248,6 @@ function popInfo(){
       </div>
       <div class="col-sm-1"></div>
    </div>
-   
-		
-
-			
-			
 		 <div class="form-group" style="margin-bottom:0px;">
       <div class="col-sm-10 col-sm-offset-1">
          <textarea type="text" rows="5" cols="20" class="form-control" name="msg" 
@@ -539,44 +264,33 @@ function popInfo(){
       <div class="col-sm-1"></div>
    </div>
 </form>		
-		
-		</div>
-		</div>
-
-			</div>
-		
-		
-	</div>
-
-
-</div> --%>
+</div>
+</div>
+</div>
+</div>
 <!--基本信息-->
 
 
 
 <!--项目详情-->
-<div style="margin-top:20px;background-color:white;">
-	<div class="panel panel-default">
-  		<div class="panel-heading">项目详情</div>
-  		<div class="panel-body">
-  			<div>
-  			 <!--  <hr> -->
-				<h2>${HouseProject.project_name}</h2>
-				<p class="lead">${HouseProject.project_lan_cn}</p>
-  			</div>
-  			<div id="detail">
-  			           ${HouseProject.project_desc}
-  			<p>
-  			<div class="container" >
- 				<button type="button" onclick="popInfo()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin:0 auto;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;详情咨询</button>
-			</div>
-  		</div>
-  		 
-  	</div>
+<div style="margin-top:16px;background-color:white;height:370px;">
+<div class="row">
+<div class="col-md-8 col-lg-8" style="width:735px;padding:20px 20px 18px 35px;">
+<div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">项目详情</div>
+<div style="font-size:20px;font-weight:bold;padding-top:20px;">${HouseProject.project_name}</div>
+<div style="font-size:15px;">${HouseProject.project_lan_cn}</div>
+<div style="font-size:12px;padding-top:25px;height:180px;">${HouseProject.project_desc}</div>
+<div style="text-align:center;"><img src="images/index/proinfobtn.png" onclick="popInfo()" style="cursor: pointer;"></div>
+</div>
+<div class="col-md-4 col-lg-4" style="width:270px;padding-left:0px;"><img alt="项目详情图" src="images/index/proinfo.png" style="height:370px;width:270px;"></div>
 </div>
 </div>
+<!--项目详情-->
+
 <!--户型及价格-->
-<div style="margin-top:20px;background-color:white;" id="price" >
+<div style="margin-top:16px;background-color:white;" id="price" >
+</div>
+<%-- <div style="margin-top:20px;background-color:white;" id="price" >
 <div class="panel panel-default">
 <div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">户型及价格</div>
 <div class="panel-body">
@@ -615,7 +329,7 @@ function popInfo(){
 <button type="button" onclick="pop2()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;完整户型</button>
 </div>
 </div>	  
-</div></div></div>
+</div></div></div> --%>
 
 
 
@@ -656,22 +370,19 @@ function popInfo(){
     </div>
 </div> 
 <!--项目位置-->
-<div style="margin-top:20px;background-color:white;" id="position">
-<div class="panel panel-default">
-	  <div class="panel-heading">项目位置</div>
-	  <div class="panel-body">
-	  	<div class="row">
-	  	<div class="col-md-6">
-	  	<div id="indexMap" style="position:relative; width:540px; height:370px;"></div>
+<div style="margin-top:16px;background-color:white;height:480px;">
+<div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);padding-top:20px;padding-left:30px;">项目位置</div>
+<div class="row" style="padding-top:10px;">
+	  	<div class="col-md-6 col-lg-6" style="padding-left:30px;">
+	  	<div id="indexMap" style="position:relative; width:480px; height:395px;"></div>
 	  	</div>
-	  	<div class="col-md-6">
-	  	 <!-- <div><img src="images/streetside.png"></div> -->
-	  	 <div id="eyeMap" style="position:relative; width:540px; height:370px;"></div>
+	  	<div class="col-md-6 col-lg-6">
+	  	 <div id="eyeMap" style="position:relative; width:465px; height:395px;"></div>
 	  	 </div>
 	  	</div>
       	</div>
-	  </div>
-	</div>
+</div>
+<!--项目位置-->
 
 <!--学校及周边-->
 <div style="margin-top:20px;background-color:white;" id="round">
@@ -800,169 +511,140 @@ function popInfo(){
 </div>
 
 <!--贷款每月还款多少-->
-<div style="margin-top:20px;background-color:#9FB6CD;height:400px;padding:30px 40px;">
-<div class="row">
-<div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:25px;">贷款每月</div>
-<div style="color:white;font-weight:900;font-size:25px;">还款是多少</div>
-</div>
-<div class="col-md-9"></div>
-</div>
+<div style="margin-top:16px;background-color:rgba(169, 194, 218, 1);height:360px;padding:30px 30px;">
+<div style="color:white;font-weight:bold;font-size:20px;">贷款每月</div>
+<div style="color:white;font-weight:bold;font-size:20px;">还款是多少</div>
 <hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:5px;opacity:0.5;" />
-<div class="row">
-<div class="col-md-3" style="margin-top:-30px;padding-left:40px;">
-<div style="color:white;font-weight:900;font-size:100px;">?</div>
+<div class="row" style="padding-top:10px;">
+<div class="col-md-3 col-lg-3" style="margin-top:-30px;padding-left:40px;">
+<div style="color:white;font-weight:bolder;font-size:90px;">?</div>
 </div>
-<div class="col-md-3">
-<div style="color:white;font-weight:900;font-size:16px;">贷款方式</div>
-<select class="form-control" style="margin-top:8px;width:220px;" id="select1">
+<div class="col-md-3 col-lg-3">
+<div style="color:white;font-weight:bold;font-size:15px;">贷款方式</div>
+<select class="form-control" style="margin-top:5px;width:210px;" id="select1">
     <option>只还利息</option>
     <option>无息贷款</option>
     <option>连本带利</option>
   </select>      
 </div>
-<div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;">首付比例</div>
-<select class="form-control" style="margin-top:8px;width:220px;margin-left:15px;" id="select2">
+<div class="col-md-3 col-lg-3">
+<div style="color:white;font-weight:bold;font-size:15px;">首付比例</div>
+<select class="form-control" style="margin-top:5px;width:210px;" id="select2">
     <option>20%</option>
     <option>25%</option>
     <option>30%</option>
   </select> 
 </div>
-<div class="col-md-3" style="padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:16px;">贷款年限</div>
-<select class="form-control" style="margin-top:8px;width:220px;margin-left:15px;" id="select3">
+<div class="col-md-3 col-lg-3">
+<div style="color:white;font-weight:bold;font-size:15px;">贷款年限</div>
+<select class="form-control" style="margin-top:5px;width:210px;" id="select3">
     <option>25年</option>
     <option>30年</option>
     <option>35年</option>
   </select>
 </div>
 </div>
-<div class="row"  >
-<div class="col-md-3 col-md-offset-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;">房款总额</div>
-<div class="input-group" style="width:220px;">
-<input type="text" class="form-control" placeholder="$400,000" style="margin-top:8px;" id="input1">
-</div>
-</div>
-<div class="col-md-3" style="margin-top:-20px;">
-<div style="color:white;font-weight:900;font-size:16px;">税率</div>
-<div class="input-group" style="width:220px;">
-<input type="text" class="form-control" placeholder="2.48%" style="margin-top:8px;" id="input2">
-</div>
-</div>
-<div class="col-md-3">
-<button type="button" onclick="compute()" class="btn btn-default" style="margin-left:0px;width:220px;">计算</button>
-</div>
-</div>
-<div class="row" style="margin-top:50px;">
-<div class="col-md-9 col-md-offset-3" style="margin-top:-20px;background-color:#4682B4;height:60px;margin-left:288px;width:755px;">
 <div class="row">
-<div class="col-md-2 col-md-offset-2" style="margin-top: 18px;padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:18px;">还款金额</div>
-</div>
-<div class="col-md-7" style="padding-right:0px;width: 425px;">
-<input type="text" class="form-control" style="margin-top:13px;width:400px;">
-</div>
-<div class="col-md-1" style="margin-top: 18px;padding-left:0px;">
-<div style="color:white;font-weight:900;font-size:18px;">/月</div>
+<div class="col-md-3 col-md-offset-3" style="margin-top:-15px;">
+<div style="color:white;font-weight:bold;font-size:15px;">房款总额</div>
+<div class="input-group" style="width:210px;">
+<input type="text" class="form-control" placeholder="$400,000" style="margin-top:5px;" id="input1">
 </div>
 </div>
+<div class="col-md-3 col-lg-3" style="margin-top:-15px;">
+<div style="color:white;font-weight:bold;font-size:15px;">税率</div>
+<div class="input-group" style="width:210px;">
+<input type="text" class="form-control" placeholder="2.48%" style="margin-top:5px;" id="input2">
+</div>
+</div>
+<div class="col-md-3 col-lg-3">
+<button type="button" onclick="compute()" class="btn btn-default" style="margin-left:0px;width:210px;font-size:15px;">计算</button>
+</div>
+</div>
+<div class="row" style="margin-top:20px;">
+<div class="col-md-3 col-lg-3"></div>
+<div class="col-md-4 col-lg-4" style="margin-top:-20px;height:60px;background-color:rgba(136, 171, 218, 1);margin-left:15px;padding-top:20px;width:295px;">
+<div style="color:white;font-weight:bold;font-size:18px;">首付金额</div>
+<div><input type="text" class="form-control" style="width:180px;position:absolute;left:100px;top:15px;"></div>
+</div>
+<div class="col-md-5 col-lg-5" style="margin-top:-20px;height:60px;background-color:rgba(136, 171, 218, 1);margin-left:30px;padding-top:20px;width:360px;">
+<div style="color:white;font-weight:bold;font-size:18px;">还款金额</div>
+<div><input type="text" class="form-control" style="width:190px;position:absolute;left:100px;top:15px;"></div>
+<div style="color:white;font-weight:bold;font-size:18px;position:absolute;left:300px;top:20px;">/月</div>
 </div>
 </div>
 </div>
-
+<!--贷款每月还款多少-->
 <!--投资数据-->
-<div style="margin-top:20px;background-color:white;" id="invest">
-<div class="panel panel-default">
-	  <div class="heading">${areaName }投资数据<br/>
-	 <span id="detail">${data.data_exam }</span>
-	  
-	  </div>
-	  <hr/>
-	  <div class="panel-body-info">
-	  	<table id="MyTable" align="center">
-	  	
-    <tr> 
-        <th>年增长率</th> 
-        <th>中位数价格</th> 
-        <th>中位数租金</th>
-        <th>租房空置率</th>
-        <th>租赁需求</th>
-        <th>现金回报</th>
-    </tr> 
-    <tr class="table_tab1"> 
-        <td>${data.year_increment_rate}</td> 
-        <td>${data.middle_price}</td> 
-        <td>${data.middle_zu_price}</td> 
-        <td>${data.zu_house_rate}</td> 
-        <td>${data.zu_xuqiu}
-        </td> 
-        <td>${data.price_review }</td> 
-    </tr> 
-    <tr class="table_tab2"> 
-        <td></td> 
-        <td></td> 
-        <td></td> 
-        <td></td> 
-        <td></td> 
-        <td></td> 
-    </tr> 
-	  	</table>
-      	</div>
-	  </div>
-	</div>
-
+<div style="margin-top:16px;background-color:white;height:230px;text-align:center;" id="invest">
+<div style="padding:40px 20px 20px 20px;">
+<div style="font-size:15px;font-weight:bold;padding-bottom:20px;border-bottom:1px solid rgba(238, 238, 238, 1);">${HouseProject.project_area}    ${HouseProject.project_type}投资数据</div>
+<!-- <div style="font-size:12px;padding-top:20px;padding-bottom:20px;border-bottom:1px solid rgba(238, 238, 238, 1);">投资数据参考    2卧室房产</div> -->
+</div>
+<div class="row" style="padding-left:30px;padding-right:50px;">
+<div class="col-md-2 col-lg-2">
+<div style="font-size:12px;">年增长率</div>
+<div style="font-size:15px;font-weight:bold;color:rgba(22, 63, 102, 1);padding-top:10px;">${data.year_increment_rate}</div>
+</div>
+<div class="col-md-2 col-lg-2">
+<div style="font-size:12px;">中位数价格</div>
+<div style="font-size:15px;font-weight:bold;color:rgba(22, 63, 102, 1);padding-top:10px;">$${data.middle_price}</div>
+</div>
+<div class="col-md-2 col-lg-2">
+<div style="font-size:12px;">中位数租金</div>
+<div style="font-size:15px;font-weight:bold;color:rgba(22, 63, 102, 1);padding-top:10px;">${data.middle_zu_price}</div>
+</div>
+<div class="col-md-2 col-lg-2">
+<div style="font-size:12px;">租金回报</div>
+<div style="font-size:15px;font-weight:bold;color:rgba(22, 63, 102, 1);padding-top:10px;">${data.price_review}</div>
+</div>
+<div class="col-md-2 col-lg-2">
+<div style="font-size:12px;">租赁需求</div>
+<div style="font-size:15px;font-weight:bold;color:rgba(22, 63, 102, 1);padding-top:10px;">${data.zu_xuqiu}</div>
+</div>
+<div class="col-md-2 col-lg-2">
+<div style="font-size:12px;">现金回报</div>
+<div style="font-size:15px;font-weight:bold;color:rgba(22, 63, 102, 1);padding-top:10px;">${data.price_review}</div>
+</div>
+</div>
+<div style="padding-top:50px;font-size:10px;padding-left:740px;">数据最后更新日期为：2015.06.06</div>
+</div>
+<!--投资数据-->
 <!--中位数公寓房价-->
-<div style="margin-top:20px;background-color:white;padding:40px 0px;">
-<div class="row" style="height:200px;">
-<div class="col-md-2"></div>
- <div class="col-md-2" style="padding-left:70px;padding-right:0px;">
- <div><img src="images/buy.png"></div>
- <div style="color:#FF7F00;font-weight:900;font-size:28px;">&nbsp;&nbsp;$${middlePrice.buy_price }</div>
- </div>
- <div class="col-md-3" style="padding-left:50px;width:340px;">
- <div style="color:#000000;font-weight:900;font-size:16px;">${areaName }中位数${proTypes }房价</div>
- <div style="color:#333;font-size:8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价格最后更新日期为2015.02.02</div>
- </div>
- <div class="col-md-4">
- <div><img src="images/rent.png"></div>
- <div style="color:#27408B;font-weight:900;font-size:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${middlePrice.zu_price }/周</div>
- </div>
+<div style="margin-top:16px;background-image:url('images/index/middleprice.jpg');height:410px;text-align:center;" id="invest">
+<div style="font-size:15px;font-weight:bold;padding-top:40px;">${HouseProject.project_area} ${HouseProject.project_type}投资数据</div>
+<div class="row" style="padding-top:110px;">
+<div class="col-md-6 col-lg-6"><div style="font-size:25px;font-weight:bold;color:rgba(236,136,6,1);margin-left:90px;">$${middlePrice.buy_price}</div></div>
+<div class="col-md-6 col-lg-6"><div style="font-size:25px;font-weight:bold;color:rgba(236,136,6,1);margin-left:-40px;">$${middlePrice.zu_price}/周</div></div>
 </div>
-<div class="row">
-<div class="col-md-5 col-md-offset-1">
- <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_one_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_one_price }</div>
-     </button>
-      <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_two_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_two_price }</div>
-     </button>
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#FF7F00;font-weight:900;">${middlePrice.buy_three_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.buy_three_price }</div>
-     </button>
- </div></div>
- <div class="col-md-6">
- <div class="btn-toolbar btn-group-lg" role="toolbar" aria-label="...">
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_one_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_one_price }</div>
-     </button>
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_two_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_two_price }</div>
-     </button>
-     <button type="button" class="btn btn-inverse" style="height:100px;width:140px;float:left;">
-     <div style="color:#27408B;font-weight:900;">${middlePrice.zu_three_name }</div>
-     <div style="color:#000000;font-weight:900;">$${middlePrice.zu_three_price }</div>
-     </button>
- </div></div>
+<div class="row" style="padding-left:80px;padding-top:60px;">
+<div class="col-md-2 col-lg-2">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.buy_one_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.buy_one_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" style="width:130px;">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.buy_two_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.buy_two_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" >
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.buy_three_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.buy_three_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" style="width:130px;">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.zu_one_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.zu_one_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" >
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.zu_two_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.zu_two_price}</div>
+</div>
+<div class="col-md-2 col-lg-2" style="width:130px;">
+<div style="font-size:15px;font-weight:bold;color:rgba(236,136,6,1);">${middlePrice.zu_three_name}</div>
+<div style="font-size:15px;font-weight:bold;">$${middlePrice.zu_three_price}</div>
 </div>
 </div>
+</div>
+<!--中位数公寓房价-->
 <!--trend-->
 <div  style="margin-top:20px;background-color:white;">
  <ul class="nav nav-tabs nav-justified" id="trendTabs">
