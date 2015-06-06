@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        				<div class="col-md-2" style="margin-left:-50px;">      
 	       		<div>
 	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
-	       			<a href="${pageContext.request.contextPath}/login.jsp" style="color:white;font-size:12px;font-family:SimHei;">会员登录</a>
+	       			<a href="${pageContext.request.contextPath}/login.jsp" style="color:white;font-size:12px;font-family:SimHei;">登录</a>
 	       			<span class="divider-vertical"></span>
 	       			<a href="javasctipr:void(0);" onclick="pop()" style="color:yellow;font-size:12px;font-family:SimHei;">注册</a>
 	       		</div>

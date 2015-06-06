@@ -847,64 +847,74 @@ function popInfo(){
 
 <!--新闻报道-->
 <!--新闻报道-->
-<!--<div style="margin-top:20px;background-color:white;">
-	<div class="panel panel-default" id="MyPanel">
-	<div class="heading1"><strong>新闻报道</strong><br></div>
-	<div class="panel-body">
+<div style="margin-top:20px;background-color:white;height:309px">
+	<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">新闻报道</div>
+	<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:990px;margin-left:0px;"/>	
+
   		<div class="row">
-          <div class="news_position">
-          		<div class="info" id="left">
+  		<div class="col-md-4">
+          <div class="news_position" style="margin-left:0px">
+          		<div >
                 <div class="scroll" id="left"> 
-                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" width=350px height=255px></a>
-                     <div class="news_action_left" style="display:none;">
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" style="width:316px;height:210px"></a>
+                    <!-- <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    </div>
+                    </div> --> 
                      </div>
                 </div>
-                <div class="caption_my" style="height:98px;width:350px;">
-		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_one.title}</h3>
-		         <p>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</p>
+                <div class="caption_my" style="height:57px;width:317px;border:1px solid rgb(236,235,235)">
+		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_one.title}</span><br/>
+		         <span>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
            </div>
-		   <div class="news_position" id="MyNews">
-		      	<div class="info" id="middle">
-		      	<div class="scroll" id="left"> 
-                     <img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" width=350px height=255px>
-                     <div class="news_action_middle" style="display:none;">s
-	                     <ul class="list_m" id="list_scroll_middle">
+            </div>
+            <div class="col-md-4">
+		   <div class="news_position" id="MyNews" style="margin-left:0px">
+		      	<div>
+                <div class="scroll" id="left"> 
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" style="width:316px;height:210px"></a>
+                    <!--   <div class="news_action_left" style="display:none;">
+	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    
-                     </div>
+                    </div>-->
                      </div>
                 </div>
-                <div class="caption_my" style="height:98px;width:350px;">
-		          <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_two.title}</h3>
-		         <p>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuletwo }</p>
+                <div class="caption_my" style="height:57px;width:317px;border:1px solid rgb(236,235,235)">
+		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_two.title}</span><br/>
+		         <span>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
 		   </div>
-		   <div class="news_position">
-		   		<div class="info" id="right">
+		     </div>
+		      <div class="col-md-4">
+		   <div class="news_position" style="margin-left:0px" >
+		   		<div >
                 <div class="scroll" id="left"> 
-                     <img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" width=350px height=255px> 
-                     <div class="news_action_right" style="display:none;">
-	                     <ul class="list_r" id="list_scroll_right">
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" style="width:316px;height:210px"></a>
+                       <!--   <div class="news_action_left" style="display:none;">
+	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    </div>
+                    </div>-->
                      </div>
-                </div>-->
+                </div>
+                <div class="caption_my" style="height:57px;width:317px;border:1px solid rgb(236,235,235)">
+		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_three.title}</span><br/>
+		         <span>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
+		        </div>
+                </div>
+                 </div>
 		      <!-- <div class="scroll" id="right">
                      <img src="/images/news.jpg" alt="" width=350px height=255px>
                 </div> -->
@@ -920,11 +930,14 @@ function popInfo(){
   		 
   	</div>
 </div>-->
+                </div>
+                 </div>
+                  </div>
 
 
 
 <!--推荐项目-->
-<div style="margin-top:20px;background-color:white;">
+<!-- <div style="margin-top:20px;background-color:white;height:305px">
 	<div class="panel panel-default" id="MyPanel">
 	<div class="heading1"><strong>推荐项目</strong><br></div>
 	<div class="panel-body">
@@ -932,19 +945,18 @@ function popInfo(){
           <div class="news_position">
                 <div class="scroll" id="left">
                      <a href="Index?proNum=${RecommendProject1.project_num}">
-                    	 <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" width=350px height=255px>
+                    	 <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" style="width:278px;height:166px">
                      </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
-		         <p class="desc"><a href="Index?proNum=${RecommendProject1.project_num}">${RecommendProject1.project_name}</a> </p>
-		         <p>${RecommendProject1.project_desc}</p>
-		          
+		          <p class="desc"><a href="Index?proNum=${RecommendProject1.project_num}">${RecommendProject1.project_name}</a> </p>
+		          <p>${RecommendProject1.project_desc}</p>
 		        </div>
            </div>
 		   <div class="news_position">
                 <div class="scroll" id="left">
                   <a href="Index?proNum=${RecommendProject2.project_num}">
-                     <img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" style="width:278px;height:166px">
                   </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
@@ -956,7 +968,7 @@ function popInfo(){
 		   <div class="news_position">
 		      <div class="scroll" id="right">
 		        <a href="Index?proNum=${RecommendProject2.project_num}">
-                     <img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" style="width:278px;height:166px">
                  </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
@@ -970,7 +982,125 @@ function popInfo(){
 </div>
   		</div>
   		 
-  	</div>
+  	</div>-->
+  	<!--推荐项目start-->
+  	<!--你是否需要房产经纪人start-->
+  	<div style="width:100%;height:526px;">
+<div style="margin-left: auto;margin-right:auto;width:990px;height:526px;">
+	 <div style="background-color:rgb(169,193,217);height:526;">
+<div class="row" >
+    <!--左边 start-->
+	<div class="col-xs-3" >
+	  <div  class="col-xs-9">
+	   <div id="wenzi" style="margin:20 0 20 20">
+	     <span style="color:white;padding-top:75px"><h3><strong>你是否需要</strong></h3></span>
+	     <span style="color:white"><h3><strong>房产经纪人</strong></h3></span>
+	  	 <!--<img alt="image" class="img-responsive" src="pic/as.png">-->
+	   </div>
+	   </div>
+	   <div class="col-xs-3" style="margin-top:50px">
+	       <img alt="image"  src="pic/wenhao.png">
+	   </div>
+ 	</div>
+ 	 <!--左边 end-->
+ 	 <!--中间start线-->
+ 	<div class="col-xs-1" >
+ 		<div style="float:right;width: 1px;height: 563px; background: white;margin:20 0"></div>
+ 	</div>
+ 	 <!--中间end线-->
+ 	
+ 	 <!--右边 start-->
+ 	<div class="col-xs-8" style="background-color:rgb(169,193,217)">
+ 	      <!--列表 start-->
+ 		 <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="margin:20 20 20 5">
+ 		    <!--第一个元素start-->
+ 		    <c:forEach var="item" items="${recommendBroker}">
+ 		 	 <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;margin-right:20px;margin-bottom:13px;margin-top:29px">
+           		  <div class="media">
+          			  <a class="pull-left" href="#" target="_parent">
+              				<img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.broker_img}" style="width:100px;height:140px" >
+           			  </a>
+           		 	  <div class="clearfix visible-sm"></div>
+           		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px;padding-top:10px">
+                		  <span style="font-family:微软雅黑;font-weight:bolder;font-size:15px;margin-top:10px" class="media-heading">${item.broker_name }</span><br/>
+                		  <span style="font-size:13px">从业经验：${item.broker_experience }年</span><br/>
+                		  <span style="font-size:13px">语言：${item.broker_language }</span><br/>
+                		  <span style="font-size:13px">区域：${item.broker_region }</span><br/>
+                		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
+            		 </div>
+      			 </div>
+     		 </div>
+     		 </c:forEach>
+     		 <!--第一个元素end-->
+     		
+     	
+ 		 </div>
+ 		  <!--列表 end-->
+ 	</div>
+ 	 <!--右边end-->
+ </div>	
+</div>
+ </div>	
+</div>
+
+  	
+  		
+  	
+  	<!-- start -->
+  	<div style="width:100%;height:305px;background-color:white">
+<div style="margin-left: auto;margin-right:auto;width:990px;height:305px;">
+	 <div style="background-color:white;height:305px;">
+ <!--start 墨尔本-->
+<div class="row" >
+<div class="col-md-12" style="padding-left:40px;">
+<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">推荐项目</div>
+<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:920px;margin-left:0px;"/>
+<div>
+  	 	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div> <a href="Index?proNum=${RecommendProject1.project_num}"><img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" style="width:278px;height:166px"/></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:112px;width:278px;height:53px">
+  	     			<div style="color:white;font-size:12px;font-weight:bold;"><span>${RecommendProject1.project_name}</span></div>
+  	     			<div style="color:white;font-size:12px;font-weight:bold;">${RecommendProject1.project_desc}</div>
+  	     		</div>
+  	     		<div style="border:1px solid rgb(236,235,235);margin-top:5px;width:278px;padding-left:5px">
+  	     			<div style="font-size:12px;font-weight:bold;padding-top:5px"><span>${RecommendProject1.project_name}</span></div>
+  	     			<div style="font-size:12px;font-weight:bold;padding-bottom:5px">${RecommendProject1.project_desc}</div>
+  	     		</div>
+  	    </div>
+  	    	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div> <a href="Index?proNum=${RecommendProject1.project_num}"><img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" style="width:278px;height:166px"/></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:112px;width:278px;height:53px">
+  	     			<div style="color:white;font-size:12px;font-weight:bold;"><span>${RecommendProject2.project_name}</span></div>
+  	     			<div style="color:white;font-size:12px;font-weight:bold;">${RecommendProject2.project_desc}</div>
+  	     		</div>
+  	     		<div style="border:1px solid rgb(236,235,235);margin-top:5px;width:278px;padding-left:5px">
+  	     			<div style="font-size:12px;font-weight:bold;padding-top:5px"><span>${RecommendProject2.project_name}</span></div>
+  	     			<div style="font-size:12px;font-weight:bold;padding-bottom:5px">${RecommendProject2.project_desc}</div>
+  	     		</div>
+  	    </div>
+  	    	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div> <a href="Index?proNum=${RecommendProject3.project_num}"><img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" style="width:278px;height:166px"/></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:112px;width:278px;height:53px">
+  	     			<div style="color:white;font-size:12px;font-weight:bold;"><span>${RecommendProject3.project_name}</span></div>
+  	     			<div style="color:white;font-size:12px;font-weight:bold;">${RecommendProject3.project_desc}</div>
+  	     		</div>
+  	     		<div style="border:1px solid rgb(236,235,235);margin-top:5px;width:278px;padding-left:5px">
+  	     			<div style="font-size:12px;font-weight:bold;padding-top:5px"><span>${RecommendProject3.project_name}</span></div>
+  	     			<div style="font-size:12px;font-weight:bold;padding-bottom:5px">${RecommendProject3.project_desc}</div>
+  	     		</div>
+  	    </div>
+</div>
+</div>
+</div>
+<!--end 墨尔本-->
+
+</div>
+
+</div>
+</div>
+  	<!-- end -->
+  	
+  	
  <!-- 项目位置模态框start-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">

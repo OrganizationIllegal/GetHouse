@@ -147,6 +147,67 @@ public class BrokerInfoDao extends BaseDao {
 		}
 		return data;
 	} 
+	//推荐经纪人
+	public List<BrokerInfo> getRecommendBroker(String area_code){
+		List<BrokerInfo> recommendbrokerList=new ArrayList<BrokerInfo>();
+		try {
+			String sql = "select * from area_recommend_broker where area_code = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, area_code);
+			ResultSet rs = pstmt.executeQuery();
+		    while(rs.next()){
+		    	String broker1=rs.getString("broker_code1");
+		    	String broker2=rs.getString("broker_code2");
+		    	String broker3=rs.getString("broker_code3");
+		    	if(broker1!=null){
+		    		BrokerInfo brokerInfo1=findBrokerbyId(broker1);
+		    		recommendbrokerList.add(brokerInfo1);
+		    	}
+		    	if(broker2!=null){
+		    		BrokerInfo brokerInfo2=findBrokerbyId(broker2);
+		    		recommendbrokerList.add(brokerInfo2);
+		    	}
+		    	if(broker3!=null){
+		    		BrokerInfo brokerInfo3=findBrokerbyId(broker3);
+		    		recommendbrokerList.add(brokerInfo3);
+		    	}
+		    	
+		    	
+		    }
+		    
+		  
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return recommendbrokerList;
+		
+	}
 	
+	public BrokerInfo findBrokerbyId(String broker_code){
+		BrokerInfo brokerInfo=new BrokerInfo();
+		try {
+			String sql = "select * from broker_info where broker_num = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, broker_code);
+			ResultSet rs = pstmt.executeQuery();
+			
+		    while(rs.next()){
+		    	brokerInfo.setBroker_num(rs.getString("broker_num"));
+		    	brokerInfo.setBroker_name(rs.getString("broker_name"));
+		    	brokerInfo.setBroker_img(rs.getString("broker_img"));
+		    	brokerInfo.setBroker_experience(Integer.parseInt(rs.getString("broker_experience")));
+		    	brokerInfo.setBroker_language(rs.getString("broker_language"));
+		    	brokerInfo.setBroker_region(rs.getString("broker_region"));
+		    }
+		    
+		  
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return brokerInfo;
+		
+	}
 	
 }

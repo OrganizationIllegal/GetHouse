@@ -160,6 +160,8 @@ public class MyController {
 		 RecommendProject(req,resp,proId,proNum);
 		 listSuoJia(req,resp,username);
 		 messageSubmit(req,resp,username,proId);
+		 //推荐经纪人
+		 getRecommendBroker(req,resp,area_num);
 		 /*ProjectDetail(req,resp,proId);
 		 
 		 
@@ -665,8 +667,13 @@ public class MyController {
 			req.setAttribute("userList", userList);
 			//return "/index.jsp";
 		}
-	
-	
+	//推荐经纪人
+		@RequestMapping({"/recommendBroker"})
+		public void getRecommendBroker(HttpServletRequest req,HttpServletResponse resp, String area_num){
+			List<BrokerInfo> recommendBroker=new ArrayList<BrokerInfo>();
+			recommendBroker=brokerInfoDao.getRecommendBroker(area_num);
+			req.setAttribute("recommendBroker", recommendBroker);
+		}
 	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");
