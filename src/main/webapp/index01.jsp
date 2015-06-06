@@ -565,8 +565,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  <!-- </div> -->
 <!-- 妯℃�妗�-->
-   <%--<jsp:include page="foot.jsp" />
-   --%><script type="text/javascript" src="js/houseinfosearch.js"></script>
+   <jsp:include page="foot1.jsp" />
+<script type="text/javascript" src="js/houseinfosearch.js"></script>
    
    <script>
    	$(function(){

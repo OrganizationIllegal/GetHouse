@@ -14,7 +14,7 @@ public class BingMapDao extends BaseDao {
 	public List<BingMapVo> listBingMap(){
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_num,t.project_name,t.project_address,t.project_type,t.project_price_qi,t.project_price,t.project_min_price,t.project_high_price,t.mianji,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money from house_project t";
+			String sql = "select t.id,t.project_num,t.project_name,t.project_address,t.project_type,t.project_price_qi,t.project_price,t.project_min_price,t.project_high_price,t.mianji,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money,t.project_price_int_qi from house_project t";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -32,6 +32,7 @@ public class BingMapDao extends BaseDao {
 		    String house_type=null;
 		    String project_price=null;
 		    String return_money=null; 
+		    int project_price_int_qi=0;
 		    while(rs.next()){
 		    	id=rs.getInt("id");
 		    	project_img=rs.getString("project_img");
@@ -49,7 +50,13 @@ public class BingMapDao extends BaseDao {
 		    	mianji=rs.getString("mianji");
 		    	house_type=rs.getString("project_type");
 		    	return_money=rs.getString("return_money");
-		        BingMapVo bingMapVo=new BingMapVo(id,project_img,project_num,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type,project_min_price,project_high_price,mianji,return_money);
+		    	if(rs.getString("project_price_int_qi")!=null){
+		    		project_price_int_qi=Integer.parseInt(rs.getString("project_price_int_qi"));
+		    	}
+		    	else{
+		    		project_price_int_qi=0;
+		    	}
+		        BingMapVo bingMapVo=new BingMapVo(id,project_img,project_num,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type,project_min_price,project_high_price,mianji,return_money,project_price_int_qi);
 		    	bingMapList.add(bingMapVo);
 		    }
 		    
@@ -76,7 +83,7 @@ public class BingMapDao extends BaseDao {
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_num,t.project_name,t.project_address,t.project_type,t.project_price_qi,t.project_price,t.project_min_price,t.project_high_price,t.mianji,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money from house_project t where t.project_type= '"+housetype+"'";
+			String sql = "select t.id,t.project_num,t.project_name,t.project_address,t.project_type,t.project_price_qi,t.project_price,t.project_min_price,t.project_high_price,t.mianji,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money,t.project_price_int_qi from house_project t where t.project_type= '"+housetype+"'";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -94,6 +101,7 @@ public class BingMapDao extends BaseDao {
 		    int minarea=0;
 		    String house_type=null;
 		    String return_money=null; 
+		    int project_price_int_qi=0;
 		    while(rs.next()){
 		    	id=rs.getInt("id");
 		    	project_img=rs.getString("project_img");
@@ -110,7 +118,13 @@ public class BingMapDao extends BaseDao {
 		    	project_high_price=rs.getString("project_high_price");
 		    	mianji=rs.getString("mianji");
 		    	return_money=rs.getString("return_money");
-		    	BingMapVo bingMapVo=new BingMapVo(id,project_img,project_num,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type,project_min_price,project_high_price,mianji,return_money);
+		    	if(rs.getString("project_price_int_qi")!=null){
+		    		project_price_int_qi=Integer.parseInt(rs.getString("project_price_int_qi"));
+		    	}
+		    	else{
+		    		project_price_int_qi=0;
+		    	}
+		    	BingMapVo bingMapVo=new BingMapVo(id,project_img,project_num,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type,project_min_price,project_high_price,mianji,return_money,project_price_int_qi);
 		    	bingMapList.add(bingMapVo);
 		    }
 		} catch (Exception e) {
@@ -132,7 +146,7 @@ public class BingMapDao extends BaseDao {
 		}
 		List<BingMapVo> bingMapList=new ArrayList<BingMapVo>();
 		try {
-			String sql = "select t.id,t.project_num,t.project_name,t.project_address,t.project_type,t.project_price_qi,t.project_price,t.project_min_price,t.project_high_price,t.mianji,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money from house_project t order by t.tuijiandu "+orderstr;
+			String sql = "select t.id,t.project_num,t.project_name,t.project_address,t.project_type,t.project_price_qi,t.project_price,t.project_min_price,t.project_high_price,t.mianji,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money,t.project_price_int_qi from house_project t order by t.project_price_int_qi "+orderstr;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -150,6 +164,7 @@ public class BingMapDao extends BaseDao {
 		    int minarea=0;
 		    String house_type=null;
 		    String return_money=null; 
+		    int project_price_int_qi=0;
 		    while(rs.next()){
 		    	id=rs.getInt("id");
 		    	project_img=rs.getString("project_img");
@@ -166,7 +181,13 @@ public class BingMapDao extends BaseDao {
 		    	project_high_price=rs.getString("project_high_price");
 		    	mianji=rs.getString("mianji");
 		        return_money=rs.getString("return_money"); 
-		        BingMapVo  bingMapVo=new BingMapVo(id,project_img,project_num,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type,project_min_price,project_high_price,mianji,return_money);
+		        if(rs.getString("project_price_int_qi")!=null){
+		        	project_price_int_qi=Integer.parseInt(rs.getString("project_price_int_qi"));
+		    	}
+		    	else{
+		    		project_price_int_qi=0;
+		    	}
+		        BingMapVo  bingMapVo=new BingMapVo(id,project_img,project_num,project_address, project_name, project_price,minarea, maxarea, project_sales_remain, project_price_qi,house_type,project_min_price,project_high_price,mianji,return_money,project_price_int_qi);
 		    	bingMapList.add(bingMapVo);
 		    }
 		} catch (Exception e) {

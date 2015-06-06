@@ -159,6 +159,22 @@ public class SearchList {
 		this.maidi=maidi;
 		this.project_price_int_qi=project_price_int_qi;
 	}
+	public SearchList(int id,String project_num, String project_img,String project_name,String maxPrice,String minPrice ,int maxArea,int minArea,int keshou,String fanxian,String project_lan_cn,String mianji,String project_address ){
+		this.id=id;
+		this.project_num = project_num;
+		this.project_img=project_img;
+		this.project_name=project_name;
+		this.maxPrice=maxPrice;
+		this.minPrice=minPrice;
+		this.maxArea=maxArea;
+		this.minArea=minArea;
+		this.keshou=keshou;
+		this.fanxian=fanxian;
+		this.project_lan_cn=project_lan_cn;
+		this.mianji=mianji;
+		this.project_address=project_address;
+		
+	}
 	public String getProject_name() {
 		return project_name;
 	}
