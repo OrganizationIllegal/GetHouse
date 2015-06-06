@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     ctx.beginPath(); 
     ctx.fillStyle="rgba(158, 158, 159, 1)";  
     ctx.arc(80,80,78,0,Math.PI*2); // context.arc(x,y,r,sAngle,eAngle,counterclockwise)
-    ctx.fill();　　　　　　//使用ctx.fill();就是填充色；                 
+    ctx.fill();
 })
 $(function(){
     var can = document.getElementById("canleft");
@@ -27,7 +27,7 @@ $(function(){
     ctx.beginPath(); 
     ctx.fillStyle="rgba(194, 15, 35, 1)";  
     ctx.arc(10,10,10,0,Math.PI*2); // context.arc(x,y,r,sAngle,eAngle,counterclockwise)
-    ctx.fill();　　　　　　//使用ctx.fill();就是填充色；                 
+    ctx.fill();
 })
 $(function(){
     var can = document.getElementById("canright");
@@ -35,7 +35,7 @@ $(function(){
     ctx.beginPath(); 
     ctx.fillStyle="rgba(194, 15, 35, 1)";  
     ctx.arc(10,10,10,0,Math.PI*2); // context.arc(x,y,r,sAngle,eAngle,counterclockwise)
-    ctx.fill();　　　　　　//使用ctx.fill();就是填充色；                 
+    ctx.fill();
 })
    </script>
    <!-- 弹出模态框 -->

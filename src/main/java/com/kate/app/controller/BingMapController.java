@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.kate.app.model.BingMapVo;
 import com.kate.app.model.Coordinates;
+import com.kate.app.model.SearchList;
 import com.kate.app.service.BingMapService;
 @Controller
 public class BingMapController {
@@ -26,6 +27,61 @@ public class BingMapController {
 		req.setAttribute("bingMapList", bingMapList);
 		return "/bingMap.jsp";
 	}
+	
+	//分页
+	@RequestMapping({"/BingMapPageList"})
+	public void BingMapPageList(HttpServletRequest req,HttpServletResponse resp){
+		String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
+		int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
+		
+		String pageSize_str  = req.getParameter("pageSize");  //每页锟斤拷锟斤拷锟斤拷锟�
+		int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
+		
+		List<BingMapVo> bingMapList=bingMapService.listBingMap();
+		
+		int total = bingMapList.size();
+		int pageEnd = pageNum * pageSize;
+		int end = pageEnd < total ? pageEnd : total;
+		
+		int start = (pageNum-1) * pageSize;
+		int pageStart = start == pageEnd ? 0 : start;
+		
+		JSONObject json = new JSONObject();
+		JSONArray array = new JSONArray();
+		if(pageStart <= end){
+			List<BingMapVo> resultList=bingMapList.subList(start, end);
+			for(BingMapVo item : resultList){
+				JSONObject obj = new JSONObject();
+				obj.put("project_id", item.getProject_id());
+				obj.put("project_address", item.getProject_address());
+				obj.put("project_name", item.getProject_name());
+				obj.put("project_min_price", item.getProject_min_price());
+				obj.put("project_high_price", item.getProject_high_price());
+				obj.put("minArea", item.getMinArea());
+				obj.put("maxArea", item.getMaxArea());
+				obj.put("keshou", item.getKeshou());
+				obj.put("average_price", item.getAverage_price());
+				obj.put("house_type", item.getHouse_type());
+				obj.put("project_img", item.getProject_img());
+				obj.put("return_money",item.getReturn_money());
+				array.add(obj);
+			}
+			json.put("List", array);
+			json.put("total", total);
+		}
+		else{
+			json.put("List", "");
+			json.put("total", total);
+		}
+		
+		
+		try{
+			writeJson(json.toJSONString(),resp);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	@RequestMapping({"/BingMap/FileterType"})
 	public String filterByHouseType(HttpServletRequest req,HttpServletResponse resp){
 		int type=Integer.parseInt(req.getParameter("house_type"));

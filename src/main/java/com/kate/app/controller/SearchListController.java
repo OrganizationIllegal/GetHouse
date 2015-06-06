@@ -69,6 +69,21 @@ public class SearchListController {
 					obj.put("Project_img", item.getProject_img());
 					obj.put("Project_name", item.getProject_name());
 					obj.put("project_num", item.getProject_num());
+					obj.put("project_address", item.getProject_address());
+					obj.put("project_logo", item.getProject_logo());
+					obj.put("developer_id_name", item.getDeveloper_id_name());
+					obj.put("xinkaipan", item.getXinkaipan());
+					obj.put("huaren", item.getHuaren());
+					obj.put("remen", item.getRemen());
+					obj.put("xuequ", item.getXuequ());
+					obj.put("baozu", item.getBaozu());
+					obj.put("daxue", item.getDaxue());
+					obj.put("center", item.getCenter());
+					obj.put("traffic", item.getTraffic());
+					obj.put("xianfang", item.getXianfang());
+					obj.put("maidi", item.getMaidi());
+					obj.put("project_price_int_qi", item.getProject_price_int_qi());
+					
 					array.add(obj);
 				}
 				json.put("List", array);

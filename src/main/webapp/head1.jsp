@@ -17,87 +17,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }
    </script>
 </head>
-<body>
- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="row" style="background-color:rgba(19, 51, 89, 1);padding-top:10px;padding-bottom: 5px;">
-	  <div class="col-md-1"></div>
-      <div class="col-md-6" style="padding-right:0px;">
-      <span style="font-size:18px;color:yellow;style="text-align:bottom;font-family:SimHei;">海豚会(haitunhui.cn)</span>
-      <span style="font-size:8px;color:white;font-family:SimHei;">由《经理人》联合中国商业领袖共同发起的、基于移动互联网技术的智慧型公益组织。</span>
-      </div>
-      <div class="col-md-2 col-md-offset-1" >
-       <span class="glyphicon glyphicon-phone-alt" style="font-size:18px;color:yellow;"></span>
-       <span style="font-size:18px;color:yellow;">400&nbsp;810&nbsp;9685</span>
-       </div>
-       <c:set var="userName" value="张三"/> 
-       <%
-            
-       		if(request.getSession().getAttribute("username")!=null){
-       			String role = request.getSession().getAttribute("role").toString();
-       %>   
-     <%--   <c:choose>
-       		<c:when test=" ${sessionScope.userName != null }"> --%>
-       			<div class="col-md-2" style="margin-left:-50px;">      
-	       		<div>
-	       		<%-- <c:if test="${sessionScope.role==0}">
-	       		dd</c:if> --%>
-	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
-	       			<a href="/UserMessageList" style="color:white;font-size:12px;font-family:SimHei;">欢迎<%
-	       				if("0".equals(role)){
-	       				
-	       			%>管理员${sessionScope.username}
-	       			<%
-	       				}else{%>
-	       				
-	       					普通用户${sessionScope.username}<%
-	       				}
-	       				%></a>
-	       			<span class="divider-vertical"></span>
-	       			<a href="${pageContext.request.contextPath}/logout.jsp"  style="color:yellow;font-size:12px;font-family:SimHei;">退出</a>
-	       		</div>
-	       </div>
-	       <%
-       		}
-	         else{
-	       %>
-       		<%-- </c:when>
-       		<c:otherwise> --%>
-       				<div class="col-md-2" style="margin-left:-50px;">      
-	       		<div>
-	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
-	       			<a href="${pageContext.request.contextPath}/login.jsp" style="color:white;font-size:12px;font-family:SimHei;">会员登录</a>
-	       			<span class="divider-vertical"></span>
-	       			<a href="javasctipr:void(0);" onclick="pop()" style="color:yellow;font-size:12px;font-family:SimHei;">注册</a>
-	       		</div>
-	       </div>
-	       <%
-	         }
-	       %>
-       		<%-- </c:otherwise>
-       </c:choose>  --%>
-      
-       </div>
-   <div class="row" style="background-color:white;padding-top:25px; height:64px">
-		<div class="col-md-1" style="height:2px;"></div>
+ <!-- <body style="padding-top:0px;padding-left:37px;padding-right:37px;width:1920px">-->
+ <body style="padding-top:0px;padding-left:37px;padding-right:37px;">
+<!--   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">-->
+ <nav  role="navigation" style="width:1190px;margin:0 auto">
+   <div class="row" style="background-color:white;padding-top:25px; height:64px;width:1119px;padding-left:154px">
 		<div class="col-md-2">
-		  <!-- <img src="images/logo.PNG" style="margin-top:-20px;"/> -->
-		  <img src="http://101.200.174.253:8080/images/logo.PNG" style="margin-top:-20px;"/>
+		  <!--  <img src="http://101.200.174.253:8080/images/logo.PNG" style="margin-top:-20px;"/>-->
+		  <img src="pic/newlogo.jpg" style="margin-top:-20px;width:165px;height:50px"/>
 		</div>
-       <div class="col-md-7" >
-      	<div class="navbar-header" id="headbar">
-       			<a href="/index01">首页</a>
+        <div class="col-md-7" >
+      	<div class="navbar-header" id="headbar" style="margin-left:20px">
+       			<a href="/index01" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">首页</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/SearchList">海外购房</a>
+       			<a href="/SearchList" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">海外购房</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/ServiceTeam">服务团队</a>
+       			<a href="/ServiceTeam" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">服务团队</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/ZhiYeInfo">置业指导</a>
+       			<a href="/ZhiYeInfo" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">置业指导</a>
        			<!-- <span class="divider-vertical" style="margin-left:20px;"></span>
        			<a href="/overseas.jsp">海外新闻</a> -->
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/BlogList">新闻博客</a>
+       			<a href="/BlogList" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">新闻博客</a>
        			<span class="divider-vertical" style="margin-left:20px;"></span>
-       			<a href="/AboutUs.jsp">关于我们</a>
+       			<a href="/AboutUs.jsp" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">关于我们</a>
        		</div>
        </div>  
        <!-- <div class="col-md-1" >	
@@ -106,7 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		<a href="#"style="font-size:17px;color:#9C9C9C;font-weight:bold;">Blog</a>
        	</div>
        	</div> -->
-       <div class="col-md-2"></div>
+       <div class="col-md-3" style="padding-right:0px">
+       		<img src="pic/tel.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">400 810 9685</span>
+       		<img src="pic/wq.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">登录/注册</span>
+       </div>
    </div>
 </nav>
 <!--end我们的团队-->
