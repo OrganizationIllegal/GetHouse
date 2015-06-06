@@ -138,6 +138,12 @@ import com.kate.app.model.ZhiYeZhiDao;
 					NewsBoke data = new NewsBoke();
 					data.setId(rs.getInt("id"));
 					data.setNews_abstract(rs.getString("news_abstract"));
+//					String temp=rs.getString("news_abstract");
+//					if(temp.length()>60){
+//						data.setNews_abstract(temp.substring(0, 60));
+//					}else{
+//						data.setNews_abstract(temp);
+//					}
 					data.setNews_detail(rs.getString("news_detail"));
 					data.setNews_fenlei(rs.getString("news_fenlei"));
 					data.setNews_image(rs.getString("news_image"));

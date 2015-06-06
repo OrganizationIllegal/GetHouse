@@ -15,7 +15,8 @@ public class BingMapVo {
     private String project_min_price;
     private String project_high_price;
     private String mianji;
-	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,String project_price,int minArea,int maxArea,int keshou,String average_price,String house_type,String project_min_price,String project_high_price,String mianji){
+    private String return_money; 
+	public BingMapVo(int project_id,String project_img,String project_num,String project_address, String project_name,String project_price,int minArea,int maxArea,int keshou,String average_price,String house_type,String project_min_price,String project_high_price,String mianji,String return_money){
 		this.project_id=project_id;
 		this.project_img=project_img;
 		this.project_num=project_num;
@@ -30,8 +31,17 @@ public class BingMapVo {
 		this.project_min_price=project_min_price;
 		this.project_high_price=project_high_price;
 		this.mianji=mianji;
+		this.return_money=return_money;
 	}
 	
+	public String getReturn_money() {
+		return return_money;
+	}
+
+	public void setReturn_money(String return_money) {
+		this.return_money = return_money;
+	}
+
 	public String getProject_min_price() {
 		return project_min_price;
 	}

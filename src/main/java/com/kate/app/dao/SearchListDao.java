@@ -16,7 +16,7 @@ public class SearchListDao extends BaseDao {
 	public List<SearchList> listSearchList(){
 		List<SearchList> searchInfoList=new ArrayList<SearchList>();
 		try {
-			String sql = "select t.id,t.project_num,t.project_name,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money from house_project t";
+			String sql = "select t.id,t.project_num,t.project_price_int_qi,t.project_name,t.project_address,t.project_img,t.project_lan_cn,t.project_high_price as maxPrice,t.project_min_price as minprice,t.max_area as maxarea,t.min_area as minarea,t.mianji,t.project_sales_remain,t.return_money,t.project_logo,t.developer_id_name,p.xinkaipan,p.huaren,p.remen,p.xuequ,p.baozu,p.daxue,p.center,p.traffic,p.xianfang,p.maidi from house_project t left join project_key p on t.project_num=p.project_num";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 		    int id=0;
@@ -31,6 +31,23 @@ public class SearchListDao extends BaseDao {
 		    String project_num = "";
 		    String project_lan_cn=null;
 		    String mianji=null;
+		    String project_address=null;
+		    String project_logo=null;
+		    String developer_id_name=null;
+		    
+		    String xinkaipan=null;
+		    String huaren=null;
+		    String remen=null;
+		    String xuequ=null;
+		    String baozu=null;
+		    String daxue=null;
+		    String center=null;
+		    String traffic=null;
+		    String xianfang=null;
+		    String maidi=null;
+		    
+		    int project_price_int_qi=0;
+		    
 		    while(rs.next()){
 		    	id=rs.getInt("id");
 		    	project_img=rs.getString("project_img");
@@ -44,7 +61,29 @@ public class SearchListDao extends BaseDao {
 		    	project_num = rs.getString("project_num");
 		    	project_lan_cn=rs.getString("project_lan_cn");
 		    	mianji=rs.getString("mianji");
-		    	SearchList  searchList=new SearchList(id,project_num,project_img,project_name,maxPrice,minprice,maxarea,minarea,project_sales_remain,return_money,project_lan_cn,mianji);
+		    	project_address=rs.getString("project_address");
+		    	project_logo=rs.getString("project_logo");
+		    	developer_id_name=rs.getString("developer_id_name");
+		    	
+		    	xinkaipan=rs.getString("xinkaipan");
+		    	huaren=rs.getString("huaren");
+		    	remen=rs.getString("remen");
+		    	xuequ=rs.getString("xuequ");
+		    	baozu=rs.getString("baozu");
+		    	daxue=rs.getString("daxue");
+		    	
+		    	center=rs.getString("center");
+		    	traffic=rs.getString("traffic");
+		    	xianfang=rs.getString("xianfang");
+		    	maidi=rs.getString("maidi");
+		    	if(rs.getString("project_price_int_qi")!=null)
+		    	{
+		    		project_price_int_qi=Integer.parseInt(rs.getString("project_price_int_qi"));
+		    	}
+		    	else{
+		    		project_price_int_qi=0;
+		    	}
+		    	SearchList  searchList=new SearchList(id,project_num,project_img,project_name,maxPrice,minprice,maxarea,minarea,project_sales_remain,return_money,project_lan_cn,mianji,project_address,project_logo,developer_id_name,xinkaipan,huaren,remen,xuequ,baozu,daxue,center,traffic,xianfang,maidi,project_price_int_qi);
 		    	searchInfoList.add(searchList);
 		    }
 		    

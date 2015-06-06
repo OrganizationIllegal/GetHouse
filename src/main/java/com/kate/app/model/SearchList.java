@@ -13,7 +13,106 @@ public class SearchList {
 	private String project_num;
     private String project_lan_cn;
     private String mianji;
+    private String project_address;
+    private String project_logo;
+    private String xinkaipan;
+    private String huaren;
+    private String remen;
+    private String xuequ;
+    private String baozu;
+    private String daxue;
+    private String center;
+    private String traffic;
+    private String xianfang;
+    private String maidi;
+    private String  developer_id_name;
+    private int project_price_int_qi;
     
+    
+	public int getProject_price_int_qi() {
+		return project_price_int_qi;
+	}
+	public void setProject_price_int_qi(int project_price_int_qi) {
+		this.project_price_int_qi = project_price_int_qi;
+	}
+	public String  getDeveloper_id_name() {
+		return developer_id_name;
+	}
+	public void setDeveloper_id_name(String developer_id_name) {
+		this.developer_id_name = developer_id_name;
+	}
+	public String getXinkaipan() {
+		return xinkaipan;
+	}
+	public void setXinkaipan(String xinkaipan) {
+		this.xinkaipan = xinkaipan;
+	}
+	public String getHuaren() {
+		return huaren;
+	}
+	public void setHuaren(String huaren) {
+		this.huaren = huaren;
+	}
+	public String getRemen() {
+		return remen;
+	}
+	public void setRemen(String remen) {
+		this.remen = remen;
+	}
+	public String getXuequ() {
+		return xuequ;
+	}
+	public void setXuequ(String xuequ) {
+		this.xuequ = xuequ;
+	}
+	public String getBaozu() {
+		return baozu;
+	}
+	public void setBaozu(String baozu) {
+		this.baozu = baozu;
+	}
+	public String getDaxue() {
+		return daxue;
+	}
+	public void setDaxue(String daxue) {
+		this.daxue = daxue;
+	}
+	public String getCenter() {
+		return center;
+	}
+	public void setCenter(String center) {
+		this.center = center;
+	}
+	public String getTraffic() {
+		return traffic;
+	}
+	public void setTraffic(String traffic) {
+		this.traffic = traffic;
+	}
+	public String getXianfang() {
+		return xianfang;
+	}
+	public void setXianfang(String xianfang) {
+		this.xianfang = xianfang;
+	}
+	public String getMaidi() {
+		return maidi;
+	}
+	public void setMaidi(String maidi) {
+		this.maidi = maidi;
+	}
+	public String getProject_logo() {
+		return project_logo;
+	}
+	public void setProject_logo(String project_logo) {
+		this.project_logo = project_logo;
+	}
+	public String getProject_address() {
+		return project_address;
+	}
+	public void setProject_address(String project_address) {
+		this.project_address = project_address;
+	}
 	public String getMianji() {
 		return mianji;
 	}
@@ -33,7 +132,7 @@ public class SearchList {
 	public void setProject_lan_cn(String project_lan_cn) {
 		this.project_lan_cn = project_lan_cn;
 	}
-	public SearchList(int id,String project_num, String project_img,String project_name,String maxPrice,String minPrice ,int maxArea,int minArea,int keshou,String fanxian,String project_lan_cn,String mianji ){
+	public SearchList(int id,String project_num, String project_img,String project_name,String maxPrice,String minPrice ,int maxArea,int minArea,int keshou,String fanxian,String project_lan_cn,String mianji,String project_address,String project_logo,String developer_id_name ,String xinkaipan,String huaren,String remen,String xuequ,String baozu,String daxue, String center,String traffic,String xianfang,String maidi,int project_price_int_qi){
 		this.id=id;
 		this.project_num = project_num;
 		this.project_img=project_img;
@@ -46,6 +145,19 @@ public class SearchList {
 		this.fanxian=fanxian;
 		this.project_lan_cn=project_lan_cn;
 		this.mianji=mianji;
+		this.project_address=project_address;
+		this.project_logo=project_logo;
+		this.developer_id_name=developer_id_name;
+		this.xinkaipan=xinkaipan;
+		this.huaren=huaren;
+		this.remen=remen;
+		this.xuequ=xuequ;
+		this.baozu=baozu;
+		this.center=center;
+		this.traffic=traffic;
+		this.xianfang=xianfang;
+		this.maidi=maidi;
+		this.project_price_int_qi=project_price_int_qi;
 	}
 	public String getProject_name() {
 		return project_name;

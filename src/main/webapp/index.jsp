@@ -1680,7 +1680,7 @@ function popInfo(){
  </script>
  <script src="/js/familyStatus.js" charset="GBK"></script>
  <script src="/js/trend.js" charset="GBK"></script>
- <script src="/js/cost.js" charset="GBK"</script>
+ <script src="/js/cost.js" charset="GBK"></script>
  <script src="/js/news.js"></script>
  <script type="text/javascript">
  	$(function () {

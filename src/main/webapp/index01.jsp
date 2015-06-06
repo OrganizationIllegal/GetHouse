@@ -35,30 +35,98 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		margin-bottom:auto !important;
      }
 </style>
+  <script type="text/javascript">
+   		$("#search").click(function(){
+   			
+   		});
+   		
+   		$(document).ready(function(){
+   		    $('.carousel').carousel({
+   		     interval: 3000
+   		    })
+   			});
+   </script>
+    <script type="text/javascript">
+     $(function(){
+          var c=document.getElementById("circle2");
+          var ctx2=c.getContext("2d");
+          ctx2.beginPath();
+          ctx2.fillStyle = 'rgb(236, 235, 235)'; 
+          ctx2.arc(75,75,75,0,2*Math.PI,false);
+          ctx2.fill();
+          
+          
+          
+          var can = document.getElementById("circle1");
+          var can3 = document.getElementById("circle3");
+         
+          var ctx = can.getContext("2d");    
+          var ctx3 = can3.getContext("2d");   
+          
+          var img = new Image();
+          var img3 = new Image();
+         
+          img.onload = function (){
+               ctx.drawImage(img, 0, 0, 150, 150);
+               }
+          img3.onload = function (){
+               ctx3.drawImage(img3, 0, 0, 150, 150);
+               }
+         
+          img.src = "/images/jingjiren.PNG";
+          img3.src = "/images/fengjing.JPG";
+      
+         
+          begin(ctx); 
+          begin(ctx3); 
+          
+          
+        
+})
+	function begin(ctx){
+ 		ctx.beginPath(); 
+ 		ctx.arc(75,75,75,0,Math.PI*2);
+ 		ctx.clip(); 
+	}
+	
+    </script>  
 </head>
-<body style="padding-top: 105px;">
-<jsp:include page="head.jsp" />
- <div class="container">
- <!--搜索-->
- <div style="">
-        <div class="col-lg-12" style="height:400px;background:url(pic/indexsearch1.jpg);background-repeat:no-repeat;background-size: contain;">
+<body style="">
+<jsp:include page="head1.jsp" />
+<div style="width:100%;background:url(pic/blue.jpg);background-repeat:repeat;height:509px;">
+	<div style="margin-left: auto;margin-right:auto;width:1190px;background:blue;">
+	<div id="search" style="font-family:微软雅黑,Regular;font-size:16px;background:url(pic/blue.jpg);background-repeat:repeat;width:100%">
+        <div class="col-lg-12" style="height:509px;background:url(pic/indexsearch1.jpg);background-repeat:no-repeat;background-size: 1170px 509px;">
             <div style="padding-top:70px;" class="col-lg-10 col-lg-offset-1">
                 <div class="row" style="margin-bottom:5px;">
                     <div class="input-group" class="col-lg-12">
                         <div style="margin-left:20px;float:left;">
-                        <select id="territory">
-                        <option value ="austrilia">澳大利亚</option>
+                      
+                         <select id="territory" style="font-family:微软雅黑,Regular;font-size:16px">
+                         <option value ="austrilia">澳大利亚</option>
 
                         <!-- <option value ="america">美洲</option>
                         <option value ="asia">亚洲</option>
                         <option value ="africa">非洲</option>
                         <option value ="europe">欧洲</option> -->
                         </select>
-                        </div>
+                        <!--  <div style="border:1px solid white">
+                        <div class="dropdown" style="opacity:0.1" >  
+       						 <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="opacity:100%;weight:30px;height:20px" >  
+                                  <span style="font-family:微软雅黑;font-size:16px;color:white">下拉菜单  </span>
+                                   <span class="caret"></span>  
+                             </button>  
+                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">  
+          						  <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Action</a></li>  
+            					 <li role="presentation"><a href="#" role="menuitem" tabindex="-1">Another action</a></li>  
+       						 </ul>  
+   						 </div> 
+                      </div>--> 
+                      </div>
                         
-                        <div style="float:left;cursor:hand;">
+                        <div style="float:left;cursor:hand;font-family:微软雅黑,Regular;font-size:16px">
                             <ul style="list-style-type:none;text-align:left;padding-left:10px;" id="cities">
-                                <li style="float:left;padding-left:8px;"><a style="color:white">墨尔本</a></li>
+                                <li style="float:left;padding-left:8px;"><a style="color:white;">墨尔本</a></li>
                                 <li style="float:left;padding-left:8px;"><a style="color:white">悉尼</a></li>
                                 <li style="float:left;padding-left:8px;"><a style="color:white">布里斯班</a></li>
                                 <li style="float:left;padding-left:8px;"><a style="color:white">阿德莱德</a></li>
@@ -83,8 +151,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="row">
                     <div class="input-group" class="col-lg-3">
                         <div style="margin-left:20px;float:left;">
-                        <select id="territory" class="form-control input-sm" name="type">
-                        <option value ="">房屋类型</option>
+                        <select id="territory" class="form-control input-sm" name="type" style="font-family:微软雅黑,Regular;font-size:16px">
+                        <option value ="" style="color:rgb(238,240,56)">房屋类型</option>
                         <option value ="公寓">公寓</option>
                         <option value ="别墅">别墅</option>
                         <option value ="联排别墅">联排别墅</option>
@@ -92,8 +160,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </select>
                         </div>
                         <div style="margin-left:20px;float:left;">
-                        <select id="territory" class="form-control input-sm" name="minimumprice">
-                        <option value ="">最小价格</option>
+                        <select id="territory" class="form-control input-sm" name="minimumprice" style="font-family:微软雅黑,Regular;font-size:16px">
+                        <option value ="" style="color:rgb(238,240,56)">最小价格</option>
                         <option value ="10000">$10,000</option>
                         <option value ="20000">$20,000</option>
                         <option value ="30000">$30,000</option>
@@ -101,8 +169,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </select>
                         </div>
                         <div style="margin-left:20px;float:left;">
-                        <select id="territory" class="form-control input-sm" name="maximumprice">
-                        <option value ="">最大价格</option>
+                        <select id="territory" class="form-control input-sm" name="maximumprice" style="font-family:微软雅黑,Regular;font-size:16px">
+                        <option value =""><span  style="color:rgb(238,240,56)">最大价格</span></option>
                         <option value ="70000">$70,000</option>
                         <option value ="80000">$80,000</option>
                         <option value ="90000">$90,000</option>
@@ -110,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </select>
                         
                         </div>
-                        <div style="margin-left:100px;float:left;color:white;"><span class="more1 active" style=" "><em class="open"></em>更多</span></div>
+                        <div style="margin-left:100px;float:left;color:white;"><span class="more1 active" style=" "><em class="open"></em><span style="font-family:微软雅黑,Regular;font-size:14px">更多</span></div>
                     </div>
                     
                 </div>
@@ -210,18 +278,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
  
  <!--搜索end-->
- <!--空白-->
- <div style="height:10px;"></div>
+</div>
+</div>
+<div style="width:100%;background:rgb(22,63,102);height:183px;">
+<div style="margin-left: auto;margin-right:auto;width:1190px;height:183px;">
+	<!--空白-->
+
  <!--end空白-->
  <!--我们重新定义-->
- 	<div class="row" style="background-color:rgba(21, 63, 101, 1);height:120px;margin-top:380px;margin-left:0px;margin-right:0px;">
+ 	<div style="background-color:rgb(22, 63, 102);height:183px;margin-left:0px;margin-right:0px;">
  	<div class="col-md-3"></div>
- 	<div class="col-md-6" style="padding-left:60px;">
- 	<div>
- 	<div style="color:white;font-size:38px;font-weight:bolder;font-family:黑体;position:absolute;filter:alpha(opacity=60);opacity:0.6;">我们</div>
- 	<div style="color:white;font-size:8px;position:absolute;left:140px;margin-top:10px;">我们应用互联网思维和技术，为您提供更全、更多的海外项目信息，通过全方位服务，让您更方便、更快捷、更省钱的买到更合适的海外房产。</div>
- 	<div style="color:white;font-size:30px;font-weight:bolder;font-family:黑体;position:absolute;filter:alpha(opacity=60);opacity:0.6;top:50px;border-top:2px solid white;">重新定义海外置业模式</div>
- 	<div style="color:white;font-size:8px;position:absolute;left:390px;top:50px;">每天上百个新房源满足了越来越多的客户海外需求。</div>
+ 	<div class="col-md-6" >
+ 	<div >
+ 	<div style="color:white;font-family:微软雅黑;font-size:46px;font-weight:bolder;position:absolute;filter:alpha(opacity=60);opacity:0.6;top:20px">我们</div>
+ 	<div style="color:white;font-family:微软雅黑;font-size:15px;font-weight:Regular;position:absolute;left:122px;margin-top:30px;">我们应用互联网思维和技术，为您提供更全、更多的海外项目信息，通过全方位服务，让您更方便、更快捷、更省钱的买到更合适的海外</div>
+ 	<div style="color:white;font-family:微软雅黑;font-size:33px;font-weight:bolder;font-family:黑体;position:absolute;filter:alpha(opacity=60);opacity:0.6;top:80px;border-top:2px solid white;">重新定义海外置业模式</div>
+ 	<div style="color:white;font-family:微软雅黑;font-size:15px;font-weight:Regular;position:absolute;left:362px;top:73px;">房产。每天上百个新房源满足了越来越多的客户海外需求。</div>
  	</div>
  	</div>
  	<div class="col-md-3"></div>
@@ -229,13 +301,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  
  <!--我们重新定义-->
+</div>
+</div>
+
+
+<div style="width:100%;;height:461px;">
+<div style="margin-left: auto;margin-right:auto;width:1190px;height:500px;">
+<!--  <div class="container"style="width:1190px;margin:0 auto"> -->
+ <!--搜索-->
+ 
+ 
  
  
  
  
  <!-- 轮播-->
 <div>
-<div id="myCarousel" class="carousel slide">
+<div id="myCarousel" class="carousel slide" style="height:500px">
    <!-- 轮播（Carousel）指标 -->
    <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active" style="background-color:#8E8E8E"></li>
@@ -253,65 +335,150 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="carousel-caption"></div>
       </div>
       <div class="item">
-         <img src="pic/a.jpg" alt="Third slide">
+         <!-- <img src="pic/a.jpg" alt="Third slide"> -->
+         <!-- 地图start -->
+         <div id="map"  alt="Third slide">
+         	<div class="col-md-2"></div>
+         	<div class="col-md-5" style="margin-top:150px">
+         		<div><span style="font-family:微软雅黑;font-size:25px">海景房源</span></div>
+         		<div><span style="font-family:微软雅黑;font-weight:bolder;font-size:46px">10000+公寓/别墅</span></div>
+         		<div><span style="font-family:微软雅黑;font-size:15px">海房优选提供超过300个澳洲优选项目</span></div>
+         		<div><span style="font-family:微软雅黑;font-size:15px">超过10000套真实房源</span></div>
+         		<div><span style="font-family:微软雅黑;font-size:15px">每天实时更新最新房源</span></div>
+         	</div>
+         	<div class="col-md-3" style="margin-top:100px" ><img src="pic/pomap.jpg" style="width:400px;"/></div>
+         	<div class="col-md-2"></div>
+         	
+         </div>
+          <!-- 地图end -->
          <div class="carousel-caption"></div>
       </div>
    </div>
    </div>
-   
    </div>
 <!-- 轮播-->
+</div>
+<!-- 蓝条start -->
+	<hr width="100%" style="margin-top:-5px;border:3px solid rgb(63,131,194);"/>
+<!-- 蓝条end -->
+</div>
+
+<div style="width:100%;;height:416px;background-color:rgb(236, 235, 235);">
+<div style="margin-left: auto;margin-right:auto;width:1190px;height:416px;">
+	
  
  
  <!--why-->
 
- <div style="background-color:rgba(234, 234, 234, 1)">
+ <div style="background-color:rgb(236, 235, 235);height:416px;">
 		
 		
-		<div class="row" >
-				<div class="col-md-4 col-md-offset-4" style="Margin-top:40px;">
-					<span style="font-size:20px;color:Black;">Why work with TheRedpln</span>
-			</div>
-		
-		<div class="col-md-4">
-			</div>
+		<div>
+				<div class="col-md-5 col-md-offset-4" style="Margin-top:40px;">
+					<span style="font-family:微软雅黑;font-size:30px;font-weight:bold">为您提供最好的海外购房福利</span>
+				</div>
  		</div>
     
-    <div class="row">
-    	<div class="col-md-8 col-md-offset-2" style="Margin-top:40px;Margin-bottom:40px;">
-    		<img src="pic/sss.jpg" >
+     <div >
+    	    <div class="col-md-10 col-md-offset-1" style="Margin-top:40px;Margin-bottom:40px;">
+    			<div class="col-md-4">
+    				<div align="center" style="margin-bottom: 60px;"><img src="pic/fangdajing.jpg" style="width:94px;height:92px"></div>
+    				<span style="font-family:微软雅黑;font-size:15px;font-weight:bolder">互联网科技：</span><span style="font-family:微软雅黑;font-size:15px;">我们通过互联网科技提供完整、详细、及时的房源及细节信息，使你更聪明更方便的购买你所需的房产</span>
+    			</div>
+    			<div class="col-md-4">
+    				<div align="center" style="margin-bottom: 60px;"><img src="pic/people.jpg" style="width:94px;height:92px"></div>
+    				<span style="font-family:微软雅黑;font-size:15px;font-weight:bolder">完整的购房服务：</span><span style="font-family:微软雅黑;font-size:15px;">7*24小时全天候在线，全方位服务的专业代理服务。</span><hr style="margin-top:0px; margin-bottom:0px" /><span style="font-family:微软雅黑;font-size:15px;">我们提供基于您的满意付费房地产经纪人</span>
+    			</div>
+    			<div class="col-md-4">
+    				<div align="center" style="margin-bottom: 60px;"><img src="pic/money.jpg" style="width:94px;height:92px"></div>
+    				<span style="font-family:微软雅黑;font-size:15px;font-weight:bolder">难以置信的收益：</span><span style="font-family:微软雅黑;font-size:15px;">在海房优选购买房产，我们提供高达70%现金返还。</span>
+    			</div>
+    			
     		</div>
     		
-    	<div clss="col-md-2" style="Margin-bottom:40px;">
-    		</div>
-    	
-    	</div>
+    	   <div clss="col-md-2" style="Margin-bottom:40px;">
     </div>
+    	
+ </div>
+    <!-- </div> -->
+  
  <!--why-->
- 
- 
- <!--郭瑞-->
- <div class="row" style="padding-top:50px;padding-bottom:50px;text-align:center;">
-			<div style="font-weight:bolder;font-size:23px;font-family:黑体;">购买立即返还现金</div>
-			<div><img src="/images/fanxian.PNG"></div>
-			<div style="font-size:18px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;">在海房优选购买澳洲新房</div>
-			<div style="font-size:18px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;">最高可获得高达70%的佣金返还</div>
-			<div style="font-size:10px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;padding-top:10px;">*以房价50万元澳币房产计算</div>
-		</div>
+</div>
+</div>
+</div>
+    <img src="pic/popo1.jpg" style="width:100%"/> 
+
+
+
+
+<div style="width:100%;;height:500px;">
+<div style="margin-left: auto;margin-right:auto;width:1190px;height:500px;">
+	 <!--郭瑞-->
+ <div class="row" style="padding-top:50px;text-align:center;height:500px">
+			<div  style="font-family:微软雅黑;font-size:30px;font-weight:bold;padding-bottom:50px;margin:0 auto">购房返利</div>
+			 <!--  <div><img src="/images/fanxian.PNG"></div>-->
+			 <div class="row"  id="circles" style="margin:auto auto;padding-bottom:20px;">
+				 <div  class="col-md-2" ></div>
+				 <div   class="col-md-2" style="margin-left:10px;margin-right:10px">
+		   		 	<div><canvas id="circle1" width="150" height="150"></canvas></div>
+		         </div>
+		         <div  class="col-md-1" ></div>
+		          <div   class="col-md-2"  style="margin:0 auto;">
+		   		 	<div style="position:absolute;margin:0 auto;" ><canvas id="circle2" width="150" height="150" ></canvas></div>
+		   		 	<div style="position:absolute;left:-41px"><div><span style="font-family:微软雅黑;fong-weight:bold;font-size:70px;color:rgb(226,0,17)">$17,500</span></div><div><span style="font-family:微软雅黑;font-size:18px;">佣金返还</span></div></div>
+		         </div>
+		        <div  class="col-md-1" ></div>
+		         <div   class="col-md-2" style="margin-left:10px;margin-right:10px">
+		   		 	<div><canvas id="circle3" width="150" height="150"></canvas></div>
+		         </div>
+		          <div  class="col-md-2" ></div>
+			</div>
+			<!--  <div class="row">
+			 	<div  class="col-md-1" ></div>
+			 	<div  class="col-md-1" >
+			 		 <img src="/images/left.jpg"> 
+			 	</div>
+			 	<div class="col-md-8">
+			 		<img src="/images/xuxian.jpg"/> 
+			 	</div>
+			 	<div class="col-md-1">
+			 		<img src="/images/right.jpg">
+			 	</div>
+			 	<div  class="col-md-1" ></div>
+			</div>-->
+			<div class="row" style="margin-left:100px;margin-right:100px">
+				<div class="cd-md-2"></div>
+				<div class="cd-md-8"><img src="pic/xianxian.png" style="width:990px"/></div>
+				<div class="cd-md-2"></div>
+			</div>
+			<div style="font-size:18px;font-weight:Regular;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;margin-top:30px">在海房优选购买澳洲新房</div>
+			<div style="font-size:18px;font-weight:Regular;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;">最高可获得高达70%的佣金返还</div>
+			<div style="font-size:10px;font-weight:Regular;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:10px;">*以房价50万元澳币房产计算</div>
+</div>
 <!--郭瑞-->
+</div>
+</div>
+</div>
+
+
+
+<div style="width:100%;;height:595px;background-color:rgb(236, 235, 235)">
+<div style="margin-left: auto;margin-right:auto;width:1190px;height:595px;">
+	 <div style="background-color:rgb(236, 235, 235);height:595px;">
  <!--start 墨尔本-->
-<div class="row" style="margin-top:30px;">
+<div class="row" >
 <div class="col-md-1"></div>
 <div class="col-md-10" style="padding-left:40px;">
-<div style="font-size:18px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;">墨尔本</div>
-<hr style="border-top:1px solid gray;margin-top:10px;width:905px;margin-left:0px;"/>
+<div style="font-size:18px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">墨尔本</div>
+<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:920px;margin-left:0px;"/>
 <div>
 <c:forEach var="item" items="${projectList}">
   	 	<div class="col-md-4" style="padding-left:0px;">
-  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
-  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:130px;width:290px;padding-top:5px;padding-bottom:5px;">
-  	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span><span style="margin-left:30px;">${item.project_type}</span></div>
-  	     		<div style="color:white;font-size:16px;font-weight:bold;">${item.project_price_qi}</div>
+  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive"  style="width:300px;height:216px" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:150px;width:298px;">
+  	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span></div>
+  	     		<div style="color:rgb(226,0,17);font-size:16px;font-weight:bold;"><span>${item.project_min_price}</span><span>-</span><span>${item.project_high_price}</span></div>
+  	     		<div style="color:white;font-size:16px;font-weight:bold;">${item.project_area}<span>,</span>${item.project_city}</div>
   	     		</div>
   	    </div>
   	 </c:forEach>
@@ -321,18 +488,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!--end 墨尔本-->
  <!--start 悉尼-->
-<div class="row" style="margin-top:20px;">
+<div  style="margin-top:20px;">
 <div class="col-md-1"></div>
 <div class="col-md-10" style="padding-left:40px;">
-<div style="font-size:18px;font-weight:bold;font-family:黑体;filter:alpha(opacity=80);opacity:0.8;">悉尼</div>
-<hr style="border-top:1px solid gray;margin-top:10px;width:905px;margin-left:0px;"/>
+<div style="font-size:18px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;">悉尼</div>
+<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:920px;margin-left:0px;"/>
 <div>
 <c:forEach var="item" items="${projectList2}">
   	 	<div class="col-md-4" style="padding-left:0px;">
-  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
-  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:130px;width:290px;padding-top:5px;padding-bottom:5px;">
-  	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span><span style="margin-left:30px;">${item.project_type}</span></div>
-  	     		<div style="color:white;font-size:16px;font-weight:bold;">${item.project_price_qi}</div>
+  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image"  class="img-responsive" style="width:300px;height:216px" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:150px;width:298px;">
+  	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span></div>
+  	     			<div style="color:rgb(226,0,17);font-size:16px;font-weight:bold;"><span>${item.project_min_price}</span><span>-</span><span>${item.project_high_price}</span></div>
+  	     		<div style="color:white;font-size:16px;font-weight:bold;">${item.project_area}<span>,</span>${item.project_city}</div>
   	     		</div>
   	    </div>
   	 </c:forEach>
@@ -341,17 +509,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="col-md-1"></div>
 </div>
 <!--end 悉尼-->
-<!--last guo-->
-<div class="row" style="text-align:center;margin-bottom:15px;">
-			<div style="font-weight:bolder;font-size:23px;font-family:黑体;margin-top:50px;margin-bottom:10px;">新闻博客</div>
-			<div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>
+</div>
+
+</div>
+<img src="pic/popo1.jpg" style="width:100%"/> 
+</div>
+
+
+
+
+
+
+
+
+<div style="width:100%;;height:477px;">
+<div style="margin-left: auto;margin-right:auto;width:1190px;height:477px;">
+	<!--last guo-->
+<div class="row" style="text-align:center;padding-bottom:30px;height:477px">
+			<div style="font-family:微软雅黑;font-size:30px;font-weight:bold;margin-top:50px;margin-bottom:10px;">最新博客</div>
+			<!--  <div style="font-weight:bold;font-size:15px;">From Toronto's real estate market to home staging tips</div>-->
 			<div class="row" style="padding-top:30px;">
 			<div class="col-md-1"></div>
 			<div class="col-md-10" style="padding-left:55px;text-align:left;">
 			<c:forEach var="item" items="${newsList}">
 		  	 	    <div class="col-md-4" style="padding-left:0px;">
-						<div ><a href="/Detail?id=${item.id}&type=1"><img src="http://101.200.174.253:8080/all/${item.news_image}" style="border:1px solid gray;width:290px;"></a></div>
-						<div style="margin-top:15px;">${item.news_abstract}</div>
+						<div ><a href="/Detail?id=${item.id}&type=1"><img src="http://101.200.174.253:8080/all/${item.news_image}" style="border:1px solid gray;width:290px;height:216px"></a></div>
+						<div style="height:80px;overflow:hidden"><div style="margin-top:15px;font-family:微软雅黑;font-size:15px;height:20px">${item.news_abstract}</div></div>
 					</div>
   	 		</c:forEach>
   	 		</div>
@@ -359,11 +542,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 <!--last guo-->
+</div>
+
 
 </div>
+</div>
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+</div>
+ 
+
+ <!-- </div> -->
 <!-- 妯℃�妗�-->
-   <jsp:include page="foot.jsp" />
-   <script type="text/javascript" src="js/houseinfosearch.js"></script>
+   <%--<jsp:include page="foot.jsp" />
+   --%><script type="text/javascript" src="js/houseinfosearch.js"></script>
    
    <script>
    	$(function(){
@@ -414,11 +617,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	
    </script>
    <script src="/js/shaixuan.js" type="text/javascript"></script>
-   <script type="text/javascript">
-   		$("#search").click(function(){
-   			
-   		});
-   </script>
+ 
 </body>
 
 </html>
