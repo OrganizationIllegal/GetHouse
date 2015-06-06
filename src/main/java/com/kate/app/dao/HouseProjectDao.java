@@ -56,6 +56,9 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setRecommend_id_2(rs.getInt("recommend_id_2"));
 				projectInfo.setRecommend_id_3(rs.getInt("recommend_id_3"));
 				projectInfo.setWuyefei(rs.getString("wuyefei"));
+				projectInfo.setDeveloper_id_name(rs.getString("developer_id_name"));
+				projectInfo.setMin_area(rs.getInt("min_area"));
+				projectInfo.setMax_area(rs.getInt("max_area"));
 
 			}
 			
