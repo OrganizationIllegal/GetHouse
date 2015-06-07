@@ -12,8 +12,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <jsp:include page="head.jsp" />
+<body style="padding-top:80px;">
+    <jsp:include page="head2.jsp" />
 	<div style="height:200px;background-color:#cccccc;padding-top:70px;padding-left:100px;margin-top: -20;">
 
 
@@ -170,7 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-1"></div>
 		</div>
 	</div>
- <jsp:include page="foot.jsp" /> 
+ <jsp:include page="foot1.jsp" /> 
 </body>
 </html>
 

@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 </head>
 <body style="padding-top: 105px;">
-<jsp:include page="head.jsp" />
+<jsp:include page="head2.jsp" />
  <div class="container1" >
  
  <%

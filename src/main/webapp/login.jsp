@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }
 </style>
 </head>
-<body style="padding-top: 105px;">
-<jsp:include page="head.jsp" />
+<body style="padding-top: 60px;">
+<jsp:include page="head2.jsp" />
  <div class="container1" >
  
   <form class="form-horizontal" role="form" method="post" name="fm" action="/login">

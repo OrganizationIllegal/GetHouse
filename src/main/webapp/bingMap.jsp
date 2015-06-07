@@ -200,8 +200,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </script>
  
 </head>
-<body style="padding-top: 105px;" onload="getMap();">
- <jsp:include page="head.jsp" />
+<body style="padding-top: 60px;" onload="getMap();">
+ <jsp:include page="head2.jsp" />
  <div class="container">
   <div class="row">
  <div class="col-md-4">
@@ -361,7 +361,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>
 <!-- 模态框 -->
-   <jsp:include page="foot.jsp" />
+   <jsp:include page="foot1.jsp" />
     <script src="/js/jquery.pagination.js"></script>
    <script type="text/javascript">
          var pageIndex = 0;     //页面索引初始值   

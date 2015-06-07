@@ -14,8 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <script src="/js/jquery.bootpag.min.js"></script>
 </head>
-<body style="padding-top: 105px;">
- <jsp:include page="head.jsp" />
+<body style="padding-top: 60px;">
+ <jsp:include page="head2.jsp" />
 	<div class="container">
        <!-- <div class="row" style="height:30px;background-color:#4B0082;">
             <div class="col-lg-1"></div>
@@ -139,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 
     <!--<div class="row" style="height:20px;"></div>-->
-   <jsp:include page="foot.jsp" />
+   <jsp:include page="foot1.jsp" />
    <script type="text/javascript">
 	    // init bootpag
 	    var category="";
