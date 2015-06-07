@@ -35,12 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		if(request.getSession().getAttribute("username")!=null){
        			String role = request.getSession().getAttribute("role").toString();
        %>   
-     <%--   <c:choose>
-       		<c:when test=" ${sessionScope.userName != null }"> --%>
-       			<div class="col-md-2" style="margin-left:-50px;">      
-	       		<div>
-	       		<%-- <c:if test="${sessionScope.role==0}">
-	       		dd</c:if> --%>
+    
 	       			<span class="glyphicon glyphicon-user" style="color:white;"></span>
 	       			<a href="/UserMessageList" style="color:white;font-size:12px;font-family:SimHei;">欢迎<%
 	       				if("0".equals(role)){

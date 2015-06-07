@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  	        html+="<span style='color:white;font-family:微软雅黑;font-size:14px'>"+items[j].Project_name+"</span><span style='color:white;font-family:微软雅黑;font-size:12px;margin-left:20px'>"+items[j].project_address+"</span></div>";
   						html+="<div class='panel-body'><div id='item'><div class='media'><div class='col-xs-5'>";
   						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
-  						html+="<img  style='height:230px' src='http://101.200.174.253:8080/all/"+items[j].Project_img+"'></a></div>";
+  						html+="<img  style='height:196px' src='http://101.200.174.253:8080/all/"+items[j].Project_img+"'></a></div>";
   						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
    	                    html+="<span style='font-family:微软雅黑;font-size:14px;font-weight:bolder'>"+items[j].Project_name+"</span><hr style='margin-top:8px;margin-bottom:8px'/>";
    	       				html+="<span  style='font-family:微软雅黑;font-size:12px'><span>7*24小时全天候在线，全</span><br/><span style='font-family:微软雅黑;font-size:12px'>方位服务的专业代理服务。</span><br/><span style='font-family:微软雅黑;font-size:12px'>我们提供了基于您的满意付费房地产经纪人。</span></span>";
@@ -241,7 +241,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                	        html+="<span style='color:white;font-family:微软雅黑;font-size:14px'>"+items[j].Project_name+"</span><span style='color:white;font-family:微软雅黑;font-size:12px;margin-left:20px'>"+items[j].project_address+"</span></div>";
 						html+="<div class='panel-body'><div id='item'><div class='media'><div class='col-xs-5'>";
 						html+="<a class='pull-left' href='/Index?proNum="+items[j].project_num+"'"+" target='_parent'>";
-						html+="<img  style='height:230px' src='http://101.200.174.253:8080/all/"+items[j].Project_img+"'></a></div>";
+						html+="<img  style='height:196px' src='http://101.200.174.253:8080/all/"+items[j].Project_img+"'></a></div>";
 						html+="<div class=media-body fnt-smaller' style='padding:0 0 0 15px'><div class='col-xs-8'>";
  	                    html+="<span style='font-family:微软雅黑;font-size:14px;font-weight:bolder'>"+items[j].Project_name+"</span><hr style='margin-top:8px;margin-bottom:8px'/>";
  	       				html+="<span  style='font-family:微软雅黑;font-size:12px'><span>7*24小时全天候在线，全</span><br/><span style='font-family:微软雅黑;font-size:12px'>方位服务的专业代理服务。</span><br/><span style='font-family:微软雅黑;font-size:12px'>我们提供了基于您的满意付费房地产经纪人。</span></span>";

@@ -146,6 +146,8 @@ public class SearchController {
 		    	String project_lan_cn=item.getProject_lan_cn();
 		    	String mianji=item.getMianji();
 		    	String project_address=item.getProject_address();
+		    	
+		    	
 		    	SearchList data=new SearchList(id,project_num,project_img,project_name,maxPrice,minprice,maxarea,minarea,project_sales_remain,return_money,project_lan_cn,mianji,project_address);
 		    	searchList.add(data);
 			}

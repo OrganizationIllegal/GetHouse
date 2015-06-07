@@ -147,19 +147,21 @@ public class MyController {
 		 TheElement(req,resp,proId);
 		 getBuyInfo(req,resp,proId);
 		 ProjectInfo(req,resp,proId);
-		 getHouseInfo(req,resp,proNum);    //»§ÐÍ¼°¼Û¸ñ
-		 getSchoolAndNear(req,resp,proNum);   //Ñ§Ð£¼°ÖÜ±ß
+		 getHouseInfo(req,resp,proNum);    //ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Û¸ï¿½
+		 getSchoolAndNear(req,resp,proNum);   //Ñ§Ð£ï¿½ï¿½ï¿½Ü±ï¿½
 		 getHouseTax(req,resp,proNum);
 		 InvestData(req,resp,area_name);
 		 MiddlePriceInfo(req,resp,proId,area_num);
 		 getAreaTrend(req,resp,project_type,area_num);
-		 getAreaFeature(req,resp,area_num);    //ÇøÓòÌØµã
+		 getAreaFeature(req,resp,area_num);    //ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½
 		 getPeopleRegion(req,resp,area_num);
 		 getAreaFamily(req,resp,area_num);
 		 GetNewsInfo(req,resp,proNum);
 		 RecommendProject(req,resp,proId,proNum);
 		 listSuoJia(req,resp,username);
 		 messageSubmit(req,resp,username,proId);
+		 //ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 getRecommendBroker(req,resp,area_num);
 		 /*ProjectDetail(req,resp,proId);
 		 
 		 
@@ -197,7 +199,7 @@ public class MyController {
 		List<ProjectImage> vedioList = new ArrayList<ProjectImage>();
 		System.out.println(list.size());
 		for(ProjectImage image : list){
-			if(image.getImage_type().equals("Í¼Æ¬")){
+			if(image.getImage_type().equals("å›¾ç‰‡")){
 				imageList.add(image);
 			}
 			else{
@@ -221,7 +223,7 @@ public class MyController {
 	}
 	
 	/*
-	 * ÍÆ¼öÏîÄ¿ÏêÏ¸ÐÅÏ¢
+	 * ï¿½Æ¼ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	
 	@RequestMapping({"/Index/TheElement"})    
@@ -242,18 +244,18 @@ public class MyController {
 			stamp_tax = buyInfo.getStamp_tax();
 		}
 		req.setAttribute("project", project);
-		req.setAttribute("stamp_tax", stamp_tax);    //Ó¡»¨Ë°ÎÊÌâ
+		req.setAttribute("stamp_tax", stamp_tax);    //Ó¡ï¿½ï¿½Ë°ï¿½ï¿½ï¿½ï¿½
 		req.setAttribute("timeResule", timeResule);
 		
 	}
 	
-	//¼Û¸ñÇø¼ä
+	//ï¿½Û¸ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping({"/Index/BuyInfo"})
 	public void getBuyInfo(HttpServletRequest req, HttpServletResponse resp,int proId){
 		String priceQuJian = "";
 		String returnPriceNew=buyInfoService.getReturnMoney(proId);
 		HouseProject pro = houseProjectService.getHouseProject(proId);
-		String returnPrice=pro.getReturn_money();   //ÐÂµÄbuy_info
+		String returnPrice=pro.getReturn_money();   //ï¿½Âµï¿½buy_info
 		if(pro!=null){
 			String minPrice = pro.getProject_min_price();
 			String highPrice = pro.getProject_high_price();
@@ -267,7 +269,7 @@ public class MyController {
 	}
 	
 	/*
-	 * ÏîÄ¿»ù±¾ÐÅÏ¢
+	 * ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	
 	@RequestMapping({"/Index/ProjectInfo"})    
@@ -290,7 +292,7 @@ public class MyController {
 		req.setAttribute("DeveloperInfo", developerInfo);
 	}
 	
-	/*»§ÐÍ¼°¼Û¸ñ*/
+	/*ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Û¸ï¿½*/
 	@RequestMapping({"/Index/HouseInfo"})
 	public void getHouseInfo(HttpServletRequest req, HttpServletResponse resp,String proNum){
 		HouseProject pro = houseProjectService.getHouseProjectByNum(proNum);
@@ -303,7 +305,7 @@ public class MyController {
 	}
 	
 	/**
-	 * Ñ§Ð£¼°¸½½ü
+	 * Ñ§Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param req
 	 * @param resp
 	 */
@@ -316,7 +318,7 @@ public class MyController {
 	
 	
 	/**	
-	 * ¹º·¿Ë°·ÑºÍ³ÖÓÐ³É±¾
+	 * ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ÑºÍ³ï¿½ï¿½Ð³É±ï¿½
 	 * @param req
 	 * @param resp
 	 */
@@ -333,7 +335,8 @@ public class MyController {
 			 int price=houseTaxVo.getPrice();
 			 String desc=houseTaxVo.getDescription();
 			 houseTaxSum=houseTaxSum+price;
-			 String ahouseStr=type+"    "+"Ô¼"+price+"°ÄÔª"+"\n"+desc;
+			 String ahouseStr=type+"    "+"çº¦"+price+"æ¾³å…ƒ"+"\n"+desc;
+			 System.out.println(ahouseStr);
 			 houseTaxStr.add(ahouseStr);
 		 }
 		 req.setAttribute("houseTaxStr", JSONArray.toJSON(houseTaxStr));
@@ -344,7 +347,7 @@ public class MyController {
 			 int price=holdingTaxVo.getPrice();
 			 String desc=holdingTaxVo.getDescription();
 			 holdingTaxSunm=holdingTaxSunm+price;
-			 String aholdingStr=type+"    "+"Ô¼"+price+"°ÄÔª"+"\n"+desc;
+			 String aholdingStr=type+"    "+"çº¦"+price+"æ¾³å…ƒ"+"\n"+desc;
 			 holdingTaxStr.add(aholdingStr);
 		 }
 		 req.setAttribute("holdingTaxStr", JSONArray.toJSON(holdingTaxStr));
@@ -359,7 +362,7 @@ public class MyController {
 	
 	
 	/*
-	 * Í¶×ÊÊý¾ÝÐÅÏ¢
+	 * Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	
 	@RequestMapping({"/Index/InvestData"})
@@ -383,7 +386,7 @@ public class MyController {
 	}
 	
 	/*
-	 * ÖÐÎ»Êý·¿¼Û
+	 * ï¿½ï¿½Î»ï¿½ï¿½ï¿½
 	 */
 	
 	@RequestMapping({"/Index/MiddlePriceInfo"})    
@@ -404,7 +407,7 @@ public class MyController {
 	}
 	
 	/**
-	 * ÇøÓòÖÐÎ»Êý·¿¼Û×ßÊÆ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @author wenruijie
 	 * @param req
 	 * @param resp
@@ -412,7 +415,7 @@ public class MyController {
 	 */
 	@RequestMapping({"/Index/AreaTrend"})
 	public void getAreaTrend(HttpServletRequest req, HttpServletResponse resp,String project_type,String area_num){
-		//ÇøÓòÖÐÎ»Êý·¿¼Û×ßÊÆ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<AreaMiddle> areaMiddleList=new ArrayList<AreaMiddle>();
 		areaMiddleList=areaTrendService.getAreaMiddleTrend(project_type,area_num);
 		List<String> areaMiddleYeatList=new ArrayList<String>();
@@ -427,7 +430,7 @@ public class MyController {
 		}
 		req.setAttribute("areaMiddleYeatList", areaMiddleYeatList);
 		req.setAttribute("areaMiddleRateList", areaMiddleRateList);
-		//ÇøÓò×â½ð×ßÊÆ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<AreaZujin> areaZujinList=new ArrayList<AreaZujin>();
 		areaZujinList=areaTrendService.getAreaZujinTrend(project_type,area_num);
 		List<String> areaZujinYeatList=new ArrayList<String>();
@@ -442,7 +445,7 @@ public class MyController {
 		}
 		req.setAttribute("areaZujinYeatList", areaZujinYeatList);
 		req.setAttribute("areaZujinRateList", areaZujinRateList);
-		//ÇøÓò¿ÕÖÃÂÊ×ßÊÆ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<AreaZhikong> areaZhikongList=new ArrayList<AreaZhikong>();
 		areaZhikongList=areaTrendService.getAreaZhikongTrend(project_type,area_num);
 		List<String> areaZhikongYeatList=new ArrayList<String>();
@@ -463,7 +466,7 @@ public class MyController {
 	
 	
 	/**
-	 * µØÇøÌØµã
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½
 	 * @author wenruijie 
 	 */
 	@RequestMapping({"/Index/AreaFeature"})
@@ -474,29 +477,29 @@ public class MyController {
 	}
 	
 	/**	
-	 * ÇøÓòÈË¿Ú·Ö²¼
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿Ú·Ö²ï¿½
 	 */
 	@RequestMapping({"/Index/PeopleRegion"})
 	public void getPeopleRegion(HttpServletRequest req, HttpServletResponse resp,String area_code){
 		List<AreaPeopleInfo> list=peopleInfoService.getAreaPeopleInfo(area_code);
 		req.setAttribute("list",list);
-		//ÈË¿Ú×ÜÊý
+		//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<PeopleInfo> peopleInfoList=peopleInfoService.getPeopleInfo();
 		req.setAttribute("peopleInfoList",peopleInfoList);
-		//³öÉú¹ú¼Ò
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<PeopleNation> peopleNationList=peopleInfoService.getPeopleNation();
 		req.setAttribute("peopleNationList",peopleNationList);
-		//º£Íâ³öÉú
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		List<PeopleForeign> peopleForeignList=peopleInfoService.getPeopleForeign();
 		req.setAttribute("peopleForeignList",peopleForeignList);
 		req.setAttribute("peopleForeignNum",peopleForeignList.size());
-		//Æ½¾ù¼ÒÍ¥ÊÕÈë
+		//Æ½ï¿½ï¿½ï¿½Í¥ï¿½ï¿½ï¿½ï¿½
 		List<FamilyIncome> familyIncomeList=peopleInfoService.getFamilyIncome();
 		req.setAttribute("familyIncomeList",familyIncomeList);
 	}
 
 	/**
-	 * »ñÈ¡¼ÒÍ¥Çé¿ö¹¹³É
+	 * ï¿½ï¿½È¡ï¿½ï¿½Í¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @author wenruijie 
 	 * @param req
 	 * @param resp
@@ -504,7 +507,7 @@ public class MyController {
 	 */
 	@RequestMapping({"/Index/AreaFamily"})
 	public void  getAreaFamily(HttpServletRequest req, HttpServletResponse resp,String area_code){
-		//¶ÀÁ¢ÇàÄê´¦Àí
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê´¦ï¿½ï¿½
 		AreaFamily data = areaFamilyService.getAreaFamily(area_code);
 		Integer dulirate = 0;
 		String dulirateStr = "";
@@ -536,7 +539,7 @@ public class MyController {
 	
 	
 	/*
-	 * ÏîÄ¿ÏêÏ¸ÐÅÏ¢
+	 * ï¿½ï¿½Ä¿ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	
 	@RequestMapping({"/Index/GetNewsInfo"})    
@@ -573,6 +576,8 @@ public class MyController {
 				timeResuleThree = dfThree.format(timeThree);
 			}
 		}
+		
+		req.setAttribute("newsList", newsList);
 		req.setAttribute("newsInfo_one", newsInfo_one);
 		req.setAttribute("timeResuleOne", timeResuleOne);
 		req.setAttribute("newsInfo_two", newsInfo_two);
@@ -583,7 +588,7 @@ public class MyController {
 	
 	
 	/*
-	 * ÍÆ¼öÏîÄ¿ÏêÏ¸ÐÅÏ¢
+	 * ï¿½Æ¼ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 	 */
 	
 	@RequestMapping({"/Index/RecommendProject"})    
@@ -647,7 +652,7 @@ public class MyController {
 	}
 	
 	
-	//µã»÷Ìá½»£¬Ìá½»ÁôÑÔ
+	//ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping({"/indexSuoJia/MessageSubmit"})
 		public void messageSubmit(HttpServletRequest req,HttpServletResponse resp, String username,int proId){
 			String message_content=req.getParameter("message_content");
@@ -667,8 +672,13 @@ public class MyController {
 			req.setAttribute("userList", userList);
 			//return "/index.jsp";
 		}
-	
-	
+	//ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		@RequestMapping({"/recommendBroker"})
+		public void getRecommendBroker(HttpServletRequest req,HttpServletResponse resp, String area_num){
+			List<BrokerInfo> recommendBroker=new ArrayList<BrokerInfo>();
+			recommendBroker=brokerInfoDao.getRecommendBroker(area_num);
+			req.setAttribute("recommendBroker", recommendBroker);
+		}
 	
 	public void writeJson(String json, HttpServletResponse response)throws Exception{
 	    response.setContentType("text/html");

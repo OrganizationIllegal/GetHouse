@@ -32,6 +32,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "/js/video-js.swf";</script>
 <!-- 计算器 start -->
+<style type="text/css">
+body{
+	padding-top: 105px !important;
+	background-color:rgba(233, 243, 248, 1)!important;
+	font-family:"Microsoft YaHei"!important;
+}
+.table th, .table td { 
+	text-align: center; 
+	height:27px !important;
+	padding: 0px !important;
+  	line-height: 1 !important;
+  	vertical-align: middle !important; 
+}
+.table{
+	cellpadding:2px!important;
+	cellspace:2px!important;
+}
+table{ border-collapse:collapse; }
+        table td{ width:50px; height:20px; margin:5px;}
+</style>
 <script type="text/javascript">
 function compute(){
 var a=$('#select1').find("option:selected").val();
@@ -112,7 +132,7 @@ function popInfo(){
 <div class="container">
 <div id="all">
 <!-- 导航标签 -->
-<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:27px;margin-bottom: 0px;margin-left:250px;width:990px;">
+<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:27px;margin-bottom: 0px;margin-left:207px;width:995px;">
 <ul class="nav nav-tabs nav-justified">
    <li><a href="#info"  onclick="tab1()">项目介绍</a></li>
    <li><a href="#price"  onclick="tab2()">户型和价格</a></li>
@@ -123,40 +143,46 @@ function popInfo(){
 </ul>
 </nav>
 <!--项目图片-->
-<div style="margin-top:20px;/* background-color:white; */">
+<div style="margin-top:-17px;/* background-color:white; */">
     <div class="ad_position" style="height:487px;/* background-color:white; */">
 
-        <div class="limit" style="height:487px;width:1100px;">
-            <div style="float:left;width:720px;display:inline;">
+        <div class="limit" style="height:487px;width:1100px;margin-left:-40px;">
+            <div style="float:left;width:750px;display:inline;">
 
-                <table class="ad_left_big" width="720" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
-                    <c:forEach var="item"  items="${imageList}"   varStatus="status">
-                    <c:if test="${status.index<3 }">
-                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="720" height="487" /></a></td></tr>
-                    </c:if>
-                    </c:forEach>
-                   <c:forEach var="item"  items="${vedioList}"   varStatus="status">
-                   	 <tr><td><div id="youkuplayer" style="width:720px;height:487px"></div>
+                <table class="ad_left_big" width="750" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
+                     <tr><td><div id="youkuplayer" style="width:750px;height:487px"></div>
                     </td>
                     </tr>
-                   </c:forEach>
+                    <c:forEach var="item"  items="${imageList}"   varStatus="status">
+                    <c:if test="${status.index<2 }">
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="750" height="487" /></a></td></tr>
+                    </c:if>
+                    </c:forEach>
+                   <%-- <c:forEach var="item"  items="${vedioList}"   varStatus="status">
+                   <c:if test="${status.index<3 }"> --%>
+                   	
+                     <%-- </c:if>
+                   </c:forEach> --%>
                    
                 </table>
             </div>
 
-            <div class="ad_small_box" style="width:224px;height:487px;">
+            <div class="ad_small_box" style="width:224px;height:487px;margin-left:20px;">
                 <div class="top_button off"></div>
                 <div class="small_right_limit">
                     <ul style="margin-top: 10px;">
+                    <li><img src="http://101.200.174.253:8080/all/The Atrium_Project_01.jpg" width="224" height="140"/></li>
 			            <c:forEach var="item"  items="${imageList}"   varStatus="status">
-			            <c:if test="${status.index<3}">
+			            <c:if test="${status.index<2}">
 			            	<li style="padding-top:15px"><img src="http://101.200.174.253:8080/all/${item.image_name}" width="224" height="140"/></li>
 			            </c:if>
                     		
                     	</c:forEach>
-                        <c:forEach var="item"  items="${vedioList}"   varStatus="status">
+                        <%-- <c:forEach var="item"  items="${vedioList}"   varStatus="status">
+                        <c:if test="${status.index<3}">
                     		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="224" height="140"/></li>
-                    	</c:forEach>
+                    	</c:if>
+                    	</c:forEach> --%>
                        
                     </ul>
                     <div class="this_ad" style="top:0px;"><img src="images/this_ad.gif" width="224" height="159" /></div>
@@ -360,12 +386,13 @@ function popInfo(){
 
 
 
-
-<div style="margin-top:20px;background-color:white;">
+<c:if test="${!empty ProjectPeitaoImage }">
+	<div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
 <div class="panel-heading">项目配套</div>
     <div class="ad_position_p" style="height:487px;/* background-color:white; */">
-        <div class="limit_p" style="height:487px;width:1100px;">
+        <div class="limit_p" style="height:487px;width:1100px;margin-top: -22px;">
+        
             <div style="float:left;width:720px;display:inline;">
                 <table class="ad_left_big_p" width="720" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <c:forEach items="${ProjectPeitaoImage}" var="item" varStatus="status">
@@ -377,7 +404,7 @@ function popInfo(){
                 </table>
             </div>
 
-            <div class="ad_small_box_p" style="width:224px;height:487px;">
+            <div class="ad_small_box_p" style="width:224px;height:487px;margin-left:20px;">
                 <div class="top_button off"></div>
                 <div class="small_right_limit_p">
                     <ul style="margin-top: 10px;">
@@ -399,6 +426,8 @@ function popInfo(){
 
     </div>
 </div> 
+</c:if>
+
 <!--项目位置-->
 <div style="margin-top:16px;background-color:white;height:480px;">
 <div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);padding-top:20px;padding-left:30px;">项目位置</div>
@@ -417,17 +446,18 @@ function popInfo(){
 <!--学校及周边-->
 <div style="margin-top:20px;background-color:white;" id="round">
 	<div class="panel panel-default">
-  		<div class="panel-heading">学校及周边</div>
+  		<div class="panel-heading" style="font-size:15px;font-weight:bold;">学校及周边</div>
   		<div class="panel-body">
   			<div class="item  col-xs-6 col-lg-6">
             <div class="thumbnail">
             	<div>
             	<center>
-                <img class="group list-group-image" src="/pic/traffic.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
+                <img class="group list-group-image"  src="/pic/walk.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
                 </center>
-                <span style="position: absolute; top: 162px; right: 252px;left: 250;font-weight:bold;font-size:22">99</span>
+                <span style="position: absolute; top: 132px; left: 274px;font-weight:bold;font-size:22">99</span>
                 
                 </div>
+                <div style="height:26px;"></div>
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
                         附近学校</h4>
@@ -445,9 +475,9 @@ function popInfo(){
 	            <div class="thumbnail">
 	            	<div>
 		            	<center>
-		                <img class="group list-group-image" src="/pic/onfoot.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
+		                <img class="group list-group-image" src="/pic/walkdetail.jpg" alt="" data-trigger="hover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
 		                </center>
-		                <span style="position: absolute; top: 162px; right: 286px;left: 275;font-weight:bold;font-size:22">100</span>
+		                <!-- <span style="position: absolute; top: 162px; right: 286px;left: 275;font-weight:bold;font-size:22">100</span> -->
 		                
 		             </div>
 	                
@@ -469,7 +499,8 @@ function popInfo(){
   	</div>
 </div>
 <!--估计总购房税费-->
-<div style="margin-top:20px;background-color:white;" id="purchase">
+<c:if test="${!empty housetaxdata}">
+	<div style="margin-top:20px;background-color:white;" id="purchase">
 <ul class="nav nav-tabs" id="costTabs">
       <li class="active"><a href="#home" data-toggle="tab">购房税费</a></li>
       <li><a href="#profile" data-toggle="tab">持有成本</a></li>
@@ -539,6 +570,10 @@ function popInfo(){
       
   	</div>
 </div>
+
+</c:if>
+
+
 
 <!--贷款每月还款多少-->
 <div style="margin-top:16px;background-color:rgba(169, 194, 218, 1);height:360px;padding:30px 30px;">
@@ -675,6 +710,7 @@ function popInfo(){
 </div>
 </div>
 <!--中位数公寓房价-->
+<!--中位数公寓房价-->
 <!--trend-->
 <div  style="margin-top:20px;background-color:white;">
  <ul class="nav nav-tabs nav-justified" id="trendTabs">
@@ -688,25 +724,28 @@ function popInfo(){
       <div class="tab-pane active" id="price">
       	<div>
       		<div id="price_line" style="height:350px"></div>
+      		<div style="width:100%;padding-left:30px;padding-right:30px;"><font size="1">投资数据参考：2卧室房产</font><span style="float:right;"><font size="1">数据来源：RPData 更新日期：2015.02.02</font></span></div>
       	</div>
       </div> 
       <div class="tab-pane" id="rent">
       	<div>
       		<div id="rent_line" style="height:350px">
       			</div>
+      		<div style="width:100%;padding-left:30px;padding-right:30px;"><font size="1">投资数据参考：2卧室房产</font><span style="float:right;"><font size="1">数据来源：RPData 更新日期：2015.02.02</font></span></div>
       	</div>
       </div> 
       <div class="tab-pane" id="emptypercent">
       	<div>
       		<div id="emptypercent_line" style="height:350px">
       			</div>
+      		<div style="width:100%;padding-left:30px;padding-right:30px;"><font size="1">投资数据参考：2卧室房产</font><span style="float:right;"><font size="1">数据来源：RPData 更新日期：2015.02.02</font></span></div>
       	</div>
       </div> 
   	</div>
 </div>
 
  <!--近期区域成交情况list-->
-<div style="margin-top:20px;background-color:white;">
+<%-- <div style="margin-top:20px;background-color:white;">
 	<div class="panel panel-default">
 	  <div class="panel-heading">${area_name}近期区域成交情况<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
 	  <table class="table table-striped">
@@ -732,229 +771,244 @@ function popInfo(){
     	</tbody>
   	  </table>
 	</div>
-</div> 
+</div>  --%>
 
 <!--地区特点start-->
-<div style="margin-top:20px;">
-  <div class="panel panel-default">
-  	<div class="panel-heading" style="background-color:white;">${area_name} 地区特点</div>
-  	 <div class="panel-body">
-  	     	<div class="col-xs-6">
-  	     	<ul style="list-style-type:none">
-  	     	<c:forEach items="${featureList}"
-			 var="item"
-			 begin="0"
-			 end="4"
-			 step="1"
-			 varStatus="var">
-				<li>${item}</li>
-			 </c:forEach>
-  	     		</ul>
-  	     	</div>
-  	     	<div class="col-xs-6">
-  	     		<ul start="6" style="list-style-type:none">
-  	     			<c:forEach items="${featureList}"
-					 var="item"
-					 begin="5"
-					 end="9"
-					 step="1"
-					 varStatus="var">
-						<li>${item}</li>
-					 </c:forEach>
-  	     		</ul>
-  	     	</div>
-     </div>
-  </div>
-</div>
-<!--地区特点end-->
-<!--人口分布-->
-<div style="margin-top:20px;background-color:white;">
-<div class="panel panel-default">
-	  <div class="panel-heading">${area_name}区域人口分布<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
-	  <table class="table table-striped">
-	  	
-    	<thead>
-    		
-    		<c:forEach items="${list}" var="item" varStatus="var" begin="0" end="0">
-	    		<tr class="row">
-	    		<th class="col-md-4">${item.column1 }</th>
-	    		<th class="col-md-4">${item.column2 }</th>
-	    		<th class="col-md-4">${item.column3 }</th>
-	    		</tr>
-    		</c:forEach>
-    	</thead>
-    	
-    	<tbody>
-    	<c:forEach items="${list}" var="item" varStatus="var" begin="1" end="1">
-			<tr class="row">
-    			<td>${item.column1}</td>
-    			<td>${item.column2}</td>
-    			<td>${item.column3}</td>
-    		</tr>
-		</c:forEach> 
-    	</tbody>
-  	  </table>
-  	 <table class="table table-striped">
-	  	
-    	<thead>
-    		<c:forEach items="${list}" var="item" varStatus="var" begin="2" end="2">
-    		<tr class="row">
-    		<th class="col-md-4">${item.column1}</th>
-    		<th class="col-md-4">${item.column2}</th>
-    		<th class="col-md-4">${item.column3}</th>
-    		</tr>
-    		</c:forEach> 
-    	</thead>
-    	
-    	<tbody>
-    	<c:forEach items="${list}" var="item" varStatus="var" begin="3" end="3">
-			<tr class="row">
-    			<td>${item.column1}</td>
-    			<td>${item.column2}<span></span></td>
-    			<td>${item.column3}<span></span></td>
-    		</tr>
-		</c:forEach> 
-    	</tbody>
-  	  </table>
-  	  <table class="table table-striped">
-	  	
-    	<thead>
-    	<c:forEach items="${list}" var="item" varStatus="var" begin="4" end="4">
-    		<tr class="row">
-    		<th class="col-md-4">${item.column1}</th>
-    		<th class="col-md-4">${item.column2}</th>
-    		<th class="col-md-4">${item.column3}</th>
-    		</tr>
-    		</c:forEach>
-    	</thead>
-    	
-    	<tbody>
-    	<c:forEach items="${list}" var="item" varStatus="var" begin="5" end="9">
-			<tr class="row">
-    			<td>${item.column1}</td>
-    			<td>${item.column2}<span></span></td>
-    			<td>${item.column3}<span></span></td>
-    		</tr>
-		</c:forEach> 
-    	</tbody>
-  	  </table>
-  	  <table class="table table-striped">
-	  	
-    	<thead>
-    	<c:forEach items="${list}" var="item" varStatus="var" begin="10" end="10">
-    		<tr class="row">
-    		<th  class="col-md-4">${item.column1}</th>
-    		<th  class="col-md-4">${item.column2}</th>
-    		<th  class="col-md-4">${item.column3}</th>
-    		</tr>
-    		</c:forEach>
-    	</thead>
-    	
-    	<tbody>
-    	<c:forEach items="${list}" var="item" varStatus="var" begin="11" end="11">
-			<tr class="row">
-    			<td>${item.column1}</td>
-    			<td><span>$</span>${item.column2}</td>
-    			<td><span>$</span>${item.column3}</td>
-    		</tr>
-		</c:forEach> 
-    	</tbody>
-  	  </table>
+
+<div>
+	<div style="width:720px;float:left;">
+		<!-- 地区特点start -->
+			<div style="margin-top:20px;">
+			  <div class="panel panel-default">
+			  	<div class="panel-heading" style="background-color:white;font-size:15px;font-weight:bold;">${area_name} 地区特点</div>
+			  	 <div class="panel-body">
+			  	     	<div class="col-xs-6">
+			  	     	<ul style="list-style-type:none">
+			  	     	<c:forEach items="${featureList}"
+						 var="item"
+						 begin="0"
+						 end="4"
+						 step="1"
+						 varStatus="var">
+							<li>${item}</li>
+						 </c:forEach>
+			  	     		</ul>
+			  	     	</div>
+			  	     	<div class="col-xs-6">
+			  	     		<ul start="6" style="list-style-type:none">
+			  	     			<c:forEach items="${featureList}"
+								 var="item"
+								 begin="5"
+								 end="9"
+								 step="1"
+								 varStatus="var">
+									<li>${item}</li>
+								 </c:forEach>
+			  	     		</ul>
+			  	     	</div>
+			     </div>
+			  </div>
+			</div>
+			<!-- 地区特点end -->
+			<!--人口分布-->
+			<div style="margin-top:20px;background-color:white;">
+			<div class="panel panel-default">
+				  <div class="panel-heading" style="font-size:15px;font-weight:bold;background:rgb(169,194,218)">${area_name}区域人口分布<div class="pull-right"><font size="1">数据来源：PGData 最近更新时间：11/02/15</font></div></div>
+				  <table class="table table-striped"  cellpading=1 cellspaceing=1>
+				  	
+			    	<tbody style="font-size:12px;">
+			    		<c:forEach items="${list}" var="item" varStatus="var" begin="0" end="0">
+				    		<tr class="row">
+				    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column1 }</td>
+				    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column2 }</td>
+				    		<td class="col-md-4" style="background:rgb(224,238,218)">${item.column3 }</td>
+				    		</tr>
+			    		</c:forEach>
+			    	
+			    	<c:forEach items="${list}" var="item" varStatus="var" begin="1" end="1">
+						<tr class="row">
+			    			<td>${item.column1}</td>
+			    			<td>${item.column2}</td>
+			    			<td>${item.column3}</td>
+			    		</tr>
+					</c:forEach> 
+			    	</tbody>
+			  	  </table>
+			  	 <table class="table table-striped">
+				  	
+			    	<tbody style="font-size:12px;">
+			    		<c:forEach items="${list}" var="item" varStatus="var" begin="2" end="2">
+			    		<tr class="row">
+			    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column1}</td>
+			    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column2}</td>
+			    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column3}</td>
+			    		</tr>
+			    		</c:forEach> 
+			    	
+			    	
+			    	
+			    	<c:forEach items="${list}" var="item" varStatus="var" begin="3" end="3">
+						<tr class="row">
+			    			<td>${item.column1}</td>
+			    			<td>${item.column2}<span></span></td>
+			    			<td>${item.column3}<span></span></td>
+			    		</tr>
+					</c:forEach> 
+			    	</tbody>
+			  	  </table>
+			  	  <table class="table table-striped">
+				  	
+			    	<tbody style="font-size:12px;">
+			    	<c:forEach items="${list}" var="item" varStatus="var" begin="4" end="4">
+			    		<tr class="row">
+			    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column1}</td>
+			    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column2}</td>
+			    		<td class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column3}</td>
+			    		</tr>
+			    		</c:forEach>
+			    	
+			    	
+			    	
+			    	<c:forEach items="${list}" var="item" varStatus="var" begin="5" end="9">
+						<tr class="row">
+			    			<td>${item.column1}</td>
+			    			<td>${item.column2}<span></span></td>
+			    			<td>${item.column3}<span></span></td>
+			    		</tr>
+					</c:forEach> 
+			    	</tbody>
+			  	  </table>
+			  	  <table class="table table-striped">
+				  	
+			    	<tbody style="font-size:12px;">
+			    	<c:forEach items="${list}" var="item" varStatus="var" begin="10" end="10">
+			    		<tr class="row">
+			    		<td  class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column1}</td>
+			    		<td  class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column2}</td>
+			    		<td  class="col-md-4" style="background:rgb(224,238,218);margin-right:5px;">${item.column3}</td>
+			    		</tr>
+			    		</c:forEach>
+			    	
+			    	
+			    	
+			    	<c:forEach items="${list}" var="item" varStatus="var" begin="11" end="11">
+						<tr class="row">
+			    			<td>${item.column1}</td>
+			    			<td><span>$</span>${item.column2}</td>
+			    			<td><span>$</span>${item.column3}</td>
+			    		</tr>
+					</c:forEach> 
+			    	</tbody>
+			  	  </table>
+				</div>
+			</div>
 	</div>
+	<div style="float:right;width:270px;position:relative;">
+		<img src="pic/ad.png" height="590" width="270" style="position:absolute;top:20px;"/>
+	</div>
+	<div style="clear:both;"></div>
 </div>
-<!--人口分布end>
+	
 
 <!--区域家庭情况构成pie-->
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
-	  <div class="panel-heading">${area_name}区域家庭情况构成</div>
+	  <div class="panel-heading" style="font-size:15px;font-weight:bold;">${area_name}区域家庭情况构成</div>
 	  <div class="panel-body">
-	  	<div id="zonefamily_pie" style="height:200px">
+	  	<div id="zonefamily_pie" style="height:227px;background:url(pic/family.jpg);position:relative;">
+	  		<div style="width: 50px;height: 25px; position: absolute;left:200px;top: 160px">${dulirateVo}%</div>
+	  		<div style="width: 50px;height: 25px; position: absolute;left:480px;top: 160px">${youngfamilyVo}%</div>
+	  		<div style="width: 50px;height: 25px; position: absolute;left:770px;top: 160px">${oldfamilyVo}%</div>
       	</div>
+      	<div style="width:100%;padding-left:30px;padding-right:30px;"><span style="float:right;"><font size="1">数据来源：RPData 更新日期：2015.02.02</font></span></div>
 	  </div>
 	</div>
 </div>
 
+
 <!--新闻报道-->
-<!--新闻报道-->
-<!--<div style="margin-top:20px;background-color:white;">
-	<div class="panel panel-default" id="MyPanel">
-	<div class="heading1"><strong>新闻报道</strong><br></div>
-	<div class="panel-body">
+<c:if test="${!empty newsList}"> 
+
+
+
+<div style="margin-top:20px;background-color:white;height:309px">
+	<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">新闻报道</div>
+	<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:990px;margin-left:0px;"/>	
+
   		<div class="row">
-          <div class="news_position">
-          		<div class="info" id="left">
+  		<div class="col-md-4">
+          <div class="news_position" style="margin-left:0px">
+          		<div >
                 <div class="scroll" id="left"> 
-                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" width=350px height=255px></a>
-                     <div class="news_action_left" style="display:none;">
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" style="width:305px;height:210px"></a>
+                    <!-- <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    </div>
+                    </div> --> 
                      </div>
                 </div>
-                <div class="caption_my" style="height:98px;width:350px;">
-		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_one.title}</h3>
-		         <p>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</p>
+                <div class="caption_my" style="height:57px;width:310px;border:1px solid rgb(236,235,235)">
+		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_one.title}</span><br/>
+		         <span>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
            </div>
-		   <div class="news_position" id="MyNews">
-		      	<div class="info" id="middle">
-		      	<div class="scroll" id="left"> 
-                     <img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" width=350px height=255px>
-                     <div class="news_action_middle" style="display:none;">s
-	                     <ul class="list_m" id="list_scroll_middle">
+            </div>
+            <div class="col-md-4">
+		   <div class="news_position" id="MyNews" style="margin-left:0px">
+		      	<div>
+                <div class="scroll" id="left"> 
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" style="width:305px;height:210px"></a>
+                    <!--   <div class="news_action_left" style="display:none;">
+	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    
-                     </div>
+                    </div>-->
                      </div>
                 </div>
-                <div class="caption_my" style="height:98px;width:350px;">
-		          <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_two.title}</h3>
-		         <p>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuletwo }</p>
+                <div class="caption_my" style="height:57px;width:310px;border:1px solid rgb(236,235,235)">
+		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_two.title}</span><br/>
+		         <span>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
 		   </div>
-		   <div class="news_position">
-		   		<div class="info" id="right">
+		     </div>
+		      <div class="col-md-4">
+		   <div class="news_position" style="margin-left:0px" >
+		   		<div >
                 <div class="scroll" id="left"> 
-                     <img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" width=350px height=255px> 
-                     <div class="news_action_right" style="display:none;">
-	                     <ul class="list_r" id="list_scroll_right">
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" style="width:305px;height:210px"></a>
+                       <!--   <div class="news_action_left" style="display:none;">
+	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
 							  <li >span Dapibus ac facilisis in</li>
 							  <li >Morbi leo risus</li>
 							  <li >Vestibulum at eros</li>
 						</ul>
-                    </div>
+                    </div>-->
                      </div>
-                </div>-->
-		      <!-- <div class="scroll" id="right">
-                     <img src="/images/news.jpg" alt="" width=350px height=255px>
-                </div> -->
-               <!-- <div class="caption_my" style="height:98px;width:350px;">
-		         <h3 id="title_news" style="font-weight: bold; font-size:20px;">新闻标题：${newsInfo_three.title}</h3>
-		         <p>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleThree }</p>
+                </div>
+                <div class="caption_my" style="height:57px;width:310px;border:1px solid rgb(236,235,235)">
+		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_three.title}</span><br/>
+		         <span>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
-		   </div>
-		   
-   </div>
-</div>
-  		</div>
-  		 
-  	</div>
-</div>-->
+                </div>
+                 </div>
+
+                </div>
+                 </div>
+                </c:if>
+      </div>
 
 
 
 <!--推荐项目-->
-<div style="margin-top:20px;background-color:white;">
+<!-- <div style="margin-top:20px;background-color:white;height:305px">
 	<div class="panel panel-default" id="MyPanel">
 	<div class="heading1"><strong>推荐项目</strong><br></div>
 	<div class="panel-body">
@@ -962,19 +1016,18 @@ function popInfo(){
           <div class="news_position">
                 <div class="scroll" id="left">
                      <a href="Index?proNum=${RecommendProject1.project_num}">
-                    	 <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" width=350px height=255px>
+                    	 <img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" style="width:278px;height:166px">
                      </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
-		         <p class="desc"><a href="Index?proNum=${RecommendProject1.project_num}">${RecommendProject1.project_name}</a> </p>
-		         <p>${RecommendProject1.project_desc}</p>
-		          
+		          <p class="desc"><a href="Index?proNum=${RecommendProject1.project_num}">${RecommendProject1.project_name}</a> </p>
+		          <p>${RecommendProject1.project_desc}</p>
 		        </div>
            </div>
 		   <div class="news_position">
                 <div class="scroll" id="left">
                   <a href="Index?proNum=${RecommendProject2.project_num}">
-                     <img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" style="width:278px;height:166px">
                   </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
@@ -986,7 +1039,7 @@ function popInfo(){
 		   <div class="news_position">
 		      <div class="scroll" id="right">
 		        <a href="Index?proNum=${RecommendProject2.project_num}">
-                     <img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" width=350px height=255px>
+                     <img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" style="width:278px;height:166px">
                  </a>
                 </div>
                 <div class="caption_my" style="height:98px;width=350px">
@@ -1000,7 +1053,125 @@ function popInfo(){
 </div>
   		</div>
   		 
-  	</div>
+  	</div>-->
+  	<!--推荐项目start-->
+  	<!--你是否需要房产经纪人start-->
+  	<div style="width:101%;height:526px;">
+<div style="margin-left: auto;margin-right:auto;width:1005px;height:526px;">
+	 <div style="background-color:rgb(169,193,217);height:526;width: 978px;">
+<div class="row" >
+    <!--左边 start-->
+	<div class="col-xs-3" >
+	  <div  class="col-xs-9">
+	   <div id="wenzi" style="margin:20 0 20 20">
+	     <span style="color:white;padding-top:75px"><h3><strong>你是否需要</strong></h3></span>
+	     <span style="color:white"><h3><strong>房产经纪人</strong></h3></span>
+	  	 <!--<img alt="image" class="img-responsive" src="pic/as.png">-->
+	   </div>
+	   </div>
+	   <div class="col-xs-3" style="margin-top:50px">
+	       <img alt="image"  src="pic/wenhao.png">
+	   </div>
+ 	</div>
+ 	 <!--左边 end-->
+ 	 <!--中间start线-->
+ 	<div class="col-xs-1" >
+ 		<div style="float:right;width: 1px;height: 563px; background: white;margin:20 0"></div>
+ 	</div>
+ 	 <!--中间end线-->
+ 	
+ 	 <!--右边 start-->
+ 	<div class="col-xs-8" style="background-color:rgb(169,193,217)">
+ 	      <!--列表 start-->
+ 		 <div id="list"  class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="margin:20 20 20 5">
+ 		    <!--第一个元素start-->
+ 		    <c:forEach var="item" items="${recommendBroker}">
+ 		 	 <div id="firstitem" style="border:1px solid #E6E6FA;padding:20 20;background-color:white;margin:10 10;margin-right:20px;margin-bottom:13px;margin-top:29px">
+           		  <div class="media">
+          			  <a class="pull-left" href="#" target="_parent">
+              				<img alt="image" class="img-responsive" src="http://101.200.174.253:8080/all/${item.broker_img}" style="width:100px;height:140px" >
+           			  </a>
+           		 	  <div class="clearfix visible-sm"></div>
+           		 	  <div class="media-body fnt-smaller" style="padding:0 0 0 15px;padding-top:10px">
+                		  <span style="font-family:微软雅黑;font-weight:bolder;font-size:15px;margin-top:10px" class="media-heading">${item.broker_name }</span><br/>
+                		  <span style="font-size:13px">从业经验：${item.broker_experience }年</span><br/>
+                		  <span style="font-size:13px">语言：${item.broker_language }</span><br/>
+                		  <span style="font-size:13px">区域：${item.broker_region }</span><br/>
+                		  <img alt="image" class="img-responsive" src="pic/houseicon.JPG">
+            		 </div>
+      			 </div>
+     		 </div>
+     		 </c:forEach>
+     		 <!--第一个元素end-->
+     		
+     	
+ 		 </div>
+ 		  <!--列表 end-->
+ 	</div>
+ 	 <!--右边end-->
+ </div>	
+</div>
+ </div>	
+</div>
+
+  	
+  		
+  	
+  	<!-- start -->
+  	<div style="width:100%;height:305px;/* background-color:white */">
+<div style="margin-left: auto;margin-right:auto;width:990px;height:305px;">
+	 <div style="background-color:white;height:305px;">
+ <!--start 墨尔本-->
+<div class="row" >
+<div class="col-md-12" style="padding-left:40px;">
+<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">推荐项目</div>
+<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:920px;margin-left:0px;"/>
+<div>
+  	 	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div> <a href="Index?proNum=${RecommendProject1.project_num}"><img src="http://101.200.174.253:8080/all/${RecommendProject1.project_img}" alt="" style="width:278px;height:166px"/></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:112px;width:278px;height:53px">
+  	     			<div style="color:white;font-size:12px;font-weight:bold;"><span>${RecommendProject1.project_name}</span></div>
+  	     			<div style="color:white;font-size:12px;font-weight:bold;">${RecommendProject1.project_desc}</div>
+  	     		</div>
+  	     		<div style="border:1px solid rgb(236,235,235);margin-top:5px;width:278px;padding-left:5px">
+  	     			<div style="font-size:12px;font-weight:bold;padding-top:5px"><span>${RecommendProject1.project_name}</span></div>
+  	     			<div style="font-size:12px;font-weight:bold;padding-bottom:5px">${RecommendProject1.project_desc}</div>
+  	     		</div>
+  	    </div>
+  	    	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div> <a href="Index?proNum=${RecommendProject1.project_num}"><img src="http://101.200.174.253:8080/all/${RecommendProject2.project_img}" alt="" style="width:278px;height:166px"/></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:112px;width:278px;height:53px">
+  	     			<div style="color:white;font-size:12px;font-weight:bold;"><span>${RecommendProject2.project_name}</span></div>
+  	     			<div style="color:white;font-size:12px;font-weight:bold;">${RecommendProject2.project_desc}</div>
+  	     		</div>
+  	     		<div style="border:1px solid rgb(236,235,235);margin-top:5px;width:278px;padding-left:5px">
+  	     			<div style="font-size:12px;font-weight:bold;padding-top:5px"><span>${RecommendProject2.project_name}</span></div>
+  	     			<div style="font-size:12px;font-weight:bold;padding-bottom:5px">${RecommendProject2.project_desc}</div>
+  	     		</div>
+  	    </div>
+  	    	<div class="col-md-4" style="padding-left:0px;">
+  	     		<div> <a href="Index?proNum=${RecommendProject3.project_num}"><img src="http://101.200.174.253:8080/all/${RecommendProject3.project_img}" alt="" style="width:278px;height:166px"/></a></div>
+  	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:112px;width:278px;height:53px">
+  	     			<div style="color:white;font-size:12px;font-weight:bold;"><span>${RecommendProject3.project_name}</span></div>
+  	     			<div style="color:white;font-size:12px;font-weight:bold;">${RecommendProject3.project_desc}</div>
+  	     		</div>
+  	     		<div style="border:1px solid rgb(236,235,235);margin-top:5px;width:278px;padding-left:5px">
+  	     			<div style="font-size:12px;font-weight:bold;padding-top:5px"><span>${RecommendProject3.project_name}</span></div>
+  	     			<div style="font-size:12px;font-weight:bold;padding-bottom:5px">${RecommendProject3.project_desc}</div>
+  	     		</div>
+  	    </div>
+</div>
+</div>
+</div>
+<!--end 墨尔本-->
+
+</div>
+
+</div>
+</div>
+  	<!-- end -->
+  	
+  	
  <!-- 项目位置模态框start-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1402,7 +1573,7 @@ function popInfo(){
 <!-- 索取完整价格单模态框end -->
 </div>
 </div>
- <jsp:include page="foot.jsp" /> 
+ <jsp:include page="foot1.jsp" /> 
  <script type="text/javascript">
 
   var houseTaxStr=${houseTaxStr};
@@ -1423,7 +1594,7 @@ function popInfo(){
   
 
  </script>
- <script src="/js/familyStatus.js" charset="GBK"></script>
+ <!-- <script src="/js/familyStatus.js" charset="GBK"></script> -->
  <script src="/js/trend.js" charset="GBK"></script>
  <script src="/js/cost.js" charset="GBK"></script>
  <script src="/js/news.js"></script>
