@@ -124,17 +124,19 @@ function popInfo(){
 </nav>
 <!--项目图片-->
 <div style="margin-top:20px;/* background-color:white; */">
-    <div class="ad_position" style="height:600px;/* background-color:white; */">
+    <div class="ad_position" style="height:487px;/* background-color:white; */">
 
-        <div class="limit" style="height:600px;width:1100px;">
-            <div style="float:left;width:850px;display:inline;">
+        <div class="limit" style="height:487px;width:1100px;">
+            <div style="float:left;width:720px;display:inline;">
 
-                <table class="ad_left_big" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
+                <table class="ad_left_big" width="720" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
                     <c:forEach var="item"  items="${imageList}"   varStatus="status">
-                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></td></tr>
+                    <c:if test="${status.index<3 }">
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="720" height="487" /></a></td></tr>
+                    </c:if>
                     </c:forEach>
                    <c:forEach var="item"  items="${vedioList}"   varStatus="status">
-                   	 <tr><td><div id="youkuplayer" style="width:850px;height:600px"></div>
+                   	 <tr><td><div id="youkuplayer" style="width:720px;height:487px"></div>
                     </td>
                     </tr>
                    </c:forEach>
@@ -142,25 +144,29 @@ function popInfo(){
                 </table>
             </div>
 
-            <div class="ad_small_box" style="width:250px;height:600px;">
+            <div class="ad_small_box" style="width:224px;height:487px;">
                 <div class="top_button off"></div>
                 <div class="small_right_limit">
-                    <ul style="margin-top: 0px;">
+                    <ul style="margin-top: 10px;">
 			            <c:forEach var="item"  items="${imageList}"   varStatus="status">
-                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="250" height="140"/></li>
+			            <c:if test="${status.index<3}">
+			            	<li style="padding-top:15px"><img src="http://101.200.174.253:8080/all/${item.image_name}" width="224" height="140"/></li>
+			            </c:if>
+                    		
                     	</c:forEach>
                         <c:forEach var="item"  items="${vedioList}"   varStatus="status">
-                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="250" height="140"/></li>
+                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="224" height="140"/></li>
                     	</c:forEach>
                        
                     </ul>
-                    <div class="this_ad" style="top:0px;"><img src="images/this_ad.gif" width="250" height="159" /></div>
+                    <div class="this_ad" style="top:0px;"><img src="images/this_ad.gif" width="224" height="159" /></div>
                 </div>
                 <div class="bottom_button"></div>
             </div>
 
 
         </div>
+
 
 
 
@@ -208,7 +214,7 @@ function popInfo(){
 <div class="col-md-6 col-lg-6" style="padding-left:0px;padding-right:0px;">
 <div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">开发商介绍：${HouseProject.developer_id_name}</div>
 <img alt="开发商logo" src="images/index/devlogo.png" style="margin-top:20px;width:170px;height:25px;">
-<div>${DeveloperInfo.developer_desc}</div>
+<div style="padding-top:15px;padding-right:15px;">&nbsp;&nbsp;&nbsp;&nbsp;${DeveloperInfo.developer_desc}</div>
 </div>
 </div>
 </div>
@@ -288,49 +294,69 @@ function popInfo(){
 <!--项目详情-->
 
 <!--户型及价格-->
-<div style="margin-top:16px;background-color:white;" id="price" >
-</div>
-<%-- <div style="margin-top:20px;background-color:white;" id="price" >
-<div class="panel panel-default">
-<div class="panel-heading" style="background-color:white;font-weight:bold;padding-left:35px;">户型及价格</div>
-<div class="panel-body">
-<c:forEach var="obj" items="${HouseInfoList}"> 
-<div class="row" style="height:60px;background-color:#DEDEDE;margin:0px 20px;">
-<div class="col-md-3" style="color:black;font-weight:900;font-size:23px;padding-top: 15px;">户型 ${obj.house_type}</div>
-<div class="col-md-1">
+<div style="margin-top:16px;background-color:white;height:400px;padding:20px 20px 18px 20px;" id="price" >
+<div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);">户型及价格</div>
+<div style="height:240px;">
+<c:forEach var="obj" items="${HouseInfoList}" varStatus="stat"> 
+<c:if test="${stat.index<4 }">
+<div class="row" style="height:50px;background-color:rgba(238, 238, 238, 1);margin:10px 0px;text-align:center;">
+<div class="col-md-2 col-lg-2" style="font-weight:bold;font-size:15px;padding-top: 15px;">${obj.house_name}</div>
+<div class="col-md-1 col-lg-1">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_room_num}</div>
 <div style="text-align:center;font-weight:bold;">卧室</div>
 </div>
-<div class="col-md-1" style="margin-left:40px;">
+<div class="col-md-1 col-lg-1" style="margin-left:20px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_toilet_num}</div>
 <div style="text-align:center;font-weight:bold;">卫生间</div>
 </div>
-<div class="col-md-1" style="margin-left:40px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_in}</div>
-<div style="text-align:center;font-weight:bold;">面积</div>
-</div>
-<div class="col-md-2" style="margin-left:40px;padding:0px 30px;">
+<c:choose>
+	<c:when test="${HouseProject.project_type =='公寓'}">
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_in}</div>
+		<div style="text-align:center;font-weight:bold;">面积</div>
+		</div>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_out}</div>
+		<div style="text-align:center;font-weight:bold;">面积</div>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.tudi_area}</div>
+		<div style="text-align:center;font-weight:bold;">面积</div>
+		</div>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.jianzhu_area}</div>
+		<div style="text-align:center;font-weight:bold;">面积</div>
+		</div>
+	</c:otherwise>
+</c:choose>
+
+<div class="col-md-2 col-lg-2" style="margin-left:20px;padding:0px 30px;">
 <div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_price}</div>
 <div style="text-align:center;font-weight:bold;">房价</div>
 </div>
-<div class="col-md-4" style="width:200px;margin-top:12px;">
-<div class="dropdown">
-<button type="button" onclick="pop('${obj.house_type}','${obj.house_img}')" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:180px;margin: 0 auto;color:white;"><span class="glyphicon glyphicon-chevron-down"></span>&nbsp;&nbsp;&nbsp;点击查看户型图</button>
-</div>
+<div class="col-md-4 col-lg-4" style="width:200px;margin-top:12px;">
+<img alt="点击查看户型图" src="images/index/housetype.png" onclick="pop('${obj.house_type}','${obj.house_img}')" style="cursor: pointer;">
 </div>
 </div>
 <hr style="height:1px;border:none;border-top:1px solid #ffffff;margin-top:5px;margin-bottom:0px;" />
- </c:forEach> 	
-<div class="row">
-<div class="col-md-2 col-md-offset-8" style="margin-top:10px;">
-<button type="button" onclick="pop1()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:15px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;最新价格</button>
-</div>
-<div class="col-md-2" style="margin-top:10px;">
-<button type="button" onclick="pop2()" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:#EEAD0E;width:130px;margin-left:10px;color:white;"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;&nbsp;完整户型</button>
-</div>
-</div>	  
-</div></div></div> --%>
 
+</c:if>
+
+ </c:forEach>
+ </div>
+ <div class="row">
+ <div class="col-md-8 col-lg-8"></div>
+ <div class="col-md-2 col-lg-2"><img alt="最新价格" src="images/index/newsetprice.png" onclick="pop1()" style="cursor: pointer;"></div>
+ <div class="col-md-2 col-lg-2"><img alt="最新价格" src="images/index/wholetype.png" onclick="pop2()" style="cursor: pointer;"></div>
+ </div> 
+ <div class="row">
+ <div class="col-md-9 col-lg-9"></div>
+ <div class="col-md-3 col-lg-3"><div style="font-size:10px;padding-left:60px;padding-top:15px;">最近更新时间：2015.06</div></div>
+ </div>	
+</div>
+<!--户型及价格-->
 
 
 
@@ -338,34 +364,38 @@ function popInfo(){
 <div style="margin-top:20px;background-color:white;">
 <div class="panel panel-default">
 <div class="panel-heading">项目配套</div>
-    <div class="ad_position_p" style="height:645px;/* background-color:white; */">
-        <div class="limit_p" style="height:600px;width:1100px;">
-            <div style="float:left;width:850px;display:inline;">
-                <table class="ad_left_big_p" width="850" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
-                    <c:forEach items="${ProjectPeitaoImage}" var="item" >
-                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="850" height="600" /></td></tr>
+    <div class="ad_position_p" style="height:487px;/* background-color:white; */">
+        <div class="limit_p" style="height:487px;width:1100px;">
+            <div style="float:left;width:720px;display:inline;">
+                <table class="ad_left_big_p" width="720" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px;">
+                    <c:forEach items="${ProjectPeitaoImage}" var="item" varStatus="status">
+                    <c:if test="${status.index<3 }">
+                    	<tr><td><img src="http://101.200.174.253:8080/all/${item.image_name}" width="720" height="487" /></a></td></tr>
+                   </c:if>
                     </c:forEach>
                     
                 </table>
             </div>
 
-            <div class="ad_small_box_p" style="width:250px;height:600px;">
+            <div class="ad_small_box_p" style="width:224px;height:487px;">
                 <div class="top_button off"></div>
                 <div class="small_right_limit_p">
-                    <ul style="margin-top: 0px;">
-                    	<c:forEach items="${ProjectPeitaoImage}" var="item" >
-                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="250" height="140"/></li>
-                    	
+                    <ul style="margin-top: 10px;">
+                    	<c:forEach items="${ProjectPeitaoImage}" var="item" varStatus="status">
+                    	<c:if test="${status.index<3 }">
+                    		<li><img src="http://101.200.174.253:8080/all/${item.image_name}" width="224" height="140"/></li>
+                    	</c:if>
                     </c:forEach>
                     	
                     </ul>
-                    <div class="this_ad_p" style="top:0px;"><img src="images/this_ad.gif" width="250" height="159" /></div>
+                    <div class="this_ad_p" style="top:0px;"><img src="images/this_ad.gif" width="224" height="159" /></div>
                 </div>
                 <div class="bottom_button"></div>
             </div>
         </div>
 
 </div>
+
 
     </div>
 </div> 

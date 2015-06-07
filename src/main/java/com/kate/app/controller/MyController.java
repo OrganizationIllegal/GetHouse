@@ -119,10 +119,10 @@ public class MyController {
 		String area_name ="";
 		String area_num=null;
 		AreaInfo areaInfo = new AreaInfo();
-		if(username==null||"".equals(username) ){
+		/*if(username==null||"".equals(username) ){
 			req.setAttribute("error", 1);
 			return "/QuanxianError.jsp";
-		}
+		}*/
 		if(proNum!=null && !"".equals(proNum)){
 			proId = utilDao.getHouseProId(proNum);
 			
@@ -151,7 +151,7 @@ public class MyController {
 		 getSchoolAndNear(req,resp,proNum);   //学校及周边
 		 getHouseTax(req,resp,proNum);
 		 InvestData(req,resp,area_name);
-		 MiddlePriceInfo(req,resp,proId,areaId);
+		 MiddlePriceInfo(req,resp,proId,area_num);
 		 getAreaTrend(req,resp,project_type,area_num);
 		 getAreaFeature(req,resp,area_num);    //区域特点
 		 getPeopleRegion(req,resp,area_num);
@@ -272,30 +272,33 @@ public class MyController {
 	
 	@RequestMapping({"/Index/ProjectInfo"})    
 	public void  ProjectInfo(HttpServletRequest req, HttpServletResponse resp,int proId){
-		int developerId = 0;
+		String developer_num = null;
 		HouseProject pro = houseProjectService.getHouseProject(proId);
 		String timeResule = null;
 		
 		if(pro!=null){
-			developerId = pro.getDeveloper_id();
+			developer_num = pro.getDeveloper_id_name();
 			Timestamp time = pro.getProject_finish_time();
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			if(time!=null){
 				timeResule = df.format(time);
 			} 
 		}
-		DeveloperInfo developerInfo = houseProjectService.getDeveloperInfo(developerId);
-		System.out.println(developerInfo.getDeveloper_desc());
+		DeveloperInfo developerInfo = houseProjectService.getDeveloperInfo(developer_num);
 		req.setAttribute("timeResule", timeResule);
 		req.setAttribute("HouseProject", pro);
 		req.setAttribute("DeveloperInfo", developerInfo);
-		
 	}
 	
 	/*户型及价格*/
 	@RequestMapping({"/Index/HouseInfo"})
 	public void getHouseInfo(HttpServletRequest req, HttpServletResponse resp,String proNum){
+		HouseProject pro = houseProjectService.getHouseProjectByNum(proNum);
+		String type = pro.getProject_type();
 		List<HouseInfo> houseInfoList=houseInfoService.getHouseInfoList(proNum);
+		/*for(HouseInfo item : houseInfoList){
+			item.setHouse_type(type);
+		}*/
 		req.setAttribute("HouseInfoList", houseInfoList);
 	}
 	
@@ -361,7 +364,6 @@ public class MyController {
 	
 	@RequestMapping({"/Index/InvestData"})
 	public void  InvestData(HttpServletRequest req, HttpServletResponse resp,String areaName){
-		System.out.println(areaName);
  		InvestmentData data = investDataDao.getInvestmentDate(areaName);
  		/*int areaId = 0;
  		AreaInfo areaInfo = new AreaInfo();
@@ -385,7 +387,7 @@ public class MyController {
 	 */
 	
 	@RequestMapping({"/Index/MiddlePriceInfo"})    
-	public void  MiddlePriceInfo(HttpServletRequest req, HttpServletResponse resp,int proId,int areaId){
+	public void  MiddlePriceInfo(HttpServletRequest req, HttpServletResponse resp,int proId,String areaNum){
 		HouseProject pro = houseProjectService.getHouseProject(proId);
 		AreaInfo areaInfo = new AreaInfo();
 		MiddlePrice middlePrice = new MiddlePrice();
@@ -394,7 +396,7 @@ public class MyController {
 		if(pro!=null){
 			proType = pro.getProject_type();
 		}
-		middlePrice = middlePriceDao.getMiddlePrice(proType, areaId);
+		middlePrice = middlePriceDao.getMiddlePrice(proType, areaNum);
 		
 		req.setAttribute("areaName", areaName);
 		req.setAttribute("proType", proType);
@@ -595,19 +597,19 @@ public class MyController {
 			hp1 = houseProjectService.getHouseProjectByNum(data.getRecommend_num_1());
 			String desc1 = hp1.getProject_desc();
 			if(desc1!=null&&!"".equals(desc1)){
-				hp1.setProject_desc(desc1.substring(0, 20)+"...");
+				hp1.setProject_desc(desc1.substring(0, 10)+"...");
 			}
 			
 			hp2 = houseProjectService.getHouseProjectByNum(data.getRecommend_num_2());
 			String desc2 = hp2.getProject_desc();
 			if(desc2!=null&&!"".equals(desc2)){
-				hp2.setProject_desc(desc2.substring(0, 20)+"...");
+				hp2.setProject_desc(desc2.substring(0, 10)+"...");
 			}
 			
 			hp3 = houseProjectService.getHouseProjectByNum(data.getRecommend_num_3());
 			String desc3 = hp3.getProject_desc();
 			if(desc3!=null&&!"".equals(desc3)){
-				hp3.setProject_desc(desc3.substring(0, 20)+"...");
+				hp3.setProject_desc(desc3.substring(0, 10)+"...");
 			}
 			
 		}
@@ -615,17 +617,17 @@ public class MyController {
 			hp1 = houseProjectService.getHouseProject(project.getRecommend_id_1());
 		    String desc1 = hp1.getProject_desc();
 		    if(desc1!=null&&!"".equals(desc1)){
-				hp1.setProject_desc(desc1.substring(0, 20)+"...");
+				hp1.setProject_desc(desc1.substring(0, 10)+"...");
 			}
 			hp2 = houseProjectService.getHouseProject(project.getRecommend_id_2());
 			String desc2 = hp2.getProject_desc();
 			if(desc2!=null&&!"".equals(desc2)){
-				hp2.setProject_desc(desc2.substring(0, 20)+"...");
+				hp2.setProject_desc(desc2.substring(0, 10)+"...");
 			}
 			hp3 = houseProjectService.getHouseProject(project.getRecommend_id_3());
 			String desc3 = hp3.getProject_desc();
 			if(desc3!=null&&!"".equals(desc3)){
-				hp3.setProject_desc(desc3.substring(0, 20)+"...");
+				hp3.setProject_desc(desc3.substring(0, 10)+"...");
 			}
 		}
 		System.out.println(hp1.getProject_num());

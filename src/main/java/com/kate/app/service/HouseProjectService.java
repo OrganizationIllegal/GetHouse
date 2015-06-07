@@ -40,9 +40,9 @@ public class HouseProjectService {
 	}
 	
 	
-	public DeveloperInfo getDeveloperInfo(int id){
+	public DeveloperInfo getDeveloperInfo(String developer_num){
 		DeveloperInfo developerInfo = new DeveloperInfo();		
-		developerInfo = houseProjectDao.DeveloperInfoDao(id);
+		developerInfo = houseProjectDao.DeveloperInfoDao(developer_num);
 		return developerInfo;
 				
 	}

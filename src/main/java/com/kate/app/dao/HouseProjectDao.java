@@ -48,6 +48,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setGps(rs.getString("gps"));
 				projectInfo.setReturn_money(rs.getString("return_money"));
 				projectInfo.setDeveloper_id(rs.getInt("developer_id"));
+				projectInfo.setDeveloper_id_name(rs.getString("developer_id_name"));
 				projectInfo.setProject_high_price(rs.getString("project_high_price"));
 				projectInfo.setProject_min_price(rs.getString("project_min_price"));
 				projectInfo.setArea_id(rs.getInt("area_id"));
@@ -56,9 +57,6 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setRecommend_id_2(rs.getInt("recommend_id_2"));
 				projectInfo.setRecommend_id_3(rs.getInt("recommend_id_3"));
 				projectInfo.setWuyefei(rs.getString("wuyefei"));
-				projectInfo.setDeveloper_id_name(rs.getString("developer_id_name"));
-				projectInfo.setMin_area(rs.getInt("min_area"));
-				projectInfo.setMax_area(rs.getInt("max_area"));
 
 			}
 			
@@ -101,6 +99,7 @@ public class HouseProjectDao extends BaseDao{
 				projectInfo.setGps(rs.getString("gps"));
 				projectInfo.setReturn_money(rs.getString("return_money"));
 				projectInfo.setDeveloper_id(rs.getInt("developer_id"));
+				projectInfo.setDeveloper_id_name(rs.getString("developer_id_name"));
 				projectInfo.setProject_high_price(rs.getString("project_high_price"));
 				projectInfo.setProject_min_price(rs.getString("project_min_price"));
 				projectInfo.setArea_id(rs.getInt("area_id"));
@@ -153,12 +152,12 @@ public class HouseProjectDao extends BaseDao{
 	/*
 	 * �鿴�����̵���Ϣ
 	 */
-	public DeveloperInfo DeveloperInfoDao(int id){
+	public DeveloperInfo DeveloperInfoDao(String developer_num){
 		DeveloperInfo developerInfo = new DeveloperInfo();
 		try{
-			String sql = "select * from developer_info where id=?";
+			String sql = "select * from developer_info where developer_num=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, developer_num);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				developerInfo.setDeveloper_name(rs.getString("developer_name"));

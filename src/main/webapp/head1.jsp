@@ -49,10 +49,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		<a href="#"style="font-size:17px;color:#9C9C9C;font-weight:bold;">Blog</a>
        	</div>
        	</div> -->
-       <div class="col-md-3" style="padding-right:0px">
+       	
+       	<%
+            
+       		if(request.getSession().getAttribute("username")!=null){
+       			String role = request.getSession().getAttribute("role").toString();
+       %>   
+    
+	       			<div class="col-md-3" style="padding-right:0px">
        		<img src="pic/tel.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">400 810 9685</span>
-       		<img src="pic/wq.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">登录/注册</span>
-       </div>
+       		<img src="pic/wq.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">
+       		<a href="${pageContext.request.contextPath}/UserMessageList">欢迎<%
+	       				if("0".equals(role)){
+	       				
+	       			%>管理员${sessionScope.username}
+	       			<%
+	       				}else{%>
+	       				
+	       					普通用户${sessionScope.username}<%
+	       				}
+	       				%></a>/<a href="${pageContext.request.contextPath}/logout.jsp" >退出</a></span>
+	       			
+	       </div>
+	       <%
+       		}
+	         else{
+	       %>
+       		
+       				<div class="col-md-3" style="padding-right:0px">
+       		<img src="pic/tel.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">400 810 9685</span>
+       		<img src="pic/wq.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)"><a href="${pageContext.request.contextPath}/login.jsp">登录</a>/<a href="javasctipr:void(0);" onclick="pop()">注册</a></span>
+       </div> 
+	       
+	       <%
+	         }
+	       %> 
+       
    </div>
 </nav>
 <!--end我们的团队-->

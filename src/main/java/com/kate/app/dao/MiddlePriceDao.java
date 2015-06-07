@@ -10,13 +10,13 @@ import com.alibaba.fastjson.JSONArray;
 import com.kate.app.model.MiddlePrice;
 @Repository 
 public class MiddlePriceDao extends BaseDao {
-	public MiddlePrice getMiddlePrice(String project_type, int areaId){
+	public MiddlePrice getMiddlePrice(String project_type, String areaNum){
 		MiddlePrice middlePrice = new MiddlePrice();
 		try {
-			String sql = " SELECT * from area_middle_price where project_type=? and area_id=?";
+			String sql = " SELECT * from area_middle_price where project_type=? and area_quyu=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, project_type);
-			pstmt.setInt(2, areaId);
+			pstmt.setString(2, areaNum);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
 				middlePrice.setArea_quyu(rs.getString("area_quyu"));
