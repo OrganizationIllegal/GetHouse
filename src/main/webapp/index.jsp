@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 计算器 start -->
 <style type="text/css">
 body{
-	padding-top: 105px !important;
+	padding-top: 105px !important; 
 	background-color:rgba(233, 243, 248, 1)!important;
 	font-family:"Microsoft YaHei"!important;
 }
@@ -128,11 +128,11 @@ function popInfo(){
 <!-- pop guorui end -->
 </head>
 <body onload="getIndexMap();">
-<jsp:include page="head.jsp" />
+<jsp:include page="head2.jsp" />
 <div class="container">
 <div id="all">
 <!-- 导航标签 -->
-<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:100px;min-height:27px;margin-bottom: 0px;margin-left:207px;width:995px;">
+<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:60px;min-height:27px;margin-bottom: 0px;margin-left:207px;width:995px;">
 <ul class="nav nav-tabs nav-justified">
    <li><a href="#info"  onclick="tab1()">项目介绍</a></li>
    <li><a href="#price"  onclick="tab2()">户型和价格</a></li>
@@ -143,7 +143,7 @@ function popInfo(){
 </ul>
 </nav>
 <!--项目图片-->
-<div style="margin-top:-17px;/* background-color:white; */">
+<div style="margin-top:-58px;">
     <div class="ad_position" style="height:487px;/* background-color:white; */">
 
         <div class="limit" style="height:487px;width:1100px;margin-left:-40px;">
@@ -325,42 +325,42 @@ function popInfo(){
 <div style="height:240px;">
 <c:forEach var="obj" items="${HouseInfoList}" varStatus="stat"> 
 <c:if test="${stat.index<4 }">
-<div class="row" style="height:50px;background-color:rgba(238, 238, 238, 1);margin:10px 0px;text-align:center;">
+<div class="row" style="height:50px;background-color:rgba(238, 238, 238, 1);margin:10px 0px 0px 0px;text-align:center;">
 <div class="col-md-2 col-lg-2" style="font-weight:bold;font-size:15px;padding-top: 15px;">${obj.house_name}</div>
 <div class="col-md-1 col-lg-1">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_room_num}</div>
-<div style="text-align:center;font-weight:bold;">卧室</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.house_room_num}</div>
+<div style="text-align:center;font-weight:bold;font-size:12px;">卧室</div>
 </div>
 <div class="col-md-1 col-lg-1" style="margin-left:20px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_toilet_num}</div>
-<div style="text-align:center;font-weight:bold;">卫生间</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.house_toilet_num}</div>
+<div style="text-align:center;font-weight:bold;font-size:12px;">卫生间</div>
 </div>
 <c:choose>
 	<c:when test="${HouseProject.project_type =='公寓'}">
-		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
-		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_in}</div>
-		<div style="text-align:center;font-weight:bold;">面积</div>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;width:85px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.house_size_in}</div>
+		<div style="text-align:center;font-weight:bold;font-size:12px;">室内面积</div>
 		</div>
-		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
-		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_size_out}</div>
-		<div style="text-align:center;font-weight:bold;">面积</div>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;width:85px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.house_size_out}</div>
+		<div style="text-align:center;font-weight:bold;font-size:12px;">室外面积</div>
 		</div>
 	</c:when>
 	<c:otherwise>
-		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
-		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.tudi_area}</div>
-		<div style="text-align:center;font-weight:bold;">面积</div>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;width:85px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.tudi_area}</div>
+		<div style="text-align:center;font-weight:bold;font-size:12px;">土地面积</div>
 		</div>
-		<div class="col-md-1 col-lg-1" style="margin-left:20px;">
-		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.jianzhu_area}</div>
-		<div style="text-align:center;font-weight:bold;">面积</div>
+		<div class="col-md-1 col-lg-1" style="margin-left:20px;width:85px;">
+		<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.jianzhu_area}</div>
+		<div style="text-align:center;font-weight:bold;font-size:12px;">建筑面积</div>
 		</div>
 	</c:otherwise>
 </c:choose>
 
 <div class="col-md-2 col-lg-2" style="margin-left:20px;padding:0px 30px;">
-<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;">${obj.house_price}</div>
-<div style="text-align:center;font-weight:bold;">房价</div>
+<div style="background-color:white;margin-top: 10px;text-align:center;border-radius:5px;font-weight:bold;font-size:12px;">${obj.house_price}</div>
+<div style="text-align:center;font-weight:bold;font-size:12px;">房价</div>
 </div>
 <div class="col-md-4 col-lg-4" style="width:200px;margin-top:12px;">
 <img alt="点击查看户型图" src="images/index/housetype.png" onclick="pop('${obj.house_type}','${obj.house_img}')" style="cursor: pointer;">
@@ -372,7 +372,7 @@ function popInfo(){
 
  </c:forEach>
  </div>
- <div class="row">
+ <div class="row" style="margin-top:30px;">
  <div class="col-md-8 col-lg-8"></div>
  <div class="col-md-2 col-lg-2"><img alt="最新价格" src="images/index/newsetprice.png" onclick="pop1()" style="cursor: pointer;"></div>
  <div class="col-md-2 col-lg-2"><img alt="最新价格" src="images/index/wholetype.png" onclick="pop2()" style="cursor: pointer;"></div>
@@ -387,7 +387,7 @@ function popInfo(){
 
 
 <c:if test="${!empty ProjectPeitaoImage }">
-	<div style="margin-top:20px;background-color:white;">
+	<div style="margin-top:16px;background-color:white;">
 <div class="panel panel-default">
 <div class="panel-heading">项目配套</div>
     <div class="ad_position_p" style="height:487px;/* background-color:white; */">
@@ -429,7 +429,7 @@ function popInfo(){
 </c:if>
 
 <!--项目位置-->
-<div style="margin-top:16px;background-color:white;height:480px;">
+<div style="margin-top:16px;background-color:white;height:480px;" id="position">
 <div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);padding-top:20px;padding-left:30px;">项目位置</div>
 <div class="row" style="padding-top:10px;">
 	  	<div class="col-md-6 col-lg-6" style="padding-left:30px;">
@@ -444,7 +444,7 @@ function popInfo(){
 <!--项目位置-->
 
 <!--学校及周边-->
-<div style="margin-top:20px;background-color:white;" id="round">
+<div style="margin-top:16px;background-color:white;" id="round">
 	<div class="panel panel-default">
   		<div class="panel-heading" style="font-size:15px;font-weight:bold;">学校及周边</div>
   		<div class="panel-body">
@@ -500,7 +500,7 @@ function popInfo(){
 </div>
 <!--估计总购房税费-->
 <c:if test="${!empty housetaxdata}">
-	<div style="margin-top:20px;background-color:white;" id="purchase">
+	<div style="margin-top:16px;background-color:white;" id="purchase">
 <ul class="nav nav-tabs" id="costTabs">
       <li class="active"><a href="#home" data-toggle="tab">购房税费</a></li>
       <li><a href="#profile" data-toggle="tab">持有成本</a></li>
@@ -712,7 +712,7 @@ function popInfo(){
 <!--中位数公寓房价-->
 <!--中位数公寓房价-->
 <!--trend-->
-<div  style="margin-top:20px;background-color:white;">
+<div  style="margin-top:16px;background-color:white;">
  <ul class="nav nav-tabs nav-justified" id="trendTabs">
       <li class="active"><a href="#price" data-toggle="tab">${area_name}区域中位数房价走势</a></li>
       <li><a href="#rent" data-toggle="tab">${area_name}区域租金走势</a></li>
@@ -778,7 +778,7 @@ function popInfo(){
 <div>
 	<div style="width:720px;float:left;">
 		<!-- 地区特点start -->
-			<div style="margin-top:20px;">
+			<div style="margin-top:16px;">
 			  <div class="panel panel-default">
 			  	<div class="panel-heading" style="background-color:white;font-size:15px;font-weight:bold;">${area_name} 地区特点</div>
 			  	 <div class="panel-body">
@@ -911,7 +911,7 @@ function popInfo(){
 	
 
 <!--区域家庭情况构成pie-->
-<div style="margin-top:20px;background-color:white;">
+<div style="margin-top:16px;background-color:white;">
 <div class="panel panel-default">
 	  <div class="panel-heading" style="font-size:15px;font-weight:bold;">${area_name}区域家庭情况构成</div>
 	  <div class="panel-body">
@@ -931,7 +931,7 @@ function popInfo(){
 
 
 
-<div style="margin-top:20px;background-color:white;height:309px">
+<div style="margin-top:16px;background-color:white;height:309px">
 	<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">新闻报道</div>
 	<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:990px;margin-left:0px;"/>	
 
