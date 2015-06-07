@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 </head>
 <body style="padding-top: 150px;">
- <jsp:include page="head.jsp" />
+ <jsp:include page="head2.jsp" />
 	<div class="container">
        <!-- <div class="row" style="height:30px;background-color:#4B0082;">
             <div class="col-lg-1"></div>
@@ -24,10 +24,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-lg-1" style="padding-top:10px;"></div>
             <c:choose>
             	<c:when test="${type==0}">
-            		<span style="font-family:华文中宋; font-size:25px;color:black; ">${zhiYeDetail.title }</span>
+            		<span style="font-family:华文中宋; font-size:25px;color:black; ">${zhiYeDetail.title }</span><br>
+            		<div class="col-lg-1 col-md-1"></div><span style="padding-left:5px;font-size:12px;color:grey;">添加时间：${zhiYeDetail.fabu_time }</span>
             	</c:when>
             	<c:otherwise>
             		<span style="font-family:华文中宋; font-size:25px;color:black; ">${newsBokeDetail.news_title }</span>
+            		<div class="col-lg-1 col-md-1"></div><span style="padding-left:5px;font-size:12px;color:grey;">添加时间：${newsBokeDetail.news_time }</span>
             	</c:otherwise>
             </c:choose>
         </div>
@@ -248,7 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
 
 
-   <jsp:include page="foot.jsp" />
+   <jsp:include page="foot1.jsp" />
    
 </body>
 

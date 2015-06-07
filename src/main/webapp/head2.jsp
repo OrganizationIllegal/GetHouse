@@ -12,15 +12,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
    <link href="/css/index.css" rel="stylesheet">
    <script>
+   $(document).ready(function() {
+    $("#mouse").hover(function(){
+   
+        $("#info").show();
+      
+    }/* , function(){
+        $("#info").hide();
+    } */);
+    
+    $("#info").mouseleave(function() {
+                $("#info").hide();
+            })
+            
+});
    function pop(){
        $('#modal').modal('show');
      }
    </script>
+  <style text="text/css">
+   #info{
+   	  background-color: rgb(255, 255, 255);
+  width: 108px;
+  position: absolute;
+  left: 1074px;
+  top: 59px;
+  z-index: 2;
+   }
+   </style>
 </head>
  <!-- <body style="padding-top:0px;padding-left:37px;padding-right:37px;width:1920px">-->
  <body style="padding-top:0px;padding-left:37px;padding-right:37px;">
+ <div id="info" style="display:none;">
+	       				<ul style="margin:5px;text-align:center">
+	       					<li><a href="#">我的收藏</a></li>
+	       					<li><a href="/changePass.jsp">更改密码</a></li>
+	       					<li><a href="${pageContext.request.contextPath}/logout.jsp">退出登录</a></li>
+	       				</ul>
+	       			</div>
 <!--   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">-->
- <nav  role="navigation" style="width:100%;margin:0 auto;background-color:white;" class="navbar navbar-default navbar-fixed-top">
+ <nav  role="navigation" style="width:100%;margin:0 auto;background-color:white;z-index: 0;" class="navbar navbar-default navbar-fixed-top">
    <div class="row" style="padding-top:25px; height:60px;width:990px;margin-left:200px;">
 		<div class="col-md-2">
 		  <!--  <img src="http://101.200.174.253:8080/images/logo.PNG" style="margin-top:-20px;"/>-->
@@ -56,10 +87,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        			String role = request.getSession().getAttribute("role").toString();
        %>   
     
-	       			<div class="col-md-3" style="padding-right:0px">
+	        <div  class="col-md-3" style="padding-right:0px">
        		<img src="pic/tel.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">400 810 9685</span>
-       		<img src="pic/wq.jpg"/><span style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">
-       		<a href="${pageContext.request.contextPath}/UserMessageList">欢迎<%
+       		<img src="pic/wq.jpg"/><span id="mouse" style="font-family:微软雅黑;font-weight:Regular;font-size:15px;color:rgb(137,137,137)">
+       		<a href="${pageContext.request.contextPath}/UserMessageList"><%
 	       				if("0".equals(role)){
 	       				
 	       			%>管理员${sessionScope.username}
@@ -68,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       				
 	       					普通用户${sessionScope.username}<%
 	       				}
-	       				%></a>/<a href="${pageContext.request.contextPath}/logout.jsp" >退出</a></span>
+	       				%></a><%-- /<a href="${pageContext.request.contextPath}/logout.jsp" >退出</a></span> --%>
 	       			
 	       </div>
 	       <%

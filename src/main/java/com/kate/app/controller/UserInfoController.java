@@ -180,6 +180,30 @@ private static byte[] base64DecodeChars = new byte[] { -1, -1, -1, -1, -1,
 		return "/index01";
 	}
 	
+	@RequestMapping({ "/loginPassChange" })
+	public String loginPassChange(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		HttpSession session = req.getSession();
+		//String username1 = (String)session.getAttribute("username");
+		//session.getAttributeNames();
+		//String name = HttpSession.getAttribute(username);
+		String username = req.getParameter("username1");
+		String password = req.getParameter("passNew1");
+		String role = req.getParameter("role");
+		byte [] username_str = decode(username);
+		byte [] password_str = decode(password);
+		String str_username = new String(username_str);
+		String str_password = new String(password_str);
+		boolean flag = userInfoDao.changePass(str_username, str_password);
+		
+		req.setAttribute("flag", flag);
+		session.setAttribute("username", str_username);
+		session.setAttribute("role", role);
+		
+		return "/index01";
+	}
+	
+	
+	
 	@RequestMapping({ "/loginPanduan" })
 	public void loginPanduan(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String username = req.getParameter("username");

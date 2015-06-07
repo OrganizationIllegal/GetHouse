@@ -9,13 +9,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
    <title>HousePurchasing</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+   <link href="/css/pagination.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <script src="/js/jquery.bootpag.min.js"></script>
+   <!-- <script src="/js/jquery.pagination.js"></script> -->
 </head>
-<body style="padding-top: 60px;">
+<body style="padding-top: 105px;">
+
  <jsp:include page="head2.jsp" />
+ <a name="wintop"></a>
 	<div class="container">
        <!-- <div class="row" style="height:30px;background-color:#4B0082;">
             <div class="col-lg-1"></div>
@@ -25,6 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-lg-1"></div>
             <div class="col-lg-2" style="font-size:24px;line-height:70px;height:100%;font-weight:bold;">博客</div>
         </div>-->
+        
         <div class="row" style="margin-top:20px;">
             <div class="col-lg-1"></div>
             <div class="col-lg-7">
@@ -131,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         
     </div>
-    <div class="row" style="height:200px;width:1140px;background-color:rgb(20,51,82);vertical-align:middle;text-align:center;position:relative;margin-left:1px">
+    <div class="row" style="height:200px;width:100%;background-color:rgb(20,51,82);vertical-align:middle;text-align:center;position:relative;margin-left:1px">
         <div style="left:40%;top:40%;position:absolute;">
             <font style="font-size:20px;font-weight:bold;color:#FFFFFF;">为您提供最好的海外购房服务</font><br>
             <button class="buttton">注册</button>
@@ -158,8 +162,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	var html = getHtml(data.List);
                         	$("#mainlist").html(html);
                         	$('#page-selection').bootpag({
-                            	total: data.pageCount
+                            	total: data.pageCount,
+                            	next:'下一页',
+                            	prev:'上一页',
+                            	/* maxVisible: 0, */
+                            	leaps: true    
 						    });
+                        	scroll(0,0);
                         }  
                     }); 
 			
@@ -167,7 +176,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    });
 	    
 	    $('#page-selection').bootpag({
-	        total: "${pageCount}"
+	        total: "${pageCount}",
+	        next:'下一页',
+        	prev:'上一页',
+        	/* maxVisible: 0, */
+        	leaps: true  
 	    }).on("page", function(event, num){
 	    
 	         $.ajax({   
@@ -179,10 +192,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         success: function(data) {
 	                        count = data.total;
 	                 		var html = getHtml(data.List);
-	                        $("#mainlist").html(html);
+	                 		scroll(0,0);
                      }
                         
                   }); 
+	         location.hash="#";  
 	    });
 	    
 	    
@@ -195,7 +209,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						html+="</a></div><div class='media-body'><h4 class='media-heading'>"+items[j].title;
  						html+="</h4><p style='font-size:12px;'>"+items[j].news_fenlei;
  						html+="</p><p style='font-size:120x;'>"+items[j].news_abstract;
- 						html+="<a href='/Detail?id="+items[j].id+"&type=1'>全文></a></div></li>";
+ 						html+="</p><a href='/Detail?id="+items[j].id+"&type=1'>全文></a></div></li>";
                 	}
                 }
                 else{
