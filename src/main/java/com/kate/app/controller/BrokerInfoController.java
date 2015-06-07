@@ -1,5 +1,6 @@
 package com.kate.app.controller;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +42,60 @@ public class BrokerInfoController {
 		req.setAttribute("userList", userList);
 		return "/serviceTeam.jsp";
 	}
+	//服务团队分页
+		@RequestMapping({"/brokerinfoPage"})
+		public void BrokerListPage(HttpServletRequest req, HttpServletResponse resp){
+			String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
+			int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
+			
+			String pageSize_str  = req.getParameter("pageSize");  //每页锟斤拷锟斤拷锟斤拷锟�
+			int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
+			
+			
+			List<BrokerInfo> brokerList=brokerInfoDao.listBrokerInfo();
+			
+			int total = brokerList.size();
+			int pageEnd = pageNum * pageSize;
+			int end = pageEnd < total ? pageEnd : total;
+			
+			int start = (pageNum-1) * pageSize;
+			int pageStart = start == pageEnd ? 0 : start;
+			
+			JSONObject json = new JSONObject();
+			JSONArray array = new JSONArray();
+			if(pageStart <= end){
+				List<BrokerInfo> resultList=brokerList.subList(start, end);
+				for(BrokerInfo item : resultList){
+					JSONObject obj = new JSONObject();
+					obj.put("id", item.getId());
+					obj.put("broker_img", item.getBroker_img());
+					obj.put("broker_language", item.getBroker_language());
+					obj.put("broker_name", item.getBroker_name());
+					obj.put("broker_region", item.getBroker_region());
+					obj.put("office", item.getOffice());
+					obj.put("introduction", item.getIntroduction());
+					obj.put("broker_num", item.getBroker_num());
+					obj.put("broker_experience", item.getBroker_experience());
+					obj.put("broker_type", item.getBroker_type());
+					obj.put("broker_zizhi", item.getBroker_zizhi());
+					array.add(obj);
+				}
+				json.put("List", array);
+				json.put("total", total);
+			}
+			else{
+				json.put("List", "");
+				json.put("total", total);
+			}
+			
+			
+			try{
+				writeJson(json.toJSONString(),resp);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
 	//点击提交，提交留言
 	@RequestMapping({"/ServiceTeam/MessageSubmit"})
 	public String messageSubmit(HttpServletRequest req,HttpServletResponse resp){
@@ -68,58 +124,16 @@ public class BrokerInfoController {
 		req.setAttribute("userList", userList);
 		return "/serviceTeam.jsp";
 	}
-	//服务团队分页
-//	@RequestMapping({"/brokerinfoPage"})
-//	public void BrokerListPage(HttpServletRequest req, HttpServletResponse resp){
-//		String pageIndex = req.getParameter("pageIndex");   //锟斤拷前页锟斤拷
-//		int pageNum  = pageIndex==null? 0 :Integer.parseInt(pageIndex);
-//		
-//		String pageSize_str  = req.getParameter("pageSize");  //每页锟斤拷锟斤拷锟斤拷锟�
-//		int pageSize  = pageSize_str==null? 0 :Integer.parseInt(pageSize_str);
-//		
-//		List<BrokerInfo> brokerList=brokerInfoDao.listBrokerInfo();
-//		
-//		int total = brokerList.size();
-//		int pageEnd = pageNum * pageSize;
-//		int end = pageEnd < total ? pageEnd : total;
-//		
-//		int start = (pageNum-1) * pageSize;
-//		int pageStart = start == pageEnd ? 0 : start;
-//		
-//		JSONObject json = new JSONObject();
-//		JSONArray array = new JSONArray();
-//		if(pageStart <= end){
-//			List<BrokerInfo> resultList=brokerList.subList(start, end);
-//			for(BrokerInfo item : resultList){
-//				JSONObject obj = new JSONObject();
-//				obj.put("id", item.getId());
-//				obj.put("Fanxian", item.getFanxian());
-//				obj.put("Keshou", item.getKeshou());
-//				obj.put("MaxArea", item.getMaxArea());
-//				obj.put("MaxPrice", item.getMaxPrice());
-//				obj.put("MinArea", item.getMinArea());
-//				obj.put("MinPrice", item.getMinPrice());
-//				obj.put("Project_img", item.getProject_img());
-//				obj.put("Project_name", item.getProject_name());
-//				obj.put("project_num", item.getProject_num());
-//				array.add(obj);
-//			}
-//			json.put("List", array);
-//			json.put("total", total);
-//		}
-//		else{
-//			json.put("List", "");
-//			json.put("total", total);
-//		}
-//		
-//		
-//		try{
-//			writeJson(json.toJSONString(),resp);
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//	}
 	
-	
+	public void writeJson(String json, HttpServletResponse response)throws Exception{
+	    response.setContentType("text/html");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+	    if(StringUtils.isNotEmpty(json)){
+	        out.println(json);
+	    }
+	    out.flush();
+	    out.close();
+	}
 	
 }
