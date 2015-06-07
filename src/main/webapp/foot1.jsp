@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="/css/index.css" rel="stylesheet">
 </head>
 <body style="background-color: rgb(228,229,231)">
-	<div class="row" style="background-color: rgb(228,229,231)">
+	<div class="row" style="background-color: rgb(228,229,231);margin-left:-35px;margin-right:-35px;">
 		<div class="col-md-1"></div>
 		<div class="col-md-8">
 			<div style="width:100%;padding-top:20px">
