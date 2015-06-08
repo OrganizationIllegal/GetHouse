@@ -14,10 +14,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="/css/pagination.css" rel="stylesheet">
        <script src="/js/jquery.pagination.js"></script>
 </head>
+
 <body>
     <jsp:include page="head2.jsp" />
-	<div style="width:100%;height:250px;background-color:rgb(20,51,82);padding-top:70px;padding-left:100px;margin-top: -20;">
-		<div style="color:white;font-size:40px;font-weight:bolder;font-family:黑体;">专业的服务团队为您提供专业的服务</div>
+	<div style="width:100%;height:250px;background-color:rgb(20,51,82);padding-top:70px;padding-left:100px;margin-top: 0px;">
+
+		<div style="color:white;font-size:40px;font-weight:bolder;font-family:黑体;margin-top:55px">专业的服务团队为您提供专业的服务</div>
 		<div style="color:white;font-size:17px;font-weight:bold;">持有海外认证资质的房产经纪人、会计师、律师、贷款咨询师为您提供定制化的服务</div>
 	</div>
 	<!-- 上方搜索列start -->
@@ -199,7 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
  <jsp:include page="foot1.jsp" /> 
  <script src="/js/jquery.pagination.js"></script>
-   <script type="text/javascript">
+<script type="text/javascript">
          var pageIndex = 0;     //页面索引初始值   
          var pageSize = 4;     //每页显示条数初始化，修改显示条数，修改这里即可  
          var total = 100;

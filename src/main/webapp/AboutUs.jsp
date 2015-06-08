@@ -185,8 +185,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }
     </script>  
 </head>
-<body style="padding-top: 100px;">
-<jsp:include page="head.jsp" />
+<body style="padding-top: 20px;">
+<jsp:include page="head2.jsp" />
 <div class="container">
 <!--start我们革命性的改变了-->
    <div class="row" style="padding:40px 20px 40px 20px;">
@@ -456,7 +456,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </div>
 <!--end注册模态框-->
-<jsp:include page="foot.jsp" />
+<jsp:include page="foot1.jsp" />
 </body>
 
 </html>

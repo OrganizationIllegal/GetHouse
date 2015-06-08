@@ -17,9 +17,10 @@ public class UserInfoDao extends BaseDao {
 		public List<User> judge(String username) throws SQLException{
 			List<User> list = new ArrayList<User>();
 			try{
-				String sql = "select * from user where nick_name=?" ;
+				String sql = "select * from user where email=? or tel=?";
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, username);
+				pstmt.setString(2, username);
 				ResultSet rs = pstmt.executeQuery();
 				int id=0;
 				String pwd=null;
@@ -42,6 +43,29 @@ public class UserInfoDao extends BaseDao {
 			return list;
 	        
 		}
+		
+		
+		
+		//用户修改密码
+				public boolean changePass(String username,String passNew) throws SQLException{
+					boolean flag = true;
+					try{
+						String sql = "update user set pwd=? where nick_name=?" ;
+						PreparedStatement pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, passNew);
+						pstmt.setString(2, username);
+						int result = pstmt.executeUpdate();
+						if(result == 0){
+							flag = false;
+						}
+						
+					}catch (Exception e) {
+			            e.printStackTrace();
+			        }
+					return flag;
+			        
+				}
+				
 	
 	
 	

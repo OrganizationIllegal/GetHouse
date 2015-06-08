@@ -38,7 +38,7 @@ $(function(){
 	//小图点击时，开始动画
 	jQuery(".ad_position .limit .ad_small_box ul li").dblclick(function(){
 		ad_huandeng_click_i=jQuery(".ad_position .limit .ad_small_box ul li").index(jQuery(this));		
-		jQuery(".ad_position .limit .ad_left_big").animate({"margin-top":ad_huandeng_click_i*-600},{duration:animate_time,queue:false});//大图上移
+		jQuery(".ad_position .limit .ad_left_big").animate({"margin-top":ad_huandeng_click_i*-487},{duration:animate_time,queue:false});//大图上移
 		if(ad_huandeng_click_i<ad_size)//当小图最后三张显示出来时，不再上移
 			{
 				if(ad_huandeng_click_i==0||ad_huandeng_click_i==1)
@@ -79,7 +79,7 @@ $(function(){
 		var small_ad_hover_i = jQuery(".ad_position .limit .ad_small_box ul li").index(jQuery(this));
 		var this_ad_top=jQuery(".ad_position .limit .ad_small_box .small_right_limit .this_ad").css("top");
 		this_ad_top=parseInt(this_ad_top);
-		jQuery(".ad_position .limit .ad_left_big").animate({"margin-top":small_ad_hover_i*-600},{duration:animate_time,queue:false});if(small_ad_hover_i!=ad_huandeng_click_i);
+		jQuery(".ad_position .limit .ad_left_big").animate({"margin-top":small_ad_hover_i*-487},{duration:animate_time,queue:false});if(small_ad_hover_i!=ad_huandeng_click_i);
 		if(small_ad_hover_i==0)
 			{jQuery(".ad_position .limit .ad_small_box .small_right_limit .this_ad").css("top","0px");}
 		else if(small_ad_hover_i<ad_huandeng_click_i)

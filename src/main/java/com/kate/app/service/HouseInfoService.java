@@ -16,11 +16,11 @@ public class HouseInfoService {
 	public List<HouseInfo> getHouseInfoList(String proNum){
 		List<HouseInfo> list=new ArrayList<HouseInfo>();
 		list=houseInfoDao.HouseInfoDao(proNum);
-		for(int i=0;i<list.size();i++){
+		/*for(int i=0;i<list.size();i++){
 			String houseprice=list.get(i).getHouse_price();
 			String price=getMoney(houseprice);
 			list.get(i).setHouse_price(price);
-			}
+			}*/
 		return list;
 	}
     public String getMoney(String money){

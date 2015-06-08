@@ -40,16 +40,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     margin: auto;
     margin-top: 75px;
      }
-     #username,#username1{
+      #username,#username1{
      	background-color:#ECF4F7;
      	width: 365px;
         height: 50px;
      }
-     #password,#password1{
+     #passNow,#passNow1{
+     	background-color:#ECF4F7;
+     	width: 365px;
+        height: 50px;
+        margin-top:-25px;
+     }
+     #passNew,#passNew1{
      	background-color:#ECF4F7;
      	width: 365px;
   		height: 50px;
-  		margin-top:-25px;
+  		margin-top:-50px;
+     }
+     #passWord,#passWord1{
+     	background-color:#ECF4F7;
+     	width: 365px;
+  		height: 50px;
+  		margin-top:-75px;
+     }
+     #sure{
+     	background-color:#ECF4F7;
+     	width: 365px;
+  		height: 115px;
+  		margin-top:-100px;
      }
     #login{
     	margin-left:-9px;
@@ -59,15 +77,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 </head>
 <body style="padding-top: 105px;">
-<jsp:include page="head2.jsp" />
+<jsp:include page="head.jsp" />
  <div class="container1" >
  <div id="content" width="521">
  <div><img src="images/login.png" width="521" height="15" />
  </div>
-  <div style="text-align:center;margin:27px;"><Strong style="font-family:微软雅黑;font-size:29px;">欢迎登陆海外房产优选</Strong> </div>
-  <form class="form-horizontal" role="form" method="post" name="fm" action="/login">
-   <div class="form-group">
-      <!-- <label for="firstname" class="col-sm-2 control-label">用户名</label> -->
+  <div style="margin:27px;margin-left: 79px;"><Strong style="font-family:微软雅黑;font-size:29px;">更改密码</Strong> </div>
+  <form class="form-horizontal" role="form" method="post" name="fm" action="/loginPassChange">
+   <!-- <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">用户名</label>
       <div class="col-sm-10" style="margin-left:80px;">
          <input type="text" class="form-control" id="username" autocomplete="off"
             name="username" style="background-image:url(images/0.png);background-repeat:no-repeat;background-position:left;padding-left:46px;" placeholder="手机号/邮箱">
@@ -81,39 +99,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
       </div>
       
+   </div> -->
+   
+   <div class="form-group">
+      <!-- <label for="firstname" class="col-sm-2 control-label">用户名</label> -->
+      <div class="col-sm-10" style="margin-left:80px;">
+         <input type="text" class="form-control" id="passNow" autocomplete="off"
+            name="passNow" style="background-image:url(images/2.png);background-repeat:no-repeat;background-position:left;padding-left:46px;" placeholder="当前密码">
+         <input type="hidden" class="form-control" id="passNow1" name="passNow1" >
+        <input type="hidden" class="form-control" id="role" 
+            name="role" placeholder="用户角色">
+           
+      </div>
+       <div id="user" style="height:60px;margin-left:20px;">
+         
+      </div>
+      
    </div>
    <div class="form-group">
-      <!-- <label for="lastname" class="col-sm-2 control-label">密码</label> -->
+     
       <div class="col-sm-10" style="margin-left:80px;">
-         <input type="text" class="form-control" id="password" autocomplete="off"
-            name="password" style="background-image:url(images/2.png);background-repeat:no-repeat;background-position:left;padding-left:46px;" placeholder="密码">
-         <input type="hidden" class="form-control" id="password1" 
-            name="password1" placeholder="     密码">
+         <input type="text" class="form-control" id="passNew" autocomplete="off"
+            name="passNew" style="background-image:url(images/2.png);background-repeat:no-repeat;background-position:left;padding-left:46px;" placeholder="新密码">
+         <input type="hidden" class="form-control" id="passNew1" name="passNew1">
       </div>
        <div id="pass" style="height:60px;margin-left:20px;">
           
       </div>
    </div>
    
-   <div class="form-group" style="margin-top:-33px;">
-      <div class="col-sm-offset-2 col-sm-10">
-         <div class="checkbox">
-            <label>
-               <input type="checkbox"> 记住我
-            </label>
-            <label style="padding-left: 212px;font:bold">
-               <a href="/changePass.jsp"> 忘记密码？</a>
-            </label>
-         </div>
-       
+   <div class="form-group">
+      <div class="col-sm-10" style="margin-left:80px;">
+         <input type="text" class="form-control" id="passWord" autocomplete="off"
+            name="passWord" style="background-image:url(images/2.png);background-repeat:no-repeat;background-position:left;padding-left:46px;" placeholder="确认密码">
+         <input type="hidden" class="form-control" id="passWord1" name="passWord1">
+        <input type="hidden" class="form-control" id="role" 
+            name="role" placeholder="用户角色">
+           
       </div>
+       <div id="user" style="height:60px;margin-left:20px;">
+         
+      </div>
+      
    </div>
    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-     <button style="width:138px;height:44px;" id="login1"><img style="_width: true"  margin-left="-12px" width="140" height="41"src="images/3.png" id="login"></button>  
-        
+      <div class="col-sm-10" style="margin-left:80px;">
+         <div type="text" class="form-control" id="sure" >
+        <button style="width:138px;height:44px;margin-left: 198px;
+  margin-top: 21px;" id="login1"><img style="_width: true"  margin-left="-12px" width="140" height="41"src="images/4.png" id="login"></button>  
       </div>
-   </div>
+      </div>
+    </div>
+  
 </form>
 </div>
         </div>
@@ -129,16 +166,18 @@ var role;
  $(function() {
                 $("#login1").click(function() {
                 	var user = $("#username").val();
-                	var pass = $("#password").val();
+                	var passNow = $("#passNow").val();
+                	var passNew = $("#passNew").val();
+                	var passWord = $("#passWord").val();
                 	var temp;
-                	temp = judge(user,pass);
+                	temp = judge(user, passNow, passNew, passWord);
                 	
                 	if(temp==true){
 	                	var username = encode64($("#username").val());
-	                	var password = encode64($("#password").val());
+	                	var password = encode64($("#passNew").val());
 	                	//alert("用户名加密后的结果:"+username+"密码加密后的结果:"+password);
 	                	$("#username1").val(username);
-	                    $("#password1").val(password);
+	                    $("#passNew1").val(password);
 	                    $("#role").val(role);
 	                    document.fm.submit();  //fm为form表单name
                 	}
@@ -149,15 +188,40 @@ var role;
                 })
         })
 
-function judge(username, password){
+function judge(username, passNow, passNew, passWord){
 	 var result = false;
 	 if(username==""){
-	 alert("请输入用户名");
+	 	alert("请输入用户名");
 		 //$("#user").html("请输入用户名");
 		 return false;
 	 }
-	 else if(username!=""&&password==""){
-	 alert("请输入密码");
+	 else if(username!=""&&passNow==""){
+	     alert("请输入密码");
+		 /* $("#pass").html("请输入密码");
+		 $("#user").html(""); */
+		 return false;
+	 }
+	  else if(passNew==""){
+	     alert("请输入新密码");
+		 /* $("#pass").html("请输入密码");
+		 $("#user").html(""); */
+		 return false;
+	 }
+	 else if(passNew==passNow){
+	     alert("密码与原密码一致");
+		 /* $("#pass").html("请输入密码");
+		 $("#user").html(""); */
+		 return false;
+	 }
+	  else if(passWord==""){
+	     alert("请输入确认密码");
+		 /* $("#pass").html("请输入密码");
+		 $("#user").html(""); */
+		 return false;
+	 }
+	 
+	 else if(passWord!=passNew){
+	     alert("两次密码不一致");
 		 /* $("#pass").html("请输入密码");
 		 $("#user").html(""); */
 		 return false;
@@ -165,16 +229,16 @@ function judge(username, password){
 	 else{
 		$.ajax({
 			type:'GET',
-			url:'/loginPanduan?username='+username+'&password='+password,
+			url:'/loginPanduan?username='+username+'&password='+passNow,
 			dataType:'json',
 			async: false, 
 			success:function(data){
 				if(data.user==0){
-				alert("用户名不存在");
+					alert("用户名不存在");
 					//$("#user").html("用户名不存在");
 				}
 				else if(data.user==2){
-				alert("用户名和密码不符");
+					alert("用户名和密码不符");
 					/* $("#pass").html("用户名和密码不符");
 					$("#user").html(""); */
 				}

@@ -35,6 +35,87 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		margin-bottom:auto !important;
      }
 </style>
+<style style="text/css">
+     select{
+        height: auto !important;
+        padding: 0px 0px !important;
+     }
+     .btn{
+     	padding:9px 12px !important;
+     	width:auto !important;
+		margin:auto auto !important;
+		display:auto !important;
+		margin-top:auto !important;
+		margin-bottom:auto !important;
+     }
+     
+   .pt10{padding-top:5px;}
+.mr10{margin:0 10px 0 0 !important;}
+.mt5{margin-top:2px !important;}
+.ml10{margin-left:25px !important;}
+
+.suggestion {
+	width:603px;
+	position:absolute;
+	border:1px solid #B5B5B5;
+	background-color:#EFEFEF;
+	top:53px;
+	left:-1px;
+	font-family: "����";
+	font-size:12px;
+}
+.floatL{float:left;}
+.suggestion  *{padding:0;margin:0;}
+.suggestion .suglist *{zoom:1;}
+
+.f12{font-size:12px;}
+.hui8{color:#878787;}
+.fno{font-weight:normal;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .suggestion  { top:52px;  }
+}
+.green{color:#008000;}
+.suggestion a {
+	outline:none;
+}
+.mt5{margin-top:20px;}
+.mt10{margin-top:11px;}
+.suglist {
+	width:233px;
+	list-style:none;
+	font-size:14px;
+	padding:4px 0;
+	float:left;
+}
+.suglist li {
+	padding:0 9px;
+	cursor:pointer;
+	zoom:1;
+	height:27px;
+	line-height:27px;
+}
+
+.suglist li.cur, .slhover {
+	background:#F3F3F3;
+	color:#1E8D00;
+}
+
+.nobg , .suginner{background:#fff;}
+.nobg , .suglist{width:393px;}   /*宽度修改*/
+
+.suginner_nobg {
+	background:none;
+}
+.suginner:after {
+	clear:both;
+	content:" ";
+	visibility:hidden;
+	overflow:hidden;
+	height:0;
+	display:block;
+}
+
+</style>
   <script type="text/javascript">
    		$("#search").click(function(){
    			
@@ -140,7 +221,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <div class="row" style="margin-bottom:5px;">
                   <div class="col-lg-6">
                     <div class="input-group">
-                      <input type="text" class="form-control" id="searchTerritory" name="searchcity">
+                      <input type="text" class="form-control" id="searchTerritory" name="searchcity" autocomplete="off" value="区域名,州名,编号" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
+                   
+                <div id="_suggestion" class="suggestion nobg" style="left: 0px; top: 32px; display: none; z-index:999;">
+                <div class="suginner">
+                    <ul class="suglist"></ul>
+                </div>
+                </div>
                       <span class="input-group-btn">
                         <a class="btn btn-default" type="submit" id="search" target="blank"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
                       </span>
@@ -474,7 +561,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div>
 <c:forEach var="item" items="${projectList}">
   	 	<div class="col-md-4" style="padding-left:0px;">
-  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image" class="img-responsive"  style="width:300px;height:216px" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
+  	     		<div><a href="/Index?proNum=${item.project_num}" target="_blank"><img alt="image" class="img-responsive"  style="width:300px;height:216px" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
   	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:150px;width:298px;">
   	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span></div>
   	     		<div style="color:rgb(226,0,17);font-size:16px;font-weight:bold;"><span>${item.project_min_price}</span><span>-</span><span>${item.project_high_price}</span></div>
@@ -496,7 +583,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div>
 <c:forEach var="item" items="${projectList2}">
   	 	<div class="col-md-4" style="padding-left:0px;">
-  	     		<div><a href="/Index?proNum=${item.project_num}"><img alt="image"  class="img-responsive" style="width:300px;height:216px" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
+  	     		<div><a href="/Index?proNum=${item.project_num}"  target="_blank"><img alt="image"  class="img-responsive" style="width:300px;height:216px" src="http://101.200.174.253:8080/all/${item.project_img }"></a></div>
   	     		<div style="background-color:black;padding-left:30px;filter:alpha(opacity=60);opacity:0.6;position:absolute;top:150px;width:298px;">
   	     		<div style="color:white;font-size:16px;font-weight:bold;"><span>${item.project_name}</span></div>
   	     			<div style="color:rgb(226,0,17);font-size:16px;font-weight:bold;"><span>${item.project_min_price}</span><span>-</span><span>${item.project_high_price}</span></div>
@@ -533,7 +620,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-10" style="padding-left:55px;text-align:left;">
 			<c:forEach var="item" items="${newsList}">
 		  	 	    <div class="col-md-4" style="padding-left:0px;">
-						<div ><a href="/Detail?id=${item.id}&type=1"><img src="http://101.200.174.253:8080/all/${item.news_image}" style="border:1px solid gray;width:290px;height:216px"></a></div>
+						<div ><a href="/Detail?id=${item.id}&type=1"  target="_blank"><img src="http://101.200.174.253:8080/all/${item.news_image}" style="border:1px solid gray;width:290px;height:216px"></a></div>
 						<div style="height:80px;overflow:hidden"><div style="margin-top:15px;font-family:微软雅黑;font-size:15px;height:20px">${item.news_abstract}</div></div>
 					</div>
   	 		</c:forEach>
@@ -617,7 +704,248 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	
    </script>
    <script src="/js/shaixuan.js" type="text/javascript"></script>
- 
+  <script type="text/javascript">
+   var value = $("#searchTerritory").val();
+  		 $("#search").click(function(){
+   			document.fm.submit();  //fm为form表单name
+   		}); 
+   		
+   		
+   		$(document).ready(function(){
+	   		$('.carousel').carousel({
+	     		interval: 2000
+	    	})
+		    if($('#searchTerritory').val()==""){
+		    	$('#searchTerritory').focus();
+		    	$("#_suggestion").hide();
+		    }
+
+
+})
+
+$('#reset').click(function() {
+	$(this).hide();
+	$('#searchTerritory').val("");
+	$('#searchTerritory').focus();
+});
+
+//IE和firefox
+if(navigator.userAgent.toLowerCase().indexOf('msie')>0 || navigator.userAgent.toLowerCase().indexOf('firefox')>0){
+    $('#searchTerritory').bind('keyup',function(event){
+        if(event.keyCode != "9" && event.keyCode != "38" && event.keyCode!='40') {
+            input_suggest();
+        }
+    });
+}else{
+    $("#searchTerritory").on('input',function(e){
+        input_suggest();
+    });
+}
+
+$("#searchTerritory").on('focus',function(e){
+	 if($('#searchTerritory').val()==""){
+		  $("#_suggestion").hide();
+	 }
+	 else{
+	 	input_suggest();
+	 }
+    
+});
+
+$("#searchTerritory").on('blur',function(e){
+    if(e.target.id!='query' && e.target.className.indexOf("slide")<0){
+        $("#_suggestion").hide();
+    }
+});
+var input_suggest = function(){
+	value = $('#searchTerritory').val();
+    $.ajax({
+        type:"get",
+        url:"/getSuggestion",
+        dataType:"json",
+        async:false,
+        data:{query:value},
+        success:function(data){
+       
+            if(data.success && data.list.length>0){
+           
+                var _html = "";
+                 
+                for(var i = 0 ; i<10 && i < data.list.length;i++){
+                    var _text = data.list[i];
+                    if(_text=='' || _text==undefined){
+                        continue
+                    }
+                    if(_text.length>30){
+                        _text = _text.substring(0,30);
+                    }
+                    var _text = data.list[i];
+                
+                    _html += "<li>"
+                   if(_text.indexOf(value)==0){
+                        _text = _text.substring(value.length,_text.length);
+                        _html += value+"<strong>"+_text+"</strong>"
+                   }else{
+                        _html += _text
+                   }
+                    _html += "</li>"
+                }
+                $("#_suggestion div ul").html(_html);
+                $("#_suggestion div ul li").each(function(){
+              
+                    $(this).on("click",function(){
+                    
+                        window.location.href="/IndexSearch"+encodeURIComponent($(this).text());
+                    });
+                });
+                $("#_suggestion").show();
+               
+                suggLis = $("#_suggestion div ul li");
+                highlight_li = -1;
+                hoverFunc('#_suggestion div ul li', 'cur');
+            }else{
+                $("#_suggestion").hide();
+            }
+        },
+        error:function(){}
+    });
+};
+function stopEvent(evt){
+    if(evt.preventDefault){
+        evt.preventDefault()
+    }
+    evt.cancelBubble=true;
+    return evt.returnValue=false
+}
+//keydown的处理
+function keydown(evt){
+    evt = evt||window.event;
+    if (evt.keyCode == 27){ //Esc
+        $("#_suggestion").hide();
+        return stopEvent(evt);
+    }else if(evt.keyCode == 13){ //Enter
+    }else{
+        if($("#_suggestion").css("display")=="block"){
+            if (evt.keyCode == 38){
+                upKey();
+                return stopEvent(evt);
+            }else if (evt.keyCode == 9 || evt.keyCode == 40){
+                downKey();
+                return stopEvent(evt);
+            }
+        }else{
+            if ((evt.keyCode == 38)||(evt.keyCode == 40)){
+                highlight_li = -1;
+                clearHighlight();
+                $("#_suggestion").show();
+            }
+        }
+    }
+}
+$(document).click(function(e){
+    if(e.target.id!='searchTerritory' && e.target.className.indexOf("slide")<0){
+        $("#_suggestion").hide();
+    }
+});
+$(document).bind('keydown',function(event){
+    keydown(event);
+});
+
+
+function highlight(){
+    clearHighlight();
+    if(highlight_li>=0){
+        suggLis[highlight_li].className="cur";
+        $("#searchTerritory").val($(suggLis[highlight_li]).text());
+        $("#w").val("2042")
+    }else{
+        $("#searchTerritory").val(default_query);
+    }
+}
+function clearHighlight(){
+    for(var i=0;i<suggLis.length;i++){
+    	suggLis[i].className="";
+    }
+}
+
+function upKey(){
+    clearHighlight();
+    highlight_li--;
+    if(highlight_li==-2){
+        highlight_li=Math.min(suggLis.length,10)-1
+    }
+    highlight()
+}
+
+function downKey(){
+    clearHighlight();
+    highlight_li++;
+    if(highlight_li==Math.min(suggLis.length,10)){
+        highlight_li=-1
+    }
+    highlight()
+}
+function hoverFunc(select, css){
+    $(select).hover(
+        function(){
+            $(this).addClass(css);
+        },
+        function(){
+            $(this).removeClass(css);
+        }
+    )
+}
+
+    function s0(o,key){
+        var _input=$("#searchTerritory").val();
+        if(_input.length>0){
+            var h = $(o).attr("search");
+            h+="&"+key+"="+encodeURIComponent(_input);
+            $(o).attr("href",h);
+        }
+    }
+    function s(o){
+        var _input=$("#searchTerritory").val();
+        if(_input.length>0){
+            var h = $(o).attr("search");
+            h+="&query="+encodeURIComponent(_input);
+            $(o).attr("href",h);
+        }
+    }
+    function s2(o){
+        var _input=$("#searchTerritory").val();
+        if(_input.length>0){
+            var h = $(o).attr("search");
+            h+="&kw="+encodeURIComponent(_input);
+            $(o).attr("href",h);
+        }
+    }
+
+    function s3(o){
+        var _input=$("#searchTerritory").val();
+        if(_input.length>0){
+            var h = $(o).attr("search");
+            h+="&sp="+encodeURIComponent(_input);
+            $(o).attr("href",h);
+        }
+    }
+
+    function s4(o){
+        var _input=$("#searchTerritory").val();
+        if(_input.length>0){
+            var h = $(o).attr("search");
+            h+="&w="+encodeURIComponent(_input);
+            $(o).attr("href",h);
+        }
+    }
+    function checkForm(){
+        var _input=$("#searchTerritory").val();
+        if(_input.length>40){
+            _input = _input.substring(0,40);
+            $("#searchTerritory").val(_input);
+        }
+    }
+   </script>
 </body>
 
 </html>

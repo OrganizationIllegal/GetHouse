@@ -9,13 +9,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
    <title>HousePurchasing</title>
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="/css/pagination.css" rel="stylesheet">
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
    <script src="/js/jquery.bootpag.min.js"></script>
 </head>
 <body style="padding-top: 105px;">
- <jsp:include page="head.jsp" />
+ <jsp:include page="head2.jsp" />
 	<div class="container">
        <!-- <div class="row" style="height:30px;background-color:#4B0082;">
             <div class="col-lg-1"></div>
@@ -131,15 +131,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         
     </div>
-    <div class="row" style="height:200px;width:1140px;background-color:rgb(20,51,82);vertical-align:middle;text-align:center;position:relative;margin-left:1px">
-        <div style="left:40%;top:40%;position:absolute;">
-            <font style="font-size:20px;font-weight:bold;color:#FFFFFF;">为您提供最好的海外购房服务</font><br>
-            <button class="buttton">注册</button>
-        </div>
     </div>
-
-    <!--<div class="row" style="height:20px;"></div>-->
-   <jsp:include page="foot.jsp" />
+    
    <script type="text/javascript">
 	    // init bootpag
 	    var category="";
@@ -158,8 +151,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	var html = getHtml(data.List);
                         	$("#mainlist").html(html);
                         	$('#page-selection').bootpag({
-                            	total: data.pageCount
+                            	total: data.pageCount,
+                            	next:'下一页',
+                            	prev:'上一页',
+                            	leaps: true    
 						    });
+                        	scroll(0,0);
                         }  
                     }); 
 			
@@ -167,7 +164,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    });
 	    
 	    $('#page-selection').bootpag({
-	        total: "${pageCount}"
+	        total: "${pageCount}",
+	        next:'下一页',
+        	prev:'上一页',
+        	page:1
 	    }).on("page", function(event, num){
 	    
 	         $.ajax({   
@@ -180,6 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                        count = data.total;
 	                 		var html = getHtml(data.List);
 	                        $("#mainlist").html(html);
+	                        scroll(0,0);
                      }
                         
                   }); 
@@ -196,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						html+="</h4><p style='font-size:12px;'>"+items[j].fenlei;
  						html+="</p><p style='font-size:120x;'>"+items[j].zhiye_abstract;
  						
- 						html+="<a href='/Detail?id="+items[j].id+"&type=0'>全文></a></div></li>";
+ 						html+="</p><a href='/Detail?id="+items[j].id+"&type=0'>全文></a></div></li>";
  						
                 	}
                 }
@@ -208,6 +209,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	    
 	</script>
+	<div class="row" style="height:200px;width:100%;background-color:rgb(20,51,82);vertical-align:middle;text-align:center;position:relative;margin-left:1px">
+        <div style="left:40%;top:40%;position:absolute;">
+            <font style="font-size:20px;font-weight:bold;color:#FFFFFF;">为您提供最好的海外购房服务</font><br>
+            <button class="buttton">注册</button>
+        </div>
+    </div>
+
+    <!--<div class="row" style="height:20px;"></div>-->
+   <jsp:include page="foot1.jsp" />
 </body>
 
 </html>

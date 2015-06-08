@@ -2,16 +2,16 @@ $(function(){
     		var myChart = echarts.init(document.getElementById('GouFang_pie')); 
 	        
 	        var option = {
-	        	title : {
-			        text: '最新更新日期：2015-04-26             ',
-			        x:'right',
-			        show:true
-			    	},
+//	        	title : {
+//			        text: '最新更新日期：2015-04-26             ',
+//			        x:'right',
+//			        show:true
+//			    	},
 	        	animation:false,
 	        	tooltip: {
 				        trigger: 'item',
-				        formatter: "{a} <br/>{b} : {c} ({d}%)",
-				        show:false
+				        formatter: "{b}<br/>{d}%",
+				        show:true
 				    },
 			    legend: {
 			        orient : 'vertical',
@@ -19,21 +19,26 @@ $(function(){
 			        padding: 10,
 			        itemGap: 20,
 			        data:['印花税','营业费','城建费','安全费','环保费'],
-			        show:true
+			        show:true,
+			        itemWidth:10,
+			        itemHeight:34
 			    },
 			    calculable : true,
 			    series : [
 			        {
 			            
 			            type:'pie',
-			            radius : '55%',
+			            radius : '75%',
 			            itemStyle : {
 			                normal : {
 			                    label : {
-			                        show : true
+			                        show : false,
+			                        textStyle:{
+			                        	fontSize:14
+			                        }
 			                    },
 			                    labelLine : {
-			                        show : true
+			                        show : false
 			                    }
 			                },
 			                emphasis : {
@@ -47,7 +52,7 @@ $(function(){
 			                    }
 			                }
 			            },
-			            center: ['50%', '50%'],
+			            center: ['85%', '50%'],
 			            data:[
 			                {value:335, name:'印花税'},
 			                {value:310, name:'营业费'},
@@ -58,8 +63,32 @@ $(function(){
 			        }
 			    ]
 			};
-			option.legend.data=eval(houseTaxStr);
-			option.series[0].data=eval(housetaxdata);
+	        var legendarr=[];
+        	$.each(eval(houseTaxStr), function(index, value) {
+            	  var item={
+                          name:'',
+                          icon : 'image://pic/legendicon.jpg',
+                          textStyle:{
+                        	  fontFamily:'微软雅黑',
+                        	  fontSize:16
+                          }
+                      };
+            	  item.name=value;
+            	  legendarr.push(item);
+            	});
+        	var series=[];
+        	var color=['#CDCD00','#CD6839','#CD3278','#B03060','#8B2500']
+        	$.each(eval(housetaxdata), function(index, value) {
+          	  	value.itemStyle={
+          	  			normal:{
+          	  				color:color[index]
+          	  			}
+          	  	};
+        		series.push(value);
+          	});
+            option.legend.data=legendarr;
+//			option.legend.data=eval(houseTaxStr);
+			option.series[0].data=eval(series);
 	        // 为echarts对象加载数据 
 	        myChart.setOption(option); 
 
@@ -84,9 +113,20 @@ $(function(){
 	                    if (result) {                        
 	                        //将返回的category和series对象赋值给options对象内的category和series
 	                        //因为xAxis是一个数组 这里需要是xAxis[i]的形式
+	                    	var legendarr=[];
 	                        options.xAxis[0].data = result.category;
 	                        options.series = result.series;
-	                        options.legend.data = result.legend;
+	                        
+	                        $.each(result.legend, function(index, value) {
+	                        	  var item={
+	                                      name:'',
+	                                      icon : 'image://pic/legendicon.jpg',
+	                                      textStyle:{fontWeight:'bold', color:'green'}
+	                                  };
+	                        	  item.name=value;
+	                        	  legendarr.push(item);
+	                        	});
+	                        options.legend.data = legendarr;
 	                        myChart.hideLoading();
 	                        myChart.setOption(options);
 	                    }
@@ -111,9 +151,20 @@ $(function(){
 	                    if (result) {                        
 	                        //将返回的category和series对象赋值给options对象内的category和series
 	                        //因为xAxis是一个数组 这里需要是xAxis[i]的形式
+	                    	var legendarr=[];
+	                    	$.each(result.legend, function(index, value) {
+	                        	  var item={
+	                                      name:'',
+	                                      icon : 'image://pic/legendicon.jpg',
+	                                      textStyle:{fontWeight:'bold', color:'green'}
+	                                  };
+	                        	  item.name=value;
+	                        	  legendarr.push(item);
+	                        	});
+	                        options.legend.data = legendarr;
 	                        options.xAxis[0].data = result.category;
 	                        options.series = result.series;
-	                        options.legend.data = result.legend;
+//	                        options.legend.data = result.legend;
 	                        myChart.hideLoading();
 	                        myChart.setOption(options);
 	                    }
@@ -135,38 +186,40 @@ $('#costTabs a').click(function (e) {
       var myChart1 = echarts.init(document.getElementById('ChengBen_pie')); 
 	        
 	        var option1={
-	        		title : {
-			        text: '最新更新日期：2015-04-26             ',
-			        x:'right',
-			        show:true
-			    	},
+//	        		title : {
+//			        text: '最新更新日期：2015-04-26             ',
+//			        x:'right',
+//			        show:true
+//			    	},
 	        		animation:false,
 				    tooltip: {
 				        trigger: 'item',
-				        formatter: "{a} <br/>{b} : {c} ({d}%)",
-				        show:false
+				        formatter: "{b}<br/>{d}%",
+				        show:true
 				    },
 				    legend: {
 				        orient : 'vertical',
 				        x : 'left',
 				        padding: 10,
 			        	itemGap: 20,
-				        data:['物业费','市政费','水务费','保险费','搜索引擎']
+				        data:['物业费','市政费','水务费','保险费','搜索引擎'],
+				        itemWidth:10,
+				        itemHeight:34
 				    },
 				    calculable : true,
 				    series : [
 			        {
 			            
 			            type:'pie',
-			            radius : '55%',
-			            center: ['50%', '50%'],
+			            radius : '75%',
+			            center: ['85%', '50%'],
 			            itemStyle : {
 			                normal : {
 			                    label : {
-			                        show : true
+			                        show : false
 			                    },
 			                    labelLine : {
-			                        show : true
+			                        show : false
 			                    }
 			                },
 			                emphasis : {
@@ -189,10 +242,32 @@ $('#costTabs a').click(function (e) {
 			            ]
 			        }
 			    ]
-
 				};
-            option1.legend.data=eval(holdingTaxStr);
-			option1.series[0].data=eval(holdingdata);
+	        var legendarr=[];
+        	$.each(eval(holdingTaxStr), function(index, value) {
+            	  var item={
+                          name:'',
+                          icon : 'image://pic/legendicon.jpg',
+                          textStyle:{fontFamily:'微软雅黑',
+                        	  fontSize:16
+                        	  }
+                      };
+            	  item.name=value;
+            	  legendarr.push(item);
+            	});
+        	var series=[];
+        	var color=['#CDCD00','#CD6839','#CD3278','#B03060','#8B2500']
+        	$.each(eval(holdingdata), function(index, value) {
+        		value.itemStyle={
+          	  			normal:{
+          	  				color:color[index]
+          	  			}
+          	  	};
+        		series.push(value);
+          	});
+        	option1.legend.data=legendarr;
+//            option1.legend.data=eval(holdingTaxStr);
+			option1.series[0].data=eval(series);
 	        // 为echarts对象加载数据 
 	        myChart1.setOption(option1);
     }); 
