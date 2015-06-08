@@ -53,6 +53,7 @@ public class BingMapController {
 			for(BingMapVo item : resultList){
 				JSONObject obj = new JSONObject();
 				obj.put("project_id", item.getProject_id());
+				obj.put("project_num", item.getProject_num());
 				obj.put("project_address", item.getProject_address());
 				obj.put("project_name", item.getProject_name());
 				obj.put("project_min_price", item.getProject_min_price());
