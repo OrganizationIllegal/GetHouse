@@ -15,12 +15,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <script src="/js/jquery.pagination.js"></script>
 </head>
 
-<body>
-    <jsp:include page="head2.jsp" />
+<body style="width:100%;margin:0 auto">
+     <jsp:include page="head2.jsp" /> 
+    <div style="background-color:rgb(20,51,82);background-repeat:repeat;margin:0 auto">
 	<div style="width:100%;height:250px;background-color:rgb(20,51,82);padding-top:70px;padding-left:100px;margin-top: 0px;">
 
 		<div style="color:white;font-size:40px;font-weight:bolder;font-family:黑体;margin-top:55px">专业的服务团队为您提供专业的服务</div>
 		<div style="color:white;font-size:17px;font-weight:bold;">持有海外认证资质的房产经纪人、会计师、律师、贷款咨询师为您提供定制化的服务</div>
+	</div>
 	</div>
 	<!-- 上方搜索列start -->
 	<div >
