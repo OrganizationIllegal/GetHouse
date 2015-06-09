@@ -969,16 +969,16 @@ function popInfo(){
 
 
 
-<div style="margin-top:16px;background-color:white;height:309px">
-	<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">新闻报道</div>
+<div style="margin-top:16px;background-color:rgb(169,193,217);height:350px;padding-bottom:20px;margin-bottom:20px">
+	<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px;padding-left:20px">新闻报道</div>
 	<hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:990px;margin-left:0px;"/>	
 
-  		<div class="row">
+  		<div class="row" style="width:990px;padding-left:10px;padding-right:10px">
   		<div class="col-md-4">
-          <div class="news_position" style="margin-left:0px">
+          <div class="news_position" style="margin-left:5px;margin-right:5px;margin-top:0px">
           		<div >
                 <div class="scroll" id="left"> 
-                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" style="width:305px;height:210px"></a>
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_one.news_img}" alt="" style="width:316px;height:210px;padding-left:10px;padding-right:10px"></a>
                     <!-- <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
@@ -989,17 +989,17 @@ function popInfo(){
                     </div> --> 
                      </div>
                 </div>
-                <div class="caption_my" style="height:57px;width:310px;border:1px solid rgb(236,235,235)">
+                <div class="caption_my" style="height:57px;width:308px;border:1px solid rgb(236,235,235);margin-left:5px;">
 		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_one.title}</span><br/>
 		         <span>新闻来源：${newsInfo_one.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
            </div>
             </div>
             <div class="col-md-4">
-		   <div class="news_position" id="MyNews" style="margin-left:0px">
+		   <div class="news_position" id="MyNews" style="margin-left:5px;margin-right:5px;margin-top:0px">
 		      	<div>
                 <div class="scroll" id="left"> 
-                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" style="width:305px;height:210px"></a>
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_two.news_img}" alt="" style="width:316px;height:210px;padding-left:10px;padding-right:10px"></a>
                     <!--   <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
@@ -1010,17 +1010,17 @@ function popInfo(){
                     </div>-->
                      </div>
                 </div>
-                <div class="caption_my" style="height:57px;width:310px;border:1px solid rgb(236,235,235)">
+                <div class="caption_my" style="height:57px;width:308px;border:1px solid rgb(236,235,235);margin-left:5px">
 		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_two.title}</span><br/>
 		         <span>新闻来源：${newsInfo_two.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
 		   </div>
 		     </div>
 		      <div class="col-md-4">
-		   <div class="news_position" style="margin-left:0px" >
+		   <div class="news_position" style="margin-left:5px;margin-right:5px;margin-top:0px" >
 		   		<div >
                 <div class="scroll" id="left"> 
-                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" style="width:305px;height:210px"></a>
+                     <a href=""><img src="http://101.200.174.253:8080/all/${newsInfo_three.news_img}" alt="" style="width:316px;height:210px;padding-left:10px;padding-right:10px"></a>
                        <!--   <div class="news_action_left" style="display:none;">
 	                     <ul class="list_l" id="list_scroll_left">
 							  <li >Cras justo odio</li>
@@ -1031,7 +1031,7 @@ function popInfo(){
                     </div>-->
                      </div>
                 </div>
-                <div class="caption_my" style="height:57px;width:310px;border:1px solid rgb(236,235,235)">
+                <div class="caption_my" style="height:57px;width:308px;border:1px solid rgb(236,235,235);margin-left:5px">
 		         <span id="title_news" style="font-family:微软雅黑;font-weight: bold; font-size:15px;">新闻标题：${newsInfo_three.title}</span><br/>
 		         <span>新闻来源：${newsInfo_three.source}  &nbsp;&nbsp;&nbsp;&nbsp;时间：${timeResuleOne }</span>
 		        </div>
@@ -1096,7 +1096,7 @@ function popInfo(){
   	<!--你是否需要房产经纪人start-->
   	<div style="width:101%;height:526px;">
 <div style="margin-left: auto;margin-right:auto;width:1005px;height:526px;">
-	 <div style="background-color:rgb(169,193,217);height:526;width: 978px;">
+	 <div style="background-color:rgb(169,193,217);height:526px;width: 978px;">
 <div class="row" >
     <!--左边 start-->
 	<div class="col-xs-3" >
@@ -1160,9 +1160,9 @@ function popInfo(){
 <div style="margin-left: auto;margin-right:auto;width:990px;height:305px;">
 	 <div style="background-color:white;height:305px;">
  <!--start 墨尔本-->
-<div class="row" >
+<div class="row" style="margin-top:15px;" >
 <div class="col-md-12" style="padding-left:40px;">
-<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:20px">推荐项目</div>
+<div style="font-size:15px;font-weight:bold;font-family:微软雅黑;filter:alpha(opacity=80);opacity:0.8;padding-top:-1px">推荐项目</div>
 <hr style="border-top:1px solid gray;margin-top:2px;margin-bottom:7px;width:920px;margin-left:0px;"/>
 <div>
   	 	<div class="col-md-4" style="padding-left:0px;">
