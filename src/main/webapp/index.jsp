@@ -11,8 +11,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <link href="css/style.css" rel="stylesheet" type="text/css" />
    <link href="css/style_project.css" rel="stylesheet" type="text/css" />
    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/examples.css" rel="stylesheet" type="text/css" media="screen"/>
+   <link href="css/slider-pro.min.css" rel="stylesheet" type="text/css" media="screen"/>
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
    <script src="/js/jquery.min.js"></script>
    <script src="/bootstrap/js/bootstrap.min.js"></script>
+   <script src="/js/jquery.sliderPro.min.js"></script>
    <link href="/css/index.css" rel="stylesheet">  
    <script src="http://echarts.baidu.com/build/dist/echarts-all.js" charset="utf-8"></script>
    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
@@ -31,6 +35,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/script_p.js"></script>
 <script src="js/video.js"></script>
 <script>videojs.options.flash.swf = "/js/video-js.swf";</script>
+<script type="text/javascript">
+	$( document ).ready(function( $ ) {
+		$( '#example5' ).sliderPro({
+			width: 670,
+			height: 490,
+			orientation: 'vertical',
+			loop: false,
+			arrows: true,
+			buttons: false,
+			thumbnailsPosition: 'right',
+			thumbnailPointer: true,
+			thumbnailWidth: 350,
+			thumbnailArrows:s,
+			breakpoints: {
+				800: {
+					thumbnailsPosition: 'bottom',
+					thumbnailWidth: 350,
+					thumbnailHeight: 100
+				},
+				500: {
+					thumbnailsPosition: 'bottom',
+					thumbnailWidth: 120,
+					thumbnailHeight: 50
+				}
+			}
+			// thumbnailArrows:true
+			// reachVideoAction:playVideo,
+			// leaveVideoAction:pauseVideo,
+			// playVideoAction:none,
+			// pauseVideoAction:startAutoplay,
+			// endVideoAction:nextSlide
+
+		});
+	});
+</script>
 <!-- 计算器 start -->
 <style type="text/css">
 body{
@@ -132,7 +171,7 @@ function popInfo(){
 <div class="container">
 <div id="all">
 <!-- 导航标签 -->
-<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:60px;min-height:27px;margin-bottom: 0px;margin-left:137px;width:995px;">
+<nav id="nav1" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:60px;min-height:27px;margin-bottom: 0px;margin-left:205px;width:995px;">
 <ul class="nav nav-tabs nav-justified">
    <li><a href="#info"  onclick="tab1()">项目介绍</a></li>
    <li><a href="#price"  onclick="tab2()">户型和价格</a></li>
@@ -384,8 +423,7 @@ function popInfo(){
 </div>
 <!--户型及价格-->
 
-
-
+<!-- 项目配套 -->
 <c:if test="${!empty ProjectPeitaoImage }">
 	<div style="margin-top:16px;background-color:white;">
 <div class="panel panel-default">
@@ -426,8 +464,8 @@ function popInfo(){
 
     </div>
 </div> 
-</c:if>
-
+</c:if> 
+<!-- 项目配套 -->
 <!--项目位置-->
 <div style="margin-top:16px;background-color:white;height:480px;" id="position">
 <div style="font-size:15px;font-weight:bold;border-bottom:1px solid rgba(238, 238, 238, 1);padding-top:20px;padding-left:30px;">项目位置</div>

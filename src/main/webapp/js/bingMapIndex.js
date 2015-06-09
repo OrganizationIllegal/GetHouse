@@ -86,7 +86,7 @@
  			    defaultInfobox = new Microsoft.Maps.Infobox(LA2, infoboxOptions);
  			    //alert(defaultInfobox.getId())
  			    map.entities.push(defaultInfobox); 
- 			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><a href="/Index?proNum='+num1+'"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"></a><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a></div>'); 
+ 			    defaultInfobox.setHtmlContent('<div id="infoboxText" style="background-color:White;min-height:100px;width:330px;"><a href="/Index?proNum='+num1+'"><img src="'+img1+'" width="110" height="80" style="position:absolute;left:10px;top:10px;"></a><b id="infoboxTitle" style="position:absolute; top:30px; left:125px; width:250px;">项目价格：'+price1+'</b><a href="/Index?proNum='+num1+'" id="infoboxDescription" style="position:absolute; top:50px; left:125px; width:250px;">项目名称:'+name1+'</a><img src="images/close1.gif" onclick="display()" style="position:absolute;left:300px;cursor:default;"></div>'); 
  			    
  		    });
        }
@@ -95,3 +95,6 @@
 		  getPopMap();
 		  $('#myModal').modal('show');
 	  }
+	  function display(){
+    	  defaultInfobox.setOptions({ visible: false });
+      }
